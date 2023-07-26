@@ -1,0 +1,10 @@
+{
+  "language": "typescript",
+  "app": "npx ts-node ./src/examples/AzureResourceGroup.ts",
+  "terraformProviders": ["Azure/azapi@~> 0.6.0"],
+  "projectId": "1b5f16bd-67ac-4af6-a33f-7bcafff141eb",
+  "context": {
+    "excludeStackIdFromLogicalIds": "true",
+    "allowSepCharsInLogicalIds": "true"
+  }
+}
