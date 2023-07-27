@@ -1,14 +1,31 @@
-# Project
+# Terraform-Azure-CDK-Modules
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This repository contains code for building infrastructure using Terraform Azure CDK modules.
 
-As the maintainer of this project, please make a few updates:
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+
+## Using the Libraries
+
+This project includes several libraries for building infrastructure using Azure modules. Here are some examples of how to use them:
+
+### Example 1: Creating a Virtual Machine
+
+```typescript
+import { VirtualMachine } from '@my-awesome-infra/virtual-machine';
+
+const vm = new VirtualMachine({
+  name: 'my-vm',
+  location: 'eastus',
+  resourceGroup: 'my-resource-group',
+  size: 'Standard_D2s_v3',
+  osDisk: {
+    storageAccountType: 'Standard_LRS',
+    diskSizeGB: 128,
+  },
+  adminUsername: 'admin',
+  adminPassword: 'password',
+});
+```
 
 ## Contributing
 
@@ -23,6 +40,22 @@ provided by the bot. You will only need to do this once across all repos using o
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+We welcome contributions to this project! To get started, follow these steps:
+
+1. Fork this repository to your own GitHub account.
+2. Clone the forked repository to your local machine.
+3. Create a new branch for your changes.
+4. Make your changes and commit them to your branch.
+5. Push your changes to your forked repository.
+6. Open a pull request to merge your changes into the main repository.
+
+
+## Code Spaces
+
+To open this repository in a Code Space, click the button below:
+
+[![Open in Code Spaces](https://img.shields.io/badge/Open%20in%20Code%20Spaces-Terraform%20Azure%20CDK%20Modules%20Project-blue?logo=github)](https://github.com/microsoft/terraform-azure-cdk-modules/codespaces)
 
 ## Trademarks
 
