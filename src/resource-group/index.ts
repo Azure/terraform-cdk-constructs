@@ -22,7 +22,11 @@ export interface ResourceGroupProps {
   /**
    * The tags to assign to the Resource Group.
    */
-  readonly tags?: { [key: string]: string; };    
+  readonly tags?: { [key: string]: string; };
+  /**
+   * The lifecycle rules to ignore changes.
+   */
+  readonly ignoreChanges?: string[];
 }
 
 
@@ -43,11 +47,10 @@ export class AzureResourceGroup extends Construct {
       tags: props.tags,
     });
 
+  
     azurermResourceGroupRg.addOverride("lifecycle", [
       {
-        ignore_changes: [
-        ],
-         
+        ignore_changes: props.ignoreChanges || [],
       },
     ]);
     

@@ -10,7 +10,7 @@ export class exampleAzureResourceGroup extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
-    new AzurermProvider(this, "azureFeature", {
+    new AzurermProvider(this, "azure", {
       features: {},
     });
   
@@ -21,6 +21,7 @@ export class exampleAzureResourceGroup extends TerraformStack {
           name: 'test',
           Env: "NonProd",
       },
+      ignoreChanges: ['tags["Environment"]'],
       
     });
 
