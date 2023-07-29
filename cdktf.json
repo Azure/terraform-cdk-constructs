@@ -5,6 +5,7 @@
   "projectId": "1b5f16bd-67ac-4af6-a33f-7bcafff141eb",
   "context": {
     "excludeStackIdFromLogicalIds": "true",
-    "allowSepCharsInLogicalIds": "true"
+    "allowSepCharsInLogicalIds": "true",
+    "overrideLogicalId": "true"
   }
 }

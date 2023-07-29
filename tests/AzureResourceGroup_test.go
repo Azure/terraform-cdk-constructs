@@ -3,22 +3,26 @@ package test
 import (
 	"io/ioutil"
 	"log"
-	"math/rand"
-	"strconv"
 	"strings"
 	"testing"
-	"time"
+
+	"github.com/gruntwork-io/terratest/modules/azure"
+	"github.com/gruntwork-io/terratest/modules/random"
 
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
 
 	"github.com/gruntwork-io/terratest/modules/shell"
 	"github.com/gruntwork-io/terratest/modules/terraform"
+	"github.com/stretchr/testify/assert"
 )
 
 // An example of how to test the Terraform module in examples/terraform-azure-example using Terratest.
 func TestTerraformCDKAzureResourceGroupExample(t *testing.T) {
 	t.Parallel()
+
+	// subscriptionID is overridden by the environment variable "ARM_SUBSCRIPTION_ID"
+	subscriptionID := ""
 
 	cmd := shell.Command{
 		Command:    "cdktf",
@@ -41,6 +45,13 @@ func TestTerraformCDKAzureResourceGroupExample(t *testing.T) {
 
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApplyAndIdempotent(t, terraformOptions)
+
+	// Run `terraform output` to get the values of output variables
+	resourceGroupName := terraform.Output(t, terraformOptions, "resource_group_name")
+
+	// Verify the resource group exists
+	exists := azure.ResourceGroupExists(t, resourceGroupName, subscriptionID)
+	assert.True(t, exists, "Resource group does not exist")
 }
 
 func ReadFile(path string) []byte {
@@ -68,11 +79,6 @@ func FindResourceGroupKey(data []byte) string {
 	return resourceGroupKey
 }
 
-func GenerateRandomName() string {
-	rand.Seed(time.Now().UnixNano())
-	return "rg-test-" + strconv.Itoa(rand.Intn(1000))
-}
-
 func SetNewName(data []byte, resourceGroupKey string, randomName string) []byte {
 	newData, err := sjson.Set(string(data), "resource.azurerm_resource_group."+resourceGroupKey+".name", randomName)
 	if err != nil {
@@ -91,7 +97,7 @@ func WriteFile(path string, data []byte) {
 func RandomizeResourceGroupName(path string) {
 	data := ReadFile(path)
 	resourceGroupKey := FindResourceGroupKey(data)
-	randomName := GenerateRandomName()
+	randomName := strings.ToLower(random.UniqueId())
 	newData := SetNewName(data, resourceGroupKey, randomName)
 	WriteFile(path, newData)
 }
