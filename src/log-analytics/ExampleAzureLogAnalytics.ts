@@ -1,27 +1,17 @@
+import * as cdktf from "cdktf";
 import { AzureLogAnalytics } from '.';
 import { App, TerraformStack} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {StorageAccount} from "@cdktf/provider-azurerm/lib/storage-account";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
-
-function generateRandomString(length: number): string {
-  let result = '';
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  const charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-}
+import { generateRandomString } from '../util/randomString';
 
 const rndName = generateRandomString(10);
 
-// ...
-
-
 
 const app = new App();
+
 export class exampleAzureLogAnalytics extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
@@ -30,16 +20,16 @@ export class exampleAzureLogAnalytics extends TerraformStack {
         features: {},
       });
 
-    const rg = new ResourceGroup(this, "rg", {
+    const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
       name: `rg-${rndName}`,
 
     });
 
     const storageAccount = new StorageAccount(this, 'adls', {
-      name: `adls-${rndName}`,
-      resourceGroupName: rg.name,
-      location: rg.location,
+      name: `adls${rndName}`,
+      resourceGroupName: resourceGroup.name,
+      location: resourceGroup.location,
       accountTier: 'Standard',
       accountReplicationType: 'ZRS',
       accountKind: 'StorageV2',
@@ -47,12 +37,12 @@ export class exampleAzureLogAnalytics extends TerraformStack {
     });
 
 
-    new AzureLogAnalytics(this, 'testLA', {
+    const logAnalyticsWorkspace = new AzureLogAnalytics(this, 'testLA', {
       name: `la-${rndName}`,
       location: 'eastus',
       retention: 90,
       sku: "PerGB2018",
-      resource_group_name: rg.name,
+      resource_group_name: resourceGroup.name,
       functions: [
         {
           name: "function_name_1",
@@ -78,8 +68,29 @@ export class exampleAzureLogAnalytics extends TerraformStack {
         }
       ]
     });
+    
+    // Example Outputs
+    const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {
+      value: resourceGroup.name,
+    });
+    const cdktfTerraformOutputLAName = new cdktf.TerraformOutput(this, "loganalytics_workspace_name", {
+      value: logAnalyticsWorkspace.props.name,
+    });
+    const cdktfTerraformOutputLASku = new cdktf.TerraformOutput(this, "loganalytics_workspace_sku", {
+      value: logAnalyticsWorkspace.props.sku,
+    });
+    const cdktfTerraformOutputLARetention = new cdktf.TerraformOutput(this, "loganalytics_workspace_retention", {
+      value: logAnalyticsWorkspace.props.retention,
+    });
+
+    cdktfTerraformOutputRG.overrideLogicalId("resource_group_name");
+    cdktfTerraformOutputLAName.overrideLogicalId("loganalytics_workspace_name");
+    cdktfTerraformOutputLASku.overrideLogicalId("loganalytics_workspace_sku");
+    cdktfTerraformOutputLARetention.overrideLogicalId("loganalytics_workspace_retention");
+
   }
 }
+
 
 new exampleAzureLogAnalytics(app, "testAzureLogAnalytics");
 

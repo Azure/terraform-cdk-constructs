@@ -1,16 +1,13 @@
 package test
 
 import (
-	"io/ioutil"
-	"log"
+	"fmt"
+	"os"
+	"os/exec"
 	"strings"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/azure"
-	"github.com/gruntwork-io/terratest/modules/random"
-
-	"github.com/tidwall/gjson"
-	"github.com/tidwall/sjson"
 
 	"github.com/gruntwork-io/terratest/modules/shell"
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -22,7 +19,17 @@ func TestTerraformCDKAzureResourceGroupExample(t *testing.T) {
 	t.Parallel()
 
 	// subscriptionID is overridden by the environment variable "ARM_SUBSCRIPTION_ID"
-	subscriptionID := ""
+	subscriptionID := os.Getenv("ARM_SUBSCRIPTION_ID")
+
+	if subscriptionID == "" {
+		out, err := exec.Command("az", "account", "show", "--query", "id", "-o", "tsv").Output()
+		if err != nil {
+			fmt.Printf("Failed to get Azure subscription ID: %v\n", err)
+			return
+		}
+
+		subscriptionID = strings.TrimSpace(string(out))
+	}
 
 	cmd := shell.Command{
 		Command:    "cdktf",
@@ -31,8 +38,6 @@ func TestTerraformCDKAzureResourceGroupExample(t *testing.T) {
 	}
 
 	shell.RunCommandAndGetStdOut(t, cmd)
-
-	RandomizeResourceGroupName("../cdktf.out/stacks/testAzureResourceGroup/cdk.tf.json")
 
 	terraformOptions := &terraform.Options{
 
@@ -52,52 +57,4 @@ func TestTerraformCDKAzureResourceGroupExample(t *testing.T) {
 	// Verify the resource group exists
 	exists := azure.ResourceGroupExists(t, resourceGroupName, subscriptionID)
 	assert.True(t, exists, "Resource group does not exist")
-}
-
-func ReadFile(path string) []byte {
-	data, err := ioutil.ReadFile(path)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return data
-}
-
-func FindResourceGroupKey(data []byte) string {
-	resourceGroupKey := ""
-	gjson.Get(string(data), "resource.azurerm_resource_group").ForEach(func(key, value gjson.Result) bool {
-		if strings.HasPrefix(key.String(), "testRG_rg") {
-			resourceGroupKey = key.String()
-			return false // stop iterating
-		}
-		return true // keep iterating
-	})
-
-	if resourceGroupKey == "" {
-		log.Fatal("Could not find a key that starts with testRG_rg")
-	}
-
-	return resourceGroupKey
-}
-
-func SetNewName(data []byte, resourceGroupKey string, randomName string) []byte {
-	newData, err := sjson.Set(string(data), "resource.azurerm_resource_group."+resourceGroupKey+".name", randomName)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return []byte(newData)
-}
-
-func WriteFile(path string, data []byte) {
-	err := ioutil.WriteFile(path, data, 0644)
-	if err != nil {
-		log.Fatal(err)
-	}
-}
-
-func RandomizeResourceGroupName(path string) {
-	data := ReadFile(path)
-	resourceGroupKey := FindResourceGroupKey(data)
-	randomName := strings.ToLower(random.UniqueId())
-	newData := SetNewName(data, resourceGroupKey, randomName)
-	WriteFile(path, newData)
 }

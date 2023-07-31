@@ -112,9 +112,6 @@ export class AzureLogAnalytics extends Construct {
 
 
     // Terraform Outputs
-    const cdktfTerraformOutputLaRg = new cdktf.TerraformOutput(this, "log_analytics_resource_group", {
-      value: props.resource_group_name,
-    });
     const cdktfTerraformOutputLaID = new cdktf.TerraformOutput(this, "log_analytics_id", {
       value: azurermLogAnalyticsWorkspaceLogAnalytics.id,
     });
@@ -127,7 +124,6 @@ export class AzureLogAnalytics extends Construct {
     });
 
     /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
-    cdktfTerraformOutputLaRg.overrideLogicalId("log_analytics_resource_group");
     cdktfTerraformOutputLaID.overrideLogicalId("log_analytics_id");
     cdktfTerraformOutputLaSharedKey.overrideLogicalId("log_analytics_primary_shared_key")
     cdktfTerraformOutputLaWorkspaceID.overrideLogicalId("log_analytics_workspace_id")
