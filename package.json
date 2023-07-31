@@ -22,7 +22,9 @@
   "dependencies": {
     "@cdktf/provider-azurerm": "^9.0.4",
     "cdktf": "^0.17.3",
-    "constructs": "^10.1.106"
+    "constructs": "^10.1.106",
+    "crypto-random-string": "^5.0.0",
+    "nanoid": "^4.0.2"
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",

@@ -86,17 +86,6 @@ export class AzureLogAnalytics extends Construct {
       });
     })
 
-    props.data_export?.forEach((v, k) => {
-      new LogAnalyticsDataExportRule(this, `export-${k}`, {
-        destinationResourceId: v.export_destination_id,
-        enabled: v.enabled,
-        name: v.name,
-        resourceGroupName: props.resource_group_name,
-        tableNames: v.table_names,
-        workspaceResourceId: azurermLogAnalyticsWorkspaceLogAnalytics.id,
-      });
-    })
-
     props.functions?.forEach((v, k) => {
       new LogAnalyticsSavedSearch(this, `function-${k}`, {
         category: "Function",

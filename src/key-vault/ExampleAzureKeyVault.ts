@@ -4,8 +4,6 @@ import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 
-
-
 const app = new App();
 export class exampleAzureKeyVault extends TerraformStack {
   constructor(scope: Construct, id: string) {
