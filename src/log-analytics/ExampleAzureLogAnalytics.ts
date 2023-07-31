@@ -69,7 +69,7 @@ export class exampleAzureLogAnalytics extends TerraformStack {
       ]
     });
     
-    // Example Outputs
+    // Outputs to use for End to End Test
     const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {
       value: resourceGroup.name,
     });

@@ -64,7 +64,6 @@ import {ContainerRegistry} from "@cdktf/provider-azurerm/lib/container-registry"
 export class AzureContainerRegistry extends Construct {
   readonly props: ContainerRegistryProps;
   
-
   constructor(scope: Construct, id: string, props: ContainerRegistryProps) {
     super(scope, id);
 
@@ -81,14 +80,19 @@ export class AzureContainerRegistry extends Construct {
         georeplications: props.georeplication_locations,
     });
 
+    
     // Terraform Outputs
     const cdktfTerraformOutputACRid = new cdktf.TerraformOutput(this, "id", {
       value: azurermContainerRegistry.id,
     });
 
+    const cdktfTerraformOutputACRloginserver = new cdktf.TerraformOutput(this, "login_server", {
+      value: azurermContainerRegistry.loginServer,
+    });
+
     /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
     cdktfTerraformOutputACRid.overrideLogicalId("id");
-
+    cdktfTerraformOutputACRloginserver.overrideLogicalId("login_server");
 
   }
 }

@@ -1,3 +1,4 @@
+import * as cdktf from "cdktf";
 import { AzureContainerRegistry } from '.';
 import { App, TerraformStack} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
@@ -23,7 +24,7 @@ export class exampleAzureContainerRegistry extends TerraformStack {
 
     });
 
-    new AzureContainerRegistry(this, 'testACR', {
+    const containerRegistry = new AzureContainerRegistry(this, 'testACR', {
       name: `acr${rndName}`,
       location: resourceGroup.location,
       resource_group_name: resourceGroup.name,
@@ -34,6 +35,20 @@ export class exampleAzureContainerRegistry extends TerraformStack {
         environment: "test",
       },
     });
+
+    // Outputs to use for End to End Test
+    const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {
+      value: resourceGroup.name,
+    });
+    const cdktfTerraformOutputACRName = new cdktf.TerraformOutput(this, "container_registry_name", {
+      value: containerRegistry.props.name,
+    });
+    
+
+    cdktfTerraformOutputRG.overrideLogicalId("resource_group_name");
+    cdktfTerraformOutputACRName.overrideLogicalId("container_registry_name");
+
+
   }
 }
 
