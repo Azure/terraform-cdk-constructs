@@ -20,7 +20,7 @@ func TestTerraformCDKAzureApplicationInsightsExample(t *testing.T) {
 
 	cmd := shell.Command{
 		Command:    "cdktf",
-		Args:       []string{"synth", "--app", "npx ts-node ./src/resource-group/ExampleAzureApplicationInsights.ts"},
+		Args:       []string{"synth", "--app", "npx ts-node ./src/application-insights/ExampleAzureApplicationInsights.ts"},
 		WorkingDir: "../",
 	}
 
