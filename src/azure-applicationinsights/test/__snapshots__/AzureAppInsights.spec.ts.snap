@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AzureApplicationInsights-Snapshot renders a AzureApplicationInsights and check snapshot 1`] = `
+"{
+}"
+`;
