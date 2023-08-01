@@ -41,7 +41,7 @@ func TestTerraformCDKAzureResourceGroupExample(t *testing.T) {
 	terraform.InitAndApplyAndIdempotent(t, terraformOptions)
 
 	// Run `terraform output` to get the values of output variables
-	resourceGroupName := terraform.Output(t, terraformOptions, "resource_group_name")
+	resourceGroupName := terraform.Output(t, terraformOptions, "name")
 
 	// Verify the resource group exists
 	exists := azure.ResourceGroupExists(t, resourceGroupName, subscriptionID)

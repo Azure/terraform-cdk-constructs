@@ -50,6 +50,6 @@ func TestTerraformCDKAzureContainerRegistryExample(t *testing.T) {
 	actualACR := azure.GetContainerRegistry(t, acrName, resourceGroupName, "")
 
 	assert.Equal(t, loginServer, *actualACR.LoginServer)
-	assert.True(t, *actualACR.AdminUserEnabled)
+	assert.False(t, *actualACR.AdminUserEnabled)
 	assert.Equal(t, "Premium", string(actualACR.Sku.Name))
 }
