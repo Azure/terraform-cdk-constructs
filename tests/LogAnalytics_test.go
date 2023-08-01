@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"strings"
 	"testing"
+
 	"github.com/microsoft/terraform-azure-cdk-modules/util"
 
 	"github.com/gruntwork-io/terratest/modules/azure"
@@ -24,7 +25,7 @@ func TestTerraformCDKAzureLogAnalyticsExample(t *testing.T) {
 
 	cmd := shell.Command{
 		Command:    "cdktf",
-		Args:       []string{"synth", "--app", "npx ts-node ./src/log-analytics/ExampleAzureLogAnalytics.ts"},
+		Args:       []string{"synth", "--app", "npx ts-node ./src/azure-loganalytics/ExampleAzureLogAnalytics.ts"},
 		WorkingDir: "../",
 	}
 

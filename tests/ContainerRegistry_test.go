@@ -21,7 +21,7 @@ func TestTerraformCDKAzureContainerRegistryExample(t *testing.T) {
 
 	cmd := shell.Command{
 		Command:    "cdktf",
-		Args:       []string{"synth", "--app", "npx ts-node ./src/container-registry/ExampleAzureContainerRegistry.ts"},
+		Args:       []string{"synth", "--app", "npx ts-node ./src/azure-containerregistry/ExampleAzureContainerRegistry.ts"},
 		WorkingDir: "../",
 	}
 
