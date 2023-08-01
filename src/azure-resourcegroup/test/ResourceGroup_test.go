@@ -22,8 +22,8 @@ func TestTerraformCDKAzureResourceGroupExample(t *testing.T) {
 
 	cmd := shell.Command{
 		Command:    "cdktf",
-		Args:       []string{"synth", "--app", "npx ts-node ./src/azure-resourcegroup/ExampleAzureResourceGroup.ts"},
-		WorkingDir: "../",
+		Args:       []string{"synth", "--app", "npx ts-node ./src/azure-resourcegroup/test/ExampleAzureResourceGroup.ts"},
+		WorkingDir: "../../../",
 	}
 
 	shell.RunCommandAndGetStdOut(t, cmd)
@@ -31,7 +31,7 @@ func TestTerraformCDKAzureResourceGroupExample(t *testing.T) {
 	terraformOptions := &terraform.Options{
 
 		// The path to where our Terraform code is located
-		TerraformDir: "../cdktf.out/stacks/testAzureResourceGroup",
+		TerraformDir: "../../../cdktf.out/stacks/testAzureResourceGroup",
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created

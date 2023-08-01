@@ -1,8 +1,8 @@
-import { AzureResourceGroup } from '.';
+import { AzureResourceGroup } from '..';
 import { App, TerraformStack} from "cdktf";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
-import { generateRandomString } from '../util/randomString';
+import { generateRandomString } from '../../util/randomString';
 
 const rndName = generateRandomString(10);
 

@@ -1,10 +1,10 @@
 import * as cdktf from "cdktf";
-import { AzureContainerRegistry } from '.';
+import { AzureContainerRegistry } from '..';
 import { App, TerraformStack} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
-import { generateRandomString } from '../util/randomString';
+import { generateRandomString } from '../../util/randomString';
 
 const rndName = generateRandomString(10);
 

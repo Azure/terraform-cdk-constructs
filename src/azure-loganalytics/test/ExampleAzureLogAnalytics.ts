@@ -1,11 +1,11 @@
 import * as cdktf from "cdktf";
-import { AzureLogAnalytics } from '.';
+import { AzureLogAnalytics } from '../';
 import { App, TerraformStack} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {StorageAccount} from "@cdktf/provider-azurerm/lib/storage-account";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
-import { generateRandomString } from '../util/randomString';
+import { generateRandomString } from '../../util/randomString';
 
 const rndName = generateRandomString(10);
 

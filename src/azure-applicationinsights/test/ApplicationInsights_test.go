@@ -20,8 +20,8 @@ func TestTerraformCDKAzureApplicationInsightsExample(t *testing.T) {
 
 	cmd := shell.Command{
 		Command:    "cdktf",
-		Args:       []string{"synth", "--app", "npx ts-node ./src/azure-applicationinsights/ExampleAzureApplicationInsights.ts"},
-		WorkingDir: "../",
+		Args:       []string{"synth", "--app", "npx ts-node ./src/azure-applicationinsights/test/ExampleAzureApplicationInsights.ts"},
+		WorkingDir: "../../../",
 	}
 
 	shell.RunCommandAndGetStdOut(t, cmd)
@@ -29,7 +29,7 @@ func TestTerraformCDKAzureApplicationInsightsExample(t *testing.T) {
 	terraformOptions := &terraform.Options{
 
 		// The path to where our Terraform code is located
-		TerraformDir: "../cdktf.out/stacks/testAzureApplicationInsights",
+		TerraformDir: "../../../cdktf.out/stacks/testAzureApplicationInsights",
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created

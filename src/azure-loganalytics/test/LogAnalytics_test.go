@@ -25,8 +25,8 @@ func TestTerraformCDKAzureLogAnalyticsExample(t *testing.T) {
 
 	cmd := shell.Command{
 		Command:    "cdktf",
-		Args:       []string{"synth", "--app", "npx ts-node ./src/azure-loganalytics/ExampleAzureLogAnalytics.ts"},
-		WorkingDir: "../",
+		Args:       []string{"synth", "--app", "npx ts-node ./src/azure-loganalytics/test/ExampleAzureLogAnalytics.ts"},
+		WorkingDir: "../../../",
 	}
 
 	shell.RunCommandAndGetStdOut(t, cmd)
@@ -34,7 +34,7 @@ func TestTerraformCDKAzureLogAnalyticsExample(t *testing.T) {
 	terraformOptions := &terraform.Options{
 
 		// The path to where our Terraform code is located
-		TerraformDir: "../cdktf.out/stacks/testAzureLogAnalytics",
+		TerraformDir: "../../../cdktf.out/stacks/testAzureLogAnalytics",
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
