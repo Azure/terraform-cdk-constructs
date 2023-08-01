@@ -41,15 +41,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-We welcome contributions to this project! To get started, follow these steps:
-
-1. Fork this repository to your own GitHub account.
-2. Clone the forked repository to your local machine.
-3. Create a new branch for your changes.
-4. Make your changes and commit them to your branch.
-5. Push your changes to your forked repository.
-6. Open a pull request to merge your changes into the main repository.
-
+We welcome contributions to this project! See our documentation on [how to get started contributing](./docs/CONTRIBUTING.md). 
 
 ## Code Spaces
 
