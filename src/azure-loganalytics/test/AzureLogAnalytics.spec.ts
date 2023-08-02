@@ -2,7 +2,7 @@ import { Testing, TerraformStack} from 'cdktf';
 import { exampleAzureLogAnalytics} from './ExampleAzureLogAnalytics'
 import 'cdktf/lib/testing/adapters/jest';
 import { AzureLogAnalytics } from '../';
-
+import { RoleAssignment } from "@cdktf/provider-azurerm/lib/role-assignment";
 
 
 
@@ -64,6 +64,15 @@ describe('Log Analytics Workspace Example', () => {
   it("check if this can be planned", () => {
     // We need to do a full synth to plan the terraform configuration
     expect(Testing.fullSynth(stack)).toPlanSuccessfully();
+  });
+
+  it("check for Log Analytics Contributor Role Assignment", () => {
+    // We need to do a full synth to plan the terraform configuration
+    expect(Testing.fullSynth(stack)).toHaveResourceWithProperties(RoleAssignment, {
+      role_definition_name: "Log Analytics Contributor",
+    });
+
+  
   });
 });
 

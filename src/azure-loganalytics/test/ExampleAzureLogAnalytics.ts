@@ -6,6 +6,8 @@ import {StorageAccount} from "@cdktf/provider-azurerm/lib/storage-account";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 import { generateRandomString } from '../../util/randomString';
+import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+
 
 const rndName = generateRandomString(10);
 
@@ -68,6 +70,15 @@ export class exampleAzureLogAnalytics extends TerraformStack {
         }
       ]
     });
+
+    // Add RBAC access
+    const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
+
+
+    logAnalyticsWorkspace.addContributorAccess(clientConfig.id)
+    logAnalyticsWorkspace.addReaderAccess(clientConfig.id)
+    logAnalyticsWorkspace.addAccess(clientConfig.id, "Monitoring Reader ")
+
     
     // Outputs to use for End to End Test
     const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {
