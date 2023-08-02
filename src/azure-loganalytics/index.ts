@@ -3,10 +3,8 @@ import { Construct } from 'constructs';
 import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import {LogAnalyticsDataExportRule} from "@cdktf/provider-azurerm/lib/log-analytics-data-export-rule";
 import {LogAnalyticsSavedSearch} from "@cdktf/provider-azurerm/lib/log-analytics-saved-search";
-// Construct
-/**
- * Properties for the resource group
- */
+
+
  type DataExport = { name: string, export_destination_id: string, table_names : string[], enabled: boolean };
  type LAFunctions = { name: string, display_name: string, query: string, function_alias: string, function_parameters: string[] }
  type Queries = { name: string, category: string, display_name: string, query: string }
@@ -27,11 +25,11 @@ import {LogAnalyticsSavedSearch} from "@cdktf/provider-azurerm/lib/log-analytics
   /**
   * The SKU of the Log Analytics Workspace.
   */
-  readonly sku: string;
+  readonly sku?: string;
   /**
-  * The number of days of retention.
+  * The number of days of retention. Default is 30.
   */
-  readonly retention: number;
+  readonly retention?: number;
   /**
    * The tags to assign to the Resource Group.
    */
@@ -63,13 +61,17 @@ export class AzureLogAnalytics extends Construct {
 
     this.props = props;;
 
+    // Provide default values
+    const sku = props.sku ?? 'PerGB2018';
+    const retention = props.retention ?? 30;
+
     const azurermLogAnalyticsWorkspaceLogAnalytics =
       new LogAnalyticsWorkspace(this, "log_analytics", {
         location: props.location,
         name: props.name,
         resourceGroupName: props.resource_group_name,
-        retentionInDays: props.retention,
-        sku: props.sku,
+        retentionInDays: retention,
+        sku: sku,
         tags: props.tags,
     });
     
