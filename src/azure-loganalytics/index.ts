@@ -5,7 +5,6 @@ import {LogAnalyticsDataExportRule} from "@cdktf/provider-azurerm/lib/log-analyt
 import {LogAnalyticsSavedSearch} from "@cdktf/provider-azurerm/lib/log-analytics-saved-search";
 import { RoleAssignment } from "@cdktf/provider-azurerm/lib/role-assignment";
 
-
  type DataExport = { name: string, export_destination_id: string, table_names : string[], enabled: boolean };
  type LAFunctions = { name: string, display_name: string, query: string, function_alias: string, function_parameters: string[] }
  type Queries = { name: string, category: string, display_name: string, query: string }
@@ -133,7 +132,7 @@ export class AzureLogAnalytics extends Construct {
   // RBAC Access Methods
   public addReaderAccess(azureAdGroupId: string) {
     new RoleAssignment(this, 'reader-role-assignment', {
-      name: `${this.props.name}-reader-role`,
+      name: `73c42c96-874c-492b-b04d-ab87d138a893` ,
       principalId: azureAdGroupId,
       roleDefinitionName: 'Log Analytics Reader',
       scope: this.id,
@@ -142,16 +141,17 @@ export class AzureLogAnalytics extends Construct {
 
   public addContributorAccess(azureAdGroupId: string) {
     new RoleAssignment(this, 'contributor-role-assignment', {
-      name: `${this.props.name}-contributor-role`,
+      name: `92aaf0da-9dab-42b6-94a3-d43ce8d16293`,
       principalId: azureAdGroupId,
       roleDefinitionName: 'Log Analytics Contributor',
       scope: this.id,
     });
   }
 
-  public addAccess(azureAdGroupId: string, customRoleName: string) {
+  public addAccess(azureAdGroupId: string, customRoleName: string, customRoleUUID: string) {
+
     new RoleAssignment(this, 'custom-role-assignment', {
-      name: `${this.props.name}-${customRoleName}-role`,
+      name: customRoleUUID,
       principalId: azureAdGroupId,
       roleDefinitionName: customRoleName,
       scope: this.id,

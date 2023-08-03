@@ -48,18 +48,18 @@ export class exampleAzureLogAnalytics extends TerraformStack {
       functions: [
         {
           name: "function_name_1",
-          display_name:  "Get spark event listener events",
-          query:  "let results=SparkListenerEvent_CL\n|  where  Event_s  contains \"SparkListenerStageSubmitted\"\n| extend metricsns=columnifexists(\"Properties_spark_metrics_namespace_s\",Properties_spark_app_id_s)\r\n| extend apptag=iif(isnotempty(metricsns),metricsns,Properties_spark_app_id_s)\r\n| project Stage_Info_Stage_ID_d,apptag,TimeGenerated,Properties_spark_databricks_clusterUsageTags_clusterName_s\n| order by TimeGenerated asc  nulls last \n| join kind= inner (\n    SparkListenerEvent_CL\n    |  where Event_s contains \"SparkListenerStageCompleted\"  \n    | extend stageDuration=Stage_Info_Completion_Time_d - Stage_Info_Submission_Time_d\n) on Stage_Info_Stage_ID_d;\nresults\n | extend slice = strcat(Properties_spark_databricks_clusterUsageTags_clusterName_s,\"-\",apptag,\" \",Stage_Info_Stage_Name_s) \n| extend stageDuration=Stage_Info_Completion_Time_d - Stage_Info_Submission_Time_d \n| summarize percentiles(stageDuration,10,30,50,90)  by bin(TimeGenerated,  1m), slice\n| order by TimeGenerated asc nulls last\n\n",
+          display_name:  "Example function 1",
+          query:  "exampleQuery",
           function_alias: "function_name_1",
           function_parameters: [],
         },
         {
         name: "function_name_2",
-        display_name: "Get spark event listener latency",
-        query:  "let results=SparkListenerEvent_CL\n|  where  Event_s  contains \"SparkListenerStageSubmitted\"\n| extend metricsns=columnifexists(\"Properties_spark_metrics_namespace_s\",Properties_spark_app_id_s)\r\n| extend apptag=iif(isnotempty(metricsns),metricsns,Properties_spark_app_id_s)\r\n| project Stage_Info_Stage_ID_d,apptag,TimeGenerated,Properties_spark_databricks_clusterUsageTags_clusterName_s\n| order by TimeGenerated asc  nulls last \n| join kind= inner (\n    SparkListenerEvent_CL\n    |  where Event_s contains \"SparkListenerStageCompleted\"  \n    | extend stageDuration=Stage_Info_Completion_Time_d - Stage_Info_Submission_Time_d\n) on Stage_Info_Stage_ID_d;\nresults\n | extend slice = strcat(Properties_spark_databricks_clusterUsageTags_clusterName_s,\"-\",apptag,\" \",Stage_Info_Stage_Name_s) \n| extend stageDuration=Stage_Info_Completion_Time_d - Stage_Info_Submission_Time_d \n| summarize percentiles(stageDuration,10,30,50,90)  by bin(TimeGenerated,  1m), slice\n| order by TimeGenerated asc nulls last\n\n",
+        display_name: "Example function 2",
+        query:  "exampleQuery",
         function_alias:  "function_name_2",
         function_parameters: ["typeArg:string=mail", "tagsArg:string=dc"],
-        }     
+        }      
       ],
       data_export: [
         {
@@ -74,10 +74,9 @@ export class exampleAzureLogAnalytics extends TerraformStack {
     // Add RBAC access
     const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
 
-
-    logAnalyticsWorkspace.addContributorAccess(clientConfig.id)
-    logAnalyticsWorkspace.addReaderAccess(clientConfig.id)
-    logAnalyticsWorkspace.addAccess(clientConfig.id, "Monitoring Reader")
+    logAnalyticsWorkspace.addContributorAccess(clientConfig.objectId)
+    logAnalyticsWorkspace.addReaderAccess(clientConfig.objectId)
+    logAnalyticsWorkspace.addAccess(clientConfig.objectId, "Monitoring Reader", "43d0d8ad-25c7-4714-9337-8ba259a9fe05")
 
     
     // Outputs to use for End to End Test
