@@ -23,7 +23,7 @@ describe('Log Analytics Workspace With Defaults', () => {
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });
 
-  it("renders a Log Analytics Workspace with Defaults and checks snapshot", () => {
+  it("renders a Log Analytics Workspace with defaults and checks snapshot", () => {
     expect(
       Testing.synth(stack)
     ).toMatchSnapshot(); // Compare the already prepared stack

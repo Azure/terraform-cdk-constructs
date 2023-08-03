@@ -5,11 +5,7 @@ import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {StorageAccount} from "@cdktf/provider-azurerm/lib/storage-account";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
-import { generateRandomString } from '../../util/randomString';
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
-
-
-const rndName = generateRandomString(10);
 
 
 const app = new App();
@@ -24,12 +20,12 @@ export class exampleAzureLogAnalytics extends TerraformStack {
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-${rndName}`,
+      name: `rg-test`,
 
     });
 
     const storageAccount = new StorageAccount(this, 'adls', {
-      name: `adls${rndName}`,
+      name: `adlstest`,
       resourceGroupName: resourceGroup.name,
       location: resourceGroup.location,
       accountTier: 'Standard',
@@ -40,7 +36,7 @@ export class exampleAzureLogAnalytics extends TerraformStack {
 
 
     const logAnalyticsWorkspace = new AzureLogAnalytics(this, 'testLA', {
-      name: `la-${rndName}`,
+      name: `la-test`,
       location: 'eastus',
       retention: 90,
       sku: "PerGB2018",
@@ -49,21 +45,21 @@ export class exampleAzureLogAnalytics extends TerraformStack {
         {
           name: "function_name_1",
           display_name:  "Example function 1",
-          query:  "exampleQuery",
+          query:  "Event | where EventLevelName != 'Informational' | where TimeGenerated > ago(24h)",
           function_alias: "function_name_1",
           function_parameters: [],
         },
         {
         name: "function_name_2",
         display_name: "Example function 2",
-        query:  "exampleQuery",
+        query:  "Event | where EventLevelName != 'Informational' | where TimeGenerated > ago(24h)",
         function_alias:  "function_name_2",
         function_parameters: ["typeArg:string=mail", "tagsArg:string=dc"],
         }      
       ],
       data_export: [
         {
-          name: `export-${rndName}`,
+          name: `export-test`,
           export_destination_id: storageAccount.id,
           table_names: ["Heartbeat"],
           enabled: true
