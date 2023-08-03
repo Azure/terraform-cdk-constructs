@@ -77,7 +77,7 @@ export class exampleAzureLogAnalytics extends TerraformStack {
 
     logAnalyticsWorkspace.addContributorAccess(clientConfig.id)
     logAnalyticsWorkspace.addReaderAccess(clientConfig.id)
-    logAnalyticsWorkspace.addAccess(clientConfig.id, "Monitoring Reader ")
+    logAnalyticsWorkspace.addAccess(clientConfig.id, "Monitoring Reader")
 
     
     // Outputs to use for End to End Test
