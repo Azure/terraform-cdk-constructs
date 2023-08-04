@@ -25,6 +25,7 @@ jobs:
         run: npm test
 
   tfsec:
+    needs: npm-test
     runs-on: ubuntu-latest
 
     steps:
