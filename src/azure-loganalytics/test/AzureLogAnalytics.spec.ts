@@ -2,7 +2,6 @@ import { Testing, TerraformStack} from 'cdktf';
 import { exampleAzureLogAnalytics} from './ExampleAzureLogAnalytics'
 import 'cdktf/lib/testing/adapters/jest';
 import { AzureLogAnalytics } from '../';
-//import { RoleAssignment } from "@cdktf/provider-azurerm/lib/role-assignment";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 
 describe('Log Analytics Workspace With Defaults', () => {
