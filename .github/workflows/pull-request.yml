@@ -21,20 +21,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install azurerm-mock
-        run: npm install -g azurerm-mock
-      
-      - name: Start azurerm-mock
-        run: azurerm-mock &
-
       - name: Run tests
         run: npm test
         env:
-          ARM_ENDPOINT: http://127.0.0.1:3000
-          ARM_SUBSCRIPTION_ID: 00000000-0000-0000-0000-000000000000
-          ARM_TENANT_ID: 00000000-0000-0000-0000-000000000000
-          ARM_CLIENT_ID: 00000000-0000-0000-0000-000000000000
-          ARM_CLIENT_SECRET: 00000000-0000-0000-0000-000000000000
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZTFREADER_SUBSCRIPTIONID }}
+          ARM_TENANT_ID: ${{ secrets.AZTFREADER_TENANT_ID }}
+          ARM_CLIENT_ID: ${{ secrets.AZTFREADER_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.AZTFREADER_CLIENT_SECRET }}
 
   tfsec:
     needs: npm-test
