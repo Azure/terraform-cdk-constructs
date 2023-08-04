@@ -2,17 +2,12 @@ package util
 
 import (
 	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"log"
 	rnd "math/rand"
 	"os"
 	"os/exec"
 	"strings"
 	"time"
 )
-
-type Data map[string]interface{}
 
 func GetSubscriptionID() string {
 	subscriptionID := os.Getenv("ARM_SUBSCRIPTION_ID")
@@ -29,57 +24,72 @@ func GetSubscriptionID() string {
 	return subscriptionID
 }
 
-func RandomizeUniqueResources(filePath string) {
-	jsonFile, err := ioutil.ReadFile(filePath)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	var data Data
-	err = json.Unmarshal(jsonFile, &data)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	newName := generateRandomName(10)
-
-	traverseAndUpdate(data, "", newName)
-
-	err := json.MarshalIndent(data, "", "  ")
-	if err != nil {
-		log.Fatal(err)
-	}
+func ReadFile(filePath string) ([]byte, error) {
+	return os.ReadFile(filePath)
 }
 
-func traverseAndUpdate(data Data, path string, newName string) {
-	for key, value := range data {
-		switch v := value.(type) {
-		case Data:
-			newPath := path + "/" + key
-			if strings.HasSuffix(newPath, "azurerm_resource_group") ||
-				strings.HasSuffix(newPath, "azurerm_storage_account") {
-				if _, ok := v["name"]; ok {
-					v["name"] = newName
+func UnmarshalJSON(data []byte) (map[string]interface{}, error) {
+	var jsonData map[string]interface{}
+	err := json.Unmarshal(data, &jsonData)
+	return jsonData, err
+}
+
+func RandomizeResourceNames(resourceData map[string]interface{}, resourceName string) {
+	if specificResourceData, ok := resourceData[resourceName].(map[string]interface{}); ok {
+		for _, v := range specificResourceData {
+			if specificResource, ok := v.(map[string]interface{}); ok {
+				if _, ok := specificResource["name"]; ok {
+					specificResource["name"] = randomString(10)
 				}
 			}
-			traverseAndUpdate(v, newPath, newName)
-		case []interface{}:
-			for i := range v {
-				if subData, ok := v[i].(Data); ok {
-					traverseAndUpdate(subData, path+"/"+key, newName)
-				}
-			}
-		default:
 		}
 	}
 }
 
-func generateRandomName(n int) string {
-	rnd.Seed(time.Now().UnixNano())
-	letterBytes := "abcdefghijklmnopqrstuvwxyz"
-	b := make([]byte, n)
-	for i := range b {
-		b[i] = letterBytes[rnd.Intn(len(letterBytes))]
+func MarshalJSON(jsonData map[string]interface{}) ([]byte, error) {
+	return json.Marshal(jsonData)
+}
+
+func WriteFile(filePath string, jsonDataBytes []byte) error {
+	return os.WriteFile(filePath, jsonDataBytes, os.ModePerm)
+}
+
+func RandomizeUniqueResources(filePath string) error {
+	data, err := ReadFile(filePath)
+	if err != nil {
+		return err
 	}
-	return string(b)
+
+	jsonData, err := UnmarshalJSON(data)
+	if err != nil {
+		return err
+	}
+
+	if resourceData, ok := jsonData["resource"].(map[string]interface{}); ok {
+		RandomizeResourceNames(resourceData, "azurerm_storage_account")
+		RandomizeResourceNames(resourceData, "azurerm_resource_group")
+	}
+
+	jsonDataBytes, err := MarshalJSON(jsonData)
+	if err != nil {
+		return err
+	}
+
+	err = WriteFile(filePath, jsonDataBytes)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Generate a random string of the specified length
+func randomString(length int) string {
+	rnd.Seed(time.Now().UnixNano())
+	chars := []rune("abcdefghijklmnopqrstuvwxyz")
+	result := make([]rune, length)
+	for i := range result {
+		result[i] = chars[rnd.Intn(len(chars))]
+	}
+	return string(result)
 }
