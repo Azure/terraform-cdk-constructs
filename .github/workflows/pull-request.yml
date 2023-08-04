@@ -38,4 +38,4 @@ jobs:
           sudo mv tfsec /usr/local/bin/
 
       - name: Run tfsec
-        run: tfsec .
+        run: tfsec cdktf.out
