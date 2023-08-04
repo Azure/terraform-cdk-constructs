@@ -32,8 +32,9 @@ export class exampleAzureLogAnalytics extends TerraformStack {
       accountReplicationType: 'ZRS',
       accountKind: 'StorageV2',
       isHnsEnabled: true,
+      minTlsVersion: 'TLS1_2',
+      publicNetworkAccessEnabled: false,
     });
-
 
     const logAnalyticsWorkspace = new AzureLogAnalytics(this, 'testLA', {
       name: `la-test`,
