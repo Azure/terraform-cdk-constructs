@@ -29,6 +29,12 @@ jobs:
           ARM_CLIENT_ID: ${{ secrets.AZTFREADER_CLIENT_ID }}
           ARM_CLIENT_SECRET: ${{ secrets.AZTFREADER_CLIENT_SECRET }}
 
+      - name: Archive Terraform configuration
+        uses: actions/upload-artifact@v2
+        with:
+          name: terraform-config
+          path: cdktf.out
+
   tfsec:
     needs: npm-test
     runs-on: ubuntu-latest
@@ -36,6 +42,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      
+      - name: Download Terraform configuration
+        uses: actions/download-artifact@v2
+        with:
+          name: terraform-config
+          path: cdktf.out
 
       - name: Install tfsec
         run: |
