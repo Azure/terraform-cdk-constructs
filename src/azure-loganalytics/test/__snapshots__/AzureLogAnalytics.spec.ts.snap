@@ -119,7 +119,9 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
         "account_tier": "Standard",
         "is_hns_enabled": true,
         "location": "\${azurerm_resource_group.rg.location}",
+        "min_tls_version": "TLS1_2",
         "name": "adlstest",
+        "public_network_access_enabled": false,
         "resource_group_name": "\${azurerm_resource_group.rg.name}"
       }
     }
