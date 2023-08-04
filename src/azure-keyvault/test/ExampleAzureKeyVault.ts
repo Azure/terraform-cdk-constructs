@@ -8,7 +8,15 @@ import { generateRandomString } from '../../util/randomString';
 import { execSync } from 'child_process';
 
 const rndName = generateRandomString(10);
-const tenant_id = execSync('az account show --query tenantId -o tsv').toString().trim();
+
+// Get Tenant ID from Azure CLI for test TODO: Turn this into a helper function
+let tenantid: string;
+try {
+  tenantid = execSync('az account show --query tenantId -o tsv').toString().trim();
+} catch (error) {
+  console.log('Azure CLI is not logged in. Setting tenant ID to all zeros.');
+  tenantid = '000000000000000000000000000000000000';
+}
 
 
 const app = new App();
@@ -32,7 +40,7 @@ export class exampleAzureKeyVault extends TerraformStack {
       location: 'eastus',
       sku: "standard",
       resource_group_name: resourceGroup.name ,
-      tenant_id: tenant_id,
+      tenant_id: tenantid,
     });
 
     // Outputs to use for End to End Test

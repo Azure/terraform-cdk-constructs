@@ -135,7 +135,7 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
 }"
 `;
 
-exports[`Log Analytics Workspace With Defaults renders a Log Analytics Workspace with Defaults and checks snapshot 1`] = `
+exports[`Log Analytics Workspace With Defaults renders a Log Analytics Workspace with defaults and checks snapshot 1`] = `
 "{
   "output": {
     "log_analytics_id": {
