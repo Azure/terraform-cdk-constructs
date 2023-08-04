@@ -2,39 +2,39 @@ import { Testing, TerraformStack} from 'cdktf';
 import { exampleAzureLogAnalytics} from './ExampleAzureLogAnalytics'
 import 'cdktf/lib/testing/adapters/jest';
 import { AzureLogAnalytics } from '../';
-
-
-
+//import { RoleAssignment } from "@cdktf/provider-azurerm/lib/role-assignment";
+import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 
 describe('Log Analytics Workspace With Defaults', () => {
   let stack: TerraformStack;
-  
+  let fullSynthResult: any;
+
   beforeEach(() => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
-  
-    Testing.synthScope((stack) => {
-      new AzureLogAnalytics(stack, 'testAzureLogAnalyticsDefaults', {
-        name: "la-test",
-        location: 'eastus',
-        resource_group_name: "rg-test",
-      });
+
+    new AzurermProvider(stack, "azureFeature", {features: {}});
+    new AzureLogAnalytics(stack, 'testAzureLogAnalyticsDefaults', {
+      name: "la-test",
+      location: 'eastus',
+      resource_group_name: "rg-test",
     });
+
+    fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });
 
-  it('renders the Example Log Analytics Workspace and checks snapshot', () => {
-    const synthed = Testing.synth(stack);
-    expect(synthed).toMatchSnapshot();
+  it("renders a Log Analytics Workspace with defaults and checks snapshot", () => {
+    expect(
+      Testing.synth(stack)
+    ).toMatchSnapshot(); // Compare the already prepared stack
   });
 
   it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to validate the terraform configuration
-    expect(Testing.fullSynth(stack)).toBeValidTerraform();
+    expect(fullSynthResult).toBeValidTerraform(); // Use the saved result
   });
 
   it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(stack)).toPlanSuccessfully();
+    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
   });
 });
 
@@ -46,14 +46,16 @@ describe('Log Analytics Workspace Example', () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
   
-    Testing.synthScope(() => {
+    Testing.synthScope((stack) => {
       new exampleAzureLogAnalytics(stack, "testAzureLogAnalytics");
     });
   });
 
-  it('renders the Example Log Analytics Workspace and checks snapshot', () => {
-    const synthed = Testing.synth(stack);
-    expect(synthed).toMatchSnapshot();
+  it("renders the Example Log Analytics Workspace and checks snapshot", () => {
+    expect(
+      Testing.synth(new exampleAzureLogAnalytics(Testing.app(), "testAzureLogAnalytics"))
+      
+    ).toMatchSnapshot();
   });
 
   it("check if the produced terraform configuration is valid", () => {
@@ -66,7 +68,3 @@ describe('Log Analytics Workspace Example', () => {
     expect(Testing.fullSynth(stack)).toPlanSuccessfully();
   });
 });
-
-
-
-

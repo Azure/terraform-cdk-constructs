@@ -3,7 +3,7 @@ import { Construct } from 'constructs';
 import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import {LogAnalyticsDataExportRule} from "@cdktf/provider-azurerm/lib/log-analytics-data-export-rule";
 import {LogAnalyticsSavedSearch} from "@cdktf/provider-azurerm/lib/log-analytics-saved-search";
-
+import { RoleAssignment } from "@cdktf/provider-azurerm/lib/role-assignment";
 
  type DataExport = { name: string, export_destination_id: string, table_names : string[], enabled: boolean };
  type LAFunctions = { name: string, display_name: string, query: string, function_alias: string, function_parameters: string[] }
@@ -35,10 +35,6 @@ import {LogAnalyticsSavedSearch} from "@cdktf/provider-azurerm/lib/log-analytics
    */
    readonly tags?: { [key: string]: string; };   
   /**
-  * The RBAC groups to assign to the Resource Group.
-  */
-  readonly rbac?: Map<string, string>;
-  /**
   * Create a DataExport for the Log Analytics Workspace.
   */
   readonly data_export?: DataExport[];
@@ -54,13 +50,14 @@ import {LogAnalyticsSavedSearch} from "@cdktf/provider-azurerm/lib/log-analytics
 
 export class AzureLogAnalytics extends Construct {
   readonly props: LogAnalyticsProps;
+  public readonly id: string;
   
 
   constructor(scope: Construct, id: string, props: LogAnalyticsProps) {
     super(scope, id);
 
-    this.props = props;;
-
+    this.props = props;
+    
     // Provide default values
     const sku = props.sku ?? 'PerGB2018';
     const retention = props.retention ?? 30;
@@ -75,8 +72,8 @@ export class AzureLogAnalytics extends Construct {
         tags: props.tags,
     });
     
+    this.id = azurermLogAnalyticsWorkspaceLogAnalytics.id;
     
-
     props.data_export?.forEach((v, k) => {
       new LogAnalyticsDataExportRule(this, `export-${k}`, {
         destinationResourceId: v.export_destination_id,
@@ -112,7 +109,6 @@ export class AzureLogAnalytics extends Construct {
       });
     })
 
-
     // Terraform Outputs
     const cdktfTerraformOutputLaID = new cdktf.TerraformOutput(this, "log_analytics_id", {
       value: azurermLogAnalyticsWorkspaceLogAnalytics.id,
@@ -131,5 +127,34 @@ export class AzureLogAnalytics extends Construct {
     cdktfTerraformOutputLaWorkspaceID.overrideLogicalId("log_analytics_workspace_id")
 
 
+  }
+
+  // RBAC Access Methods
+  public addReaderAccess(azureAdGroupId: string) {
+    new RoleAssignment(this, 'reader-role-assignment', {
+      name: `73c42c96-874c-492b-b04d-ab87d138a893` ,
+      principalId: azureAdGroupId,
+      roleDefinitionName: 'Log Analytics Reader',
+      scope: this.id,
+    });
+  }
+
+  public addContributorAccess(azureAdGroupId: string) {
+    new RoleAssignment(this, 'contributor-role-assignment', {
+      name: `92aaf0da-9dab-42b6-94a3-d43ce8d16293`,
+      principalId: azureAdGroupId,
+      roleDefinitionName: 'Log Analytics Contributor',
+      scope: this.id,
+    });
+  }
+
+  public addAccess(azureAdGroupId: string, customRoleName: string, customRoleUUID: string) {
+
+    new RoleAssignment(this, 'custom-role-assignment', {
+      name: customRoleUUID,
+      principalId: azureAdGroupId,
+      roleDefinitionName: customRoleName,
+      scope: this.id,
+    });
   }
 }

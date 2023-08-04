@@ -5,9 +5,7 @@ import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {StorageAccount} from "@cdktf/provider-azurerm/lib/storage-account";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
-import { generateRandomString } from '../../util/randomString';
-
-const rndName = generateRandomString(10);
+import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 
 
 const app = new App();
@@ -22,12 +20,12 @@ export class exampleAzureLogAnalytics extends TerraformStack {
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-${rndName}`,
+      name: `rg-test`,
 
     });
 
     const storageAccount = new StorageAccount(this, 'adls', {
-      name: `adls${rndName}`,
+      name: `adlstest`,
       resourceGroupName: resourceGroup.name,
       location: resourceGroup.location,
       accountTier: 'Standard',
@@ -38,7 +36,7 @@ export class exampleAzureLogAnalytics extends TerraformStack {
 
 
     const logAnalyticsWorkspace = new AzureLogAnalytics(this, 'testLA', {
-      name: `la-${rndName}`,
+      name: `la-test`,
       location: 'eastus',
       retention: 90,
       sku: "PerGB2018",
@@ -46,28 +44,36 @@ export class exampleAzureLogAnalytics extends TerraformStack {
       functions: [
         {
           name: "function_name_1",
-          display_name:  "Get spark event listener events",
-          query:  "let results=SparkListenerEvent_CL\n|  where  Event_s  contains \"SparkListenerStageSubmitted\"\n| extend metricsns=columnifexists(\"Properties_spark_metrics_namespace_s\",Properties_spark_app_id_s)\r\n| extend apptag=iif(isnotempty(metricsns),metricsns,Properties_spark_app_id_s)\r\n| project Stage_Info_Stage_ID_d,apptag,TimeGenerated,Properties_spark_databricks_clusterUsageTags_clusterName_s\n| order by TimeGenerated asc  nulls last \n| join kind= inner (\n    SparkListenerEvent_CL\n    |  where Event_s contains \"SparkListenerStageCompleted\"  \n    | extend stageDuration=Stage_Info_Completion_Time_d - Stage_Info_Submission_Time_d\n) on Stage_Info_Stage_ID_d;\nresults\n | extend slice = strcat(Properties_spark_databricks_clusterUsageTags_clusterName_s,\"-\",apptag,\" \",Stage_Info_Stage_Name_s) \n| extend stageDuration=Stage_Info_Completion_Time_d - Stage_Info_Submission_Time_d \n| summarize percentiles(stageDuration,10,30,50,90)  by bin(TimeGenerated,  1m), slice\n| order by TimeGenerated asc nulls last\n\n",
+          display_name:  "Example function 1",
+          query:  "Event | where EventLevelName != 'Informational' | where TimeGenerated > ago(24h)",
           function_alias: "function_name_1",
           function_parameters: [],
         },
         {
         name: "function_name_2",
-        display_name: "Get spark event listener latency",
-        query:  "let results=SparkListenerEvent_CL\n|  where  Event_s  contains \"SparkListenerStageSubmitted\"\n| extend metricsns=columnifexists(\"Properties_spark_metrics_namespace_s\",Properties_spark_app_id_s)\r\n| extend apptag=iif(isnotempty(metricsns),metricsns,Properties_spark_app_id_s)\r\n| project Stage_Info_Stage_ID_d,apptag,TimeGenerated,Properties_spark_databricks_clusterUsageTags_clusterName_s\n| order by TimeGenerated asc  nulls last \n| join kind= inner (\n    SparkListenerEvent_CL\n    |  where Event_s contains \"SparkListenerStageCompleted\"  \n    | extend stageDuration=Stage_Info_Completion_Time_d - Stage_Info_Submission_Time_d\n) on Stage_Info_Stage_ID_d;\nresults\n | extend slice = strcat(Properties_spark_databricks_clusterUsageTags_clusterName_s,\"-\",apptag,\" \",Stage_Info_Stage_Name_s) \n| extend stageDuration=Stage_Info_Completion_Time_d - Stage_Info_Submission_Time_d \n| summarize percentiles(stageDuration,10,30,50,90)  by bin(TimeGenerated,  1m), slice\n| order by TimeGenerated asc nulls last\n\n",
+        display_name: "Example function 2",
+        query:  "Event | where EventLevelName != 'Informational' | where TimeGenerated > ago(24h)",
         function_alias:  "function_name_2",
         function_parameters: ["typeArg:string=mail", "tagsArg:string=dc"],
-        }     
+        }      
       ],
       data_export: [
         {
-          name: `export-${rndName}`,
+          name: `export-test`,
           export_destination_id: storageAccount.id,
           table_names: ["Heartbeat"],
           enabled: true
         }
       ]
     });
+
+    // Add RBAC access
+    const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
+
+    logAnalyticsWorkspace.addContributorAccess(clientConfig.objectId)
+    logAnalyticsWorkspace.addReaderAccess(clientConfig.objectId)
+    logAnalyticsWorkspace.addAccess(clientConfig.objectId, "Monitoring Reader", "43d0d8ad-25c7-4714-9337-8ba259a9fe05")
+
     
     // Outputs to use for End to End Test
     const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {
