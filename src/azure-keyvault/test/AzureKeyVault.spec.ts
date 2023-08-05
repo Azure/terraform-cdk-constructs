@@ -51,12 +51,24 @@ describe('Azure Key Vault Example', () => {
     });
   });
 
-  it("renders the Example Azure Key Vault and checks snapshot", () => {
-    expect(
-      Testing.synth(new exampleAzureKeyVault(Testing.app(), "testAzureKeyVault"))
-      
-    ).toMatchSnapshot();
-  });
+  it("renders the Example Azure KeyVault and checks snapshot", () => {
+    // Need to remove the tenant_id from the snapshot as it will change wherever the test is run
+    const output = Testing.synth(new exampleAzureKeyVault(Testing.app(), "testAzureKeyVault"));
+    const myObject: Record<string, any> = JSON.parse(output);
+
+    function removeTenantId(obj: Record<string, any>): Record<string, any> {
+      for (let propName in obj) {
+        if (propName === 'tenant_id') {
+          delete obj[propName];
+        } else if (typeof obj[propName] === 'object' && obj[propName] !== null) {
+          removeTenantId(obj[propName]);
+        }
+      }
+      return obj;
+    }
+
+    expect(removeTenantId(myObject)).toMatchSnapshot();
+});
 
   it("check if the produced terraform configuration is valid", () => {
     // We need to do a full synth to validate the terraform configuration
