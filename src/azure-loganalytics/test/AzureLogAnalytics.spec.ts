@@ -2,7 +2,6 @@ import { Testing, TerraformStack} from 'cdktf';
 import { exampleAzureLogAnalytics} from './ExampleAzureLogAnalytics'
 import 'cdktf/lib/testing/adapters/jest';
 import { AzureLogAnalytics } from '../';
-//import { RoleAssignment } from "@cdktf/provider-azurerm/lib/role-assignment";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 
 describe('Log Analytics Workspace With Defaults', () => {
@@ -40,17 +39,7 @@ describe('Log Analytics Workspace With Defaults', () => {
 
 
 describe('Log Analytics Workspace Example', () => {
-  let stack: TerraformStack;
   
-  beforeEach(() => {
-    const app = Testing.app();
-    stack = new TerraformStack(app, "test");
-  
-    Testing.synthScope((stack) => {
-      new exampleAzureLogAnalytics(stack, "testAzureLogAnalytics");
-    });
-  });
-
   it("renders the Example Log Analytics Workspace and checks snapshot", () => {
     expect(
       Testing.synth(new exampleAzureLogAnalytics(Testing.app(), "testAzureLogAnalytics"))
@@ -59,12 +48,14 @@ describe('Log Analytics Workspace Example', () => {
   });
 
   it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to validate the terraform configuration
-    expect(Testing.fullSynth(stack)).toBeValidTerraform();
+    // We need to do a full synth to plan the terraform configuration
+    expect(Testing.fullSynth(new exampleAzureLogAnalytics(Testing.app(), "testAzureLogAnalytics"))).toBeValidTerraform();
   });
 
   it("check if this can be planned", () => {
+  
+    
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(stack)).toPlanSuccessfully();
+    expect(Testing.fullSynth(new exampleAzureLogAnalytics(Testing.app(), "testAzureLogAnalytics"))).toPlanSuccessfully();
   });
 });

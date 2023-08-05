@@ -28,6 +28,8 @@ func TestTerraformCDKAzureKeyVaultExample(t *testing.T) {
 
 	shell.RunCommandAndGetStdOut(t, cmd)
 
+	util.RandomizeUniqueResources("../../../cdktf.out/stacks/testAzureKeyVault/cdk.tf.json")
+
 	terraformOptions := &terraform.Options{
 
 		// The path to where our Terraform code is located

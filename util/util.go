@@ -68,6 +68,8 @@ func RandomizeUniqueResources(filePath string) error {
 	if resourceData, ok := jsonData["resource"].(map[string]interface{}); ok {
 		RandomizeResourceNames(resourceData, "azurerm_storage_account")
 		RandomizeResourceNames(resourceData, "azurerm_resource_group")
+		RandomizeResourceNames(resourceData, "azurerm_eventhub_namespace")
+		RandomizeResourceNames(resourceData, "azurerm_key_vault")
 	}
 
 	jsonDataBytes, err := MarshalJSON(jsonData)

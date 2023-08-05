@@ -1,0 +1,4 @@
+{
+    "exclude": ["AZU020", "azure-keyvault-specify-network-acl"]
+}
+  

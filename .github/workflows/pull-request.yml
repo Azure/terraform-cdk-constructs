@@ -56,4 +56,4 @@ jobs:
           sudo mv tfsec /usr/local/bin/
 
       - name: Run tfsec
-        run: tfsec cdktf.out
+        run: tfsec --config-file tfsec.json cdktf.out

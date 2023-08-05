@@ -2,7 +2,7 @@ import * as cdktf from "cdktf";
 import { AzureLogAnalytics } from '../';
 import { App, TerraformStack} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
-import {StorageAccount} from "@cdktf/provider-azurerm/lib/storage-account";
+import {EventhubNamespace} from "@cdktf/provider-azurerm/lib/eventhub-namespace";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
@@ -24,19 +24,15 @@ export class exampleAzureLogAnalytics extends TerraformStack {
 
     });
 
-    const storageAccount = new StorageAccount(this, 'adls', {
-      name: `adlstest`,
+    const namespace = new EventhubNamespace(this, 'ehns', {
+      name: 'my-namespace',
       resourceGroupName: resourceGroup.name,
       location: resourceGroup.location,
-      accountTier: 'Standard',
-      accountReplicationType: 'ZRS',
-      accountKind: 'StorageV2',
-      isHnsEnabled: true,
-      minTlsVersion: 'TLS1_2',
-      publicNetworkAccessEnabled: false,
+      sku: 'Standard'
     });
 
-    const logAnalyticsWorkspace = new AzureLogAnalytics(this, 'testLA', {
+
+    const logAnalyticsWorkspace = new AzureLogAnalytics(this, 'la', {
       name: `la-test`,
       location: 'eastus',
       retention: 90,
@@ -61,7 +57,7 @@ export class exampleAzureLogAnalytics extends TerraformStack {
       data_export: [
         {
           name: `export-test`,
-          export_destination_id: storageAccount.id,
+          export_destination_id: namespace.id,
           table_names: ["Heartbeat"],
           enabled: true
         }
