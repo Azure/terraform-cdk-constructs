@@ -40,16 +40,16 @@ describe('Azure Key Vault With Defaults', () => {
 
 
 describe('Azure Key Vault Example', () => {
-  let stack: TerraformStack;
+  //let stack: TerraformStack;
+
+  // beforeEach(() => {
+  //   const app = Testing.app();
+  //   stack = new TerraformStack(app, "test");
   
-  beforeEach(() => {
-    const app = Testing.app();
-    stack = new TerraformStack(app, "test");
-  
-    Testing.synthScope((stack) => {
-      new exampleAzureKeyVault(stack, "testAzureKeyVault");
-    });
-  });
+  //   Testing.synthScope((stack) => {
+  //     new exampleAzureKeyVault(stack, "testAzureKeyVault");
+  //   });
+  // });
 
   it("renders the Example Azure KeyVault and checks snapshot", () => {
     // Need to remove the tenant_id from the snapshot as it will change wherever the test is run
@@ -70,13 +70,15 @@ describe('Azure Key Vault Example', () => {
     expect(removeTenantId(myObject)).toMatchSnapshot();
 });
 
-  it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to validate the terraform configuration
-    expect(Testing.fullSynth(stack)).toBeValidTerraform();
-  });
+it("check if the produced terraform configuration is valid", () => {
+  // We need to do a full synth to plan the terraform configuration
+  expect(Testing.fullSynth(new exampleAzureKeyVault(Testing.app(), "testAzureKeyVault"))).toBeValidTerraform();
+});
 
-  it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(stack)).toPlanSuccessfully();
-  });
+it("check if this can be planned", () => {
+
+  
+  // We need to do a full synth to plan the terraform configuration
+  expect(Testing.fullSynth(new exampleAzureKeyVault(Testing.app(), "testAzureKeyVault"))).toPlanSuccessfully();
+});
 });
