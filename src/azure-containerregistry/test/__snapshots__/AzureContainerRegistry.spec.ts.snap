@@ -4,7 +4,7 @@ exports[`Azure Container Registry Example renders the Azure Container Registry a
 "{
   "output": {
     "container_registry_name": {
-      "value": "acrtest"
+      "value": "\${azurerm_container_registry.testACR_acr_53FDF08B.name}"
     },
     "id": {
       "value": "\${azurerm_container_registry.testACR_acr_53FDF08B.id}"
@@ -63,6 +63,9 @@ exports[`Azure Container Registry Example renders the Azure Container Registry a
 exports[`Azure Container Registry With Defaults renders an Azure Container Registry with defaults and checks snapshot 1`] = `
 "{
   "output": {
+    "container_registry_name": {
+      "value": "\${azurerm_container_registry.testAzureContainerRegistryDefaults_acr_93F9D5D6.name}"
+    },
     "id": {
       "value": "\${azurerm_container_registry.testAzureContainerRegistryDefaults_acr_93F9D5D6.id}"
     },
