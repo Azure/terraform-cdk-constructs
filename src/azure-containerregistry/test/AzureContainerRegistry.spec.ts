@@ -1,42 +1,61 @@
 import { Testing, TerraformStack} from 'cdktf';
 import { exampleAzureContainerRegistry} from './ExampleAzureContainerRegistry'
 import 'cdktf/lib/testing/adapters/jest';
+import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
+import { AzureContainerRegistry } from '../';
 
+describe('Azure Container Registry With Defaults', () => {
+  let stack: TerraformStack;
+  let fullSynthResult: any;
 
-describe('AzureContainerRegistry-Snapshot', () => {
-  it('renders a AzureContainerRegistry and check snapshot', () => {
+  beforeEach(() => {
+    const app = Testing.app();
+    stack = new TerraformStack(app, "test");
 
-    const synthed = Testing.synthScope((stack) => {
-      new exampleAzureContainerRegistry(stack, "testAzureContainerRegistry");
+    new AzurermProvider(stack, "azureFeature", {features: {}});
+    new AzureContainerRegistry(stack, 'testAzureContainerRegistryDefaults', {
+      name: "latest",
+      location: 'eastus',
+      resource_group_name: "rg-test",
     });
-  
-    expect(synthed).toMatchSnapshot();
+
+    fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
+  });
+
+  it("renders an Azure Container Registry with defaults and checks snapshot", () => {
+    expect(
+      Testing.synth(stack)
+    ).toMatchSnapshot(); // Compare the already prepared stack
+  });
+
+  it("check if the produced terraform configuration is valid", () => {
+    expect(fullSynthResult).toBeValidTerraform(); // Use the saved result
+  });
+
+  it("check if this can be planned", () => {
+    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
   });
 });
 
 
-describe("AzureContainerRegistry-Terraform", () => {
-  it("check if the produced terraform configuration is valid", () => {
-    const app = Testing.app();
-    const stack = new TerraformStack(app, "test");
-    
-    Testing.synthScope((stack) => {
-      new exampleAzureContainerRegistry(stack, "testAzureContainerRegistry");
-    });
+describe('Azure Container Registry Example', () => {
+  
+  it("renders the Azure Container Registry and checks snapshot", () => {
+    expect(
+      Testing.synth(new exampleAzureContainerRegistry(Testing.app(), "testAzureContainerRegistry"))
+      
+    ).toMatchSnapshot();
+  });
 
-    // We need to do a full synth to validate the terraform configuration
-    expect(Testing.fullSynth(stack)).toBeValidTerraform();
+  it("check if the produced terraform configuration is valid", () => {
+    // We need to do a full synth to plan the terraform configuration
+    expect(Testing.fullSynth(new exampleAzureContainerRegistry(Testing.app(), "testAzureContainerRegistry"))).toBeValidTerraform();
   });
 
   it("check if this can be planned", () => {
-    const app = Testing.app();
-    const stack = new TerraformStack(app, "test");
-
-    Testing.synthScope((stack) => {
-      new exampleAzureContainerRegistry(stack, "testAzureContainerRegistry");
-    });
-
+  
+    
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(stack)).toPlanSuccessfully();
+    expect(Testing.fullSynth(new exampleAzureContainerRegistry(Testing.app(), "testAzureContainerRegistry"))).toPlanSuccessfully();
   });
 });
