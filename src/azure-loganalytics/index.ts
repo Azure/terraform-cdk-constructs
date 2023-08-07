@@ -4,6 +4,8 @@ import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-w
 import {LogAnalyticsDataExportRule} from "@cdktf/provider-azurerm/lib/log-analytics-data-export-rule";
 import {LogAnalyticsSavedSearch} from "@cdktf/provider-azurerm/lib/log-analytics-saved-search";
 import { RoleAssignment } from "@cdktf/provider-azurerm/lib/role-assignment";
+import { KeyVaultSecret } from '@cdktf/provider-azurerm/lib/key-vault-secret';
+
 
  type DataExport = { name: string, export_destination_id: string, table_names : string[], enabled: boolean };
  type LAFunctions = { name: string, display_name: string, query: string, function_alias: string, function_parameters: string[] }
@@ -51,7 +53,7 @@ import { RoleAssignment } from "@cdktf/provider-azurerm/lib/role-assignment";
 export class AzureLogAnalytics extends Construct {
   readonly props: LogAnalyticsProps;
   public readonly id: string;
-  
+  private readonly primarySharedKey: string;
 
   constructor(scope: Construct, id: string, props: LogAnalyticsProps) {
     super(scope, id);
@@ -73,6 +75,7 @@ export class AzureLogAnalytics extends Construct {
     });
     
     this.id = azurermLogAnalyticsWorkspaceLogAnalytics.id;
+    this.primarySharedKey = azurermLogAnalyticsWorkspaceLogAnalytics.primarySharedKey;
     
     props.data_export?.forEach((v, k) => {
       new LogAnalyticsDataExportRule(this, `export-${k}`, {
@@ -131,7 +134,7 @@ export class AzureLogAnalytics extends Construct {
 
   // RBAC Access Methods
   public addReaderAccess(azureAdGroupId: string) {
-    new RoleAssignment(this, 'reader-role-assignment', {
+    new RoleAssignment(this, "rbac-reader", {
       name: `73c42c96-874c-492b-b04d-ab87d138a893` ,
       principalId: azureAdGroupId,
       roleDefinitionName: 'Log Analytics Reader',
@@ -140,7 +143,7 @@ export class AzureLogAnalytics extends Construct {
   }
 
   public addContributorAccess(azureAdGroupId: string) {
-    new RoleAssignment(this, 'contributor-role-assignment', {
+    new RoleAssignment(this, "rbac-contributor", {
       name: `92aaf0da-9dab-42b6-94a3-d43ce8d16293`,
       principalId: azureAdGroupId,
       roleDefinitionName: 'Log Analytics Contributor',
@@ -150,11 +153,20 @@ export class AzureLogAnalytics extends Construct {
 
   public addAccess(azureAdGroupId: string, customRoleName: string, customRoleUUID: string) {
 
-    new RoleAssignment(this, 'custom-role-assignment', {
+    new RoleAssignment(this, "rbac-customrole", {
       name: customRoleUUID,
       principalId: azureAdGroupId,
       roleDefinitionName: customRoleName,
       scope: this.id,
+    });
+  }
+
+  // Save Instrumentation Key to Key Vault
+  public saveIKeyToKeyVault(keyVaultId: string, keyVaultSecretName: string = 'instrumentation-key') {
+    new KeyVaultSecret(this, keyVaultSecretName, {
+      keyVaultId: keyVaultId,
+      name: keyVaultSecretName,
+      value: this.primarySharedKey,
     });
   }
 }

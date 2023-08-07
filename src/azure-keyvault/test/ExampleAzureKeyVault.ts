@@ -11,7 +11,7 @@ let tenantid: string;
 try {
   tenantid = execSync('az account show --query tenantId -o tsv').toString().trim();
 } catch (error) {
-  console.log('Azure CLI is not logged in. Setting tenant ID to all zeros.');
+  console.log('Azure CLI is not logged in. Setting tenant ID to fake TenantID.');
   tenantid = '123e4567-e89b-12d3-a456-426614174000';
 }
 
