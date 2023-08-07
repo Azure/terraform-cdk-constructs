@@ -1,42 +1,62 @@
 import { Testing, TerraformStack} from 'cdktf';
 import { exampleAzureApplicationInsights} from './ExampleAzureApplicationInsights'
 import 'cdktf/lib/testing/adapters/jest';
+import { AzureApplicationInsights } from '../';
+import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 
+describe('Application Insights With Defaults', () => {
+  let stack: TerraformStack;
+  let fullSynthResult: any;
 
-describe('AzureApplicationInsights-Snapshot', () => {
-  it('renders a AzureApplicationInsights and check snapshot', () => {
+  beforeEach(() => {
+    const app = Testing.app();
+    stack = new TerraformStack(app, "test");
 
-    const synthed = Testing.synthScope((stack) => {
-      new exampleAzureApplicationInsights(stack, "testAzureApplicationInsights");
+    new AzurermProvider(stack, "azureFeature", {features: {}});
+    new AzureApplicationInsights(stack, 'testAzureApplicationInsightsDefaults', {
+      name: "appi-test",
+      location: 'eastus',
+      resource_group_name: "rg-test",
+      application_type: "web",
     });
-  
-    expect(synthed).toMatchSnapshot();
+
+    fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
+  });
+
+  it("renders an Application Insights with defaults and checks snapshot", () => {
+    expect(
+      Testing.synth(stack)
+    ).toMatchSnapshot(); // Compare the already prepared stack
+  });
+
+  it("check if the produced terraform configuration is valid", () => {
+    expect(fullSynthResult).toBeValidTerraform(); // Use the saved result
+  });
+
+  it("check if this can be planned", () => {
+    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
   });
 });
 
 
-describe("AzureApplicationInsights-Terraform", () => {
-  it("check if the produced terraform configuration is valid", () => {
-    const app = Testing.app();
-    const stack = new TerraformStack(app, "test");
-    
-    Testing.synthScope((stack) => {
-      new exampleAzureApplicationInsights(stack, "testAzureApplicationInsights");
-    });
+describe('Application Insights Example', () => {
+  
+  it("renders the Application Insights and checks snapshot", () => {
+    expect(
+      Testing.synth(new exampleAzureApplicationInsights(Testing.app(), "testAzureApplicationInsights"))
+      
+    ).toMatchSnapshot();
+  });
 
-    // We need to do a full synth to validate the terraform configuration
-    expect(Testing.fullSynth(stack)).toBeValidTerraform();
+  it("check if the produced terraform configuration is valid", () => {
+    // We need to do a full synth to plan the terraform configuration
+    expect(Testing.fullSynth(new exampleAzureApplicationInsights(Testing.app(), "testAzureApplicationInsights"))).toBeValidTerraform();
   });
 
   it("check if this can be planned", () => {
-    const app = Testing.app();
-    const stack = new TerraformStack(app, "test");
-
-    Testing.synthScope((stack) => {
-      new exampleAzureApplicationInsights(stack, "testAzureApplicationInsights");
-    });
-
+  
+    
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(stack)).toPlanSuccessfully();
+    expect(Testing.fullSynth(new exampleAzureApplicationInsights(Testing.app(), "testAzureApplicationInsights"))).toPlanSuccessfully();
   });
 });

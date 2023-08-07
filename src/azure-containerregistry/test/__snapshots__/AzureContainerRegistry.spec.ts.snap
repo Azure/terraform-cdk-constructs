@@ -1,6 +1,106 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AzureContainerRegistry-Snapshot renders a AzureContainerRegistry and check snapshot 1`] = `
+exports[`Azure Container Registry Example renders the Azure Container Registry and checks snapshot 1`] = `
 "{
+  "output": {
+    "container_registry_name": {
+      "value": "\${azurerm_container_registry.testACR_acr_53FDF08B.name}"
+    },
+    "id": {
+      "value": "\${azurerm_container_registry.testACR_acr_53FDF08B.id}"
+    },
+    "login_server": {
+      "value": "\${azurerm_container_registry.testACR_acr_53FDF08B.login_server}"
+    },
+    "resource_group_name": {
+      "value": "\${azurerm_resource_group.rg.name}"
+    }
+  },
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_container_registry": {
+      "testACR_acr_53FDF08B": {
+        "admin_enabled": false,
+        "georeplications": [
+          {
+            "location": "westus"
+          }
+        ],
+        "location": "\${azurerm_resource_group.rg.location}",
+        "name": "acrtest",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "sku": "Premium",
+        "tags": {
+          "environment": "test"
+        }
+      }
+    },
+    "azurerm_resource_group": {
+      "rg": {
+        "location": "eastus",
+        "name": "rg-test"
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.66.0"
+      }
+    }
+  }
+}"
+`;
+
+exports[`Azure Container Registry With Defaults renders an Azure Container Registry with defaults and checks snapshot 1`] = `
+"{
+  "output": {
+    "container_registry_name": {
+      "value": "\${azurerm_container_registry.testAzureContainerRegistryDefaults_acr_93F9D5D6.name}"
+    },
+    "id": {
+      "value": "\${azurerm_container_registry.testAzureContainerRegistryDefaults_acr_93F9D5D6.id}"
+    },
+    "login_server": {
+      "value": "\${azurerm_container_registry.testAzureContainerRegistryDefaults_acr_93F9D5D6.login_server}"
+    }
+  },
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_container_registry": {
+      "testAzureContainerRegistryDefaults_acr_93F9D5D6": {
+        "admin_enabled": false,
+        "georeplications": [
+        ],
+        "location": "eastus",
+        "name": "latest",
+        "resource_group_name": "rg-test",
+        "sku": "Basic"
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.66.0"
+      }
+    }
+  }
 }"
 `;

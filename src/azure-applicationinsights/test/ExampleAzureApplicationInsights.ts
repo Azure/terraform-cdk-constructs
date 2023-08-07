@@ -4,9 +4,6 @@ import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
-import { generateRandomString } from '../../util/randomString';
-
-const rndName = generateRandomString(10);
 
 const app = new App();
     
@@ -20,18 +17,18 @@ export class exampleAzureApplicationInsights extends TerraformStack {
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-${rndName}`,
+      name: `rg-test`,
 
     });
 
     const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
         location: 'eastus',
-        name: `la-${rndName}`,
+        name: `la-test`,
         resourceGroupName: resourceGroup.name,
     });
 
     new AzureApplicationInsights(this, 'testappi', {
-      name: `appinsight-${rndName}`,
+      name: `appinsight-test`,
       location: 'eastus',
       resource_group_name: resourceGroup.name ,
       application_type: "web",

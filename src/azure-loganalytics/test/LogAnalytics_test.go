@@ -19,24 +19,27 @@ import (
 func TestTerraformCDKAzureLogAnalyticsExample(t *testing.T) {
 	t.Parallel()
 
+	stack_dir := "../../../cdktf.out/stacks/testAzureLogAnalytics"
+	example_file := "./src/azure-loganalytics/test/ExampleAzureLogAnalytics.ts"
+
 	// subscriptionID is overridden by the environment variable "ARM_SUBSCRIPTION_ID"
 	subscriptionID := util.GetSubscriptionID()
 	os.Setenv("ARM_SUBSCRIPTION_ID", subscriptionID)
 
 	cmd := shell.Command{
 		Command:    "cdktf",
-		Args:       []string{"synth", "--app", "npx ts-node ./src/azure-loganalytics/test/ExampleAzureLogAnalytics.ts"},
+		Args:       []string{"synth", "--app", "npx ts-node" + " " + example_file},
 		WorkingDir: "../../../",
 	}
 
 	shell.RunCommandAndGetStdOut(t, cmd)
 
-	util.RandomizeUniqueResources("../../../cdktf.out/stacks/testAzureLogAnalytics/cdk.tf.json")
-	
+	util.RandomizeUniqueResources(stack_dir + "/cdk.tf.json")
+
 	terraformOptions := &terraform.Options{
 
 		// The path to where our Terraform code is located
-		TerraformDir: "../../../cdktf.out/stacks/testAzureLogAnalytics",
+		TerraformDir: stack_dir,
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
