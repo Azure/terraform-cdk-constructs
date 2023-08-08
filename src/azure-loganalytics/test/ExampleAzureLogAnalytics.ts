@@ -7,7 +7,7 @@ import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import { KeyVault } from "@cdktf/provider-azurerm/lib/key-vault";
-import { getAzureTenantId } from "../../util/getAzureTenantID";
+import * as util from "../../util/azureTenantIdHelpers";
 
 
 const app = new App();
@@ -41,10 +41,10 @@ export class exampleAzureLogAnalytics extends TerraformStack {
       location: resourceGroup.location,
       resourceGroupName: resourceGroup.name,
       skuName: "standard",
-      tenantId: getAzureTenantId(),
+      tenantId: util.getAzureTenantId(),
       accessPolicy: [
         {
-          tenantId: getAzureTenantId(),
+          tenantId: util.getAzureTenantId(),
           objectId: clientConfig.objectId,
           secretPermissions: [
             "Get",

@@ -1,47 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Log Analytics Workspace Example renders the Example Log Analytics Workspace and checks snapshot 1`] = `
-"{
+exports[`Log Analytics Workspace Example renders the Example Azure KeyVault and checks snapshot 1`] = `
+{
   "data": {
     "azurerm_client_config": {
-      "CurrentClientConfig": {
-      }
-    }
+      "CurrentClientConfig": {},
+    },
   },
   "output": {
     "key_vault_name": {
-      "value": "\${azurerm_key_vault.key_vault.name}"
+      "value": "\${azurerm_key_vault.key_vault.name}",
     },
     "log_analytics_id": {
-      "value": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
+      "value": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}",
     },
     "log_analytics_primary_shared_key": {
       "sensitive": true,
-      "value": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.primary_shared_key}"
+      "value": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.primary_shared_key}",
     },
     "log_analytics_workspace_id": {
-      "value": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.workspace_id}"
+      "value": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.workspace_id}",
     },
     "loganalytics_workspace_name": {
-      "value": "la-test"
+      "value": "la-test",
     },
     "loganalytics_workspace_retention": {
-      "value": 90
+      "value": 90,
     },
     "loganalytics_workspace_sku": {
-      "value": "PerGB2018"
+      "value": "PerGB2018",
     },
     "resource_group_name": {
-      "value": "\${azurerm_resource_group.rg.name}"
-    }
+      "value": "\${azurerm_resource_group.rg.name}",
+    },
   },
   "provider": {
     "azurerm": [
       {
-        "features": {
-        }
-      }
-    ]
+        "features": {},
+      },
+    ],
   },
   "resource": {
     "azurerm_eventhub_namespace": {
@@ -49,8 +47,8 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
         "location": "\${azurerm_resource_group.rg.location}",
         "name": "my-namespace",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
-        "sku": "Standard"
-      }
+        "sku": "Standard",
+      },
     },
     "azurerm_key_vault": {
       "key_vault": {
@@ -68,30 +66,28 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
               "Backup",
               "Restore",
               "Recover",
-              "Purge"
+              "Purge",
             ],
             "storage_permissions": null,
-            "tenant_id": "24e2975c-af72-454e-8dc0-579d886a1589"
-          }
+          },
         ],
         "location": "\${azurerm_resource_group.rg.location}",
         "name": "kvtest",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "sku_name": "standard",
-        "tenant_id": "24e2975c-af72-454e-8dc0-579d886a1589"
-      }
+      },
     },
     "azurerm_key_vault_secret": {
       "la_customSecretName_B6F2058B": {
         "key_vault_id": "\${azurerm_key_vault.key_vault.id}",
         "name": "customSecretName",
-        "value": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.primary_shared_key}"
+        "value": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.primary_shared_key}",
       },
       "la_instrumentation-key_A3C9491F": {
         "key_vault_id": "\${azurerm_key_vault.key_vault.id}",
         "name": "instrumentation-key",
-        "value": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.primary_shared_key}"
-      }
+        "value": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.primary_shared_key}",
+      },
     },
     "azurerm_log_analytics_data_export_rule": {
       "la_export-0_F0CD2254": {
@@ -100,21 +96,20 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
         "name": "export-test",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "table_names": [
-          "Heartbeat"
+          "Heartbeat",
         ],
-        "workspace_resource_id": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
-      }
+        "workspace_resource_id": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}",
+      },
     },
     "azurerm_log_analytics_saved_search": {
       "la_function-0_CB704AE1": {
         "category": "Function",
         "display_name": "Example function 1",
         "function_alias": "function_name_1",
-        "function_parameters": [
-        ],
+        "function_parameters": [],
         "log_analytics_workspace_id": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}",
         "name": "function_name_1",
-        "query": "Event | where EventLevelName != 'Informational' | where TimeGenerated > ago(24h)"
+        "query": "Event | where EventLevelName != 'Informational' | where TimeGenerated > ago(24h)",
       },
       "la_function-1_E44CA65A": {
         "category": "Function",
@@ -122,12 +117,12 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
         "function_alias": "function_name_2",
         "function_parameters": [
           "typeArg:string=mail",
-          "tagsArg:string=dc"
+          "tagsArg:string=dc",
         ],
         "log_analytics_workspace_id": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}",
         "name": "function_name_2",
-        "query": "Event | where EventLevelName != 'Informational' | where TimeGenerated > ago(24h)"
-      }
+        "query": "Event | where EventLevelName != 'Informational' | where TimeGenerated > ago(24h)",
+      },
     },
     "azurerm_log_analytics_workspace": {
       "la_log_analytics_7551D130": {
@@ -135,45 +130,45 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
         "name": "la-test",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "retention_in_days": 90,
-        "sku": "PerGB2018"
-      }
+        "sku": "PerGB2018",
+      },
     },
     "azurerm_resource_group": {
       "rg": {
         "location": "eastus",
-        "name": "rg-test"
-      }
+        "name": "rg-test",
+      },
     },
     "azurerm_role_assignment": {
       "la_rbac-contributor_5BD02314": {
         "name": "92aaf0da-9dab-42b6-94a3-d43ce8d16293",
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Log Analytics Contributor",
-        "scope": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
+        "scope": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}",
       },
       "la_rbac-customrole_AC5FF160": {
         "name": "43d0d8ad-25c7-4714-9337-8ba259a9fe05",
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Monitoring Reader",
-        "scope": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
+        "scope": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}",
       },
       "la_rbac-reader_F6C03D36": {
         "name": "73c42c96-874c-492b-b04d-ab87d138a893",
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Log Analytics Reader",
-        "scope": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
-      }
-    }
+        "scope": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}",
+      },
+    },
   },
   "terraform": {
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
-      }
-    }
-  }
-}"
+        "version": "3.66.0",
+      },
+    },
+  },
+}
 `;
 
 exports[`Log Analytics Workspace With Defaults renders a Log Analytics Workspace with defaults and checks snapshot 1`] = `

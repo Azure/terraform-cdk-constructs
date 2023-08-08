@@ -3,6 +3,7 @@ import { exampleAzureLogAnalytics} from './ExampleAzureLogAnalytics'
 import 'cdktf/lib/testing/adapters/jest';
 import { AzureLogAnalytics } from '../';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
+import * as util from "../../util/azureTenantIdHelpers";
 
 describe('Log Analytics Workspace With Defaults', () => {
   let stack: TerraformStack;
@@ -40,12 +41,14 @@ describe('Log Analytics Workspace With Defaults', () => {
 
 describe('Log Analytics Workspace Example', () => {
   
-  it("renders the Example Log Analytics Workspace and checks snapshot", () => {
-    expect(
-      Testing.synth(new exampleAzureLogAnalytics(Testing.app(), "testAzureLogAnalytics"))
-      
-    ).toMatchSnapshot();
-  });
+  it("renders the Example Azure KeyVault and checks snapshot", () => {
+    // Need to remove the tenant_id from the snapshot as it will change wherever the test is run
+    const output = Testing.synth(new exampleAzureLogAnalytics(Testing.app(), "testAzureKeyVault"));
+    const myObject: Record<string, any> = JSON.parse(output);
+
+
+    expect(util.removeTenantIdFromSnapshot(myObject)).toMatchSnapshot();
+});
 
   it("check if the produced terraform configuration is valid", () => {
     // We need to do a full synth to plan the terraform configuration
