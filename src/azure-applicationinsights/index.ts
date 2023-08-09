@@ -1,6 +1,8 @@
 import * as cdktf from "cdktf";
 import { Construct } from 'constructs';
 import {ApplicationInsights} from "@cdktf/provider-azurerm/lib/application-insights";
+import { KeyVaultSecret } from '@cdktf/provider-azurerm/lib/key-vault-secret';
+
 
 // Construct
 /**
@@ -48,7 +50,7 @@ export interface ApplicationInsightsProps {
 
 export class AzureApplicationInsights extends Construct {
   readonly props: ApplicationInsightsProps;
-  
+  private readonly instrumentationKey: string;
 
   constructor(scope: Construct, id: string, props: ApplicationInsightsProps) {
     super(scope, id);
@@ -68,6 +70,9 @@ export class AzureApplicationInsights extends Construct {
             workspaceId: props.workspace_id
         }
       );
+
+      this.instrumentationKey = azurermApplicationInsightsAppinsights.instrumentationKey;
+
     
 
     // Terraform Outputs
@@ -96,5 +101,14 @@ export class AzureApplicationInsights extends Construct {
     cdktfTerraformOutputAppiIKey.overrideLogicalId("instrumentation_key");
     cdktfTerraformOutputAppiConnectStr.overrideLogicalId("connection_string");
 
+  }
+
+  // Save Instrumentation Key to Key Vault
+  public saveIKeyToKeyVault(keyVaultId: string, keyVaultSecretName: string = 'instrumentation-key') {
+    new KeyVaultSecret(this, keyVaultSecretName, {
+      keyVaultId: keyVaultId,
+      name: keyVaultSecretName,
+      value: this.instrumentationKey,
+    });
   }
 }

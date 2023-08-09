@@ -101,19 +101,19 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
       }
     },
     "azurerm_role_assignment": {
-      "la_contributor-role-assignment_0FEBE52A": {
+      "la_rbac-contributor_5BD02314": {
         "name": "92aaf0da-9dab-42b6-94a3-d43ce8d16293",
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Log Analytics Contributor",
         "scope": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
       },
-      "la_custom-role-assignment_8FC95618": {
+      "la_rbac-customrole_AC5FF160": {
         "name": "43d0d8ad-25c7-4714-9337-8ba259a9fe05",
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Monitoring Reader",
         "scope": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
       },
-      "la_reader-role-assignment_A9388DE6": {
+      "la_rbac-reader_F6C03D36": {
         "name": "73c42c96-874c-492b-b04d-ab87d138a893",
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Log Analytics Reader",

@@ -1,15 +1,22 @@
+import * as cdktf from "cdktf";
 import { AzureApplicationInsights } from '../';
 import { App, TerraformStack} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
+import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+import { KeyVault } from "@cdktf/provider-azurerm/lib/key-vault";
+import * as util from "../../util/azureTenantIdHelpers";
 
 const app = new App();
     
 export class exampleAzureApplicationInsights extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
+
+    const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
+
 
     new AzurermProvider(this, "azureFeature", {
         features: {},
@@ -21,19 +28,57 @@ export class exampleAzureApplicationInsights extends TerraformStack {
 
     });
 
+    const keyvault = new KeyVault(this, 'key_vault', {
+      name: "kvtest",
+      location: resourceGroup.location,
+      resourceGroupName: resourceGroup.name,
+      skuName: "standard",
+      tenantId: util.getAzureTenantId(),
+      purgeProtectionEnabled: true,
+      softDeleteRetentionDays: 7,
+      accessPolicy: [
+        {
+          tenantId: util.getAzureTenantId(),
+          objectId: clientConfig.objectId,
+          secretPermissions: [
+            "Get",
+            "List",
+            "Set",
+            "Delete",
+            "Backup",
+            "Restore",
+            "Recover",
+            "Purge",
+          ],
+        }
+      ],
+    });
+
     const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
         location: 'eastus',
         name: `la-test`,
         resourceGroupName: resourceGroup.name,
     });
 
-    new AzureApplicationInsights(this, 'testappi', {
+    const applicationInsights = new AzureApplicationInsights(this, 'testappi', {
       name: `appinsight-test`,
       location: 'eastus',
       resource_group_name: resourceGroup.name ,
       application_type: "web",
       workspace_id: logAnalyticsWorkspace.id,
     });
+
+    // Save Ikey to Key Vault as secret
+    applicationInsights.saveIKeyToKeyVault(keyvault.id);
+    applicationInsights.saveIKeyToKeyVault(keyvault.id, "customSecretName");
+    
+    // Outputs to use for End to End Test
+    const cdktfTerraformOutputKVName = new cdktf.TerraformOutput(this, "key_vault_name", {
+      value: keyvault.name,
+    });
+
+    cdktfTerraformOutputKVName.overrideLogicalId("key_vault_name");
+  
   }
 }
 

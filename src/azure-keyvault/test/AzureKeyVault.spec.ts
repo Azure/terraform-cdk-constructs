@@ -3,6 +3,7 @@ import { exampleAzureKeyVault} from './ExampleAzureKeyVault'
 import 'cdktf/lib/testing/adapters/jest';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { AzureKeyVault } from '../';
+import * as util from "../../util/azureTenantIdHelpers";
 
 describe('Azure Key Vault With Defaults', () => {
   let stack: TerraformStack;
@@ -56,18 +57,7 @@ describe('Azure Key Vault Example', () => {
     const output = Testing.synth(new exampleAzureKeyVault(Testing.app(), "testAzureKeyVault"));
     const myObject: Record<string, any> = JSON.parse(output);
 
-    function removeTenantId(obj: Record<string, any>): Record<string, any> {
-      for (let propName in obj) {
-        if (propName === 'tenant_id') {
-          delete obj[propName];
-        } else if (typeof obj[propName] === 'object' && obj[propName] !== null) {
-          removeTenantId(obj[propName]);
-        }
-      }
-      return obj;
-    }
-
-    expect(removeTenantId(myObject)).toMatchSnapshot();
+    expect(util.removeTenantIdFromSnapshot(myObject)).toMatchSnapshot();
 });
 
 it("check if the produced terraform configuration is valid", () => {

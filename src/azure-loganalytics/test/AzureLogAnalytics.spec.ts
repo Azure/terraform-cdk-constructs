@@ -41,11 +41,12 @@ describe('Log Analytics Workspace With Defaults', () => {
 describe('Log Analytics Workspace Example', () => {
   
   it("renders the Example Log Analytics Workspace and checks snapshot", () => {
+  
     expect(
-      Testing.synth(new exampleAzureLogAnalytics(Testing.app(), "testAzureLogAnalytics"))
+      Testing.synth(new exampleAzureLogAnalytics(Testing.app(), "testAzureApplicationInsights"))
       
     ).toMatchSnapshot();
-  });
+});
 
   it("check if the produced terraform configuration is valid", () => {
     // We need to do a full synth to plan the terraform configuration

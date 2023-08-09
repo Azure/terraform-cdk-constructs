@@ -73,7 +73,7 @@ export class AzureLogAnalytics extends Construct {
     });
     
     this.id = azurermLogAnalyticsWorkspaceLogAnalytics.id;
-    
+        
     props.data_export?.forEach((v, k) => {
       new LogAnalyticsDataExportRule(this, `export-${k}`, {
         destinationResourceId: v.export_destination_id,
@@ -131,7 +131,7 @@ export class AzureLogAnalytics extends Construct {
 
   // RBAC Access Methods
   public addReaderAccess(azureAdGroupId: string) {
-    new RoleAssignment(this, 'reader-role-assignment', {
+    new RoleAssignment(this, "rbac-reader", {
       name: `73c42c96-874c-492b-b04d-ab87d138a893` ,
       principalId: azureAdGroupId,
       roleDefinitionName: 'Log Analytics Reader',
@@ -140,7 +140,7 @@ export class AzureLogAnalytics extends Construct {
   }
 
   public addContributorAccess(azureAdGroupId: string) {
-    new RoleAssignment(this, 'contributor-role-assignment', {
+    new RoleAssignment(this, "rbac-contributor", {
       name: `92aaf0da-9dab-42b6-94a3-d43ce8d16293`,
       principalId: azureAdGroupId,
       roleDefinitionName: 'Log Analytics Contributor',
@@ -150,7 +150,7 @@ export class AzureLogAnalytics extends Construct {
 
   public addAccess(azureAdGroupId: string, customRoleName: string, customRoleUUID: string) {
 
-    new RoleAssignment(this, 'custom-role-assignment', {
+    new RoleAssignment(this, "rbac-customrole", {
       name: customRoleUUID,
       principalId: azureAdGroupId,
       roleDefinitionName: customRoleName,
