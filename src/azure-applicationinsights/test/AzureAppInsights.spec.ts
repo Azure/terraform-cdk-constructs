@@ -3,6 +3,8 @@ import { exampleAzureApplicationInsights} from './ExampleAzureApplicationInsight
 import 'cdktf/lib/testing/adapters/jest';
 import { AzureApplicationInsights } from '../';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
+import * as util from "../../util/azureTenantIdHelpers";
+
 
 describe('Application Insights With Defaults', () => {
   let stack: TerraformStack;
@@ -42,10 +44,11 @@ describe('Application Insights With Defaults', () => {
 describe('Application Insights Example', () => {
   
   it("renders the Application Insights and checks snapshot", () => {
-    expect(
-      Testing.synth(new exampleAzureApplicationInsights(Testing.app(), "testAzureApplicationInsights"))
-      
-    ).toMatchSnapshot();
+    // Need to remove the tenant_id from the snapshot as it will change wherever the test is run
+    const output = Testing.synth(new exampleAzureApplicationInsights(Testing.app(), "testAzureKeyVault"));
+    const myObject: Record<string, any> = JSON.parse(output);
+
+    expect(util.removeTenantIdFromSnapshot(myObject)).toMatchSnapshot();
   });
 
   it("check if the produced terraform configuration is valid", () => {

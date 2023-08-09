@@ -4,10 +4,11 @@ import (
 	"os"
 	"testing"
 
-	"github.com/microsoft/terraform-azure-cdk-modules/util"
-
+	"github.com/gruntwork-io/terratest/modules/azure"
 	"github.com/gruntwork-io/terratest/modules/shell"
 	"github.com/gruntwork-io/terratest/modules/terraform"
+	"github.com/microsoft/terraform-azure-cdk-modules/util"
+	"github.com/stretchr/testify/assert"
 )
 
 // An example of how to test the Terraform module in examples/terraform-azure-example using Terratest.
@@ -42,5 +43,12 @@ func TestTerraformCDKAzureApplicationInsightsExample(t *testing.T) {
 
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApplyAndIdempotent(t, terraformOptions)
+
+	// Run `terraform output` to get the values of output variables
+	keyVaultName := terraform.Output(t, terraformOptions, "key_vault_name")
+
+	// Determine whether the secret, key, and certificate exists
+	secretExists := azure.KeyVaultSecretExists(t, keyVaultName, "customSecretName")
+	assert.True(t, secretExists, "kv-secret does not exist")
 
 }

@@ -53,7 +53,6 @@ func TestTerraformCDKAzureLogAnalyticsExample(t *testing.T) {
 	workspaceName := terraform.Output(t, terraformOptions, "loganalytics_workspace_name")
 	sku := terraform.Output(t, terraformOptions, "loganalytics_workspace_sku")
 	retentionPeriodString := terraform.Output(t, terraformOptions, "loganalytics_workspace_retention")
-	keyVaultName := terraform.Output(t, terraformOptions, "key_vault_name")
 
 	// Verify the Log Analytics properties and ensure it matches the output.
 	workspaceExists := azure.LogAnalyticsWorkspaceExists(t, workspaceName, resourceGroupName, subscriptionID)
@@ -68,7 +67,4 @@ func TestTerraformCDKAzureLogAnalyticsExample(t *testing.T) {
 	expectedPeriod, _ := strconv.ParseInt(retentionPeriodString, 10, 32)
 	assert.Equal(t, int32(expectedPeriod), actualRetentionPeriod, "log analytics retention period mismatch")
 
-	// Determine whether the secret, key, and certificate exists
-	secretExists := azure.KeyVaultSecretExists(t, keyVaultName, "customSecretName")
-	assert.True(t, secretExists, "kv-secret does not exist")
 }

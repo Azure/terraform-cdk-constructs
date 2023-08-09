@@ -6,8 +6,6 @@ import {EventhubNamespace} from "@cdktf/provider-azurerm/lib/eventhub-namespace"
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
-import { KeyVault } from "@cdktf/provider-azurerm/lib/key-vault";
-import * as util from "../../util/azureTenantIdHelpers";
 
 
 const app = new App();
@@ -34,30 +32,6 @@ export class exampleAzureLogAnalytics extends TerraformStack {
       resourceGroupName: resourceGroup.name,
       location: resourceGroup.location,
       sku: 'Standard'
-    });
-
-    const keyvault = new KeyVault(this, 'key_vault', {
-      name: "kvtest",
-      location: resourceGroup.location,
-      resourceGroupName: resourceGroup.name,
-      skuName: "standard",
-      tenantId: util.getAzureTenantId(),
-      accessPolicy: [
-        {
-          tenantId: util.getAzureTenantId(),
-          objectId: clientConfig.objectId,
-          secretPermissions: [
-            "Get",
-            "List",
-            "Set",
-            "Delete",
-            "Backup",
-            "Restore",
-            "Recover",
-            "Purge",
-          ],
-        }
-      ],
     });
 
 
@@ -97,10 +71,6 @@ export class exampleAzureLogAnalytics extends TerraformStack {
     logAnalyticsWorkspace.addContributorAccess(clientConfig.objectId)
     logAnalyticsWorkspace.addReaderAccess(clientConfig.objectId)
     logAnalyticsWorkspace.addAccess(clientConfig.objectId, "Monitoring Reader", "43d0d8ad-25c7-4714-9337-8ba259a9fe05")
-
-    // Save Ikey to Key Vault as secret
-    logAnalyticsWorkspace.saveIKeyToKeyVault(keyvault.id);
-    logAnalyticsWorkspace.saveIKeyToKeyVault(keyvault.id, "customSecretName");
     
     // Outputs to use for End to End Test
     const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {
@@ -115,15 +85,12 @@ export class exampleAzureLogAnalytics extends TerraformStack {
     const cdktfTerraformOutputLARetention = new cdktf.TerraformOutput(this, "loganalytics_workspace_retention", {
       value: logAnalyticsWorkspace.props.retention,
     });
-    const cdktfTerraformOutputKVName = new cdktf.TerraformOutput(this, "key_vault_name", {
-      value: keyvault.name,
-    });
+    
 
     cdktfTerraformOutputRG.overrideLogicalId("resource_group_name");
     cdktfTerraformOutputLAName.overrideLogicalId("loganalytics_workspace_name");
     cdktfTerraformOutputLASku.overrideLogicalId("loganalytics_workspace_sku");
     cdktfTerraformOutputLARetention.overrideLogicalId("loganalytics_workspace_retention");
-    cdktfTerraformOutputKVName.overrideLogicalId("key_vault_name");
   }
 }
 

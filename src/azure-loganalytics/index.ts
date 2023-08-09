@@ -4,8 +4,6 @@ import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-w
 import {LogAnalyticsDataExportRule} from "@cdktf/provider-azurerm/lib/log-analytics-data-export-rule";
 import {LogAnalyticsSavedSearch} from "@cdktf/provider-azurerm/lib/log-analytics-saved-search";
 import { RoleAssignment } from "@cdktf/provider-azurerm/lib/role-assignment";
-import { KeyVaultSecret } from '@cdktf/provider-azurerm/lib/key-vault-secret';
-
 
  type DataExport = { name: string, export_destination_id: string, table_names : string[], enabled: boolean };
  type LAFunctions = { name: string, display_name: string, query: string, function_alias: string, function_parameters: string[] }
@@ -53,7 +51,7 @@ import { KeyVaultSecret } from '@cdktf/provider-azurerm/lib/key-vault-secret';
 export class AzureLogAnalytics extends Construct {
   readonly props: LogAnalyticsProps;
   public readonly id: string;
-  private readonly primarySharedKey: string;
+  
 
   constructor(scope: Construct, id: string, props: LogAnalyticsProps) {
     super(scope, id);
@@ -75,8 +73,7 @@ export class AzureLogAnalytics extends Construct {
     });
     
     this.id = azurermLogAnalyticsWorkspaceLogAnalytics.id;
-    this.primarySharedKey = azurermLogAnalyticsWorkspaceLogAnalytics.primarySharedKey;
-    
+        
     props.data_export?.forEach((v, k) => {
       new LogAnalyticsDataExportRule(this, `export-${k}`, {
         destinationResourceId: v.export_destination_id,
@@ -158,15 +155,6 @@ export class AzureLogAnalytics extends Construct {
       principalId: azureAdGroupId,
       roleDefinitionName: customRoleName,
       scope: this.id,
-    });
-  }
-
-  // Save Instrumentation Key to Key Vault
-  public saveIKeyToKeyVault(keyVaultId: string, keyVaultSecretName: string = 'instrumentation-key') {
-    new KeyVaultSecret(this, keyVaultSecretName, {
-      keyVaultId: keyVaultId,
-      name: keyVaultSecretName,
-      value: this.primarySharedKey,
     });
   }
 }
