@@ -4,23 +4,17 @@ import { App, TerraformStack} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
-import { execSync } from 'child_process';
-
-// Get Tenant ID from Azure CLI for test TODO: Turn this into a helper function
-let tenantid: string;
-try {
-  tenantid = execSync('az account show --query tenantId -o tsv').toString().trim();
-} catch (error) {
-  console.log('Azure CLI is not logged in. Setting tenant ID to fake TenantID.');
-  tenantid = '123e4567-e89b-12d3-a456-426614174000';
-}
-
+import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+import * as util from "../../util/azureTenantIdHelpers";
 
 const app = new App();
 
 export class exampleAzureKeyVault extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
+
+    const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
+
     
     new AzurermProvider(this, "azureFeature", {
         features: {},
@@ -32,18 +26,26 @@ export class exampleAzureKeyVault extends TerraformStack {
 
     });
 
-    new AzureKeyVault(this, 'kv', {
+    const azureKeyVault = new AzureKeyVault(this, 'kv', {
       name: `kv-test`,
       location: 'eastus',
       sku: "standard",
       resource_group_name: resourceGroup.name ,
-      tenant_id: tenantid,
+      tenant_id: util.getAzureTenantId(),
       networkAcls: {
         bypass: 'AzureServices',
         defaultAction: 'Allow',
       },
       softDeleteRetentionDays: 7,
     });
+
+    // Access Policy
+    azureKeyVault.grantSecretAdminAccess(clientConfig.objectId);
+    azureKeyVault.grantSecretAdminAccess("bc26a701-6acb-4117-93e0-e44054e22d60");
+
+    // Create Secret
+    // azureKeyVault.addSecret('secret1', "password");
+    // azureKeyVault.addSecret('customSecretName', "password", '2021-12-31T23:59:59Z');
 
     // Outputs to use for End to End Test
     const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {

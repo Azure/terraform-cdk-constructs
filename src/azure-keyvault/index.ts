@@ -1,6 +1,8 @@
 import * as cdktf from 'cdktf';
 import { Construct } from 'constructs';
 import { KeyVault } from '@cdktf/provider-azurerm/lib/key-vault';
+import { AzureKeyVaultSecret, AzureKeyVaultSecretProps } from './secret';
+import { AzureKeyVaultPolicy, AzureKeyVaultPolicyProps } from './policy';
 
 export interface KeyVaultProps {
     /**
@@ -54,6 +56,9 @@ interface KeyVaultNetworkAcls {
 
 export class AzureKeyVault extends Construct {
   readonly props: KeyVaultProps;
+  public readonly id: string;
+  private accessPolicies: AzureKeyVaultPolicy[] = [];
+
 
   constructor(scope: Construct, id: string, props: KeyVaultProps) {
     super(scope, id);
@@ -77,6 +82,7 @@ export class AzureKeyVault extends Construct {
             purgeProtectionEnabled: purgeProtection,
             softDeleteRetentionDays: softDeleteRetentionDays,
         });
+        this.id = azurermKeyVault.id;
 
     // Terraform Outputs
     const cdktfTerraformOutputKeyVaultid = new cdktf.TerraformOutput(this, "id", {
@@ -93,5 +99,59 @@ export class AzureKeyVault extends Construct {
       /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
       cdktfTerraformOutputKeyVaultname.overrideLogicalId("key_vault_name");
   }
+
+  // Access Policy Methods
+  public grantSecretReaderAccess(azureAdGroupId: string) {
+      const policyProps: AzureKeyVaultPolicyProps = {
+        keyVaultId: this,
+        tenantId: this.props.tenant_id,
+        objectId: azureAdGroupId,
+        secretPermissions: [
+          "Get",
+          "List",
+        ],
+      };
+
+      const policy =new AzureKeyVaultPolicy(this, `kv_secret_reader_access_${azureAdGroupId}`, policyProps);
+      this.accessPolicies.push(policy);
+  }
+
+  public grantSecretAdminAccess(azureAdGroupId: string) {
+
+    const policyProps: AzureKeyVaultPolicyProps = {
+      keyVaultId: this,
+      tenantId: this.props.tenant_id,
+      objectId: azureAdGroupId,
+      secretPermissions: [
+        "Get",
+        "List",
+        "Set",
+        "Delete",
+        "Backup",
+        "Restore",
+        "Recover",
+      ],
+    };
+
+    const policy =new AzureKeyVaultPolicy(this, `kv_secret_admin_access_${azureAdGroupId}`, policyProps);
+    this.accessPolicies.push(policy);
+  }
+
+  // Moved addSecret method
+  public addSecret(keyVaultSecretName: string, secretValue: string, expirationDate?: string) {
+    const secretProps: AzureKeyVaultSecretProps = {
+        keyVaultId: this,
+        name: keyVaultSecretName,
+        value: secretValue,
+        expirationDate: expirationDate,
+    };
+
+    new AzureKeyVaultSecret(this, keyVaultSecretName, secretProps);
+
+    // Add dependency on all access policies
+    // for (const policy of AzureKeyVault.accessPolicies) {
+    //   secret.addOverride('depends_on', ["azurerm_key_vault_access_policy." + policy.friendlyUniqueId]);
+    // }
+}
 }
 
