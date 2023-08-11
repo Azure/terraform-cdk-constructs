@@ -12,15 +12,21 @@ export interface AzureKeyVaultPolicyProps {
 }
 
 export class AzureKeyVaultPolicy extends Construct {
+  public readonly fqdn: string;
+
   constructor(scope: Construct, id: string, props: AzureKeyVaultPolicyProps) {
       super(scope, id);
 
-      new KeyVaultAccessPolicyA(this, `secret_reader_access`, {
+      
+
+      const policy = new KeyVaultAccessPolicyA(this, `secret_reader_access`, {
         keyVaultId: props.keyVaultId.id,
         tenantId: props.tenantId,
         objectId: props.objectId,
         secretPermissions: props.secretPermissions,
       });
+
+      this.fqdn = "azurerm_key_vault_access_policy." + policy.friendlyUniqueId;
   }
 
 }

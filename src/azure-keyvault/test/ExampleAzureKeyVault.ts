@@ -44,8 +44,8 @@ export class exampleAzureKeyVault extends TerraformStack {
     azureKeyVault.grantSecretAdminAccess("bc26a701-6acb-4117-93e0-e44054e22d60");
 
     // Create Secret
-    // azureKeyVault.addSecret('secret1', "password");
-    // azureKeyVault.addSecret('customSecretName', "password", '2021-12-31T23:59:59Z');
+    azureKeyVault.addSecret('secret1', "password");
+    azureKeyVault.addSecret('customSecretName', "password", '2021-12-31T23:59:59Z');
 
     // Outputs to use for End to End Test
     const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {

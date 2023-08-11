@@ -59,7 +59,6 @@ export class AzureKeyVault extends Construct {
   public readonly id: string;
   private accessPolicies: AzureKeyVaultPolicy[] = [];
 
-
   constructor(scope: Construct, id: string, props: KeyVaultProps) {
     super(scope, id);
 
@@ -144,14 +143,10 @@ export class AzureKeyVault extends Construct {
         name: keyVaultSecretName,
         value: secretValue,
         expirationDate: expirationDate,
+        accessPolicies: this.accessPolicies
     };
 
     new AzureKeyVaultSecret(this, keyVaultSecretName, secretProps);
-
-    // Add dependency on all access policies
-    // for (const policy of AzureKeyVault.accessPolicies) {
-    //   secret.addOverride('depends_on', ["azurerm_key_vault_access_policy." + policy.friendlyUniqueId]);
-    // }
 }
 }
 
