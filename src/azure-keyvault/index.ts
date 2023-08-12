@@ -54,6 +54,14 @@ interface KeyVaultNetworkAcls {
   defaultAction: string;
 }
 
+interface GrantCustomAccessOptions {
+  secretPermissions?: string[];
+  certificatePermissions?: string[];
+  keyPermissions?: string[];
+  storagePermissions?: string[];
+}
+
+
 export class AzureKeyVault extends Construct {
   readonly props: KeyVaultProps;
   public readonly id: string;
@@ -135,6 +143,20 @@ export class AzureKeyVault extends Construct {
     const policy =new AzureKeyVaultPolicy(this, `kv_secret_admin_access_${azureAdGroupId}`, policyProps);
     this.accessPolicies.push(policy);
   }
+
+  
+  public grantCustomAccess(azureAdGroupId: string, options: GrantCustomAccessOptions) {
+    const policyProps: AzureKeyVaultPolicyProps = {
+      keyVaultId: this,
+      tenantId: this.props.tenant_id,
+      objectId: azureAdGroupId,
+      ...options
+    };
+
+    const policy = new AzureKeyVaultPolicy(this, `kv_custom_policy_access_${azureAdGroupId}`, policyProps);
+    this.accessPolicies.push(policy);
+  }
+
 
   // Moved addSecret method
   public addSecret(keyVaultSecretName: string, secretValue: string, expirationDate?: string) {

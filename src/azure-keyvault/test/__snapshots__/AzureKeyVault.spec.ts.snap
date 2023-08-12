@@ -67,12 +67,23 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
           "Recover",
         ],
       },
+      "kv_kv_secret_custom_access_bc26a701-6acb-4117-93e0-e44054e22d60_secret_reader_access_D1AAC9F8": {
+        "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
+        "object_id": "bc26a701-6acb-4117-93e0-e44054e22d60",
+        "storage_permissions": [
+          "Get",
+          "List",
+          "Set",
+          "Delete",
+        ],
+      },
     },
     "azurerm_key_vault_secret": {
       "kv_customSecretName_69DB8BBD": {
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_TfTokenTOKEN19_secret_reader_access_29A983B4",
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_secret_reader_access_BD50F3BD",
+          "azurerm_key_vault_access_policy.kv_kv_secret_custom_access_bc26a701-6acb-4117-93e0-e44054e22d60_secret_reader_access_D1AAC9F8",
         ],
         "expiration_date": "2021-12-31T23:59:59Z",
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
@@ -83,6 +94,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_TfTokenTOKEN19_secret_reader_access_29A983B4",
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_secret_reader_access_BD50F3BD",
+          "azurerm_key_vault_access_policy.kv_kv_secret_custom_access_bc26a701-6acb-4117-93e0-e44054e22d60_secret_reader_access_D1AAC9F8",
         ],
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
         "name": "secret1",

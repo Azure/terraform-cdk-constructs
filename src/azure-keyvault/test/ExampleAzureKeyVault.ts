@@ -41,7 +41,7 @@ export class exampleAzureKeyVault extends TerraformStack {
 
     // Access Policy
     azureKeyVault.grantSecretAdminAccess(clientConfig.objectId);
-    azureKeyVault.grantSecretAdminAccess("bc26a701-6acb-4117-93e0-e44054e22d60");
+    azureKeyVault.grantCustomAccess("bc26a701-6acb-4117-93e0-e44054e22d60", {storagePermissions: ["Get", "List", "Set", "Delete"]});
 
     // Create Secret
     azureKeyVault.addSecret('secret1', "password");

@@ -5,10 +5,50 @@ import { Construct } from 'constructs';
 
 
 export interface AzureKeyVaultPolicyProps {
-  keyVaultId: AzureKeyVault;
-  tenantId: string;
-  objectId: string;
-  secretPermissions: string[];
+  /**
+   * The Azure Key Vault instance or its identifier.
+   */
+  readonly keyVaultId: AzureKeyVault;
+
+  /**
+   * The Azure Active Directory tenant ID where the Key Vault is hosted.
+   * This is typically the directory ID of your Azure AD.
+   */
+  readonly tenantId: string;
+
+  /**
+   * The Azure Active Directory object ID for which the policy will be applied.
+   * This can be a user, group, or service principal.
+   */
+  readonly objectId: string;
+
+  /**
+   * The permissions to secrets stored in the Key Vault.
+   * Possible values might include: 'get', 'list', 'set', 'delete', etc.
+   * If not provided, no secret permissions are set.
+   */
+  readonly secretPermissions?: string[];
+
+  /**
+   * The permissions to certificates stored in the Key Vault.
+   * Possible values might include: 'get', 'list', 'create', 'update', etc.
+   * If not provided, no certificate permissions are set.
+   */
+  readonly certificatePermissions?: string[];
+
+  /**
+   * The permissions to keys stored in the Key Vault.
+   * Possible values might include: 'get', 'list', 'create', 'sign', etc.
+   * If not provided, no key permissions are set.
+   */
+  readonly keyPermissions?: string[];
+
+  /**
+   * The permissions to storage accounts linked to the Key Vault.
+   * Possible values might include: 'get', 'list', 'delete', 'set', etc.
+   * If not provided, no storage permissions are set.
+   */
+  readonly storagePermissions?: string[];
 }
 
 export class AzureKeyVaultPolicy extends Construct {
@@ -24,6 +64,9 @@ export class AzureKeyVaultPolicy extends Construct {
         tenantId: props.tenantId,
         objectId: props.objectId,
         secretPermissions: props.secretPermissions,
+        certificatePermissions: props.certificatePermissions,
+        keyPermissions: props.keyPermissions,
+        storagePermissions: props.storagePermissions,
       });
 
       this.fqdn = "azurerm_key_vault_access_policy." + policy.friendlyUniqueId;
