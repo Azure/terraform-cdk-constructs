@@ -144,7 +144,78 @@ export class AzureKeyVault extends Construct {
     this.accessPolicies.push(policy);
   }
 
+  public grantCertAdminAccess(azureAdGroupId: string) {
+
+    const policyProps: AzureKeyVaultPolicyProps = {
+      keyVaultId: this,
+      tenantId: this.props.tenant_id,
+      objectId: azureAdGroupId,
+      certificatePermissions: [
+        "Get",
+        "List",
+        "Set",
+        "Delete",
+        "Backup",
+        "Restore",
+        "Recover",
+      ],
+    };
+
+    const policy =new AzureKeyVaultPolicy(this, `kv_cert_admin_access_${azureAdGroupId}`, policyProps);
+    this.accessPolicies.push(policy);
+  }
+
+  public grantCertReaderAccess(azureAdGroupId: string) {
+    const policyProps: AzureKeyVaultPolicyProps = {
+      keyVaultId: this,
+      tenantId: this.props.tenant_id,
+      objectId: azureAdGroupId,
+      certificatePermissions: [
+        "Get",
+        "List",
+      ],
+    };
+
+    const policy =new AzureKeyVaultPolicy(this, `kv_cert_reader_access_${azureAdGroupId}`, policyProps);
+    this.accessPolicies.push(policy);
+  }
+
+  public grantKeyAdminAccess(azureAdGroupId: string) {
+
+    const policyProps: AzureKeyVaultPolicyProps = {
+      keyVaultId: this,
+      tenantId: this.props.tenant_id,
+      objectId: azureAdGroupId,
+      keyPermissions: [
+        "Get",
+        "List",
+        "Set",
+        "Delete",
+        "Backup",
+        "Restore",
+        "Recover",
+      ],
+    };
+
+    const policy =new AzureKeyVaultPolicy(this, `kv_key_admin_access_${azureAdGroupId}`, policyProps);
+    this.accessPolicies.push(policy);
+  }
   
+  public grantKeyReaderAccess(azureAdGroupId: string) {
+    const policyProps: AzureKeyVaultPolicyProps = {
+      keyVaultId: this,
+      tenantId: this.props.tenant_id,
+      objectId: azureAdGroupId,
+      certificatePermissions: [
+        "Get",
+        "List",
+      ],
+    };
+
+    const policy =new AzureKeyVaultPolicy(this, `kv_key_reader_access_${azureAdGroupId}`, policyProps);
+    this.accessPolicies.push(policy);
+  }
+
   public grantCustomAccess(azureAdGroupId: string, options: GrantCustomAccessOptions) {
     const policyProps: AzureKeyVaultPolicyProps = {
       keyVaultId: this,
