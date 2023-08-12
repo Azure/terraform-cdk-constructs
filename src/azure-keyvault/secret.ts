@@ -35,7 +35,7 @@ export class AzureKeyVaultSecret extends Construct {
       // Add dependency on all access policies
       secret.addOverride('depends_on', dependencies);
           
-        }
+  }
 
   
 }

@@ -3,6 +3,7 @@ import { Construct } from 'constructs';
 import { KeyVault } from '@cdktf/provider-azurerm/lib/key-vault';
 import { AzureKeyVaultSecret, AzureKeyVaultSecretProps } from './secret';
 import { AzureKeyVaultPolicy, AzureKeyVaultPolicyProps } from './policy';
+import { AzureKeyVaultKey, AzureKeyVaultKeyProps } from './key';
 
 export interface KeyVaultProps {
     /**
@@ -229,7 +230,7 @@ export class AzureKeyVault extends Construct {
   }
 
 
-  // Moved addSecret method
+  // Create Secret Methods
   public addSecret(keyVaultSecretName: string, secretValue: string, expirationDate?: string) {
     const secretProps: AzureKeyVaultSecretProps = {
         keyVaultId: this,
@@ -240,6 +241,28 @@ export class AzureKeyVault extends Construct {
     };
 
     new AzureKeyVaultSecret(this, keyVaultSecretName, secretProps);
-}
+  }
+
+  // Create Key Methods
+  public addRSAKey(keyVaultKeyName: string) {
+    const keyProps: AzureKeyVaultKeyProps = {
+        keyVaultId: this,
+        name: keyVaultKeyName,
+        keyType: "RSA",
+        keySize: 2048,
+        keyOpts: [
+          "decrypt",
+          "encrypt",
+          "sign",
+          "unwrapKey",
+          "verify",
+          "wrapKey",
+        ],
+        accessPolicies: this.accessPolicies
+    };
+
+    new AzureKeyVaultKey(this, keyVaultKeyName, keyProps);
+  }
+
 }
 
