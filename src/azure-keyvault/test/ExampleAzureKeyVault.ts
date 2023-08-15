@@ -40,12 +40,26 @@ export class exampleAzureKeyVault extends TerraformStack {
     });
 
     // Access Policy
-    azureKeyVault.grantSecretAdminAccess(clientConfig.objectId);
-    azureKeyVault.grantCustomAccess("bc26a701-6acb-4117-93e0-e44054e22d60", {storagePermissions: ["Get", "List", "Set", "Delete"]});
+    azureKeyVault.grantSecretAdminAccess("bc26a701-6acb-4117-93e0-e44054e22d60");
+    azureKeyVault.grantCustomAccess(clientConfig.objectId, {
+      storagePermissions: ["Get", "List", "Set", "Delete"], 
+      secretPermissions: ["Get", "List", "Set", "Delete"], 
+      keyPermissions: ["Backup", "Create", "Decrypt", "Delete", "Encrypt", "Get", "Import", "List", "Purge", "Recover", "Restore", "Sign", "UnwrapKey", "Update", "Verify", "WrapKey", "Release", "Rotate", "GetRotationPolicy", "SetRotationPolicy"],
+      certificatePermissions: ["Get", "List", "Create", "Delete"],
+    });
 
     // Create Secret
     azureKeyVault.addSecret('secret1', "password");
     azureKeyVault.addSecret('customSecretName', "password", '2021-12-31T23:59:59Z');
+
+    // Create Key
+    azureKeyVault.addRSAKey('key1');
+    azureKeyVault.addKey('key2', 'RSA', 2048,['encrypt', 'decrypt', 'sign', 'verify', 'wrapKey', 'unwrapKey']);
+
+    // Create Certificate
+    azureKeyVault.addSelfSignedCert('cert1', 'CN=contoso.com', ["internal.contoso.com", "domain.hello.world"]);
+
+
 
     // Outputs to use for End to End Test
     const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {

@@ -3,6 +3,7 @@ import { Construct } from 'constructs';
 import { KeyVault } from '@cdktf/provider-azurerm/lib/key-vault';
 import { AzureKeyVaultSecret, AzureKeyVaultSecretProps } from './secret';
 import { AzureKeyVaultPolicy, AzureKeyVaultPolicyProps } from './policy';
+import { AzureKeyVaultSelfSignedCertificate, AzureKeyVaultSelfSignedCertificateProps } from './certificate';
 import { AzureKeyVaultKey, AzureKeyVaultKeyProps } from './key';
 
 export interface KeyVaultProps {
@@ -263,6 +264,36 @@ export class AzureKeyVault extends Construct {
 
     new AzureKeyVaultKey(this, keyVaultKeyName, keyProps);
   }
+
+  public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts: string[]) {
+    const keyProps: AzureKeyVaultKeyProps = {
+        keyVaultId: this,
+        name: keyVaultKeyName,
+        keyType: keyType,
+        keySize: keySize,
+        keyOpts: keyOpts,
+        accessPolicies: this.accessPolicies
+    };
+
+    new AzureKeyVaultKey(this, keyVaultKeyName, keyProps);
+  }
+
+  // Create Certificate Methods
+
+  public addSelfSignedCert( certName: string, subject: string, dnsNames: string[], actionType?: string, daysBeforeExpiry?: number) {
+    const keyProps: AzureKeyVaultSelfSignedCertificateProps = {
+        keyVaultId: this,
+        name: certName,
+        subject: subject,
+        dnsNames: dnsNames,
+        actionType: actionType,
+        daysBeforeExpiry: daysBeforeExpiry,
+        accessPolicies: this.accessPolicies
+    };
+
+    new AzureKeyVaultSelfSignedCertificate(this, certName, keyProps);
+  }
+
 
 }
 

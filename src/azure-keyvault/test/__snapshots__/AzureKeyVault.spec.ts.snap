@@ -41,9 +41,43 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
       },
     },
     "azurerm_key_vault_access_policy": {
-      "kv_kv_custom_policy_access_bc26a701-6acb-4117-93e0-e44054e22d60_secret_reader_access_55B86685": {
+      "kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292": {
+        "certificate_permissions": [
+          "Get",
+          "List",
+          "Create",
+          "Delete",
+        ],
+        "key_permissions": [
+          "Backup",
+          "Create",
+          "Decrypt",
+          "Delete",
+          "Encrypt",
+          "Get",
+          "Import",
+          "List",
+          "Purge",
+          "Recover",
+          "Restore",
+          "Sign",
+          "UnwrapKey",
+          "Update",
+          "Verify",
+          "WrapKey",
+          "Release",
+          "Rotate",
+          "GetRotationPolicy",
+          "SetRotationPolicy",
+        ],
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
-        "object_id": "bc26a701-6acb-4117-93e0-e44054e22d60",
+        "object_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
+        "secret_permissions": [
+          "Get",
+          "List",
+          "Set",
+          "Delete",
+        ],
         "storage_permissions": [
           "Get",
           "List",
@@ -51,9 +85,9 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
           "Delete",
         ],
       },
-      "kv_kv_secret_admin_access_TfTokenTOKEN19_secret_reader_access_29A983B4": {
+      "kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5": {
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
-        "object_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
+        "object_id": "bc26a701-6acb-4117-93e0-e44054e22d60",
         "secret_permissions": [
           "Get",
           "List",
@@ -65,11 +99,104 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
         ],
       },
     },
+    "azurerm_key_vault_certificate": {
+      "kv_cert1_AzureKeyVaultCertificate_A017BD2B": {
+        "certificate_policy": {
+          "issuer_parameters": {
+            "name": "Self",
+          },
+          "key_properties": {
+            "exportable": true,
+            "key_size": 2048,
+            "key_type": "RSA",
+            "reuse_key": true,
+          },
+          "lifetime_action": [
+            {
+              "action": {
+                "action_type": "AutoRenew",
+              },
+              "trigger": {
+                "days_before_expiry": 45,
+              },
+            },
+          ],
+          "secret_properties": {
+            "content_type": "application/x-pkcs12",
+          },
+          "x509_certificate_properties": {
+            "extended_key_usage": [
+              "1.3.6.1.5.5.7.3.1",
+            ],
+            "key_usage": [
+              "cRLSign",
+              "dataEncipherment",
+              "digitalSignature",
+              "keyAgreement",
+              "keyCertSign",
+              "keyEncipherment",
+            ],
+            "subject": "CN=contoso.com",
+            "subject_alternative_names": {
+              "dns_names": [
+                "internal.contoso.com",
+                "domain.hello.world",
+              ],
+            },
+            "validity_in_months": 12,
+          },
+        },
+        "depends_on": [
+          "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
+        ],
+        "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
+        "name": "cert1",
+      },
+    },
+    "azurerm_key_vault_key": {
+      "kv_key1_AzureKeyVaultKey_02CD8333": {
+        "depends_on": [
+          "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
+        ],
+        "key_opts": [
+          "decrypt",
+          "encrypt",
+          "sign",
+          "unwrapKey",
+          "verify",
+          "wrapKey",
+        ],
+        "key_size": 2048,
+        "key_type": "RSA",
+        "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
+        "name": "key1",
+      },
+      "kv_key2_AzureKeyVaultKey_AB98C26C": {
+        "depends_on": [
+          "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
+        ],
+        "key_opts": [
+          "encrypt",
+          "decrypt",
+          "sign",
+          "verify",
+          "wrapKey",
+          "unwrapKey",
+        ],
+        "key_size": 2048,
+        "key_type": "RSA",
+        "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
+        "name": "key2",
+      },
+    },
     "azurerm_key_vault_secret": {
       "kv_customSecretName_69DB8BBD": {
         "depends_on": [
-          "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_TfTokenTOKEN19_secret_reader_access_29A983B4",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_bc26a701-6acb-4117-93e0-e44054e22d60_secret_reader_access_55B86685",
+          "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
         ],
         "expiration_date": "2021-12-31T23:59:59Z",
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
@@ -78,8 +205,8 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
       },
       "kv_secret1_8BCF2182": {
         "depends_on": [
-          "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_TfTokenTOKEN19_secret_reader_access_29A983B4",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_bc26a701-6acb-4117-93e0-e44054e22d60_secret_reader_access_55B86685",
+          "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
         ],
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
         "name": "secret1",

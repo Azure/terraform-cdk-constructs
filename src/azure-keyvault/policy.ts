@@ -59,7 +59,7 @@ export class AzureKeyVaultPolicy extends Construct {
 
       
 
-      const policy = new KeyVaultAccessPolicyA(this, `secret_reader_access`, {
+      const policy = new KeyVaultAccessPolicyA(this, `policy`, {
         keyVaultId: props.keyVaultId.id,
         tenantId: props.tenantId,
         objectId: props.objectId,
