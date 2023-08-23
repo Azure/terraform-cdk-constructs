@@ -2,6 +2,7 @@ import { Construct } from 'constructs';
 import { AzureKeyVault } from './index';
 import { KeyVaultCertificate} from '@cdktf/provider-azurerm/lib/key-vault-certificate'; // Adjust the import path based on the actual module location.
 import { AzureKeyVaultPolicy } from './policy';
+import { KeyVaultCertificateIssuer } from '@cdktf/provider-azurerm/lib/key-vault-certificate-issuer';
 
 export interface AzureKeyVaultSelfSignedCertificateProps {
     /**
@@ -22,6 +23,24 @@ export interface AzureKeyVaultSelfSignedCertificateProps {
     readonly accessPolicies: AzureKeyVaultPolicy[];
 
     readonly tags?: { [key: string]: string };
+}
+
+export interface AzureKeyVaultCertificateIssuerProps {
+  /**
+   * The name of the certificate issuer in the Azure Key Vault.
+   */
+  readonly name: string;
+
+  readonly providerName: string;
+
+  readonly keyVaultId: AzureKeyVault;
+
+  readonly accessPolicies: AzureKeyVaultPolicy[];
+
+  readonly username?: string;
+
+  readonly password?: string;
+
 }
 
 export class AzureKeyVaultSelfSignedCertificate extends Construct {
@@ -91,5 +110,29 @@ export class AzureKeyVaultSelfSignedCertificate extends Construct {
 
       // Add dependency on all access policies
       certificate.addOverride('depends_on', dependencies);
+  }
+}
+
+
+export class AzureKeyVaultCertificateIssuer extends Construct {
+
+  constructor(scope: Construct, id: string, props: AzureKeyVaultCertificateIssuerProps) {
+      super(scope, id);
+
+      const certificateIssuer = new KeyVaultCertificateIssuer(this, 'AzureKeyVaultCertificate', {
+        name: props.name,
+        keyVaultId: props.keyVaultId.id,
+        providerName: props.providerName,
+
+      });
+
+      // Accumulate all the fqdn values
+      const dependencies: string[] = [];
+      for (const policy of props.accessPolicies) {
+          dependencies.push(policy.fqdn);
+      }
+
+      // Add dependency on all access policies
+      certificateIssuer.addOverride('depends_on', dependencies);
   }
 }

@@ -3,7 +3,7 @@ import { Construct } from 'constructs';
 import { KeyVault } from '@cdktf/provider-azurerm/lib/key-vault';
 import { AzureKeyVaultSecret, AzureKeyVaultSecretProps } from './secret';
 import { AzureKeyVaultPolicy, AzureKeyVaultPolicyProps } from './policy';
-import { AzureKeyVaultSelfSignedCertificate, AzureKeyVaultSelfSignedCertificateProps } from './certificate';
+import { AzureKeyVaultCertificateIssuer, AzureKeyVaultSelfSignedCertificate, AzureKeyVaultSelfSignedCertificateProps } from './certificate';
 import { AzureKeyVaultKey, AzureKeyVaultKeyProps } from './key';
 
 export interface KeyVaultProps {
@@ -292,6 +292,15 @@ export class AzureKeyVault extends Construct {
     };
 
     new AzureKeyVaultSelfSignedCertificate(this, certName, keyProps);
+  }
+
+  public addCertIssuer( name: string, provider: string) {
+    new AzureKeyVaultCertificateIssuer(this, name, {
+      name: name,
+      providerName: provider,
+      keyVaultId: this,
+      accessPolicies: this.accessPolicies
+    });
   }
 
 

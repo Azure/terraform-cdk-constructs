@@ -154,6 +154,17 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
         "name": "cert1",
       },
     },
+    "azurerm_key_vault_certificate_issuer": {
+      "kv_issuer1_AzureKeyVaultCertificate_90383EBD": {
+        "depends_on": [
+          "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
+        ],
+        "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
+        "name": "issuer1",
+        "provider_name": "DigiCert",
+      },
+    },
     "azurerm_key_vault_key": {
       "kv_key1_AzureKeyVaultKey_02CD8333": {
         "depends_on": [

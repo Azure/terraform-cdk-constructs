@@ -45,7 +45,7 @@ export class exampleAzureKeyVault extends TerraformStack {
       storagePermissions: ["Get", "List", "Set", "Delete"], 
       secretPermissions: ["Get", "List", "Set", "Delete"], 
       keyPermissions: ["Backup", "Create", "Decrypt", "Delete", "Encrypt", "Get", "Import", "List", "Purge", "Recover", "Restore", "Sign", "UnwrapKey", "Update", "Verify", "WrapKey", "Release", "Rotate", "GetRotationPolicy", "SetRotationPolicy"],
-      certificatePermissions: ["Get", "List", "Create", "Delete"],
+      certificatePermissions: ["Get", "List", "Create", "Delete", "GetIssuers", "ManageIssuers"],
     });
 
     // Create Secret
@@ -58,7 +58,7 @@ export class exampleAzureKeyVault extends TerraformStack {
 
     // Create Certificate
     azureKeyVault.addSelfSignedCert('cert1', 'CN=contoso.com', ["internal.contoso.com", "domain.hello.world"]);
-
+    azureKeyVault.addCertIssuer('issuer1', "SslAdminV2");
 
 
     // Outputs to use for End to End Test
