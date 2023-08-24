@@ -47,6 +47,8 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
           "List",
           "Create",
           "Delete",
+          "GetIssuers",
+          "ManageIssuers",
         ],
         "key_permissions": [
           "Backup",
@@ -162,7 +164,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
         ],
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
         "name": "issuer1",
-        "provider_name": "DigiCert",
+        "provider_name": "SslAdminV2",
       },
     },
     "azurerm_key_vault_key": {
