@@ -53,4 +53,8 @@ func TestTerraformCDKAzureKeyVaultExample(t *testing.T) {
 	keyVault := azure.GetKeyVault(t, resourceGroupName, keyVaultName, "")
 	assert.Equal(t, keyVaultName, *keyVault.Name)
 
+	// Determine whether the secret, key, and certificate exists
+	secretExists := azure.KeyVaultSecretExists(t, keyVaultName, "customSecretName")
+	assert.True(t, secretExists, "kv-secret does not exist")
+
 }
