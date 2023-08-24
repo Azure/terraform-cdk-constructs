@@ -232,12 +232,13 @@ export class AzureKeyVault extends Construct {
 
 
   // Create Secret Methods
-  public addSecret(keyVaultSecretName: string, secretValue: string, expirationDate?: string) {
+  public addSecret(keyVaultSecretName: string, secretValue: string, expirationDate?: string, contentType?: string) {
     const secretProps: AzureKeyVaultSecretProps = {
         keyVaultId: this,
         name: keyVaultSecretName,
         value: secretValue,
         expirationDate: expirationDate,
+        contentType: contentType,
         accessPolicies: this.accessPolicies
     };
 
@@ -245,7 +246,7 @@ export class AzureKeyVault extends Construct {
   }
 
   // Create Key Methods
-  public addRSAKey(keyVaultKeyName: string) {
+  public addRSAKey(keyVaultKeyName: string, expirationDate?: string) {
     const keyProps: AzureKeyVaultKeyProps = {
         keyVaultId: this,
         name: keyVaultKeyName,
@@ -259,20 +260,23 @@ export class AzureKeyVault extends Construct {
           "verify",
           "wrapKey",
         ],
+        expires: expirationDate,
         accessPolicies: this.accessPolicies
     };
 
     new AzureKeyVaultKey(this, keyVaultKeyName, keyProps);
   }
 
-  public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts: string[]) {
+  public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts: string[], expirationDate?: string) {
     const keyProps: AzureKeyVaultKeyProps = {
         keyVaultId: this,
         name: keyVaultKeyName,
         keyType: keyType,
         keySize: keySize,
         keyOpts: keyOpts,
-        accessPolicies: this.accessPolicies
+        expires: expirationDate,
+        accessPolicies: this.accessPolicies,
+        
     };
 
     new AzureKeyVaultKey(this, keyVaultKeyName, keyProps);

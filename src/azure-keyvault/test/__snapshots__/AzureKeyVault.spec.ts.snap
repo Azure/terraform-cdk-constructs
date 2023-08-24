@@ -173,6 +173,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
           "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
         ],
+        "expiration_date": "2033-08-23T15:23:17Z",
         "key_opts": [
           "decrypt",
           "encrypt",
@@ -191,6 +192,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
           "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
         ],
+        "expiration_date": "2033-08-23T15:23:17Z",
         "key_opts": [
           "encrypt",
           "decrypt",
@@ -207,20 +209,23 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
     },
     "azurerm_key_vault_secret": {
       "kv_customSecretName_69DB8BBD": {
+        "content_type": "application/x-pkcs12",
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
           "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
         ],
-        "expiration_date": "2021-12-31T23:59:59Z",
+        "expiration_date": "2033-08-23T15:23:17Z",
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
         "name": "customSecretName",
         "value": "password",
       },
       "kv_secret1_8BCF2182": {
+        "content_type": "application/x-pkcs12",
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
           "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
         ],
+        "expiration_date": "2033-08-23T15:23:17Z",
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
         "name": "secret1",
         "value": "password",

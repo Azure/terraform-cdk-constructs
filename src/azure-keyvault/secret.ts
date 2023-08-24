@@ -10,6 +10,7 @@ export interface AzureKeyVaultSecretProps {
   name: string;
   value: string;
   expirationDate?: string;
+  contentType?: string;
   accessPolicies: AzureKeyVaultPolicy[];
 }
 
@@ -23,6 +24,7 @@ export class AzureKeyVaultSecret extends Construct {
         keyVaultId: props.keyVaultId.id,
         name: props.name,
         value: props.value,
+        contentType: props.contentType,
         expirationDate: props.expirationDate,
       });
 

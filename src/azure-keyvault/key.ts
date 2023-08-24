@@ -32,8 +32,10 @@ export interface AzureKeyVaultKeyProps {
      */
     readonly rotationPolicy?: KeyVaultKeyRotationPolicy;
 
-
-   
+    /**
+     * Expiration date of the key. Format: UTC, YYYY-MM-DDTHH:MM:SSZ.
+    */
+    readonly expires?: string;
 
     accessPolicies: AzureKeyVaultPolicy[];
 }
@@ -51,6 +53,7 @@ export class AzureKeyVaultKey extends Construct {
         keySize: props.keySize,
         keyOpts: props.keyOpts,
         rotationPolicy: props.rotationPolicy,
+        expirationDate: props.expires,
 
       });
 

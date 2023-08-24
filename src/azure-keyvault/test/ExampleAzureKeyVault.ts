@@ -49,12 +49,12 @@ export class exampleAzureKeyVault extends TerraformStack {
     });
 
     // Create Secret
-    azureKeyVault.addSecret('secret1', "password");
-    azureKeyVault.addSecret('customSecretName', "password", '2021-12-31T23:59:59Z');
+    azureKeyVault.addSecret('secret1', "password", '2033-08-23T15:23:17Z', "application/x-pkcs12");
+    azureKeyVault.addSecret('customSecretName', "password", '2033-08-23T15:23:17Z', "application/x-pkcs12");
 
     // Create Key
-    azureKeyVault.addRSAKey('key1');
-    azureKeyVault.addKey('key2', 'RSA', 2048,['encrypt', 'decrypt', 'sign', 'verify', 'wrapKey', 'unwrapKey']);
+    azureKeyVault.addRSAKey('key1', '2033-08-23T15:23:17Z');
+    azureKeyVault.addKey('key2', 'RSA', 2048,['encrypt', 'decrypt', 'sign', 'verify', 'wrapKey', 'unwrapKey'], '2033-08-23T15:23:17Z');
 
     // Create Certificate
     azureKeyVault.addSelfSignedCert('cert1', 'CN=contoso.com', ["internal.contoso.com", "domain.hello.world"]);
