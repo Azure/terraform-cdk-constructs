@@ -1,5 +1,5 @@
 import * as cdktf from "cdktf";
-import { Network } from '..';
+import { AzureVirtualNetwork } from '..';
 import { App, TerraformStack} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
@@ -8,7 +8,7 @@ import { Construct } from 'constructs';
 
 const app = new App();
 
-export class exampleAzureNetwork extends TerraformStack {
+export class exampleAzureVirtualNetwork extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -22,7 +22,7 @@ export class exampleAzureNetwork extends TerraformStack {
 
     });
 
-    const network = new Network(this, 'testAzureNetworkDefaults', {
+    const network = new AzureVirtualNetwork(this, 'testAzureVirtualNetworkDefaults', {
       name: "vnet-test",
       location: 'eastus',
       resourceGroupName: resourceGroup.name,
@@ -62,6 +62,6 @@ export class exampleAzureNetwork extends TerraformStack {
 }
 
 
-new exampleAzureNetwork(app, "testAzureNetwork");
+new exampleAzureVirtualNetwork(app, "testAzureVirtualNetwork");
 
 app.synth();

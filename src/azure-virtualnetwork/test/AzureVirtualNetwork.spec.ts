@@ -1,10 +1,10 @@
 import { Testing, TerraformStack} from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
-import { Network } from '..';
+import { AzureVirtualNetwork } from '..';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
-import { exampleAzureNetwork } from './ExampleAzureNetwork';
+import { exampleAzureVirtualNetwork } from './ExampleAzureVirtualNetwork';
 
-describe('Azure Network With Defaults', () => {
+describe('Azure Virtual Network With Defaults', () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
 
@@ -13,7 +13,7 @@ describe('Azure Network With Defaults', () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
-    new Network(stack, 'testAzureNetworkDefaults', {
+    new AzureVirtualNetwork(stack, 'testAzureVirtualNetworkDefaults', {
       name: "vnet-test",
       location: 'eastus',
       resourceGroupName: "rg-test",
@@ -33,7 +33,7 @@ describe('Azure Network With Defaults', () => {
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });
 
-  it("renders an Azure Network with defaults and checks snapshot", () => {
+  it("renders an Azure Virtual Network with defaults and checks snapshot", () => {
     expect(
       Testing.synth(stack)
     ).toMatchSnapshot(); // Compare the already prepared stack
@@ -49,25 +49,25 @@ describe('Azure Network With Defaults', () => {
 });
 
 
-describe('Azure Network Example', () => {
+describe('Azure Virtual Network Example', () => {
   
-  it("renders the Example Azure Network and checks snapshot", () => {
+  it("renders the Example Azure Virtual Network and checks snapshot", () => {
   
     expect(
-      Testing.synth(new exampleAzureNetwork(Testing.app(), "testAzureApplicationInsights"))
+      Testing.synth(new exampleAzureVirtualNetwork(Testing.app(), "testAzureVirtualNetwork"))
       
     ).toMatchSnapshot();
 });
 
   it("check if the produced terraform configuration is valid", () => {
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureNetwork(Testing.app(), "testAzureNetwork"))).toBeValidTerraform();
+    expect(Testing.fullSynth(new exampleAzureVirtualNetwork(Testing.app(), "testAzureVirtualNetwork"))).toBeValidTerraform();
   });
 
   it("check if this can be planned", () => {
   
     
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureNetwork(Testing.app(), "testAzureNetwork"))).toPlanSuccessfully();
+    expect(Testing.fullSynth(new exampleAzureVirtualNetwork(Testing.app(), "testAzureVirtualNetwork"))).toPlanSuccessfully();
   });
 });

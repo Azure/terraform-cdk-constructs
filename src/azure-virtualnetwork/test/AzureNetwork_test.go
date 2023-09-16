@@ -14,11 +14,11 @@ import (
 )
 
 // An example of how to test the Terraform module in examples/terraform-azure-example using Terratest.
-func TestTerraformCDKAzureNetworkExample(t *testing.T) {
+func TestTerraformCDKAzureVirtualNetworkExample(t *testing.T) {
 	t.Parallel()
 
-	stack_dir := "../../../cdktf.out/stacks/testAzureNetwork"
-	example_file := "./src/azure-network/test/ExampleAzureNetwork.ts"
+	stack_dir := "../../../cdktf.out/stacks/testAzureVirtualNetwork"
+	example_file := "./src/azure-virtualnetwork/test/ExampleAzureVirtualNetwork.ts"
 
 	// subscriptionID is overridden by the environment variable "ARM_SUBSCRIPTION_ID"
 	subscriptionID := util.GetSubscriptionID()

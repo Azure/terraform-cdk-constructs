@@ -10,7 +10,7 @@ interface SubnetConfig {
     addressPrefixes: string[];
   }
 
-interface NetworkProps {
+interface AzureVirtualNetworkProps {
     resourceGroupName: string;
     name: string;
     location: string;
@@ -18,14 +18,14 @@ interface NetworkProps {
     subnets: SubnetConfig[];
   }
   
-export class Network extends Construct {
-    readonly props: NetworkProps;
+export class AzureVirtualNetwork extends Construct {
+    readonly props: AzureVirtualNetworkProps;
     public readonly name: string;
     public readonly subnetNames: string[];
     public readonly subnetIds: string[] = [];
     
   
-    constructor(scope: Construct, id: string, props: NetworkProps) {
+    constructor(scope: Construct, id: string, props: AzureVirtualNetworkProps) {
         super(scope, id);
 
         this.props = props;
