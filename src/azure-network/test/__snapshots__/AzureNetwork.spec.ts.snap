@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Azure Network Example renders the Example Azure Network and checks snapshot 1`] = `
+"{
+  "output": {
+    "resource_group_name": {
+      "value": "\${azurerm_resource_group.rg.name}"
+    },
+    "subnet_name": {
+      "value": "subnet1"
+    },
+    "virtual_network_name": {
+      "value": "\${azurerm_virtual_network.testAzureNetworkDefaults_MyVNet_C7E675FC.name}"
+    }
+  },
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_resource_group": {
+      "rg": {
+        "location": "eastus",
+        "name": "rg-test"
+      }
+    },
+    "azurerm_subnet": {
+      "testAzureNetworkDefaults_subnet1_46F132DB": {
+        "address_prefixes": [
+          "10.0.1.0/24"
+        ],
+        "name": "subnet1",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "virtual_network_name": "\${azurerm_virtual_network.testAzureNetworkDefaults_MyVNet_C7E675FC.name}"
+      },
+      "testAzureNetworkDefaults_subnet2_50A4C6B7": {
+        "address_prefixes": [
+          "10.0.2.0/24"
+        ],
+        "name": "subnet2",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "virtual_network_name": "\${azurerm_virtual_network.testAzureNetworkDefaults_MyVNet_C7E675FC.name}"
+      }
+    },
+    "azurerm_virtual_network": {
+      "testAzureNetworkDefaults_MyVNet_C7E675FC": {
+        "address_space": [
+          "10.0.0.0/16"
+        ],
+        "location": "eastus",
+        "name": "vnet-test",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}"
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.66.0"
+      }
+    }
+  }
+}"
+`;
+
+exports[`Azure Network With Defaults renders an Azure Network with defaults and checks snapshot 1`] = `
+"{
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_subnet": {
+      "testAzureNetworkDefaults_subnet1_46F132DB": {
+        "address_prefixes": [
+          "10.0.1.0/24"
+        ],
+        "name": "subnet1",
+        "resource_group_name": "rg-test",
+        "virtual_network_name": "\${azurerm_virtual_network.testAzureNetworkDefaults_MyVNet_C7E675FC.name}"
+      },
+      "testAzureNetworkDefaults_subnet2_50A4C6B7": {
+        "address_prefixes": [
+          "10.0.2.0/24"
+        ],
+        "name": "subnet2",
+        "resource_group_name": "rg-test",
+        "virtual_network_name": "\${azurerm_virtual_network.testAzureNetworkDefaults_MyVNet_C7E675FC.name}"
+      }
+    },
+    "azurerm_virtual_network": {
+      "testAzureNetworkDefaults_MyVNet_C7E675FC": {
+        "address_space": [
+          "10.0.0.0/16"
+        ],
+        "location": "eastus",
+        "name": "vnet-test",
+        "resource_group_name": "rg-test"
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.66.0"
+      }
+    }
+  }
+}"
+`;
