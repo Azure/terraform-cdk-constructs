@@ -71,7 +71,7 @@ export class exampleAzureVirtualNetwork extends TerraformStack {
     });
    
     const cdktfTerraformOutputSnetName = new cdktf.TerraformOutput(this, "subnet_name", {
-      value: network.subnetNames[0],
+      value: network.subnets["subnet1"].name,
     });
 
     cdktfTerraformOutputVnetName.overrideLogicalId("virtual_network_name");

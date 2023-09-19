@@ -24,15 +24,15 @@ export class AzureVirtualNetwork extends Construct {
     public readonly name: string;
     public readonly resourceGroupName: string;
     public readonly id: string;
-    public readonly subnetNames: string[];
-    public readonly subnetIds: string[] = [];
+    public readonly virtualNetwork: VirtualNetwork;
+    public readonly subnets: { [name: string]: Subnet } = {}; // Map of subnet name to Subnet object
+
     
   
     constructor(scope: Construct, id: string, props: AzureVirtualNetworkProps) {
         super(scope, id);
 
         this.props = props;
-        this.subnetNames = props.subnets.map(subnet => subnet.name);
         
 
         // Create a virtual network
@@ -46,6 +46,7 @@ export class AzureVirtualNetwork extends Construct {
         this.name = vnet.name;
         this.id = vnet.id
         this.resourceGroupName = vnet.resourceGroupName;
+        this.virtualNetwork = vnet;
     
         // Create subnets within the virtual network
         for (const subnetConfig of props.subnets) {
@@ -56,7 +57,8 @@ export class AzureVirtualNetwork extends Construct {
                 addressPrefixes: subnetConfig.addressPrefixes,
             });
 
-            this.subnetIds.push(subnet.id);
+            this.subnets[subnetConfig.name] = subnet; // Populate the subnetsMap
+
         };
     }
 
