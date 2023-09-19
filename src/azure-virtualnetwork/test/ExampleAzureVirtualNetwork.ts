@@ -39,6 +39,25 @@ export class exampleAzureVirtualNetwork extends TerraformStack {
       ],
     });
 
+    const remotenetwork = new AzureVirtualNetwork(this, 'testAzureRemoteVirtualNetworkDefaults', {
+      name: "vnet-test2",
+      location: 'westus',
+      resourceGroupName: resourceGroup.name,
+      addressSpace: ["10.1.0.0/16"],
+      subnets: [
+        {
+          name: "subnet1",
+          addressPrefixes: ["10.1.1.0/24"],
+        },
+        {
+          name: "subnet2",
+          addressPrefixes: ["10.1.2.0/24"],
+        },
+      ],
+    });
+
+    // Peer the networks
+    network.addVnetPeering(remotenetwork)
 
 
 

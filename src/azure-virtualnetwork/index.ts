@@ -2,6 +2,7 @@
 import { Construct } from 'constructs';
 import {VirtualNetwork} from "@cdktf/provider-azurerm/lib/virtual-network";
 import {Subnet} from "@cdktf/provider-azurerm/lib/subnet";
+import {VirtualNetworkPeerProps, AzureVirtualNetworkPeer, PeerSettings} from "./peering"
 
 
 // Define the interface for the network configuration
@@ -21,6 +22,8 @@ interface AzureVirtualNetworkProps {
 export class AzureVirtualNetwork extends Construct {
     readonly props: AzureVirtualNetworkProps;
     public readonly name: string;
+    public readonly resourceGroupName: string;
+    public readonly id: string;
     public readonly subnetNames: string[];
     public readonly subnetIds: string[] = [];
     
@@ -30,6 +33,7 @@ export class AzureVirtualNetwork extends Construct {
 
         this.props = props;
         this.subnetNames = props.subnets.map(subnet => subnet.name);
+        
 
         // Create a virtual network
         const vnet = new VirtualNetwork(this, 'MyVNet', {
@@ -40,6 +44,8 @@ export class AzureVirtualNetwork extends Construct {
         });
 
         this.name = vnet.name;
+        this.id = vnet.id
+        this.resourceGroupName = vnet.resourceGroupName;
     
         // Create subnets within the virtual network
         for (const subnetConfig of props.subnets) {
@@ -52,8 +58,17 @@ export class AzureVirtualNetwork extends Construct {
 
             this.subnetIds.push(subnet.id);
         };
-
-        // Assuming the Subnet class has an 'id' property that provides the ID of the created subnet
-        
     }
+
+    // Create Vnet Peering Method
+    public addVnetPeering(remoteVirtualNetwork: AzureVirtualNetwork, localPeerSettings?: PeerSettings, remotePeerSettings?: PeerSettings) {
+        const vnetPeerProps: VirtualNetworkPeerProps = {
+            virtualNetwork: this,
+            remoteVirtualNetwork: remoteVirtualNetwork,
+            localToRemoteSettings:localPeerSettings,
+            remoteToLocalSettings: remotePeerSettings,
+        };
+        new AzureVirtualNetworkPeer(this, remoteVirtualNetwork.id, vnetPeerProps);
+    }
+
 }
