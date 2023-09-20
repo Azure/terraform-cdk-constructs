@@ -60,10 +60,9 @@ export class exampleAzureNetworkSecurityGroup extends TerraformStack {
                 protocol: 'Tcp',
                 sourcePortRange: '*',
                 destinationPortRange: '22',
-                sourceAddressPrefix: '*',
-                destinationAddressPrefix: '*'
+                sourceAddressPrefix: '10.23.15.38',
+                destinationAddressPrefix: 'VirtualNetwork'
             },
-            PreconfiguredRules.HTTPS,
             PreconfiguredRules.addPriority(PreconfiguredRules.Redis, 888),
             PreconfiguredRules.addDestinationAddress(PreconfiguredRules.RDP, "10.0.0.0/24"),
         ],
