@@ -7,10 +7,10 @@ exports[`Azure Virtual Network Example renders the Example Azure Virtual Network
       "value": "\${azurerm_resource_group.rg.name}"
     },
     "subnet_name": {
-      "value": "subnet1"
+      "value": "\${azurerm_subnet.testAzureVirtualNetworkDefaults_subnet1_2DB834E8.name}"
     },
     "virtual_network_name": {
-      "value": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_MyVNet_290AB01C.name}"
+      "value": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.name}"
     }
   },
   "provider": {
@@ -35,7 +35,7 @@ exports[`Azure Virtual Network Example renders the Example Azure Virtual Network
         ],
         "name": "subnet1",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
-        "virtual_network_name": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_MyVNet_9A9B97DE.name}"
+        "virtual_network_name": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_vnet-test2_7764507C.name}"
       },
       "testAzureRemoteVirtualNetworkDefaults_subnet2_5C103062": {
         "address_prefixes": [
@@ -43,7 +43,7 @@ exports[`Azure Virtual Network Example renders the Example Azure Virtual Network
         ],
         "name": "subnet2",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
-        "virtual_network_name": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_MyVNet_9A9B97DE.name}"
+        "virtual_network_name": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_vnet-test2_7764507C.name}"
       },
       "testAzureVirtualNetworkDefaults_subnet1_2DB834E8": {
         "address_prefixes": [
@@ -51,7 +51,7 @@ exports[`Azure Virtual Network Example renders the Example Azure Virtual Network
         ],
         "name": "subnet1",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
-        "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_MyVNet_290AB01C.name}"
+        "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.name}"
       },
       "testAzureVirtualNetworkDefaults_subnet2_5D8D2CC1": {
         "address_prefixes": [
@@ -59,11 +59,11 @@ exports[`Azure Virtual Network Example renders the Example Azure Virtual Network
         ],
         "name": "subnet2",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
-        "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_MyVNet_290AB01C.name}"
+        "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.name}"
       }
     },
     "azurerm_virtual_network": {
-      "testAzureRemoteVirtualNetworkDefaults_MyVNet_9A9B97DE": {
+      "testAzureRemoteVirtualNetworkDefaults_vnet-test2_7764507C": {
         "address_space": [
           "10.1.0.0/16"
         ],
@@ -71,7 +71,7 @@ exports[`Azure Virtual Network Example renders the Example Azure Virtual Network
         "name": "vnet-test2",
         "resource_group_name": "\${azurerm_resource_group.rg.name}"
       },
-      "testAzureVirtualNetworkDefaults_MyVNet_290AB01C": {
+      "testAzureVirtualNetworkDefaults_vnet-test_F01D7E78": {
         "address_space": [
           "10.0.0.0/16"
         ],
@@ -81,17 +81,17 @@ exports[`Azure Virtual Network Example renders the Example Azure Virtual Network
       }
     },
     "azurerm_virtual_network_peering": {
-      "testAzureVirtualNetworkDefaults_TfTokenTOKEN48_VNetPeerLocaltoRemote_CEA54D8B": {
-        "name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_MyVNet_290AB01C.name}to\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_MyVNet_9A9B97DE.name}",
-        "remote_virtual_network_id": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_MyVNet_9A9B97DE.id}",
-        "resource_group_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_MyVNet_290AB01C.resource_group_name}",
-        "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_MyVNet_290AB01C.name}"
+      "testAzureVirtualNetworkDefaults_TfTokenTOKEN37_VNetPeerLocaltoRemote_5E7B103D": {
+        "name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.name}to\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_vnet-test2_7764507C.name}",
+        "remote_virtual_network_id": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_vnet-test2_7764507C.id}",
+        "resource_group_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.resource_group_name}",
+        "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.name}"
       },
-      "testAzureVirtualNetworkDefaults_TfTokenTOKEN48_VNetPeerRemotetoLocal_0BCF90DA": {
-        "name": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_MyVNet_9A9B97DE.name}to\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_MyVNet_290AB01C.name}",
-        "remote_virtual_network_id": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_MyVNet_290AB01C.id}",
-        "resource_group_name": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_MyVNet_9A9B97DE.resource_group_name}",
-        "virtual_network_name": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_MyVNet_9A9B97DE.name}"
+      "testAzureVirtualNetworkDefaults_TfTokenTOKEN37_VNetPeerRemotetoLocal_A151AED3": {
+        "name": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_vnet-test2_7764507C.name}to\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.name}",
+        "remote_virtual_network_id": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.id}",
+        "resource_group_name": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_vnet-test2_7764507C.resource_group_name}",
+        "virtual_network_name": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_vnet-test2_7764507C.name}"
       }
     }
   },
@@ -124,7 +124,7 @@ exports[`Azure Virtual Network With Defaults renders an Azure Virtual Network wi
         ],
         "name": "subnet1",
         "resource_group_name": "rg-test",
-        "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_MyVNet_290AB01C.name}"
+        "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.name}"
       },
       "testAzureVirtualNetworkDefaults_subnet2_5D8D2CC1": {
         "address_prefixes": [
@@ -132,11 +132,11 @@ exports[`Azure Virtual Network With Defaults renders an Azure Virtual Network wi
         ],
         "name": "subnet2",
         "resource_group_name": "rg-test",
-        "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_MyVNet_290AB01C.name}"
+        "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.name}"
       }
     },
     "azurerm_virtual_network": {
-      "testAzureVirtualNetworkDefaults_MyVNet_290AB01C": {
+      "testAzureVirtualNetworkDefaults_vnet-test_F01D7E78": {
         "address_space": [
           "10.0.0.0/16"
         ],

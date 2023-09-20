@@ -1,6 +1,6 @@
 import { Testing, TerraformStack} from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
-import { AzureVirtualNetwork } from '..';
+import { AzureVirtualNetwork } from '../index';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { exampleAzureVirtualNetwork } from './ExampleAzureVirtualNetwork';
 
