@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Azure Network Security Group Example renders the Example Network Security Group and checks snapshot 1`] = `
+"{
+  "output": {
+    "nsg_name": {
+      "value": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.name}"
+    },
+    "resource_group_name": {
+      "value": "\${azurerm_resource_group.rg.name}"
+    },
+    "ssh_rule_name": {
+      "value": "SSH"
+    }
+  },
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_network_security_group": {
+      "nsg_my-nsg_3DA143E1": {
+        "location": "eastus",
+        "name": "my-nsg",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}"
+      }
+    },
+    "azurerm_network_security_rule": {
+      "nsg_HTTPS_AE79C824": {
+        "access": "Allow",
+        "destination_address_prefix": "*",
+        "destination_port_range": "443",
+        "direction": "Inbound",
+        "name": "HTTPS",
+        "network_security_group_name": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.name}",
+        "priority": 515,
+        "protocol": "Tcp",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "source_address_prefix": "*",
+        "source_port_range": "*"
+      },
+      "nsg_RDP_802FDDEB": {
+        "access": "Allow",
+        "destination_address_prefix": "10.0.0.0/24",
+        "destination_port_range": "3389",
+        "direction": "Inbound",
+        "name": "RDP",
+        "network_security_group_name": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.name}",
+        "priority": 505,
+        "protocol": "Tcp",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "source_address_prefix": "*",
+        "source_port_range": "*"
+      },
+      "nsg_Redis_FB8E5D6D": {
+        "access": "Allow",
+        "destination_address_prefix": "*",
+        "destination_port_range": "6379",
+        "direction": "Inbound",
+        "name": "Redis",
+        "network_security_group_name": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.name}",
+        "priority": 888,
+        "protocol": "Tcp",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "source_address_prefix": "*",
+        "source_port_range": "*"
+      },
+      "nsg_SSH_56EE6BE4": {
+        "access": "Allow",
+        "destination_address_prefix": "*",
+        "destination_port_range": "22",
+        "direction": "Inbound",
+        "name": "SSH",
+        "network_security_group_name": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.name}",
+        "priority": 1001,
+        "protocol": "Tcp",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "source_address_prefix": "*",
+        "source_port_range": "*"
+      }
+    },
+    "azurerm_resource_group": {
+      "rg": {
+        "location": "eastus",
+        "name": "rg-test"
+      }
+    },
+    "azurerm_subnet": {
+      "subnet1": {
+        "address_prefixes": [
+          "10.0.1.0/24"
+        ],
+        "name": "subnet1",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "virtual_network_name": "\${azurerm_virtual_network.vnet.name}"
+      },
+      "subnet2": {
+        "address_prefixes": [
+          "10.0.2.0/24"
+        ],
+        "name": "subnet2",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "virtual_network_name": "\${azurerm_virtual_network.vnet.name}"
+      }
+    },
+    "azurerm_subnet_network_security_group_association": {
+      "nsg_TfTokenTOKEN40_subassociation_138E50DA": {
+        "network_security_group_id": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.id}",
+        "subnet_id": "\${azurerm_subnet.subnet1.id}"
+      },
+      "nsg_TfTokenTOKEN42_subassociation_5802E6A3": {
+        "network_security_group_id": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.id}",
+        "subnet_id": "\${azurerm_subnet.subnet2.id}"
+      }
+    },
+    "azurerm_virtual_network": {
+      "vnet": {
+        "address_space": [
+          "10.0.0.0/16"
+        ],
+        "location": "\${azurerm_resource_group.rg.location}",
+        "name": "vnet-test",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}"
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.66.0"
+      }
+    }
+  }
+}"
+`;
+
+exports[`Azure Network Security Group With Defaults renders an Azure Network Security Group with defaults and checks snapshot 1`] = `
+"{
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_network_security_group": {
+      "testAzureNetworkSecurityGroupDefaults_my-nsg_C4572744": {
+        "location": "eastus",
+        "name": "my-nsg",
+        "resource_group_name": "rgtest"
+      }
+    },
+    "azurerm_network_security_rule": {
+      "testAzureNetworkSecurityGroupDefaults_SSH_B74D5EF3": {
+        "access": "Allow",
+        "destination_address_prefix": "*",
+        "destination_port_range": "22",
+        "direction": "Inbound",
+        "name": "SSH",
+        "network_security_group_name": "\${azurerm_network_security_group.testAzureNetworkSecurityGroupDefaults_my-nsg_C4572744.name}",
+        "priority": 501,
+        "protocol": "Tcp",
+        "resource_group_name": "rgtest",
+        "source_address_prefix": "*",
+        "source_port_range": "*"
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.66.0"
+      }
+    }
+  }
+}"
+`;
