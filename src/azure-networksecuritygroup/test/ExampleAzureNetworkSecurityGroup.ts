@@ -63,8 +63,7 @@ export class exampleAzureNetworkSecurityGroup extends TerraformStack {
                 sourceAddressPrefix: '10.23.15.38',
                 destinationAddressPrefix: 'VirtualNetwork'
             },
-            PreconfiguredRules.addPriority(PreconfiguredRules.Redis, 888),
-            PreconfiguredRules.addDestinationAddress(PreconfiguredRules.RDP, "10.0.0.0/24"),
+            PreconfiguredRules.addSourceAddress(PreconfiguredRules.RDP, "10.0.0.0/24"),
         ],
     });
 

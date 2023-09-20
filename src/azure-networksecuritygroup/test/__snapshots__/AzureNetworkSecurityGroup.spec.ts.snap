@@ -32,7 +32,7 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
     "azurerm_network_security_rule": {
       "nsg_RDP_802FDDEB": {
         "access": "Allow",
-        "destination_address_prefix": "10.0.0.0/24",
+        "destination_address_prefix": "*",
         "destination_port_range": "3389",
         "direction": "Inbound",
         "name": "RDP",
@@ -40,20 +40,7 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
         "priority": 505,
         "protocol": "Tcp",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
-        "source_address_prefix": "*",
-        "source_port_range": "*"
-      },
-      "nsg_Redis_FB8E5D6D": {
-        "access": "Allow",
-        "destination_address_prefix": "*",
-        "destination_port_range": "6379",
-        "direction": "Inbound",
-        "name": "Redis",
-        "network_security_group_name": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.name}",
-        "priority": 888,
-        "protocol": "Tcp",
-        "resource_group_name": "\${azurerm_resource_group.rg.name}",
-        "source_address_prefix": "*",
+        "source_address_prefix": "10.0.0.0/24",
         "source_port_range": "*"
       },
       "nsg_SSH_56EE6BE4": {
@@ -95,11 +82,11 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
       }
     },
     "azurerm_subnet_network_security_group_association": {
-      "nsg_TfTokenTOKEN38_subassociation_A605BE6F": {
+      "nsg_TfTokenTOKEN36_subassociation_1654316F": {
         "network_security_group_id": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.id}",
         "subnet_id": "\${azurerm_subnet.subnet1.id}"
       },
-      "nsg_TfTokenTOKEN40_subassociation_138E50DA": {
+      "nsg_TfTokenTOKEN38_subassociation_A605BE6F": {
         "network_security_group_id": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.id}",
         "subnet_id": "\${azurerm_subnet.subnet2.id}"
       }
