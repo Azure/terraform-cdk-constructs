@@ -81,13 +81,13 @@ exports[`Azure Virtual Network Example renders the Example Azure Virtual Network
       }
     },
     "azurerm_virtual_network_peering": {
-      "testAzureVirtualNetworkDefaults_TfTokenTOKEN37_VNetPeerLocaltoRemote_5E7B103D": {
+      "testAzureVirtualNetworkDefaults_TfTokenTOKEN34_VNetPeerLocaltoRemote_622AB8CB": {
         "name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.name}to\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_vnet-test2_7764507C.name}",
         "remote_virtual_network_id": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_vnet-test2_7764507C.id}",
         "resource_group_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.resource_group_name}",
         "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.name}"
       },
-      "testAzureVirtualNetworkDefaults_TfTokenTOKEN37_VNetPeerRemotetoLocal_A151AED3": {
+      "testAzureVirtualNetworkDefaults_TfTokenTOKEN34_VNetPeerRemotetoLocal_17D4A112": {
         "name": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_vnet-test2_7764507C.name}to\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.name}",
         "remote_virtual_network_id": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.id}",
         "resource_group_name": "\${azurerm_virtual_network.testAzureRemoteVirtualNetworkDefaults_vnet-test2_7764507C.resource_group_name}",
@@ -118,19 +118,11 @@ exports[`Azure Virtual Network With Defaults renders an Azure Virtual Network wi
   },
   "resource": {
     "azurerm_subnet": {
-      "testAzureVirtualNetworkDefaults_subnet1_2DB834E8": {
+      "testAzureVirtualNetworkDefaults_default_85452F83": {
         "address_prefixes": [
-          "10.0.1.0/24"
+          "10.1.0.0/24"
         ],
-        "name": "subnet1",
-        "resource_group_name": "rg-test",
-        "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.name}"
-      },
-      "testAzureVirtualNetworkDefaults_subnet2_5D8D2CC1": {
-        "address_prefixes": [
-          "10.0.2.0/24"
-        ],
-        "name": "subnet2",
+        "name": "default",
         "resource_group_name": "rg-test",
         "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet-test_F01D7E78.name}"
       }
