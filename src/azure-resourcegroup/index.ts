@@ -10,11 +10,11 @@ export interface ResourceGroupProps {
   /**
    * The Azure Region to deploy.
    */
-  readonly location: string;
+  readonly location?: string;
   /**
    * The name of the Azure Resource Group.
    */
-  readonly name: string;
+  readonly name?: string;
   /**
   * The RBAC groups to assign to the Resource Group.
   */
@@ -36,14 +36,18 @@ export class AzureResourceGroup extends Construct {
   LocationOutput: cdktf.TerraformOutput
   NameOutput: cdktf.TerraformOutput
 
-  constructor(scope: Construct, id: string, props: ResourceGroupProps) {
+  constructor(scope: Construct, id: string, props: ResourceGroupProps={}) {
     super(scope, id);
 
     this.props = props;;
 
+    const defaults = {
+      name: props.name || `rg-${this.node.path.split("/")[0]}`,
+      location: props.location || "eastus",
+    }
+
     const azurermResourceGroupRg = new ResourceGroup(this, "rg", {
-      location: props.location,
-      name: props.name,
+      ...defaults,
       tags: props.tags,
     });
 

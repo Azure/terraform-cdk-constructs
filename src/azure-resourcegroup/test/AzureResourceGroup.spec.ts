@@ -13,11 +13,7 @@ describe('Resource Group With Defaults', () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
-    new AzureResourceGroup(stack, 'testRG', {
-      name: `rg-test`,
-      location: 'eastus',
-      
-    });
+    new AzureResourceGroup(stack, 'testRG');
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });
