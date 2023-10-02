@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Azure Virtual Machine With Defaults renders an Azure Network Security Group with defaults and checks snapshot 1`] = `
+"{
+  "output": {
+    "vm_id": {
+      "value": "\${azurerm_windows_virtual_machine.testVirtualMachine_vm_3FD746F5.id}"
+    }
+  },
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_network_interface": {
+      "testVirtualMachine_nic_45477852": {
+        "ip_configuration": [
+          {
+            "name": "internal",
+            "private_ip_address_allocation": "Dynamic",
+            "subnet_id": "\${azurerm_subnet.testVirtualMachine_vnet_default_4A281376.id}"
+          }
+        ],
+        "location": "eastus",
+        "name": "nic-testAzureVMWithDefaults",
+        "resource_group_name": "testResourceGroup"
+      }
+    },
+    "azurerm_subnet": {
+      "testVirtualMachine_vnet_default_4A281376": {
+        "address_prefixes": [
+          "10.1.0.0/24"
+        ],
+        "name": "default",
+        "resource_group_name": "testResourceGroup",
+        "virtual_network_name": "\${azurerm_virtual_network.testVirtualMachine_vnet_vnet-testAzureVMWithDefaults_B2341822.name}"
+      }
+    },
+    "azurerm_virtual_network": {
+      "testVirtualMachine_vnet_vnet-testAzureVMWithDefaults_B2341822": {
+        "address_space": [
+          "10.0.0.0/16"
+        ],
+        "location": "eastus",
+        "name": "vnet-testAzureVMWithDefaults",
+        "resource_group_name": "testResourceGroup"
+      }
+    },
+    "azurerm_windows_virtual_machine": {
+      "testVirtualMachine_vm_3FD746F5": {
+        "admin_password": "testPassword&@34$$123",
+        "admin_username": "testAdmin",
+        "location": "eastus",
+        "name": "testAzureVMWithDefaults",
+        "network_interface_ids": [
+          "\${azurerm_network_interface.testVirtualMachine_nic_45477852.id}"
+        ],
+        "os_disk": {
+          "caching": "ReadWrite",
+          "storage_account_type": "Standard_LRS"
+        },
+        "resource_group_name": "testResourceGroup",
+        "size": "Standard_B2s",
+        "source_image_reference": {
+          "offer": "WindowsServer",
+          "publisher": "MicrosoftWindowsServer",
+          "sku": "2022-Datacenter-Core",
+          "version": "latest"
+        }
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.66.0"
+      }
+    }
+  }
+}"
+`;
