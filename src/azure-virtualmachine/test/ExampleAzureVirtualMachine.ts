@@ -1,5 +1,5 @@
 import * as cdktf from "cdktf";
-import { AzureVirtualMachine } from '..';
+import { AzureWindowsVirtualMachine } from '..';
 import {VirtualNetwork} from "@cdktf/provider-azurerm/lib/virtual-network";
 import {Subnet} from "@cdktf/provider-azurerm/lib/subnet";
 import { App, TerraformStack} from "cdktf";
@@ -41,7 +41,7 @@ export class exampleAzureVirtualMachine extends TerraformStack {
 
     
 
-    const vm = new AzureVirtualMachine(this, 'vm', {
+    const vm = new AzureWindowsVirtualMachine(this, 'vm', {
       name: 'my-vm',
       location: "eastus",
       resource_group_name: resourceGroup.name,
@@ -59,8 +59,9 @@ export class exampleAzureVirtualMachine extends TerraformStack {
         version: "latest"
       },
       subnet: subnet,
+      publicIPAllocationMethod: "Static",
+      boostrapCustomData: "Install-WindowsFeature -Name Web-Server; $website = '<h1>Hello World!</h1>'; Set-Content \"C:\\inetpub\\wwwroot\\iisstart.htm\" $website",
     });
-
 
 
     // Outputs to use for End to End Test
@@ -75,11 +76,16 @@ export class exampleAzureVirtualMachine extends TerraformStack {
     const cdktfTerraformOutputVmsize = new cdktf.TerraformOutput(this, "vm_size", {
       value: "Standard_B1s",
     });
+
+    const cdktfTerraformOutputVmEndpoint = new cdktf.TerraformOutput(this, "vm_endpoint", {
+      value:vm.publicIp,
+    });
    
 
     cdktfTerraformOutputRGName.overrideLogicalId("resource_group_name");
     cdktfTerraformOutputNsgName.overrideLogicalId("vm_name");
     cdktfTerraformOutputVmsize.overrideLogicalId("vm_size");
+    cdktfTerraformOutputVmEndpoint.overrideLogicalId("vm_endpoint");
 
   }
 }

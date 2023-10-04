@@ -1,9 +1,10 @@
 import { Testing, TerraformStack} from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
-import {AzureVirtualMachine} from '..';
+import {AzureWindowsVirtualMachine} from '..';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
+import { exampleAzureVirtualMachine } from '../test/ExampleAzureVirtualMachine';
 
-describe('Azure Virtual Machine With Defaults', () => {
+describe('Azure Windows Virtual Machine With Defaults', () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
 
@@ -13,7 +14,7 @@ describe('Azure Virtual Machine With Defaults', () => {
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
 
-    new AzureVirtualMachine(stack, "testVirtualMachine", {
+    new AzureWindowsVirtualMachine(stack, "testVirtualMachine", {
       resource_group_name: "testResourceGroup",
       admin_username: "testAdmin",
       admin_password: "testPassword&@34$$123",
@@ -22,7 +23,7 @@ describe('Azure Virtual Machine With Defaults', () => {
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });
 
-  it("renders an Azure Network Security Group with defaults and checks snapshot", () => {
+  it("renders an Azure Windows Virtual Machine with defaults and checks snapshot", () => {
     expect(
       Testing.synth(stack)
     ).toMatchSnapshot(); // Compare the already prepared stack
@@ -38,26 +39,25 @@ describe('Azure Virtual Machine With Defaults', () => {
 });
 
 
-
-// describe('Azure Network Security Group Example', () => {
+describe('Azure Windows Virtual Machine Example', () => {
   
-//   it("renders the Example Network Security Group and checks snapshot", () => {
+  it("renders the Azure Windows Virtual Machine and checks snapshot", () => {
   
-//     expect(
-//       Testing.synth(new exampleAzureNetworkSecurityGroup(Testing.app(), "testNetworkSecurityGroupExample"))
+    expect(
+      Testing.synth(new exampleAzureVirtualMachine(Testing.app(), "testAzureVirtualMachineExample"))
       
-//     ).toMatchSnapshot();
-// });
+    ).toMatchSnapshot();
+});
 
-//   it("check if the produced terraform configuration is valid", () => {
-//     // We need to do a full synth to plan the terraform configuration
-//     expect(Testing.fullSynth(new exampleAzureNetworkSecurityGroup(Testing.app(), "testNetworkSecurityGroupExample"))).toBeValidTerraform();
-//   });
+  it("check if the produced terraform configuration is valid", () => {
+    // We need to do a full synth to plan the terraform configuration
+    expect(Testing.fullSynth(new exampleAzureVirtualMachine(Testing.app(), "testAzureVirtualMachineExample"))).toBeValidTerraform();
+  });
 
-//   it("check if this can be planned", () => {
+  it("check if this can be planned", () => {
   
     
-//     // We need to do a full synth to plan the terraform configuration
-//     expect(Testing.fullSynth(new exampleAzureNetworkSecurityGroup(Testing.app(), "testNetworkSecurityGroupExample"))).toPlanSuccessfully();
-//   });
-// });
+    // We need to do a full synth to plan the terraform configuration
+    expect(Testing.fullSynth(new exampleAzureVirtualMachine(Testing.app(), "testAzureVirtualMachineExample"))).toPlanSuccessfully();
+  });
+});

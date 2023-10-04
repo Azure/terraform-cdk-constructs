@@ -1,8 +1,13 @@
 package test
 
 import (
+	"crypto/tls"
+	"fmt"
 	"os"
 	"testing"
+	"time"
+
+	http_helper "github.com/gruntwork-io/terratest/modules/http-helper"
 
 	"github.com/Azure/azure-sdk-for-go/profiles/latest/compute/mgmt/compute"
 	"github.com/microsoft/terraform-azure-cdk-modules/util"
@@ -49,9 +54,24 @@ func TestTerraformCDKAzureVirtualNetworkExample(t *testing.T) {
 	// Run `terraform output` to get the values of output variables
 	resourceGroupName := terraform.Output(t, terraformOptions, "resource_group_name")
 	virtualMachineName := terraform.Output(t, terraformOptions, "vm_name")
+	endpoint := terraform.Output(t, terraformOptions, "vm_endpoint")
+
 	expectedVMSize := compute.VirtualMachineSizeTypes(terraform.Output(t, terraformOptions, "vm_size"))
 
 	// 1. Check the VM Size directly. This strategy gets one specific property of the VM per method.
 	actualVMSize := azure.GetSizeOfVirtualMachine(t, virtualMachineName, resourceGroupName, subscriptionID)
 	assert.Equal(t, string(expectedVMSize), string(actualVMSize))
+
+	// Test the endpoint for up to 5 minutes. This will only fail if we timeout waiting for the service to return a 200
+	// response.
+	http_helper.HttpGetWithRetryWithCustomValidation(
+		t,
+		fmt.Sprintf("http://%s", endpoint),
+		&tls.Config{},
+		30,
+		10*time.Second,
+		func(statusCode int, body string) bool {
+			return statusCode == 200
+		},
+	)
 }

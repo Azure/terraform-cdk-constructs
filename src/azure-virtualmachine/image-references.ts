@@ -1,6 +1,6 @@
 import { WindowsVirtualMachineSourceImageReference } from "@cdktf/provider-azurerm/lib/windows-virtual-machine";
 
-export class ImageReferences {
+export class WindowsImageReferences {
 
     // Windows Server 2022 Datacenter
     static WindowsServer2022Datacenter: WindowsVirtualMachineSourceImageReference = {
