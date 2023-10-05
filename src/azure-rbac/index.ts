@@ -13,7 +13,7 @@ export interface AzureRbacProps {
      * To find the UUID for a role using Azure CLI, use the command:
      * `az role definition list --name "Role Name" --query "[].name" -o tsv`
      */
-    roleDefinitionUUID: string;
+    roleDefinitionUUID?: string;
 
     /**
      * The human-readable name of the Azure RBAC role, e.g., "Virtual Machine Contributor".
