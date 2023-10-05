@@ -17,6 +17,68 @@ import {WindowsImageReferences} from './image-references';
 import { AzureVirtualNetwork } from "../azure-virtualnetwork";
 import {VirtualMachineExtension} from '@cdktf/provider-azurerm/lib/virtual-machine-extension';
 import { PublicIp } from "@cdktf/provider-azurerm/lib/public-ip";
+import { AzureRbac } from '../azure-rbac';
+
+class AzureVirtualMachineBase extends Construct {
+  // Properties of the AzureVirtualMachineBase class
+
+  readonly id: string;
+
+  /**
+   * Constructs a new instance of the AzureLinuxVirtualMachine class.
+   * 
+   * @param scope - The scope in which this construct is defined.
+   * @param id - The ID of this construct.
+   * @param props - The properties for defining a Linux Virtual Machine.
+   */
+  constructor(scope: Construct, id: string) {
+    super(scope, id);
+
+  // Assigning the properties
+  this.id = id;
+
+  }
+// RBAC Access Methods
+public addVMAdminLoginAccess(objectId: string) {
+  new AzureRbac(this , objectId, {
+    objectId: objectId,
+    roleDefinitionName: 'Virtual Machine Administrator Login',
+    scope: this.id,
+  });
+}
+
+public addVMUserLoginAccess(objectId: string) {
+  new AzureRbac(this,  objectId, {
+    objectId: objectId,
+    roleDefinitionName: 'Virtual Machine User Login',
+    scope: this.id,
+  });
+}
+
+public addVMLocalLoginAccess(objectId: string) {
+  new AzureRbac(this, objectId, {
+    objectId: objectId,
+    roleDefinitionName: 'Virtual Machine Local User Login',
+    scope: this.id,
+  });
+}
+
+public addVMContributorAccess(objectId: string) {
+  new AzureRbac(this, objectId, {
+    objectId: objectId,
+    roleDefinitionName: 'Virtual Machine Contributor',
+    scope: this.id,
+  });
+}
+
+public addAccess(objectId: string, customRoleName: string) {
+  new AzureRbac(this, objectId, {
+    objectId: objectId,
+    roleDefinitionName: customRoleName,
+    scope: this.id,
+  });
+}
+}
 
 export interface WindowsVirtualMachineProps {
   /**
@@ -96,7 +158,7 @@ export interface WindowsVirtualMachineProps {
   readonly boostrapCustomData?: string;
 }
 
-export class AzureWindowsVirtualMachine extends Construct {
+export class AzureWindowsVirtualMachine extends AzureVirtualMachineBase {
   readonly props: WindowsVirtualMachineProps;
   public readonly id: string;
   public readonly name: string;
@@ -303,7 +365,7 @@ export interface LinuxVirtualMachineProps {
   readonly customData?: string;
 }
 
-export class AzureLinuxVirtualMachine extends Construct {
+export class AzureLinuxVirtualMachine extends AzureVirtualMachineBase {
   // Properties of the AzureLinuxVirtualMachine class
   readonly props: LinuxVirtualMachineProps;
   public readonly id: string;
@@ -394,3 +456,7 @@ export class AzureLinuxVirtualMachine extends Construct {
     this.name = azurermLinuxVirtualMachine.name;
   }
 }
+
+
+
+

@@ -6,6 +6,7 @@ import { App, TerraformStack} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
+import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 
 
 const app = new App();
@@ -13,6 +14,8 @@ const app = new App();
 export class exampleAzureLinuxVirtualMachine extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
+
+    const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
 
     new AzurermProvider(this, "azureFeature", {
         features: {},
@@ -62,6 +65,9 @@ export class exampleAzureLinuxVirtualMachine extends TerraformStack {
       publicIPAllocationMethod: "Static",
       userData: "#!/bin/bash\nsudo apt-get install -y apache2",
     });
+
+    vm.addVMAdminLoginAccess(clientConfig.objectId)
+    vm.addVMAdminLoginAccess("bc26a701-6acb-4117-93e0-e44054e22d60")
 
 
     // Outputs to use for End to End Test
