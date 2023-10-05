@@ -10,7 +10,7 @@ import { Construct } from 'constructs';
 
 const app = new App();
 
-export class exampleAzureVirtualMachine extends TerraformStack {
+export class exampleAzureWindowsVirtualMachine extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -44,15 +44,15 @@ export class exampleAzureVirtualMachine extends TerraformStack {
     const vm = new AzureWindowsVirtualMachine(this, 'vm', {
       name: 'my-vm',
       location: "eastus",
-      resource_group_name: resourceGroup.name,
+      resourceGroupName: resourceGroup.name,
       size: "Standard_B1s",
-      admin_username: "testadmin",
-      admin_password: "Password1234!",
-      os_disk: {
+      adminUsername: "testadmin",
+      adminPassword: "Password1234!",
+      osDisk: {
         caching: "ReadWrite",
         storageAccountType: "Standard_LRS",
       },
-      source_image_reference: {
+      sourceImageReference: {
         publisher: "MicrosoftWindowsServer",
         offer: "WindowsServer",
         sku: "2019-Datacenter",
@@ -91,6 +91,6 @@ export class exampleAzureVirtualMachine extends TerraformStack {
 }
 
 
-new exampleAzureVirtualMachine(app, "testAzureVirtualMachineExample");
+new exampleAzureWindowsVirtualMachine(app, "testAzureVirtualMachineExample");
 
 app.synth();

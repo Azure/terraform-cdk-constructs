@@ -2,7 +2,7 @@ import { Testing, TerraformStack} from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
 import {AzureWindowsVirtualMachine} from '..';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
-import { exampleAzureVirtualMachine } from '../test/ExampleAzureVirtualMachine';
+import { exampleAzureWindowsVirtualMachine } from './ExampleAzureWindowsVirtualMachine';
 
 describe('Azure Windows Virtual Machine With Defaults', () => {
   let stack: TerraformStack;
@@ -15,9 +15,9 @@ describe('Azure Windows Virtual Machine With Defaults', () => {
     new AzurermProvider(stack, "azureFeature", {features: {}});
 
     new AzureWindowsVirtualMachine(stack, "testVirtualMachine", {
-      resource_group_name: "testResourceGroup",
-      admin_username: "testAdmin",
-      admin_password: "testPassword&@34$$123",
+      resourceGroupName: "testResourceGroup",
+      adminUsername: "testAdmin",
+      adminPassword: "testPassword&@34$$123",
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
@@ -44,20 +44,20 @@ describe('Azure Windows Virtual Machine Example', () => {
   it("renders the Azure Windows Virtual Machine and checks snapshot", () => {
   
     expect(
-      Testing.synth(new exampleAzureVirtualMachine(Testing.app(), "testAzureVirtualMachineExample"))
+      Testing.synth(new exampleAzureWindowsVirtualMachine(Testing.app(), "testAzureWindowsVirtualMachineExample"))
       
     ).toMatchSnapshot();
 });
 
   it("check if the produced terraform configuration is valid", () => {
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureVirtualMachine(Testing.app(), "testAzureVirtualMachineExample"))).toBeValidTerraform();
+    expect(Testing.fullSynth(new exampleAzureWindowsVirtualMachine(Testing.app(), "testAzureWindowsVirtualMachineExample"))).toBeValidTerraform();
   });
 
   it("check if this can be planned", () => {
   
     
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureVirtualMachine(Testing.app(), "testAzureVirtualMachineExample"))).toPlanSuccessfully();
+    expect(Testing.fullSynth(new exampleAzureWindowsVirtualMachine(Testing.app(), "testAzureWindowsVirtualMachineExample"))).toPlanSuccessfully();
   });
 });

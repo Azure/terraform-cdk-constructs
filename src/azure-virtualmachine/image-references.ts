@@ -1,4 +1,6 @@
 import { WindowsVirtualMachineSourceImageReference } from "@cdktf/provider-azurerm/lib/windows-virtual-machine";
+import { LinuxVirtualMachineSourceImageReference } from "@cdktf/provider-azurerm/lib/linux-virtual-machine";
+
 
 export class WindowsImageReferences {
 
@@ -82,4 +84,56 @@ export class WindowsImageReferences {
         version: "latest"   
     };
 
+}
+
+export class LinuxImageReferences {
+
+    // Ubuntu Server 18.04 LTS
+    static UbuntuServer1804LTS: LinuxVirtualMachineSourceImageReference = {
+        publisher: "Canonical",
+        offer: "UbuntuServer",
+        sku: "18.04-LTS",
+        version: "latest",
+    };
+
+    // Ubuntu Server Jammy 22.04 LTS Gen2
+    static UbuntuServer2204LTS: LinuxVirtualMachineSourceImageReference = {
+        publisher: "Canonical",
+        offer: "0001-com-ubuntu-server-jammy",
+        sku: "22_04-lts-gen2",
+        version: "latest",
+    };
+
+    // Debian 10
+    static Debian10: LinuxVirtualMachineSourceImageReference = {
+        publisher: "Debian",
+        offer: "debian-10",
+        sku: "10",
+        version: "latest",
+    };
+
+    // Debian 11 Backports Gen2
+    static Debian11BackportsGen2: LinuxVirtualMachineSourceImageReference = {
+        publisher: "Debian",
+        offer: "debian-11",
+        sku: "11-backports-gen2",
+        version: "latest",
+    };
+
+    // CentOS 7.5
+    static CentOS75: LinuxVirtualMachineSourceImageReference = {
+        publisher: "OpenLogic",
+        offer: "CentOS",
+        sku: "7.5",
+        version: "latest",
+    };
+
+    // CentOS 8.5 Gen2
+    static CentOS85Gen2: LinuxVirtualMachineSourceImageReference = {
+        publisher: "OpenLogic",
+        offer: "CentOS",
+        sku: "8_5-gen2",
+        version: "latest",
+    };
+    
 }

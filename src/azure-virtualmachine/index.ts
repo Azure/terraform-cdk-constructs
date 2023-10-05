@@ -1,6 +1,16 @@
-//import {readFileSync } from 'fs';
+//TODO: vm admin rbac, enable aad auth for ssh, boot diag
 import { Construct } from 'constructs';
+import * as cdktf from 'cdktf';
 import { WindowsVirtualMachine, WindowsVirtualMachineOsDisk, WindowsVirtualMachineSourceImageReference } from "@cdktf/provider-azurerm/lib/windows-virtual-machine";
+import {  LinuxVirtualMachine,
+          LinuxVirtualMachineSourceImageReference, 
+          LinuxVirtualMachineOsDisk, 
+          LinuxVirtualMachineAdminSshKey, 
+          LinuxVirtualMachineBootDiagnostics, 
+          LinuxVirtualMachineIdentity, 
+          LinuxVirtualMachineSecret,
+          LinuxVirtualMachineAdditionalCapabilities } from "@cdktf/provider-azurerm/lib/linux-virtual-machine"; 
+
 import { NetworkInterface } from "@cdktf/provider-azurerm/lib/network-interface";
 import { Subnet } from "@cdktf/provider-azurerm/lib/subnet";
 import {WindowsImageReferences} from './image-references';
@@ -24,7 +34,7 @@ export interface WindowsVirtualMachineProps {
   /**
    * The name of the resource group in which the virtual machine will be created.
    */
-  readonly resource_group_name: string;
+  readonly resourceGroupName: string;
 
   /**
    * The size of the virtual machine.
@@ -35,23 +45,23 @@ export interface WindowsVirtualMachineProps {
   /**
    * The admin username for the virtual machine.
    */
-  readonly admin_username: string;
+  readonly adminUsername: string;
 
   /**
    * The admin password for the virtual machine.
    */
-  readonly admin_password: string;
+  readonly adminPassword: string;
 
   /**
    * The source image reference for the virtual machine.
    * @default - Uses WindowsServer2022DatacenterCore.
    */
-  readonly source_image_reference?: WindowsVirtualMachineSourceImageReference;
+  readonly sourceImageReference?: WindowsVirtualMachineSourceImageReference;
 
   /**
    * The ID of the source image for the virtual machine.
    */
-  readonly source_image_id?: string;
+  readonly sourceImageId?: string;
 
   /**
    * Tags to apply to the virtual machine.
@@ -62,7 +72,7 @@ export interface WindowsVirtualMachineProps {
    * The OS disk configuration for the virtual machine.
    * @default - Uses a disk with caching set to "ReadWrite" and storage account type "Standard_LRS".
    */
-  readonly os_disk?: WindowsVirtualMachineOsDisk;
+  readonly osDisk?: WindowsVirtualMachineOsDisk;
 
   /**
    * The subnet in which the virtual machine will be placed.
@@ -109,12 +119,12 @@ export class AzureWindowsVirtualMachine extends Construct {
       name: props.name || this.node.path.split("/")[0],
       location: props.location || "eastus",
       size: props.size || "Standard_B2s",
-      osDisk: props.os_disk || {
+      osDisk: props.osDisk || {
         caching: "ReadWrite",
         storageAccountType: "Standard_LRS",
       },
-      sourceImageReference: props.source_image_reference || WindowsImageReferences.WindowsServer2022DatacenterCore,
-      subnet: props.subnet || (new AzureVirtualNetwork(this, 'vnet', { resourceGroupName: props.resource_group_name, })).subnets["default"],
+      sourceImageReference: props.sourceImageReference || WindowsImageReferences.WindowsServer2022DatacenterCore,
+      subnet: props.subnet || (new AzureVirtualNetwork(this, 'vnet', { resourceGroupName: props.resourceGroupName, })).subnets["default"],
     };
 
     // Create Public IP if specified.
@@ -122,7 +132,7 @@ export class AzureWindowsVirtualMachine extends Construct {
     if (props.publicIPAllocationMethod) {
       const azurermPublicIp = new PublicIp(this, "public-ip", {
         name: `pip-${defaults.name}`,
-        resourceGroupName: props.resource_group_name,
+        resourceGroupName: props.resourceGroupName,
         location: defaults.location,
         allocationMethod: props.publicIPAllocationMethod,
         tags: props.tags,
@@ -136,7 +146,7 @@ export class AzureWindowsVirtualMachine extends Construct {
     const azurermNetworkInterface = new NetworkInterface(this, "nic", {
       ...defaults,
       name: `nic-${defaults.name}`,
-      resourceGroupName: props.resource_group_name,
+      resourceGroupName: props.resourceGroupName,
       ipConfiguration: [{
         name: "internal",
         subnetId: defaults.subnet.id,
@@ -154,12 +164,12 @@ export class AzureWindowsVirtualMachine extends Construct {
     // Create the Windows Virtual Machine.
     const azurermWindowsVirtualMachine = new WindowsVirtualMachine(this, "vm", {
       ...defaults,
-      resourceGroupName: props.resource_group_name,
-      adminUsername: props.admin_username,
-      adminPassword: props.admin_password,
+      resourceGroupName: props.resourceGroupName,
+      adminUsername: props.adminUsername,
+      adminPassword: props.adminPassword,
       tags: props.tags,
       networkInterfaceIds: [azurermNetworkInterface.id],
-      sourceImageId: props.source_image_id,
+      sourceImageId: props.sourceImageId,
       customData: base64CustomData,
     });
 
@@ -177,5 +187,210 @@ export class AzureWindowsVirtualMachine extends Construct {
         protectedSettings: "{\"commandToExecute\": \"rename  C:\\\\AzureData\\\\CustomData.bin  postdeploy.ps1 & powershell -ExecutionPolicy Unrestricted -File C:\\\\AzureData\\\\postdeploy.ps1\"}"
       });
     }
+  }
+}
+
+export interface LinuxVirtualMachineProps {
+  /**
+   * The Azure location where the virtual machine should be created.
+   * @default "eastus"
+   */
+  readonly location?: string;
+
+  /**
+   * The name of the virtual machine.
+   * @default - Uses the name derived from the construct path.
+   */
+  readonly name?: string;
+
+  /**
+   * The name of the resource group in which the virtual machine will be created.
+   */
+  readonly resourceGroupName: string;
+
+  /**
+   * The size of the virtual machine.
+   * @default "Standard_B2s"
+   */
+  readonly size?: string;
+
+  /**
+   * The ID of the availability set in which the VM should be placed.
+   */
+  readonly availabilitySetId?: string;
+
+  /**
+   * Custom data to pass to the virtual machine upon creation.
+   */
+  readonly userData?: string;
+
+  /**
+   * An array of SSH keys for the admin user.
+   */
+  readonly adminSshKey?: LinuxVirtualMachineAdminSshKey[] | cdktf.IResolvable;
+
+  /**
+   * Boot diagnostics settings for the VM.
+   */
+  readonly bootDiagnostics?: LinuxVirtualMachineBootDiagnostics;
+
+  /**
+   * The availability zone in which the VM should be placed.
+   */
+  readonly zone?: string;
+
+  /**
+   * Managed identity settings for the VM.
+   */
+  readonly identity?: LinuxVirtualMachineIdentity;
+
+  /**
+   * Additional capabilities like Ultra Disk compatibility.
+   */
+  readonly additionalCapabilities?: LinuxVirtualMachineAdditionalCapabilities;
+
+  /**
+   * An array of secrets to be passed to the VM.
+   */
+  readonly secret?: LinuxVirtualMachineSecret[];
+
+  /**
+   * The admin username for the virtual machine.
+   */
+  readonly adminUsername?: string;
+
+  /**
+   * The admin password for the virtual machine.
+   */
+  readonly adminPassword?: string;
+
+  /**
+   * The source image reference for the virtual machine.
+   * @default - Uses WindowsServer2022DatacenterCore.
+   */
+  readonly sourceImageReference?: LinuxVirtualMachineSourceImageReference;
+
+  /**
+   * The ID of the source image for the virtual machine.
+   */
+  readonly sourceImageId?: string;
+
+  /**
+   * Tags to apply to the virtual machine.
+   */
+  readonly tags?: { [key: string]: string; };
+
+  /**
+   * The OS disk configuration for the virtual machine.
+   * @default - Uses a disk with caching set to "ReadWrite" and storage account type "Standard_LRS".
+   */
+  readonly osDisk?: LinuxVirtualMachineOsDisk;
+
+  /**
+   * The subnet in which the virtual machine will be placed.
+   * @default - Uses the default subnet from a new virtual network.
+   */
+  readonly subnet?: Subnet;
+
+  /**
+   * The allocation method for the public IP.
+   */
+  readonly publicIPAllocationMethod?: string;
+
+  /**
+   * Custom data to pass to the virtual machine upon creation.
+   */
+  readonly customData?: string;
+}
+
+export class AzureLinuxVirtualMachine extends Construct {
+  // Properties of the AzureLinuxVirtualMachine class
+  readonly props: LinuxVirtualMachineProps;
+  public readonly id: string;
+  public readonly name: string;
+  public readonly publicIp?: string;
+
+  /**
+   * Constructs a new instance of the AzureLinuxVirtualMachine class.
+   * 
+   * @param scope - The scope in which this construct is defined.
+   * @param id - The ID of this construct.
+   * @param props - The properties for defining a Linux Virtual Machine.
+   */
+  constructor(scope: Construct, id: string, props: LinuxVirtualMachineProps) {
+    super(scope, id);
+
+    // Assigning the properties
+    this.props = props;
+
+    // Extracting the name from the node path
+    const pathName = this.node.path.split("/")[0];
+
+    // Setting default configurations for the virtual machine
+    const defaults = {
+      name: props.name || pathName,
+      adminUsername: props.adminUsername || `admin${pathName}`,
+      location: props.location || "eastus",
+      size: props.size || "Standard_B2s",
+      osDisk: props.osDisk || {
+        caching: "ReadWrite",
+        storageAccountType: "Standard_LRS",
+      },
+      sourceImageReference: props.sourceImageReference || WindowsImageReferences.WindowsServer2022DatacenterCore,
+      subnet: props.subnet || (new AzureVirtualNetwork(this, 'vnet', { resourceGroupName: props.resourceGroupName, })).subnets["default"],
+    };
+
+    // Create Public IP if specified
+    let publicIpId: string | undefined;
+    if (props.publicIPAllocationMethod) {
+      const azurermPublicIp = new PublicIp(this, "public-ip", {
+        name: `pip-${defaults.name}`,
+        resourceGroupName: props.resourceGroupName,
+        location: defaults.location,
+        allocationMethod: props.publicIPAllocationMethod,
+        tags: props.tags,
+      });
+
+      publicIpId = azurermPublicIp.id;
+      this.publicIp = azurermPublicIp.ipAddress;
+    }
+
+    // Create the Network Interface
+    const azurermNetworkInterface = new NetworkInterface(this, "nic", {
+      ...defaults,
+      name: `nic-${defaults.name}`,
+      resourceGroupName: props.resourceGroupName,
+      ipConfiguration: [{
+        name: "internal",
+        subnetId: defaults.subnet.id,
+        privateIpAddressAllocation: "Dynamic",
+        publicIpAddressId: publicIpId,
+      }],
+      tags: props.tags,
+    });
+
+    // Create the Linux Virtual Machine
+    const azurermLinuxVirtualMachine = new LinuxVirtualMachine(this, "vm", {
+      ...defaults,
+      resourceGroupName: props.resourceGroupName,
+      adminPassword: props.adminPassword,
+      tags: props.tags,
+      networkInterfaceIds: [azurermNetworkInterface.id],
+      sourceImageId: props.sourceImageId,
+      customData: props.customData ? Buffer.from(props.customData).toString('base64') : undefined,
+      userData: props.userData ? Buffer.from(props.userData).toString('base64') : undefined,
+      availabilitySetId: props.availabilitySetId,
+      adminSshKey: props.adminSshKey,
+      bootDiagnostics: props.bootDiagnostics,
+      zone: props.zone,
+      identity: props.identity,
+      additionalCapabilities: props.additionalCapabilities,
+      secret: props.secret,
+      disablePasswordAuthentication: props.adminPassword ? false : true,
+    });
+
+    // Assigning the VM's ID and name to the class properties
+    this.id = azurermLinuxVirtualMachine.id;
+    this.name = azurermLinuxVirtualMachine.name;
   }
 }
