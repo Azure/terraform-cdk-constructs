@@ -1,11 +1,12 @@
 import { AzureResourceGroup } from '..';
-import { App, TerraformStack} from "cdktf";
+import { App} from "cdktf";
+import {BaseTestStack} from "../../testing";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 
 const app = new App();
 
-export class exampleAzureResourceGroup extends TerraformStack {
+export class exampleAzureResourceGroup extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -14,7 +15,7 @@ export class exampleAzureResourceGroup extends TerraformStack {
     });
   
     new AzureResourceGroup(this, 'testRG', {
-      name: `rg-test`,
+      name: `rg-${this.name}`,
       location: 'eastus',
       tags: {
           name: 'test',
