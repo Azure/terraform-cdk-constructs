@@ -1,6 +1,7 @@
 import * as cdktf from "cdktf";
 import { AzureLogAnalytics } from '../';
-import { App, TerraformStack} from "cdktf";
+import { App} from "cdktf";
+import {BaseTestStack} from "../../testing";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {EventhubNamespace} from "@cdktf/provider-azurerm/lib/eventhub-namespace";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
@@ -10,7 +11,7 @@ import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurer
 
 const app = new App();
 
-export class exampleAzureLogAnalytics extends TerraformStack {
+export class exampleAzureLogAnalytics extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -23,12 +24,12 @@ export class exampleAzureLogAnalytics extends TerraformStack {
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-test`,
+      name: `rg-${this.name}`,
 
     });
 
     const namespace = new EventhubNamespace(this, 'ehns', {
-      name: 'my-namespace',
+      name: `ehns-${this.name}`,
       resourceGroupName: resourceGroup.name,
       location: resourceGroup.location,
       sku: 'Standard'
@@ -36,7 +37,7 @@ export class exampleAzureLogAnalytics extends TerraformStack {
 
 
     const logAnalyticsWorkspace = new AzureLogAnalytics(this, 'la', {
-      name: `la-test`,
+      name: `la-${this.name}`,
       location: 'eastus',
       retention: 90,
       sku: "PerGB2018",

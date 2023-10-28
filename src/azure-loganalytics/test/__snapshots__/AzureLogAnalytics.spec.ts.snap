@@ -20,7 +20,7 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
       "value": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.workspace_id}"
     },
     "loganalytics_workspace_name": {
-      "value": "la-test"
+      "value": "la-\${var.name}"
     },
     "loganalytics_workspace_retention": {
       "value": 90
@@ -44,7 +44,7 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
     "azurerm_eventhub_namespace": {
       "ehns": {
         "location": "\${azurerm_resource_group.rg.location}",
-        "name": "my-namespace",
+        "name": "ehns-\${var.name}",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "sku": "Standard"
       }
@@ -88,7 +88,7 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
     "azurerm_log_analytics_workspace": {
       "la_log_analytics_7551D130": {
         "location": "eastus",
-        "name": "la-test",
+        "name": "la-\${var.name}",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "retention_in_days": 90,
         "sku": "PerGB2018"
@@ -97,7 +97,7 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
     "azurerm_resource_group": {
       "rg": {
         "location": "eastus",
-        "name": "rg-test"
+        "name": "rg-\${var.name}"
       }
     },
     "azurerm_role_assignment": {
@@ -125,8 +125,15 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
+    }
+  },
+  "variable": {
+    "name": {
+      "default": "test",
+      "description": "System name used to randomize the resources",
+      "type": "string"
     }
   }
 }"
@@ -169,7 +176,7 @@ exports[`Log Analytics Workspace With Defaults renders a Log Analytics Workspace
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
     }
   }
