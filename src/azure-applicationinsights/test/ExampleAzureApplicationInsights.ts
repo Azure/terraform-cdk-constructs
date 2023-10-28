@@ -1,6 +1,7 @@
 import * as cdktf from "cdktf";
+import {BaseTestStack} from "../../testing";
 import { AzureApplicationInsights } from '../';
-import { App, TerraformStack} from "cdktf";
+import { App} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
@@ -11,7 +12,7 @@ import * as util from "../../util/azureTenantIdHelpers";
 
 const app = new App();
     
-export class exampleAzureApplicationInsights extends TerraformStack {
+export class exampleAzureApplicationInsights extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -24,12 +25,12 @@ export class exampleAzureApplicationInsights extends TerraformStack {
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-test`,
+      name: `rg-${this.name}`,
 
     });
 
     const keyvault = new KeyVault(this, 'key_vault', {
-      name: "kvtest",
+      name: `kv-${this.name}`,
       location: resourceGroup.location,
       resourceGroupName: resourceGroup.name,
       skuName: "standard",
@@ -56,12 +57,12 @@ export class exampleAzureApplicationInsights extends TerraformStack {
 
     const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
         location: 'eastus',
-        name: `la-test`,
+        name: `la-${this.name}`,
         resourceGroupName: resourceGroup.name,
     });
 
     const applicationInsights = new AzureApplicationInsights(this, 'testappi', {
-      name: `appinsight-test`,
+      name: `appi-${this.name}`,
       location: 'eastus',
       resource_group_name: resourceGroup.name ,
       application_type: "web",
