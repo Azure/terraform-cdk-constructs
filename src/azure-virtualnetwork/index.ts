@@ -45,7 +45,7 @@ export class AzureVirtualNetwork extends Construct {
         
 
         // Create a virtual network
-        const vnet = new VirtualNetwork(this, defaults.name, {
+        const vnet = new VirtualNetwork(this, "vnet", {
             ...defaults,
             resourceGroupName: props.resourceGroupName,
         });
