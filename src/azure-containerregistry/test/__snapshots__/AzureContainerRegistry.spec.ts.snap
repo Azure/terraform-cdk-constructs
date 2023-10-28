@@ -34,7 +34,7 @@ exports[`Azure Container Registry Example renders the Azure Container Registry a
           }
         ],
         "location": "\${azurerm_resource_group.rg.location}",
-        "name": "acrtest",
+        "name": "acr\${var.name}",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "sku": "Premium",
         "tags": {
@@ -45,7 +45,7 @@ exports[`Azure Container Registry Example renders the Azure Container Registry a
     "azurerm_resource_group": {
       "rg": {
         "location": "eastus",
-        "name": "rg-test"
+        "name": "rg-\${var.name}"
       }
     }
   },
@@ -53,8 +53,15 @@ exports[`Azure Container Registry Example renders the Azure Container Registry a
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
+    }
+  },
+  "variable": {
+    "name": {
+      "default": "test",
+      "description": "System name used to randomize the resources",
+      "type": "string"
     }
   }
 }"
@@ -98,7 +105,7 @@ exports[`Azure Container Registry With Defaults renders an Azure Container Regis
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
     }
   }
