@@ -29,7 +29,7 @@ exports[`Azure Diagnostic Settings Example renders the Azure Diagnostic Settings
     "azurerm_eventhub": {
       "testEventHub": {
         "message_retention": 1,
-        "name": "eventhub-test",
+        "name": "eh-\${var.name}",
         "namespace_name": "\${azurerm_eventhub_namespace.testEventHubNamespace.name}",
         "partition_count": 2,
         "resource_group_name": "\${azurerm_resource_group.rg.name}"
@@ -39,7 +39,7 @@ exports[`Azure Diagnostic Settings Example renders the Azure Diagnostic Settings
       "testEventHubNamespace": {
         "capacity": 1,
         "location": "eastus",
-        "name": "eventhub-test-namespace",
+        "name": "ehns-\${var.name}",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "sku": "Basic"
       }
@@ -48,7 +48,7 @@ exports[`Azure Diagnostic Settings Example renders the Azure Diagnostic Settings
       "testEventHubAuth": {
         "listen": true,
         "manage": true,
-        "name": "eventhub-auth-test",
+        "name": "ehauth-\${var.name}",
         "namespace_name": "\${azurerm_eventhub.testEventHub.namespace_name}",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "send": true
@@ -57,7 +57,7 @@ exports[`Azure Diagnostic Settings Example renders the Azure Diagnostic Settings
     "azurerm_log_analytics_workspace": {
       "log_analytics": {
         "location": "eastus",
-        "name": "la-test",
+        "name": "la-\${var.name}",
         "resource_group_name": "\${azurerm_resource_group.rg.name}"
       }
     },
@@ -85,7 +85,6 @@ exports[`Azure Diagnostic Settings Example renders the Azure Diagnostic Settings
         },
         "eventhub_authorization_rule_id": "\${azurerm_eventhub_namespace_authorization_rule.testEventHubAuth.id}",
         "eventhub_name": "\${azurerm_eventhub.testEventHub.name}",
-        "log_analytics_destination_type": "AzureDiagnostics",
         "log_analytics_workspace_id": "\${azurerm_log_analytics_workspace.log_analytics.id}",
         "name": "diag-settings-test",
         "target_resource_id": "\${azurerm_eventhub_namespace.testEventHubNamespace.id}"
@@ -94,7 +93,7 @@ exports[`Azure Diagnostic Settings Example renders the Azure Diagnostic Settings
     "azurerm_resource_group": {
       "rg": {
         "location": "eastus",
-        "name": "rg-test"
+        "name": "rg-\${var.name}"
       }
     }
   },
@@ -102,8 +101,15 @@ exports[`Azure Diagnostic Settings Example renders the Azure Diagnostic Settings
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
+    }
+  },
+  "variable": {
+    "name": {
+      "default": "test",
+      "description": "System name used to randomize the resources",
+      "type": "string"
     }
   }
 }"
@@ -157,7 +163,6 @@ exports[`Azure Diagnostics With Defaults and no categories renders an Azure Diag
             "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.testAzureDiagnosticSettingsDefaultsNoCat_diagcategories_29732E12.metrics)}"
           }
         },
-        "log_analytics_destination_type": "AzureDiagnostics",
         "name": "diag-settings-test",
         "storage_account_id": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
         "target_resource_id": "\${azurerm_app_configuration.testAzureAppConfigurationNoCat.id}"
@@ -168,7 +173,7 @@ exports[`Azure Diagnostics With Defaults and no categories renders an Azure Diag
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
     }
   }
@@ -228,7 +233,6 @@ exports[`Azure Diagnostics With Defaults renders an Azure Diagnostic Settings wi
             ]
           }
         },
-        "log_analytics_destination_type": "AzureDiagnostics",
         "name": "diag-settings-test",
         "storage_account_id": "/subscriptions/12345678-1234-1234-1234-123456789012/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
         "target_resource_id": "\${azurerm_app_configuration.testAzureApplicationConfiguration.id}"
@@ -239,7 +243,7 @@ exports[`Azure Diagnostics With Defaults renders an Azure Diagnostic Settings wi
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
     }
   }

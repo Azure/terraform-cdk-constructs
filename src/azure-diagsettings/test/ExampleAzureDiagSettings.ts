@@ -1,6 +1,7 @@
 import * as cdktf from "cdktf";
 import { AzureDiagnosticSettings } from '..';
-import { App, TerraformStack} from "cdktf";
+import { App} from "cdktf";
+import {BaseTestStack} from "../../testing";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
@@ -11,7 +12,7 @@ import { EventhubNamespace } from "@cdktf/provider-azurerm/lib/eventhub-namespac
 
 const app = new App();
     
-export class exampleAzureDiagnosticSettings extends TerraformStack {
+export class exampleAzureDiagnosticSettings extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -21,19 +22,19 @@ export class exampleAzureDiagnosticSettings extends TerraformStack {
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-test`,
+      name: `rg-${this.name}`,
 
     });
 
     const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
       location: 'eastus',
-      name: `la-test`,
+      name: `la-${this.name}`,
       resourceGroupName: resourceGroup.name,
     });
     
 
     const eventhubNamespace = new EventhubNamespace(this, 'testEventHubNamespace', {
-      name: `eventhub-test-namespace`,
+      name: `ehns-${this.name}`,
       resourceGroupName: resourceGroup.name,
       location: 'eastus',
       sku: 'Basic',
@@ -41,7 +42,7 @@ export class exampleAzureDiagnosticSettings extends TerraformStack {
     });
 
     const eventhub = new Eventhub(this, 'testEventHub', {
-      name: `eventhub-test`,
+      name: `eh-${this.name}`,
       resourceGroupName: resourceGroup.name,
       namespaceName: eventhubNamespace.name,
       partitionCount: 2,
@@ -49,7 +50,7 @@ export class exampleAzureDiagnosticSettings extends TerraformStack {
     });
 
     const ehauthid = new EventhubNamespaceAuthorizationRule(this, 'testEventHubAuth', {
-      name: `eventhub-auth-test`,
+      name: `ehauth-${this.name}`,
       resourceGroupName: resourceGroup.name,
       namespaceName: eventhub.namespaceName,
       listen: true,
