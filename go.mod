@@ -1,4 +1,4 @@
-module github.com/microsoft/terraform-azure-cdk-modules
+module github.com/microsoft/azure-terraform-cdk-modules
 
 go 1.19
 
