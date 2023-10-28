@@ -4,7 +4,7 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
 "{
   "output": {
     "nsg_name": {
-      "value": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.name}"
+      "value": "\${azurerm_network_security_group.nsg_291A0A95.name}"
     },
     "resource_group_name": {
       "value": "\${azurerm_resource_group.rg.name}"
@@ -23,9 +23,9 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
   },
   "resource": {
     "azurerm_network_security_group": {
-      "nsg_my-nsg_3DA143E1": {
+      "nsg_291A0A95": {
         "location": "eastus",
-        "name": "my-nsg",
+        "name": "nsg-\${var.name}",
         "resource_group_name": "\${azurerm_resource_group.rg.name}"
       }
     },
@@ -36,7 +36,7 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
         "destination_port_range": "3389",
         "direction": "Inbound",
         "name": "RDP",
-        "network_security_group_name": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.name}",
+        "network_security_group_name": "\${azurerm_network_security_group.nsg_291A0A95.name}",
         "priority": 505,
         "protocol": "Tcp",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
@@ -49,7 +49,7 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
         "destination_port_range": "22",
         "direction": "Inbound",
         "name": "SSH",
-        "network_security_group_name": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.name}",
+        "network_security_group_name": "\${azurerm_network_security_group.nsg_291A0A95.name}",
         "priority": 1001,
         "protocol": "Tcp",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
@@ -60,7 +60,7 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
     "azurerm_resource_group": {
       "rg": {
         "location": "eastus",
-        "name": "rg-test"
+        "name": "rg-\${var.name}"
       }
     },
     "azurerm_subnet": {
@@ -82,12 +82,12 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
       }
     },
     "azurerm_subnet_network_security_group_association": {
-      "nsg_TfTokenTOKEN36_subassociation_1654316F": {
-        "network_security_group_id": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.id}",
+      "nsg_TfTokenTOKEN38_subassociation_A605BE6F": {
+        "network_security_group_id": "\${azurerm_network_security_group.nsg_291A0A95.id}",
         "subnet_id": "\${azurerm_subnet.subnet1.id}"
       },
-      "nsg_TfTokenTOKEN38_subassociation_A605BE6F": {
-        "network_security_group_id": "\${azurerm_network_security_group.nsg_my-nsg_3DA143E1.id}",
+      "nsg_TfTokenTOKEN40_subassociation_138E50DA": {
+        "network_security_group_id": "\${azurerm_network_security_group.nsg_291A0A95.id}",
         "subnet_id": "\${azurerm_subnet.subnet2.id}"
       }
     },
@@ -97,7 +97,7 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
           "10.0.0.0/16"
         ],
         "location": "\${azurerm_resource_group.rg.location}",
-        "name": "vnet-test",
+        "name": "vnet-\${var.name}",
         "resource_group_name": "\${azurerm_resource_group.rg.name}"
       }
     }
@@ -106,8 +106,15 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
+    }
+  },
+  "variable": {
+    "name": {
+      "default": "test",
+      "description": "System name used to randomize the resources",
+      "type": "string"
     }
   }
 }"
@@ -125,7 +132,7 @@ exports[`Azure Network Security Group With Defaults renders an Azure Network Sec
   },
   "resource": {
     "azurerm_network_security_group": {
-      "testAzureNetworkSecurityGroupDefaults_my-nsg_C4572744": {
+      "testAzureNetworkSecurityGroupDefaults_nsg_EF1D027C": {
         "location": "eastus",
         "name": "my-nsg",
         "resource_group_name": "rgtest"
@@ -138,7 +145,7 @@ exports[`Azure Network Security Group With Defaults renders an Azure Network Sec
         "destination_port_range": "22",
         "direction": "Inbound",
         "name": "SSH",
-        "network_security_group_name": "\${azurerm_network_security_group.testAzureNetworkSecurityGroupDefaults_my-nsg_C4572744.name}",
+        "network_security_group_name": "\${azurerm_network_security_group.testAzureNetworkSecurityGroupDefaults_nsg_EF1D027C.name}",
         "priority": 501,
         "protocol": "Tcp",
         "resource_group_name": "rgtest",
@@ -151,7 +158,7 @@ exports[`Azure Network Security Group With Defaults renders an Azure Network Sec
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
     }
   }

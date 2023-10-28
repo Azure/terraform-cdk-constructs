@@ -36,7 +36,7 @@ export class AzureNetworkSecurityGroup extends Construct {
         this.props = props;
 
         // Create a network security group
-        const nsg = new NetworkSecurityGroup(this, props.name, {
+        const nsg = new NetworkSecurityGroup(this, "nsg", {
             name: props.name,
             resourceGroupName: props.resourceGroupName,
             location: props.location,

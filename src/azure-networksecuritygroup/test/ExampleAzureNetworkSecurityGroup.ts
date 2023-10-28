@@ -3,7 +3,8 @@ import { AzureNetworkSecurityGroup } from '..';
 import {VirtualNetwork} from "@cdktf/provider-azurerm/lib/virtual-network";
 import {Subnet} from "@cdktf/provider-azurerm/lib/subnet";
 import {PreconfiguredRules} from "../preconfiguredRules";
-import { App, TerraformStack} from "cdktf";
+import {BaseTestStack} from "../../testing";
+import { App} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
@@ -11,7 +12,7 @@ import { Construct } from 'constructs';
 
 const app = new App();
 
-export class exampleAzureNetworkSecurityGroup extends TerraformStack {
+export class exampleAzureNetworkSecurityGroup extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -21,12 +22,12 @@ export class exampleAzureNetworkSecurityGroup extends TerraformStack {
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-test`,
+      name: `rg-${this.name}`,
 
     });
 
     const vnet = new VirtualNetwork(this, "vnet", {
-      name: "vnet-test",
+      name: `vnet-${this.name}`,
       location: resourceGroup.location,
       resourceGroupName: resourceGroup.name,
       addressSpace: ["10.0.0.0/16"],
@@ -48,7 +49,7 @@ export class exampleAzureNetworkSecurityGroup extends TerraformStack {
     });
 
     const nsg = new AzureNetworkSecurityGroup(this, 'nsg', {
-      name: 'my-nsg',
+      name: `nsg-${this.name}`,
       location: "eastus",
       resourceGroupName: resourceGroup.name,
       rules: [
