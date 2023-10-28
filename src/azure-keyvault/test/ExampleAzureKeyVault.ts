@@ -1,6 +1,7 @@
 import * as cdktf from "cdktf";
 import { AzureKeyVault } from '..';
-import { App, TerraformStack} from "cdktf";
+import { App} from "cdktf";
+import {BaseTestStack} from "../../testing";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
@@ -9,7 +10,7 @@ import * as util from "../../util/azureTenantIdHelpers";
 
 const app = new App();
 
-export class exampleAzureKeyVault extends TerraformStack {
+export class exampleAzureKeyVault extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -22,12 +23,12 @@ export class exampleAzureKeyVault extends TerraformStack {
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-test`,
+      name: `rg-${this.name}`,
 
     });
 
     const azureKeyVault = new AzureKeyVault(this, 'kv', {
-      name: `kv-test`,
+      name: `kv-${this.name}`,
       location: 'eastus',
       sku: "standard",
       resource_group_name: resourceGroup.name ,

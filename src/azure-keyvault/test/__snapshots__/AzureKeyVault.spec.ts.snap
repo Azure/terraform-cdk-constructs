@@ -29,7 +29,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
     "azurerm_key_vault": {
       "kv_key_vault_6CCDEEF8": {
         "location": "eastus",
-        "name": "kv-test",
+        "name": "kv-\${var.name}",
         "network_acls": {
           "bypass": "AzureServices",
           "default_action": "Allow",
@@ -41,7 +41,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
       },
     },
     "azurerm_key_vault_access_policy": {
-      "kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292": {
+      "kv_kv_custom_policy_access_TfTokenTOKEN21_policy_592ECD50": {
         "certificate_permissions": [
           "Get",
           "List",
@@ -150,7 +150,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
         },
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN21_policy_592ECD50",
         ],
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
         "name": "cert1",
@@ -160,7 +160,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
       "kv_issuer1_AzureKeyVaultCertificate_90383EBD": {
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN21_policy_592ECD50",
         ],
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
         "name": "issuer1",
@@ -171,7 +171,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
       "kv_key1_AzureKeyVaultKey_02CD8333": {
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN21_policy_592ECD50",
         ],
         "expiration_date": "2033-08-23T15:23:17Z",
         "key_opts": [
@@ -190,7 +190,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
       "kv_key2_AzureKeyVaultKey_AB98C26C": {
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN21_policy_592ECD50",
         ],
         "expiration_date": "2033-08-23T15:23:17Z",
         "key_opts": [
@@ -212,7 +212,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
         "content_type": "application/x-pkcs12",
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN21_policy_592ECD50",
         ],
         "expiration_date": "2033-08-23T15:23:17Z",
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
@@ -223,7 +223,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
         "content_type": "application/x-pkcs12",
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN19_policy_7B651292",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN21_policy_592ECD50",
         ],
         "expiration_date": "2033-08-23T15:23:17Z",
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
@@ -234,7 +234,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
     "azurerm_resource_group": {
       "rg": {
         "location": "eastus",
-        "name": "rg-test",
+        "name": "rg-\${var.name}",
       },
     },
   },
@@ -242,8 +242,15 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0",
+        "version": "3.75.0",
       },
+    },
+  },
+  "variable": {
+    "name": {
+      "default": "test",
+      "description": "System name used to randomize the resources",
+      "type": "string",
     },
   },
 }
@@ -284,7 +291,7 @@ exports[`Azure Key Vault With Defaults renders an Azure Key Vault with defaults 
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
     }
   }
