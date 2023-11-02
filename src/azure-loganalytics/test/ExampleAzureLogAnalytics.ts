@@ -7,6 +7,7 @@ import {EventhubNamespace} from "@cdktf/provider-azurerm/lib/eventhub-namespace"
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+import { StorageAccount } from "@cdktf/provider-azurerm/lib/storage-account";
 
 
 const app = new App();
@@ -33,6 +34,14 @@ export class exampleAzureLogAnalytics extends BaseTestStack {
       resourceGroupName: resourceGroup.name,
       location: resourceGroup.location,
       sku: 'Standard'
+    });
+
+    const storage = new StorageAccount(this, "storage", {
+      name: `sta${this.name}`,
+      resourceGroupName: resourceGroup.name,
+      location: resourceGroup.location,
+      accountReplicationType: "LRS",
+      accountTier: "Standard",
     });
 
 
@@ -69,9 +78,9 @@ export class exampleAzureLogAnalytics extends BaseTestStack {
     });
 
     // Add RBAC access
-    logAnalyticsWorkspace.addContributorAccess(clientConfig.objectId)
-    logAnalyticsWorkspace.addReaderAccess(clientConfig.objectId)
-    logAnalyticsWorkspace.addAccess(clientConfig.objectId, "Monitoring Reader", "43d0d8ad-25c7-4714-9337-8ba259a9fe05")
+    logAnalyticsWorkspace.addAccess(clientConfig.objectId, "Contributor")
+    logAnalyticsWorkspace.addAccess(clientConfig.objectId, "Monitoring Reader")
+    logAnalyticsWorkspace.addDiagSettings({storageAccountId: storage.id})
     
     // Outputs to use for End to End Test
     const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {
