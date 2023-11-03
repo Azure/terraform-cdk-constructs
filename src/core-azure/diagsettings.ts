@@ -67,7 +67,7 @@ export class AzureDiagnosticSettings extends Construct {
       resourceId: props.targetResourceId
     });
 
-    const logCategories = props.logCategories ?? categories.logs;
+    const logCategories = props.logCategories ?? categories.logCategoryTypes;
     const metricCategories = props.metricCategories ?? categories.metrics;
 
 
@@ -87,9 +87,6 @@ export class AzureDiagnosticSettings extends Construct {
         for_each: logCategories,
         content: { 
           category: "${enabled_log.value}",
-          retention_policy: {
-            enabled: false
-          }
         }
       });
 
@@ -97,9 +94,6 @@ export class AzureDiagnosticSettings extends Construct {
         for_each: metricCategories,
         content: { 
           category: "${metric.value}",
-          retention_policy: {
-            enabled: false,
-          }
         }
       });
 
