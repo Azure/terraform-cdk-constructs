@@ -5,6 +5,8 @@ import {Subnet} from "@cdktf/provider-azurerm/lib/subnet";
 import {PreconfiguredRules} from "../preconfiguredRules";
 import {BaseTestStack} from "../../testing";
 import { App} from "cdktf";
+import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
@@ -15,6 +17,8 @@ const app = new App();
 export class exampleAzureNetworkSecurityGroup extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
+
+    const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
 
     new AzurermProvider(this, "azureFeature", {
         features: {},
@@ -67,6 +71,18 @@ export class exampleAzureNetworkSecurityGroup extends BaseTestStack {
             PreconfiguredRules.addSourceAddress(PreconfiguredRules.RDP, "10.0.0.0/24"),
         ],
     });
+
+    const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
+      location: 'eastus',
+      name: `la-${this.name}`,
+      resourceGroupName: resourceGroup.name,
+    });
+
+     //Diag Settings
+     nsg.addDiagSettings({name: "diagsettings", logAnalyticsWorkspaceId: logAnalyticsWorkspace.id})
+
+     //RBAC
+     nsg.addAccess(clientConfig.objectId, "Contributor")
 
     // associate the nsg to the subnet
     nsg.associateToSubnet(subnet)

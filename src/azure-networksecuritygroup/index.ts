@@ -5,6 +5,7 @@ import { Subnet } from "@cdktf/provider-azurerm/lib/subnet";
 import { NetworkInterface } from "@cdktf/provider-azurerm/lib/network-interface"; // Import the NetworkInterface class
 import { SubnetNetworkSecurityGroupAssociation } from "@cdktf/provider-azurerm/lib/subnet-network-security-group-association";
 import { NetworkInterfaceSecurityGroupAssociation } from '@cdktf/provider-azurerm/lib/network-interface-security-group-association';
+import { AzureResource } from '../core-azure';
 
 export interface RuleConfig {
     name: string;
@@ -25,7 +26,7 @@ interface AzureNetworkSecurityGroupProps {
     rules: RuleConfig[];
 }
 
-export class AzureNetworkSecurityGroup extends Construct {
+export class AzureNetworkSecurityGroup extends AzureResource {
     readonly props: AzureNetworkSecurityGroupProps;
     public readonly id: string;
     public readonly name: string;
