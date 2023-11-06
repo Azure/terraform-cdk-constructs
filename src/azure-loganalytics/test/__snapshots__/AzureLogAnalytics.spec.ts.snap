@@ -104,19 +104,13 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
         "dynamic": {
           "enabled_log": {
             "content": {
-              "category": "\${enabled_log.value}",
-              "retention_policy": {
-                "enabled": false
-              }
+              "category": "\${enabled_log.value}"
             },
-            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.la_diagsettings_diagcategories_FA524658.logs)}"
+            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.la_diagsettings_diagcategories_FA524658.log_category_types)}"
           },
           "metric": {
             "content": {
-              "category": "\${metric.value}",
-              "retention_policy": {
-                "enabled": false
-              }
+              "category": "\${metric.value}"
             },
             "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.la_diagsettings_diagcategories_FA524658.metrics)}"
           }
@@ -149,6 +143,7 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
         "account_replication_type": "LRS",
         "account_tier": "Standard",
         "location": "\${azurerm_resource_group.rg.location}",
+        "min_tls_version": "TLS1_2",
         "name": "sta\${var.name}",
         "resource_group_name": "\${azurerm_resource_group.rg.name}"
       }

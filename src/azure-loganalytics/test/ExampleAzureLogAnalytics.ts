@@ -42,6 +42,7 @@ export class exampleAzureLogAnalytics extends BaseTestStack {
       location: resourceGroup.location,
       accountReplicationType: "LRS",
       accountTier: "Standard",
+      minTlsVersion: "TLS1_2",
     });
 
 

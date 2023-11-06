@@ -2,16 +2,18 @@ import * as cdktf from "cdktf";
 import { AzureLinuxVirtualMachine } from '..';
 import {VirtualNetwork} from "@cdktf/provider-azurerm/lib/virtual-network";
 import {Subnet} from "@cdktf/provider-azurerm/lib/subnet";
-import { App, TerraformStack} from "cdktf";
+import {BaseTestStack} from "../../testing";
+import { App} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+import { StorageAccount } from "@cdktf/provider-azurerm/lib/storage-account";
 
 
 const app = new App();
 
-export class exampleAzureLinuxVirtualMachine extends TerraformStack {
+export class exampleAzureLinuxVirtualMachine extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -23,12 +25,12 @@ export class exampleAzureLinuxVirtualMachine extends TerraformStack {
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-test`,
+      name: `rg-${this.name}`,
 
     });
 
     const vnet = new VirtualNetwork(this, "vnet", {
-      name: "vnet-test",
+      name: `vnet-${this.name}`,
       location: resourceGroup.location,
       resourceGroupName: resourceGroup.name,
       addressSpace: ["10.0.0.0/16"],
@@ -42,10 +44,19 @@ export class exampleAzureLinuxVirtualMachine extends TerraformStack {
       addressPrefixes: ["10.0.1.0/24"],
     });
 
+    const storage = new StorageAccount(this, "storage", {
+      name: `sta${this.name}`,
+      resourceGroupName: resourceGroup.name,
+      location: resourceGroup.location,
+      accountReplicationType: "LRS",
+      accountTier: "Standard",
+      minTlsVersion: "TLS1_2",
+    });
+
     
 
     const vm = new AzureLinuxVirtualMachine(this, 'vm', {
-      name: 'my-vm',
+      name: this.name,
       location: "eastus",
       resourceGroupName: resourceGroup.name,
       size: "Standard_B1s",
@@ -64,10 +75,20 @@ export class exampleAzureLinuxVirtualMachine extends TerraformStack {
       subnet: subnet,
       publicIPAllocationMethod: "Static",
       userData: "#!/bin/bash\nsudo apt-get install -y apache2",
+      enableSshAzureADLogin: true,
+      identity: {
+        type: "SystemAssigned",
+      },
+      bootDiagnosticsStorageURI: storage.primaryBlobEndpoint,
     });
 
-    vm.addVMAdminLoginAccess(clientConfig.objectId)
-    vm.addVMAdminLoginAccess("bc26a701-6acb-4117-93e0-e44054e22d60")
+    // Diag Settings
+    vm.addDiagSettings({name: "diagsettings", storageAccountId: storage.id})
+
+    // RBAC
+    vm.addAccess(clientConfig.objectId, "Contributor")
+
+
 
 
     // Outputs to use for End to End Test

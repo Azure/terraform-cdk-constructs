@@ -8,14 +8,17 @@ exports[`Azure Resource Example renders the Azure Resource example and checks sn
       }
     },
     "azurerm_monitor_diagnostic_categories": {
-      "storage_diagsettings_diagcategories_45A8E831": {
-        "resource_id": "\${azurerm_storage_account.storage_6B604F96.id}"
+      "TfTokenTOKEN10_diagsettings_diagcategories_D62FBD8B": {
+        "resource_id": "\${azurerm_storage_account.TfTokenTOKEN10_storage_922354A7.id}"
       }
     }
   },
   "output": {
     "diag_settings_name": {
-      "value": "diag-settings-test"
+      "value": "diagsettings"
+    },
+    "storage_account_id": {
+      "value": "\${azurerm_storage_account.TfTokenTOKEN10_storage_922354A7.id}"
     }
   },
   "provider": {
@@ -28,30 +31,24 @@ exports[`Azure Resource Example renders the Azure Resource example and checks sn
   },
   "resource": {
     "azurerm_monitor_diagnostic_setting": {
-      "storage_diagsettings_5781664A": {
+      "TfTokenTOKEN10_diagsettings_E3222A62": {
         "dynamic": {
           "enabled_log": {
             "content": {
-              "category": "\${enabled_log.value}",
-              "retention_policy": {
-                "enabled": false
-              }
+              "category": "\${enabled_log.value}"
             },
-            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.storage_diagsettings_diagcategories_45A8E831.logs)}"
+            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.TfTokenTOKEN10_diagsettings_diagcategories_D62FBD8B.log_category_types)}"
           },
           "metric": {
             "content": {
-              "category": "\${metric.value}",
-              "retention_policy": {
-                "enabled": false
-              }
+              "category": "\${metric.value}"
             },
-            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.storage_diagsettings_diagcategories_45A8E831.metrics)}"
+            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.TfTokenTOKEN10_diagsettings_diagcategories_D62FBD8B.metrics)}"
           }
         },
-        "name": "diag-settings",
-        "storage_account_id": "\${azurerm_storage_account.storage_6B604F96.id}",
-        "target_resource_id": "\${azurerm_storage_account.storage_6B604F96.id}"
+        "name": "diagsettings",
+        "storage_account_id": "\${azurerm_storage_account.TfTokenTOKEN10_storage_922354A7.id}",
+        "target_resource_id": "\${azurerm_storage_account.TfTokenTOKEN10_storage_922354A7.id}"
       }
     },
     "azurerm_resource_group": {
@@ -61,23 +58,24 @@ exports[`Azure Resource Example renders the Azure Resource example and checks sn
       }
     },
     "azurerm_role_assignment": {
-      "storage_TfTokenTOKEN14Contributor_role_193D39A0": {
+      "TfTokenTOKEN10_TfTokenTOKEN14Contributor_role_D2CF65F3": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
-        "scope": "\${azurerm_storage_account.storage_6B604F96.id}"
+        "scope": "\${azurerm_storage_account.TfTokenTOKEN10_storage_922354A7.id}"
       },
-      "storage_TfTokenTOKEN15MonitoringReader_role_3B9D12E5": {
+      "TfTokenTOKEN10_TfTokenTOKEN15MonitoringReader_role_D9FC6CA7": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Monitoring Reader",
-        "scope": "\${azurerm_storage_account.storage_6B604F96.id}"
+        "scope": "\${azurerm_storage_account.TfTokenTOKEN10_storage_922354A7.id}"
       }
     },
     "azurerm_storage_account": {
-      "storage_6B604F96": {
+      "TfTokenTOKEN10_storage_922354A7": {
         "account_replication_type": "LRS",
         "account_tier": "Standard",
         "location": "\${azurerm_resource_group.rg.location}",
-        "name": "stastorage",
+        "min_tls_version": "TLS1_2",
+        "name": "sta\${var.name}",
         "resource_group_name": "\${azurerm_resource_group.rg.name}"
       }
     }

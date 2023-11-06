@@ -1,4 +1,3 @@
-//TODO: vm admin rbac, enable aad auth for ssh, boot diag
 import { Construct } from 'constructs';
 import * as cdktf from 'cdktf';
 import { WindowsVirtualMachine, WindowsVirtualMachineOsDisk, WindowsVirtualMachineSourceImageReference } from "@cdktf/provider-azurerm/lib/windows-virtual-machine";
@@ -6,7 +5,6 @@ import {  LinuxVirtualMachine,
           LinuxVirtualMachineSourceImageReference, 
           LinuxVirtualMachineOsDisk, 
           LinuxVirtualMachineAdminSshKey, 
-          LinuxVirtualMachineBootDiagnostics, 
           LinuxVirtualMachineIdentity, 
           LinuxVirtualMachineSecret,
           LinuxVirtualMachineAdditionalCapabilities } from "@cdktf/provider-azurerm/lib/linux-virtual-machine"; 
@@ -17,68 +15,9 @@ import {WindowsImageReferences} from './image-references';
 import { AzureVirtualNetwork } from "../azure-virtualnetwork";
 import {VirtualMachineExtension} from '@cdktf/provider-azurerm/lib/virtual-machine-extension';
 import { PublicIp } from "@cdktf/provider-azurerm/lib/public-ip";
-import { AzureRbac } from '../azure-rbac';
+import {AzureResource} from "../core-azure";
 
-class AzureVirtualMachineBase extends Construct {
-  // Properties of the AzureVirtualMachineBase class
 
-  readonly id: string;
-
-  /**
-   * Constructs a new instance of the AzureLinuxVirtualMachine class.
-   * 
-   * @param scope - The scope in which this construct is defined.
-   * @param id - The ID of this construct.
-   * @param props - The properties for defining a Linux Virtual Machine.
-   */
-  constructor(scope: Construct, id: string) {
-    super(scope, id);
-
-  // Assigning the properties
-  this.id = id;
-
-  }
-// RBAC Access Methods
-public addVMAdminLoginAccess(objectId: string) {
-  new AzureRbac(this , objectId, {
-    objectId: objectId,
-    roleDefinitionName: 'Virtual Machine Administrator Login',
-    scope: this.id,
-  });
-}
-
-public addVMUserLoginAccess(objectId: string) {
-  new AzureRbac(this,  objectId, {
-    objectId: objectId,
-    roleDefinitionName: 'Virtual Machine User Login',
-    scope: this.id,
-  });
-}
-
-public addVMLocalLoginAccess(objectId: string) {
-  new AzureRbac(this, objectId, {
-    objectId: objectId,
-    roleDefinitionName: 'Virtual Machine Local User Login',
-    scope: this.id,
-  });
-}
-
-public addVMContributorAccess(objectId: string) {
-  new AzureRbac(this, objectId, {
-    objectId: objectId,
-    roleDefinitionName: 'Virtual Machine Contributor',
-    scope: this.id,
-  });
-}
-
-public addAccess(objectId: string, customRoleName: string) {
-  new AzureRbac(this, objectId, {
-    objectId: objectId,
-    roleDefinitionName: customRoleName,
-    scope: this.id,
-  });
-}
-}
 
 export interface WindowsVirtualMachineProps {
   /**
@@ -156,9 +95,14 @@ export interface WindowsVirtualMachineProps {
    * Custom data to bootstrap the virtual machine. Automatically triggers Azure Custom Script extension to deploy code in custom data.
    */
   readonly boostrapCustomData?: string;
+
+  /**
+   * Bootdiagnostics settings for the VM. 
+   */
+  readonly bootDiagnosticsStorageURI?: string;
 }
 
-export class AzureWindowsVirtualMachine extends AzureVirtualMachineBase {
+export class AzureWindowsVirtualMachine extends AzureResource {
   readonly props: WindowsVirtualMachineProps;
   public readonly id: string;
   public readonly name: string;
@@ -233,6 +177,7 @@ export class AzureWindowsVirtualMachine extends AzureVirtualMachineBase {
       networkInterfaceIds: [azurermNetworkInterface.id],
       sourceImageId: props.sourceImageId,
       customData: base64CustomData,
+      bootDiagnostics: { storageAccountUri: props.bootDiagnosticsStorageURI},
     });
 
     this.id = azurermWindowsVirtualMachine.id;
@@ -290,11 +235,6 @@ export interface LinuxVirtualMachineProps {
    * An array of SSH keys for the admin user.
    */
   readonly adminSshKey?: LinuxVirtualMachineAdminSshKey[] | cdktf.IResolvable;
-
-  /**
-   * Boot diagnostics settings for the VM.
-   */
-  readonly bootDiagnostics?: LinuxVirtualMachineBootDiagnostics;
 
   /**
    * The availability zone in which the VM should be placed.
@@ -363,9 +303,19 @@ export interface LinuxVirtualMachineProps {
    * Custom data to pass to the virtual machine upon creation.
    */
   readonly customData?: string;
+
+  /**
+   * Enable SSH Azure AD Login, required managed identity to be set.
+   */
+  readonly enableSshAzureADLogin?: boolean;
+
+  /**
+   * Bootdiagnostics settings for the VM. 
+   */
+  readonly bootDiagnosticsStorageURI?: string;
 }
 
-export class AzureLinuxVirtualMachine extends AzureVirtualMachineBase {
+export class AzureLinuxVirtualMachine extends AzureResource {
   // Properties of the AzureLinuxVirtualMachine class
   readonly props: LinuxVirtualMachineProps;
   public readonly id: string;
@@ -443,7 +393,7 @@ export class AzureLinuxVirtualMachine extends AzureVirtualMachineBase {
       userData: props.userData ? Buffer.from(props.userData).toString('base64') : undefined,
       availabilitySetId: props.availabilitySetId,
       adminSshKey: props.adminSshKey,
-      bootDiagnostics: props.bootDiagnostics,
+      bootDiagnostics: { storageAccountUri: props.bootDiagnosticsStorageURI},
       zone: props.zone,
       identity: props.identity,
       additionalCapabilities: props.additionalCapabilities,
@@ -454,7 +404,21 @@ export class AzureLinuxVirtualMachine extends AzureVirtualMachineBase {
     // Assigning the VM's ID and name to the class properties
     this.id = azurermLinuxVirtualMachine.id;
     this.name = azurermLinuxVirtualMachine.name;
+
+    // Enable SSH Azure AD Login if specified
+    if (props.enableSshAzureADLogin) {
+      new VirtualMachineExtension(this, "AADSSHlogin", {
+        name: "AADSSHLoginForLinux",
+        virtualMachineId: this.id,
+        publisher: "Microsoft.Azure.ActiveDirectory",
+        type: "AADSSHLoginForLinux",
+        typeHandlerVersion: "1.0",
+        tags: props.tags,
+      });
+    }
+
   }
+
 }
 
 
