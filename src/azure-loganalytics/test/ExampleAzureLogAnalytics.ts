@@ -77,9 +77,11 @@ export class exampleAzureLogAnalytics extends BaseTestStack {
       ]
     });
 
-    // Add RBAC access
+    // Test RBAC
     logAnalyticsWorkspace.addAccess(clientConfig.objectId, "Contributor")
     logAnalyticsWorkspace.addAccess(clientConfig.objectId, "Monitoring Reader")
+
+    // Test Diag Settings
     logAnalyticsWorkspace.addDiagSettings({storageAccountId: storage.id})
     
     // Outputs to use for End to End Test
