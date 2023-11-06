@@ -5,6 +5,8 @@ import { App} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
+import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 
 
 const app = new App();
@@ -16,6 +18,9 @@ export class exampleAzureVirtualNetwork extends BaseTestStack {
     new AzurermProvider(this, "azureFeature", {
         features: {},
       });
+
+    const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
+
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
@@ -56,6 +61,19 @@ export class exampleAzureVirtualNetwork extends BaseTestStack {
         },
       ],
     });
+
+    const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
+      location: 'eastus',
+      name: `la-${this.name}`,
+      resourceGroupName: resourceGroup.name,
+    });
+
+     // Diag Settings
+     network.addDiagSettings({name: "diagsettings", logAnalyticsWorkspaceId: logAnalyticsWorkspace.id})
+
+     // RBAC
+     network.addAccess(clientConfig.objectId, "Contributor")
+
 
     // Peer the networks
     network.addVnetPeering(remotenetwork)

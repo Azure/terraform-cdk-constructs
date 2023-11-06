@@ -2,7 +2,7 @@ import { Construct } from 'constructs';
 import {VirtualNetwork} from "@cdktf/provider-azurerm/lib/virtual-network";
 import {Subnet} from "@cdktf/provider-azurerm/lib/subnet";
 import {VirtualNetworkPeerProps, AzureVirtualNetworkPeer, PeerSettings} from "./peering"
-
+import { AzureResource } from '../core-azure';
 
 // Define the interface for the network configuration
 interface SubnetConfig {
@@ -18,7 +18,7 @@ interface AzureVirtualNetworkProps {
     subnets?: SubnetConfig[];
   }
   
-export class AzureVirtualNetwork extends Construct {
+export class AzureVirtualNetwork extends AzureResource {
     readonly props: AzureVirtualNetworkProps;
     public readonly name: string;
     public readonly resourceGroupName: string;
