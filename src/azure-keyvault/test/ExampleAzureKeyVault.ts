@@ -5,6 +5,8 @@ import {BaseTestStack} from "../../testing";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
+import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
+
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import * as util from "../../util/azureTenantIdHelpers";
 
@@ -39,6 +41,18 @@ export class exampleAzureKeyVault extends BaseTestStack {
       },
       softDeleteRetentionDays: 7,
     });
+
+    const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
+      location: 'eastus',
+      name: `la-${this.name}`,
+      resourceGroupName: resourceGroup.name,
+    });
+
+    //Diag Settings
+    azureKeyVault.addDiagSettings({name: "diagsettings", logAnalyticsWorkspaceId: logAnalyticsWorkspace.id})
+
+    //RBAC
+    azureKeyVault.addAccess(clientConfig.objectId, "Contributor")
 
     // Access Policy
     azureKeyVault.grantSecretAdminAccess("bc26a701-6acb-4117-93e0-e44054e22d60");
