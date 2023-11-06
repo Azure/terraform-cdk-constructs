@@ -21,3 +21,5 @@ RUN bash /tmp/library-scripts/common-debian.sh "${INSTALL_ZSH}" "${USERNAME}" "$
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
 RUN npm install --save-dev jest typescript ts-jest @types/jest
+RUN npm install @cdktf/provider-random
+
