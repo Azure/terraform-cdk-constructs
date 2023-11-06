@@ -43,6 +43,7 @@ export class exampleAzureLogAnalytics extends BaseTestStack {
       accountReplicationType: "LRS",
       accountTier: "Standard",
       minTlsVersion: "TLS1_2",
+      publicNetworkAccessEnabled: false,
     });
 
 

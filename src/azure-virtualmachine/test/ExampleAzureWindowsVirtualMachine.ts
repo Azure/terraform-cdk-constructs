@@ -51,6 +51,7 @@ export class exampleAzureWindowsVirtualMachine extends BaseTestStack {
       accountReplicationType: "LRS",
       accountTier: "Standard",
       minTlsVersion: "TLS1_2",
+      publicNetworkAccessEnabled: false,
     });
 
 

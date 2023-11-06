@@ -23,6 +23,7 @@ class TestStorageAccount extends AzureResource {
       accountReplicationType: "LRS",
       accountTier: "Standard",
       minTlsVersion: "TLS1_2",
+      publicNetworkAccessEnabled: false,
     });
 
     this.id = storage.id;
