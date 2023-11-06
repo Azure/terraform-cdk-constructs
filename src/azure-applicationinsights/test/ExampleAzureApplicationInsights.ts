@@ -20,7 +20,11 @@ export class exampleAzureApplicationInsights extends BaseTestStack {
 
 
     new AzurermProvider(this, "azureFeature", {
-        features: {},
+        features: {
+          resourceGroup: {
+                   preventDeletionIfContainsResources: false,
+         },
+        },
       });
 
     const resourceGroup = new ResourceGroup(this, "rg", {
@@ -73,6 +77,12 @@ export class exampleAzureApplicationInsights extends BaseTestStack {
     applicationInsights.saveIKeyToKeyVault(keyvault.id);
     applicationInsights.saveIKeyToKeyVault(keyvault.id, "customSecretName");
     
+    //Diag Settings
+    applicationInsights.addDiagSettings({name: "diagsettings", logAnalyticsWorkspaceId: logAnalyticsWorkspace.id})
+
+    //RBAC
+    applicationInsights.addAccess(clientConfig.objectId, "Contributor")
+
     // Outputs to use for End to End Test
     const cdktfTerraformOutputKVName = new cdktf.TerraformOutput(this, "key_vault_name", {
       value: keyvault.name,
