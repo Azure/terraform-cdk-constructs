@@ -1,26 +1,30 @@
 package test
 
 import (
+	"crypto/tls"
+	"fmt"
 	"os"
-	"strconv"
 	"strings"
 	"testing"
+	"time"
 
-	"github.com/microsoft/azure-terraform-cdk-modules/util"
-
-	"github.com/gruntwork-io/terratest/modules/azure"
+	http_helper "github.com/gruntwork-io/terratest/modules/http-helper"
 	"github.com/gruntwork-io/terratest/modules/random"
 
-	"github.com/gruntwork-io/terratest/modules/terraform"
+	"github.com/Azure/azure-sdk-for-go/profiles/latest/compute/mgmt/compute"
+	"github.com/microsoft/azure-terraform-cdk-modules/util"
 	"github.com/stretchr/testify/assert"
+
+	"github.com/gruntwork-io/terratest/modules/azure"
+	"github.com/gruntwork-io/terratest/modules/terraform"
 )
 
 // An example of how to test the Terraform module in examples/terraform-azure-example using Terratest.
-func TestTerraformCDKAzureLogAnalyticsExample(t *testing.T) {
+func TestTerraformCDKAzureWindowsVirtualMachineExample(t *testing.T) {
 	t.Parallel()
 
 	// Location of example file to test
-	example_file := "./src/azure-loganalytics/test/ExampleAzureLogAnalytics.ts"
+	example_file := "./src/azure-virtualmachine/test/ExampleAzureWindowsVirtualMachine.ts"
 
 	// subscriptionID is overridden by the environment variable "ARM_SUBSCRIPTION_ID"
 	subscriptionID := util.GetSubscriptionID()
@@ -48,21 +52,25 @@ func TestTerraformCDKAzureLogAnalyticsExample(t *testing.T) {
 
 	// Run `terraform output` to get the values of output variables
 	resourceGroupName := util.CdkTFOutput(t, terraformOptions, "resource_group_name")
-	workspaceName := util.CdkTFOutput(t, terraformOptions, "loganalytics_workspace_name")
-	sku := util.CdkTFOutput(t, terraformOptions, "loganalytics_workspace_sku")
-	retentionPeriodString := util.CdkTFOutput(t, terraformOptions, "loganalytics_workspace_retention")
+	virtualMachineName := util.CdkTFOutput(t, terraformOptions, "vm_name")
+	endpoint := util.CdkTFOutput(t, terraformOptions, "vm_endpoint")
 
-	// Verify the Log Analytics properties and ensure it matches the output.
-	workspaceExists := azure.LogAnalyticsWorkspaceExists(t, workspaceName, resourceGroupName, subscriptionID)
-	assert.True(t, workspaceExists, "log analytics workspace not found.")
+	expectedVMSize := compute.VirtualMachineSizeTypes(util.CdkTFOutput(t, terraformOptions, "vm_size"))
 
-	actualWorkspace := azure.GetLogAnalyticsWorkspace(t, workspaceName, resourceGroupName, subscriptionID)
+	// 1. Check the VM Size directly. This strategy gets one specific property of the VM per method.
+	actualVMSize := azure.GetSizeOfVirtualMachine(t, virtualMachineName, resourceGroupName, subscriptionID)
+	assert.Equal(t, string(expectedVMSize), string(actualVMSize))
 
-	actualSku := string(actualWorkspace.Sku.Name)
-	assert.Equal(t, strings.ToLower(sku), strings.ToLower(actualSku), "log analytics sku mismatch")
-
-	actualRetentionPeriod := *actualWorkspace.RetentionInDays
-	expectedPeriod, _ := strconv.ParseInt(retentionPeriodString, 10, 32)
-	assert.Equal(t, int32(expectedPeriod), actualRetentionPeriod, "log analytics retention period mismatch")
-
+	// Test the endpoint for up to 5 minutes. This will only fail if we timeout waiting for the service to return a 200
+	// response.
+	http_helper.HttpGetWithRetryWithCustomValidation(
+		t,
+		fmt.Sprintf("http://%s", endpoint),
+		&tls.Config{},
+		30,
+		10*time.Second,
+		func(statusCode int, body string) bool {
+			return statusCode == 200
+		},
+	)
 }

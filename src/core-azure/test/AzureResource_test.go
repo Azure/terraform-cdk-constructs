@@ -7,17 +7,18 @@ import (
 
 	"github.com/gruntwork-io/terratest/modules/azure"
 	"github.com/gruntwork-io/terratest/modules/random"
-	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/microsoft/azure-terraform-cdk-modules/util"
+
+	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
 )
 
 // An example of how to test the Terraform module in examples/terraform-azure-example using Terratest.
-func TestTerraformCDKAzureApplicationInsightsExample(t *testing.T) {
+func TestTerraformCDKAzureResourceExample(t *testing.T) {
 	t.Parallel()
 
 	// Location of example file to test
-	example_file := "./src/azure-applicationinsights/test/ExampleAzureApplicationInsights.ts"
+	example_file := "./src/core-azure/test/ExampleAzureResource.ts"
 
 	// subscriptionID is overridden by the environment variable "ARM_SUBSCRIPTION_ID"
 	subscriptionID := util.GetSubscriptionID()
@@ -44,10 +45,11 @@ func TestTerraformCDKAzureApplicationInsightsExample(t *testing.T) {
 	util.CdkTFApplyAllAndIdempotent(t, terraformOptions, example_file)
 
 	// Run `terraform output` to get the values of output variables
-	keyVaultName := util.CdkTFOutput(t, terraformOptions, "key_vault_name")
+	expectedDiagnosticSettingName := util.CdkTFOutput(t, terraformOptions, "diag_settings_name")
+	storageAccountID := util.CdkTFOutput(t, terraformOptions, "storage_account_id")
 
-	// Determine whether the secret, key, and certificate exists
-	secretExists := azure.KeyVaultSecretExists(t, keyVaultName, "customSecretName")
-	assert.True(t, secretExists, "kv-secret does not exist")
+	// Verify Diagnostic Settings
+	diagnosticSettingsResourceExists := azure.DiagnosticSettingsResourceExists(t, expectedDiagnosticSettingName, storageAccountID, subscriptionID)
 
+	assert.Equal(t, diagnosticSettingsResourceExists, true, "Diagnostic settings should exist")
 }

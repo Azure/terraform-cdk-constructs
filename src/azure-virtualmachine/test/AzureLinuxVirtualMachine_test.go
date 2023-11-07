@@ -1,24 +1,31 @@
 package test
 
 import (
+	"crypto/tls"
+	"fmt"
 	"os"
+
 	"strings"
 	"testing"
+	"time"
 
-	"github.com/microsoft/azure-terraform-cdk-modules/util"
+	http_helper "github.com/gruntwork-io/terratest/modules/http-helper"
+
+	"github.com/Azure/azure-sdk-for-go/profiles/latest/compute/mgmt/compute"
+	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/stretchr/testify/assert"
 
 	"github.com/gruntwork-io/terratest/modules/azure"
-	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
+	"github.com/microsoft/azure-terraform-cdk-modules/util"
 )
 
 // An example of how to test the Terraform module in examples/terraform-azure-example using Terratest.
-func TestTerraformCDKAzureKeyVaultExample(t *testing.T) {
+func TestTerraformCDKAzureLinuxVirtualMachineExample(t *testing.T) {
 	t.Parallel()
 
 	// Location of example file to test
-	example_file := "./src/azure-keyvault/test/ExampleAzureKeyVault.ts"
+	example_file := "./src/azure-virtualmachine/test/ExampleAzureLinuxVirtualMachine.ts"
 
 	// subscriptionID is overridden by the environment variable "ARM_SUBSCRIPTION_ID"
 	subscriptionID := util.GetSubscriptionID()
@@ -46,14 +53,25 @@ func TestTerraformCDKAzureKeyVaultExample(t *testing.T) {
 
 	// Run `terraform output` to get the values of output variables
 	resourceGroupName := util.CdkTFOutput(t, terraformOptions, "resource_group_name")
-	keyVaultName := util.CdkTFOutput(t, terraformOptions, "key_vault_name")
+	virtualMachineName := util.CdkTFOutput(t, terraformOptions, "vm_name")
+	endpoint := util.CdkTFOutput(t, terraformOptions, "vm_endpoint")
 
-	// Determine whether the keyvault exists
-	keyVault := azure.GetKeyVault(t, resourceGroupName, keyVaultName, "")
-	assert.Equal(t, keyVaultName, *keyVault.Name)
+	expectedVMSize := compute.VirtualMachineSizeTypes(util.CdkTFOutput(t, terraformOptions, "vm_size"))
 
-	// Determine whether the secret, key, and certificate exists
-	secretExists := azure.KeyVaultSecretExists(t, keyVaultName, "customSecretName")
-	assert.True(t, secretExists, "kv-secret does not exist")
+	// 1. Check the VM Size directly. This strategy gets one specific property of the VM per method.
+	actualVMSize := azure.GetSizeOfVirtualMachine(t, virtualMachineName, resourceGroupName, subscriptionID)
+	assert.Equal(t, string(expectedVMSize), string(actualVMSize))
 
+	// Test the endpoint for up to 5 minutes. This will only fail if we timeout waiting for the service to return a 200
+	// response.
+	http_helper.HttpGetWithRetryWithCustomValidation(
+		t,
+		fmt.Sprintf("http://%s", endpoint),
+		&tls.Config{},
+		30,
+		10*time.Second,
+		func(statusCode int, body string) bool {
+			return statusCode == 200
+		},
+	)
 }

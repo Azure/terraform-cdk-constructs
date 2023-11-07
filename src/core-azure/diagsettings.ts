@@ -7,7 +7,7 @@ export interface AzureDiagnosticSettingsProps {
   /**
    * Name of the diagnostic settings resource
    */
-  readonly name: string;
+  readonly name?: string;
 
   /**
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.71.0/docs/resources/monitor_diagnostic_setting#eventhub_authorization_rule_id MonitorDiagnosticSetting#eventhub_authorization_rule_id}
@@ -38,9 +38,8 @@ export interface AzureDiagnosticSettingsProps {
   /**
    * When set to 'Dedicated' logs sent to a Log Analytics workspace 
    * will go into resource specific tables, instead of the legacy AzureDiagnostics table.
-   * @default "AzureDiagnostics"
    */
-  logAnalyticsDestinationType?: string;
+  logAnalyticsDestinationType?: string | undefined;
 
   /**
    * Log Diagnostic categories
@@ -63,24 +62,20 @@ export class AzureDiagnosticSettings extends Construct {
 
     this.props = props;;
 
-    // Provide default values
-    const logAnalyticsDestinationType = props.logAnalyticsDestinationType ?? "AzureDiagnostics";
-
-
     // Get the list of available diagnostic categories
     const categories = new DataAzurermMonitorDiagnosticCategories(this, "diagcategories", {
       resourceId: props.targetResourceId
     });
 
-    const logCategories = props.logCategories ?? categories.logs;
+    const logCategories = props.logCategories ?? categories.logCategoryTypes;
     const metricCategories = props.metricCategories ?? categories.metrics;
 
 
 
       const diagsettings = new MonitorDiagnosticSetting(this, "diagsettings", {
-        name: props.name,
+        name: props.name || "diagsettings",
         targetResourceId: props.targetResourceId,
-        logAnalyticsDestinationType: logAnalyticsDestinationType,
+        logAnalyticsDestinationType: props.logAnalyticsDestinationType,
         storageAccountId: props.storageAccountId,
         logAnalyticsWorkspaceId: props.logAnalyticsWorkspaceId,
         eventhubAuthorizationRuleId: props.eventhubAuthorizationRuleId,
@@ -92,9 +87,6 @@ export class AzureDiagnosticSettings extends Construct {
         for_each: logCategories,
         content: { 
           category: "${enabled_log.value}",
-          retention_policy: {
-            enabled: false
-          }
         }
       });
 
@@ -102,9 +94,6 @@ export class AzureDiagnosticSettings extends Construct {
         for_each: metricCategories,
         content: { 
           category: "${metric.value}",
-          retention_policy: {
-            enabled: false,
-          }
         }
       });
 

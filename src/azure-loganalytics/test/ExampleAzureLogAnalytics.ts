@@ -1,16 +1,18 @@
 import * as cdktf from "cdktf";
 import { AzureLogAnalytics } from '../';
-import { App, TerraformStack} from "cdktf";
+import { App} from "cdktf";
+import {BaseTestStack} from "../../testing";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {EventhubNamespace} from "@cdktf/provider-azurerm/lib/eventhub-namespace";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+import { StorageAccount } from "@cdktf/provider-azurerm/lib/storage-account";
 
 
 const app = new App();
 
-export class exampleAzureLogAnalytics extends TerraformStack {
+export class exampleAzureLogAnalytics extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -23,20 +25,34 @@ export class exampleAzureLogAnalytics extends TerraformStack {
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-test`,
+      name: `rg-${this.name}`,
 
     });
 
     const namespace = new EventhubNamespace(this, 'ehns', {
-      name: 'my-namespace',
+      name: `ehns-${this.name}`,
       resourceGroupName: resourceGroup.name,
       location: resourceGroup.location,
       sku: 'Standard'
     });
 
+    const storage = new StorageAccount(this, "storage", {
+      name: `sta${this.name}`,
+      resourceGroupName: resourceGroup.name,
+      location: resourceGroup.location,
+      accountReplicationType: "LRS",
+      accountTier: "Standard",
+      minTlsVersion: "TLS1_2",
+      publicNetworkAccessEnabled: false,
+      networkRules: {
+        bypass: ['AzureServices'],
+        defaultAction: 'Deny',
+      },
+    });
+
 
     const logAnalyticsWorkspace = new AzureLogAnalytics(this, 'la', {
-      name: `la-test`,
+      name: `la-${this.name}`,
       location: 'eastus',
       retention: 90,
       sku: "PerGB2018",
@@ -67,10 +83,12 @@ export class exampleAzureLogAnalytics extends TerraformStack {
       ]
     });
 
-    // Add RBAC access
-    logAnalyticsWorkspace.addContributorAccess(clientConfig.objectId)
-    logAnalyticsWorkspace.addReaderAccess(clientConfig.objectId)
-    logAnalyticsWorkspace.addAccess(clientConfig.objectId, "Monitoring Reader", "43d0d8ad-25c7-4714-9337-8ba259a9fe05")
+    // Test RBAC
+    logAnalyticsWorkspace.addAccess(clientConfig.objectId, "Contributor")
+    logAnalyticsWorkspace.addAccess(clientConfig.objectId, "Monitoring Reader")
+
+    // Test Diag Settings
+    logAnalyticsWorkspace.addDiagSettings({storageAccountId: storage.id})
     
     // Outputs to use for End to End Test
     const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {

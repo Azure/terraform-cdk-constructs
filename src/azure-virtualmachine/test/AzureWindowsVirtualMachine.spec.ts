@@ -1,24 +1,29 @@
 import { Testing, TerraformStack} from 'cdktf';
-import { exampleAzureResourceGroup} from './ExampleAzureResourceGroup'
 import 'cdktf/lib/testing/adapters/jest';
-import { AzureResourceGroup } from '../';
+import {AzureWindowsVirtualMachine} from '..';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
+import { exampleAzureWindowsVirtualMachine } from './ExampleAzureWindowsVirtualMachine';
 
-describe('Resource Group With Defaults', () => {
+describe('Azure Windows Virtual Machine With Defaults', () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
 
   beforeEach(() => {
     const app = Testing.app();
-    stack = new TerraformStack(app, "test");
+    stack = new TerraformStack(app, "testAzureVMWithDefaults");
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
-    new AzureResourceGroup(stack, 'testRG');
+
+    new AzureWindowsVirtualMachine(stack, "testVirtualMachine", {
+      resourceGroupName: "testResourceGroup",
+      adminUsername: "testAdmin",
+      adminPassword: "testPassword&@34$$123",
+    });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });
 
-  it("renders a Resource Group with defaults and checks snapshot", () => {
+  it("renders an Azure Windows Virtual Machine with defaults and checks snapshot", () => {
     expect(
       Testing.synth(stack)
     ).toMatchSnapshot(); // Compare the already prepared stack
@@ -34,24 +39,25 @@ describe('Resource Group With Defaults', () => {
 });
 
 
-describe('Resource Group Example', () => {
+describe('Azure Windows Virtual Machine Example', () => {
   
-  it("renders the Example Resource Group and checks snapshot", () => {
+  it("renders the Azure Windows Virtual Machine and checks snapshot", () => {
+  
     expect(
-      Testing.synth(new exampleAzureResourceGroup(Testing.app(), "testAzexampleAzureResourceGroup"))
+      Testing.synth(new exampleAzureWindowsVirtualMachine(Testing.app(), "testAzureWindowsVirtualMachineExample"))
       
     ).toMatchSnapshot();
-  });
+});
 
   it("check if the produced terraform configuration is valid", () => {
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureResourceGroup(Testing.app(), "testAzexampleAzureResourceGroup"))).toBeValidTerraform();
+    expect(Testing.fullSynth(new exampleAzureWindowsVirtualMachine(Testing.app(), "testAzureWindowsVirtualMachineExample"))).toBeValidTerraform();
   });
 
   it("check if this can be planned", () => {
   
     
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureResourceGroup(Testing.app(), "testAzexampleAzureResourceGroup"))).toPlanSuccessfully();
+    expect(Testing.fullSynth(new exampleAzureWindowsVirtualMachine(Testing.app(), "testAzureWindowsVirtualMachineExample"))).toPlanSuccessfully();
   });
 });

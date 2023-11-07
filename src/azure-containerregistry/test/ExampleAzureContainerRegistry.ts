@@ -1,15 +1,21 @@
 import * as cdktf from "cdktf";
 import { AzureContainerRegistry } from '..';
-import { App, TerraformStack} from "cdktf";
+import { App} from "cdktf";
+import {BaseTestStack} from "../../testing";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
+import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import { Construct } from 'constructs';
 
 const app = new App();
     
-export class exampleAzureContainerRegistry extends TerraformStack {
+export class exampleAzureContainerRegistry extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
+
+    const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
+
 
     new AzurermProvider(this, "azureFeature", {
         features: {},
@@ -17,12 +23,18 @@ export class exampleAzureContainerRegistry extends TerraformStack {
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-test`,
+      name: `rg-${this.name}`,
 
     });
 
-    new AzureContainerRegistry(this, 'testACR', {
-      name: `acrtest`,
+    const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
+      location: 'eastus',
+      name: `la-${this.name}`,
+      resourceGroupName: resourceGroup.name,
+  });
+
+    const azureContainerRegistry = new AzureContainerRegistry(this, 'testACR', {
+      name: `acr${this.name}`,
       location: resourceGroup.location,
       resource_group_name: resourceGroup.name,
       sku: "Premium",
@@ -32,6 +44,13 @@ export class exampleAzureContainerRegistry extends TerraformStack {
         environment: "test",
       },
     });
+
+     //Diag Settings
+     azureContainerRegistry.addDiagSettings({name: "diagsettings", logAnalyticsWorkspaceId: logAnalyticsWorkspace.id})
+
+     //RBAC
+     azureContainerRegistry.addAccess(clientConfig.objectId, "Contributor")
+ 
 
     // Outputs to use for End to End Test
     const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {

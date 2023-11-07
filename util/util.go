@@ -2,7 +2,7 @@ package util
 
 import (
 	"encoding/json"
-	rnd "math/rand"
+	"math/rand"
 	"os"
 	"os/exec"
 	"strings"
@@ -87,12 +87,14 @@ func RandomizeUniqueResources(filePath string) error {
 }
 
 // Generate a random string of the specified length
+const allowedChars = "abcdefghijklmnopqrstuvwxyz0123456789"
+
 func randomString(length int) string {
-	rnd.Seed(time.Now().UnixNano())
-	chars := []rune("abcdefghijklmnopqrstuvwxyz")
+	rand.Seed(time.Now().UnixNano())
+	chars := []rune(allowedChars)
 	result := make([]rune, length)
 	for i := range result {
-		result[i] = chars[rnd.Intn(len(chars))]
+		result[i] = chars[rand.Intn(len(chars))]
 	}
 	return string(result)
 }

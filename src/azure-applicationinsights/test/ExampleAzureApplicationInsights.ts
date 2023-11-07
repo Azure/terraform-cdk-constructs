@@ -1,6 +1,7 @@
 import * as cdktf from "cdktf";
+import {BaseTestStack} from "../../testing";
 import { AzureApplicationInsights } from '../';
-import { App, TerraformStack} from "cdktf";
+import { App} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
@@ -11,7 +12,7 @@ import * as util from "../../util/azureTenantIdHelpers";
 
 const app = new App();
     
-export class exampleAzureApplicationInsights extends TerraformStack {
+export class exampleAzureApplicationInsights extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -19,17 +20,21 @@ export class exampleAzureApplicationInsights extends TerraformStack {
 
 
     new AzurermProvider(this, "azureFeature", {
-        features: {},
+        features: {
+          resourceGroup: {
+                   preventDeletionIfContainsResources: false,
+         },
+        },
       });
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-test`,
+      name: `rg-${this.name}`,
 
     });
 
     const keyvault = new KeyVault(this, 'key_vault', {
-      name: "kvtest",
+      name: `kv-${this.name}`,
       location: resourceGroup.location,
       resourceGroupName: resourceGroup.name,
       skuName: "standard",
@@ -56,12 +61,12 @@ export class exampleAzureApplicationInsights extends TerraformStack {
 
     const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
         location: 'eastus',
-        name: `la-test`,
+        name: `la-${this.name}`,
         resourceGroupName: resourceGroup.name,
     });
 
     const applicationInsights = new AzureApplicationInsights(this, 'testappi', {
-      name: `appinsight-test`,
+      name: `appi-${this.name}`,
       location: 'eastus',
       resource_group_name: resourceGroup.name ,
       application_type: "web",
@@ -72,6 +77,12 @@ export class exampleAzureApplicationInsights extends TerraformStack {
     applicationInsights.saveIKeyToKeyVault(keyvault.id);
     applicationInsights.saveIKeyToKeyVault(keyvault.id, "customSecretName");
     
+    //Diag Settings
+    applicationInsights.addDiagSettings({name: "diagsettings", logAnalyticsWorkspaceId: logAnalyticsWorkspace.id})
+
+    //RBAC
+    applicationInsights.addAccess(clientConfig.objectId, "Contributor")
+
     // Outputs to use for End to End Test
     const cdktfTerraformOutputKVName = new cdktf.TerraformOutput(this, "key_vault_name", {
       value: keyvault.name,

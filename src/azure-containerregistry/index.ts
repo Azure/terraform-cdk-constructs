@@ -1,5 +1,6 @@
 import * as cdktf from "cdktf";
-import { Construct } from 'constructs';
+import {AzureResource} from "../core-azure";
+import {Construct} from "constructs";
 import {ContainerRegistry} from "@cdktf/provider-azurerm/lib/container-registry";
 
 
@@ -36,8 +37,9 @@ import {ContainerRegistry} from "@cdktf/provider-azurerm/lib/container-registry"
 
 }
 
-export class AzureContainerRegistry extends Construct {
+export class AzureContainerRegistry extends AzureResource {
   readonly props: ContainerRegistryProps;
+  public readonly id: string;
   
   constructor(scope: Construct, id: string, props: ContainerRegistryProps) {
     super(scope, id);
@@ -59,6 +61,8 @@ export class AzureContainerRegistry extends Construct {
         adminEnabled: admin_enabled,
         georeplications: georeplication_locations,
     });
+
+    this.id = azurermContainerRegistry.id;
 
     
     // Terraform Outputs
