@@ -52,6 +52,10 @@ export class exampleAzureLinuxVirtualMachine extends BaseTestStack {
       accountTier: "Standard",
       minTlsVersion: "TLS1_2",
       publicNetworkAccessEnabled: false,
+      networkRules: {
+        bypass: ['AzureServices'],
+        defaultAction: 'Deny',
+      },
     });
 
     

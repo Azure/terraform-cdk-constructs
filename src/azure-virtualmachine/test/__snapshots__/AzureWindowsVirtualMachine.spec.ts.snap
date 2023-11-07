@@ -100,6 +100,12 @@ exports[`Azure Windows Virtual Machine Example renders the Azure Windows Virtual
         "location": "\${azurerm_resource_group.rg.location}",
         "min_tls_version": "TLS1_2",
         "name": "sta\${var.name}",
+        "network_rules": {
+          "bypass": [
+            "AzureServices"
+          ],
+          "default_action": "Deny"
+        },
         "public_network_access_enabled": false,
         "resource_group_name": "\${azurerm_resource_group.rg.name}"
       }
