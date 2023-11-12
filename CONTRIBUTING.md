@@ -82,4 +82,4 @@ These tests will run in your own Azure subscription. They will look for the ARM_
 
 Please be aware that running integration tests may incur charges on your Azure account. Always verify the resources you are creating and their associated costs.
 
-**Thank you for your interest in contributing to the Terraform Azure CDK Modules project! Your efforts help make our project even better.**
+**Thank you for your interest in contributing to the Azure Terraform CDK Modules project! Your efforts help make our project even better.**
