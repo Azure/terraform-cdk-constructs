@@ -2,6 +2,8 @@ import * as cdktf from 'cdktf';
 import { KustoCluster } from '@cdktf/provider-azurerm/lib/kusto-cluster';
 import { Construct } from 'constructs';
 import { AzureResourceGroup } from '../azure-resourcegroup/index';
+import { AzureRbac } from '../core-azure/rbac';
+import { AzureKustoDatabase, KustoDatabaseProps } from './database';
 
 
 export interface KustoProps {
@@ -48,7 +50,7 @@ export interface KustoProps {
    * Specifies if the purge operations are enabled.
    * @default false
    */
-  readonly purgeEnabled? : boolean;
+  readonly purgeEnabled?: boolean;
   /**
    * Specifies the list of availability zones where the cluster should be provisioned.
    * @default ["1", "2", "3"]
@@ -70,26 +72,30 @@ export interface KustoProps {
 
 
 export class AzureKusto extends Construct {
-  readonly props: KustoProps;
-  public readonly id: string;
-  public readonly uri: string;
+  readonly kustoProps: KustoProps;
+  public readonly rgProps: string;
+  public readonly locationProps: string;
+  public readonly idProps: string;
+  public readonly uriProps: string;
 
-  constructor(scope: Construct, id: string, rg: AzureResourceGroup, props: KustoProps) {
+  constructor(scope: Construct, id: string, rg: AzureResourceGroup, kustoProps: KustoProps) {
     super(scope, id);
-    this.props = props;
+    this.kustoProps = kustoProps;
+    this.rgProps = rg.Name;
+    this.locationProps = rg.Location;
 
     /**
      * Define default values.
      */
     const defaults = {
-      publicNetworkAccessEnabled: props.publicNetworkAccessEnabled || true,
-      autoStopEnabled: props.autoStopEnabled || true,
-      streamingIngestionEnabled: props.streamingIngestionEnabled || true,
-      purgeEnabled: props.purgeEnabled || false,
-      zones: props.zones || ["1", "2", "3"],
+      publicNetworkAccessEnabled: kustoProps.publicNetworkAccessEnabled || true,
+      autoStopEnabled: kustoProps.autoStopEnabled || true,
+      streamingIngestionEnabled: kustoProps.streamingIngestionEnabled || true,
+      purgeEnabled: kustoProps.purgeEnabled || false,
+      zones: kustoProps.zones || ["1", "2", "3"],
       sku: {
-        name: props.skuName,
-        capacity: props.capacity || 2,
+        name: kustoProps.skuName,
+        capacity: kustoProps.capacity || 2,
       },
       identity: {
         type: "SystemAssigned",
@@ -102,26 +108,26 @@ export class AzureKusto extends Construct {
      */
     const azurermKustoCluster = new KustoCluster(this, 'Kusto', {
       ...defaults,
-      name: props.name,
+      name: kustoProps.name,
       location: rg.Location,
       resourceGroupName: rg.Name,
-      tags: props.tags,
+      tags: kustoProps.tags,
     });
 
-    if (props.identityType) {
+    if (kustoProps.identityType) {
       azurermKustoCluster.addOverride("identity", {
-        type: props.identityType,
-        identityIds: props.identityIds,
+        type: kustoProps.identityType,
+        identityIds: kustoProps.identityIds,
       });
     }
 
-    if (props.minimumInstances && props.maximumInstances) {
-      azurermKustoCluster.addOverride("minimumCapacity", props.minimumInstances);
-      azurermKustoCluster.addOverride("maximumCapacity", props.maximumInstances);
+    if (kustoProps.minimumInstances && kustoProps.maximumInstances) {
+      azurermKustoCluster.addOverride("minimum_instances", kustoProps.minimumInstances);
+      azurermKustoCluster.addOverride("maximum_instances", kustoProps.maximumInstances);
     }
 
-    this.id = azurermKustoCluster.id;
-    this.uri = azurermKustoCluster.uri;
+    this.idProps = azurermKustoCluster.id;
+    this.uriProps = azurermKustoCluster.uri;
 
     // Outputs
     const cdktfTerraformOutputKustoId = new cdktf.TerraformOutput(this, "Kusto_id", {
@@ -143,5 +149,17 @@ export class AzureKusto extends Construct {
     cdktfTerraformOutputKustoUri.overrideLogicalId("Kusto_uri")
     cdktfTerraformOutputDataIngestionUri.overrideLogicalId("Kusto_data_ingestion_uri")
     cdktfTerraformOutputKustoIdentity.overrideLogicalId("Kusto_identity");
+  }
+
+  public addAccess(objectId: string, customRoleName: string) {
+    new AzureRbac(this, objectId + customRoleName, {
+      objectId: objectId,
+      roleDefinitionName: customRoleName,
+      scope: this.idProps,
+    });
+  }
+
+  public addDatabase(databaseProps: KustoDatabaseProps) {
+    return new AzureKustoDatabase(this, databaseProps.name, this, databaseProps);
   }
 }

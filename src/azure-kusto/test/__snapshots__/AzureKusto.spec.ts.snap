@@ -2,6 +2,12 @@
 
 exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] = `
 "{
+  "data": {
+    "azurerm_client_config": {
+      "CurrentClientConfig": {
+      }
+    }
+  },
   "output": {
     "Kusto_data_ingestion_uri": {
       "value": "\${azurerm_kusto_cluster.kusto_Kusto_6B093AC5.data_ingestion_uri}"
@@ -63,6 +69,28 @@ exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] =
         ]
       }
     },
+    "azurerm_kusto_database": {
+      "kusto_testDB1_kusto-db-testDB1_D1A53426": {
+        "cluster_name": "kusto\${var.name}",
+        "hot_cache_period": "P7D",
+        "location": "\${azurerm_resource_group.rg_1429A41A.location}",
+        "name": "testDB1",
+        "resource_group_name": "\${azurerm_resource_group.rg_1429A41A.name}",
+        "soft_delete_period": "P31D"
+      }
+    },
+    "azurerm_kusto_database_principal_assignment": {
+      "kusto_testDB1_kusto-db-User1Admin-access_836A7F36": {
+        "cluster_name": "kusto\${var.name}",
+        "database_name": "testDB1",
+        "name": "User1Admin",
+        "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.client_id}",
+        "principal_type": "User",
+        "resource_group_name": "\${azurerm_resource_group.rg_1429A41A.name}",
+        "role": "Admin",
+        "tenant_id": "\${data.azurerm_client_config.CurrentClientConfig.tenant_id}"
+      }
+    },
     "azurerm_resource_group": {
       "rg_1429A41A": {
         "lifecycle": [
@@ -73,6 +101,13 @@ exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] =
         ],
         "location": "eastus",
         "name": "rg-\${var.name}"
+      }
+    },
+    "azurerm_role_assignment": {
+      "kusto_TfTokenTOKEN46Contributor_role_7C98C2D2": {
+        "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
+        "role_definition_name": "Contributor",
+        "scope": "\${azurerm_kusto_cluster.kusto_Kusto_6B093AC5.id}"
       }
     }
   },
