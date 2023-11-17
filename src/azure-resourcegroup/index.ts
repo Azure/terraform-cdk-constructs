@@ -36,9 +36,9 @@ export class AzureResourceGroup extends Construct {
   LocationOutput: cdktf.TerraformOutput
   NameOutput: cdktf.TerraformOutput
 
-  public readonly id: string;
-  public readonly location: string;
-  public readonly name: string;
+  public readonly Id: string;
+  public readonly Location: string;
+  public readonly Name: string;
 
   constructor(scope: Construct, id: string, props: ResourceGroupProps = {}) {
     super(scope, id);
@@ -71,9 +71,9 @@ export class AzureResourceGroup extends Construct {
       });
     })
 
-    this.id = azurermResourceGroupRg.id;
-    this.name = azurermResourceGroupRg.name;
-    this.location = azurermResourceGroupRg.location;
+    this.Id = azurermResourceGroupRg.id;
+    this.Name = azurermResourceGroupRg.name;
+    this.Location = azurermResourceGroupRg.location;
 
     // Terraform Outputs
     this.IdOutput = new cdktf.TerraformOutput(this, "id", {
