@@ -44,7 +44,7 @@ export class exampleAzureKusto extends BaseTestStack {
     });
 
     // Add Permision to Kusto Database
-    testDB1.addAccess({
+    testDB1.addPermission({
       name: "User1Admin",
       tenantId: clientConfig.tenantId,
       principalId: clientConfig.clientId,

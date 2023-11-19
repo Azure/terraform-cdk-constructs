@@ -48,18 +48,18 @@ export interface KustoDatabaseAccessProps {
 export class AzureKustoDatabase extends Construct {
   public readonly kustoDbProps: KustoDatabaseProps;
   public readonly kustoProps: KustoProps;
-  public readonly rgProps: string;
+  public readonly rg: string;
 
   constructor(scope: Construct, id: string, kusto: AzureKusto, kustoDbProps: KustoDatabaseProps) {
     super(scope, id);
     this.kustoDbProps = kustoDbProps;
     this.kustoProps = kusto.kustoProps;
-    this.rgProps = kusto.rgProps;
+    this.rg = kusto.rgName;
 
     const kustoDatabase = new KustoDatabase(this, `kusto-db-${this.kustoDbProps.name}`, {
       name: this.kustoDbProps.name,
-      location: kusto.locationProps,
-      resourceGroupName: kusto.rgProps,
+      location: kusto.location,
+      resourceGroupName: kusto.rgName,
       clusterName: kusto.kustoProps.name,
     });
 
@@ -71,10 +71,10 @@ export class AzureKustoDatabase extends Construct {
     }
   }
 
-  public addAccess(kustoDatabaseAccessProps: KustoDatabaseAccessProps) {
+  public addPermission(kustoDatabaseAccessProps: KustoDatabaseAccessProps) {
     new KustoDatabasePrincipalAssignment(this, `kusto-db-${kustoDatabaseAccessProps.name}-access`, {
       name: kustoDatabaseAccessProps.name,
-      resourceGroupName: this.rgProps,
+      resourceGroupName: this.rg,
       clusterName: this.kustoProps.name,
       databaseName: this.kustoDbProps.name,
       tenantId: kustoDatabaseAccessProps.tenantId,

@@ -2,8 +2,8 @@ import * as cdktf from 'cdktf';
 import { KustoCluster } from '@cdktf/provider-azurerm/lib/kusto-cluster';
 import { Construct } from 'constructs';
 import { AzureResourceGroup } from '../azure-resourcegroup/index';
-import { AzureRbac } from '../core-azure/rbac';
 import { AzureKustoDatabase, KustoDatabaseProps } from './database';
+import { AzureResource } from '../core-azure/index';
 
 
 export interface KustoProps {
@@ -71,18 +71,18 @@ export interface KustoProps {
 }
 
 
-export class AzureKusto extends Construct {
+export class AzureKusto extends AzureResource {
   readonly kustoProps: KustoProps;
-  public readonly rgProps: string;
-  public readonly locationProps: string;
-  public readonly idProps: string;
-  public readonly uriProps: string;
+  public readonly rgName: string;
+  public readonly location: string;
+  public readonly id: string;
+  public readonly uri: string;
 
   constructor(scope: Construct, id: string, rg: AzureResourceGroup, kustoProps: KustoProps) {
     super(scope, id);
     this.kustoProps = kustoProps;
-    this.rgProps = rg.Name;
-    this.locationProps = rg.Location;
+    this.rgName = rg.Name;
+    this.location = rg.Location;
 
     /**
      * Define default values.
@@ -126,8 +126,8 @@ export class AzureKusto extends Construct {
       azurermKustoCluster.addOverride("maximum_instances", kustoProps.maximumInstances);
     }
 
-    this.idProps = azurermKustoCluster.id;
-    this.uriProps = azurermKustoCluster.uri;
+    this.id = azurermKustoCluster.id;
+    this.uri = azurermKustoCluster.uri;
 
     // Outputs
     const cdktfTerraformOutputKustoId = new cdktf.TerraformOutput(this, "Kusto_id", {
@@ -149,14 +149,6 @@ export class AzureKusto extends Construct {
     cdktfTerraformOutputKustoUri.overrideLogicalId("Kusto_uri")
     cdktfTerraformOutputDataIngestionUri.overrideLogicalId("Kusto_data_ingestion_uri")
     cdktfTerraformOutputKustoIdentity.overrideLogicalId("Kusto_identity");
-  }
-
-  public addAccess(objectId: string, customRoleName: string) {
-    new AzureRbac(this, objectId + customRoleName, {
-      objectId: objectId,
-      roleDefinitionName: customRoleName,
-      scope: this.idProps,
-    });
   }
 
   public addDatabase(databaseProps: KustoDatabaseProps) {
