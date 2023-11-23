@@ -51,6 +51,15 @@ export class exampleAzureEventhub extends BaseTestStack {
 
     // Add IAM role to Eventhub Namespace
     eventhubNamespace.addAccess(clientConfig.objectId, "Contributor");
+
+    // Add Kusto data connection
+    eventhubInstance.addKustoDataConnection({
+      name: `test-kusto-data-connection`,
+      location: 'eastus',
+      resourceGroupName: 'test-rg',         // Kusto resource group
+      clusterName: 'testkustocluster',      // Kusto cluster name
+      databaseName: "test-kusto-database",  // Kusto database name
+    });
   }
 }
 

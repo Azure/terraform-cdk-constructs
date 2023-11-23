@@ -3,6 +3,7 @@ import { Construct } from 'constructs';
 import * as cdktf from 'cdktf';
 import { AzureEventhubAuthorizationRule, EventhubAuthorizationRuleProps } from "./eventhub-auth";
 import { EventhubConsumerGroupProps, AzureEventhubConsumerGroup } from './eventhub-consumer';
+import { AzureKustoEventhubDataConnection, EventhubKustoDataConnectionProps } from "./kusto-connection";
 
 
 export interface EventhubInstanceProps {
@@ -93,6 +94,13 @@ export class AzureEventhubInstance extends Construct {
       resourceGroupName: this.ehInstanceProps.resourceGroupName,
       namespaceName: this.ehInstanceProps.namespaceName,
       eventhubName: this.ehInstanceProps.name,
+      ...props,
+    });
+  }
+
+  public addKustoDataConnection(props: Omit<EventhubKustoDataConnectionProps, 'eventhubId'>) {
+    return new AzureKustoEventhubDataConnection(this, `ehkustodataconnection-${this.ehInstanceProps.name}-${props.name}`, {
+      eventhubId: this.id,
       ...props,
     });
   }

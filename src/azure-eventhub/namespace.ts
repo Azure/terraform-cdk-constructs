@@ -7,64 +7,64 @@ import { AzureResource } from "../core-azure";
 
 
 export interface EventhubNamespaceProps {
-  readonly name: string;
+	readonly name: string;
 	/**
-   * Defines which tier to use. Valid options are Basic, Standard, and Premium.
-   * @default "Basic"
-   */
-  readonly sku?: string;
-  /**
-   * Specifies the Capacity / Throughput Units for a Standard SKU namespace. 
-   * @default 2
-   */
-  readonly capacity?: number;
-  /**
-   * Specifies if the EventHub Namespace should be Auto Inflate enabled.
-   * @default false
-   */
-  readonly autoInflateEnabled?: boolean;
-  /**
-   * Specifies the maximum number of throughput units when Auto Inflate is Enabled. Valid values range from 1 - 20.
+	* Defines which tier to use. Valid options are Basic, Standard, and Premium.
+	* @default "Basic"
+	*/
+	readonly sku?: string;
+	/**
+	 * Specifies the Capacity / Throughput Units for a Standard SKU namespace. 
 	 * @default 2
-   */
-  readonly maximumThroughputUnits?: number;
-  /**
-   * Specifies if the EventHub Namespace should be Zone Redundant (created across Availability Zones).
-   * @default false
-   */
-  readonly zoneRedundant?: boolean;
-  /**
-     * The tags to assign to the Key Vault.
-     */
-  readonly tags?: { [key: string]: string; };
-  /**
-   * The minimum supported TLS version for this EventHub Namespace. Valid values are: 1.0, 1.1 and 1.2.
-   * @default "1.2"
-   */
-  readonly minimumTlsVersion?: string;
-  /**
-   * Is public network access enabled for the EventHub Namespace?
-   * @default true
-   */
-  readonly publicNetworkAccessEnabled?: boolean;
-  /**
-   * Is SAS authentication enabled for the EventHub Namespace?
-   * @default true
-   */
-  readonly localAuthenticationEnabled?: boolean;
-  /**
-   * Specifies the type of Managed Service Identity that should be configured on this Event Hub Namespace. Possible values are SystemAssigned or UserAssigned.
-   * @default "SystemAssigned"
-   */
-  readonly identityType?: string;
-  /**
-   * Specifies a list of User Assigned Managed Identity IDs to be assigned to this EventHub namespace.
-   */
-  readonly identityIds?: string[] | undefined;
+	 */
+	readonly capacity?: number;
+	/**
+	 * Specifies if the EventHub Namespace should be Auto Inflate enabled.
+	 * @default false
+	 */
+	readonly autoInflateEnabled?: boolean;
+	/**
+	 * Specifies the maximum number of throughput units when Auto Inflate is Enabled. Valid values range from 1 - 20.
+		* @default 2
+	 */
+	readonly maximumThroughputUnits?: number;
+	/**
+	 * Specifies if the EventHub Namespace should be Zone Redundant (created across Availability Zones).
+	 * @default true
+	 */
+	readonly zoneRedundant?: boolean;
+	/**
+		 * The tags to assign to the Key Vault.
+		 */
+	readonly tags?: { [key: string]: string; };
+	/**
+	 * The minimum supported TLS version for this EventHub Namespace. Valid values are: 1.0, 1.1 and 1.2.
+	 * @default "1.2"
+	 */
+	readonly minimumTlsVersion?: string;
+	/**
+	 * Is public network access enabled for the EventHub Namespace?
+	 * @default true
+	 */
+	readonly publicNetworkAccessEnabled?: boolean;
+	/**
+	 * Is SAS authentication enabled for the EventHub Namespace? North Central US Not supported.
+	 * @default false
+	 */
+	readonly localAuthenticationEnabled?: boolean;
+	/**
+	 * Specifies the type of Managed Service Identity that should be configured on this Event Hub Namespace. Possible values are SystemAssigned or UserAssigned.
+	 * @default "SystemAssigned"
+	 */
+	readonly identityType?: string;
+	/**
+	 * Specifies a list of User Assigned Managed Identity IDs to be assigned to this EventHub namespace.
+	 */
+	readonly identityIds?: string[] | undefined;
 
-  /**
-   * TODO: network_rulesets
-   */
+	/**
+	 * TODO: network_rulesets
+	 */
 }
 
 export class AzureEventhubNamespace extends AzureResource {

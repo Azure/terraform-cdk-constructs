@@ -85,6 +85,20 @@ exports[`Azure Eventhub Example renders the Example Azure Eventhub and checks sn
         "zone_redundant": false,
       },
     },
+    "azurerm_kusto_eventhub_data_connection": {
+      "eventhub_ehinstance_ehkustodataconnection-test-eventhub-instance-test-kusto-data-connection_kusto-data-connection-test-kusto-data-connection_9E92DF1E": {
+        "cluster_name": "testkustocluster",
+        "compression": "None",
+        "consumer_group": "$Default",
+        "data_format": "JSON",
+        "database_name": "test-kusto-database",
+        "database_routing_type": "Single",
+        "eventhub_id": "\${azurerm_eventhub.eventhub_ehinstance_ehinstance-test-eventhub-instance_6C544BA5.id}",
+        "location": "eastus",
+        "name": "test-kusto-data-connection",
+        "resource_group_name": "test-rg",
+      },
+    },
     "azurerm_resource_group": {
       "rg_1429A41A": {
         "lifecycle": [
