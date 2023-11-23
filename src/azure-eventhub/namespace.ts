@@ -12,7 +12,7 @@ export interface EventhubNamespaceProps {
    * Defines which tier to use. Valid options are Basic, Standard, and Premium.
    * @default "Basic"
    */
-  readonly sku: string;
+  readonly sku?: string;
   /**
    * Specifies the Capacity / Throughput Units for a Standard SKU namespace. 
    * @default 2
