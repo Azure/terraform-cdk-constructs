@@ -51,6 +51,24 @@ export class exampleAzureKusto extends BaseTestStack {
       principalType: "User",
       role: "Admin",
     });
+
+    // Create Table in Kusto Database
+    testDB1.addTable('MyTestTable', [
+      {
+        columnName: 'Timestamp',
+        columnType: 'datetime',
+      },
+      {
+        columnName: 'User',
+        columnType: 'string',
+      },
+      {
+        columnName: 'Value',
+        columnType: 'int32',
+      },
+    ]);
+
+    testDB1.addScript('MyTestScript', '.create table MyTestTable2 ( Timestamp:datetime, User:string, Value:int32 )');
   }
 }
 

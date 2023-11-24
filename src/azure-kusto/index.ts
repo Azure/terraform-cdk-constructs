@@ -9,7 +9,7 @@ import { AzureResource } from '../core-azure/index';
 export interface KustoProps {
   /**
    * The name of the Kusto Cluster to create.
-   * Only lowercase Alphanumeric characters allowed, starting with a letter.
+   * Only 4-22 lowercase alphanumeric characters allowed, starting with a letter.
    */
   readonly name: string;
   /**

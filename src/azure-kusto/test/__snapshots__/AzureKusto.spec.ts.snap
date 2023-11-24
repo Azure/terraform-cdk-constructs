@@ -23,7 +23,7 @@ exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] =
       "value": "\${azurerm_kusto_cluster.kusto_Kusto_6B093AC5.uri}"
     },
     "id": {
-      "value": "\${azurerm_resource_group.rg_1429A41A.id}"
+      "value": "\${azurerm_kusto_database.kusto_testDB1_kusto-db-testDB1_D1A53426.id}"
     },
     "location": {
       "value": "\${azurerm_resource_group.rg_1429A41A.location}"
@@ -91,6 +91,22 @@ exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] =
         "tenant_id": "\${data.azurerm_client_config.CurrentClientConfig.tenant_id}"
       }
     },
+    "azurerm_kusto_script": {
+      "kusto_testDB1_kusto-db-testDB1-script-MyTestScript_228E71EF": {
+        "continue_on_errors_enabled": false,
+        "database_id": "\${azurerm_kusto_database.kusto_testDB1_kusto-db-testDB1_D1A53426.id}",
+        "force_an_update_when_value_changed": "1b98d80c44453d043e9faf8aa4ca9e9e",
+        "name": "script-MyTestScript",
+        "script_content": ".create table MyTestTable2 ( Timestamp:datetime, User:string, Value:int32 )"
+      },
+      "kusto_testDB1_kusto-db-testDB1-table-MyTestTable_A0AAD29F": {
+        "continue_on_errors_enabled": false,
+        "database_id": "\${azurerm_kusto_database.kusto_testDB1_kusto-db-testDB1_D1A53426.id}",
+        "force_an_update_when_value_changed": "9b2184ae8b9df7cda6deb740fbba4e37",
+        "name": "MyTestTable",
+        "script_content": ".create table MyTestTable ( Timestamp:datetime, User:string, Value:int32 )"
+      }
+    },
     "azurerm_resource_group": {
       "rg_1429A41A": {
         "lifecycle": [
@@ -104,7 +120,7 @@ exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] =
       }
     },
     "azurerm_role_assignment": {
-      "kusto_TfTokenTOKEN46Contributor_role_7C98C2D2": {
+      "kusto_TfTokenTOKEN47Contributor_role_1777E8D7": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_kusto_cluster.kusto_Kusto_6B093AC5.id}"
