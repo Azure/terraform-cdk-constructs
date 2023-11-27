@@ -21,7 +21,7 @@ This class takes an azure resource group object as input.
 And has several properties that control the Kusto resource's behaviour:
 
 - `name`: The name of the Kusto resource.
-- `skuName`: The SKU name of the Kusto resource.
+- `sku`: (Optional) The SKU of the Kusto resource. Defaults to "dev/test, Dv2/DSv2 Series, Extra small".
 - `capacity`: (Optional) The node count for the cluster. Defaults to 2.
 - `identityType`: (Optional) The type of Managed Service Identity. Defaults to "SystemAssigned".
 - `identityIds`: (Optional) A list of User Assigned Managed Identity IDs to be assigned to this Kusto Cluster.
@@ -29,7 +29,7 @@ And has several properties that control the Kusto resource's behaviour:
 - `autoStopEnabled`: (Optional) Specifies if the cluster could be automatically stopped (due to lack of data or no activity for many days). Defaults to true.
 - `streamingIngestionEnabled`: (Optional) Specifies if the streaming ingest is enabled. Defaults to true.
 - `purgeEnabled`: (Optional) Specifies if the purge operations are enabled. Defaults to false.
-- `zones`: (Optional) Specifies the list of availability zones where the cluster should be provisioned. Defaults to ["1", "2", "3"].
+- `enableZones`: (Optional) Specifies if the cluster is zone redundant or not. Will check if the sku supports zone redundancy. Defaults to true.
 - `minimumInstances`: (Optional) The minimum number of allowed instances. Must between 0 and 1000.
 - `maximumInstances`: (Optional) The maximum number of allowed instances. Must between 0 and 1000.
 - `tags`: (Optional) A mapping of tags to assign to the Kusto.
@@ -46,9 +46,10 @@ You can deploy a Kusto resource using this class like so:
   });
 
   // Create a Kusto Cluster with defult settings
+  // import { ComputeSpecification } from '../compute-specification';
   const kustoCluster = new AzureKusto(this, "myKusto", resourceGroup, {
     name: 'myKusto',
-    skuName: 'Dev(No SLA)_Standard_D11_v2',
+    sku: ComputeSpecification.devtestExtraSmallEav4,
   });
 
 ```

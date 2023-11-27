@@ -59,7 +59,7 @@ exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] =
         "resource_group_name": "\${azurerm_resource_group.rg_1429A41A.name}",
         "sku": {
           "capacity": 2,
-          "name": "Dev(No SLA)_Standard_D11_v2"
+          "name": "Dev(No SLA)_Standard_E2a_v4"
         },
         "streaming_ingestion_enabled": true,
         "zones": [
@@ -186,7 +186,7 @@ exports[`Kusto With Defaults renders an Kusto with defaults and checks snapshot 
         "resource_group_name": "testrgname",
         "sku": {
           "capacity": 2,
-          "name": "Dev(No SLA)_Standard_D11_v2"
+          "name": "Dev(No SLA)_Standard_E2a_v4"
         },
         "streaming_ingestion_enabled": true,
         "zones": [

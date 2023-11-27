@@ -5,6 +5,7 @@ import { AzureResourceGroup } from "../../azure-resourcegroup";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+import { ComputeSpecification } from '../compute-specification';
 
 const app = new App();
 
@@ -30,7 +31,7 @@ export class exampleAzureKusto extends BaseTestStack {
     // Create Kusto Cluster
     const kustoCluster = new AzureKusto(this, "kusto", resourceGroup, {
       name: `kusto${this.name}`,  // Only lowercase Alphanumeric characters allowed.
-      skuName: `Dev(No SLA)_Standard_D11_v2`,
+      sku: ComputeSpecification.devtestExtraSmallEav4,
     });
 
     // Add RBAC to Kusto Cluster
