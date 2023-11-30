@@ -6,6 +6,10 @@ import * as cdktf from 'cdktf';
 
 
 export interface EventhubClusterProps {
+  /**
+   * The name of the Resource Group in which to create the EventHub Cluster.
+   */
+  readonly rg: AzureResourceGroup
   readonly name: string;
   /**
    * The SKU name of the EventHub Cluster. The only supported value at this time is Dedicated_1.
@@ -13,8 +17,8 @@ export interface EventhubClusterProps {
    */
   readonly skuName?: string;
   /** 
-     * The tags to assign to the Application Insights resource.
-     */
+   * The tags to assign to the Application Insights resource.
+   */
   readonly tags?: { [key: string]: string; };
 }
 
@@ -24,12 +28,12 @@ export class AzureEventhubCluster extends AzureResource {
   readonly rgLocation: string;
   readonly id: string;
 
-  constructor(scope: Construct, name: string, rg: AzureResourceGroup, ehClusterProps: EventhubClusterProps) {
+  constructor(scope: Construct, name: string, ehClusterProps: EventhubClusterProps) {
     super(scope, name);
 
     this.ehClusterProps = ehClusterProps;
-    this.rgName = rg.Name;
-    this.rgLocation = rg.Location;
+    this.rgName = ehClusterProps.rg.Name;
+    this.rgLocation = ehClusterProps.rg.Location;
 
     const defaults = {
       skuName: ehClusterProps.skuName || 'Dedicated_1',

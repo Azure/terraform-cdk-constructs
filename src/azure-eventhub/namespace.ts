@@ -7,6 +7,13 @@ import { AzureResource } from "../core-azure";
 
 
 export interface EventhubNamespaceProps {
+	/**
+	 * The Azure Resource Group in which to create the EventHub Namespace.
+	 */
+	readonly rg: AzureResourceGroup
+	/**
+	 * The name of the EventHub Namespace to create.
+	 */
 	readonly name: string;
 	/**
 	* Defines which tier to use. Valid options are Basic, Standard, and Premium.
@@ -74,12 +81,12 @@ export class AzureEventhubNamespace extends AzureResource {
 	readonly id: string;
 	readonly namespaceName: string;
 
-	constructor(scope: Construct, name: string, rg: AzureResourceGroup, ehNamespaceProps: EventhubNamespaceProps) {
+	constructor(scope: Construct, name: string, ehNamespaceProps: EventhubNamespaceProps) {
 		super(scope, name);
 
 		this.ehNamespaceProps = ehNamespaceProps;
-		this.rgName = rg.Name;
-		this.rgLocation = rg.Location;
+		this.rgName = ehNamespaceProps.rg.Name;
+		this.rgLocation = ehNamespaceProps.rg.Location;
 		this.namespaceName = ehNamespaceProps.name;
 
 		const defaults = {

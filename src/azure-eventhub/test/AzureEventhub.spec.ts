@@ -22,7 +22,8 @@ describe('Azure Eventhub With Defaults', () => {
     stack = new TerraformStack(app, 'test');
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
-    new AzureEventhubNamespace(stack, 'testAzureEventhubDefaults', rgMock.AzureResourceGroup, {
+    new AzureEventhubNamespace(stack, 'testAzureEventhubDefaults', {
+      rg: rgMock.AzureResourceGroup,
       name: `eh-test`,
       tags: {
         'test': 'test'

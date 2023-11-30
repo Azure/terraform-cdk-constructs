@@ -23,7 +23,8 @@ export class exampleAzureEventhub extends BaseTestStack {
     });
 
     // Create Eventhub Namespace
-    const eventhubNamespace = new AzureEventhubNamespace(this, "eventhub", resourceGroup, {
+    const eventhubNamespace = new AzureEventhubNamespace(this, "eventhub", {
+      rg: resourceGroup,
       name: `ehns-${this.name}`,
       sku: "Basic",
     });
