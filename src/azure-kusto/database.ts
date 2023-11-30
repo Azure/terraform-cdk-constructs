@@ -9,6 +9,10 @@ import { Md5 } from 'ts-md5';
 
 export interface KustoDatabaseProps {
   /**
+   * The Azure Kusto to which this database belongs.
+   */
+  kusto: AzureKusto;
+  /**
    * The name of the Kusto Database to create.
    */
   name: string;
@@ -60,17 +64,17 @@ export class AzureKustoDatabase extends Construct {
   public readonly rg: string;
   public readonly id: string;
 
-  constructor(scope: Construct, id: string, kusto: AzureKusto, kustoDbProps: KustoDatabaseProps) {
+  constructor(scope: Construct, id: string, kustoDbProps: KustoDatabaseProps) {
     super(scope, id);
     this.kustoDbProps = kustoDbProps;
-    this.kustoProps = kusto.kustoProps;
-    this.rg = kusto.rgName;
+    this.kustoProps = kustoDbProps.kusto.kustoProps;
+    this.rg = kustoDbProps.kusto.kustoProps.rg.Name;
 
     const kustoDatabase = new KustoDatabase(this, `kusto-db-${this.kustoDbProps.name}`, {
       name: this.kustoDbProps.name,
-      location: kusto.location,
-      resourceGroupName: kusto.rgName,
-      clusterName: kusto.kustoProps.name,
+      location: kustoDbProps.kusto.kustoProps.rg.Location,
+      resourceGroupName: kustoDbProps.kusto.kustoProps.rg.Name,
+      clusterName: kustoDbProps.kusto.kustoProps.name,
     });
 
     if (this.kustoDbProps.hotCachePeriod) {

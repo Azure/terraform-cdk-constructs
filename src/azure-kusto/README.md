@@ -47,7 +47,8 @@ You can deploy a Kusto resource using this class like so:
 
   // Create a Kusto Cluster with defult settings
   // import { ComputeSpecification } from '../compute-specification';
-  const kustoCluster = new AzureKusto(this, "myKusto", resourceGroup, {
+  const kustoCluster = new AzureKusto(this, "myKusto", {
+    rg: resourceGroup,
     name: 'myKusto',
     sku: ComputeSpecification.devtestExtraSmallEav4,
   });
@@ -79,11 +80,12 @@ Full example can be found [here](test/ExampleAzureKusto.ts).
 - Create Database into the Kusto
 
   ```typescript
-  myKustoDB1 = kustoCluster.createDatabase({
-    name: "myDatabase1",
-    softDeletePeriod: "P7D",
-    hotCachePeriod: "P1D",
-  })
+  const myKustoDB1 = kustoCluster.addDatabase({
+      kusto: kustoCluster,
+      name: "myDatabase1",
+      hotCachePeriod: "P7D",
+      softDeletePeriod: "P1D",
+    });
   ```
 
 - Add Permission to the Kusto Database

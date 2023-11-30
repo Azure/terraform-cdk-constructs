@@ -29,7 +29,8 @@ export class exampleAzureKusto extends BaseTestStack {
     });
 
     // Create Kusto Cluster
-    const kustoCluster = new AzureKusto(this, "kusto", resourceGroup, {
+    const kustoCluster = new AzureKusto(this, "kusto", {
+      rg: resourceGroup,
       name: `kusto${this.name}`,  // Only lowercase Alphanumeric characters allowed.
       sku: ComputeSpecification.devtestExtraSmallEav4,
     });
@@ -39,6 +40,7 @@ export class exampleAzureKusto extends BaseTestStack {
 
     // Create Database
     const testDB1 = kustoCluster.addDatabase({
+      kusto: kustoCluster,
       name: "testDB1",
       hotCachePeriod: "P7D",
       softDeletePeriod: "P31D",

@@ -23,7 +23,8 @@ describe('Kusto With Defaults', () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", { features: {} });
-    new AzureKusto(stack, 'testAzureKustoDefaults', rgMock.AzureResourceGroup, {
+    new AzureKusto(stack, 'testAzureKustoDefaults', {
+      rg: rgMock.AzureResourceGroup,
       name: 'kustotest',
       sku: ComputeSpecification.devtestExtraSmallEav4,
     });

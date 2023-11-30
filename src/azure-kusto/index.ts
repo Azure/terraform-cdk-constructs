@@ -9,6 +9,10 @@ import { ComputeSpecification, IComputeSpecification } from './compute-specifica
 
 export interface KustoProps {
   /**
+   * The Azure Resource Group in which to create the Kusto Cluster.
+   */
+  readonly rg: AzureResourceGroup
+  /**
    * The name of the Kusto Cluster to create.
    * Only 4-22 lowercase alphanumeric characters allowed, starting with a letter.
    */
@@ -75,16 +79,12 @@ export interface KustoProps {
 
 export class AzureKusto extends AzureResource {
   readonly kustoProps: KustoProps;
-  public readonly rgName: string;
-  public readonly location: string;
   public readonly id: string;
   public readonly uri: string;
 
-  constructor(scope: Construct, id: string, rg: AzureResourceGroup, kustoProps: KustoProps) {
+  constructor(scope: Construct, id: string, kustoProps: KustoProps) {
     super(scope, id);
     this.kustoProps = kustoProps;
-    this.rgName = rg.Name;
-    this.location = rg.Location;
 
     /**
      * Define default values.
@@ -114,8 +114,8 @@ export class AzureKusto extends AzureResource {
     const azurermKustoCluster = new KustoCluster(this, 'Kusto', {
       ...defaults,
       name: kustoProps.name,
-      location: rg.Location,
-      resourceGroupName: rg.Name,
+      location: kustoProps.rg.Location,
+      resourceGroupName: kustoProps.rg.Name,
       tags: kustoProps.tags,
     });
 
@@ -157,6 +157,6 @@ export class AzureKusto extends AzureResource {
   }
 
   public addDatabase(databaseProps: KustoDatabaseProps) {
-    return new AzureKustoDatabase(this, databaseProps.name, this, databaseProps);
+    return new AzureKustoDatabase(this, databaseProps.name, databaseProps);
   }
 }
