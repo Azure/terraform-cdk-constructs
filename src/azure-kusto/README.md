@@ -14,12 +14,9 @@ Coming soon.
 
 ## Kusto Class Properties
 
-This class takes an azure resource group object as input.
+This class has several properties that control the Kusto resource's behaviour:
 
 - `azureResourceGroup`: The [Azure Resource Group object](../azure-resourcegroup/) where the Kusto resource will be deployed.
-
-And has several properties that control the Kusto resource's behaviour:
-
 - `name`: The name of the Kusto resource.
 - `sku`: (Optional) The SKU of the Kusto resource. Defaults to "dev/test, Dv2/DSv2 Series, Extra small".
 - `capacity`: (Optional) The node count for the cluster. Defaults to 2.
