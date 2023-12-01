@@ -3,6 +3,7 @@ import 'cdktf/lib/testing/adapters/jest';
 import { AzureKusto } from '../index';
 import { exampleAzureKusto } from './ExampleAzureKusto';
 import { AzurermProvider } from '@cdktf/provider-azurerm/lib/provider';
+import { ComputeSpecification } from '../compute-specification';
 
 
 describe('Kusto With Defaults', () => {
@@ -22,9 +23,10 @@ describe('Kusto With Defaults', () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", { features: {} });
-    new AzureKusto(stack, 'testAzureKustoDefaults', rgMock.AzureResourceGroup, {
+    new AzureKusto(stack, 'testAzureKustoDefaults', {
+      rg: rgMock.AzureResourceGroup,
       name: 'kustotest',
-      skuName: 'Dev(No SLA)_Standard_D11_v2',
+      sku: ComputeSpecification.devtestExtraSmallEav4,
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse

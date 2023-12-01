@@ -5,6 +5,7 @@ import { AzureResourceGroup } from "../../azure-resourcegroup";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+import { ComputeSpecification } from '../compute-specification';
 
 const app = new App();
 
@@ -28,9 +29,10 @@ export class exampleAzureKusto extends BaseTestStack {
     });
 
     // Create Kusto Cluster
-    const kustoCluster = new AzureKusto(this, "kusto", resourceGroup, {
+    const kustoCluster = new AzureKusto(this, "kusto", {
+      rg: resourceGroup,
       name: `kusto${this.name}`,  // Only lowercase Alphanumeric characters allowed.
-      skuName: `Dev(No SLA)_Standard_D11_v2`,
+      sku: ComputeSpecification.devtestExtraSmallEav4,
     });
 
     // Add RBAC to Kusto Cluster
@@ -38,6 +40,7 @@ export class exampleAzureKusto extends BaseTestStack {
 
     // Create Database
     const testDB1 = kustoCluster.addDatabase({
+      kusto: kustoCluster,
       name: "testDB1",
       hotCachePeriod: "P7D",
       softDeletePeriod: "P31D",
@@ -51,6 +54,24 @@ export class exampleAzureKusto extends BaseTestStack {
       principalType: "User",
       role: "Admin",
     });
+
+    // Create Table in Kusto Database
+    testDB1.addTable('MyTestTable', [
+      {
+        columnName: 'Timestamp',
+        columnType: 'datetime',
+      },
+      {
+        columnName: 'User',
+        columnType: 'string',
+      },
+      {
+        columnName: 'Value',
+        columnType: 'int32',
+      },
+    ]);
+
+    testDB1.addScript('MyTestScript', '.create table MyTestTable2 ( Timestamp:datetime, User:string, Value:int32 )');
   }
 }
 

@@ -3,8 +3,15 @@ import { KustoDatabasePrincipalAssignment } from '@cdktf/provider-azurerm/lib/ku
 import { Construct } from 'constructs';
 import { AzureKusto } from '.';
 import { KustoProps } from './index';
+import { KustoScript } from '@cdktf/provider-azurerm/lib/kusto-script';
+import * as cdktf from 'cdktf';
+import { Md5 } from 'ts-md5';
 
 export interface KustoDatabaseProps {
+  /**
+   * The Azure Kusto to which this database belongs.
+   */
+  kusto: AzureKusto;
   /**
    * The name of the Kusto Database to create.
    */
@@ -45,22 +52,29 @@ export interface KustoDatabaseAccessProps {
   readonly role: string,
 }
 
+export interface KustoTableSchemaProps {
+  readonly columnName: string,
+  readonly columnType: string,
+}
+
+
 export class AzureKustoDatabase extends Construct {
   public readonly kustoDbProps: KustoDatabaseProps;
   public readonly kustoProps: KustoProps;
   public readonly rg: string;
+  public readonly id: string;
 
-  constructor(scope: Construct, id: string, kusto: AzureKusto, kustoDbProps: KustoDatabaseProps) {
+  constructor(scope: Construct, id: string, kustoDbProps: KustoDatabaseProps) {
     super(scope, id);
     this.kustoDbProps = kustoDbProps;
-    this.kustoProps = kusto.kustoProps;
-    this.rg = kusto.rgName;
+    this.kustoProps = kustoDbProps.kusto.kustoProps;
+    this.rg = kustoDbProps.kusto.kustoProps.rg.Name;
 
     const kustoDatabase = new KustoDatabase(this, `kusto-db-${this.kustoDbProps.name}`, {
       name: this.kustoDbProps.name,
-      location: kusto.location,
-      resourceGroupName: kusto.rgName,
-      clusterName: kusto.kustoProps.name,
+      location: kustoDbProps.kusto.kustoProps.rg.Location,
+      resourceGroupName: kustoDbProps.kusto.kustoProps.rg.Name,
+      clusterName: kustoDbProps.kusto.kustoProps.name,
     });
 
     if (this.kustoDbProps.hotCachePeriod) {
@@ -69,6 +83,13 @@ export class AzureKustoDatabase extends Construct {
     if (this.kustoDbProps.softDeletePeriod) {
       kustoDatabase.addOverride("soft_delete_period", this.kustoDbProps.softDeletePeriod);
     }
+
+    // Outputs
+    this.id = kustoDatabase.id;
+    const cdktfTerraformOutputKustoDbId = new cdktf.TerraformOutput(this, 'id', {
+      value: this.id,
+    });
+    cdktfTerraformOutputKustoDbId.overrideLogicalId('id')
   }
 
   public addPermission(kustoDatabaseAccessProps: KustoDatabaseAccessProps) {
@@ -81,6 +102,31 @@ export class AzureKustoDatabase extends Construct {
       principalId: kustoDatabaseAccessProps.principalId,
       principalType: kustoDatabaseAccessProps.principalType,
       role: kustoDatabaseAccessProps.role,
+    });
+  }
+
+  public addTable(tableName: string, tableSchema: KustoTableSchemaProps[]) {
+    const schemaContent = tableSchema.map((column) => {
+      return `${column.columnName}:${column.columnType}`;
+    }).join(', ');
+    const scriptContent = `.create table ${tableName} ( ${schemaContent} )`;
+
+    new KustoScript(this, `kusto-db-${this.kustoDbProps.name}-table-${tableName}`, {
+      name: tableName,
+      databaseId: this.id,
+      scriptContent: scriptContent,
+      continueOnErrorsEnabled: false,
+      forceAnUpdateWhenValueChanged: Md5.hashStr(scriptContent),
+    });
+  }
+
+  public addScript(scriptName: string, scriptContent: string) {
+    new KustoScript(this, `kusto-db-${this.kustoDbProps.name}-script-${scriptName}`, {
+      name: `script-${scriptName}`,
+      databaseId: this.id,
+      scriptContent: scriptContent,
+      continueOnErrorsEnabled: false,
+      forceAnUpdateWhenValueChanged: Md5.hashStr(scriptContent),
     });
   }
 }

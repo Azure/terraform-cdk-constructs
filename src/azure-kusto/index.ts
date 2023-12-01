@@ -4,18 +4,24 @@ import { Construct } from 'constructs';
 import { AzureResourceGroup } from '../azure-resourcegroup/index';
 import { AzureKustoDatabase, KustoDatabaseProps } from './database';
 import { AzureResource } from '../core-azure/index';
+import { ComputeSpecification, IComputeSpecification } from './compute-specification';
 
 
 export interface KustoProps {
   /**
+   * The Azure Resource Group in which to create the Kusto Cluster.
+   */
+  readonly rg: AzureResourceGroup
+  /**
    * The name of the Kusto Cluster to create.
-   * Only lowercase Alphanumeric characters allowed, starting with a letter.
+   * Only 4-22 lowercase alphanumeric characters allowed, starting with a letter.
    */
   readonly name: string;
   /**
-   * The name of the SKU.
+   * The SKU of the Kusto Cluster. All the allowed values are defined in the ComputeSpecification class.
+   * @default devtestExtraSmallDv2
    */
-  readonly skuName: string;
+  readonly sku?: IComputeSpecification;
   /**
    * The node count for the cluster.
    * @default 2
@@ -52,10 +58,10 @@ export interface KustoProps {
    */
   readonly purgeEnabled?: boolean;
   /**
-   * Specifies the list of availability zones where the cluster should be provisioned.
-   * @default ["1", "2", "3"]
+   * Specifies if the purge operations are enabled. Based on the SKU, the number of zones allowed are different.
+   * @default true
    */
-  readonly zones?: string[];
+  readonly enableZones? : boolean;
   /**
    * The minimum number of allowed instances. Must between 0 and 1000.
    */
@@ -73,28 +79,27 @@ export interface KustoProps {
 
 export class AzureKusto extends AzureResource {
   readonly kustoProps: KustoProps;
-  public readonly rgName: string;
-  public readonly location: string;
   public readonly id: string;
   public readonly uri: string;
 
-  constructor(scope: Construct, id: string, rg: AzureResourceGroup, kustoProps: KustoProps) {
+  constructor(scope: Construct, id: string, kustoProps: KustoProps) {
     super(scope, id);
     this.kustoProps = kustoProps;
-    this.rgName = rg.Name;
-    this.location = rg.Location;
 
     /**
      * Define default values.
      */
+    const sku = kustoProps.sku || ComputeSpecification.devtestExtraSmallDv2;
+    const enableZones = kustoProps.enableZones || true;
+
     const defaults = {
       publicNetworkAccessEnabled: kustoProps.publicNetworkAccessEnabled || true,
       autoStopEnabled: kustoProps.autoStopEnabled || true,
       streamingIngestionEnabled: kustoProps.streamingIngestionEnabled || true,
       purgeEnabled: kustoProps.purgeEnabled || false,
-      zones: kustoProps.zones || ["1", "2", "3"],
+      zones: enableZones ? sku.availibleZones : [],
       sku: {
-        name: kustoProps.skuName,
+        name: sku.skuName,
         capacity: kustoProps.capacity || 2,
       },
       identity: {
@@ -109,8 +114,8 @@ export class AzureKusto extends AzureResource {
     const azurermKustoCluster = new KustoCluster(this, 'Kusto', {
       ...defaults,
       name: kustoProps.name,
-      location: rg.Location,
-      resourceGroupName: rg.Name,
+      location: kustoProps.rg.Location,
+      resourceGroupName: kustoProps.rg.Name,
       tags: kustoProps.tags,
     });
 
@@ -152,6 +157,6 @@ export class AzureKusto extends AzureResource {
   }
 
   public addDatabase(databaseProps: KustoDatabaseProps) {
-    return new AzureKustoDatabase(this, databaseProps.name, this, databaseProps);
+    return new AzureKustoDatabase(this, databaseProps.name, databaseProps);
   }
 }
