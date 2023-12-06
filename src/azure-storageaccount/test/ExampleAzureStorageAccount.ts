@@ -51,9 +51,13 @@ export class exampleAzureStorageAccount extends BaseTestStack {
 
      //RBAC
      storageAccount.addAccess(clientConfig.objectId, "Contributor")
-
-
-    // Outputs to use for End to End Test
+    
+     // Storage Methods
+     const storageContainer = storageAccount.addContainer("testcontainer")
+     storageContainer.addBlob("testblob.txt", "../../../test.txt")
+     storageAccount.addContainer("testcontainer2")
+    
+     // Outputs to use for End to End Test
     const cdktfTerraformOutputRGName = new cdktf.TerraformOutput(this, "resource_group_name", {
       value: resourceGroup.name,
     });
@@ -70,6 +74,10 @@ export class exampleAzureStorageAccount extends BaseTestStack {
       value: storageAccount.accountKind,
     });
 
+    const cdktfTerraformOutputSAcontainer = new cdktf.TerraformOutput(this, "storage_container_name", {
+      value: storageContainer.name,
+    });
+
 
 
 
@@ -77,7 +85,8 @@ export class exampleAzureStorageAccount extends BaseTestStack {
     cdktfTerraformOutputSAName.overrideLogicalId("storage_account_name");
     cdktfTerraformOutputSAtier.overrideLogicalId("storage_account_account_tier");
     cdktfTerraformOutputSAkind.overrideLogicalId("storage_account_account_kind");
- 
+    cdktfTerraformOutputSAcontainer.overrideLogicalId("storage_container_name");
+
   }
 }
 

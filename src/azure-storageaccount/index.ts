@@ -2,6 +2,7 @@ import { Construct } from 'constructs';
 import { StorageAccount } from '@cdktf/provider-azurerm/lib/storage-account';
 import { AzureResource } from '../core-azure';
 import { ResourceGroup } from '@cdktf/provider-azurerm/lib/resource-group';
+import { AzureStorageContainer } from './blobstorage';
 
 
 interface AzureStorageAccountProps {
@@ -79,12 +80,14 @@ export class AzureStorageAccount extends AzureResource {
     public readonly resourceGroup: ResourceGroup;
     public readonly accountKind: string;
     public readonly accountTier: string;
+    private readonly containers: Map<string, AzureStorageContainer>;
 
     constructor(scope: Construct, id: string, props: AzureStorageAccountProps) {
         super(scope, id);
 
         this.props = props;
         this.resourceGroup = this.setupResourceGroup(props);
+        this.containers = new Map<string, AzureStorageContainer>();
 
         // default Storage Account Settings
         const defaults = {
@@ -133,6 +136,30 @@ export class AzureStorageAccount extends AzureResource {
           // Use the provided resource group name
             return props.resourceGroup;
         }
-      }
+    }
 
+    public addContainer(name: string, containerAccessType?: string, metadata?: { [key: string]: string }): AzureStorageContainer {
+        if (this.containers.has(name)) {
+            throw new Error(`Container '${name}' already exists.`);
+        }
+
+        const newContainer = new AzureStorageContainer(this, name, {
+            name: name,
+            storageAccountName: this.name,
+            containerAccessType: containerAccessType || 'private',
+            metadata: metadata || {},
+        });
+
+        this.containers.set(name, newContainer);
+        return newContainer;
+    }
+
+    public getContainer(name: string): AzureStorageContainer {
+        const container = this.containers.get(name);
+        if (!container) {
+            throw new Error(`Container '${name}' does not exist.`);
+        }
+        return container;
+    }
+    
 }

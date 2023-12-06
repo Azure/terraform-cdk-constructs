@@ -51,17 +51,17 @@ func TestAzureStorageAccount(t *testing.T) {
 	storageAccountName := util.CdkTFOutput(t, terraformOptions, "storage_account_name")
 	storageAccountTier := util.CdkTFOutput(t, terraformOptions, "storage_account_account_tier")
 	storageAccountKind := util.CdkTFOutput(t, terraformOptions, "storage_account_account_kind")
-	//storageBlobContainerName := util.CdkTFOutput(t, terraformOptions, "storage_container_name")
+	storageBlobContainerName := util.CdkTFOutput(t, terraformOptions, "storage_container_name")
 
 	// website::tag::4:: Verify storage account properties and ensure it matches the output.
 	storageAccountExists := azure.StorageAccountExists(t, storageAccountName, resourceGroupName, subscriptionID)
 	assert.True(t, storageAccountExists, "storage account does not exist")
 
-	// containerExists := azure.StorageBlobContainerExists(t, storageBlobContainerName, storageAccountName, resourceGroupName, subscriptionID)
-	// assert.True(t, containerExists, "storage container does not exist")
+	containerExists := azure.StorageBlobContainerExists(t, storageBlobContainerName, storageAccountName, resourceGroupName, subscriptionID)
+	assert.True(t, containerExists, "storage container does not exist")
 
-	// publicAccess := azure.GetStorageBlobContainerPublicAccess(t, storageBlobContainerName, storageAccountName, resourceGroupName, subscriptionID)
-	// assert.False(t, publicAccess, "storage container has public access")
+	publicAccess := azure.GetStorageBlobContainerPublicAccess(t, storageBlobContainerName, storageAccountName, resourceGroupName, subscriptionID)
+	assert.False(t, publicAccess, "storage container has public access")
 
 	accountKind := azure.GetStorageAccountKind(t, storageAccountName, resourceGroupName, subscriptionID)
 	assert.Equal(t, storageAccountKind, accountKind, "storage account kind mismatch")
