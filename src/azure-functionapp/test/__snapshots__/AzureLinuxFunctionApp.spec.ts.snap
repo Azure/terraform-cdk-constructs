@@ -60,6 +60,13 @@ exports[`Azure Linux Function App With Defaults renders an Azure Linux Function 
         "location": "eastus",
         "min_tls_version": "TLS1_2",
         "name": "fateststacc",
+        "network_rules": {
+          "bypass": [
+            "AzureServices"
+          ],
+          "default_action": "Deny"
+        },
+        "public_network_access_enabled": false,
         "resource_group_name": "\${azurerm_resource_group.testAzureLinuxFunctionApp_rg_9D21757F.name}"
       }
     }
@@ -327,6 +334,13 @@ exports[`Linux Function App Example renders the Linux Function App and checks sn
         "location": "eastus",
         "min_tls_version": "TLS1_2",
         "name": "fa\${var.name}stacc",
+        "network_rules": {
+          "bypass": [
+            "AzureServices",
+          ],
+          "default_action": "Deny",
+        },
+        "public_network_access_enabled": false,
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "tags": {
           "test": "test",
@@ -338,6 +352,13 @@ exports[`Linux Function App Example renders the Linux Function App and checks sn
         "location": "eastus",
         "min_tls_version": "TLS1_2",
         "name": "faprem\${var.name}stacc",
+        "network_rules": {
+          "bypass": [
+            "AzureServices",
+          ],
+          "default_action": "Deny",
+        },
+        "public_network_access_enabled": false,
         "resource_group_name": "\${azurerm_resource_group.premiumFA_rg_5BA9B2FE.name}",
         "tags": {
           "test": "test",
@@ -349,6 +370,13 @@ exports[`Linux Function App Example renders the Linux Function App and checks sn
         "location": "eastus",
         "min_tls_version": "TLS1_2",
         "name": "fasp\${var.name}stacc",
+        "network_rules": {
+          "bypass": [
+            "AzureServices",
+          ],
+          "default_action": "Deny",
+        },
+        "public_network_access_enabled": false,
         "resource_group_name": "\${azurerm_resource_group.servicePlanFA_rg_758B3FD5.name}",
         "tags": {
           "test": "test",

@@ -306,7 +306,7 @@ export class AzureLinuxFunctionApp extends AzureResource {
   }
 
   private setupStorageAccount(props: AzureLinuxFunctionAppProps): StorageAccount {
-    // Reference or create a new storage account
+    // Reference or create a new storage account that will be used by the Function App to store files
     if (!props.storageAccount) {
       return new StorageAccount(this, 'sa', {
         name: `${props.name}stacc`,
@@ -316,6 +316,11 @@ export class AzureLinuxFunctionApp extends AzureResource {
         accountTier: 'Standard',
         minTlsVersion: "TLS1_2",
         tags: props.tags,
+        publicNetworkAccessEnabled: false,
+        networkRules: {
+          bypass: ['AzureServices'],
+          defaultAction: 'Deny',
+        },
       });
     } else {
       return props.storageAccount;
