@@ -314,6 +314,7 @@ export class AzureLinuxFunctionApp extends AzureResource {
         location: props.location,
         accountReplicationType: 'LRS',
         accountTier: 'Standard',
+        minTlsVersion: "TLS1_2",
         tags: props.tags,
       });
     } else {
