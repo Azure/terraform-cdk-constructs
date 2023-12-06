@@ -47,11 +47,19 @@ export class exampleAzureLinuxFunctionApp extends BaseTestStack {
     });
 
     new AzureLinuxFunctionApp(this, 'consumptionFA2', {
-      name: `fa${this.name}`,
+      name: `fa${this.name}2`,
       location: 'eastus',
       storageAccount: consumptionFunctionApp.storageAccount,
       servicePlan: consumptionFunctionApp.servicePlan,
       resourceGroup: resourceGroup,
+      runtimeVersion: {
+        pythonVersion: '3.8',
+      },
+      siteConfig: {
+        cors: {
+          allowedOrigins: ['*'],
+        },
+      },
       tags: {
         "test": "test"
       }
@@ -62,6 +70,9 @@ export class exampleAzureLinuxFunctionApp extends BaseTestStack {
       name: `faprem${this.name}`,
       location: 'eastus',
       servicePlanSku: ServicePlanSkus.PremiumEP1,
+      runtimeVersion: {
+        dotnetVersion: '5.0',
+      },
       tags: {
         "test": "test"
       }
@@ -72,7 +83,6 @@ export class exampleAzureLinuxFunctionApp extends BaseTestStack {
       name: `fasp${this.name}`,
       location: 'eastus',
       servicePlanSku: ServicePlanSkus.ASPBasicB1,
-      resourceGroup: resourceGroup,
       runtimeVersion: {
         pythonVersion: '3.8',
       },
@@ -95,28 +105,32 @@ export class exampleAzureLinuxFunctionApp extends BaseTestStack {
     })
 
 
-    // Outputs to use for End to End Test
+    // Create Terraform Outputs for Function Apps
+    const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {
+      value: resourceGroup.name,
+    })
+
     const cdktfTerraformOutputFAid = new cdktf.TerraformOutput(this, "function_app_id", {
       value: consumptionFunctionApp.id,
-    });
+    })
+    const cdktfTerraformOutputFAdefaulthost = new cdktf.TerraformOutput(this, "default_hostname", {
+      value: consumptionFunctionApp.defaultHostname,
+    })
+
     const cdktfTerraformOutputFAname = new cdktf.TerraformOutput(this, "function_app_name", {
       value: consumptionFunctionApp.name,
-    });
-    const cdktfTerraformOutputFAhostname = new cdktf.TerraformOutput(this, "default_hostname", {
-      value: consumptionFunctionApp.defaultHostname,
-    });
+    })
+
     const cdktfTerraformOutputFAkind = new cdktf.TerraformOutput(this, "function_app_kind", {
       value: consumptionFunctionApp.kind,
-    });
-    const cdktfTerraformOutputFArg = new cdktf.TerraformOutput(this, "resource_group_name", {
-      value: resourceGroup.name,
-    });
+    })
 
-    cdktfTerraformOutputFAid.overrideLogicalId("function_app_id");
-    cdktfTerraformOutputFAname.overrideLogicalId("function_app_name");
-    cdktfTerraformOutputFAhostname.overrideLogicalId("default_hostname");
     cdktfTerraformOutputFAkind.overrideLogicalId("function_app_kind");
-    cdktfTerraformOutputFArg.overrideLogicalId("resource_group_name");
+    cdktfTerraformOutputFAname.overrideLogicalId("function_app_name");
+    cdktfTerraformOutputFAdefaulthost.overrideLogicalId("default_hostname");
+    cdktfTerraformOutputFAid.overrideLogicalId("function_app_id");
+    cdktfTerraformOutputRG.overrideLogicalId("resource_group_name");
+
 
 
   }
