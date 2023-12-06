@@ -1,11 +1,10 @@
 import { Testing, TerraformStack} from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
-import { AzureNetworkSecurityGroup } from '..';
+import { AzureStorageAccount } from '..';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
-import { exampleAzureNetworkSecurityGroup } from './ExampleAzureNetworkSecurityGroup';
-import {PreconfiguredRules} from "../preconfiguredRules";
+import { exampleAzureStorageAccount } from '../test/ExampleAzureStorageAccount';
 
-describe('Azure Network Security Group With Defaults', () => {
+describe('Azure Storage Account With Defaults', () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
 
@@ -15,18 +14,16 @@ describe('Azure Network Security Group With Defaults', () => {
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
 
-    // Create a network security group with the defined rules
-    new AzureNetworkSecurityGroup(stack, 'testAzureNetworkSecurityGroupDefaults', {
-      name: 'my-nsg',
+    // Create a Storage Account with the defined rules
+    new AzureStorageAccount(stack, "storageaccount", {
+      name: "teststorageaccount",
       location: "eastus",
-      resourceGroupName: "rgtest",
-      rules: [PreconfiguredRules.SSH],
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });
 
-  it("renders an Azure Network Security Group with defaults and checks snapshot", () => {
+  it("renders an Azure Storage Account with defaults and checks snapshot", () => {
     expect(
       Testing.synth(stack)
     ).toMatchSnapshot(); // Compare the already prepared stack
@@ -42,25 +39,25 @@ describe('Azure Network Security Group With Defaults', () => {
 });
 
 
-describe('Azure Network Security Group Example', () => {
+describe('Azure Storage Account Example', () => {
   
-  it("renders the Example Network Security Group and checks snapshot", () => {
+  it("renders the Example Storage Account and checks snapshot", () => {
   
     expect(
-      Testing.synth(new exampleAzureNetworkSecurityGroup(Testing.app(), "testNetworkSecurityGroupExample"))
+      Testing.synth(new exampleAzureStorageAccount(Testing.app(), "testNetworkSecurityGroupExample"))
       
     ).toMatchSnapshot();
 });
 
   it("check if the produced terraform configuration is valid", () => {
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureNetworkSecurityGroup(Testing.app(), "testNetworkSecurityGroupExample"))).toBeValidTerraform();
+    expect(Testing.fullSynth(new exampleAzureStorageAccount(Testing.app(), "testNetworkSecurityGroupExample"))).toBeValidTerraform();
   });
 
   it("check if this can be planned", () => {
   
     
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureNetworkSecurityGroup(Testing.app(), "testNetworkSecurityGroupExample"))).toPlanSuccessfully();
+    expect(Testing.fullSynth(new exampleAzureStorageAccount(Testing.app(), "testNetworkSecurityGroupExample"))).toPlanSuccessfully();
   });
 });
