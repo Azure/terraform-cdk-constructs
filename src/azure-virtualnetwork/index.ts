@@ -2,7 +2,7 @@ import { Construct } from 'constructs';
 import {VirtualNetwork} from "@cdktf/provider-azurerm/lib/virtual-network";
 import {Subnet} from "@cdktf/provider-azurerm/lib/subnet";
 import {VirtualNetworkPeerProps, AzureVirtualNetworkPeer, PeerSettings} from "./peering"
-
+import { AzureResource } from '../core-azure';
 
 // Define the interface for the network configuration
 interface SubnetConfig {
@@ -12,13 +12,13 @@ interface SubnetConfig {
 
 interface AzureVirtualNetworkProps {
     resourceGroupName: string;
-    name: string;
-    location: string;
-    addressSpace: string[];
-    subnets: SubnetConfig[];
+    name?: string;
+    location?: string;
+    addressSpace?: string[];
+    subnets?: SubnetConfig[];
   }
   
-export class AzureVirtualNetwork extends Construct {
+export class AzureVirtualNetwork extends AzureResource {
     readonly props: AzureVirtualNetworkProps;
     public readonly name: string;
     public readonly resourceGroupName: string;
@@ -32,14 +32,22 @@ export class AzureVirtualNetwork extends Construct {
         super(scope, id);
 
         this.props = props;
+
+        const defaults = {
+            name: props.name || `vnet-${this.node.path.split("/")[0]}`,
+            location: props.location || "eastus",
+            addressSpace: props.addressSpace || ["10.0.0.0/16"],
+            subnets: props.subnets || [{
+                name: "default",
+                addressPrefixes: ["10.1.0.0/24"],
+            }],
+        }
         
 
         // Create a virtual network
-        const vnet = new VirtualNetwork(this, props.name, {
-        name: props.name,
-        resourceGroupName: props.resourceGroupName,
-        location: props.location,
-        addressSpace: props.addressSpace,
+        const vnet = new VirtualNetwork(this, "vnet", {
+            ...defaults,
+            resourceGroupName: props.resourceGroupName,
         });
 
         this.name = vnet.name;
@@ -48,7 +56,7 @@ export class AzureVirtualNetwork extends Construct {
         this.virtualNetwork = vnet;
     
         // Create subnets within the virtual network
-        for (const subnetConfig of props.subnets) {
+        for (const subnetConfig of defaults.subnets) {
             const subnet = new Subnet(this, subnetConfig.name, {
                 name: subnetConfig.name,
                 resourceGroupName: props.resourceGroupName,

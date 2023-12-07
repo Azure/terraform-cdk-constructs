@@ -1,7 +1,8 @@
 import * as cdktf from "cdktf";
-import { Construct } from 'constructs';
+import {AzureResource} from "../core-azure";
 import {ApplicationInsights} from "@cdktf/provider-azurerm/lib/application-insights";
 import { KeyVaultSecret } from '@cdktf/provider-azurerm/lib/key-vault-secret';
+import { Construct } from 'constructs';
 
 
 // Construct
@@ -48,9 +49,11 @@ export interface ApplicationInsightsProps {
     readonly workspace_id?: string;
 }
 
-export class AzureApplicationInsights extends Construct {
+export class AzureApplicationInsights extends AzureResource {
   readonly props: ApplicationInsightsProps;
   private readonly instrumentationKey: string;
+  public readonly id: string;
+  
 
   constructor(scope: Construct, id: string, props: ApplicationInsightsProps) {
     super(scope, id);
@@ -72,6 +75,7 @@ export class AzureApplicationInsights extends Construct {
       );
 
       this.instrumentationKey = azurermApplicationInsightsAppinsights.instrumentationKey;
+      this.id = azurermApplicationInsightsAppinsights.id;
 
     
 

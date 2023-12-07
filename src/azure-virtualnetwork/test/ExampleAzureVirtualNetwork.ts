@@ -1,14 +1,17 @@
 import * as cdktf from "cdktf";
 import { AzureVirtualNetwork } from '..';
-import { App, TerraformStack} from "cdktf";
+import {BaseTestStack} from "../../testing";
+import { App} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
+import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 
 
 const app = new App();
 
-export class exampleAzureVirtualNetwork extends TerraformStack {
+export class exampleAzureVirtualNetwork extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -16,14 +19,17 @@ export class exampleAzureVirtualNetwork extends TerraformStack {
         features: {},
       });
 
+    const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
+
+
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-test`,
+      name: `rg-${this.name}`,
 
     });
 
     const network = new AzureVirtualNetwork(this, 'testAzureVirtualNetworkDefaults', {
-      name: "vnet-test",
+      name: `vnet-${this.name}`,
       location: 'eastus',
       resourceGroupName: resourceGroup.name,
       addressSpace: ["10.0.0.0/16"],
@@ -40,7 +46,7 @@ export class exampleAzureVirtualNetwork extends TerraformStack {
     });
 
     const remotenetwork = new AzureVirtualNetwork(this, 'testAzureRemoteVirtualNetworkDefaults', {
-      name: "vnet-test2",
+      name: `vnet-${this.name}2`,
       location: 'westus',
       resourceGroupName: resourceGroup.name,
       addressSpace: ["10.1.0.0/16"],
@@ -55,6 +61,19 @@ export class exampleAzureVirtualNetwork extends TerraformStack {
         },
       ],
     });
+
+    const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
+      location: 'eastus',
+      name: `la-${this.name}`,
+      resourceGroupName: resourceGroup.name,
+    });
+
+     // Diag Settings
+     network.addDiagSettings({name: "diagsettings", logAnalyticsWorkspaceId: logAnalyticsWorkspace.id})
+
+     // RBAC
+     network.addAccess(clientConfig.objectId, "Contributor")
+
 
     // Peer the networks
     network.addVnetPeering(remotenetwork)

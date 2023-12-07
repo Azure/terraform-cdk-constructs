@@ -13,22 +13,7 @@ describe('Azure Virtual Network With Defaults', () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
-    new AzureVirtualNetwork(stack, 'testAzureVirtualNetworkDefaults', {
-      name: "vnet-test",
-      location: 'eastus',
-      resourceGroupName: "rg-test",
-      addressSpace: ["10.0.0.0/16"],
-      subnets: [
-        {
-          name: "subnet1",
-          addressPrefixes: ["10.0.1.0/24"],
-        },
-        {
-          name: "subnet2",
-          addressPrefixes: ["10.0.2.0/24"],
-        },
-      ],
-    });
+    new AzureVirtualNetwork(stack, 'testAzureVirtualNetworkDefaults', {resourceGroupName: "rg-test",});
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });

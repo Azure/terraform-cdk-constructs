@@ -32,7 +32,7 @@ exports[`Resource Group Example renders the Example Resource Group and checks sn
           }
         ],
         "location": "eastus",
-        "name": "rg-test",
+        "name": "rg-\${var.name}",
         "tags": {
           "Env": "NonProd",
           "name": "test"
@@ -44,8 +44,15 @@ exports[`Resource Group Example renders the Example Resource Group and checks sn
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
+    }
+  },
+  "variable": {
+    "name": {
+      "default": "test",
+      "description": "System name used to randomize the resources",
+      "type": "string"
     }
   }
 }"
@@ -90,7 +97,7 @@ exports[`Resource Group With Defaults renders a Resource Group with defaults and
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
     }
   }

@@ -5,6 +5,8 @@ import { AzureKeyVaultSecret, AzureKeyVaultSecretProps } from './secret';
 import { AzureKeyVaultPolicy, AzureKeyVaultPolicyProps } from './policy';
 import { AzureKeyVaultCertificateIssuer, AzureKeyVaultSelfSignedCertificate, AzureKeyVaultSelfSignedCertificateProps } from './certificate';
 import { AzureKeyVaultKey, AzureKeyVaultKeyProps } from './key';
+import {AzureResource} from "../core-azure";
+
 
 export interface KeyVaultProps {
     /**
@@ -64,7 +66,7 @@ interface GrantCustomAccessOptions {
 }
 
 
-export class AzureKeyVault extends Construct {
+export class AzureKeyVault extends AzureResource {
   readonly props: KeyVaultProps;
   public readonly id: string;
   private accessPolicies: AzureKeyVaultPolicy[] = [];

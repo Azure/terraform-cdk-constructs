@@ -6,6 +6,11 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
     "azurerm_client_config": {
       "CurrentClientConfig": {
       }
+    },
+    "azurerm_monitor_diagnostic_categories": {
+      "la_diagsettings_diagcategories_FA524658": {
+        "resource_id": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
+      }
     }
   },
   "output": {
@@ -20,7 +25,7 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
       "value": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.workspace_id}"
     },
     "loganalytics_workspace_name": {
-      "value": "la-test"
+      "value": "la-\${var.name}"
     },
     "loganalytics_workspace_retention": {
       "value": 90
@@ -44,7 +49,7 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
     "azurerm_eventhub_namespace": {
       "ehns": {
         "location": "\${azurerm_resource_group.rg.location}",
-        "name": "my-namespace",
+        "name": "ehns-\${var.name}",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "sku": "Standard"
       }
@@ -88,36 +93,66 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
     "azurerm_log_analytics_workspace": {
       "la_log_analytics_7551D130": {
         "location": "eastus",
-        "name": "la-test",
+        "name": "la-\${var.name}",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "retention_in_days": 90,
         "sku": "PerGB2018"
       }
     },
+    "azurerm_monitor_diagnostic_setting": {
+      "la_diagsettings_C56A5F09": {
+        "dynamic": {
+          "enabled_log": {
+            "content": {
+              "category": "\${enabled_log.value}"
+            },
+            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.la_diagsettings_diagcategories_FA524658.log_category_types)}"
+          },
+          "metric": {
+            "content": {
+              "category": "\${metric.value}"
+            },
+            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.la_diagsettings_diagcategories_FA524658.metrics)}"
+          }
+        },
+        "name": "diag-settings",
+        "storage_account_id": "\${azurerm_storage_account.storage.id}",
+        "target_resource_id": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
+      }
+    },
     "azurerm_resource_group": {
       "rg": {
         "location": "eastus",
-        "name": "rg-test"
+        "name": "rg-\${var.name}"
       }
     },
     "azurerm_role_assignment": {
-      "la_rbac-contributor_5BD02314": {
-        "name": "92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+      "la_TfTokenTOKEN48Contributor_role_9CB13781": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
-        "role_definition_name": "Log Analytics Contributor",
+        "role_definition_name": "Contributor",
         "scope": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
       },
-      "la_rbac-customrole_AC5FF160": {
-        "name": "43d0d8ad-25c7-4714-9337-8ba259a9fe05",
+      "la_TfTokenTOKEN49MonitoringReader_role_1BE47F24": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Monitoring Reader",
         "scope": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
-      },
-      "la_rbac-reader_F6C03D36": {
-        "name": "73c42c96-874c-492b-b04d-ab87d138a893",
-        "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
-        "role_definition_name": "Log Analytics Reader",
-        "scope": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
+      }
+    },
+    "azurerm_storage_account": {
+      "storage": {
+        "account_replication_type": "LRS",
+        "account_tier": "Standard",
+        "location": "\${azurerm_resource_group.rg.location}",
+        "min_tls_version": "TLS1_2",
+        "name": "sta\${var.name}",
+        "network_rules": {
+          "bypass": [
+            "AzureServices"
+          ],
+          "default_action": "Deny"
+        },
+        "public_network_access_enabled": false,
+        "resource_group_name": "\${azurerm_resource_group.rg.name}"
       }
     }
   },
@@ -125,8 +160,15 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
+    }
+  },
+  "variable": {
+    "name": {
+      "default": "test",
+      "description": "System name used to randomize the resources",
+      "type": "string"
     }
   }
 }"
@@ -169,7 +211,7 @@ exports[`Log Analytics Workspace With Defaults renders a Log Analytics Workspace
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.66.0"
+        "version": "3.75.0"
       }
     }
   }

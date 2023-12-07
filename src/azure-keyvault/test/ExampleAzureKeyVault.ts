@@ -1,15 +1,18 @@
 import * as cdktf from "cdktf";
 import { AzureKeyVault } from '..';
-import { App, TerraformStack} from "cdktf";
+import { App} from "cdktf";
+import {BaseTestStack} from "../../testing";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
+import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
+
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import * as util from "../../util/azureTenantIdHelpers";
 
 const app = new App();
 
-export class exampleAzureKeyVault extends TerraformStack {
+export class exampleAzureKeyVault extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
@@ -22,12 +25,12 @@ export class exampleAzureKeyVault extends TerraformStack {
 
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: 'eastus',
-      name: `rg-test`,
+      name: `rg-${this.name}`,
 
     });
 
     const azureKeyVault = new AzureKeyVault(this, 'kv', {
-      name: `kv-test`,
+      name: `kv-${this.name}`,
       location: 'eastus',
       sku: "standard",
       resource_group_name: resourceGroup.name ,
@@ -38,6 +41,18 @@ export class exampleAzureKeyVault extends TerraformStack {
       },
       softDeleteRetentionDays: 7,
     });
+
+    const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
+      location: 'eastus',
+      name: `la-${this.name}`,
+      resourceGroupName: resourceGroup.name,
+    });
+
+    //Diag Settings
+    azureKeyVault.addDiagSettings({name: "diagsettings", logAnalyticsWorkspaceId: logAnalyticsWorkspace.id})
+
+    //RBAC
+    azureKeyVault.addAccess(clientConfig.objectId, "Contributor")
 
     // Access Policy
     azureKeyVault.grantSecretAdminAccess("bc26a701-6acb-4117-93e0-e44054e22d60");

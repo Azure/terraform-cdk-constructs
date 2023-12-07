@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Azure Resource Example renders the Azure Resource example and checks snapshot 1`] = `
+"{
+  "data": {
+    "azurerm_client_config": {
+      "CurrentClientConfig": {
+      }
+    },
+    "azurerm_monitor_diagnostic_categories": {
+      "TfTokenTOKEN10_diagsettings_diagcategories_D62FBD8B": {
+        "resource_id": "\${azurerm_storage_account.TfTokenTOKEN10_storage_922354A7.id}"
+      }
+    }
+  },
+  "output": {
+    "diag_settings_name": {
+      "value": "diagsettings"
+    },
+    "storage_account_id": {
+      "value": "\${azurerm_storage_account.TfTokenTOKEN10_storage_922354A7.id}"
+    }
+  },
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_monitor_diagnostic_setting": {
+      "TfTokenTOKEN10_diagsettings_E3222A62": {
+        "dynamic": {
+          "enabled_log": {
+            "content": {
+              "category": "\${enabled_log.value}"
+            },
+            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.TfTokenTOKEN10_diagsettings_diagcategories_D62FBD8B.log_category_types)}"
+          },
+          "metric": {
+            "content": {
+              "category": "\${metric.value}"
+            },
+            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.TfTokenTOKEN10_diagsettings_diagcategories_D62FBD8B.metrics)}"
+          }
+        },
+        "name": "diagsettings",
+        "storage_account_id": "\${azurerm_storage_account.TfTokenTOKEN10_storage_922354A7.id}",
+        "target_resource_id": "\${azurerm_storage_account.TfTokenTOKEN10_storage_922354A7.id}"
+      }
+    },
+    "azurerm_resource_group": {
+      "rg": {
+        "location": "eastus",
+        "name": "rg-\${var.name}"
+      }
+    },
+    "azurerm_role_assignment": {
+      "TfTokenTOKEN10_TfTokenTOKEN14Contributor_role_D2CF65F3": {
+        "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
+        "role_definition_name": "Contributor",
+        "scope": "\${azurerm_storage_account.TfTokenTOKEN10_storage_922354A7.id}"
+      },
+      "TfTokenTOKEN10_TfTokenTOKEN15MonitoringReader_role_D9FC6CA7": {
+        "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
+        "role_definition_name": "Monitoring Reader",
+        "scope": "\${azurerm_storage_account.TfTokenTOKEN10_storage_922354A7.id}"
+      }
+    },
+    "azurerm_storage_account": {
+      "TfTokenTOKEN10_storage_922354A7": {
+        "account_replication_type": "LRS",
+        "account_tier": "Standard",
+        "location": "\${azurerm_resource_group.rg.location}",
+        "min_tls_version": "TLS1_2",
+        "name": "sta\${var.name}",
+        "network_rules": {
+          "bypass": [
+            "AzureServices"
+          ],
+          "default_action": "Deny"
+        },
+        "public_network_access_enabled": false,
+        "resource_group_name": "\${azurerm_resource_group.rg.name}"
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.75.0"
+      }
+    }
+  },
+  "variable": {
+    "name": {
+      "default": "test",
+      "description": "System name used to randomize the resources",
+      "type": "string"
+    }
+  }
+}"
+`;
