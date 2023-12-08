@@ -99,7 +99,7 @@ exports[`Azure Windows Virtual Machine Example renders the Azure Windows Virtual
         "account_tier": "Standard",
         "location": "\${azurerm_resource_group.rg.location}",
         "min_tls_version": "TLS1_2",
-        "name": "sta\${var.name}",
+        "name": "sta\${var.name}87u98",
         "network_rules": {
           "bypass": [
             "AzureServices"
@@ -172,7 +172,7 @@ exports[`Azure Windows Virtual Machine Example renders the Azure Windows Virtual
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.83.0"
       }
     }
   },
@@ -259,7 +259,7 @@ exports[`Azure Windows Virtual Machine With Defaults renders an Azure Windows Vi
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.83.0"
       }
     }
   }

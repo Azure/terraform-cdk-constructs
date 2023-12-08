@@ -152,7 +152,7 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.83.0"
       }
     }
   },
@@ -204,7 +204,7 @@ exports[`Azure Network Security Group With Defaults renders an Azure Network Sec
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.83.0"
       }
     }
   }

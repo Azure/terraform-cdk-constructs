@@ -99,7 +99,7 @@ exports[`Azure Container Registry Example renders the Azure Container Registry a
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.83.0"
       }
     }
   },
@@ -151,7 +151,7 @@ exports[`Azure Container Registry With Defaults renders an Azure Container Regis
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.83.0"
       }
     }
   }

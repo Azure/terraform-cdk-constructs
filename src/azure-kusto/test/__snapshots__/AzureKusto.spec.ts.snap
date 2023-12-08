@@ -131,7 +131,7 @@ exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] =
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.83.0"
       }
     }
   },
@@ -201,7 +201,7 @@ exports[`Kusto With Defaults renders an Kusto with defaults and checks snapshot 
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.83.0"
       }
     }
   }

@@ -44,7 +44,7 @@ exports[`Resource Group Example renders the Example Resource Group and checks sn
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.83.0"
       }
     }
   },
@@ -97,7 +97,7 @@ exports[`Resource Group With Defaults renders a Resource Group with defaults and
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.83.0"
       }
     }
   }

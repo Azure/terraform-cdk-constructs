@@ -45,7 +45,7 @@ export class exampleAzureLinuxVirtualMachine extends BaseTestStack {
     });
 
     const storage = new StorageAccount(this, "storage", {
-      name: `sta${this.name}`,
+      name: `sta${this.name}08l98`,
       resourceGroupName: resourceGroup.name,
       location: resourceGroup.location,
       accountReplicationType: "LRS",

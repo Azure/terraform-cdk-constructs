@@ -142,7 +142,7 @@ exports[`Application Insights Example renders the Application Insights and check
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0",
+        "version": "3.83.0",
       },
     },
   },
@@ -199,7 +199,7 @@ exports[`Application Insights With Defaults renders an Application Insights with
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.83.0"
       }
     }
   }
