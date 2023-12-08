@@ -1,0 +1,403 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Azure Linux Function App With Defaults renders an Azure Linux Function App with defaults and checks snapshot 1`] = `
+"{
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_linux_function_app": {
+      "testAzureLinuxFunctionApp_2B86F984": {
+        "builtin_logging_enabled": true,
+        "client_certificate_enabled": false,
+        "client_certificate_exclusion_paths": "",
+        "client_certificate_mode": "Required",
+        "enabled": true,
+        "functions_extension_version": "~4",
+        "https_only": true,
+        "identity": {
+          "type": "SystemAssigned"
+        },
+        "location": "eastus",
+        "name": "fatest",
+        "public_network_access_enabled": true,
+        "resource_group_name": "\${azurerm_resource_group.testAzureLinuxFunctionApp_rg_9D21757F.name}",
+        "service_plan_id": "\${azurerm_service_plan.testAzureLinuxFunctionApp_AppServicePlan_41C3FFFD.id}",
+        "site_config": {
+          "application_stack": {
+            "node_version": "14"
+          },
+          "use_32_bit_worker": false
+        },
+        "storage_account_name": "\${azurerm_storage_account.testAzureLinuxFunctionApp_sa_4C0B969D.name}",
+        "storage_uses_managed_identity": true
+      }
+    },
+    "azurerm_resource_group": {
+      "testAzureLinuxFunctionApp_rg_9D21757F": {
+        "location": "eastus",
+        "name": "rg-fatest"
+      }
+    },
+    "azurerm_service_plan": {
+      "testAzureLinuxFunctionApp_AppServicePlan_41C3FFFD": {
+        "location": "eastus",
+        "name": "fatestasp",
+        "os_type": "Linux",
+        "resource_group_name": "\${azurerm_resource_group.testAzureLinuxFunctionApp_rg_9D21757F.name}",
+        "sku_name": "Y1"
+      }
+    },
+    "azurerm_storage_account": {
+      "testAzureLinuxFunctionApp_sa_4C0B969D": {
+        "account_replication_type": "LRS",
+        "account_tier": "Standard",
+        "location": "eastus",
+        "min_tls_version": "TLS1_2",
+        "name": "fateststacc",
+        "network_rules": {
+          "bypass": [
+            "AzureServices"
+          ],
+          "default_action": "Deny"
+        },
+        "public_network_access_enabled": false,
+        "resource_group_name": "\${azurerm_resource_group.testAzureLinuxFunctionApp_rg_9D21757F.name}"
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.75.0"
+      }
+    }
+  }
+}"
+`;
+
+exports[`Linux Function App Example renders the Linux Function App and checks snapshot 1`] = `
+{
+  "data": {
+    "azurerm_monitor_diagnostic_categories": {
+      "consumptionFA_diagsettings_diagcategories_AF51DBB0": {
+        "resource_id": "\${azurerm_linux_function_app.consumptionFA_FunctionApp_0D946802.id}",
+      },
+    },
+  },
+  "output": {
+    "default_hostname": {
+      "value": "\${azurerm_linux_function_app.consumptionFA_FunctionApp_0D946802.default_hostname}",
+    },
+    "function_app_id": {
+      "value": "\${azurerm_linux_function_app.consumptionFA_FunctionApp_0D946802.id}",
+    },
+    "function_app_kind": {
+      "value": "\${azurerm_linux_function_app.consumptionFA_FunctionApp_0D946802.kind}",
+    },
+    "function_app_name": {
+      "value": "\${azurerm_linux_function_app.consumptionFA_FunctionApp_0D946802.name}",
+    },
+    "resource_group_name": {
+      "value": "\${azurerm_resource_group.rg.name}",
+    },
+  },
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+          "resource_group": {
+            "prevent_deletion_if_contains_resources": false,
+          },
+        },
+      },
+    ],
+  },
+  "resource": {
+    "azurerm_linux_function_app": {
+      "consumptionFA2_FunctionApp_F726133A": {
+        "builtin_logging_enabled": true,
+        "client_certificate_enabled": false,
+        "client_certificate_exclusion_paths": "",
+        "client_certificate_mode": "Required",
+        "enabled": true,
+        "functions_extension_version": "~4",
+        "https_only": true,
+        "identity": {
+          "type": "SystemAssigned",
+        },
+        "location": "eastus",
+        "name": "fa\${var.name}2",
+        "public_network_access_enabled": true,
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "service_plan_id": "\${azurerm_service_plan.consumptionFA_AppServicePlan_8DD812C2.id}",
+        "site_config": {
+          "application_stack": {
+            "node_version": "14",
+          },
+          "cors": {
+            "allowed_origins": [
+              "*",
+            ],
+          },
+          "use_32_bit_worker": false,
+        },
+        "storage_account_name": "\${azurerm_storage_account.consumptionFA_sa_CFEEEED8.name}",
+        "storage_uses_managed_identity": true,
+        "tags": {
+          "test": "test",
+        },
+      },
+      "consumptionFA_FunctionApp_0D946802": {
+        "builtin_logging_enabled": true,
+        "client_certificate_enabled": false,
+        "client_certificate_exclusion_paths": "",
+        "client_certificate_mode": "Required",
+        "enabled": true,
+        "functions_extension_version": "~4",
+        "https_only": true,
+        "identity": {
+          "type": "SystemAssigned",
+        },
+        "location": "eastus",
+        "name": "fa\${var.name}",
+        "public_network_access_enabled": true,
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "service_plan_id": "\${azurerm_service_plan.consumptionFA_AppServicePlan_8DD812C2.id}",
+        "site_config": {
+          "application_stack": {
+            "node_version": "14",
+          },
+          "use_32_bit_worker": false,
+        },
+        "storage_account_name": "\${azurerm_storage_account.consumptionFA_sa_CFEEEED8.name}",
+        "storage_uses_managed_identity": true,
+        "tags": {
+          "test": "test",
+        },
+      },
+      "premiumFA_FunctionApp_BCBE916E": {
+        "builtin_logging_enabled": true,
+        "client_certificate_enabled": false,
+        "client_certificate_exclusion_paths": "",
+        "client_certificate_mode": "Required",
+        "enabled": true,
+        "functions_extension_version": "~4",
+        "https_only": true,
+        "identity": {
+          "type": "SystemAssigned",
+        },
+        "location": "eastus",
+        "name": "faprem\${var.name}",
+        "public_network_access_enabled": true,
+        "resource_group_name": "\${azurerm_resource_group.premiumFA_rg_5BA9B2FE.name}",
+        "service_plan_id": "\${azurerm_service_plan.premiumFA_AppServicePlan_8A862E92.id}",
+        "site_config": {
+          "application_stack": {
+            "node_version": "14",
+          },
+          "use_32_bit_worker": false,
+        },
+        "storage_account_name": "\${azurerm_storage_account.premiumFA_sa_DC65AFA0.name}",
+        "storage_uses_managed_identity": true,
+        "tags": {
+          "test": "test",
+        },
+      },
+      "servicePlanFA_FunctionApp_897DB6CB": {
+        "builtin_logging_enabled": true,
+        "client_certificate_enabled": false,
+        "client_certificate_exclusion_paths": "",
+        "client_certificate_mode": "Required",
+        "enabled": true,
+        "functions_extension_version": "~4",
+        "https_only": true,
+        "identity": {
+          "type": "SystemAssigned",
+        },
+        "location": "eastus",
+        "name": "fasp\${var.name}",
+        "public_network_access_enabled": true,
+        "resource_group_name": "\${azurerm_resource_group.servicePlanFA_rg_758B3FD5.name}",
+        "service_plan_id": "\${azurerm_service_plan.servicePlanFA_AppServicePlan_6B09BCCF.id}",
+        "site_config": {
+          "application_stack": {
+            "node_version": "14",
+          },
+          "cors": {
+            "allowed_origins": [
+              "*",
+            ],
+          },
+          "use_32_bit_worker": false,
+        },
+        "storage_account_name": "\${azurerm_storage_account.servicePlanFA_sa_084D89FA.name}",
+        "storage_uses_managed_identity": true,
+        "tags": {
+          "test": "test",
+        },
+      },
+    },
+    "azurerm_log_analytics_workspace": {
+      "log_analytics": {
+        "location": "eastus",
+        "name": "la-\${var.name}",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+      },
+    },
+    "azurerm_monitor_diagnostic_setting": {
+      "consumptionFA_diagsettings_ABB8EE42": {
+        "dynamic": {
+          "enabled_log": {
+            "content": {
+              "category": "\${enabled_log.value}",
+            },
+            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.consumptionFA_diagsettings_diagcategories_AF51DBB0.log_category_types)}",
+          },
+          "metric": {
+            "content": {
+              "category": "\${metric.value}",
+            },
+            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.consumptionFA_diagsettings_diagcategories_AF51DBB0.metrics)}",
+          },
+        },
+        "log_analytics_workspace_id": "\${azurerm_log_analytics_workspace.log_analytics.id}",
+        "name": "diagsettings",
+        "target_resource_id": "\${azurerm_linux_function_app.consumptionFA_FunctionApp_0D946802.id}",
+      },
+    },
+    "azurerm_resource_group": {
+      "premiumFA_rg_5BA9B2FE": {
+        "location": "eastus",
+        "name": "rg-faprem\${var.name}",
+        "tags": {
+          "test": "test",
+        },
+      },
+      "rg": {
+        "location": "eastus",
+        "name": "rg-\${var.name}",
+        "tags": {
+          "test": "test",
+        },
+      },
+      "servicePlanFA_rg_758B3FD5": {
+        "location": "eastus",
+        "name": "rg-fasp\${var.name}",
+        "tags": {
+          "test": "test",
+        },
+      },
+    },
+    "azurerm_service_plan": {
+      "consumptionFA_AppServicePlan_8DD812C2": {
+        "location": "eastus",
+        "name": "fa\${var.name}asp",
+        "os_type": "Linux",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "sku_name": "Y1",
+        "tags": {
+          "test": "test",
+        },
+      },
+      "premiumFA_AppServicePlan_8A862E92": {
+        "location": "eastus",
+        "name": "faprem\${var.name}asp",
+        "os_type": "Linux",
+        "resource_group_name": "\${azurerm_resource_group.premiumFA_rg_5BA9B2FE.name}",
+        "sku_name": "EP1",
+        "tags": {
+          "test": "test",
+        },
+      },
+      "servicePlanFA_AppServicePlan_6B09BCCF": {
+        "location": "eastus",
+        "name": "fasp\${var.name}asp",
+        "os_type": "Linux",
+        "resource_group_name": "\${azurerm_resource_group.servicePlanFA_rg_758B3FD5.name}",
+        "sku_name": "B1",
+        "tags": {
+          "test": "test",
+        },
+      },
+    },
+    "azurerm_storage_account": {
+      "consumptionFA_sa_CFEEEED8": {
+        "account_replication_type": "LRS",
+        "account_tier": "Standard",
+        "location": "eastus",
+        "min_tls_version": "TLS1_2",
+        "name": "fa\${var.name}stacc",
+        "network_rules": {
+          "bypass": [
+            "AzureServices",
+          ],
+          "default_action": "Deny",
+        },
+        "public_network_access_enabled": false,
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "tags": {
+          "test": "test",
+        },
+      },
+      "premiumFA_sa_DC65AFA0": {
+        "account_replication_type": "LRS",
+        "account_tier": "Standard",
+        "location": "eastus",
+        "min_tls_version": "TLS1_2",
+        "name": "faprem\${var.name}stacc",
+        "network_rules": {
+          "bypass": [
+            "AzureServices",
+          ],
+          "default_action": "Deny",
+        },
+        "public_network_access_enabled": false,
+        "resource_group_name": "\${azurerm_resource_group.premiumFA_rg_5BA9B2FE.name}",
+        "tags": {
+          "test": "test",
+        },
+      },
+      "servicePlanFA_sa_084D89FA": {
+        "account_replication_type": "LRS",
+        "account_tier": "Standard",
+        "location": "eastus",
+        "min_tls_version": "TLS1_2",
+        "name": "fasp\${var.name}stacc",
+        "network_rules": {
+          "bypass": [
+            "AzureServices",
+          ],
+          "default_action": "Deny",
+        },
+        "public_network_access_enabled": false,
+        "resource_group_name": "\${azurerm_resource_group.servicePlanFA_rg_758B3FD5.name}",
+        "tags": {
+          "test": "test",
+        },
+      },
+    },
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.75.0",
+      },
+    },
+  },
+  "variable": {
+    "name": {
+      "default": "test",
+      "description": "System name used to randomize the resources",
+      "type": "string",
+    },
+  },
+}
+`;
