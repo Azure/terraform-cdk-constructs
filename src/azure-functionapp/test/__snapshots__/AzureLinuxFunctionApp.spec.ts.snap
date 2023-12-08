@@ -75,7 +75,7 @@ exports[`Azure Linux Function App With Defaults renders an Azure Linux Function 
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.70.0"
       }
     }
   }
@@ -388,7 +388,7 @@ exports[`Linux Function App Example renders the Linux Function App and checks sn
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0",
+        "version": "3.70.0",
       },
     },
   },

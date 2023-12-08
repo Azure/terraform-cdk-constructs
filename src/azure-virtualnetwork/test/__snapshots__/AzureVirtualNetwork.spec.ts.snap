@@ -145,7 +145,7 @@ exports[`Azure Virtual Network Example renders the Example Azure Virtual Network
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.70.0"
       }
     }
   },
@@ -195,7 +195,7 @@ exports[`Azure Virtual Network With Defaults renders an Azure Virtual Network wi
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.70.0"
       }
     }
   }

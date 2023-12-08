@@ -37,7 +37,7 @@ export class exampleAzureLogAnalytics extends BaseTestStack {
     });
 
     const storage = new StorageAccount(this, "storage", {
-      name: `sta${this.name}`,
+      name: `sta${this.name}88t97`,
       resourceGroupName: resourceGroup.name,
       location: resourceGroup.location,
       accountReplicationType: "LRS",

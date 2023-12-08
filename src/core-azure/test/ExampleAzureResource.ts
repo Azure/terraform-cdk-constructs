@@ -17,7 +17,7 @@ class TestStorageAccount extends AzureResource {
     super(scope, name);
 
     const storage = new StorageAccount(this, "storage", {
-      name: `sta${name}`,
+      name: `sta${name}96m98`,
       resourceGroupName: resourceGroup,
       location: location,
       accountReplicationType: "LRS",

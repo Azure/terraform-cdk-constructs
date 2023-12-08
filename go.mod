@@ -3,11 +3,13 @@ module github.com/microsoft/azure-terraform-cdk-modules
 go 1.19
 
 require (
+	github.com/Azure/azure-sdk-for-go v51.0.0+incompatible
 	github.com/gruntwork-io/terratest v0.43.2
 	github.com/stretchr/testify v1.8.4
 )
 
 require (
+
 	cloud.google.com/go v0.110.0 // indirect
 	cloud.google.com/go/compute v1.19.1 // indirect
 	cloud.google.com/go/compute/metadata v0.2.3 // indirect

@@ -282,7 +282,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0",
+        "version": "3.70.0",
       },
     },
   },
@@ -331,7 +331,7 @@ exports[`Azure Key Vault With Defaults renders an Azure Key Vault with defaults 
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.70.0"
       }
     }
   }

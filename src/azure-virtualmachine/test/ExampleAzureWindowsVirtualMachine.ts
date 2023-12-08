@@ -45,7 +45,7 @@ export class exampleAzureWindowsVirtualMachine extends BaseTestStack {
     });
 
     const storage = new StorageAccount(this, "storage", {
-      name: `sta${this.name}`,
+      name: `sta${this.name}87u98`,
       resourceGroupName: resourceGroup.name,
       location: resourceGroup.location,
       accountReplicationType: "LRS",
