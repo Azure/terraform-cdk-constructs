@@ -165,7 +165,7 @@ exports[`Azure Linux Virtual Machine  Scale Set Example renders the Azure Linux 
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.83.0"
+        "version": "3.70.0"
       }
     }
   },
@@ -249,7 +249,7 @@ exports[`Azure Linux Virtual Machine Scale Set With Defaults renders an Azure Li
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.83.0"
+        "version": "3.70.0"
       }
     }
   }

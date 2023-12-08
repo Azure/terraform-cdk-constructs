@@ -122,7 +122,7 @@ exports[`Azure Eventhub Example renders the Example Azure Eventhub and checks sn
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.83.0",
+        "version": "3.70.0",
       },
     },
   },
@@ -178,7 +178,7 @@ exports[`Azure Eventhub With Defaults renders an Azure Eventhub with defaults an
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.83.0"
+        "version": "3.70.0"
       }
     }
   }

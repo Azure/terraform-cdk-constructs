@@ -91,7 +91,7 @@ exports[`Azure Resource Example renders the Azure Resource example and checks sn
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.83.0"
+        "version": "3.70.0"
       }
     }
   },

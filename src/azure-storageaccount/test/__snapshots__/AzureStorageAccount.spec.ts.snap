@@ -173,7 +173,7 @@ exports[`Azure Storage Account Example renders the Example Storage Account and c
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.83.0"
+        "version": "3.70.0"
       }
     }
   },
@@ -222,7 +222,7 @@ exports[`Azure Storage Account With Defaults renders an Azure Storage Account wi
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.83.0"
+        "version": "3.70.0"
       }
     }
   }

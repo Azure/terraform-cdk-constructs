@@ -175,7 +175,7 @@ exports[`Azure Linux Virtual Machine Example renders the Azure Linux Virtual Mac
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.83.0"
+        "version": "3.70.0"
       }
     }
   },
@@ -262,7 +262,7 @@ exports[`Azure Linux Virtual Machine With Defaults renders an Azure Linux Virtua
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.83.0"
+        "version": "3.70.0"
       }
     }
   }

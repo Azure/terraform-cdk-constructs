@@ -18,7 +18,7 @@
 			"terragrunt": "latest"
 		},
 		"ghcr.io/devcontainers-contrib/features/tfcdk-cli:1": {
-			"version": "0.19.2"
+			"version": "0.17.3"
 		},
 		"ghcr.io/devcontainers-contrib/features/jest:2": {
 			"version": "latest"

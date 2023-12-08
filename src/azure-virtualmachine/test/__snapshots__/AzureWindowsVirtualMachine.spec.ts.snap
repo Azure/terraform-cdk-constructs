@@ -172,7 +172,7 @@ exports[`Azure Windows Virtual Machine Example renders the Azure Windows Virtual
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.83.0"
+        "version": "3.70.0"
       }
     }
   },
@@ -259,7 +259,7 @@ exports[`Azure Windows Virtual Machine With Defaults renders an Azure Windows Vi
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.83.0"
+        "version": "3.70.0"
       }
     }
   }

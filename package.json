@@ -20,10 +20,8 @@
     "node": ">=14.0"
   },
   "dependencies": {
-    "@cdktf/provider-azurerm": "^11.0.7",
-    "@cdktf/provider-http": "^8.0.0",
-    "@cdktf/provider-random": "^10.0.1",
-    "cdktf": "^0.19.0",
+    "@cdktf/provider-azurerm": "^9.0.8",
+    "cdktf": "0.17.3",
     "constructs": "^10.1.106",
     "crypto-random-string": "^5.0.0",
     "nanoid": "^4.0.2",
