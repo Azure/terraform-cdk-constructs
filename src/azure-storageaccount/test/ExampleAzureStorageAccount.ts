@@ -17,20 +17,22 @@ export class exampleAzureStorageAccount extends BaseTestStack {
 
     const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
 
+  
     new AzurermProvider(this, "azureFeature", {
         features: {},
       });
+  
 
     // Create a resource group
     const resourceGroup = new ResourceGroup(this, 'rg', {
         name: `rg-${this.name}`,
-        location: 'eastus2',
+        location: 'eastus',
     });
 
     const storageAccount = new AzureStorageAccount(this, 'storageaccount', {
-        name: `sta${this.name}`,
+        name: `sta${this.name}8898`,
         resourceGroup: resourceGroup,
-        location: 'eastus2',
+        location: 'eastus',
         accountReplicationType: 'LRS',
         accountTier: 'Standard',
         enableHttpsTrafficOnly: true,
@@ -41,7 +43,7 @@ export class exampleAzureStorageAccount extends BaseTestStack {
     });
 
     const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
-      location: 'eastus2',
+      location: 'eastus',
       name: `la-${this.name}`,
       resourceGroupName: resourceGroup.name,
     });
@@ -61,15 +63,10 @@ export class exampleAzureStorageAccount extends BaseTestStack {
      storageFileShare.addFile("testfile.txt", "../../../test.txt")
     
      storageAccount.addTable("testtable")
-     storageAccount.addTable("testacltable", [
-        {
-          id: clientConfig.objectId, 
-        }
-      ])
 
-      storageAccount.addQueue("testqueue")
+    storageAccount.addQueue("testqueue")
 
-      storageAccount.addNetworkRules({ bypass: ["AzureServices"], defaultAction: "Deny" })
+    storageAccount.addNetworkRules({ bypass: ["AzureServices"], defaultAction: "Deny", ipRules: ["0.0.0.0/0"]})
         
      
      // Outputs to use for End to End Test

@@ -16,7 +16,7 @@ describe('Azure Storage Account With Defaults', () => {
 
     // Create a Storage Account with the defined rules
     new AzureStorageAccount(stack, "storageaccount", {
-      name: "teststorageaccount",
+      name: "test42348808",
       location: "eastus",
     });
 

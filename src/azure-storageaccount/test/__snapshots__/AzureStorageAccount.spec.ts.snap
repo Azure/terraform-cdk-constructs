@@ -16,6 +16,18 @@ exports[`Azure Storage Account Example renders the Example Storage Account and c
   "output": {
     "resource_group_name": {
       "value": "\${azurerm_resource_group.rg.name}"
+    },
+    "storage_account_account_kind": {
+      "value": "\${azurerm_storage_account.storageaccount_5B90F750.account_kind}"
+    },
+    "storage_account_account_tier": {
+      "value": "\${azurerm_storage_account.storageaccount_5B90F750.account_tier}"
+    },
+    "storage_account_name": {
+      "value": "\${azurerm_storage_account.storageaccount_5B90F750.name}"
+    },
+    "storage_container_name": {
+      "value": "testcontainer"
     }
   },
   "provider": {
@@ -62,7 +74,7 @@ exports[`Azure Storage Account Example renders the Example Storage Account and c
       }
     },
     "azurerm_role_assignment": {
-      "storageaccount_TfTokenTOKEN31Contributor_role_A0F17938": {
+      "storageaccount_TfTokenTOKEN50Contributor_role_CF7C7E2F": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_storage_account.storageaccount_5B90F750.id}"
@@ -77,8 +89,83 @@ exports[`Azure Storage Account Example renders the Example Storage Account and c
         "is_hns_enabled": true,
         "location": "eastus",
         "min_tls_version": "TLS1_2",
-        "name": "teststorageaccount",
+        "name": "sta\${var.name}8898",
         "resource_group_name": "\${azurerm_resource_group.rg.name}"
+      }
+    },
+    "azurerm_storage_account_network_rules": {
+      "storageaccount_rules_4094FBC9": {
+        "bypass": [
+          "AzureServices"
+        ],
+        "default_action": "Deny",
+        "ip_rules": [
+          "0.0.0.0/0"
+        ],
+        "storage_account_id": "\${azurerm_storage_account.storageaccount_5B90F750.id}"
+      }
+    },
+    "azurerm_storage_blob": {
+      "storageaccount_testcontainer_testblobtxt_blob_0EC18225": {
+        "content_type": "application/octet-stream",
+        "metadata": {
+        },
+        "name": "testblob.txt",
+        "source": "../../../test.txt",
+        "storage_account_name": "\${azurerm_storage_account.storageaccount_5B90F750.name}",
+        "storage_container_name": "\${azurerm_storage_container.storageaccount_testcontainer_D98810FC.name}",
+        "type": "Block"
+      }
+    },
+    "azurerm_storage_container": {
+      "storageaccount_testcontainer2_container_7DE9A01E": {
+        "container_access_type": "private",
+        "metadata": {
+        },
+        "name": "testcontainer2",
+        "storage_account_name": "\${azurerm_storage_account.storageaccount_5B90F750.name}"
+      },
+      "storageaccount_testcontainer_D98810FC": {
+        "container_access_type": "private",
+        "metadata": {
+        },
+        "name": "testcontainer",
+        "storage_account_name": "\${azurerm_storage_account.storageaccount_5B90F750.name}"
+      }
+    },
+    "azurerm_storage_queue": {
+      "storageaccount_testqueue_Queue_66867FEF": {
+        "name": "testqueue",
+        "storage_account_name": "\${azurerm_storage_account.storageaccount_5B90F750.name}"
+      }
+    },
+    "azurerm_storage_share": {
+      "storageaccount_testshare_F365FFBE": {
+        "access_tier": "Hot",
+        "acl": [
+        ],
+        "enabled_protocol": "SMB",
+        "metadata": {
+        },
+        "name": "testshare",
+        "quota": 1024,
+        "storage_account_name": "\${azurerm_storage_account.storageaccount_5B90F750.name}"
+      }
+    },
+    "azurerm_storage_share_file": {
+      "storageaccount_testshare_file_BF2AC943": {
+        "content_type": "application/octet-stream",
+        "metadata": {
+        },
+        "name": "testfile.txt",
+        "source": "../../../test.txt",
+        "storage_share_id": "\${azurerm_storage_share.storageaccount_testshare_F365FFBE.id}"
+      }
+    },
+    "azurerm_storage_table": {
+      "storageaccount_testtable_4353D645": {
+        "name": "testtable",
+        "storage_account_name": "\${azurerm_storage_account.storageaccount_5B90F750.name}"
       }
     }
   },
@@ -86,7 +173,7 @@ exports[`Azure Storage Account Example renders the Example Storage Account and c
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.83.0"
       }
     }
   },
@@ -114,7 +201,7 @@ exports[`Azure Storage Account With Defaults renders an Azure Storage Account wi
     "azurerm_resource_group": {
       "storageaccount_rg_F4452564": {
         "location": "eastus",
-        "name": "rg-teststorageaccount"
+        "name": "rg-test42348808"
       }
     },
     "azurerm_storage_account": {
@@ -126,7 +213,7 @@ exports[`Azure Storage Account With Defaults renders an Azure Storage Account wi
         "is_hns_enabled": true,
         "location": "eastus",
         "min_tls_version": "TLS1_2",
-        "name": "teststorageaccount",
+        "name": "test42348808",
         "resource_group_name": "\${azurerm_resource_group.storageaccount_rg_F4452564.name}"
       }
     }
@@ -135,7 +222,7 @@ exports[`Azure Storage Account With Defaults renders an Azure Storage Account wi
     "required_providers": {
       "azurerm": {
         "source": "azurerm",
-        "version": "3.75.0"
+        "version": "3.83.0"
       }
     }
   }
