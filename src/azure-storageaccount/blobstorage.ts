@@ -27,6 +27,31 @@ export class AzureStorageContainer extends Construct {
         this.storageContainerName = container.name;
     }
 
+    /**
+     * Adds a blob to an Azure Storage Container.
+     * 
+     * @param blobName The name of the blob to be added.
+     * @param filePath The file path or URL for the source of the blob's content.
+     * @param props Optional configuration properties for the blob, such as blob type, content type, and metadata.
+     * @returns The created AzureStorageBlob instance.
+     *
+     * This method enables the addition of a blob to an Azure Storage Container. It allows specifying
+     * the source of the blob's content, as well as other properties like the blob's type (default is 'Block'),
+     * content type, and metadata. The `filePath` parameter should point to the location of the file to be
+     * uploaded as a blob.
+     *
+     * Example usage:
+     * ```typescript
+     * const storageBlob = storageContainer.addBlob('exampleBlob', './path/to/local/file.txt', {
+     *   type: 'Block',
+     *   contentType: 'text/plain',
+     *   metadata: { customKey: 'customValue' }
+     * });
+     * ```
+     * 
+     * In this example, a blob named 'exampleBlob' is added to the storage container. The content of the blob
+     * is sourced from a local file. The blob is of type 'Block' with a content type of 'text/plain' and custom metadata.
+     */
     addBlob(blobName: string, filePath: string, props?: StorageBlobConfig): AzureStorageBlob {
         const newStorageBlob = new AzureStorageBlob(this, blobName, {
             name: blobName,

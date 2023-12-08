@@ -24,13 +24,13 @@ export class exampleAzureStorageAccount extends BaseTestStack {
     // Create a resource group
     const resourceGroup = new ResourceGroup(this, 'rg', {
         name: `rg-${this.name}`,
-        location: 'eastus',
+        location: 'eastus2',
     });
 
     const storageAccount = new AzureStorageAccount(this, 'storageaccount', {
         name: `sta${this.name}`,
         resourceGroup: resourceGroup,
-        location: 'eastus',
+        location: 'eastus2',
         accountReplicationType: 'LRS',
         accountTier: 'Standard',
         enableHttpsTrafficOnly: true,
@@ -41,13 +41,13 @@ export class exampleAzureStorageAccount extends BaseTestStack {
     });
 
     const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
-      location: 'eastus',
+      location: 'eastus2',
       name: `la-${this.name}`,
       resourceGroupName: resourceGroup.name,
     });
 
      //Diag Settings
-     storageAccount.addDiagSettings({name: "diagsettings", logAnalyticsWorkspaceId: logAnalyticsWorkspace.id})
+     storageAccount.addDiagSettings({name: "diagsettings", logAnalyticsWorkspaceId: logAnalyticsWorkspace.id, metricCategories: ["AllMetrics"]} )
 
      //RBAC
      storageAccount.addAccess(clientConfig.objectId, "Contributor")
@@ -56,7 +56,22 @@ export class exampleAzureStorageAccount extends BaseTestStack {
      const storageContainer = storageAccount.addContainer("testcontainer")
      storageContainer.addBlob("testblob.txt", "../../../test.txt")
      storageAccount.addContainer("testcontainer2")
+
+     const storageFileShare = storageAccount.addFileShare("testshare")
+     storageFileShare.addFile("testfile.txt", "../../../test.txt")
     
+     storageAccount.addTable("testtable")
+     storageAccount.addTable("testacltable", [
+        {
+          id: clientConfig.objectId, 
+        }
+      ])
+
+      storageAccount.addQueue("testqueue")
+
+      storageAccount.addNetworkRules({ bypass: ["AzureServices"], defaultAction: "Deny" })
+        
+     
      // Outputs to use for End to End Test
     const cdktfTerraformOutputRGName = new cdktf.TerraformOutput(this, "resource_group_name", {
       value: resourceGroup.name,
