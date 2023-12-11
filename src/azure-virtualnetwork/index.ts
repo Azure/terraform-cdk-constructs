@@ -10,7 +10,7 @@ interface SubnetConfig {
     addressPrefixes: string[];
   }
 
-interface AzureVirtualNetworkProps {
+interface AzureAzureVirtualNetworkProps {
     resourceGroupName: string;
     name?: string;
     location?: string;
@@ -19,7 +19,7 @@ interface AzureVirtualNetworkProps {
   }
   
 export class AzureVirtualNetwork extends AzureResource {
-    readonly props: AzureVirtualNetworkProps;
+    readonly props: AzureAzureVirtualNetworkProps;
     public readonly name: string;
     public readonly resourceGroupName: string;
     public readonly id: string;
@@ -28,7 +28,7 @@ export class AzureVirtualNetwork extends AzureResource {
 
     
   
-    constructor(scope: Construct, id: string, props: AzureVirtualNetworkProps) {
+    constructor(scope: Construct, id: string, props: AzureAzureVirtualNetworkProps) {
         super(scope, id);
 
         this.props = props;

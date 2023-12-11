@@ -2,12 +2,12 @@ import * as cdktf from 'cdktf';
 import { KustoCluster } from '@cdktf/provider-azurerm/lib/kusto-cluster';
 import { Construct } from 'constructs';
 import { AzureResourceGroup } from '../azure-resourcegroup/index';
-import { AzureKustoDatabase, KustoDatabaseProps } from './database';
+import { AzureKustoDatabase, AzureKustoDatabaseProps } from './database';
 import { AzureResource } from '../core-azure/index';
 import { ComputeSpecification, IComputeSpecification } from './compute-specification';
 
 
-export interface KustoProps {
+export interface AzureKustoProps {
   /**
    * The Azure Resource Group in which to create the Kusto Cluster.
    */
@@ -78,11 +78,11 @@ export interface KustoProps {
 
 
 export class AzureKusto extends AzureResource {
-  readonly kustoProps: KustoProps;
+  readonly kustoProps: AzureKustoProps;
   public readonly id: string;
   public readonly uri: string;
 
-  constructor(scope: Construct, id: string, kustoProps: KustoProps) {
+  constructor(scope: Construct, id: string, kustoProps: AzureKustoProps) {
     super(scope, id);
     this.kustoProps = kustoProps;
 
@@ -156,7 +156,7 @@ export class AzureKusto extends AzureResource {
     cdktfTerraformOutputKustoIdentity.overrideLogicalId("Kusto_identity");
   }
 
-  public addDatabase(databaseProps: KustoDatabaseProps) {
+  public addDatabase(databaseProps: AzureKustoDatabaseProps) {
     return new AzureKustoDatabase(this, databaseProps.name, databaseProps);
   }
 }

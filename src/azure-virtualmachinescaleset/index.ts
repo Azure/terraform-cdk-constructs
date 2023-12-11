@@ -16,7 +16,7 @@ import { LinuxImageReferences } from '../azure-virtualmachine/image-references';
 import {VirtualMachineScaleSetExtensionA} from '@cdktf/provider-azurerm/lib/virtual-machine-scale-set-extension';
 
 
-export interface LinuxVirtualMachineScaleSetProps {
+export interface AzureLinuxVirtualMachineScaleSetProps {
   /**
    * The Azure location where the virtual machine scale set should be created.
    * @default "eastus"
@@ -142,7 +142,7 @@ export interface LinuxVirtualMachineScaleSetProps {
 }
 
 export class AzureLinuxVirtualMachineScaleSet extends AzureResource {
-  readonly props: LinuxVirtualMachineScaleSetProps;
+  readonly props: AzureLinuxVirtualMachineScaleSetProps;
   public readonly id: string;
   public readonly name: string;
   public readonly fqn: string;
@@ -155,7 +155,7 @@ export class AzureLinuxVirtualMachineScaleSet extends AzureResource {
    * @param props - The properties for defining a Linux Virtual Machine.
    */
 
-  constructor(scope: Construct, id: string, props: LinuxVirtualMachineScaleSetProps) {
+  constructor(scope: Construct, id: string, props: AzureLinuxVirtualMachineScaleSetProps) {
     super(scope, id);
 
     this.props = props;
@@ -221,7 +221,7 @@ export class AzureLinuxVirtualMachineScaleSet extends AzureResource {
   }
 }
 
-export interface WindowsVirtualMachineScaleSetProps {
+export interface AzureWindowsVirtualMachineScaleSetProps {
   /**
    * The Azure location where the virtual machine should be created.
    * @default "eastus"
@@ -333,7 +333,7 @@ export interface WindowsVirtualMachineScaleSetProps {
 }
 
 export class AzureWindowsVirtualMachineScaleSet extends AzureResource {
-  readonly props: WindowsVirtualMachineScaleSetProps;
+  readonly props: AzureWindowsVirtualMachineScaleSetProps;
   public readonly id: string;
   public readonly name: string;
 
@@ -344,7 +344,7 @@ export class AzureWindowsVirtualMachineScaleSet extends AzureResource {
    * @param id - The ID of this construct.
    * @param props - The properties for defining a Windows Virtual Machine.
    */
-  constructor(scope: Construct, id: string, props: WindowsVirtualMachineScaleSetProps) {
+  constructor(scope: Construct, id: string, props: AzureWindowsVirtualMachineScaleSetProps) {
     super(scope, id);
 
     this.props = props;

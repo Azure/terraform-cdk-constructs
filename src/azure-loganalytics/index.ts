@@ -9,7 +9,7 @@ import {AzureResource} from "../core-azure";
  type LAFunctions = { name: string, display_name: string, query: string, function_alias: string, function_parameters: string[] }
  type Queries = { name: string, category: string, display_name: string, query: string }
 
- export interface LogAnalyticsProps {
+ export interface AzureLogAnalyticsProps {
   /**
    * The Azure Region to deploy.
    */
@@ -49,11 +49,11 @@ import {AzureResource} from "../core-azure";
 }
 
 export class AzureLogAnalytics extends AzureResource {
-  readonly props: LogAnalyticsProps;
+  readonly props: AzureLogAnalyticsProps;
   public readonly id: string;
   
 
-  constructor(scope: Construct, id: string, props: LogAnalyticsProps) {
+  constructor(scope: Construct, id: string, props: AzureLogAnalyticsProps) {
     super(scope, id);
 
     this.props = props;

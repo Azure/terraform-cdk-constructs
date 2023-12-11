@@ -2,11 +2,11 @@ import { EventhubNamespace } from "@cdktf/provider-azurerm/lib/eventhub-namespac
 import { Construct } from "constructs";
 import * as cdktf from 'cdktf';
 import { AzureResourceGroup } from "../azure-resourcegroup";
-import { AzureEventhubInstance, EventhubInstanceProps } from './eventhub';
+import { AzureEventhubInstance, AzureEventhubInstanceProps } from './eventhub';
 import { AzureResource } from "../core-azure";
 
 
-export interface EventhubNamespaceProps {
+export interface AzureEventhubNamespaceProps {
 	/**
 	 * The Azure Resource Group in which to create the EventHub Namespace.
 	 */
@@ -75,13 +75,13 @@ export interface EventhubNamespaceProps {
 }
 
 export class AzureEventhubNamespace extends AzureResource {
-	readonly ehNamespaceProps: EventhubNamespaceProps;
+	readonly ehNamespaceProps: AzureEventhubNamespaceProps;
 	readonly rgName: string;
 	readonly rgLocation: string;
 	readonly id: string;
 	readonly namespaceName: string;
 
-	constructor(scope: Construct, name: string, ehNamespaceProps: EventhubNamespaceProps) {
+	constructor(scope: Construct, name: string, ehNamespaceProps: AzureEventhubNamespaceProps) {
 		super(scope, name);
 
 		this.ehNamespaceProps = ehNamespaceProps;
@@ -121,7 +121,7 @@ export class AzureEventhubNamespace extends AzureResource {
 	}
 
 	// Create an EventHub Instance Method
-	addEventhubInstance(props: Omit<EventhubInstanceProps, 'resourceGroupName' | 'namespaceName'>) {
+	addEventhubInstance(props: Omit<AzureEventhubInstanceProps, 'resourceGroupName' | 'namespaceName'>) {
 		return new AzureEventhubInstance(this, `ehinstance`, {
 			resourceGroupName: this.rgName,
 			namespaceName: this.namespaceName,

@@ -4,7 +4,7 @@ import { Construct } from "constructs";
 
 
 
-export interface EventhubConsumerGroupProps {
+export interface AzureEventhubConsumerGroupProps {
   readonly name: string;
   /**
    * The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists.
@@ -25,10 +25,10 @@ export interface EventhubConsumerGroupProps {
 }
 
 export class AzureEventhubConsumerGroup extends Construct {
-  readonly ehConsumerGroupProps: EventhubConsumerGroupProps;
+  readonly ehConsumerGroupProps: AzureEventhubConsumerGroupProps;
   readonly id: string;
 
-  constructor(scope: Construct, name: string, ehConsumerGroupProps: EventhubConsumerGroupProps) {
+  constructor(scope: Construct, name: string, ehConsumerGroupProps: AzureEventhubConsumerGroupProps) {
     super(scope, name);
 
     this.ehConsumerGroupProps = ehConsumerGroupProps;

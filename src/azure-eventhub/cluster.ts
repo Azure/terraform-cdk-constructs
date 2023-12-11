@@ -5,7 +5,7 @@ import { Construct } from 'constructs';
 import * as cdktf from 'cdktf';
 
 
-export interface EventhubClusterProps {
+export interface AzureEventhubClusterProps {
   /**
    * The name of the Resource Group in which to create the EventHub Cluster.
    */
@@ -23,12 +23,12 @@ export interface EventhubClusterProps {
 }
 
 export class AzureEventhubCluster extends AzureResource {
-  readonly ehClusterProps: EventhubClusterProps;
+  readonly ehClusterProps: AzureEventhubClusterProps;
   readonly rgName: string;
   readonly rgLocation: string;
   readonly id: string;
 
-  constructor(scope: Construct, name: string, ehClusterProps: EventhubClusterProps) {
+  constructor(scope: Construct, name: string, ehClusterProps: AzureEventhubClusterProps) {
     super(scope, name);
 
     this.ehClusterProps = ehClusterProps;

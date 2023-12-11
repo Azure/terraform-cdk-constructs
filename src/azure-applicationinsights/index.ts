@@ -10,7 +10,7 @@ import { Construct } from 'constructs';
  * Properties for the resource group
  */
 
-export interface ApplicationInsightsProps {
+export interface AzureApplicationInsightsProps {
     /**
      * The Azure Region to deploy.
      */
@@ -50,12 +50,12 @@ export interface ApplicationInsightsProps {
 }
 
 export class AzureApplicationInsights extends AzureResource {
-  readonly props: ApplicationInsightsProps;
+  readonly props: AzureApplicationInsightsProps;
   private readonly instrumentationKey: string;
   public readonly id: string;
   
 
-  constructor(scope: Construct, id: string, props: ApplicationInsightsProps) {
+  constructor(scope: Construct, id: string, props: AzureApplicationInsightsProps) {
     super(scope, id);
 
     this.props = props;;

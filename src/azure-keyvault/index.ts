@@ -8,7 +8,7 @@ import { AzureKeyVaultKey, AzureKeyVaultKeyProps } from './key';
 import {AzureResource} from "../core-azure";
 
 
-export interface KeyVaultProps {
+export interface AzureKeyVaultProps {
     /**
      * The name of the Key Vault.
      */
@@ -67,11 +67,11 @@ interface GrantCustomAccessOptions {
 
 
 export class AzureKeyVault extends AzureResource {
-  readonly props: KeyVaultProps;
+  readonly props: AzureKeyVaultProps;
   public readonly id: string;
   private accessPolicies: AzureKeyVaultPolicy[] = [];
 
-  constructor(scope: Construct, id: string, props: KeyVaultProps) {
+  constructor(scope: Construct, id: string, props: AzureKeyVaultProps) {
     super(scope, id);
 
     this.props = props;
