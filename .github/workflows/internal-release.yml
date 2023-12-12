@@ -1,0 +1,61 @@
+name: Internal Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**/*.ts'
+      - 'package.json'
+    paths-ignore:
+      - '**/*.spec.ts'
+      - 'src/**/test/**'
+      - '**/*.go'
+      - '**/*.md'
+
+jobs:
+  check-version-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Check if package.json version changed
+        id: version-check
+        run: |
+          # Fetch the main branch
+          git fetch origin main:main
+
+          # Get version from the current branch's package.json
+          CURRENT_VERSION=$(jq -r '.version' package.json)
+
+          # Get version from the main branch's package.json
+          MAIN_VERSION=$(git show main:package.json | jq -r '.version')
+
+          # Compare versions
+          if [ "$CURRENT_VERSION" != "$MAIN_VERSION" ]; then
+            echo "VERSION_CHANGED=true" >> $GITHUB_ENV
+          else
+            echo "VERSION_CHANGED=false" >> $GITHUB_ENV
+
+      - name: Use Node.js
+        if: env.VERSION_CHANGED == 'true'
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+          registry-url: https://msasg.pkgs.visualstudio.com/PIQ/_packaging/PIQ_PublicPackages/npm/registry/
+          always-auth: true
+
+      - name: Install dependencies
+        if: env.VERSION_CHANGED == 'true'
+        run: npm install
+
+      - name: Build
+        if: env.VERSION_CHANGED == 'true'
+        run: npm run build
+
+      - name: Publish to Azure DevOps
+        if: env.VERSION_CHANGED == 'true'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.AZURE_DEVOPS_PAT }}
