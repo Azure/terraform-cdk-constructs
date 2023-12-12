@@ -7,11 +7,10 @@ on:
     paths:
       - 'src/**/*.ts'
       - 'package.json'
-    paths-ignore:
-      - '**/*.spec.ts'
-      - 'src/**/test/**'
-      - '**/*.go'
-      - '**/*.md'
+      - '!**/*.spec.ts'
+      - '!src/**/test/**'
+      - '!**/*.go'
+      - '!**/*.md'
 
 jobs:
   check-version-and-publish:
