@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: '18'
           registry-url: https://msasg.pkgs.visualstudio.com/PIQ/_packaging/PIQ_PublicPackages/npm/registry/
-          token: ${{ secrets.AZURE_DEVOPS_PAT }}
+          token: ${{ secrets.AZURE_DEVOPS_FEED_PAT }}
           always-auth: true
 
       - name: Install dependencies
@@ -37,4 +37,4 @@ jobs:
       - name: Publish to Azure DevOps
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.AZURE_DEVOPS_PAT }}
+          NODE_AUTH_TOKEN: ${{ secrets.AZURE_DEVOPS_FEED_PAT }}
