@@ -27,7 +27,7 @@ jobs:
         uses: EndBug/version-check@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          file: 'package.json'
+          file-name: 'package.json'
 
   publish-package:
     runs-on: ubuntu-latest
