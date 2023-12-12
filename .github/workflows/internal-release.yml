@@ -25,6 +25,7 @@ jobs:
         with:
           node-version: '18'
           registry-url: https://msasg.pkgs.visualstudio.com/PIQ/_packaging/PIQ_PublicPackages/npm/registry/
+          token: ${{ secrets.AZURE_DEVOPS_PAT }}
           always-auth: true
 
       - name: Install dependencies
