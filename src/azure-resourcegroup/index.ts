@@ -6,7 +6,7 @@ import { RoleAssignment } from "@cdktf/provider-azurerm/lib/role-assignment";
 /**
  * Properties for the resource group
  */
-export interface ResourceGroupProps {
+export interface AzureResourceGroupProps {
   /**
    * The Azure Region to deploy.
    */
@@ -31,7 +31,7 @@ export interface ResourceGroupProps {
 
 
 export class AzureResourceGroup extends Construct {
-  readonly props: ResourceGroupProps;
+  readonly props: AzureResourceGroupProps;
   IdOutput: cdktf.TerraformOutput
   LocationOutput: cdktf.TerraformOutput
   NameOutput: cdktf.TerraformOutput
@@ -40,7 +40,7 @@ export class AzureResourceGroup extends Construct {
   public readonly Location: string;
   public readonly Name: string;
 
-  constructor(scope: Construct, id: string, props: ResourceGroupProps = {}) {
+  constructor(scope: Construct, id: string, props: AzureResourceGroupProps = {}) {
     super(scope, id);
 
     this.props = props;;

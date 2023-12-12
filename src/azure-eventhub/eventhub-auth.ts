@@ -5,7 +5,7 @@ import { AzureKeyVault } from '../azure-keyvault';
 
 
 
-export interface EventhubAuthorizationRuleProps{
+export interface AzureEventhubAuthorizationRuleProps{
   readonly name: string;
   /**
    * The name of the resource group in which the EventHub's parent Namespace exists.
@@ -38,11 +38,11 @@ export interface EventhubAuthorizationRuleProps{
 
 
 export class AzureEventhubAuthorizationRule extends Construct {
-  readonly ehInstanceAuthProps: EventhubAuthorizationRuleProps;
+  readonly ehInstanceAuthProps: AzureEventhubAuthorizationRuleProps;
   private readonly primaryConnectionString: string;
   private readonly primaryKey: string;
 
-  constructor(scope: Construct, name: string, ehInstanceAuthProps: EventhubAuthorizationRuleProps) {
+  constructor(scope: Construct, name: string, ehInstanceAuthProps: AzureEventhubAuthorizationRuleProps) {
     super(scope, name);
 
     this.ehInstanceAuthProps = ehInstanceAuthProps;

@@ -1,12 +1,12 @@
 import { Eventhub } from "@cdktf/provider-azurerm/lib/eventhub";
 import { Construct } from 'constructs';
 import * as cdktf from 'cdktf';
-import { AzureEventhubAuthorizationRule, EventhubAuthorizationRuleProps } from "./eventhub-auth";
-import { EventhubConsumerGroupProps, AzureEventhubConsumerGroup } from './eventhub-consumer';
-import { AzureKustoEventhubDataConnection, EventhubKustoDataConnectionProps } from "./kusto-connection";
+import { AzureEventhubAuthorizationRule, AzureEventhubAuthorizationRuleProps } from "./eventhub-auth";
+import { AzureEventhubConsumerGroupProps, AzureEventhubConsumerGroup } from './eventhub-consumer';
+import { AzureKustoEventhubDataConnection, AzureEventhubKustoDataConnectionProps } from "./kusto-connection";
 
 
-export interface EventhubInstanceProps {
+export interface AzureEventhubInstanceProps {
   /**
    * Specifies the name of the EventHub resource. 
    */
@@ -43,11 +43,11 @@ export interface EventhubInstanceProps {
 }
 
 export class AzureEventhubInstance extends Construct {
-  readonly ehInstanceProps: EventhubInstanceProps;
+  readonly ehInstanceProps: AzureEventhubInstanceProps;
   readonly id: string;
   readonly partitionIds: string[];
 
-  constructor(scope: Construct, name: string, ehInstanceProps: EventhubInstanceProps) {
+  constructor(scope: Construct, name: string, ehInstanceProps: AzureEventhubInstanceProps) {
     super(scope, name);
 
     this.ehInstanceProps = ehInstanceProps;
@@ -80,7 +80,7 @@ export class AzureEventhubInstance extends Construct {
     cdktfTerraformOutputEventhubInstancePartitionIds.overrideLogicalId('partition_ids');
   }
 
-  public addAuthorizationRule(props: Omit<EventhubAuthorizationRuleProps, 'resourceGroupName' | 'namespaceName' | 'eventhubName'>) {
+  public addAuthorizationRule(props: Omit<AzureEventhubAuthorizationRuleProps, 'resourceGroupName' | 'namespaceName' | 'eventhubName'>) {
     return new AzureEventhubAuthorizationRule(this, `ehauthrule-${props.name}`, {
       resourceGroupName: this.ehInstanceProps.resourceGroupName,
       namespaceName: this.ehInstanceProps.namespaceName,
@@ -89,7 +89,7 @@ export class AzureEventhubInstance extends Construct {
     });
   }
 
-  public addConsumerGroup(props: Omit<EventhubConsumerGroupProps, 'resourceGroupName' | 'namespaceName' | 'eventhubName'>) {
+  public addConsumerGroup(props: Omit<AzureEventhubConsumerGroupProps, 'resourceGroupName' | 'namespaceName' | 'eventhubName'>) {
     return new AzureEventhubConsumerGroup(this, `ehconsumergroup-${props.name}`, {
       resourceGroupName: this.ehInstanceProps.resourceGroupName,
       namespaceName: this.ehInstanceProps.namespaceName,
@@ -98,7 +98,7 @@ export class AzureEventhubInstance extends Construct {
     });
   }
 
-  public addKustoDataConnection(props: Omit<EventhubKustoDataConnectionProps, 'eventhubId'>) {
+  public addKustoDataConnection(props: Omit<AzureEventhubKustoDataConnectionProps, 'eventhubId'>) {
     return new AzureKustoEventhubDataConnection(this, `ehkustodataconnection-${this.ehInstanceProps.name}-${props.name}`, {
       eventhubId: this.id,
       ...props,

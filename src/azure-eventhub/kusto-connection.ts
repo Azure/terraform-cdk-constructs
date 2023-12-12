@@ -2,7 +2,7 @@ import { Construct } from "constructs";
 import { KustoEventhubDataConnection } from "@cdktf/provider-azurerm/lib/kusto-eventhub-data-connection";
 
 
-export interface EventhubKustoDataConnectionProps {
+export interface AzureEventhubKustoDataConnectionProps {
   /**
    * The name of the Kusto EventHub Data Connection to create.
    */
@@ -64,9 +64,9 @@ export interface EventhubKustoDataConnectionProps {
 }
 
 export class AzureKustoEventhubDataConnection extends Construct {
-  public readonly eventhubKustoDataConnectionProps: EventhubKustoDataConnectionProps;
+  public readonly eventhubKustoDataConnectionProps: AzureEventhubKustoDataConnectionProps;
 
-  constructor(scope: Construct, id: string, kustoDataConnectionProps: EventhubKustoDataConnectionProps) {
+  constructor(scope: Construct, id: string, kustoDataConnectionProps: AzureEventhubKustoDataConnectionProps) {
     super(scope, id);
 
     this.eventhubKustoDataConnectionProps = kustoDataConnectionProps;

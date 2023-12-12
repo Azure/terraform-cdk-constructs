@@ -19,7 +19,7 @@ import {AzureResource} from "../core-azure";
 
 
 
-export interface WindowsVirtualMachineProps {
+export interface AzureWindowsVirtualMachineProps {
   /**
    * The Azure location where the virtual machine should be created.
    * @default "eastus"
@@ -103,7 +103,7 @@ export interface WindowsVirtualMachineProps {
 }
 
 export class AzureWindowsVirtualMachine extends AzureResource {
-  readonly props: WindowsVirtualMachineProps;
+  readonly props: AzureWindowsVirtualMachineProps;
   public readonly id: string;
   public readonly name: string;
   public readonly publicIp?: string;
@@ -115,7 +115,7 @@ export class AzureWindowsVirtualMachine extends AzureResource {
    * @param id - The ID of this construct.
    * @param props - The properties for defining a Windows Virtual Machine.
    */
-  constructor(scope: Construct, id: string, props: WindowsVirtualMachineProps) {
+  constructor(scope: Construct, id: string, props: AzureWindowsVirtualMachineProps) {
     super(scope, id);
 
     this.props = props;
@@ -197,7 +197,7 @@ export class AzureWindowsVirtualMachine extends AzureResource {
   }
 }
 
-export interface LinuxVirtualMachineProps {
+export interface AzureLinuxVirtualMachineProps {
   /**
    * The Azure location where the virtual machine should be created.
    * @default "eastus"
@@ -317,7 +317,7 @@ export interface LinuxVirtualMachineProps {
 
 export class AzureLinuxVirtualMachine extends AzureResource {
   // Properties of the AzureLinuxVirtualMachine class
-  readonly props: LinuxVirtualMachineProps;
+  readonly props: AzureLinuxVirtualMachineProps;
   public readonly id: string;
   public readonly name: string;
   public readonly publicIp?: string;
@@ -329,7 +329,7 @@ export class AzureLinuxVirtualMachine extends AzureResource {
    * @param id - The ID of this construct.
    * @param props - The properties for defining a Linux Virtual Machine.
    */
-  constructor(scope: Construct, id: string, props: LinuxVirtualMachineProps) {
+  constructor(scope: Construct, id: string, props: AzureLinuxVirtualMachineProps) {
     super(scope, id);
 
     // Assigning the properties

@@ -4,7 +4,7 @@ import {Construct} from "constructs";
 import {ContainerRegistry} from "@cdktf/provider-azurerm/lib/container-registry";
 
 
- export interface ContainerRegistryProps {
+ export interface AzureContainerRegistryProps {
   /**
    * The Azure Region to deploy.
    */
@@ -38,10 +38,10 @@ import {ContainerRegistry} from "@cdktf/provider-azurerm/lib/container-registry"
 }
 
 export class AzureContainerRegistry extends AzureResource {
-  readonly props: ContainerRegistryProps;
+  readonly props: AzureContainerRegistryProps;
   public readonly id: string;
   
-  constructor(scope: Construct, id: string, props: ContainerRegistryProps) {
+  constructor(scope: Construct, id: string, props: AzureContainerRegistryProps) {
     super(scope, id);
 
     this.props = props;;

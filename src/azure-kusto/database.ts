@@ -2,12 +2,12 @@ import { KustoDatabase } from '@cdktf/provider-azurerm/lib/kusto-database';
 import { KustoDatabasePrincipalAssignment } from '@cdktf/provider-azurerm/lib/kusto-database-principal-assignment';
 import { Construct } from 'constructs';
 import { AzureKusto } from '.';
-import { KustoProps } from './index';
+import { AzureKustoProps } from './index';
 import { KustoScript } from '@cdktf/provider-azurerm/lib/kusto-script';
 import * as cdktf from 'cdktf';
 import { Md5 } from 'ts-md5';
 
-export interface KustoDatabaseProps {
+export interface AzureKustoDatabaseProps {
   /**
    * The Azure Kusto to which this database belongs.
    */
@@ -59,12 +59,12 @@ export interface KustoTableSchemaProps {
 
 
 export class AzureKustoDatabase extends Construct {
-  public readonly kustoDbProps: KustoDatabaseProps;
-  public readonly kustoProps: KustoProps;
+  public readonly kustoDbProps: AzureKustoDatabaseProps;
+  public readonly kustoProps: AzureKustoProps;
   public readonly rg: string;
   public readonly id: string;
 
-  constructor(scope: Construct, id: string, kustoDbProps: KustoDatabaseProps) {
+  constructor(scope: Construct, id: string, kustoDbProps: AzureKustoDatabaseProps) {
     super(scope, id);
     this.kustoDbProps = kustoDbProps;
     this.kustoProps = kustoDbProps.kusto.kustoProps;
