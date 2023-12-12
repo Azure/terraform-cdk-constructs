@@ -30,9 +30,13 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.AZURE_DEVOPS_FEED_PAT }}
 
       - name: Build
         run: npm run build
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.AZURE_DEVOPS_FEED_PAT }}
 
       - name: Publish to Azure DevOps
         run: npm publish
