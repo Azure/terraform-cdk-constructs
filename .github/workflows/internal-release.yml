@@ -31,12 +31,12 @@ jobs:
           registry=https://$AZURE_DEVOPS_URL/npm/registry/
           always-auth=true
           ; begin auth token
-          //$AZURE_DEVOPS_URL/npm/registry/:username=msasg
-          //$AZURE_DEVOPS_URL/npm/registry/:_password=\${AUTH_TOKEN}
-          //$AZURE_DEVOPS_URL/npm/registry/:email=nothing
-          //$AZURE_DEVOPS_URL/npm/:username=msasg
-          //$AZURE_DEVOPS_URL/npm/:_password=\${AUTH_TOKEN}
-          //$AZURE_DEVOPS_URL/npm/:email=nothing
+          //${AZURE_DEVOPS_URL}/npm/registry/:username=msasg
+          //${AZURE_DEVOPS_URL}/npm/registry/:_password=${AUTH_TOKEN}
+          //${AZURE_DEVOPS_URL}/npm/registry/:email=nothing
+          //${AZURE_DEVOPS_URL}/npm/:username=msasg
+          //${AZURE_DEVOPS_URL}/npm/:_password=${AUTH_TOKEN}
+          //${AZURE_DEVOPS_URL}/npm/:email=nothing
           ; end auth token
           EOF
         shell: bash
