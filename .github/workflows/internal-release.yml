@@ -22,7 +22,7 @@ jobs:
 
       - name: Setup .npmrc
         run: |
-          ENCODED_TOKEN=$(echo -n ${{ secrets.NODE_AUTH_TOKEN }} | base64)
+          ENCODED_TOKEN=$(echo -n ${{ secrets.AZURE_DEVOPS_FEED_PAT }} | base64)
           echo "AUTH_TOKEN=$ENCODED_TOKEN" >> $GITHUB_ENV
       
           AZURE_DEVOPS_URL=${{ secrets.AZURE_DEVOPS_URL }}
