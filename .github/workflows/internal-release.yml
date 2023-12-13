@@ -41,6 +41,10 @@ jobs:
           EOF
         shell: bash
 
+      - name: test
+        run: |
+            cat .npmrc
+        shell: bash
 
       - name: Install dependencies
         run: npm install
