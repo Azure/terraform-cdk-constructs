@@ -1,1 +1,1 @@
-export * from './lib/appinsights';
+export * from './lib';
