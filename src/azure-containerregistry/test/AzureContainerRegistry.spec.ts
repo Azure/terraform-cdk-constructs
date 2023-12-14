@@ -2,7 +2,7 @@ import { Testing, TerraformStack} from 'cdktf';
 import { exampleAzureContainerRegistry} from './ExampleAzureContainerRegistry'
 import 'cdktf/lib/testing/adapters/jest';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
-import { AzureContainerRegistry } from '../';
+import * as acr from "..";
 
 describe('Azure Container Registry With Defaults', () => {
   let stack: TerraformStack;
@@ -13,7 +13,7 @@ describe('Azure Container Registry With Defaults', () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
-    new AzureContainerRegistry(stack, 'testAzureContainerRegistryDefaults', {
+    new acr.Registry(stack, 'testAzureContainerRegistryDefaults', {
       name: "latest",
       location: 'eastus',
       resource_group_name: "rg-test",

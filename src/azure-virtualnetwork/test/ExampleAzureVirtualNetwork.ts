@@ -1,5 +1,5 @@
 import * as cdktf from "cdktf";
-import { AzureVirtualNetwork } from '..';
+import * as vnet from '..'
 import {BaseTestStack} from "../../testing";
 import { App} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
@@ -28,7 +28,7 @@ export class exampleAzureVirtualNetwork extends BaseTestStack {
 
     });
 
-    const network = new AzureVirtualNetwork(this, 'testAzureVirtualNetworkDefaults', {
+    const network = new vnet.Network(this, 'testAzureVirtualNetworkDefaults', {
       name: `vnet-${this.name}`,
       location: 'eastus',
       resourceGroupName: resourceGroup.name,
@@ -45,7 +45,7 @@ export class exampleAzureVirtualNetwork extends BaseTestStack {
       ],
     });
 
-    const remotenetwork = new AzureVirtualNetwork(this, 'testAzureRemoteVirtualNetworkDefaults', {
+    const remotenetwork = new vnet.Network(this, 'testAzureRemoteVirtualNetworkDefaults', {
       name: `vnet-${this.name}2`,
       location: 'westus',
       resourceGroupName: resourceGroup.name,

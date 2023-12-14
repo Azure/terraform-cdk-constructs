@@ -3,7 +3,7 @@ import 'cdktf/lib/testing/adapters/jest';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import * as util from "../../util/azureTenantIdHelpers";
 import { exampleAzureEventhub } from './ExampleAzureEventhub';
-import { AzureEventhubNamespace } from '../namespace';
+import * as eh from "..";
 
 describe('Azure Eventhub With Defaults', () => {
   let stack: TerraformStack;
@@ -11,7 +11,7 @@ describe('Azure Eventhub With Defaults', () => {
 
   beforeEach(() => {
     jest.mock('../../azure-resourcegroup', () => ({
-      AzureResourceGroup: {
+      Group: {
         Location: 'eastus',
         Name: `test-rg`,
       }
@@ -22,8 +22,8 @@ describe('Azure Eventhub With Defaults', () => {
     stack = new TerraformStack(app, 'test');
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
-    new AzureEventhubNamespace(stack, 'testAzureEventhubDefaults', {
-      rg: rgMock.AzureResourceGroup,
+    new eh.Namespace(stack, 'testAzureEventhubDefaults', {
+      rg: rgMock.Group,
       name: `eh-test`,
       tags: {
         'test': 'test'

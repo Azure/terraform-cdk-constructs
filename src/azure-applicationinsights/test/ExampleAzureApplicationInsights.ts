@@ -1,6 +1,6 @@
 import * as cdktf from "cdktf";
 import {BaseTestStack} from "../../testing";
-import { AzureApplicationInsights } from '../';
+import * as appi from "../lib"
 import { App} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
 import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
@@ -65,7 +65,7 @@ export class exampleAzureApplicationInsights extends BaseTestStack {
         resourceGroupName: resourceGroup.name,
     });
 
-    const applicationInsights = new AzureApplicationInsights(this, 'testappi', {
+    const applicationInsights = new appi.AppInsights(this, 'testappi', {
       name: `appi-${this.name}`,
       location: 'eastus',
       resource_group_name: resourceGroup.name ,

@@ -2,7 +2,7 @@ import { Testing, TerraformStack} from 'cdktf';
 import { exampleAzureKeyVault} from './ExampleAzureKeyVault'
 import 'cdktf/lib/testing/adapters/jest';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
-import { AzureKeyVault } from '../';
+import * as kv from "..";
 import * as util from "../../util/azureTenantIdHelpers";
 
 describe('Azure Key Vault With Defaults', () => {
@@ -14,7 +14,7 @@ describe('Azure Key Vault With Defaults', () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
-    new AzureKeyVault(stack, 'testAzureKeyVaultDefaults', {
+    new kv.Vault(stack, 'testAzureKeyVaultDefaults', {
       name: `kv-test`,
       location: 'eastus',
       resource_group_name: "rg-test" ,

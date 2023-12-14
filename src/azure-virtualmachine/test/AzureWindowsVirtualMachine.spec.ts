@@ -1,6 +1,6 @@
 import { Testing, TerraformStack} from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
-import {AzureWindowsVirtualMachine} from '..';
+import * as vm from "..";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { exampleAzureWindowsVirtualMachine } from './ExampleAzureWindowsVirtualMachine';
 
@@ -14,7 +14,7 @@ describe('Azure Windows Virtual Machine With Defaults', () => {
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
 
-    new AzureWindowsVirtualMachine(stack, "testVirtualMachine", {
+    new vm.WindowsVM(stack, "testVirtualMachine", {
       resourceGroupName: "testResourceGroup",
       adminUsername: "testAdmin",
       adminPassword: "testPassword&@34$$123",

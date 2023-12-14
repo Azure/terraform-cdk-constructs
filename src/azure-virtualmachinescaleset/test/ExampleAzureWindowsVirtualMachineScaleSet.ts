@@ -1,5 +1,5 @@
 import * as cdktf from "cdktf";
-import { AzureWindowsVirtualMachineScaleSet } from '..';
+import * as vmss from "..";
 import {VirtualNetwork} from "@cdktf/provider-azurerm/lib/virtual-network";
 import {Subnet} from "@cdktf/provider-azurerm/lib/subnet";
 import {BaseTestStack} from "../../testing";
@@ -60,7 +60,7 @@ export class exampleAzureWindowsVirtualMachineScaleSet extends BaseTestStack {
 
     
 
-    const vm = new AzureWindowsVirtualMachineScaleSet(this, 'vmss', {
+    const vm = new vmss.WindowsCluster(this, 'vmss', {
       name: this.name,
       location: "eastus",
       resourceGroupName: resourceGroup.name,

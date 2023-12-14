@@ -1,5 +1,5 @@
 import * as cdktf from "cdktf";
-import { AzureWindowsVirtualMachine } from '..';
+import * as vm from "..";
 import {VirtualNetwork} from "@cdktf/provider-azurerm/lib/virtual-network";
 import {Subnet} from "@cdktf/provider-azurerm/lib/subnet";
 import {BaseTestStack} from "../../testing";
@@ -61,7 +61,7 @@ export class exampleAzureWindowsVirtualMachine extends BaseTestStack {
 
     
 
-    const vm = new AzureWindowsVirtualMachine(this, 'vm', {
+    const winVm = new vm.WindowsVM(this, 'vm', {
       name: this.name,
       location: "eastus",
       resourceGroupName: resourceGroup.name,
@@ -85,10 +85,10 @@ export class exampleAzureWindowsVirtualMachine extends BaseTestStack {
     });
 
     // Diag Settings
-    vm.addDiagSettings({name: "diagsettings", storageAccountId: storage.id})
+    winVm.addDiagSettings({name: "diagsettings", storageAccountId: storage.id})
 
     // RBAC
-    vm.addAccess(clientConfig.objectId, "Contributor")
+    winVm.addAccess(clientConfig.objectId, "Contributor")
 
     // Outputs to use for End to End Test
     const cdktfTerraformOutputRGName = new cdktf.TerraformOutput(this, "resource_group_name", {
@@ -96,7 +96,7 @@ export class exampleAzureWindowsVirtualMachine extends BaseTestStack {
     });
 
     const cdktfTerraformOutputNsgName = new cdktf.TerraformOutput(this, "vm_name", {
-      value: vm.name,
+      value: winVm.name,
     });
 
     const cdktfTerraformOutputVmsize = new cdktf.TerraformOutput(this, "vm_size", {
@@ -104,7 +104,7 @@ export class exampleAzureWindowsVirtualMachine extends BaseTestStack {
     });
 
     const cdktfTerraformOutputVmEndpoint = new cdktf.TerraformOutput(this, "vm_endpoint", {
-      value:vm.publicIp,
+      value: winVm.publicIp,
     });
    
 

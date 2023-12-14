@@ -3,8 +3,8 @@ import { Construct } from "constructs";
 import { BaseTestStack } from "../../testing";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
-import { AzureResourceGroup } from "../../azure-resourcegroup";
-import { AzureEventhubNamespace } from "../namespace";
+import * as rg from "../../azure-resourcegroup";
+import * as eh from "../lib";
 
 
 const app = new App();
@@ -17,13 +17,13 @@ export class exampleAzureEventhub extends BaseTestStack {
       features: {},
     });
 
-    const resourceGroup = new AzureResourceGroup(this, "rg", {
+    const resourceGroup = new rg.Group(this, "rg", {
       name: `rg-${this.name}`,
       location: 'eastus',
     });
 
     // Create Eventhub Namespace
-    const eventhubNamespace = new AzureEventhubNamespace(this, "eventhub", {
+    const eventhubNamespace = new eh.Namespace(this, "eventhub", {
       rg: resourceGroup,
       name: `ehns-${this.name}`,
       sku: "Basic",

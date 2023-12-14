@@ -1,6 +1,6 @@
 import { Testing, TerraformStack} from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
-import { AzureStorageAccount } from '..';
+import * as storage from "..";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { exampleAzureStorageAccount } from '../test/ExampleAzureStorageAccount';
 
@@ -15,7 +15,7 @@ describe('Azure Storage Account With Defaults', () => {
     new AzurermProvider(stack, "azureFeature", {features: {}});
 
     // Create a Storage Account with the defined rules
-    new AzureStorageAccount(stack, "storageaccount", {
+    new storage.Account(stack, "storageaccount", {
       name: "test42348808",
       location: "eastus",
     });

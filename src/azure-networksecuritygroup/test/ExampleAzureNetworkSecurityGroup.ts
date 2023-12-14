@@ -1,8 +1,8 @@
 import * as cdktf from "cdktf";
-import { AzureNetworkSecurityGroup } from '..';
+import * as network from ".."
 import {VirtualNetwork} from "@cdktf/provider-azurerm/lib/virtual-network";
 import {Subnet} from "@cdktf/provider-azurerm/lib/subnet";
-import {PreconfiguredRules} from "../preconfiguredRules";
+import {PreconfiguredRules} from "../lib/preconfigured-rules";
 import {BaseTestStack} from "../../testing";
 import { App} from "cdktf";
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
@@ -52,7 +52,7 @@ export class exampleAzureNetworkSecurityGroup extends BaseTestStack {
       addressPrefixes: ["10.0.2.0/24"],
     });
 
-    const nsg = new AzureNetworkSecurityGroup(this, 'nsg', {
+    const nsg = new network.SecurityGroup(this, 'nsg', {
       name: `nsg-${this.name}`,
       location: "eastus",
       resourceGroupName: resourceGroup.name,

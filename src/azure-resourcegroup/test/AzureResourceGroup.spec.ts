@@ -1,7 +1,7 @@
 import { Testing, TerraformStack} from 'cdktf';
 import { exampleAzureResourceGroup} from './ExampleAzureResourceGroup'
 import 'cdktf/lib/testing/adapters/jest';
-import { AzureResourceGroup } from '../';
+import * as rg from ".."
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 
 describe('Resource Group With Defaults', () => {
@@ -13,7 +13,7 @@ describe('Resource Group With Defaults', () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
-    new AzureResourceGroup(stack, 'testRG');
+    new rg.Group(stack, 'testRG');
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });
