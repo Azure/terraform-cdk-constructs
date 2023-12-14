@@ -1,9 +1,9 @@
 import { Testing, TerraformStack} from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
-import { AzureNetworkSecurityGroup } from '..';
+import * as network from '..'
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { exampleAzureNetworkSecurityGroup } from './ExampleAzureNetworkSecurityGroup';
-import {PreconfiguredRules} from "../preconfiguredRules";
+
 
 describe('Azure Network Security Group With Defaults', () => {
   let stack: TerraformStack;
@@ -16,11 +16,11 @@ describe('Azure Network Security Group With Defaults', () => {
     new AzurermProvider(stack, "azureFeature", {features: {}});
 
     // Create a network security group with the defined rules
-    new AzureNetworkSecurityGroup(stack, 'testAzureNetworkSecurityGroupDefaults', {
+    new network.SecurityGroup(stack, 'testAzureNetworkSecurityGroupDefaults', {
       name: 'my-nsg',
       location: "eastus",
       resourceGroupName: "rgtest",
-      rules: [PreconfiguredRules.SSH],
+      rules: [network.PreconfiguredRules.SSH],
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse

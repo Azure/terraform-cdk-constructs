@@ -1,6 +1,6 @@
 import { Testing, TerraformStack} from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
-import {AzureLinuxVirtualMachineScaleSet} from '..';
+import * as vmss from "..";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { exampleAzureLinuxVirtualMachineScaleSet } from '../test/ExampleAzureLinuxVirtualMachineScaleSet';
 
@@ -14,7 +14,7 @@ describe('Azure Linux Virtual Machine Scale Set With Defaults', () => {
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
 
-    new AzureLinuxVirtualMachineScaleSet(stack, "testVirtualMachineScaleSet", {
+    new vmss.LinuxCluster(stack, "testVirtualMachineScaleSet", {
       resourceGroupName: "testResourceGroup",
       
     });

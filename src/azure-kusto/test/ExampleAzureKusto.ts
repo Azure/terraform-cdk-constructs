@@ -1,11 +1,11 @@
 import { BaseTestStack } from "../../testing";
-import { AzureKusto } from '..';
+import * as kusto from "..";
 import { App } from "cdktf";
-import { AzureResourceGroup } from "../../azure-resourcegroup";
+import * as rg from "../../azure-resourcegroup";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
-import { ComputeSpecification } from '../compute-specification';
+import { ComputeSpecification } from '../lib/compute-specification';
 
 const app = new App();
 
@@ -23,13 +23,13 @@ export class exampleAzureKusto extends BaseTestStack {
       },
     });
 
-    const resourceGroup = new AzureResourceGroup(this, "rg", {
+    const resourceGroup = new rg.Group(this, "rg", {
       name: `rg-${this.name}`,
       location: 'eastus',
     });
 
     // Create Kusto Cluster
-    const kustoCluster = new AzureKusto(this, "kusto", {
+    const kustoCluster = new kusto.Cluster(this, "kusto", {
       rg: resourceGroup,
       name: `kusto${this.name}`,  // Only lowercase Alphanumeric characters allowed.
       sku: ComputeSpecification.devtestExtraSmallEav4,

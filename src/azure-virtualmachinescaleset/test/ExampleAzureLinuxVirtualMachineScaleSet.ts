@@ -1,5 +1,5 @@
 import * as cdktf from "cdktf";
-import { AzureLinuxVirtualMachineScaleSet } from '..';
+import * as vmss from "..";
 import {VirtualNetwork} from "@cdktf/provider-azurerm/lib/virtual-network";
 import {Subnet} from "@cdktf/provider-azurerm/lib/subnet";
 import {BaseTestStack} from "../../testing";
@@ -60,7 +60,7 @@ export class exampleAzureLinuxVirtualMachineScaleSet extends BaseTestStack {
 
     
 
-    const vm = new AzureLinuxVirtualMachineScaleSet(this, 'vm', {
+    const vm = new vmss.LinuxCluster(this, 'vm', {
       name: this.name,
       location: "eastus",
       resourceGroupName: resourceGroup.name,

@@ -1,6 +1,6 @@
 import * as cdktf from "cdktf";
 import {BaseTestStack} from "../../testing";
-import { AzureLinuxFunctionApp } from '..';
+import * as func from ".."
 import { ServicePlanSkus } from '../serviceplanskus';
 import { App} from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
@@ -37,7 +37,7 @@ export class exampleAzureLinuxFunctionApp extends BaseTestStack {
     });
 
     // Consumption Function
-    const consumptionFunctionApp = new AzureLinuxFunctionApp(this, 'consumptionFA', {
+    const consumptionFunctionApp = new func.FunctionAppLinux(this, 'consumptionFA', {
       name: `fa${this.name}`,
       location: 'eastus',
       resourceGroup: resourceGroup,
@@ -46,7 +46,7 @@ export class exampleAzureLinuxFunctionApp extends BaseTestStack {
       }
     });
 
-    new AzureLinuxFunctionApp(this, 'consumptionFA2', {
+    new func.FunctionAppLinux(this, 'consumptionFA2', {
       name: `fa${this.name}2`,
       location: 'eastus',
       storageAccount: consumptionFunctionApp.storageAccount,
@@ -66,7 +66,7 @@ export class exampleAzureLinuxFunctionApp extends BaseTestStack {
     });
 
     // Premium Function
-    new AzureLinuxFunctionApp(this, 'premiumFA', {
+    new func.FunctionAppLinux(this, 'premiumFA', {
       name: `faprem${this.name}`,
       location: 'eastus',
       servicePlanSku: ServicePlanSkus.PremiumEP1,
@@ -79,7 +79,7 @@ export class exampleAzureLinuxFunctionApp extends BaseTestStack {
     });
 
     // Service Plan Function
-    new AzureLinuxFunctionApp(this, 'servicePlanFA', {
+    new func.FunctionAppLinux(this, 'servicePlanFA', {
       name: `fasp${this.name}`,
       location: 'eastus',
       servicePlanSku: ServicePlanSkus.ASPBasicB1,

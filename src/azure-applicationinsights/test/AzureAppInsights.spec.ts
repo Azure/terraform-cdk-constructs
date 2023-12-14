@@ -1,7 +1,7 @@
 import { Testing, TerraformStack} from 'cdktf';
 import { exampleAzureApplicationInsights} from './ExampleAzureApplicationInsights'
 import 'cdktf/lib/testing/adapters/jest';
-import { AzureApplicationInsights } from '../';
+import * as appi from "..";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import * as util from "../../util/azureTenantIdHelpers";
 
@@ -15,7 +15,7 @@ describe('Application Insights With Defaults', () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
-    new AzureApplicationInsights(stack, 'testAzureApplicationInsightsDefaults', {
+    new appi.AppInsights(stack, 'testAzureApplicationInsightsDefaults', {
       name: "appi-test",
       location: 'eastus',
       resource_group_name: "rg-test",

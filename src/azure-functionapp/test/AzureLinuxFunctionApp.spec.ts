@@ -1,6 +1,6 @@
 import { Testing, TerraformStack} from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
-import { AzureLinuxFunctionApp } from '..';
+import * as func from '..';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { exampleAzureLinuxFunctionApp } from './ExampleAzureLinuxFunctionApp';
 import * as util from "../../util/azureTenantIdHelpers";
@@ -16,7 +16,7 @@ describe('Azure Linux Function App With Defaults', () => {
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
 
-    new AzureLinuxFunctionApp(stack, 'testAzureLinuxFunctionApp', {
+    new func.FunctionAppLinux(stack, 'testAzureLinuxFunctionApp', {
       name: "fatest",
       location: 'eastus',
     });

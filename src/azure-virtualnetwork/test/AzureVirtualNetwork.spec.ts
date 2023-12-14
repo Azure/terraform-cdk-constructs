@@ -1,6 +1,6 @@
 import { Testing, TerraformStack} from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
-import { AzureVirtualNetwork } from '../index';
+import * as vnet from ".."
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { exampleAzureVirtualNetwork } from './ExampleAzureVirtualNetwork';
 
@@ -13,7 +13,7 @@ describe('Azure Virtual Network With Defaults', () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
-    new AzureVirtualNetwork(stack, 'testAzureVirtualNetworkDefaults', {resourceGroupName: "rg-test",});
+    new vnet.Network(stack, 'testAzureVirtualNetworkDefaults', {resourceGroupName: "rg-test",});
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });

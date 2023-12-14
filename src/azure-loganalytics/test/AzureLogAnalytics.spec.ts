@@ -1,7 +1,7 @@
 import { Testing, TerraformStack} from 'cdktf';
 import { exampleAzureLogAnalytics} from './ExampleAzureLogAnalytics'
 import 'cdktf/lib/testing/adapters/jest';
-import { AzureLogAnalytics } from '../';
+import * as la from '..';
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 
 describe('Log Analytics Workspace With Defaults', () => {
@@ -13,7 +13,7 @@ describe('Log Analytics Workspace With Defaults', () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
-    new AzureLogAnalytics(stack, 'testAzureLogAnalyticsDefaults', {
+    new la.Workspace(stack, 'testAzureLogAnalyticsDefaults', {
       name: "la-test",
       location: 'eastus',
       resource_group_name: "rg-test",

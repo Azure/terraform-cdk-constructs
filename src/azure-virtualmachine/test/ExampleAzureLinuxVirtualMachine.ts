@@ -1,5 +1,5 @@
 import * as cdktf from "cdktf";
-import { AzureLinuxVirtualMachine } from '..';
+import * as vm from "..";
 import {VirtualNetwork} from "@cdktf/provider-azurerm/lib/virtual-network";
 import {Subnet} from "@cdktf/provider-azurerm/lib/subnet";
 import {BaseTestStack} from "../../testing";
@@ -60,7 +60,7 @@ export class exampleAzureLinuxVirtualMachine extends BaseTestStack {
 
     
 
-    const vm = new AzureLinuxVirtualMachine(this, 'vm', {
+    const linuxVm = new vm.LinuxVM(this, 'vm', {
       name: this.name,
       location: "eastus",
       resourceGroupName: resourceGroup.name,
@@ -88,10 +88,10 @@ export class exampleAzureLinuxVirtualMachine extends BaseTestStack {
     });
 
     // Diag Settings
-    vm.addDiagSettings({name: "diagsettings", storageAccountId: storage.id})
+    linuxVm.addDiagSettings({name: "diagsettings", storageAccountId: storage.id})
 
     // RBAC
-    vm.addAccess(clientConfig.objectId, "Contributor")
+    linuxVm.addAccess(clientConfig.objectId, "Contributor")
 
 
 
@@ -102,7 +102,7 @@ export class exampleAzureLinuxVirtualMachine extends BaseTestStack {
     });
 
     const cdktfTerraformOutputNsgName = new cdktf.TerraformOutput(this, "vm_name", {
-      value: vm.name,
+      value: linuxVm.name,
     });
 
     const cdktfTerraformOutputVmsize = new cdktf.TerraformOutput(this, "vm_size", {
@@ -110,7 +110,7 @@ export class exampleAzureLinuxVirtualMachine extends BaseTestStack {
     });
 
     const cdktfTerraformOutputVmEndpoint = new cdktf.TerraformOutput(this, "vm_endpoint", {
-      value:vm.publicIp,
+      value: linuxVm.publicIp,
     });
    
 

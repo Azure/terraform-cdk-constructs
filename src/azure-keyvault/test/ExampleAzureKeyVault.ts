@@ -1,5 +1,5 @@
 import * as cdktf from "cdktf";
-import { AzureKeyVault } from '..';
+import * as kv from "..";
 import { App} from "cdktf";
 import {BaseTestStack} from "../../testing";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
@@ -29,7 +29,7 @@ export class exampleAzureKeyVault extends BaseTestStack {
 
     });
 
-    const azureKeyVault = new AzureKeyVault(this, 'kv', {
+    const azureKeyVault = new kv.Vault(this, 'kv', {
       name: `kv-${this.name}`,
       location: 'eastus',
       sku: "standard",

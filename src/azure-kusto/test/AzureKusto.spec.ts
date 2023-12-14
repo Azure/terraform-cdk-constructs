@@ -1,9 +1,8 @@
 import { Testing, TerraformStack } from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
-import { AzureKusto } from '../index';
+import * as kusto from '..';
 import { exampleAzureKusto } from './ExampleAzureKusto';
 import { AzurermProvider } from '@cdktf/provider-azurerm/lib/provider';
-import { ComputeSpecification } from '../compute-specification';
 
 
 describe('Kusto With Defaults', () => {
@@ -12,7 +11,7 @@ describe('Kusto With Defaults', () => {
 
   beforeEach(() => {
     jest.mock('../../azure-resourcegroup', () => ({
-      AzureResourceGroup: {
+      Group: {
         Location: 'eastus',
         Name: 'testrgname',
       }
@@ -23,10 +22,10 @@ describe('Kusto With Defaults', () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", { features: {} });
-    new AzureKusto(stack, 'testAzureKustoDefaults', {
-      rg: rgMock.AzureResourceGroup,
+    new kusto.Cluster(stack, 'testAzureKustoDefaults', {
+      rg: rgMock.Group,
       name: 'kustotest',
-      sku: ComputeSpecification.devtestExtraSmallEav4,
+      sku: kusto.ComputeSpecification.devtestExtraSmallEav4,
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse

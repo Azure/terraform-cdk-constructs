@@ -1,6 +1,7 @@
 import { Testing, TerraformStack} from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
-import {AzureWindowsVirtualMachineScaleSet} from '..';
+import * as vmss from "..";
+
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { exampleAzureWindowsVirtualMachineScaleSet } from '../test/ExampleAzureWindowsVirtualMachineScaleSet';
 
@@ -14,7 +15,7 @@ describe('Azure Windows Virtual Machine Scale Set With Defaults', () => {
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
 
-    new AzureWindowsVirtualMachineScaleSet(stack, "testVirtualMachineScaleSet", {
+    new vmss.WindowsCluster(stack, "testVirtualMachineScaleSet", {
       resourceGroupName: "testResourceGroup",
       adminUsername: "testAdmin",
       adminPassword: "testPassword&@34$$123",

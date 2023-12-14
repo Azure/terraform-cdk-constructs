@@ -1,5 +1,5 @@
 import * as cdktf from "cdktf";
-import { AzureResource } from '..';
+import { AzureResource } from '../lib';
 import {BaseTestStack} from "../../testing";
 import { App } from "cdktf";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";

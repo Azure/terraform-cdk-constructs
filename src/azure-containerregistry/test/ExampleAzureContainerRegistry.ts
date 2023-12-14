@@ -1,5 +1,5 @@
 import * as cdktf from "cdktf";
-import { AzureContainerRegistry } from '..';
+import * as acr from "../"
 import { App} from "cdktf";
 import {BaseTestStack} from "../../testing";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
@@ -33,7 +33,7 @@ export class exampleAzureContainerRegistry extends BaseTestStack {
       resourceGroupName: resourceGroup.name,
   });
 
-    const azureContainerRegistry = new AzureContainerRegistry(this, 'testACR', {
+    const azureContainerRegistry = new acr.Registry(this, 'testACR', {
       name: `acr${this.name}`,
       location: resourceGroup.location,
       resource_group_name: resourceGroup.name,

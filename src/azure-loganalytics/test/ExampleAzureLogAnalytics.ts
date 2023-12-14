@@ -1,5 +1,5 @@
 import * as cdktf from "cdktf";
-import { AzureLogAnalytics } from '../';
+import * as la from ".."
 import { App} from "cdktf";
 import {BaseTestStack} from "../../testing";
 import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
@@ -51,7 +51,7 @@ export class exampleAzureLogAnalytics extends BaseTestStack {
     });
 
 
-    const logAnalyticsWorkspace = new AzureLogAnalytics(this, 'la', {
+    const logAnalyticsWorkspace = new la.Workspace(this, 'la', {
       name: `la-${this.name}`,
       location: 'eastus',
       retention: 90,

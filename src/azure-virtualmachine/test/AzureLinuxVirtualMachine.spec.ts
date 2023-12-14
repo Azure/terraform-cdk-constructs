@@ -1,6 +1,6 @@
 import { Testing, TerraformStack} from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
-import {AzureLinuxVirtualMachine} from '..';
+import * as vm from "..";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import { exampleAzureLinuxVirtualMachine } from '../test/ExampleAzureLinuxVirtualMachine';
 
@@ -14,7 +14,7 @@ describe('Azure Linux Virtual Machine With Defaults', () => {
 
     new AzurermProvider(stack, "azureFeature", {features: {}});
 
-    new AzureLinuxVirtualMachine(stack, "testVirtualMachine", {
+    new vm.LinuxVM(stack, "testVirtualMachine", {
       resourceGroupName: "testResourceGroup",
     });
 

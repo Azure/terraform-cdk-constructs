@@ -1,7 +1,7 @@
 import * as cdktf from "cdktf";
 import {BaseTestStack} from "../../testing";
 import { App} from "cdktf";
-import { AzureStorageAccount } from "..";
+import * as storage from "..";
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
@@ -29,7 +29,7 @@ export class exampleAzureStorageAccount extends BaseTestStack {
         location: 'eastus',
     });
 
-    const storageAccount = new AzureStorageAccount(this, 'storageaccount', {
+    const storageAccount = new storage.Account(this, 'storageaccount', {
         name: `sta${this.name}8898`,
         resourceGroup: resourceGroup,
         location: 'eastus',
