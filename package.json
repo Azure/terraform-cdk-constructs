@@ -14,7 +14,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "upgrade": "npm i cdktf@latest cdktf-cli@latest",
-    "upgrade:next": "npm i cdktf@next cdktf-cli@next"
+    "upgrade:next": "npm i cdktf@next cdktf-cli@next",
+    "generate-index": "node generate-index.js"
   },
   "engines": {
     "node": ">=14.0"
