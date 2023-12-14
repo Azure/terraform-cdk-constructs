@@ -47,6 +47,15 @@ Azure CDK module are organized into modules based on their Azure service such as
 azure-applicationinsights
 ```
 
+### Project Structure
+
+The code for each construct shoudl live under `lib/' in each construct directoy. There should be a `lib/index.ts` file in each directoy that contains the imports for other files. You can run `npm run generate-index` to automatically generate the index.ts files in your construct directoy:
+```
+/src/azure-applicationinsights/lib/appinsights.ts // construct code
+/src/azure-applicationsingiths/lib/index.ts // contains export
+
+```
+
 #### Construct Classes
 Terraform constructs in the context of the CDK for Terraform (CDKTF) are also basic building blocks but for Terraform-based infrastructure as code. They encapsulate both low-level resources, like an individual Azure AKS cluster, and higher-level abstractions, which can be a combination of related resources that make up a complex infrastructure service, like a serverless application.
 
