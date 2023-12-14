@@ -37,6 +37,7 @@ terraform.rc
 # Terraform CDK
 *.d.ts
 *.js
+!scripts/*.js
 node_modules
 cdktf.out
 cdktf.log
