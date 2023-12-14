@@ -1,6 +1,6 @@
 {
   "name": "azure-terraform-cdk-modules",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "main.js",
   "types": "main.ts",
   "license": "MPL-2.0",
@@ -15,7 +15,7 @@
     "test:watch": "jest --watch",
     "upgrade": "npm i cdktf@latest cdktf-cli@latest",
     "upgrade:next": "npm i cdktf@next cdktf-cli@next",
-    "generate-index": "node generate-index.js"
+    "generate-index": "node ./scripts/generate-index.js"
   },
   "engines": {
     "node": ">=14.0"

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const baseDir = '../src';
+const baseDir = './src';
 const excludeDirs = ['test', 'module', 'util', 'testing']; // Add any directories you want to exclude
 
 function generateLibIndex(libDir) {
