@@ -29,7 +29,7 @@
   },
   "include": [
     "**/*.ts"
-  ],
+, "src/azure-queryrulealert"  ],
   "exclude": [
     "node_modules",
     "cdktf.out",
