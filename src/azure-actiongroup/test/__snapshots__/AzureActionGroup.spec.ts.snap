@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Action Group Example renders and checks snapshot 1`] = `
+{
+  "output": {
+    "id": {
+      "value": "\${azurerm_monitor_action_group.testAzureActionGroup_actiongroup_73C559FB.id}",
+    },
+  },
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+          "resource_group": {
+            "prevent_deletion_if_contains_resources": false,
+          },
+        },
+      },
+    ],
+  },
+  "resource": {
+    "azurerm_monitor_action_group": {
+      "testAzureActionGroup_actiongroup_73C559FB": {
+        "dynamic": {
+          "email_receiver": {
+            "content": {
+              "email_address": "\${email_receiver.value.emailAddress}",
+              "name": "\${email_receiver.value.name}",
+              "use_common_alert_schema": "\${email_receiver.value.useCommonAlertSchema}",
+            },
+            "for_each": [
+              {
+                "emailAddress": "test1@email.com",
+                "name": "testemail1",
+                "useCommonAlertSchema": false,
+              },
+              {
+                "emailAddress": "test2@email.com",
+                "name": "testemail2",
+                "useCommonAlertSchema": false,
+              },
+            ],
+          },
+        },
+        "enabled": true,
+        "location": "global",
+        "name": "testactiongroup",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "short_name": "testshortn",
+        "tags": {},
+      },
+    },
+    "azurerm_resource_group": {
+      "rg": {
+        "location": "eastus",
+        "name": "rg-\${var.name}",
+      },
+    },
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.70.0",
+      },
+    },
+  },
+  "variable": {
+    "name": {
+      "default": "test",
+      "description": "System name used to randomize the resources",
+      "type": "string",
+    },
+  },
+}
+`;
+
+exports[`Action Group With Defaults renders an Action Group with defaults and checks snapshot 1`] = `
+"{
+  "output": {
+    "id": {
+      "value": "\${azurerm_monitor_action_group.testAzureActionGroupDefaults_actiongroup_ADD914FD.id}"
+    }
+  },
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_monitor_action_group": {
+      "testAzureActionGroupDefaults_actiongroup_ADD914FD": {
+        "enabled": true,
+        "location": "eastus",
+        "name": "testactiongroup",
+        "resource_group_name": "rg-test",
+        "short_name": "testshortn",
+        "tags": {
+        }
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.70.0"
+      }
+    }
+  }
+}"
+`;
