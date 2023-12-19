@@ -4,7 +4,7 @@ import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
-import { AzureQueryRuleAlert } from "..";
+import * as queryalert from "../../azure-queryrulealert";
 import * as cdktf from 'cdktf';
 
 const app = new App();
@@ -36,7 +36,7 @@ export class exampleAzureQueryRuleAlert extends BaseTestStack {
     });
 
     // Query Rule Alert
-    const alert = new AzureQueryRuleAlert(this, 'queryRuleAlert', {
+    const alert = new queryalert.QueryRuleAlert(this, 'queryRuleAlert', {
       name: `qra-${this.name}`,
       resourceGroupName: resourceGroup.name,
       location: 'eastus',

@@ -1,7 +1,7 @@
 import { Construct } from "constructs";
 import { Rbac } from './rbac';
 import { DiagnosticSettings, DiagnosticSettingsProps } from './diagsettings';
-import { AzureQueryRuleAlertProps, AzureQueryRuleAlert } from '../../azure-queryrulealert/index';
+import { AzureQueryRuleAlertProps, AzureQueryRuleAlert } from '../../azure-queryrulealert/lib/query-rule-alert';
 
 
 export class AzureResource extends Construct {

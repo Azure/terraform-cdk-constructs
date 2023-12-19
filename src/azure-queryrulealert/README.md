@@ -48,32 +48,34 @@ You can deploy a Scheduled Query Rule Alert using this class like so:
 
 ```typescript
   // Create a Resource Group first
-  const resourceGroup = new AzureResourceGroup(this, "myResourceGroup", {
+  import * as rg from "../azure-resourcegroup";
+  const resourceGroup = new rg.Group(this, "myResourceGroup", {
     name: 'myResourceGroup',
     location: 'eastus',
   });
 
   // Create a Scheduled Query Rule Alert with defult settings
-  const queryRuleAlert = new AzureQueryRuleAlert(this, 'queryRuleAlert', {
-      name: `qra-${this.name}`,
-      resourceGroupName: resourceGroup.name,
-      location: 'eastus',
-      criteriaOperator: "GreaterThan",
-      criteriaQuery: `
+  import * as queryalert from "../azure-queryrulealert";
+  const queryRuleAlert = new queryalert.QueryRuleAlert(this, 'queryRuleAlert', {
+    name: `qra-${this.name}`,
+    resourceGroupName: resourceGroup.name,
+    location: 'eastus',
+    criteriaOperator: "GreaterThan",
+    criteriaQuery: `
 AppExceptions 
 | where Message has "file can not be reloaded"
 `,
-      criteriaThreshold: 100,
-      criteriatimeAggregationMethod: "Count",
-      evaluationFrequency: "PT5M",
-      windowDuration: "PT30M",
-      scopes: [logAnalyticsWorkspace.id],
-      severity: 4,
-      criteriaFailingPeriods: {
-        minimumFailingPeriodsToTriggerAlert: 1,
-        numberOfEvaluationPeriods: 1,
-      },
-    });
+    criteriaThreshold: 100,
+    criteriatimeAggregationMethod: "Count",
+    evaluationFrequency: "PT5M",
+    windowDuration: "PT30M",
+    scopes: [logAnalyticsWorkspace.id],
+    severity: 4,
+    criteriaFailingPeriods: {
+      minimumFailingPeriodsToTriggerAlert: 1,
+      numberOfEvaluationPeriods: 1,
+    },
+  });
 
 ```
 

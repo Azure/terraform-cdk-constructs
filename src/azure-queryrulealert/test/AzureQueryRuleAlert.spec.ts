@@ -1,7 +1,7 @@
 import { Testing, TerraformStack } from 'cdktf';
 import 'cdktf/lib/testing/adapters/jest';
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
-import { AzureQueryRuleAlert } from '..';
+import * as queryalert from "../../azure-queryrulealert";
 import { exampleAzureQueryRuleAlert } from './ExampleAzureQueryRuleAlert';
 import * as util from "../../util/azureTenantIdHelpers";
 
@@ -16,7 +16,7 @@ describe('Azure Query Rule Alert With Defaults', () => {
 
     new AzurermProvider(stack, "azureQueryRuleAlert", { features: {} });
 
-    new AzureQueryRuleAlert(stack, 'testAzureQueryRuleAlert', {
+    new queryalert.QueryRuleAlert(stack, 'testAzureQueryRuleAlert', {
       name: "alert test",
       resourceGroupName: "testResourceGroup",
       location: "eastus",
