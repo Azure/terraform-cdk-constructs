@@ -1,7 +1,7 @@
 import { Construct } from "constructs";
 import { Rbac } from './rbac';
 import { DiagnosticSettings, DiagnosticSettingsProps } from './diagsettings';
-import { AzureQueryRuleAlertProps, AzureQueryRuleAlert } from '../../azure-queryrulealert/lib/query-rule-alert';
+import * as queryalert from "../../azure-queryrulealert";
 
 
 export class AzureResource extends Construct {
@@ -45,8 +45,8 @@ export class AzureResourceWithAlert extends AzureResource {
     this.id = id;
   }
 
-  public addQueryRuleAlert(props: Omit<AzureQueryRuleAlertProps, 'scopes'>) {
-    new AzureQueryRuleAlert(this, 'queryrulealert', {
+  public addQueryRuleAlert(props: Omit<queryalert.AzureQueryRuleAlertProps, 'scopes'>) {
+    new queryalert.QueryRuleAlert(this, 'queryrulealert', {
       ...props,
       scopes: [this.id],
     });
