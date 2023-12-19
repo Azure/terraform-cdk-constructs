@@ -32,11 +32,30 @@ exports[`Action Group Example renders and checks snapshot 1`] = `
               {
                 "emailAddress": "test1@email.com",
                 "name": "testemail1",
-                "useCommonAlertSchema": false,
+                "useCommonAlertSchema": true,
               },
               {
                 "emailAddress": "test2@email.com",
                 "name": "testemail2",
+                "useCommonAlertSchema": false,
+              },
+            ],
+          },
+          "webhook_receiver": {
+            "content": {
+              "name": "\${webhook_receiver.value.name}",
+              "service_uri": "\${webhook_receiver.value.serviceUri}",
+              "use_common_alert_schema": "\${webhook_receiver.value.useCommonAlertSchema}",
+            },
+            "for_each": [
+              {
+                "name": "testwebhook1",
+                "serviceUri": "https://www.example1.com",
+                "useCommonAlertSchema": true,
+              },
+              {
+                "name": "testwebhook2",
+                "serviceUri": "https://www.example2.com",
                 "useCommonAlertSchema": false,
               },
             ],
@@ -54,6 +73,9 @@ exports[`Action Group Example renders and checks snapshot 1`] = `
       "rg": {
         "location": "eastus",
         "name": "rg-\${var.name}",
+        "tags": {
+          "test": "test",
+        },
       },
     },
   },
