@@ -54,7 +54,15 @@ You can deploy a Scheduled Query Rule Alert using this class like so:
     location: 'eastus',
   });
 
-  // Create a Scheduled Query Rule Alert with defult settings
+  // Create a Log Analytics Workspace
+  import * as law from "../azure-loganalytics";
+  const logAnalyticsWorkspace = new la.Workspace(this, 'myLogAnalytics', {
+      name: 'myLogAnalytics',
+      location: 'eastus',
+      resource_group_name: resourceGroup.name,
+    });
+
+  // Create a Scheduled Query Rule Alert with defult settings in Log Analytics Workspace
   import * as queryalert from "../azure-queryrulealert";
   const queryRuleAlert = new queryalert.QueryRuleAlert(this, 'queryRuleAlert', {
     name: `qra-${this.name}`,
