@@ -89,6 +89,21 @@ export class exampleAzureLogAnalytics extends BaseTestStack {
 
     // Test Diag Settings
     logAnalyticsWorkspace.addDiagSettings({storageAccountId: storage.id})
+
+    // Test Metric Alert
+    logAnalyticsWorkspace.addMetricAlert({
+      name: "metricAlert-test",
+      criteria: [
+        {
+          metricName: "Heartbeat",
+          metricNamespace: "Microsoft.operationalinsights/workspaces",
+          aggregation: "Average",
+          operator: "LessThan",
+          threshold: 0,
+        },
+      ],
+    })
+
     
     // Outputs to use for End to End Test
     const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {

@@ -38,13 +38,15 @@ import {ContainerRegistry} from "@cdktf/provider-azurerm/lib/container-registry"
 }
 
 export class Registry extends AzureResource {
-  readonly props: RegistryProps;
+  public readonly props: RegistryProps;
+  public readonly resourceGroupName: string;
   public readonly id: string;
   
   constructor(scope: Construct, id: string, props: RegistryProps) {
     super(scope, id);
 
-    this.props = props;;
+    this.props = props;
+    this.resourceGroupName = props.resource_group_name;
 
     // Provide default values
     const sku = props.sku ?? 'Basic';

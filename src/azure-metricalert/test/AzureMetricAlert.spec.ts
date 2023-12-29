@@ -22,11 +22,11 @@ describe('Azure Metric Alert With Defaults', () => {
       scopes: ["/subscriptions/00000000-0000-0000-0000-000000000000"],
       criteria: [
         {
-          metricName: "% Available Memory",
-          metricNamespace: "Platform",
+          metricName: "Heartbeat",
+          metricNamespace: "Microsoft.operationalinsights/workspaces",
           aggregation: "Average",
-          operator: "GreaterThan",
-          threshold: 100,
+          operator: "LessThan",
+          threshold: 0,
         },
       ],
     });

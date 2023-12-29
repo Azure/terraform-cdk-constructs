@@ -12,6 +12,7 @@ const app = new App();
    
 class TestStorageAccount extends AzureResource {
   public readonly id: string;
+  public readonly resourceGroupName: string;
 
   constructor(scope: Construct, name: string, resourceGroup: string, location: string) {
     super(scope, name);
@@ -31,6 +32,7 @@ class TestStorageAccount extends AzureResource {
     });
 
     this.id = storage.id;
+    this.resourceGroupName = resourceGroup;
   }
 
 }

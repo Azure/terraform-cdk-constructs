@@ -1,15 +1,15 @@
 import * as cdktf from "cdktf";
 import { Construct } from 'constructs';
-import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
-import {LogAnalyticsDataExportRule} from "@cdktf/provider-azurerm/lib/log-analytics-data-export-rule";
-import {LogAnalyticsSavedSearch} from "@cdktf/provider-azurerm/lib/log-analytics-saved-search";
-import {AzureResource} from "../../core-azure/lib";
+import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
+import { LogAnalyticsDataExportRule } from "@cdktf/provider-azurerm/lib/log-analytics-data-export-rule";
+import { LogAnalyticsSavedSearch } from "@cdktf/provider-azurerm/lib/log-analytics-saved-search";
+import { AzureResourceWithAlert } from "../../core-azure/lib";
 
- type DataExport = { name: string, export_destination_id: string, table_names : string[], enabled: boolean };
- type LAFunctions = { name: string, display_name: string, query: string, function_alias: string, function_parameters: string[] }
- type Queries = { name: string, category: string, display_name: string, query: string }
+type DataExport = { name: string, export_destination_id: string, table_names: string[], enabled: boolean };
+type LAFunctions = { name: string, display_name: string, query: string, function_alias: string, function_parameters: string[] }
+type Queries = { name: string, category: string, display_name: string, query: string }
 
- export interface WorkspaceProps {
+export interface WorkspaceProps {
   /**
    * The Azure Region to deploy.
    */
@@ -21,7 +21,7 @@ import {AzureResource} from "../../core-azure/lib";
   /**
    * The name of the Azure Resource Group.
    */
-   readonly resource_group_name: string;
+  readonly resource_group_name: string;
   /**
   * The SKU of the Log Analytics Workspace.
   */
@@ -33,7 +33,7 @@ import {AzureResource} from "../../core-azure/lib";
   /**
    * The tags to assign to the Resource Group.
    */
-   readonly tags?: { [key: string]: string; };   
+  readonly tags?: { [key: string]: string; };
   /**
   * Create a DataExport for the Log Analytics Workspace.
   */
@@ -48,16 +48,18 @@ import {AzureResource} from "../../core-azure/lib";
   readonly queries?: Queries[];
 }
 
-export class Workspace extends AzureResource {
+export class Workspace extends AzureResourceWithAlert {
   readonly props: WorkspaceProps;
+  readonly resourceGroupName: string;
   public readonly id: string;
-  
+
 
   constructor(scope: Construct, id: string, props: WorkspaceProps) {
     super(scope, id);
 
     this.props = props;
-    
+    this.resourceGroupName = props.resource_group_name;
+
     // Provide default values
     const sku = props.sku ?? 'PerGB2018';
     const retention = props.retention ?? 30;
@@ -70,10 +72,10 @@ export class Workspace extends AzureResource {
         retentionInDays: retention,
         sku: sku,
         tags: props.tags,
-    });
-    
+      });
+
     this.id = azurermLogAnalyticsWorkspaceLogAnalytics.id;
-        
+
     props.data_export?.forEach((v, k) => {
       new LogAnalyticsDataExportRule(this, `export-${k}`, {
         destinationResourceId: v.export_destination_id,

@@ -14,6 +14,9 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
     }
   },
   "output": {
+    "id": {
+      "value": "\${azurerm_monitor_metric_alert.la_metricalert_metricAlert_E1196AB9.id}"
+    },
     "log_analytics_id": {
       "value": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
     },
@@ -120,6 +123,30 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
         "target_resource_id": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
       }
     },
+    "azurerm_monitor_metric_alert": {
+      "la_metricalert_metricAlert_E1196AB9": {
+        "auto_mitigate": true,
+        "criteria": [
+          {
+            "aggregation": "Average",
+            "metric_name": "Heartbeat",
+            "metric_namespace": "Microsoft.operationalinsights/workspaces",
+            "operator": "LessThan",
+            "skip_metric_validation": false,
+            "threshold": 0
+          }
+        ],
+        "enabled": true,
+        "frequency": "PT5M",
+        "name": "metricAlert-test",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "scopes": [
+          "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
+        ],
+        "severity": 3,
+        "window_size": "PT5M"
+      }
+    },
     "azurerm_resource_group": {
       "rg": {
         "location": "eastus",
@@ -127,12 +154,12 @@ exports[`Log Analytics Workspace Example renders the Example Log Analytics Works
       }
     },
     "azurerm_role_assignment": {
-      "la_TfTokenTOKEN48Contributor_role_9CB13781": {
+      "la_TfTokenTOKEN50Contributor_role_9CF725BB": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"
       },
-      "la_TfTokenTOKEN49MonitoringReader_role_1BE47F24": {
+      "la_TfTokenTOKEN51MonitoringReader_role_CE719DDD": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Monitoring Reader",
         "scope": "\${azurerm_log_analytics_workspace.la_log_analytics_7551D130.id}"

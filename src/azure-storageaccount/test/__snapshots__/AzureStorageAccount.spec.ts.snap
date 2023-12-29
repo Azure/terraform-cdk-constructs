@@ -14,6 +14,9 @@ exports[`Azure Storage Account Example renders the Example Storage Account and c
     }
   },
   "output": {
+    "id": {
+      "value": "\${azurerm_monitor_metric_alert.storageaccount_metricalert_metricAlert_88872E2F.id}"
+    },
     "resource_group_name": {
       "value": "\${azurerm_resource_group.rg.name}"
     },
@@ -67,6 +70,30 @@ exports[`Azure Storage Account Example renders the Example Storage Account and c
         "target_resource_id": "\${azurerm_storage_account.storageaccount_5B90F750.id}"
       }
     },
+    "azurerm_monitor_metric_alert": {
+      "storageaccount_metricalert_metricAlert_88872E2F": {
+        "auto_mitigate": true,
+        "criteria": [
+          {
+            "aggregation": "Average",
+            "metric_name": "Availability",
+            "metric_namespace": "Microsoft.Storage/storageAccounts",
+            "operator": "LessThan",
+            "skip_metric_validation": false,
+            "threshold": 0
+          }
+        ],
+        "enabled": true,
+        "frequency": "PT5M",
+        "name": "testalert",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "scopes": [
+          "\${azurerm_storage_account.storageaccount_5B90F750.id}"
+        ],
+        "severity": 3,
+        "window_size": "PT5M"
+      }
+    },
     "azurerm_resource_group": {
       "rg": {
         "location": "eastus",
@@ -74,7 +101,7 @@ exports[`Azure Storage Account Example renders the Example Storage Account and c
       }
     },
     "azurerm_role_assignment": {
-      "storageaccount_TfTokenTOKEN50Contributor_role_CF7C7E2F": {
+      "storageaccount_TfTokenTOKEN57Contributor_role_F0C41B3D": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_storage_account.storageaccount_5B90F750.id}"

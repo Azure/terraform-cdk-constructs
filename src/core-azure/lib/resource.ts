@@ -5,17 +5,15 @@ import * as queryalert from "../../azure-queryrulealert";
 import * as metricalert from "../../azure-metricalert";
 
 
-export class AzureResource extends Construct {
-  public readonly id: string;
-
+export abstract class AzureResource extends Construct {
+  public id: string;
+  public abstract resourceGroupName: string;
 
   constructor(scope: Construct, id: string) {
     super(scope, id);
-
     this.id = id;
-
-
   }
+
   public addAccess(objectId: string, customRoleName: string) {
     new Rbac(this, objectId + customRoleName, {
       objectId: objectId,
@@ -38,13 +36,7 @@ export class AzureResource extends Construct {
   }
 }
 
-export class AzureResourceWithAlert extends AzureResource {
-  public readonly id: string;
-
-  constructor(scope: Construct, id: string) {
-    super(scope, id);
-    this.id = id;
-  }
+export abstract class AzureResourceWithAlert extends AzureResource {
 
   public addQueryRuleAlert(props: Omit<queryalert.AzureQueryRuleAlertProps, 'scopes'>) {
     new queryalert.QueryRuleAlert(this, 'queryrulealert', {
@@ -53,9 +45,10 @@ export class AzureResourceWithAlert extends AzureResource {
     });
   }
 
-  public addMetricAlert(props: Omit<metricalert.MetricAlertProps, 'scopes'>) {
+  public addMetricAlert(props: Omit<metricalert.MetricAlertProps, 'resourceGroupName' | 'scopes'>) {
     new metricalert.MetricAlert(this, 'metricalert', {
       ...props,
+      resourceGroupName: this.resourceGroupName,
       scopes: [this.id],
     });
   }

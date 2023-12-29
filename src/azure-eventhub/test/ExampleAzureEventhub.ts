@@ -61,6 +61,20 @@ export class exampleAzureEventhub extends BaseTestStack {
       clusterName: 'testkustocluster',      // Kusto cluster name
       databaseName: "test-kusto-database",  // Kusto database name
     });
+
+    // Add Metric Alert in Eventhub Namespace
+    eventhubNamespace.addMetricAlert({
+      name: `test-metric-alert`,
+      criteria: [
+        {
+          metricName: "Server Errors.",
+          metricNamespace: "Microsoft.EventHub/namespaces",
+          aggregation: "Total",
+          operator: "GreaterThan",
+          threshold: 100,
+        },
+      ],
+    });
   }
 }
 

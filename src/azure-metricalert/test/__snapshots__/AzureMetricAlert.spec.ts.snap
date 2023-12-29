@@ -22,11 +22,11 @@ exports[`Azure Metric Alert With Defaults renders an Azure Metric Alert with def
         "criteria": [
           {
             "aggregation": "Average",
-            "metric_name": "% Available Memory",
-            "metric_namespace": "Platform",
-            "operator": "GreaterThan",
+            "metric_name": "Heartbeat",
+            "metric_namespace": "Microsoft.operationalinsights/workspaces",
+            "operator": "LessThan",
             "skip_metric_validation": false,
-            "threshold": 100
+            "threshold": 0
           }
         ],
         "enabled": true,

@@ -21,7 +21,7 @@ export interface MetricAlertDynamicCritiriaProps extends MetricAlertCriteriaBase
 
   /**
    * The number of violations to trigger an alert. Should be smaller or equal to evaluation_total_count.
-   *  @default 4
+   * @default 4
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#evaluation_failure_count}
    */
   evaluationFailureCount?: number;

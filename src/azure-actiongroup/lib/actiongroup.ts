@@ -82,12 +82,14 @@ export interface ActionGroupProps {
 
 export class ActionGroup extends AzureResource {
   readonly props: ActionGroupProps;
+  readonly resourceGroupName: string;
   readonly id: string;
 
   constructor(scope: Construct, id: string, props: ActionGroupProps) {
     super(scope, id);
 
     this.props = props;
+    this.resourceGroupName = props.resourceGroupName;
 
     /**
      * Define default values.

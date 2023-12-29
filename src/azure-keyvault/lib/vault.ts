@@ -68,6 +68,7 @@ interface GrantCustomAccessOptions {
 
 export class Vault extends AzureResource {
   readonly props: VaultProps;
+  public readonly resourceGroupName: string;
   public readonly id: string;
   private accessPolicies: AccessPolicy[] = [];
 
@@ -75,6 +76,7 @@ export class Vault extends AzureResource {
     super(scope, id);
 
     this.props = props;
+    this.resourceGroupName = props.resource_group_name;
 
     // Provide default values
     const purgeProtection = props.purgeProtection ?? true;
