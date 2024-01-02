@@ -103,7 +103,8 @@ export interface WindowsVMProps {
 }
 
 export class WindowsVM extends AzureResource {
-  readonly props: WindowsVMProps;
+  public readonly props: WindowsVMProps;
+  public readonly resourceGroupName: string;
   public readonly id: string;
   public readonly name: string;
   public readonly publicIp?: string;
@@ -119,6 +120,7 @@ export class WindowsVM extends AzureResource {
     super(scope, id);
 
     this.props = props;
+    this.resourceGroupName = props.resourceGroupName;
 
     // Default configurations for the virtual machine.
     const defaults = {
@@ -318,6 +320,7 @@ export interface LinuxVMProps {
 export class LinuxVM extends AzureResource {
   // Properties of the AzureLinuxVirtualMachine class
   readonly props: LinuxVMProps;
+  public readonly resourceGroupName: string;
   public readonly id: string;
   public readonly name: string;
   public readonly publicIp?: string;
@@ -334,6 +337,7 @@ export class LinuxVM extends AzureResource {
 
     // Assigning the properties
     this.props = props;
+    this.resourceGroupName = props.resourceGroupName;
 
     // Extracting the name from the node path
     const pathName = this.node.path.split("/")[0];

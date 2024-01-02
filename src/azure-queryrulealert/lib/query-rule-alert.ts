@@ -138,6 +138,7 @@ export interface AzureQueryRuleAlertProps {
 export class QueryRuleAlert extends Construct {
   readonly queryRuleAlertProps: AzureQueryRuleAlertProps;
   public readonly id: string;
+  public readonly resourceGroupName: string;
 
   /**
    * Constructs a new instance of the AzureQueryRuleAlert class.
@@ -181,6 +182,7 @@ export class QueryRuleAlert extends Construct {
     }
 
     this.queryRuleAlertProps = props;
+    this.resourceGroupName = props.resourceGroupName;
 
     // Properties with default values
     const defaults = {

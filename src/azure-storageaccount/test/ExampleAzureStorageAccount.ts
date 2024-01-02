@@ -1,10 +1,10 @@
 import * as cdktf from "cdktf";
-import {BaseTestStack} from "../../testing";
-import { App} from "cdktf";
+import { BaseTestStack } from "../../testing";
+import { App } from "cdktf";
 import * as storage from "..";
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
-import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
-import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
+import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
+import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Construct } from 'constructs';
 import { ResourceGroup } from '@cdktf/provider-azurerm/lib/resource-group';
 
@@ -17,29 +17,29 @@ export class exampleAzureStorageAccount extends BaseTestStack {
 
     const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
 
-  
+
     new AzurermProvider(this, "azureFeature", {
-        features: {},
-      });
-  
+      features: {},
+    });
+
 
     // Create a resource group
     const resourceGroup = new ResourceGroup(this, 'rg', {
-        name: `rg-${this.name}`,
-        location: 'eastus',
+      name: `rg-${this.name}`,
+      location: 'eastus',
     });
 
     const storageAccount = new storage.Account(this, 'storageaccount', {
-        name: `sta${this.name}8898`,
-        resourceGroup: resourceGroup,
-        location: 'eastus',
-        accountReplicationType: 'LRS',
-        accountTier: 'Standard',
-        enableHttpsTrafficOnly: true,
-        accessTier: 'Hot',
-        isHnsEnabled: true,
-        minTlsVersion: 'TLS1_2',
-        publicNetworkAccessEnabled: false,
+      name: `sta${this.name}8898`,
+      resourceGroup: resourceGroup,
+      location: 'eastus',
+      accountReplicationType: 'LRS',
+      accountTier: 'Standard',
+      enableHttpsTrafficOnly: true,
+      accessTier: 'Hot',
+      isHnsEnabled: true,
+      minTlsVersion: 'TLS1_2',
+      publicNetworkAccessEnabled: false,
     });
 
     const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
@@ -48,28 +48,40 @@ export class exampleAzureStorageAccount extends BaseTestStack {
       resourceGroupName: resourceGroup.name,
     });
 
-     //Diag Settings
-     storageAccount.addDiagSettings({name: "diagsettings", logAnalyticsWorkspaceId: logAnalyticsWorkspace.id, metricCategories: ["AllMetrics"]} )
+    //Diag Settings
+    storageAccount.addDiagSettings({ name: "diagsettings", logAnalyticsWorkspaceId: logAnalyticsWorkspace.id, metricCategories: ["AllMetrics"] })
 
-     //RBAC
-     storageAccount.addAccess(clientConfig.objectId, "Contributor")
-    
-     // Storage Methods
-     const storageContainer = storageAccount.addContainer("testcontainer")
-     storageContainer.addBlob("testblob.txt", "../../../test.txt")
-     storageAccount.addContainer("testcontainer2")
+    //RBAC
+    storageAccount.addAccess(clientConfig.objectId, "Contributor")
 
-     const storageFileShare = storageAccount.addFileShare("testshare")
-     storageFileShare.addFile("testfile.txt", "../../../test.txt")
-    
-     storageAccount.addTable("testtable")
+    // Metric Alert
+    storageAccount.addMetricAlert({
+      name: "testalert",
+      criteria: [{
+        metricName: "Availability",
+        metricNamespace: "Microsoft.Storage/storageAccounts",
+        aggregation: "Average",
+        operator: "LessThan",
+        threshold: 0,
+      }],
+    });
+
+    // Storage Methods
+    const storageContainer = storageAccount.addContainer("testcontainer")
+    storageContainer.addBlob("testblob.txt", "../../../test.txt")
+    storageAccount.addContainer("testcontainer2")
+
+    const storageFileShare = storageAccount.addFileShare("testshare")
+    storageFileShare.addFile("testfile.txt", "../../../test.txt")
+
+    storageAccount.addTable("testtable")
 
     storageAccount.addQueue("testqueue")
 
-    storageAccount.addNetworkRules({ bypass: ["AzureServices"], defaultAction: "Deny", ipRules: ["0.0.0.0/0"]})
-        
-     
-     // Outputs to use for End to End Test
+    storageAccount.addNetworkRules({ bypass: ["AzureServices"], defaultAction: "Deny", ipRules: ["0.0.0.0/0"] })
+
+
+    // Outputs to use for End to End Test
     const cdktfTerraformOutputRGName = new cdktf.TerraformOutput(this, "resource_group_name", {
       value: resourceGroup.name,
     });

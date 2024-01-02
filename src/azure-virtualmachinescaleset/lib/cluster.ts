@@ -141,7 +141,8 @@ export interface LinuxClusterProps {
 }
 
 export class LinuxCluster extends AzureResource {
-  readonly props: LinuxClusterProps;
+  public readonly props: LinuxClusterProps;
+  public readonly resourceGroupName: string;
   public readonly id: string;
   public readonly name: string;
   public readonly fqn: string;
@@ -158,6 +159,7 @@ export class LinuxCluster extends AzureResource {
     super(scope, id);
 
     this.props = props;
+    this.resourceGroupName = props.resourceGroupName;
 
     const pathName = this.node.path.split("/")[0];
 
@@ -333,6 +335,7 @@ export interface WindowsClusterProps {
 
 export class WindowsCluster extends AzureResource {
   readonly props: WindowsClusterProps;
+  public readonly resourceGroupName: string;
   public readonly id: string;
   public readonly name: string;
 
@@ -347,6 +350,7 @@ export class WindowsCluster extends AzureResource {
     super(scope, id);
 
     this.props = props;
+    this.resourceGroupName = props.resourceGroupName;
 
     const pathName = this.node.path.split("/")[0];
 

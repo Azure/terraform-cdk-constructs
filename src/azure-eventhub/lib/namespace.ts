@@ -3,7 +3,7 @@ import { Construct } from "constructs";
 import * as cdktf from 'cdktf';
 import { Group } from "../../azure-resourcegroup";
 import { Instance, InstanceProps } from './instance';
-import { AzureResource } from "../../core-azure/lib";
+import { AzureResourceWithAlert } from "../../core-azure/lib";
 
 
 export interface NamespaceProps {
@@ -74,9 +74,9 @@ export interface NamespaceProps {
 	 */
 }
 
-export class Namespace extends AzureResource {
+export class Namespace extends AzureResourceWithAlert {
 	readonly ehNamespaceProps: NamespaceProps;
-	readonly rgName: string;
+	readonly resourceGroupName: string;
 	readonly rgLocation: string;
 	readonly id: string;
 	readonly namespaceName: string;
@@ -85,7 +85,7 @@ export class Namespace extends AzureResource {
 		super(scope, name);
 
 		this.ehNamespaceProps = ehNamespaceProps;
-		this.rgName = ehNamespaceProps.rg.Name;
+		this.resourceGroupName = ehNamespaceProps.rg.Name;
 		this.rgLocation = ehNamespaceProps.rg.Location;
 		this.namespaceName = ehNamespaceProps.name;
 
@@ -107,7 +107,7 @@ export class Namespace extends AzureResource {
 
 		const eventhubNamespce = new EventhubNamespace(this, `ehnamespace`, {
 			name: ehNamespaceProps.name,
-			resourceGroupName: this.rgName,
+			resourceGroupName: this.resourceGroupName,
 			location: this.rgLocation,
 			...defaults,
 		})
@@ -123,7 +123,7 @@ export class Namespace extends AzureResource {
 	// Create an EventHub Instance Method
 	addEventhubInstance(props: Omit<InstanceProps, 'resourceGroupName' | 'namespaceName'>) {
 		return new Instance(this, `ehinstance`, {
-			resourceGroupName: this.rgName,
+			resourceGroupName: this.resourceGroupName,
 			namespaceName: this.namespaceName,
 			...props,
 		});

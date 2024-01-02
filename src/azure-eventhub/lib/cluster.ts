@@ -27,6 +27,7 @@ export class Cluster extends AzureResource {
   readonly rgName: string;
   readonly rgLocation: string;
   readonly id: string;
+  readonly resourceGroupName: string;
 
   constructor(scope: Construct, name: string, ehClusterProps: ClusterProps) {
     super(scope, name);
@@ -48,6 +49,8 @@ export class Cluster extends AzureResource {
     });
 
     this.id = ehCluster.id;
+    this.resourceGroupName = ehCluster.resourceGroupName;
+
     // Outputs
     const cdktfTerraformOutputEventhubId = new cdktf.TerraformOutput(this, 'id', {
       value: ehCluster.id,

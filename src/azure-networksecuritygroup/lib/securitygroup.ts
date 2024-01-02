@@ -30,11 +30,13 @@ export class SecurityGroup extends AzureResource {
     readonly props: SecurityGroupProps;
     public readonly id: string;
     public readonly name: string;
+    public readonly resourceGroupName: string;
 
     constructor(scope: Construct, id: string, props: SecurityGroupProps) {
         super(scope, id);
 
         this.props = props;
+        this.resourceGroupName = props.resourceGroupName;
 
         // Create a network security group
         const nsg = new NetworkSecurityGroup(this, "nsg", {
