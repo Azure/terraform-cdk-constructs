@@ -113,6 +113,16 @@
       "type": "bundled"
     },
     {
+      "name": "nanoid",
+      "version": "^4.0.2",
+      "type": "bundled"
+    },
+    {
+      "name": "ts-md5",
+      "version": "^1.3.1",
+      "type": "bundled"
+    },
+    {
       "name": "@cdktf/provider-azurerm",
       "version": "^9.0.8",
       "type": "peer"
