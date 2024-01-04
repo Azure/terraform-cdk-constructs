@@ -1,1 +1,1 @@
-export * from './functionapplinux';
+export * from "./functionapplinux";

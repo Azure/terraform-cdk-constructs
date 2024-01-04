@@ -1,56 +1,59 @@
-import * as cdktf from 'cdktf';
-import { Construct } from 'constructs';
-import { KeyVault } from '@cdktf/provider-azurerm/lib/key-vault';
-import { Secret, SecretProps } from './secret';
-import { AccessPolicy, AccessPolicyProps } from './policy';
-import { CertificateIssuer, SelfSignedCertificate, SelfSignedCertificateProps } from './certificate';
-import { Key, KeyProps } from './key';
-import {AzureResource} from "../../core-azure/lib";
-
+import { KeyVault } from "@cdktf/provider-azurerm/lib/key-vault";
+import * as cdktf from "cdktf";
+import { Construct } from "constructs";
+import {
+  CertificateIssuer,
+  SelfSignedCertificate,
+  SelfSignedCertificateProps,
+} from "./certificate";
+import { Key, KeyProps } from "./key";
+import { AccessPolicy, AccessPolicyProps } from "./policy";
+import { Secret, SecretProps } from "./secret";
+import { AzureResource } from "../../core-azure/lib";
 
 export interface VaultProps {
-    /**
-     * The name of the Key Vault.
-     */
-    readonly name: string;
-    /**
-     * The Azure Region to deploy the Key Vault.
-     */
-    readonly location: string;
-    /**
-     * The name of the Azure Resource Group.
-     */
-    readonly resource_group_name: string;
-    /**
-     * The tags to assign to the Key Vault.
-     */
-    readonly tags?: { [key: string]: string; };
-    /**
-     * The tags to assign to the Key Vault.
-     */
-    readonly sku?: string;
-    /**
-     * The Name of the SKU used for this Key Vault. Possible values are standard and premium.
-     */
-    readonly tenant_id: string;
-    /**
-     * The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
-     */
-    readonly networkAcls?: KeyVaultNetworkAcls;
-    /**
-     * A map of IP network ACL rules. The key is the IP or IP range in CIDR notation.
-     * The value is a description of that IP range.
-     */
-    readonly purgeProtection?: boolean;
-    /**
-     *  Specifies whether protection against purge is enabled for this Key Vault.
-     * Setting this property to true activates protection against deletion of any active key, secret or certificate in the vault. The setting is effective only if soft delete is also enabled. The default value is false.
-     * Once activated, the property cannot be reverted to false.
-     */
-    readonly softDeleteRetentionDays?: number;
-    /**
-     * The number of days that items should be retained for once soft-deleted.
-     */
+  /**
+   * The name of the Key Vault.
+   */
+  readonly name: string;
+  /**
+   * The Azure Region to deploy the Key Vault.
+   */
+  readonly location: string;
+  /**
+   * The name of the Azure Resource Group.
+   */
+  readonly resource_group_name: string;
+  /**
+   * The tags to assign to the Key Vault.
+   */
+  readonly tags?: { [key: string]: string };
+  /**
+   * The tags to assign to the Key Vault.
+   */
+  readonly sku?: string;
+  /**
+   * The Name of the SKU used for this Key Vault. Possible values are standard and premium.
+   */
+  readonly tenant_id: string;
+  /**
+   * The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
+   */
+  readonly networkAcls?: KeyVaultNetworkAcls;
+  /**
+   * A map of IP network ACL rules. The key is the IP or IP range in CIDR notation.
+   * The value is a description of that IP range.
+   */
+  readonly purgeProtection?: boolean;
+  /**
+   *  Specifies whether protection against purge is enabled for this Key Vault.
+   * Setting this property to true activates protection against deletion of any active key, secret or certificate in the vault. The setting is effective only if soft delete is also enabled. The default value is false.
+   * Once activated, the property cannot be reverted to false.
+   */
+  readonly softDeleteRetentionDays?: number;
+  /**
+   * The number of days that items should be retained for once soft-deleted.
+   */
 }
 
 interface KeyVaultNetworkAcls {
@@ -64,7 +67,6 @@ interface GrantCustomAccessOptions {
   keyPermissions?: string[];
   storagePermissions?: string[];
 }
-
 
 export class Vault extends AzureResource {
   readonly props: VaultProps;
@@ -83,54 +85,61 @@ export class Vault extends AzureResource {
     const sku = props.sku ?? "standard";
     const softDeleteRetentionDays = props.softDeleteRetentionDays ?? 90;
 
-    const azurermKeyVault = 
-        new KeyVault(this, 'key_vault', {
-            name: props.name,
-            location: props.location,
-            resourceGroupName: props.resource_group_name,
-            tags: props.tags,
-            skuName: sku,
-            tenantId: props.tenant_id,
-            networkAcls: props.networkAcls,
-            purgeProtectionEnabled: purgeProtection,
-            softDeleteRetentionDays: softDeleteRetentionDays,
-        });
-        this.id = azurermKeyVault.id;
+    const azurermKeyVault = new KeyVault(this, "key_vault", {
+      name: props.name,
+      location: props.location,
+      resourceGroupName: props.resource_group_name,
+      tags: props.tags,
+      skuName: sku,
+      tenantId: props.tenant_id,
+      networkAcls: props.networkAcls,
+      purgeProtectionEnabled: purgeProtection,
+      softDeleteRetentionDays: softDeleteRetentionDays,
+    });
+    this.id = azurermKeyVault.id;
 
     // Terraform Outputs
-    const cdktfTerraformOutputKeyVaultid = new cdktf.TerraformOutput(this, "id", {
+    const cdktfTerraformOutputKeyVaultid = new cdktf.TerraformOutput(
+      this,
+      "id",
+      {
         value: azurermKeyVault.id,
-      });
-  
-      /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
-      cdktfTerraformOutputKeyVaultid.overrideLogicalId("id");
+      },
+    );
 
-      const cdktfTerraformOutputKeyVaultname = new cdktf.TerraformOutput(this, "key_vault_name", {
+    /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
+    cdktfTerraformOutputKeyVaultid.overrideLogicalId("id");
+
+    const cdktfTerraformOutputKeyVaultname = new cdktf.TerraformOutput(
+      this,
+      "key_vault_name",
+      {
         value: azurermKeyVault.name,
-      });
-  
-      /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
-      cdktfTerraformOutputKeyVaultname.overrideLogicalId("key_vault_name");
+      },
+    );
+
+    /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
+    cdktfTerraformOutputKeyVaultname.overrideLogicalId("key_vault_name");
   }
 
   // Access Policy Methods
   public grantSecretReaderAccess(azureAdGroupId: string) {
-      const policyProps: AccessPolicyProps = {
-        keyVaultId: this,
-        tenantId: this.props.tenant_id,
-        objectId: azureAdGroupId,
-        secretPermissions: [
-          "Get",
-          "List",
-        ],
-      };
+    const policyProps: AccessPolicyProps = {
+      keyVaultId: this,
+      tenantId: this.props.tenant_id,
+      objectId: azureAdGroupId,
+      secretPermissions: ["Get", "List"],
+    };
 
-      const policy =new AccessPolicy(this, `kv_secret_reader_access_${azureAdGroupId}`, policyProps);
-      this.accessPolicies.push(policy);
+    const policy = new AccessPolicy(
+      this,
+      `kv_secret_reader_access_${azureAdGroupId}`,
+      policyProps,
+    );
+    this.accessPolicies.push(policy);
   }
 
   public grantSecretAdminAccess(azureAdGroupId: string) {
-
     const policyProps: AccessPolicyProps = {
       keyVaultId: this,
       tenantId: this.props.tenant_id,
@@ -146,12 +155,15 @@ export class Vault extends AzureResource {
       ],
     };
 
-    const policy =new AccessPolicy(this, `kv_secret_admin_access_${azureAdGroupId}`, policyProps);
+    const policy = new AccessPolicy(
+      this,
+      `kv_secret_admin_access_${azureAdGroupId}`,
+      policyProps,
+    );
     this.accessPolicies.push(policy);
   }
 
   public grantCertAdminAccess(azureAdGroupId: string) {
-
     const policyProps: AccessPolicyProps = {
       keyVaultId: this,
       tenantId: this.props.tenant_id,
@@ -167,7 +179,11 @@ export class Vault extends AzureResource {
       ],
     };
 
-    const policy =new AccessPolicy(this, `kv_cert_admin_access_${azureAdGroupId}`, policyProps);
+    const policy = new AccessPolicy(
+      this,
+      `kv_cert_admin_access_${azureAdGroupId}`,
+      policyProps,
+    );
     this.accessPolicies.push(policy);
   }
 
@@ -176,18 +192,18 @@ export class Vault extends AzureResource {
       keyVaultId: this,
       tenantId: this.props.tenant_id,
       objectId: azureAdGroupId,
-      certificatePermissions: [
-        "Get",
-        "List",
-      ],
+      certificatePermissions: ["Get", "List"],
     };
 
-    const policy =new AccessPolicy(this, `kv_cert_reader_access_${azureAdGroupId}`, policyProps);
+    const policy = new AccessPolicy(
+      this,
+      `kv_cert_reader_access_${azureAdGroupId}`,
+      policyProps,
+    );
     this.accessPolicies.push(policy);
   }
 
   public grantKeyAdminAccess(azureAdGroupId: string) {
-
     const policyProps: AccessPolicyProps = {
       keyVaultId: this,
       tenantId: this.props.tenant_id,
@@ -203,47 +219,63 @@ export class Vault extends AzureResource {
       ],
     };
 
-    const policy =new AccessPolicy(this, `kv_key_admin_access_${azureAdGroupId}`, policyProps);
+    const policy = new AccessPolicy(
+      this,
+      `kv_key_admin_access_${azureAdGroupId}`,
+      policyProps,
+    );
     this.accessPolicies.push(policy);
   }
-  
+
   public grantKeyReaderAccess(azureAdGroupId: string) {
     const policyProps: AccessPolicyProps = {
       keyVaultId: this,
       tenantId: this.props.tenant_id,
       objectId: azureAdGroupId,
-      certificatePermissions: [
-        "Get",
-        "List",
-      ],
+      certificatePermissions: ["Get", "List"],
     };
 
-    const policy =new AccessPolicy(this, `kv_key_reader_access_${azureAdGroupId}`, policyProps);
+    const policy = new AccessPolicy(
+      this,
+      `kv_key_reader_access_${azureAdGroupId}`,
+      policyProps,
+    );
     this.accessPolicies.push(policy);
   }
 
-  public grantCustomAccess(azureAdGroupId: string, options: GrantCustomAccessOptions) {
+  public grantCustomAccess(
+    azureAdGroupId: string,
+    options: GrantCustomAccessOptions,
+  ) {
     const policyProps: AccessPolicyProps = {
       keyVaultId: this,
       tenantId: this.props.tenant_id,
       objectId: azureAdGroupId,
-      ...options
+      ...options,
     };
 
-    const policy = new AccessPolicy(this, `kv_custom_policy_access_${azureAdGroupId}`, policyProps);
+    const policy = new AccessPolicy(
+      this,
+      `kv_custom_policy_access_${azureAdGroupId}`,
+      policyProps,
+    );
     this.accessPolicies.push(policy);
   }
 
-
   // Create Secret Methods
-  public addSecret(keyVaultSecretName: string, secretValue: string, expirationDate?: string, contentType?: string) {
+  public addSecret(
+    keyVaultSecretName: string,
+    secretValue: string,
+    expirationDate?: string,
+    contentType?: string,
+  ) {
     const secretProps: SecretProps = {
-        keyVaultId: this,
-        name: keyVaultSecretName,
-        value: secretValue,
-        expirationDate: expirationDate,
-        contentType: contentType,
-        accessPolicies: this.accessPolicies
+      keyVaultId: this,
+      name: keyVaultSecretName,
+      value: secretValue,
+      expirationDate: expirationDate,
+      contentType: contentType,
+      accessPolicies: this.accessPolicies,
     };
 
     new Secret(this, keyVaultSecretName, secretProps);
@@ -252,35 +284,33 @@ export class Vault extends AzureResource {
   // Create Key Methods
   public addRSAKey(keyVaultKeyName: string, expirationDate?: string) {
     const keyProps: KeyProps = {
-        keyVaultId: this,
-        name: keyVaultKeyName,
-        keyType: "RSA",
-        keySize: 2048,
-        keyOpts: [
-          "decrypt",
-          "encrypt",
-          "sign",
-          "unwrapKey",
-          "verify",
-          "wrapKey",
-        ],
-        expires: expirationDate,
-        accessPolicies: this.accessPolicies
+      keyVaultId: this,
+      name: keyVaultKeyName,
+      keyType: "RSA",
+      keySize: 2048,
+      keyOpts: ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"],
+      expires: expirationDate,
+      accessPolicies: this.accessPolicies,
     };
 
     new Key(this, keyVaultKeyName, keyProps);
   }
 
-  public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts: string[], expirationDate?: string) {
+  public addKey(
+    keyVaultKeyName: string,
+    keyType: string,
+    keySize: number,
+    keyOpts: string[],
+    expirationDate?: string,
+  ) {
     const keyProps: KeyProps = {
-        keyVaultId: this,
-        name: keyVaultKeyName,
-        keyType: keyType,
-        keySize: keySize,
-        keyOpts: keyOpts,
-        expires: expirationDate,
-        accessPolicies: this.accessPolicies,
-        
+      keyVaultId: this,
+      name: keyVaultKeyName,
+      keyType: keyType,
+      keySize: keySize,
+      keyOpts: keyOpts,
+      expires: expirationDate,
+      accessPolicies: this.accessPolicies,
     };
 
     new Key(this, keyVaultKeyName, keyProps);
@@ -288,29 +318,32 @@ export class Vault extends AzureResource {
 
   // Create Certificate Methods
 
-  public addSelfSignedCert( certName: string, subject: string, dnsNames: string[], actionType?: string, daysBeforeExpiry?: number) {
+  public addSelfSignedCert(
+    certName: string,
+    subject: string,
+    dnsNames: string[],
+    actionType?: string,
+    daysBeforeExpiry?: number,
+  ) {
     const keyProps: SelfSignedCertificateProps = {
-        keyVaultId: this,
-        name: certName,
-        subject: subject,
-        dnsNames: dnsNames,
-        actionType: actionType,
-        daysBeforeExpiry: daysBeforeExpiry,
-        accessPolicies: this.accessPolicies
+      keyVaultId: this,
+      name: certName,
+      subject: subject,
+      dnsNames: dnsNames,
+      actionType: actionType,
+      daysBeforeExpiry: daysBeforeExpiry,
+      accessPolicies: this.accessPolicies,
     };
 
     new SelfSignedCertificate(this, certName, keyProps);
   }
 
-  public addCertIssuer( name: string, provider: string) {
+  public addCertIssuer(name: string, provider: string) {
     new CertificateIssuer(this, name, {
       name: name,
       providerName: provider,
       keyVaultId: this,
-      accessPolicies: this.accessPolicies
+      accessPolicies: this.accessPolicies,
     });
   }
-
-
 }
-

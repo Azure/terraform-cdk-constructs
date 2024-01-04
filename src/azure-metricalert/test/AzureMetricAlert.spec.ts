@@ -1,12 +1,11 @@
-import { Testing, TerraformStack } from 'cdktf';
-import 'cdktf/lib/testing/adapters/jest';
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { Testing, TerraformStack } from "cdktf";
+import "cdktf/lib/testing/adapters/jest";
+import { exampleAzureMetricAlert } from "./ExampleAzureMetricAlert";
 import * as metricalert from "../../azure-metricalert";
-import { exampleAzureMetricAlert } from './ExampleAzureMetricAlert';
 import * as util from "../../util/azureTenantIdHelpers";
 
-
-describe('Azure Metric Alert With Defaults', () => {
+describe("Azure Metric Alert With Defaults", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
 
@@ -16,7 +15,7 @@ describe('Azure Metric Alert With Defaults', () => {
 
     new AzurermProvider(stack, "azureQueryRuleAlert", { features: {} });
 
-    new metricalert.MetricAlert(stack, 'testAzureQueryRuleAlert', {
+    new metricalert.MetricAlert(stack, "testAzureQueryRuleAlert", {
       name: "metric alert test",
       resourceGroupName: "testResourceGroup",
       scopes: ["/subscriptions/00000000-0000-0000-0000-000000000000"],
@@ -35,9 +34,7 @@ describe('Azure Metric Alert With Defaults', () => {
   });
 
   it("renders an Azure Metric Alert with defaults and checks snapshot", () => {
-    expect(
-      Testing.synth(stack)
-    ).toMatchSnapshot(); // Compare the already prepared stack
+    expect(Testing.synth(stack)).toMatchSnapshot(); // Compare the already prepared stack
   });
 
   it("check if the produced terraform configuration is valid", () => {
@@ -49,12 +46,12 @@ describe('Azure Metric Alert With Defaults', () => {
   });
 });
 
-
-describe('Linux Metric Alert Example', () => {
-
+describe("Linux Metric Alert Example", () => {
   it("renders the Metric Alert and checks snapshot", () => {
     // Need to remove the tenant_id from the snapshot as it will change wherever the test is run
-    const output = Testing.synth(new exampleAzureMetricAlert(Testing.app(), "testAzureMetricAlert"));
+    const output = Testing.synth(
+      new exampleAzureMetricAlert(Testing.app(), "testAzureMetricAlert"),
+    );
     const myObject: Record<string, any> = JSON.parse(output);
 
     expect(util.removeTenantIdFromSnapshot(myObject)).toMatchSnapshot();
@@ -62,11 +59,19 @@ describe('Linux Metric Alert Example', () => {
 
   it("check if the produced terraform configuration is valid", () => {
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureMetricAlert(Testing.app(), "testAzureMetricAlert"))).toBeValidTerraform();
+    expect(
+      Testing.fullSynth(
+        new exampleAzureMetricAlert(Testing.app(), "testAzureMetricAlert"),
+      ),
+    ).toBeValidTerraform();
   });
 
   it("check if this can be planned", () => {
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureMetricAlert(Testing.app(), "testAzureMetricAlert"))).toPlanSuccessfully();
+    expect(
+      Testing.fullSynth(
+        new exampleAzureMetricAlert(Testing.app(), "testAzureMetricAlert"),
+      ),
+    ).toPlanSuccessfully();
   });
 });

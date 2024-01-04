@@ -1,6 +1,5 @@
-import { Construct } from "constructs";
 import { KustoEventhubDataConnection } from "@cdktf/provider-azurerm/lib/kusto-eventhub-data-connection";
-
+import { Construct } from "constructs";
 
 export interface KustoDataConnectionProps {
   /**
@@ -66,7 +65,11 @@ export interface KustoDataConnectionProps {
 export class KustoDataConnection extends Construct {
   public readonly eventhubKustoDataConnectionProps: KustoDataConnectionProps;
 
-  constructor(scope: Construct, id: string, kustoDataConnectionProps: KustoDataConnectionProps) {
+  constructor(
+    scope: Construct,
+    id: string,
+    kustoDataConnectionProps: KustoDataConnectionProps,
+  ) {
     super(scope, id);
 
     this.eventhubKustoDataConnectionProps = kustoDataConnectionProps;
@@ -77,18 +80,24 @@ export class KustoDataConnection extends Construct {
       mappingRuleName: kustoDataConnectionProps.mappingRuleName || undefined,
       consumerGroup: kustoDataConnectionProps.consumerGroup || "$Default",
       dataFormat: kustoDataConnectionProps.dataFormat || "JSON",
-      databaseRoutingType: kustoDataConnectionProps.databaseRoutingType || "Single",
+      databaseRoutingType:
+        kustoDataConnectionProps.databaseRoutingType || "Single",
       compression: kustoDataConnectionProps.compression || "None",
-    }
+    };
 
-    new KustoEventhubDataConnection(this, `kusto-data-connection-${this.eventhubKustoDataConnectionProps.name}`, {
-      name: this.eventhubKustoDataConnectionProps.name,
-      location: this.eventhubKustoDataConnectionProps.location,
-      resourceGroupName: this.eventhubKustoDataConnectionProps.resourceGroupName,
-      clusterName: this.eventhubKustoDataConnectionProps.clusterName,
-      databaseName: this.eventhubKustoDataConnectionProps.databaseName,
-      eventhubId: this.eventhubKustoDataConnectionProps.eventhubId,
-      ...defaults,
-    });
+    new KustoEventhubDataConnection(
+      this,
+      `kusto-data-connection-${this.eventhubKustoDataConnectionProps.name}`,
+      {
+        name: this.eventhubKustoDataConnectionProps.name,
+        location: this.eventhubKustoDataConnectionProps.location,
+        resourceGroupName:
+          this.eventhubKustoDataConnectionProps.resourceGroupName,
+        clusterName: this.eventhubKustoDataConnectionProps.clusterName,
+        databaseName: this.eventhubKustoDataConnectionProps.databaseName,
+        eventhubId: this.eventhubKustoDataConnectionProps.eventhubId,
+        ...defaults,
+      },
+    );
   }
 }

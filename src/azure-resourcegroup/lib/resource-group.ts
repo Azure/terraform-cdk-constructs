@@ -1,7 +1,7 @@
-import * as cdktf from "cdktf";
-import { Construct } from 'constructs';
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { RoleAssignment } from "@cdktf/provider-azurerm/lib/role-assignment";
+import * as cdktf from "cdktf";
+import { Construct } from "constructs";
 // Construct
 /**
  * Properties for the resource group
@@ -16,25 +16,24 @@ export interface GroupProps {
    */
   readonly name?: string;
   /**
-  * The RBAC groups to assign to the Resource Group.
-  */
+   * The RBAC groups to assign to the Resource Group.
+   */
   readonly rbacGroups?: Map<string, string>;
   /**
    * The tags to assign to the Resource Group.
    */
-  readonly tags?: { [key: string]: string; };
+  readonly tags?: { [key: string]: string };
   /**
    * The lifecycle rules to ignore changes.
    */
   readonly ignoreChanges?: string[];
 }
 
-
 export class Group extends Construct {
   readonly props: GroupProps;
-  IdOutput: cdktf.TerraformOutput
-  LocationOutput: cdktf.TerraformOutput
-  NameOutput: cdktf.TerraformOutput
+  IdOutput: cdktf.TerraformOutput;
+  LocationOutput: cdktf.TerraformOutput;
+  NameOutput: cdktf.TerraformOutput;
 
   public readonly Id: string;
   public readonly Location: string;
@@ -43,18 +42,17 @@ export class Group extends Construct {
   constructor(scope: Construct, id: string, props: GroupProps = {}) {
     super(scope, id);
 
-    this.props = props;;
+    this.props = props;
 
     const defaults = {
       name: props.name || `rg-${this.node.path.split("/")[0]}`,
       location: props.location || "eastus",
-    }
+    };
 
     const azurermResourceGroupRg = new ResourceGroup(this, "rg", {
       ...defaults,
       tags: props.tags,
     });
-
 
     azurermResourceGroupRg.addOverride("lifecycle", [
       {
@@ -62,14 +60,13 @@ export class Group extends Construct {
       },
     ]);
 
-
     props.rbacGroups?.forEach((v, k) => {
       new RoleAssignment(this, k, {
         principalId: k,
         roleDefinitionName: v,
         scope: azurermResourceGroupRg.id,
       });
-    })
+    });
 
     this.Id = azurermResourceGroupRg.id;
     this.Name = azurermResourceGroupRg.name;
@@ -81,18 +78,14 @@ export class Group extends Construct {
     });
     this.LocationOutput = new cdktf.TerraformOutput(this, "location", {
       value: azurermResourceGroupRg.location,
-    }
-    );
+    });
     this.NameOutput = new cdktf.TerraformOutput(this, "name", {
       value: azurermResourceGroupRg.name,
-    }
-    );
-
+    });
 
     /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
     this.LocationOutput.overrideLogicalId("location");
     this.NameOutput.overrideLogicalId("name");
-    this.IdOutput.overrideLogicalId("id")
-
+    this.IdOutput.overrideLogicalId("id");
   }
 }

@@ -1,7 +1,7 @@
+import { MonitorActionGroup } from "@cdktf/provider-azurerm/lib/monitor-action-group";
 import * as cdktf from "cdktf";
-import { Construct } from 'constructs';
+import { Construct } from "constructs";
 import { AzureResource } from "../../core-azure/lib";
-import { MonitorActionGroup } from '@cdktf/provider-azurerm/lib/monitor-action-group';
 
 export interface ActionGroupProps {
   /**
@@ -79,7 +79,6 @@ export interface ActionGroupProps {
   // readonly azureFunctionReceivers;
 }
 
-
 export class ActionGroup extends AzureResource {
   readonly props: ActionGroupProps;
   readonly resourceGroupName: string;
@@ -98,20 +97,24 @@ export class ActionGroup extends AzureResource {
       enabled: props.enabled || true,
       location: props.location || "global",
       tags: props.tags || {},
-    }
+    };
 
     // Create the Action Group with the provided properties
-    const azurermMonitorActionGroup =
-      new MonitorActionGroup(this, "actiongroup", {
+    const azurermMonitorActionGroup = new MonitorActionGroup(
+      this,
+      "actiongroup",
+      {
         ...defaults,
         name: props.name,
         resourceGroupName: props.resourceGroupName,
         shortName: props.shortName,
-      });
+      },
+    );
 
     if (props.armRoleReceivers) {
       for (const armRoleReceiver of props.armRoleReceivers) {
-        armRoleReceiver.useCommonAlertSchema = armRoleReceiver.useCommonAlertSchema || false;
+        armRoleReceiver.useCommonAlertSchema =
+          armRoleReceiver.useCommonAlertSchema || false;
       }
 
       azurermMonitorActionGroup.addOverride("dynamic.arm_role_receiver", {
@@ -119,14 +122,16 @@ export class ActionGroup extends AzureResource {
         content: {
           name: "${arm_role_receiver.value.name}",
           role_id: "${arm_role_receiver.value.roleId}",
-          use_common_alert_schema: "${arm_role_receiver.value.useCommonAlertSchema}",
-        }
+          use_common_alert_schema:
+            "${arm_role_receiver.value.useCommonAlertSchema}",
+        },
       });
     }
 
     if (props.emailReceivers) {
       for (const emailReceiver of props.emailReceivers) {
-        emailReceiver.useCommonAlertSchema = emailReceiver.useCommonAlertSchema || false;
+        emailReceiver.useCommonAlertSchema =
+          emailReceiver.useCommonAlertSchema || false;
       }
 
       azurermMonitorActionGroup.addOverride("dynamic.email_receiver", {
@@ -134,8 +139,9 @@ export class ActionGroup extends AzureResource {
         content: {
           name: "${email_receiver.value.name}",
           email_address: "${email_receiver.value.emailAddress}",
-          use_common_alert_schema: "${email_receiver.value.useCommonAlertSchema}",
-        }
+          use_common_alert_schema:
+            "${email_receiver.value.useCommonAlertSchema}",
+        },
       });
     }
 
@@ -146,7 +152,7 @@ export class ActionGroup extends AzureResource {
           name: "${voice_receiver.value.name}",
           country_code: "${voice_receiver.value.countryCode}",
           phone_number: "${voice_receiver.value.phoneNumber}",
-        }
+        },
       });
     }
 
@@ -157,13 +163,14 @@ export class ActionGroup extends AzureResource {
           name: "${sms_receiver.value.name}",
           country_code: "${sms_receiver.value.countryCode}",
           phone_number: "${sms_receiver.value.phoneNumber}",
-        }
+        },
       });
     }
 
     if (props.webhookReceivers) {
       for (const webhookReceiver of props.webhookReceivers) {
-        webhookReceiver.useCommonAlertSchema = webhookReceiver.useCommonAlertSchema || false;
+        webhookReceiver.useCommonAlertSchema =
+          webhookReceiver.useCommonAlertSchema || false;
       }
 
       azurermMonitorActionGroup.addOverride("dynamic.webhook_receiver", {
@@ -171,8 +178,9 @@ export class ActionGroup extends AzureResource {
         content: {
           name: "${webhook_receiver.value.name}",
           service_uri: "${webhook_receiver.value.serviceUri}",
-          use_common_alert_schema: "${webhook_receiver.value.useCommonAlertSchema}",
-        }
+          use_common_alert_schema:
+            "${webhook_receiver.value.useCommonAlertSchema}",
+        },
       });
     }
 
@@ -185,20 +193,22 @@ export class ActionGroup extends AzureResource {
           event_hub_name: "${event_hub_receiver.value.eventHubName}",
           event_hub_namespace: "${event_hub_receiver.value.eventHubNamespace}",
           subscription_id: "${event_hub_receiver.value.subscriptionId}",
-        }
+        },
       });
     }
-
 
     // Terraform Outputs
     this.id = azurermMonitorActionGroup.id;
 
-    const cdktfTerraformOutputActionGroupId = new cdktf.TerraformOutput(this, "id", {
-      value: azurermMonitorActionGroup.id
-    });
+    const cdktfTerraformOutputActionGroupId = new cdktf.TerraformOutput(
+      this,
+      "id",
+      {
+        value: azurermMonitorActionGroup.id,
+      },
+    );
 
     /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
     cdktfTerraformOutputActionGroupId.overrideLogicalId("id");
   }
-
 }

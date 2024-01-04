@@ -1,11 +1,11 @@
-import { MetricAlertCriteriaBaseProps } from './criteria-base-props';
-
+import { MetricAlertCriteriaBaseProps } from "./criteria-base-props";
 
 /**
  * @description The dynamic criteria properties for a Metric Alert.
  * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#dynamic_criteria}
  */
-export interface MetricAlertDynamicCritiriaProps extends MetricAlertCriteriaBaseProps {
+export interface MetricAlertDynamicCritiriaProps
+  extends MetricAlertCriteriaBaseProps {
   /**
    * The extent of deviation required to trigger an alert. Possible values are Low, Medium and High.
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#alert_sensitivity}

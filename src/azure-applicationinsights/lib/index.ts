@@ -1,1 +1,1 @@
-export * from './appinsights';
+export * from "./appinsights";

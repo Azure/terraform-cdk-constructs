@@ -1,13 +1,29 @@
-import * as cdktf from "cdktf";
-import { Construct } from 'constructs';
-import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import { LogAnalyticsDataExportRule } from "@cdktf/provider-azurerm/lib/log-analytics-data-export-rule";
 import { LogAnalyticsSavedSearch } from "@cdktf/provider-azurerm/lib/log-analytics-saved-search";
+import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
+import * as cdktf from "cdktf";
+import { Construct } from "constructs";
 import { AzureResourceWithAlert } from "../../core-azure/lib";
 
-type DataExport = { name: string, export_destination_id: string, table_names: string[], enabled: boolean };
-type LAFunctions = { name: string, display_name: string, query: string, function_alias: string, function_parameters: string[] }
-type Queries = { name: string, category: string, display_name: string, query: string }
+type DataExport = {
+  name: string;
+  export_destination_id: string;
+  table_names: string[];
+  enabled: boolean;
+};
+type LAFunctions = {
+  name: string;
+  display_name: string;
+  query: string;
+  function_alias: string;
+  function_parameters: string[];
+};
+type Queries = {
+  name: string;
+  category: string;
+  display_name: string;
+  query: string;
+};
 
 export interface WorkspaceProps {
   /**
@@ -23,25 +39,25 @@ export interface WorkspaceProps {
    */
   readonly resource_group_name: string;
   /**
-  * The SKU of the Log Analytics Workspace.
-  */
+   * The SKU of the Log Analytics Workspace.
+   */
   readonly sku?: string;
   /**
-  * The number of days of retention. Default is 30.
-  */
+   * The number of days of retention. Default is 30.
+   */
   readonly retention?: number;
   /**
    * The tags to assign to the Resource Group.
    */
-  readonly tags?: { [key: string]: string; };
+  readonly tags?: { [key: string]: string };
   /**
-  * Create a DataExport for the Log Analytics Workspace.
-  */
+   * Create a DataExport for the Log Analytics Workspace.
+   */
   readonly data_export?: DataExport[];
   /**
    * A collection of Log Analytic functions.
    */
-  readonly functions?: LAFunctions[]
+  readonly functions?: LAFunctions[];
   /**
    * A collection of log saved log analytics queries.
    */
@@ -53,7 +69,6 @@ export class Workspace extends AzureResourceWithAlert {
   readonly resourceGroupName: string;
   public readonly id: string;
 
-
   constructor(scope: Construct, id: string, props: WorkspaceProps) {
     super(scope, id);
 
@@ -61,18 +76,21 @@ export class Workspace extends AzureResourceWithAlert {
     this.resourceGroupName = props.resource_group_name;
 
     // Provide default values
-    const sku = props.sku ?? 'PerGB2018';
+    const sku = props.sku ?? "PerGB2018";
     const retention = props.retention ?? 30;
 
-    const azurermLogAnalyticsWorkspaceLogAnalytics =
-      new LogAnalyticsWorkspace(this, "log_analytics", {
+    const azurermLogAnalyticsWorkspaceLogAnalytics = new LogAnalyticsWorkspace(
+      this,
+      "log_analytics",
+      {
         location: props.location,
         name: props.name,
         resourceGroupName: props.resource_group_name,
         retentionInDays: retention,
         sku: sku,
         tags: props.tags,
-      });
+      },
+    );
 
     this.id = azurermLogAnalyticsWorkspaceLogAnalytics.id;
 
@@ -85,7 +103,7 @@ export class Workspace extends AzureResourceWithAlert {
         tableNames: v.table_names,
         workspaceResourceId: azurermLogAnalyticsWorkspaceLogAnalytics.id,
       });
-    })
+    });
 
     props.functions?.forEach((v, k) => {
       new LogAnalyticsSavedSearch(this, `function-${k}`, {
@@ -97,8 +115,7 @@ export class Workspace extends AzureResourceWithAlert {
         name: v.name,
         query: v.query,
       });
-    })
-
+    });
 
     props.queries?.forEach((v, k) => {
       new LogAnalyticsSavedSearch(this, `function-${k}`, {
@@ -109,26 +126,39 @@ export class Workspace extends AzureResourceWithAlert {
         name: v.name,
         query: v.query,
       });
-    })
+    });
 
     // Terraform Outputs
-    const cdktfTerraformOutputLaID = new cdktf.TerraformOutput(this, "log_analytics_id", {
-      value: azurermLogAnalyticsWorkspaceLogAnalytics.id,
-    });
-    const cdktfTerraformOutputLaSharedKey = new cdktf.TerraformOutput(this, "log_analytics_primary_shared_key", {
-      value: azurermLogAnalyticsWorkspaceLogAnalytics.primarySharedKey,
-      sensitive: true,
-    });
-    const cdktfTerraformOutputLaWorkspaceID = new cdktf.TerraformOutput(this, "log_analytics_workspace_id", {
-      value: azurermLogAnalyticsWorkspaceLogAnalytics.workspaceId,
-    });
+    const cdktfTerraformOutputLaID = new cdktf.TerraformOutput(
+      this,
+      "log_analytics_id",
+      {
+        value: azurermLogAnalyticsWorkspaceLogAnalytics.id,
+      },
+    );
+    const cdktfTerraformOutputLaSharedKey = new cdktf.TerraformOutput(
+      this,
+      "log_analytics_primary_shared_key",
+      {
+        value: azurermLogAnalyticsWorkspaceLogAnalytics.primarySharedKey,
+        sensitive: true,
+      },
+    );
+    const cdktfTerraformOutputLaWorkspaceID = new cdktf.TerraformOutput(
+      this,
+      "log_analytics_workspace_id",
+      {
+        value: azurermLogAnalyticsWorkspaceLogAnalytics.workspaceId,
+      },
+    );
 
     /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
     cdktfTerraformOutputLaID.overrideLogicalId("log_analytics_id");
-    cdktfTerraformOutputLaSharedKey.overrideLogicalId("log_analytics_primary_shared_key")
-    cdktfTerraformOutputLaWorkspaceID.overrideLogicalId("log_analytics_workspace_id")
-
-
+    cdktfTerraformOutputLaSharedKey.overrideLogicalId(
+      "log_analytics_primary_shared_key",
+    );
+    cdktfTerraformOutputLaWorkspaceID.overrideLogicalId(
+      "log_analytics_workspace_id",
+    );
   }
-
 }

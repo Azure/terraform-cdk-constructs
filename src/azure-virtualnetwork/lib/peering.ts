@@ -1,6 +1,6 @@
-import { Construct } from 'constructs';
 import { VirtualNetworkPeering } from "@cdktf/provider-azurerm/lib/virtual-network-peering";
-import {Network} from "./network"
+import { Construct } from "constructs";
+import { Network } from "./network";
 
 /**
  * Interface defining the settings for peer connections.
@@ -32,8 +32,8 @@ export interface PeerSettings {
 }
 
 /**
-* Interface defining the properties for virtual network peerings.
-*/
+ * Interface defining the properties for virtual network peerings.
+ */
 export interface PeerProps {
   /**
    * ID of the local virtual network.
@@ -56,30 +56,30 @@ export interface PeerProps {
   remoteToLocalSettings: PeerSettings | undefined;
 }
 
-
 export class Peer extends Construct {
   constructor(scope: Construct, name: string, props: PeerProps) {
     super(scope, name);
 
-    const localtoRemotePeerName = props.virtualNetwork.name + 'to' + props.remoteVirtualNetwork.name;
+    const localtoRemotePeerName =
+      props.virtualNetwork.name + "to" + props.remoteVirtualNetwork.name;
 
-    new VirtualNetworkPeering(this, 'VNetPeerLocaltoRemote', {
-        name: localtoRemotePeerName,
-        resourceGroupName: props.virtualNetwork.resourceGroupName,
-        virtualNetworkName: props.virtualNetwork.name,
-        remoteVirtualNetworkId: props.remoteVirtualNetwork.id,
-        ...props.localToRemoteSettings
+    new VirtualNetworkPeering(this, "VNetPeerLocaltoRemote", {
+      name: localtoRemotePeerName,
+      resourceGroupName: props.virtualNetwork.resourceGroupName,
+      virtualNetworkName: props.virtualNetwork.name,
+      remoteVirtualNetworkId: props.remoteVirtualNetwork.id,
+      ...props.localToRemoteSettings,
     });
 
-    const remoteToLocalPeerName =  props.remoteVirtualNetwork.name + 'to' + props.virtualNetwork.name;
+    const remoteToLocalPeerName =
+      props.remoteVirtualNetwork.name + "to" + props.virtualNetwork.name;
 
-    new VirtualNetworkPeering(this, 'VNetPeerRemotetoLocal', {
-        name: remoteToLocalPeerName,
-        resourceGroupName: props.remoteVirtualNetwork.resourceGroupName,
-        virtualNetworkName: props.remoteVirtualNetwork.name,
-        remoteVirtualNetworkId: props.virtualNetwork.id,
-        ...props.remoteToLocalSettings
+    new VirtualNetworkPeering(this, "VNetPeerRemotetoLocal", {
+      name: remoteToLocalPeerName,
+      resourceGroupName: props.remoteVirtualNetwork.resourceGroupName,
+      virtualNetworkName: props.remoteVirtualNetwork.name,
+      remoteVirtualNetworkId: props.virtualNetwork.id,
+      ...props.remoteToLocalSettings,
     });
-
   }
 }

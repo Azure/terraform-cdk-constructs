@@ -1,17 +1,19 @@
-import * as cdktf from 'cdktf';
-import { KustoCluster } from '@cdktf/provider-azurerm/lib/kusto-cluster';
-import { Construct } from 'constructs';
-import { Group } from '../../azure-resourcegroup';
-import { Database, DatabaseProps } from './database';
-import { AzureResource } from '../../core-azure/lib/index';
-import { ComputeSpecification, IComputeSpecification } from './compute-specification';
-
+import { KustoCluster } from "@cdktf/provider-azurerm/lib/kusto-cluster";
+import * as cdktf from "cdktf";
+import { Construct } from "constructs";
+import {
+  ComputeSpecification,
+  IComputeSpecification,
+} from "./compute-specification";
+import { Database, DatabaseProps } from "./database";
+import { Group } from "../../azure-resourcegroup";
+import { AzureResource } from "../../core-azure/lib/index";
 
 export interface ClusterProps {
   /**
    * The Azure Resource Group in which to create the Kusto Cluster.
    */
-  readonly rg: Group
+  readonly rg: Group;
   /**
    * The name of the Kusto Cluster to create.
    * Only 4-22 lowercase alphanumeric characters allowed, starting with a letter.
@@ -61,7 +63,7 @@ export interface ClusterProps {
    * Specifies if the purge operations are enabled. Based on the SKU, the number of zones allowed are different.
    * @default true
    */
-  readonly enableZones? : boolean;
+  readonly enableZones?: boolean;
   /**
    * The minimum number of allowed instances. Must between 0 and 1000.
    */
@@ -73,9 +75,8 @@ export interface ClusterProps {
   /**
    * A mapping of tags to assign to the Kusto.
    */
-  readonly tags?: { [key: string]: string; };
+  readonly tags?: { [key: string]: string };
 }
-
 
 export class Cluster extends AzureResource {
   readonly kustoProps: ClusterProps;
@@ -108,12 +109,12 @@ export class Cluster extends AzureResource {
         type: "SystemAssigned",
         identityIds: [],
       },
-    }
+    };
 
     /**
      * Create Kusto Cluster resource.
      */
-    const azurermKustoCluster = new KustoCluster(this, 'Kusto', {
+    const azurermKustoCluster = new KustoCluster(this, "Kusto", {
       ...defaults,
       name: kustoProps.name,
       location: kustoProps.rg.Location,
@@ -129,32 +130,56 @@ export class Cluster extends AzureResource {
     }
 
     if (kustoProps.minimumInstances && kustoProps.maximumInstances) {
-      azurermKustoCluster.addOverride("minimum_instances", kustoProps.minimumInstances);
-      azurermKustoCluster.addOverride("maximum_instances", kustoProps.maximumInstances);
+      azurermKustoCluster.addOverride(
+        "minimum_instances",
+        kustoProps.minimumInstances,
+      );
+      azurermKustoCluster.addOverride(
+        "maximum_instances",
+        kustoProps.maximumInstances,
+      );
     }
 
     this.id = azurermKustoCluster.id;
     this.uri = azurermKustoCluster.uri;
 
     // Outputs
-    const cdktfTerraformOutputKustoId = new cdktf.TerraformOutput(this, "Kusto_id", {
-      value: azurermKustoCluster.id,
-    });
-    const cdktfTerraformOutputKustoUri = new cdktf.TerraformOutput(this, "Kusto_uri", {
-      value: azurermKustoCluster.uri,
-    });
-    const cdktfTerraformOutputDataIngestionUri = new cdktf.TerraformOutput(this, "Kusto_data_ingestion_uri", {
-      value: azurermKustoCluster.dataIngestionUri,
-    });
-    const cdktfTerraformOutputKustoIdentity = new cdktf.TerraformOutput(this, "Kusto_identity", {
-      value: azurermKustoCluster.identity,
-      sensitive: true,
-    });
+    const cdktfTerraformOutputKustoId = new cdktf.TerraformOutput(
+      this,
+      "Kusto_id",
+      {
+        value: azurermKustoCluster.id,
+      },
+    );
+    const cdktfTerraformOutputKustoUri = new cdktf.TerraformOutput(
+      this,
+      "Kusto_uri",
+      {
+        value: azurermKustoCluster.uri,
+      },
+    );
+    const cdktfTerraformOutputDataIngestionUri = new cdktf.TerraformOutput(
+      this,
+      "Kusto_data_ingestion_uri",
+      {
+        value: azurermKustoCluster.dataIngestionUri,
+      },
+    );
+    const cdktfTerraformOutputKustoIdentity = new cdktf.TerraformOutput(
+      this,
+      "Kusto_identity",
+      {
+        value: azurermKustoCluster.identity,
+        sensitive: true,
+      },
+    );
 
     /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
     cdktfTerraformOutputKustoId.overrideLogicalId("Kusto_id");
-    cdktfTerraformOutputKustoUri.overrideLogicalId("Kusto_uri")
-    cdktfTerraformOutputDataIngestionUri.overrideLogicalId("Kusto_data_ingestion_uri")
+    cdktfTerraformOutputKustoUri.overrideLogicalId("Kusto_uri");
+    cdktfTerraformOutputDataIngestionUri.overrideLogicalId(
+      "Kusto_data_ingestion_uri",
+    );
     cdktfTerraformOutputKustoIdentity.overrideLogicalId("Kusto_identity");
   }
 

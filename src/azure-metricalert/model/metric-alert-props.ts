@@ -1,7 +1,6 @@
-import * as actionProps from './action-props';
-import * as criteriaProps from './criteria-props';
-import * as dynamicCriteriaProps from './dynamic-criteria-props';
-
+import * as actionProps from "./action-props";
+import * as criteriaProps from "./criteria-props";
+import * as dynamicCriteriaProps from "./dynamic-criteria-props";
 
 export interface MetricAlertProps {
   /**
@@ -81,7 +80,7 @@ export interface MetricAlertProps {
    * A mapping of tags to assign to the resource.
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#tags}
    */
-  readonly tags?: { [key: string]: string; };
+  readonly tags?: { [key: string]: string };
 
   /**
    * One ore more criteria.

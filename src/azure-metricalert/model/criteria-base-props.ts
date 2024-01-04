@@ -1,5 +1,4 @@
-import { MetricAlertCriteriaDimensionProp } from './criteria-dimension-props';
-
+import { MetricAlertCriteriaDimensionProp } from "./criteria-dimension-props";
 
 /**
  * @description The base criteria properties for a Metric Alert.

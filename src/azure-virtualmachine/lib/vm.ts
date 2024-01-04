@@ -1,23 +1,27 @@
-import { Construct } from 'constructs';
-import * as cdktf from 'cdktf';
-import { WindowsVirtualMachine, WindowsVirtualMachineOsDisk, WindowsVirtualMachineSourceImageReference } from "@cdktf/provider-azurerm/lib/windows-virtual-machine";
-import {  LinuxVirtualMachine,
-          LinuxVirtualMachineSourceImageReference, 
-          LinuxVirtualMachineOsDisk, 
-          LinuxVirtualMachineAdminSshKey, 
-          LinuxVirtualMachineIdentity, 
-          LinuxVirtualMachineSecret,
-          LinuxVirtualMachineAdditionalCapabilities } from "@cdktf/provider-azurerm/lib/linux-virtual-machine"; 
-
+import {
+  LinuxVirtualMachine,
+  LinuxVirtualMachineSourceImageReference,
+  LinuxVirtualMachineOsDisk,
+  LinuxVirtualMachineAdminSshKey,
+  LinuxVirtualMachineIdentity,
+  LinuxVirtualMachineSecret,
+  LinuxVirtualMachineAdditionalCapabilities,
+} from "@cdktf/provider-azurerm/lib/linux-virtual-machine";
 import { NetworkInterface } from "@cdktf/provider-azurerm/lib/network-interface";
-import { Subnet } from "@cdktf/provider-azurerm/lib/subnet";
-import {WindowsImageReferences} from './image-references';
-import { Network } from "../../azure-virtualnetwork/lib/network";
-import {VirtualMachineExtension} from '@cdktf/provider-azurerm/lib/virtual-machine-extension';
 import { PublicIp } from "@cdktf/provider-azurerm/lib/public-ip";
-import {AzureResource} from "../../core-azure/lib";
+import { Subnet } from "@cdktf/provider-azurerm/lib/subnet";
+import { VirtualMachineExtension } from "@cdktf/provider-azurerm/lib/virtual-machine-extension";
+import {
+  WindowsVirtualMachine,
+  WindowsVirtualMachineOsDisk,
+  WindowsVirtualMachineSourceImageReference,
+} from "@cdktf/provider-azurerm/lib/windows-virtual-machine";
+import * as cdktf from "cdktf";
+import { Construct } from "constructs";
 
-
+import { WindowsImageReferences } from "./image-references";
+import { Network } from "../../azure-virtualnetwork/lib/network";
+import { AzureResource } from "../../core-azure/lib";
 
 export interface WindowsVMProps {
   /**
@@ -67,7 +71,7 @@ export interface WindowsVMProps {
   /**
    * Tags to apply to the virtual machine.
    */
-  readonly tags?: { [key: string]: string; };
+  readonly tags?: { [key: string]: string };
 
   /**
    * The OS disk configuration for the virtual machine.
@@ -97,7 +101,7 @@ export interface WindowsVMProps {
   readonly boostrapCustomData?: string;
 
   /**
-   * Bootdiagnostics settings for the VM. 
+   * Bootdiagnostics settings for the VM.
    */
   readonly bootDiagnosticsStorageURI?: string;
 }
@@ -111,7 +115,7 @@ export class WindowsVM extends AzureResource {
 
   /**
    * Constructs a new instance of the AzureWindowsVirtualMachine class.
-   * 
+   *
    * @param scope - The scope in which this construct is defined.
    * @param id - The ID of this construct.
    * @param props - The properties for defining a Windows Virtual Machine.
@@ -131,8 +135,14 @@ export class WindowsVM extends AzureResource {
         caching: "ReadWrite",
         storageAccountType: "Standard_LRS",
       },
-      sourceImageReference: props.sourceImageReference || WindowsImageReferences.WindowsServer2022DatacenterCore,
-      subnet: props.subnet || (new Network(this, 'vnet', { resourceGroupName: props.resourceGroupName, })).subnets["default"],
+      sourceImageReference:
+        props.sourceImageReference ||
+        WindowsImageReferences.WindowsServer2022DatacenterCore,
+      subnet:
+        props.subnet ||
+        new Network(this, "vnet", {
+          resourceGroupName: props.resourceGroupName,
+        }).subnets.default,
     };
 
     // Create Public IP if specified.
@@ -155,19 +165,22 @@ export class WindowsVM extends AzureResource {
       ...defaults,
       name: `nic-${defaults.name}`,
       resourceGroupName: props.resourceGroupName,
-      ipConfiguration: [{
-        name: "internal",
-        subnetId: defaults.subnet.id,
-        privateIpAddressAllocation: "Dynamic",
-        publicIpAddressId: publicIpId,
-      }],
+      ipConfiguration: [
+        {
+          name: "internal",
+          subnetId: defaults.subnet.id,
+          privateIpAddressAllocation: "Dynamic",
+          publicIpAddressId: publicIpId,
+        },
+      ],
       tags: props.tags,
     });
 
-
     // Base64 encode custom data if provided.
     const customData = props.customData || props.boostrapCustomData;
-    const base64CustomData = customData ? Buffer.from(customData).toString('base64') : undefined;
+    const base64CustomData = customData
+      ? Buffer.from(customData).toString("base64")
+      : undefined;
 
     // Create the Windows Virtual Machine.
     const azurermWindowsVirtualMachine = new WindowsVirtualMachine(this, "vm", {
@@ -179,7 +192,7 @@ export class WindowsVM extends AzureResource {
       networkInterfaceIds: [azurermNetworkInterface.id],
       sourceImageId: props.sourceImageId,
       customData: base64CustomData,
-      bootDiagnostics: { storageAccountUri: props.bootDiagnosticsStorageURI},
+      bootDiagnostics: { storageAccountUri: props.bootDiagnosticsStorageURI },
     });
 
     this.id = azurermWindowsVirtualMachine.id;
@@ -193,7 +206,8 @@ export class WindowsVM extends AzureResource {
         publisher: "Microsoft.Compute",
         type: "CustomScriptExtension",
         typeHandlerVersion: "1.10",
-        protectedSettings: "{\"commandToExecute\": \"rename  C:\\\\AzureData\\\\CustomData.bin  postdeploy.ps1 & powershell -ExecutionPolicy Unrestricted -File C:\\\\AzureData\\\\postdeploy.ps1\"}"
+        protectedSettings:
+          '{"commandToExecute": "rename  C:\\\\AzureData\\\\CustomData.bin  postdeploy.ps1 & powershell -ExecutionPolicy Unrestricted -File C:\\\\AzureData\\\\postdeploy.ps1"}',
       });
     }
   }
@@ -282,7 +296,7 @@ export interface LinuxVMProps {
   /**
    * Tags to apply to the virtual machine.
    */
-  readonly tags?: { [key: string]: string; };
+  readonly tags?: { [key: string]: string };
 
   /**
    * The OS disk configuration for the virtual machine.
@@ -312,7 +326,7 @@ export interface LinuxVMProps {
   readonly enableSshAzureADLogin?: boolean;
 
   /**
-   * Bootdiagnostics settings for the VM. 
+   * Bootdiagnostics settings for the VM.
    */
   readonly bootDiagnosticsStorageURI?: string;
 }
@@ -327,7 +341,7 @@ export class LinuxVM extends AzureResource {
 
   /**
    * Constructs a new instance of the AzureLinuxVirtualMachine class.
-   * 
+   *
    * @param scope - The scope in which this construct is defined.
    * @param id - The ID of this construct.
    * @param props - The properties for defining a Linux Virtual Machine.
@@ -352,8 +366,14 @@ export class LinuxVM extends AzureResource {
         caching: "ReadWrite",
         storageAccountType: "Standard_LRS",
       },
-      sourceImageReference: props.sourceImageReference || WindowsImageReferences.WindowsServer2022DatacenterCore,
-      subnet: props.subnet || (new Network(this, 'vnet', { resourceGroupName: props.resourceGroupName, })).subnets["default"],
+      sourceImageReference:
+        props.sourceImageReference ||
+        WindowsImageReferences.WindowsServer2022DatacenterCore,
+      subnet:
+        props.subnet ||
+        new Network(this, "vnet", {
+          resourceGroupName: props.resourceGroupName,
+        }).subnets.default,
     };
 
     // Create Public IP if specified
@@ -376,12 +396,14 @@ export class LinuxVM extends AzureResource {
       ...defaults,
       name: `nic-${defaults.name}`,
       resourceGroupName: props.resourceGroupName,
-      ipConfiguration: [{
-        name: "internal",
-        subnetId: defaults.subnet.id,
-        privateIpAddressAllocation: "Dynamic",
-        publicIpAddressId: publicIpId,
-      }],
+      ipConfiguration: [
+        {
+          name: "internal",
+          subnetId: defaults.subnet.id,
+          privateIpAddressAllocation: "Dynamic",
+          publicIpAddressId: publicIpId,
+        },
+      ],
       tags: props.tags,
     });
 
@@ -393,11 +415,15 @@ export class LinuxVM extends AzureResource {
       tags: props.tags,
       networkInterfaceIds: [azurermNetworkInterface.id],
       sourceImageId: props.sourceImageId,
-      customData: props.customData ? Buffer.from(props.customData).toString('base64') : undefined,
-      userData: props.userData ? Buffer.from(props.userData).toString('base64') : undefined,
+      customData: props.customData
+        ? Buffer.from(props.customData).toString("base64")
+        : undefined,
+      userData: props.userData
+        ? Buffer.from(props.userData).toString("base64")
+        : undefined,
       availabilitySetId: props.availabilitySetId,
       adminSshKey: props.adminSshKey,
-      bootDiagnostics: { storageAccountUri: props.bootDiagnosticsStorageURI},
+      bootDiagnostics: { storageAccountUri: props.bootDiagnosticsStorageURI },
       zone: props.zone,
       identity: props.identity,
       additionalCapabilities: props.additionalCapabilities,
@@ -420,11 +446,5 @@ export class LinuxVM extends AzureResource {
         tags: props.tags,
       });
     }
-
   }
-
 }
-
-
-
-

@@ -1,8 +1,7 @@
-import { Construct } from 'constructs';
 import { MonitorScheduledQueryRulesAlertV2 } from "@cdktf/provider-azurerm/lib/monitor-scheduled-query-rules-alert-v2";
-import * as cdktf from 'cdktf';
-import moment = require('moment');
-
+import * as cdktf from "cdktf";
+import { Construct } from "constructs";
+import * as moment from "moment";
 
 export interface AzureQueryRuleAlertProps {
   /**
@@ -73,7 +72,7 @@ export interface AzureQueryRuleAlertProps {
    * Possible values are PT1M, PT5M, PT10M, PT15M, PT30M, PT45M, PT1H, PT2H, PT3H, PT4H, PT5H, PT6H, P1D.
    */
   readonly evaluationFrequency: string;
-  /** 
+  /**
    * Specifies the list of resource IDs that this scheduled query rule is scoped to.
    */
   readonly scopes: string[];
@@ -134,7 +133,6 @@ export interface AzureQueryRuleAlertProps {
   readonly tags?: { [key: string]: string };
 }
 
-
 export class QueryRuleAlert extends Construct {
   readonly queryRuleAlertProps: AzureQueryRuleAlertProps;
   public readonly id: string;
@@ -142,7 +140,7 @@ export class QueryRuleAlert extends Construct {
 
   /**
    * Constructs a new instance of the AzureQueryRuleAlert class.
-   * 
+   *
    * @param scope - The scope in which this construct is defined.
    * @param id - The ID of this construct.
    * @param props - The properties required for Azure Query Rule Alert.
@@ -151,10 +149,68 @@ export class QueryRuleAlert extends Construct {
     super(scope, id);
 
     // Properties validation
-    const evaluationFrequencyOption = ["PT1M", "PT5M", "PT10M", "PT15M", "PT30M", "PT45M", "PT1H", "PT2H", "PT3H", "PT4H", "PT5H", "PT6H", "P1D"];
-    const windowDurationOption = ["PT1M", "PT5M", "PT10M", "PT15M", "PT30M", "PT45M", "PT1H", "PT2H", "PT3H", "PT4H", "PT5H", "PT6H", "P1D", "P2D"];
-    const muteActionsAfterAlertDurationOption = ["PT5M", "PT10M", "PT15M", "PT30M", "PT45M", "PT1H", "PT2H", "PT3H", "PT4H", "PT5H", "PT6H", "P1D", "P2D"];
-    const queryTimeRangeOverrideOption = ["PT5M", "PT10M", "PT15M", "PT20M", "PT30M", "PT45M", "PT1H", "PT2H", "PT3H", "PT4H", "PT5H", "PT6H", "P1D", "P2D"];
+    const evaluationFrequencyOption = [
+      "PT1M",
+      "PT5M",
+      "PT10M",
+      "PT15M",
+      "PT30M",
+      "PT45M",
+      "PT1H",
+      "PT2H",
+      "PT3H",
+      "PT4H",
+      "PT5H",
+      "PT6H",
+      "P1D",
+    ];
+    const windowDurationOption = [
+      "PT1M",
+      "PT5M",
+      "PT10M",
+      "PT15M",
+      "PT30M",
+      "PT45M",
+      "PT1H",
+      "PT2H",
+      "PT3H",
+      "PT4H",
+      "PT5H",
+      "PT6H",
+      "P1D",
+      "P2D",
+    ];
+    const muteActionsAfterAlertDurationOption = [
+      "PT5M",
+      "PT10M",
+      "PT15M",
+      "PT30M",
+      "PT45M",
+      "PT1H",
+      "PT2H",
+      "PT3H",
+      "PT4H",
+      "PT5H",
+      "PT6H",
+      "P1D",
+      "P2D",
+    ];
+    const queryTimeRangeOverrideOption = [
+      "PT5M",
+      "PT10M",
+      "PT15M",
+      "PT20M",
+      "PT30M",
+      "PT45M",
+      "PT1H",
+      "PT2H",
+      "PT3H",
+      "PT4H",
+      "PT5H",
+      "PT6H",
+      "P1D",
+      "P2D",
+    ];
 
     // Validate evaluationFrequency
     if (!evaluationFrequencyOption.includes(props.evaluationFrequency)) {
@@ -165,18 +221,27 @@ export class QueryRuleAlert extends Construct {
       throw new Error("invalid windowDuration");
     }
     // Validate muteActionsAfterAlertDuration
-    if (props.muteActionsAfterAlertDuration && !muteActionsAfterAlertDurationOption.includes(props.muteActionsAfterAlertDuration)) {
+    if (
+      props.muteActionsAfterAlertDuration &&
+      !muteActionsAfterAlertDurationOption.includes(
+        props.muteActionsAfterAlertDuration,
+      )
+    ) {
       throw new Error("invalid muteActionsAfterAlertDuration");
     }
     // Validate queryTimeRangeOverride
-    if (props.queryTimeRangeOverride && !queryTimeRangeOverrideOption.includes(props.queryTimeRangeOverride)) {
+    if (
+      props.queryTimeRangeOverride &&
+      !queryTimeRangeOverrideOption.includes(props.queryTimeRangeOverride)
+    ) {
       throw new Error("invalid queryTimeRangeOverride");
     }
     // The query look back which is windowDuration * numberOfEvaluationPeriods cannot exceed 48 hours.
     if (props.criteriaFailingPeriods) {
       const windowDurationHours = moment.duration(props.windowDuration).hours();
-      const numberOfEvaluationPeriodsHours = props.criteriaFailingPeriods.numberOfEvaluationPeriods;
-      if ( windowDurationHours * numberOfEvaluationPeriodsHours > 48 ) {
+      const numberOfEvaluationPeriodsHours =
+        props.criteriaFailingPeriods.numberOfEvaluationPeriods;
+      if (windowDurationHours * numberOfEvaluationPeriodsHours > 48) {
         throw new Error("queryTimeRangeOverride cannot exceed 48 hours");
       }
     }
@@ -187,49 +252,72 @@ export class QueryRuleAlert extends Construct {
     // Properties with default values
     const defaults = {
       autoMitigationEnabled: props.autoMitigationEnabled || false,
-      workspaceAlertsStorageEnabled: props.workspaceAlertsStorageEnabled || false,
+      workspaceAlertsStorageEnabled:
+        props.workspaceAlertsStorageEnabled || false,
       enabled: props.enabled || true,
       skipQueryValidation: props.skipQueryValidation || true,
       metricMeasureColumn: props.criteriaMetricMeasureColumn || undefined,
-    }
+    };
 
-    const criteriaFailingPeriods = props.criteriaFailingPeriods ? {
-      minimumFailingPeriodsToTriggerAlert: props.criteriaFailingPeriods.minimumFailingPeriodsToTriggerAlert,
-      numberOfEvaluationPeriods: props.criteriaFailingPeriods.numberOfEvaluationPeriods,
-    } : undefined;
+    const criteriaFailingPeriods = props.criteriaFailingPeriods
+      ? {
+          minimumFailingPeriodsToTriggerAlert:
+            props.criteriaFailingPeriods.minimumFailingPeriodsToTriggerAlert,
+          numberOfEvaluationPeriods:
+            props.criteriaFailingPeriods.numberOfEvaluationPeriods,
+        }
+      : undefined;
 
-    const dimension = props.criteriaDimension ? [{
-      name: props.criteriaDimension.name,
-      operator: props.criteriaDimension.operator,
-      values: props.criteriaDimension.values,
-    }] : undefined
+    const dimension = props.criteriaDimension
+      ? [
+          {
+            name: props.criteriaDimension.name,
+            operator: props.criteriaDimension.operator,
+            values: props.criteriaDimension.values,
+          },
+        ]
+      : undefined;
 
-    const azurermMonitorQueryRuleAlert = new MonitorScheduledQueryRulesAlertV2(this, 'queryrulealert', {
-      ...defaults,
-      name: props.name,
-      resourceGroupName: props.resourceGroupName,
-      location: props.location,
-      scopes: props.scopes,
-      windowDuration: props.windowDuration,
-      evaluationFrequency: props.evaluationFrequency,
-      severity: props.severity,
-      criteria: [{
-        operator: props.criteriaOperator,
-        query: props.criteriaQuery,
-        threshold: props.criteriaThreshold,
-        timeAggregationMethod: props.criteriatimeAggregationMethod,
-        dimension: dimension,
-        failingPeriods: criteriaFailingPeriods,
-      }],
-      action: props.actionActionGroupId ? { actionGroups: props.actionActionGroupId } : undefined,
-      tags: props.tags,
-    });
+    const azurermMonitorQueryRuleAlert = new MonitorScheduledQueryRulesAlertV2(
+      this,
+      "queryrulealert",
+      {
+        ...defaults,
+        name: props.name,
+        resourceGroupName: props.resourceGroupName,
+        location: props.location,
+        scopes: props.scopes,
+        windowDuration: props.windowDuration,
+        evaluationFrequency: props.evaluationFrequency,
+        severity: props.severity,
+        criteria: [
+          {
+            operator: props.criteriaOperator,
+            query: props.criteriaQuery,
+            threshold: props.criteriaThreshold,
+            timeAggregationMethod: props.criteriatimeAggregationMethod,
+            dimension: dimension,
+            failingPeriods: criteriaFailingPeriods,
+          },
+        ],
+        action: props.actionActionGroupId
+          ? { actionGroups: props.actionActionGroupId }
+          : undefined,
+        tags: props.tags,
+      },
+    );
 
     // Output
     this.id = azurermMonitorQueryRuleAlert.id;
-    const cdktfTerraformOutputQueryRuleAlertId = new cdktf.TerraformOutput(this, "id", {
-      value: azurermMonitorQueryRuleAlert.id,
-    });
-    cdktfTerraformOutputQueryRuleAlertId.overrideLogicalId("query_rule_alert_id");
-  };
+    const cdktfTerraformOutputQueryRuleAlertId = new cdktf.TerraformOutput(
+      this,
+      "id",
+      {
+        value: azurermMonitorQueryRuleAlert.id,
+      },
+    );
+    cdktfTerraformOutputQueryRuleAlertId.overrideLogicalId(
+      "query_rule_alert_id",
+    );
+  }
 }

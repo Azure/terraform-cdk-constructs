@@ -1,9 +1,8 @@
-import { Construct } from 'constructs';
 import { MonitorMetricAlert } from "@cdktf/provider-azurerm/lib/monitor-metric-alert";
-import * as cdktf from 'cdktf';
-import moment = require('moment');
-import * as model from '../model';
-
+import * as cdktf from "cdktf";
+import { Construct } from "constructs";
+import * as moment from "moment";
+import * as model from "../model";
 
 export class MetricAlert extends Construct {
   readonly props: model.MetricAlertProps;
@@ -11,7 +10,7 @@ export class MetricAlert extends Construct {
 
   /**
    * Constructs a new instance of the MetricAlert class.
-   * 
+   *
    * @param scope - The scope in which this construct is defined.
    * @param id - The ID of this construct.
    * @param props - The properties required for Metric Alert.
@@ -33,32 +32,43 @@ export class MetricAlert extends Construct {
     this.ValidatePropsWindowSize();
     this.ValidatePropsWindowSizeGreaterThanFrequency();
 
-
     // Create Metric Alert
-    const metricAlert =
-      new MonitorMetricAlert(this, "metricAlert", {
-        name: props.name,
-        resourceGroupName: props.resourceGroupName,
-        scopes: props.scopes,
-        description: props.description,
-        targetResourceType: props.targetResourceType,
-        targetResourceLocation: props.targetResourceLocation,
-        action: cdktf.listMapper(model.monitorMetricAlertActionToTerraform, true)(this.props.action),
-        tags: props.tags,
-        enabled: this.props.enabled,
-        autoMitigate: this.props.automitigate,
-        frequency: this.props.frequency,
-        severity: this.props.severity,
-        windowSize: this.props.windowSize,
-        criteria: cdktf.listMapper(model.monitorMetricAlertCriteriaToTerraform, true)(this.props.criteria),
-        dynamicCriteria: cdktf.listMapper(model.monitorMetricAlertDynamicCriteriaToTerraform, true)(this.props.dynamicCriteria),
-      });
+    const metricAlert = new MonitorMetricAlert(this, "metricAlert", {
+      name: props.name,
+      resourceGroupName: props.resourceGroupName,
+      scopes: props.scopes,
+      description: props.description,
+      targetResourceType: props.targetResourceType,
+      targetResourceLocation: props.targetResourceLocation,
+      action: cdktf.listMapper(
+        model.monitorMetricAlertActionToTerraform,
+        true,
+      )(this.props.action),
+      tags: props.tags,
+      enabled: this.props.enabled,
+      autoMitigate: this.props.automitigate,
+      frequency: this.props.frequency,
+      severity: this.props.severity,
+      windowSize: this.props.windowSize,
+      criteria: cdktf.listMapper(
+        model.monitorMetricAlertCriteriaToTerraform,
+        true,
+      )(this.props.criteria),
+      dynamicCriteria: cdktf.listMapper(
+        model.monitorMetricAlertDynamicCriteriaToTerraform,
+        true,
+      )(this.props.dynamicCriteria),
+    });
 
     // Output properties
     this.id = metricAlert.id;
-    const cdktfTerraformOutputMetricAlertId = new cdktf.TerraformOutput(this, "id", {
-      value: metricAlert.id,
-    });
+    const cdktfTerraformOutputMetricAlertId = new cdktf.TerraformOutput(
+      this,
+      "id",
+      {
+        value: metricAlert.id,
+      },
+    );
     cdktfTerraformOutputMetricAlertId.overrideLogicalId("id");
   }
 
@@ -70,7 +80,16 @@ export class MetricAlert extends Construct {
   }
 
   private ValidatePropsWindowSize() {
-    const windowSizeOptions = ["PT1M", "PT5M", "PT15M", "PT30M", "PT1H", "PT6H", "PT12H", "P1D"];
+    const windowSizeOptions = [
+      "PT1M",
+      "PT5M",
+      "PT15M",
+      "PT30M",
+      "PT1H",
+      "PT6H",
+      "PT12H",
+      "P1D",
+    ];
     if (!windowSizeOptions.includes(this.props.windowSize ?? "NotSet")) {
       throw new Error(`windowSize must be one of ${windowSizeOptions}`);
     }
@@ -80,7 +99,7 @@ export class MetricAlert extends Construct {
     const f = moment.duration(this.props.frequency);
     const w = moment.duration(this.props.windowSize);
     if (w < f) {
-      throw new Error(`windowSize must be greater than frequency`);
+      throw new Error("windowSize must be greater than frequency");
     }
   }
 }

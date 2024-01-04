@@ -1,8 +1,6 @@
-
-import {Vault} from './vault';
-import { KeyVaultAccessPolicyA } from '@cdktf/provider-azurerm/lib/key-vault-access-policy';
-import { Construct } from 'constructs';
-
+import { KeyVaultAccessPolicyA } from "@cdktf/provider-azurerm/lib/key-vault-access-policy";
+import { Construct } from "constructs";
+import { Vault } from "./vault";
 
 export interface AccessPolicyProps {
   /**
@@ -55,21 +53,18 @@ export class AccessPolicy extends Construct {
   public readonly fqdn: string;
 
   constructor(scope: Construct, id: string, props: AccessPolicyProps) {
-      super(scope, id);
+    super(scope, id);
 
-      
+    const policy = new KeyVaultAccessPolicyA(this, "policy", {
+      keyVaultId: props.keyVaultId.id,
+      tenantId: props.tenantId,
+      objectId: props.objectId,
+      secretPermissions: props.secretPermissions,
+      certificatePermissions: props.certificatePermissions,
+      keyPermissions: props.keyPermissions,
+      storagePermissions: props.storagePermissions,
+    });
 
-      const policy = new KeyVaultAccessPolicyA(this, `policy`, {
-        keyVaultId: props.keyVaultId.id,
-        tenantId: props.tenantId,
-        objectId: props.objectId,
-        secretPermissions: props.secretPermissions,
-        certificatePermissions: props.certificatePermissions,
-        keyPermissions: props.keyPermissions,
-        storagePermissions: props.storagePermissions,
-      });
-
-      this.fqdn = "azurerm_key_vault_access_policy." + policy.friendlyUniqueId;
+    this.fqdn = "azurerm_key_vault_access_policy." + policy.friendlyUniqueId;
   }
-
 }

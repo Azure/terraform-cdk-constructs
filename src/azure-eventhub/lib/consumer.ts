@@ -2,8 +2,6 @@ import { EventhubConsumerGroup } from "@cdktf/provider-azurerm/lib/eventhub-cons
 import { TerraformOutput } from "cdktf";
 import { Construct } from "constructs";
 
-
-
 export interface ConsumerGroupProps {
   readonly name: string;
   /**
@@ -28,25 +26,37 @@ export class ConsumerGroup extends Construct {
   readonly ehConsumerGroupProps: ConsumerGroupProps;
   readonly id: string;
 
-  constructor(scope: Construct, name: string, ehConsumerGroupProps: ConsumerGroupProps) {
+  constructor(
+    scope: Construct,
+    name: string,
+    ehConsumerGroupProps: ConsumerGroupProps,
+  ) {
     super(scope, name);
 
     this.ehConsumerGroupProps = ehConsumerGroupProps;
 
-    const eventhubConsumerGroup = new EventhubConsumerGroup(this, ehConsumerGroupProps.name, {
-      name: ehConsumerGroupProps.name,
-      resourceGroupName: ehConsumerGroupProps.resourceGroupName,
-      namespaceName: ehConsumerGroupProps.namespaceName,
-      eventhubName: ehConsumerGroupProps.eventhubName,
-      userMetadata: ehConsumerGroupProps.userMetadata,
-    })
+    const eventhubConsumerGroup = new EventhubConsumerGroup(
+      this,
+      ehConsumerGroupProps.name,
+      {
+        name: ehConsumerGroupProps.name,
+        resourceGroupName: ehConsumerGroupProps.resourceGroupName,
+        namespaceName: ehConsumerGroupProps.namespaceName,
+        eventhubName: ehConsumerGroupProps.eventhubName,
+        userMetadata: ehConsumerGroupProps.userMetadata,
+      },
+    );
 
     this.id = eventhubConsumerGroup.id;
 
     // Outputs
-    const cdktfTerraformOutputEventhubConsumerGroupId = new TerraformOutput(this, 'id', {
-      value: eventhubConsumerGroup.id,
-    });
-    cdktfTerraformOutputEventhubConsumerGroupId.overrideLogicalId('id');
+    const cdktfTerraformOutputEventhubConsumerGroupId = new TerraformOutput(
+      this,
+      "id",
+      {
+        value: eventhubConsumerGroup.id,
+      },
+    );
+    cdktfTerraformOutputEventhubConsumerGroupId.overrideLogicalId("id");
   }
 }

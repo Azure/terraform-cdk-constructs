@@ -1,3 +1,3 @@
-export * from './diagsettings';
-export * from './rbac';
-export * from './resource';
+export * from "./diagsettings";
+export * from "./rbac";
+export * from "./resource";

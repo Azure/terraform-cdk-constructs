@@ -1,10 +1,10 @@
-import { BaseTestStack } from "../../testing";
-import { App } from "cdktf";
-import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
-import { Construct } from 'constructs';
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
+import { App } from "cdktf";
+import { Construct } from "constructs";
 import * as metricalert from "../../azure-metricalert";
+import { BaseTestStack } from "../../testing";
 
 const app = new App();
 
@@ -21,23 +21,23 @@ export class exampleAzureMetricAlert extends BaseTestStack {
     });
 
     const resourceGroup = new ResourceGroup(this, "rg", {
-      location: 'eastus',
+      location: "eastus",
       name: `rg-${this.name}`,
       tags: {
-        "environment": "dev",
-        "service_owner": "dev",
-        "service_name": "tf-test",
-      }
+        environment: "dev",
+        service_owner: "dev",
+        service_name: "tf-test",
+      },
     });
 
     const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "la", {
-      location: 'eastus',
+      location: "eastus",
       name: `la-${this.name}`,
       resourceGroupName: resourceGroup.name,
     });
 
     // Create Metric Alert
-    new metricalert.MetricAlert(this, 'metricAlert1', {
+    new metricalert.MetricAlert(this, "metricAlert1", {
       name: `metricalert1-${this.name}`,
       resourceGroupName: resourceGroup.name,
       scopes: [logAnalyticsWorkspace.id],
@@ -48,20 +48,23 @@ export class exampleAzureMetricAlert extends BaseTestStack {
           aggregation: "Average",
           operator: "LessThan",
           threshold: 0,
-          dimension: [{
-            name: "OSType",
-            operator: "Include",
-            values: ["*"],
-          }, {
-            name: "Version",
-            operator: "Include",
-            values: ["*"],
-          },],
+          dimension: [
+            {
+              name: "OSType",
+              operator: "Include",
+              values: ["*"],
+            },
+            {
+              name: "Version",
+              operator: "Include",
+              values: ["*"],
+            },
+          ],
         },
       ],
     });
 
-    new metricalert.MetricAlert(this, 'metricAlert2', {
+    new metricalert.MetricAlert(this, "metricAlert2", {
       name: `metricalert2-${this.name}`,
       resourceGroupName: resourceGroup.name,
       scopes: [logAnalyticsWorkspace.id],

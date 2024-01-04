@@ -1,11 +1,9 @@
-import { EventhubAuthorizationRule } from '@cdktf/provider-azurerm/lib/eventhub-authorization-rule';
-import { Construct } from 'constructs';
-import * as cdktf from 'cdktf';
-import { Vault } from '../../azure-keyvault';
+import { EventhubAuthorizationRule } from "@cdktf/provider-azurerm/lib/eventhub-authorization-rule";
+import * as cdktf from "cdktf";
+import { Construct } from "constructs";
+import { Vault } from "../../azure-keyvault";
 
-
-
-export interface AuthorizationRuleProps{
+export interface AuthorizationRuleProps {
   readonly name: string;
   /**
    * The name of the resource group in which the EventHub's parent Namespace exists.
@@ -36,13 +34,16 @@ export interface AuthorizationRuleProps{
   readonly manage?: boolean;
 }
 
-
 export class AuthorizationRule extends Construct {
   readonly ehInstanceAuthProps: AuthorizationRuleProps;
   private readonly primaryConnectionString: string;
   private readonly primaryKey: string;
 
-  constructor(scope: Construct, name: string, ehInstanceAuthProps: AuthorizationRuleProps) {
+  constructor(
+    scope: Construct,
+    name: string,
+    ehInstanceAuthProps: AuthorizationRuleProps,
+  ) {
     super(scope, name);
 
     this.ehInstanceAuthProps = ehInstanceAuthProps;
@@ -57,33 +58,45 @@ export class AuthorizationRule extends Construct {
       send = true;
     }
 
-    const eventhubauthrule = new EventhubAuthorizationRule(this, ehInstanceAuthProps.name, {
-      name: ehInstanceAuthProps.name,
-      resourceGroupName: this.ehInstanceAuthProps.resourceGroupName,
-      namespaceName: this.ehInstanceAuthProps.namespaceName,
-      eventhubName: this.ehInstanceAuthProps.eventhubName,
-      listen: listen,
-      send: send,
-      manage: manage,
-    });
+    const eventhubauthrule = new EventhubAuthorizationRule(
+      this,
+      ehInstanceAuthProps.name,
+      {
+        name: ehInstanceAuthProps.name,
+        resourceGroupName: this.ehInstanceAuthProps.resourceGroupName,
+        namespaceName: this.ehInstanceAuthProps.namespaceName,
+        eventhubName: this.ehInstanceAuthProps.eventhubName,
+        listen: listen,
+        send: send,
+        manage: manage,
+      },
+    );
 
     // Outputs
     this.primaryConnectionString = eventhubauthrule.primaryConnectionString;
     this.primaryKey = eventhubauthrule.primaryKey;
 
-    const cdktfTerraformOutputEventhubAuthPrimaryConnectionString = new cdktf.TerraformOutput(this, 'primary_connection_string', {
-      value: eventhubauthrule.primaryConnectionString,
-      sensitive: true,
-    });
-    const cdktfTerraformOutputEventhubAuthPrimaryKey = new cdktf.TerraformOutput(this, 'primary_key', {
-      value: eventhubauthrule.primaryKey,
-      sensitive: true,
-    });
-    cdktfTerraformOutputEventhubAuthPrimaryConnectionString.overrideLogicalId('primary_connection_string');
-    cdktfTerraformOutputEventhubAuthPrimaryKey.overrideLogicalId('primary_key');
+    const cdktfTerraformOutputEventhubAuthPrimaryConnectionString =
+      new cdktf.TerraformOutput(this, "primary_connection_string", {
+        value: eventhubauthrule.primaryConnectionString,
+        sensitive: true,
+      });
+    const cdktfTerraformOutputEventhubAuthPrimaryKey =
+      new cdktf.TerraformOutput(this, "primary_key", {
+        value: eventhubauthrule.primaryKey,
+        sensitive: true,
+      });
+    cdktfTerraformOutputEventhubAuthPrimaryConnectionString.overrideLogicalId(
+      "primary_connection_string",
+    );
+    cdktfTerraformOutputEventhubAuthPrimaryKey.overrideLogicalId("primary_key");
   }
 
-  addPrimaryConnectionStringToVault(vault: Vault, name: string, expirationDate?: string) {
+  addPrimaryConnectionStringToVault(
+    vault: Vault,
+    name: string,
+    expirationDate?: string,
+  ) {
     vault.addSecret(name, this.primaryConnectionString, expirationDate);
   }
 

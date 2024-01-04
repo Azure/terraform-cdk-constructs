@@ -1,25 +1,28 @@
+import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { App } from "cdktf";
 import { Construct } from "constructs";
-import { BaseTestStack } from "../../testing";
-import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
-import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import * as rg from "../../azure-resourcegroup";
+import { BaseTestStack } from "../../testing";
 import * as eh from "../lib";
-
 
 const app = new App();
 
 export class exampleAzureEventhub extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
-    const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
+    const clientConfig = new DataAzurermClientConfig(
+      this,
+      "CurrentClientConfig",
+      {},
+    );
     new AzurermProvider(this, "azureFeature", {
       features: {},
     });
 
     const resourceGroup = new rg.Group(this, "rg", {
       name: `rg-${this.name}`,
-      location: 'eastus',
+      location: "eastus",
     });
 
     // Create Eventhub Namespace
@@ -31,7 +34,7 @@ export class exampleAzureEventhub extends BaseTestStack {
 
     // Create Eventhub Instance
     const eventhubInstance = eventhubNamespace.addEventhubInstance({
-      name: `test-eventhub-instance`,
+      name: "test-eventhub-instance",
       partitionCount: 2,
       messageRetention: 1,
       status: "Active",
@@ -39,7 +42,7 @@ export class exampleAzureEventhub extends BaseTestStack {
 
     // Create Eventhub Instance Authorization Rule
     eventhubInstance.addAuthorizationRule({
-      name: `test-rule`,
+      name: "test-rule",
       listen: true,
       send: true,
       manage: false,
@@ -47,7 +50,7 @@ export class exampleAzureEventhub extends BaseTestStack {
 
     // Add Consumer Group to Eventhub Instance
     eventhubInstance.addConsumerGroup({
-      name: `test-consumer-group`,
+      name: "test-consumer-group",
     });
 
     // Add IAM role to Eventhub Namespace
@@ -55,16 +58,16 @@ export class exampleAzureEventhub extends BaseTestStack {
 
     // Add Kusto data connection
     eventhubInstance.addKustoDataConnection({
-      name: `test-kusto-data-connection`,
-      location: 'eastus',
-      resourceGroupName: 'test-rg',         // Kusto resource group
-      clusterName: 'testkustocluster',      // Kusto cluster name
-      databaseName: "test-kusto-database",  // Kusto database name
+      name: "test-kusto-data-connection",
+      location: "eastus",
+      resourceGroupName: "test-rg", // Kusto resource group
+      clusterName: "testkustocluster", // Kusto cluster name
+      databaseName: "test-kusto-database", // Kusto database name
     });
 
     // Add Metric Alert in Eventhub Namespace
     eventhubNamespace.addMetricAlert({
-      name: `test-metric-alert`,
+      name: "test-metric-alert",
       criteria: [
         {
           metricName: "Server Errors.",
@@ -77,7 +80,6 @@ export class exampleAzureEventhub extends BaseTestStack {
     });
   }
 }
-
 
 new exampleAzureEventhub(app, "testAzureEventhub");
 app.synth();

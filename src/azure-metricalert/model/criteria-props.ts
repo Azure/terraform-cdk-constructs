@@ -1,4 +1,4 @@
-import { MetricAlertCriteriaBaseProps } from './criteria-base-props';
+import { MetricAlertCriteriaBaseProps } from "./criteria-base-props";
 
 /**
  * @description The criteria properties for a Metric Alert.

@@ -1,11 +1,10 @@
-import * as cdktf from "cdktf";
-import { BaseTestStack } from "../../testing";
-import { App } from "cdktf";
-import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
-import { Construct } from 'constructs';
-import * as ag from '..';
-
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
+import { App } from "cdktf";
+import * as cdktf from "cdktf";
+import { Construct } from "constructs";
+import * as ag from "..";
+import { BaseTestStack } from "../../testing";
 
 const app = new App();
 
@@ -22,16 +21,16 @@ export class exampleAzureActionGroup extends BaseTestStack {
     });
 
     const resourceGroup = new ResourceGroup(this, "rg", {
-      location: 'eastus',
+      location: "eastus",
       name: `rg-${this.name}`,
       tags: {
-        "test": "test",
-      }
+        test: "test",
+      },
     });
 
-    const actiongroup = new ag.ActionGroup(this, 'testAzureActionGroup', {
+    const actiongroup = new ag.ActionGroup(this, "testAzureActionGroup", {
       name: "testactiongroup",
-      location: 'global',
+      location: "global",
       resourceGroupName: resourceGroup.name,
       shortName: "testshortn",
       emailReceivers: [
@@ -59,9 +58,13 @@ export class exampleAzureActionGroup extends BaseTestStack {
     });
 
     // Outputs to use for End to End Test
-    const cdktfTerraformOutputActionGroupId = new cdktf.TerraformOutput(this, "id", {
-      value: actiongroup.id,
-    });
+    const cdktfTerraformOutputActionGroupId = new cdktf.TerraformOutput(
+      this,
+      "id",
+      {
+        value: actiongroup.id,
+      },
+    );
 
     cdktfTerraformOutputActionGroupId.overrideLogicalId("id");
   }
