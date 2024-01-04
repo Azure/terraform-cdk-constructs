@@ -8,7 +8,7 @@ const project = new cdktf.ConstructLibraryCdktf({
   cdktfVersion: "0.17.3",
   jsiiVersion: "~5.2.0",
   typescriptVersion: "~5.2.0", // should always be the same major/minor as JSII
-  minNodeVersion: "18.12.0",
+  minNodeVersion: "20.10.0",
   defaultReleaseBranch: "main",
   name: "terraform-cdk-modules",
   projenrcTs: true,

@@ -37,7 +37,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.8",
     "@types/moment": "^2.13.0",
-    "@types/node": "^18",
+    "@types/node": "^20",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
     "constructs": "^10.0.0",
@@ -79,7 +79,7 @@
     "cdktf"
   ],
   "engines": {
-    "node": ">= 18.12.0"
+    "node": ">= 20.10.0"
   },
   "main": "lib/index.js",
   "license": "UNLICENSED",
