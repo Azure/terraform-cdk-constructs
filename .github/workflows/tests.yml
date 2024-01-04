@@ -1,4 +1,4 @@
-name: PR Pipeline
+name: tests
 
 on:
   pull_request:

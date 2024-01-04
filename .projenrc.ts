@@ -32,6 +32,7 @@ const project = new cdktf.ConstructLibraryCdktf({
     "moment@^2.30.1",
   ],
   peerDeps: ["@cdktf/provider-azurerm@^9.0.8"],
+  bundledDeps: ["moment@^2.30.1"],
   devDeps: [
     "@types/jest@^29.5.8",
     "@types/node@^18.7.18",

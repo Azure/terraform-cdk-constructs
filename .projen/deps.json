@@ -108,6 +108,11 @@
       "type": "build"
     },
     {
+      "name": "moment",
+      "version": "^2.30.1",
+      "type": "bundled"
+    },
+    {
       "name": "@cdktf/provider-azurerm",
       "version": "^9.0.8",
       "type": "peer"
