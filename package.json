@@ -69,7 +69,6 @@
     "@cdktf/provider-azurerm": "^9.0.8",
     "cdktf": "0.17.3",
     "constructs": "^10.1.106",
-    "crypto-random-string": "^5.0.0",
     "moment": "^2.30.1",
     "nanoid": "^4.0.2",
     "ts-md5": "^1.3.1"

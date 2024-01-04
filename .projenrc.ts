@@ -25,7 +25,6 @@ const project = new cdktf.ConstructLibraryCdktf({
   },
   deps: [
     "@cdktf/provider-azurerm@^9.0.8",
-    "crypto-random-string@^5.0.0",
     "nanoid@^4.0.2",
     "ts-md5@^1.3.1",
     "cdktf@0.17.3",
@@ -58,6 +57,8 @@ if (project.jest && project.jest.config) {
 }
 project.tsconfigDev.include.push("**/*.spec.ts");
 
+// Release Workflow
+
 // Add internal npm auth to pipelines
 const setupNpmrcScript = {
   name: "Setup .npmrc",
@@ -72,6 +73,12 @@ releaseWorkflow?.patch(
   JsonPatch.add("/jobs/release_npm/steps/1", setupNpmrcScript),
 );
 releaseWorkflow?.patch(JsonPatch.remove("/jobs/release_npm/steps/8/env"));
+
+// Build Workflow
+const buildWorkflow = project.tryFindObjectFile(
+  ".github/workflows/build.yml",
+);
+buildWorkflow?.patch(JsonPatch.remove("/jobs/build/steps/0/with")); // Remove because build tries to copy forked repo which is private
 
 // Add .gitignore entries
 project.gitignore.include("cdk.out");
