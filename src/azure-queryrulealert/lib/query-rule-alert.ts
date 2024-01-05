@@ -3,7 +3,7 @@ import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import * as moment from "moment";
 
-export interface AzureQueryRuleAlertProps {
+export interface BaseAzureQueryRuleAlertProps {
   /**
    * The name of the Monitor Scheduled Query Rule.
    */
@@ -73,10 +73,6 @@ export interface AzureQueryRuleAlertProps {
    */
   readonly evaluationFrequency: string;
   /**
-   * Specifies the list of resource IDs that this scheduled query rule is scoped to.
-   */
-  readonly scopes: string[];
-  /**
    * Severity of the alert. Should be an integer between 0 and 4. Value of 0 is severest.
    */
   readonly severity: number;
@@ -131,6 +127,13 @@ export interface AzureQueryRuleAlertProps {
    * A mapping of tags which should be assigned to the Monitor Scheduled Query Rule.
    */
   readonly tags?: { [key: string]: string };
+}
+
+export interface AzureQueryRuleAlertProps extends BaseAzureQueryRuleAlertProps {
+  /**
+   * Specifies the list of resource IDs that this scheduled query rule is scoped to.
+   */
+  readonly scopes: string[];
 }
 
 export class QueryRuleAlert extends Construct {

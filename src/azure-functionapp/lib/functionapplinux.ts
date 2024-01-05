@@ -53,7 +53,7 @@ export interface FunctionAppLinuxProps {
   /**
    * Optional SKU for the App Service Plan, defines the pricing tier and capabilities.
    */
-  servicePlanSku?: string;
+  readonly servicePlanSku?: string;
 
   /**
    * Optional tags for categorizing and managing the Function App resources within Azure.
@@ -63,7 +63,7 @@ export interface FunctionAppLinuxProps {
   /**
    * Optional site configuration for additional settings like environment variables, and connection strings.
    */
-  siteConfig?: LinuxFunctionAppSiteConfig;
+  readonly siteConfig?: LinuxFunctionAppSiteConfig;
 
   /**
    * Optional ID for the App Service Environment to be used by the service plan.
@@ -198,7 +198,7 @@ export interface FunctionAppLinuxProps {
    * - To restrict your storage account to a virtual network, set 'WEBSITE_CONTENTOVERVNET' to 1 in app settings.
    *   Ensure a predefined share is created for this configuration.
    */
-  appSettings?: { [key: string]: string };
+  readonly appSettings?: { [key: string]: string };
 }
 
 export class FunctionAppLinux extends AzureResource {

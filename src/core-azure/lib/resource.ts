@@ -1,5 +1,8 @@
 import { Construct } from "constructs";
-import { DiagnosticSettings, DiagnosticSettingsProps } from "./diagsettings";
+import {
+  DiagnosticSettings,
+  BaseDiagnosticSettingsProps,
+} from "./diagsettings";
 import { Rbac } from "./rbac";
 import * as metricalert from "../../azure-metricalert";
 import * as queryalert from "../../azure-queryrulealert";
@@ -22,9 +25,7 @@ export abstract class AzureResource extends Construct {
   }
 
   // Diag Settings Methods
-  public addDiagSettings(
-    props: Omit<DiagnosticSettingsProps, "targetResourceId">,
-  ) {
+  public addDiagSettings(props: BaseDiagnosticSettingsProps) {
     new DiagnosticSettings(this, "diagsettings", {
       name: props.name || "diag-settings",
       logAnalyticsWorkspaceId: props.logAnalyticsWorkspaceId,
@@ -38,18 +39,14 @@ export abstract class AzureResource extends Construct {
 }
 
 export abstract class AzureResourceWithAlert extends AzureResource {
-  public addQueryRuleAlert(
-    props: Omit<queryalert.AzureQueryRuleAlertProps, "scopes">,
-  ) {
+  public addQueryRuleAlert(props: queryalert.BaseAzureQueryRuleAlertProps) {
     new queryalert.QueryRuleAlert(this, "queryrulealert", {
       ...props,
       scopes: [this.id],
     });
   }
 
-  public addMetricAlert(
-    props: Omit<metricalert.MetricAlertProps, "resourceGroupName" | "scopes">,
-  ) {
+  public addMetricAlert(props: metricalert.BaseMetricAlertProps) {
     new metricalert.MetricAlert(this, "metricalert", {
       ...props,
       resourceGroupName: this.resourceGroupName,

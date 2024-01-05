@@ -1,6 +1,11 @@
 {
   "dependencies": [
     {
+      "name": "@cdktf/provider-azurerm",
+      "version": "^9.0.8",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -22,6 +27,11 @@
     {
       "name": "@typescript-eslint/parser",
       "version": "^6",
+      "type": "build"
+    },
+    {
+      "name": "cdktf",
+      "version": "0.17.3",
       "type": "build"
     },
     {

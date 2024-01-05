@@ -1,9 +1,26 @@
 import { RuleConfig } from ".";
 
-interface RuleOverrides {
-  sourceAddressPrefix?: string;
-  destinationAddressPrefix?: string;
-  priority?: number;
+/**
+ * Properties for defining overrides for a rule in an Azure Network Security Group.
+ */
+export interface RuleOverrides {
+  /**
+   * Optional source address prefix to be matched for the rule. This can be an IP address or a range of IP addresses.
+   * If not specified, the default behavior is to match any source address.
+   */
+  readonly sourceAddressPrefix?: string;
+
+  /**
+   * Optional destination address prefix to be matched for the rule. Similar to the source address prefix,
+   * this can be a specific IP address or a range. If not provided, it defaults to matching any destination address.
+   */
+  readonly destinationAddressPrefix?: string;
+
+  /**
+   * Optional priority for the rule. Rules are processed in the order of their priority,
+   * with lower numbers processed before higher numbers. If not provided, a default priority will be assigned.
+   */
+  readonly priority?: number;
 }
 
 export class PreconfiguredRules {

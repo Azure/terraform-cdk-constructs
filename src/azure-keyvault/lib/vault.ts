@@ -56,12 +56,12 @@ export interface VaultProps {
    */
 }
 
-interface KeyVaultNetworkAcls {
+export interface KeyVaultNetworkAcls {
   bypass: string;
   defaultAction: string;
 }
 
-interface GrantCustomAccessOptions {
+export interface GrantCustomAccessOptions {
   secretPermissions?: string[];
   certificatePermissions?: string[];
   keyPermissions?: string[];

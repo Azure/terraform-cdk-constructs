@@ -5,25 +5,85 @@ import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import { AzureResourceWithAlert } from "../../core-azure/lib";
 
-type DataExport = {
-  name: string;
-  export_destination_id: string;
-  table_names: string[];
-  enabled: boolean;
-};
-type LAFunctions = {
-  name: string;
-  display_name: string;
-  query: string;
-  function_alias: string;
-  function_parameters: string[];
-};
-type Queries = {
-  name: string;
-  category: string;
-  display_name: string;
-  query: string;
-};
+/**
+ * Properties for defining a data export in a Log Analytics Workspace.
+ */
+export interface DataExport {
+  /**
+   * The name of the data export.
+   */
+  readonly name: string;
+
+  /**
+   * The ID of the destination resource for the export.
+   */
+  readonly export_destination_id: string;
+
+  /**
+   * An array of table names to be included in the data export.
+   */
+  readonly table_names: string[];
+
+  /**
+   * Indicates whether the data export is enabled.
+   */
+  readonly enabled: boolean;
+}
+
+/**
+ * Properties for defining a Log Analytics function.
+ */
+export interface LAFunctions {
+  /**
+   * The name of the function.
+   */
+  readonly name: string;
+
+  /**
+   * The display name for the function.
+   */
+  readonly display_name: string;
+
+  /**
+   * The query that the function will execute.
+   */
+  readonly query: string;
+
+  /**
+   * The alias to be used for the function.
+   */
+  readonly function_alias: string;
+
+  /**
+   * A list of parameters for the function.
+   */
+  readonly function_parameters: string[];
+}
+
+/**
+ * Properties for defining a saved query in a Log Analytics Workspace.
+ */
+export interface Queries {
+  /**
+   * The name of the saved query.
+   */
+  readonly name: string;
+
+  /**
+   * The category of the saved query.
+   */
+  readonly category: string;
+
+  /**
+   * The display name for the saved query.
+   */
+  readonly display_name: string;
+
+  /**
+   * The query string.
+   */
+  readonly query: string;
+}
 
 export interface WorkspaceProps {
   /**

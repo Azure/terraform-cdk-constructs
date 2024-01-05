@@ -49,9 +49,7 @@ export class exampleAzureEventhub extends BaseTestStack {
     });
 
     // Add Consumer Group to Eventhub Instance
-    eventhubInstance.addConsumerGroup({
-      name: "test-consumer-group",
-    });
+    eventhubInstance.addConsumerGroup("test-consumer-group");
 
     // Add IAM role to Eventhub Namespace
     eventhubNamespace.addAccess(clientConfig.objectId, "Contributor");
@@ -60,9 +58,9 @@ export class exampleAzureEventhub extends BaseTestStack {
     eventhubInstance.addKustoDataConnection({
       name: "test-kusto-data-connection",
       location: "eastus",
-      resourceGroupName: "test-rg", // Kusto resource group
-      clusterName: "testkustocluster", // Kusto cluster name
-      databaseName: "test-kusto-database", // Kusto database name
+      kustoResourceGroupName: "test-rg", // Kusto resource group
+      kustoClusterName: "testkustocluster", // Kusto cluster name
+      kustoDatabaseName: "test-kusto-database", // Kusto database name
     });
 
     // Add Metric Alert in Eventhub Namespace

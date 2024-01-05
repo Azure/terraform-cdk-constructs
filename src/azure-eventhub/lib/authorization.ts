@@ -1,4 +1,7 @@
-import { EventhubAuthorizationRule } from "@cdktf/provider-azurerm/lib/eventhub-authorization-rule";
+import {
+  EventhubAuthorizationRule,
+  EventhubAuthorizationRuleConfig,
+} from "@cdktf/provider-azurerm/lib/eventhub-authorization-rule";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import { Vault } from "../../azure-keyvault";
@@ -7,19 +10,6 @@ export interface AuthorizationRuleProps {
   readonly name: string;
   /**
    * The name of the resource group in which the EventHub's parent Namespace exists.
-   */
-  readonly resourceGroupName: string;
-  /**
-   * Specifies the name of the EventHub Namespace.
-   */
-  readonly namespaceName: string;
-  /**
-   * Specifies the name of the EventHub resource.
-   */
-  readonly eventhubName: string;
-  /**
-   * Does this Authorization Rule have permissions to Listen to the Event Hub?
-   * @default false
    */
   readonly listen?: boolean;
   /**
@@ -35,14 +25,14 @@ export interface AuthorizationRuleProps {
 }
 
 export class AuthorizationRule extends Construct {
-  readonly ehInstanceAuthProps: AuthorizationRuleProps;
+  readonly ehInstanceAuthProps: EventhubAuthorizationRuleConfig;
   private readonly primaryConnectionString: string;
   private readonly primaryKey: string;
 
   constructor(
     scope: Construct,
     name: string,
-    ehInstanceAuthProps: AuthorizationRuleProps,
+    ehInstanceAuthProps: EventhubAuthorizationRuleConfig,
   ) {
     super(scope, name);
 

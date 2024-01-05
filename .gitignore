@@ -52,3 +52,4 @@ tsconfig.json
 !cdk.out
 cdktf.out
 test
+*terraform.*.tfstate*

@@ -7,23 +7,79 @@ import { SubnetNetworkSecurityGroupAssociation } from "@cdktf/provider-azurerm/l
 import { Construct } from "constructs";
 import { AzureResource } from "../../core-azure/lib";
 
+/**
+ * Configuration properties for defining a rule within an Azure Network Security Group.
+ */
 export interface RuleConfig {
-  name: string;
-  priority: number;
-  direction: string;
-  access: string;
-  protocol: string;
-  sourcePortRange: string;
-  destinationPortRange: string;
-  sourceAddressPrefix: string;
-  destinationAddressPrefix: string;
+  /**
+   * The name of the security rule.
+   */
+  readonly name: string;
+
+  /**
+   * The priority of the rule. Lower numbers have higher priority. Allowed values are from 100 to 4096.
+   */
+  readonly priority: number;
+
+  /**
+   * The direction of the rule, which can be 'Inbound' or 'Outbound'.
+   */
+  readonly direction: string;
+
+  /**
+   * The access type of the rule, which determines whether the rule permits or denies traffic. Common values are 'Allow' or 'Deny'.
+   */
+  readonly access: string;
+
+  /**
+   * The protocol to which the rule applies, such as 'Tcp', 'Udp', or '*' (for all protocols).
+   */
+  readonly protocol: string;
+
+  /**
+   * The range of source ports to which the rule applies. Can be a single port or a range like '1024-2048'.
+   */
+  readonly sourcePortRange: string;
+
+  /**
+   * The range of destination ports to which the rule applies. Can also be a single port or a range.
+   */
+  readonly destinationPortRange: string;
+
+  /**
+   * The CIDR or source IP range or '*' to match any IP. This is the range of source IPs for which the rule applies.
+   */
+  readonly sourceAddressPrefix: string;
+
+  /**
+   * The CIDR or destination IP range or '*' to match any IP. This specifies the range of destination IPs for which the rule is applicable.
+   */
+  readonly destinationAddressPrefix: string;
 }
 
-interface SecurityGroupProps {
-  resourceGroupName: string;
-  location: string;
-  name: string;
-  rules: RuleConfig[];
+/**
+ * Properties for defining an Azure Network Security Group.
+ */
+export interface SecurityGroupProps {
+  /**
+   * The name of the resource group under which the network security group will be created.
+   */
+  readonly resourceGroupName: string;
+
+  /**
+   * The Azure region in which to create the network security group, e.g., 'East US', 'West Europe'.
+   */
+  readonly location: string;
+
+  /**
+   * The name of the network security group. Must be unique within the resource group.
+   */
+  readonly name: string;
+
+  /**
+   * An array of rule configurations to be applied to the network security group.
+   */
+  readonly rules: RuleConfig[];
 }
 
 export class SecurityGroup extends AzureResource {
@@ -83,10 +139,26 @@ export class SecurityGroup extends AzureResource {
   }
 }
 
-interface SecurityGroupAssociationsProps {
-  networkSecurityGroupId: string;
-  subnetId?: string;
-  networkInterfaceId?: string;
+/**
+ * Properties for associating Azure Network Security Groups with subnets and network interfaces.
+ */
+export interface SecurityGroupAssociationsProps {
+  /**
+   * The ID of the network security group to be associated.
+   */
+  readonly networkSecurityGroupId: string;
+
+  /**
+   * Optional subnet ID to associate with the network security group.
+   * If provided, the security group will be associated with this subnet.
+   */
+  readonly subnetId?: string;
+
+  /**
+   * Optional network interface ID to associate with the network security group.
+   * If provided, the security group will be associated with this network interface.
+   */
+  readonly networkInterfaceId?: string;
 }
 
 export class SecurityGroupAssociations extends Construct {

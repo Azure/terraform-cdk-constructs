@@ -1,65 +1,79 @@
 import { KustoEventhubDataConnection } from "@cdktf/provider-azurerm/lib/kusto-eventhub-data-connection";
 import { Construct } from "constructs";
 
-export interface KustoDataConnectionProps {
+export interface BaseKustoDataConnectionProps {
   /**
    * The name of the Kusto EventHub Data Connection to create.
    */
-  name: string;
+  readonly name: string;
+
   /**
    * The location where the Kusto EventHub Data Connection should be created.
    */
-  location: string;
+  readonly location: string;
+
   /**
    * Specifies the Resource Group where the Kusto Database should exist.
    */
-  resourceGroupName: string;
+  readonly kustoResourceGroupName: string;
+
   /**
    * Specifies the name of the Kusto Cluster this data connection will be added to.
    */
-  clusterName: string;
+  readonly kustoClusterName: string;
+
   /**
    * Specifies the name of the Kusto Database this data connection will be added to.
    */
-  databaseName: string;
-  /**
-   * Specifies the resource id of the EventHub this data connection will use for ingestion.
-   */
-  eventhubId: string;
+  readonly kustoDatabaseName: string;
+
   /**
    * Specifies the EventHub consumer group this data connection will use for ingestion.
    * @default "$Default"
    */
-  consumerGroup?: string;
+  readonly consumerGroup?: string;
+
   /**
    * Specifies the target table name used for the message ingestion. Table must exist before resource is created.
    */
-  tableName?: string | undefined;
+  readonly tableName?: string | undefined;
+
   /**
    * The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub.
    */
-  identityId?: string | undefined;
+  readonly identityId?: string | undefined;
+
   /**
    * Specifies the mapping rule used for the message ingestion. Mapping rule must exist before resource is created.
    */
-  mappingRuleName?: string | undefined;
+  readonly mappingRuleName?: string | undefined;
+
   /**
    * Specifies the data format of the EventHub messages.
    * Allowed values: APACHEAVRO, AVRO, CSV, JSON, MULTIJSON, ORC, PARQUET, PSV, RAW, SCSV, SINGLEJSON, SOHSV, TSVE, TSV, TXT, and W3CLOGFILE.
    * @default "JSON"
    */
-  dataFormat?: string;
+  readonly dataFormat?: string;
+
   /**
    * Indication for database routing information from the data connection, by default only database routing information is allowed.
    * Allowed values: Single, Multi.
    * @default "Single"
    */
-  databaseRoutingType?: string;
+  readonly databaseRoutingType?: string;
+
   /**
    * Specifies compression type for the connection. Allowed values: GZip and None.
    * @default "None"
    */
-  compression?: string;
+  readonly compression?: string;
+}
+
+export interface KustoDataConnectionProps extends BaseKustoDataConnectionProps {
+  /**
+   * Specifies the resource id of the EventHub this data connection will use for ingestion.
+   */
+  readonly eventhubId: string;
 }
 
 export class KustoDataConnection extends Construct {
@@ -92,9 +106,9 @@ export class KustoDataConnection extends Construct {
         name: this.eventhubKustoDataConnectionProps.name,
         location: this.eventhubKustoDataConnectionProps.location,
         resourceGroupName:
-          this.eventhubKustoDataConnectionProps.resourceGroupName,
-        clusterName: this.eventhubKustoDataConnectionProps.clusterName,
-        databaseName: this.eventhubKustoDataConnectionProps.databaseName,
+          this.eventhubKustoDataConnectionProps.kustoResourceGroupName,
+        clusterName: this.eventhubKustoDataConnectionProps.kustoClusterName,
+        databaseName: this.eventhubKustoDataConnectionProps.kustoDatabaseName,
         eventhubId: this.eventhubKustoDataConnectionProps.eventhubId,
         ...defaults,
       },

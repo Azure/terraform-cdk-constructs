@@ -35,11 +35,13 @@
     "organization": false
   },
   "devDependencies": {
+    "@cdktf/provider-azurerm": "^9.0.8",
     "@types/jest": "^29.5.8",
     "@types/moment": "^2.13.0",
     "@types/node": "^20",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
+    "cdktf": "0.17.3",
     "constructs": "^10.0.0",
     "eslint": "^8",
     "eslint-config-prettier": "^9.1.0",

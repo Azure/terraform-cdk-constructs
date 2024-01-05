@@ -1,7 +1,7 @@
 import { EventhubNamespace } from "@cdktf/provider-azurerm/lib/eventhub-namespace";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
-import { Instance, InstanceProps } from "./instance";
+import { Instance, BaseInstanceProps } from "./instance";
 import { Group } from "../../azure-resourcegroup";
 import { AzureResourceWithAlert } from "../../core-azure/lib";
 
@@ -133,9 +133,7 @@ export class Namespace extends AzureResourceWithAlert {
   }
 
   // Create an EventHub Instance Method
-  addEventhubInstance(
-    props: Omit<InstanceProps, "resourceGroupName" | "namespaceName">,
-  ) {
+  addEventhubInstance(props: BaseInstanceProps) {
     return new Instance(this, "ehinstance", {
       resourceGroupName: this.resourceGroupName,
       namespaceName: this.namespaceName,

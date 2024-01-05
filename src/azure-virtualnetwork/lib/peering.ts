@@ -10,25 +10,25 @@ export interface PeerSettings {
    * Indicates whether virtual network access is allowed.
    * @default true
    */
-  allowVirtualNetworkAccess?: boolean;
+  readonly allowVirtualNetworkAccess?: boolean;
 
   /**
    * Indicates whether forwarded traffic is allowed.
    * @default false
    */
-  allowForwardedTraffic?: boolean;
+  readonly allowForwardedTraffic?: boolean;
 
   /**
    * Indicates whether gateway transit is allowed.
    * @default false
    */
-  allowGatewayTransit?: boolean;
+  readonly allowGatewayTransit?: boolean;
 
   /**
    * Indicates whether to use remote gateways.
    * @default false
    */
-  useRemoteGateways?: boolean;
+  readonly useRemoteGateways?: boolean;
 }
 
 /**
@@ -38,22 +38,22 @@ export interface PeerProps {
   /**
    * ID of the local virtual network.
    */
-  virtualNetwork: Network;
+  readonly virtualNetwork: Network;
 
   /**
    * ID of the remote virtual network.
    */
-  remoteVirtualNetwork: Network;
+  readonly remoteVirtualNetwork: Network;
 
   /**
    * Settings applied from the local virtual network to the remote virtual network.
    */
-  localToRemoteSettings: PeerSettings | undefined;
+  readonly localToRemoteSettings: PeerSettings | undefined;
 
   /**
    * Settings applied from the remote virtual network to the local virtual network.
    */
-  remoteToLocalSettings: PeerSettings | undefined;
+  readonly remoteToLocalSettings: PeerSettings | undefined;
 }
 
 export class Peer extends Construct {

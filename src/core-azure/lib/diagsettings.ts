@@ -2,7 +2,7 @@ import { DataAzurermMonitorDiagnosticCategories } from "@cdktf/provider-azurerm/
 import { MonitorDiagnosticSetting } from "@cdktf/provider-azurerm/lib/monitor-diagnostic-setting";
 import { Construct } from "constructs";
 
-export interface DiagnosticSettingsProps {
+export interface BaseDiagnosticSettingsProps {
   /**
    * Name of the diagnostic settings resource
    */
@@ -29,27 +29,29 @@ export interface DiagnosticSettingsProps {
    */
   readonly logAnalyticsWorkspaceId?: string;
   /**
-   * Target resource id to enable diagnostic settings on
-   */
-  readonly targetResourceId: string;
-
-  /**
    * When set to 'Dedicated' logs sent to a Log Analytics workspace
    * will go into resource specific tables, instead of the legacy AzureDiagnostics table.
    */
-  logAnalyticsDestinationType?: string | undefined;
+  readonly logAnalyticsDestinationType?: string | undefined;
 
   /**
    * Log Diagnostic categories
    * @default null
    */
-  logCategories?: string[] | null;
+  readonly logCategories?: string[];
 
   /**
    * Diagnostic Metrics
    * @default null
    */
-  metricCategories?: string[] | null;
+  readonly metricCategories?: string[];
+}
+
+export interface DiagnosticSettingsProps extends BaseDiagnosticSettingsProps {
+  /**
+   * Target resource id to enable diagnostic settings on
+   */
+  readonly targetResourceId: string;
 }
 
 export class DiagnosticSettings extends Construct {

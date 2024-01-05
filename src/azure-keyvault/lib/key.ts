@@ -39,7 +39,7 @@ export interface KeyProps {
    */
   readonly expires?: string;
 
-  accessPolicies: AccessPolicy[];
+  readonly accessPolicies: AccessPolicy[];
 }
 
 export class Key extends Construct {

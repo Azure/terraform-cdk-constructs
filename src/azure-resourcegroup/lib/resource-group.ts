@@ -1,7 +1,8 @@
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
-import { RoleAssignment } from "@cdktf/provider-azurerm/lib/role-assignment";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
+import { AzureResource } from "../../core-azure/lib";
+
 // Construct
 /**
  * Properties for the resource group
@@ -15,10 +16,7 @@ export interface GroupProps {
    * The name of the Azure Resource Group.
    */
   readonly name?: string;
-  /**
-   * The RBAC groups to assign to the Resource Group.
-   */
-  readonly rbacGroups?: Map<string, string>;
+
   /**
    * The tags to assign to the Resource Group.
    */
@@ -29,7 +27,8 @@ export interface GroupProps {
   readonly ignoreChanges?: string[];
 }
 
-export class Group extends Construct {
+export class Group extends AzureResource {
+  public readonly resourceGroupName: string;
   readonly props: GroupProps;
   IdOutput: cdktf.TerraformOutput;
   LocationOutput: cdktf.TerraformOutput;
@@ -59,14 +58,6 @@ export class Group extends Construct {
         ignore_changes: props.ignoreChanges || [],
       },
     ]);
-
-    props.rbacGroups?.forEach((v, k) => {
-      new RoleAssignment(this, k, {
-        principalId: k,
-        roleDefinitionName: v,
-        scope: azurermResourceGroupRg.id,
-      });
-    });
 
     this.Id = azurermResourceGroupRg.id;
     this.Name = azurermResourceGroupRg.name;

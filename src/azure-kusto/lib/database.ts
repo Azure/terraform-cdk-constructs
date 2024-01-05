@@ -10,21 +10,21 @@ export interface DatabaseProps {
   /**
    * The Azure Kusto cluster to which this database belongs.
    */
-  kusto: Cluster;
+  readonly kusto: Cluster;
   /**
    * The name of the Kusto Database to create.
    */
-  name: string;
+  readonly name: string;
   /**
    * The time the data that should be kept in cache for fast queries as ISO 8601 timespan.
    * Default is unlimited.
    */
-  hotCachePeriod?: string;
+  readonly hotCachePeriod?: string;
   /**
    * The time the data should be kept before it stops being accessible to queries as ISO 8601 timespan.
    * Default is unlimited.
    */
-  softDeletePeriod?: string;
+  readonly softDeletePeriod?: string;
 }
 
 export interface DatabaseAccessProps {

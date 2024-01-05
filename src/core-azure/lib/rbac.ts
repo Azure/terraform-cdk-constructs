@@ -5,25 +5,25 @@ export interface RbacProps {
   /**
    * The unique identifier for objects in Azure AD, such as users, groups, or service principals.
    */
-  objectId: string;
+  readonly objectId: string;
 
   /**
    * The universally unique identifier (UUID) for the Azure RBAC role definition.
    * To find the UUID for a role using Azure CLI, use the command:
    * `az role definition list --name "Role Name" --query "[].name" -o tsv`
    */
-  roleDefinitionUUID?: string;
+  readonly roleDefinitionUUID?: string;
 
   /**
    * The human-readable name of the Azure RBAC role, e.g., "Virtual Machine Contributor".
    */
-  roleDefinitionName: string;
+  readonly roleDefinitionName: string;
 
   /**
    * The scope at which the RBAC role assignment is applied.
    * This could be a subscription, resource group, or a specific resource.
    */
-  scope: string;
+  readonly scope: string;
 }
 
 export class Rbac extends Construct {
