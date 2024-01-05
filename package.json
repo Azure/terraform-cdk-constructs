@@ -28,7 +28,7 @@
     "upgrade": "npx projen upgrade",
     "watch": "npx projen watch",
     "projen": "npx projen",
-    "generate:index": "node ./scripts/generate-index.js"
+    "generate-index": "node ./scripts/generate-index.js"
   },
   "author": {
     "name": "Microsoft",

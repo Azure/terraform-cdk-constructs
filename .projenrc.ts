@@ -90,7 +90,7 @@ project.gitignore.exclude("*terraform.*.tfstate*");
 
 // Add generate index script
 project.addScripts({
-  "generate:index": "node ./scripts/generate-index.js",
+  "generate-index": "node ./scripts/generate-index.js",
 });
 
 project.synth();

@@ -12,3 +12,5 @@ export * as azure_virtualmachine from "./azure-virtualmachine";
 export * as azure_virtualmachinescaleset from "./azure-virtualmachinescaleset";
 export * as azure_virtualnetwork from "./azure-virtualnetwork";
 export * as core_azure from "./core-azure";
+export * as azure_queryrulealert from "./azure-queryrulealert";
+export * as azure_metricalert from "./azure-metricalert";
