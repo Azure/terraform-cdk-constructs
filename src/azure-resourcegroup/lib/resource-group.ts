@@ -62,6 +62,7 @@ export class Group extends AzureResource {
     this.Id = azurermResourceGroupRg.id;
     this.Name = azurermResourceGroupRg.name;
     this.Location = azurermResourceGroupRg.location;
+    this.resourceGroupName = azurermResourceGroupRg.name;
 
     // Terraform Outputs
     this.IdOutput = new cdktf.TerraformOutput(this, "id", {

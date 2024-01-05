@@ -302,9 +302,9 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@cdktf/provider-azurerm@^9.0.8":
+"@cdktf/provider-azurerm@9.0.8":
   version "9.0.8"
-  resolved "https://registry.npmjs.org/@cdktf/provider-azurerm/-/provider-azurerm-9.0.8.tgz"
+  resolved "https://registry.yarnpkg.com/@cdktf/provider-azurerm/-/provider-azurerm-9.0.8.tgz#688361f40c0d5dcb8305043ee4dcb3c2a0868c0e"
   integrity sha512-kislNI4U9CdyXfVlFhdsucH9D5R4Y/GBzaSniuHSFck6xItE5ie0FF13QN47AqFNBKZzQzn0Ef85OFW4IYwcfQ==
 
 "@cspotcode/source-map-support@^0.8.0":
@@ -1553,7 +1553,12 @@ concat-stream@^2.0.0:
     readable-stream "^3.0.2"
     typedarray "^0.0.6"
 
-constructs@^10.0.0, constructs@^10.1.106:
+constructs@10.1.106:
+  version "10.1.106"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.1.106.tgz#656f04aa747cc6f7ce880be5fbb90ea1b42e7e4a"
+  integrity sha512-xcNB+/5jKk7+9w4pXe5jThpUEDDbhtWLeXlhy9GVdFa/tuasOVEiowZOZMjPvcXrujGgSkVleebo6ZNzvYyZug==
+
+constructs@^10.0.0:
   version "10.3.0"
   resolved "https://registry.yarnpkg.com/constructs/-/constructs-10.3.0.tgz#4c246fce9cf8e77711ad45944e9fbd41f1501965"
   integrity sha512-vbK8i3rIb/xwZxSpTjz3SagHn1qq9BChLEfy5Hf6fB3/2eFbrwt2n9kHwQcS0CPTRBesreeAcsJfMq2229FnbQ==

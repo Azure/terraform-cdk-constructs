@@ -12,7 +12,7 @@ import { Queue } from "./queue";
 import { Table } from "./table";
 import { AzureResourceWithAlert } from "../../core-azure/lib";
 
-interface NetworkRulesProps {
+export interface NetworkRulesProps {
   /**
    * Specifies which traffic to bypass from the network rules. The possible values are 'AzureServices', 'Logging', 'Metrics',
    * and 'None'. Bypassing 'AzureServices' enables Azure's internal services to access the storage account.
@@ -44,7 +44,7 @@ interface NetworkRulesProps {
   readonly privateLinkAccess?: StorageAccountNetworkRulesPrivateLinkAccessA[];
 }
 
-interface AccountProps {
+export interface AccountProps {
   /**
    * The type of replication to use for the storage account. This determines how your data is replicated across Azure's infrastructure.
    * Example values: LRS (Locally Redundant Storage), GRS (Geo-Redundant Storage), RAGRS (Read Access Geo-Redundant Storage).
@@ -129,7 +129,7 @@ interface AccountProps {
  * ```
  */
 export class Account extends AzureResourceWithAlert {
-  readonly props: AccountProps;
+  public readonly props: AccountProps;
   public readonly id: string;
   public readonly name: string;
   public readonly resourceGroup: ResourceGroup;
