@@ -2,7 +2,7 @@ import * as actionProps from "./action-props";
 import * as criteriaProps from "./criteria-props";
 import * as dynamicCriteriaProps from "./dynamic-criteria-props";
 
-export interface iBaseMetricAlertProps {
+export interface IBaseMetricAlertProps {
   /**
    * The name of the Metric Alert.
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#name}
@@ -83,7 +83,7 @@ export interface iBaseMetricAlertProps {
   readonly dynamicCriteria?: dynamicCriteriaProps.MetricAlertDynamicCritiriaProps[];
 }
 
-export interface MetricAlertProps extends iBaseMetricAlertProps {
+export interface MetricAlertProps extends IBaseMetricAlertProps {
   /**
    * The name of the resource group in which the Metric Alert is created.
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#resource_group_name}
