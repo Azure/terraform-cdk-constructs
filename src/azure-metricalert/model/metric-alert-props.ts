@@ -83,7 +83,7 @@ export interface IBaseMetricAlertProps {
   readonly dynamicCriteria?: dynamicCriteriaProps.MetricAlertDynamicCritiriaProps[];
 }
 
-export interface MetricAlertProps extends IBaseMetricAlertProps {
+export interface IMetricAlertProps extends IBaseMetricAlertProps {
   /**
    * The name of the resource group in which the Metric Alert is created.
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#resource_group_name}

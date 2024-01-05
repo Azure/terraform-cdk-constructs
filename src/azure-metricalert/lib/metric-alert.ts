@@ -5,7 +5,7 @@ import * as moment from "moment";
 import * as model from "../model";
 
 export class MetricAlert extends Construct {
-  readonly props: model.MetricAlertProps;
+  readonly props: model.IMetricAlertProps;
   public readonly id: string;
 
   /**
@@ -15,7 +15,7 @@ export class MetricAlert extends Construct {
    * @param id - The ID of this construct.
    * @param props - The properties required for Metric Alert.
    */
-  constructor(scope: Construct, id: string, props: model.MetricAlertProps) {
+  constructor(scope: Construct, id: string, props: model.IMetricAlertProps) {
     super(scope, id);
 
     this.props = props;
