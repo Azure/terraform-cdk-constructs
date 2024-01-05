@@ -30,10 +30,8 @@ AppExceptions
       windowDuration: "PT30M",
       scopes: ["/subscriptions/00000000-0000-0000-0000-000000000000"],
       severity: 3,
-      criteriaFailingPeriods: {
-        minimumFailingPeriodsToTriggerAlert: 1,
-        numberOfEvaluationPeriods: 1,
-      },
+      criteriaFailMinimumFailingPeriodsToTriggerAlert: 1,
+      criteriaFailNumberOfEvaluationPeriods: 1,
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse

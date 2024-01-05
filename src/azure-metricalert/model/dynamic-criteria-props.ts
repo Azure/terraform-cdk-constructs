@@ -17,18 +17,18 @@ export interface MetricAlertDynamicCritiriaProps
    * @default 4
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#evaluation_total_count}
    */
-  evaluationTotalCount?: number;
+  readonly evaluationTotalCount?: number;
 
   /**
    * The number of violations to trigger an alert. Should be smaller or equal to evaluation_total_count.
    * @default 4
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#evaluation_failure_count}
    */
-  evaluationFailureCount?: number;
+  readonly evaluationFailureCount?: number;
 
   /**
    * The ISO8601 date from which to start learning the metric historical data and calculate the dynamic thresholds.
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#ignore_data_before}
    */
-  ignoreDataBefore?: string;
+  readonly ignoreDataBefore?: string;
 }

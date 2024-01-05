@@ -55,10 +55,8 @@ AppExceptions
       windowDuration: "PT30M",
       scopes: [logAnalyticsWorkspace.id],
       severity: 4,
-      criteriaFailingPeriods: {
-        minimumFailingPeriodsToTriggerAlert: 1,
-        numberOfEvaluationPeriods: 1,
-      },
+      criteriaFailMinimumFailingPeriodsToTriggerAlert: 1,
+      criteriaFailNumberOfEvaluationPeriods: 1,
     });
 
     // Create Terraform Outputs for Function Apps

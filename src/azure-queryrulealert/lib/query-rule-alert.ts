@@ -34,33 +34,33 @@ export interface BaseAzureQueryRuleAlertProps {
    * Possible values are Average, Count, Maximum, Minimum,and Total.
    */
   readonly criteriatimeAggregationMethod: string;
-  readonly criteriaDimension?: {
-    /**
-     * Name of the dimension.
-     */
-    readonly name: string;
-    /**
-     * Operator for dimension values. Possible values are Exclude,and Include.
-     */
-    readonly operator: string;
-    /**
-     * List of dimension values. Use a wildcard * to collect all.
-     */
-    readonly values: string[];
-  };
-  readonly criteriaFailingPeriods?: {
-    /**
-     * Specifies the number of violations to trigger an alert.
-     * Should be smaller or equal to number_of_evaluation_periods.
-     * Possible value is integer between 1 and 6.
-     */
-    readonly minimumFailingPeriodsToTriggerAlert: number;
-    /**
-     * Specifies the number of evaluation periods.
-     * Possible value is integer between 1 and 6.
-     */
-    readonly numberOfEvaluationPeriods: number;
-  };
+  /**
+   * Name of the dimension for criteria.
+   */
+  readonly criteriaDimensionName?: string;
+
+  /**
+   * Operator for dimension values. Possible values are Exclude, and Include.
+   */
+  readonly criteriaDimensionOperator?: string;
+
+  /**
+   * List of dimension values. Use a wildcard * to collect all.
+   */
+  readonly criteriaDimensionValues?: string[];
+
+  /**
+   * Specifies the number of violations to trigger an alert.
+   * Should be smaller or equal to number_of_evaluation_periods.
+   * Possible value is integer between 1 and 6.
+   */
+  readonly criteriaFailMinimumFailingPeriodsToTriggerAlert?: number;
+
+  /**
+   * Specifies the number of evaluation periods.
+   * Possible value is integer between 1 and 6.
+   */
+  readonly criteriaFailNumberOfEvaluationPeriods?: number;
   /**
    * Specifies the column containing the metric measure number.
    * criteriaMetricMeasureColumn is required if criteriatimeAggregationMethod is Average, Maximum, Minimum, or Total.
@@ -240,11 +240,13 @@ export class QueryRuleAlert extends Construct {
       throw new Error("invalid queryTimeRangeOverride");
     }
     // The query look back which is windowDuration * numberOfEvaluationPeriods cannot exceed 48 hours.
-    if (props.criteriaFailingPeriods) {
-      const windowDurationHours = moment.duration(props.windowDuration).hours();
-      const numberOfEvaluationPeriodsHours =
-        props.criteriaFailingPeriods.numberOfEvaluationPeriods;
-      if (windowDurationHours * numberOfEvaluationPeriodsHours > 48) {
+    if (props.criteriaFailNumberOfEvaluationPeriods) {
+      const windowDurationHours = moment
+        .duration(props.windowDuration)
+        .asHours();
+      const numberOfEvaluationPeriods =
+        props.criteriaFailNumberOfEvaluationPeriods;
+      if (windowDurationHours * numberOfEvaluationPeriods > 48) {
         throw new Error("queryTimeRangeOverride cannot exceed 48 hours");
       }
     }
@@ -262,24 +264,29 @@ export class QueryRuleAlert extends Construct {
       metricMeasureColumn: props.criteriaMetricMeasureColumn || undefined,
     };
 
-    const criteriaFailingPeriods = props.criteriaFailingPeriods
-      ? {
-          minimumFailingPeriodsToTriggerAlert:
-            props.criteriaFailingPeriods.minimumFailingPeriodsToTriggerAlert,
-          numberOfEvaluationPeriods:
-            props.criteriaFailingPeriods.numberOfEvaluationPeriods,
-        }
-      : undefined;
+    const criteriaFailingPeriods =
+      props.criteriaFailMinimumFailingPeriodsToTriggerAlert !== undefined &&
+      props.criteriaFailNumberOfEvaluationPeriods !== undefined
+        ? {
+            minimumFailingPeriodsToTriggerAlert:
+              props.criteriaFailMinimumFailingPeriodsToTriggerAlert,
+            numberOfEvaluationPeriods:
+              props.criteriaFailNumberOfEvaluationPeriods,
+          }
+        : undefined;
 
-    const dimension = props.criteriaDimension
-      ? [
-          {
-            name: props.criteriaDimension.name,
-            operator: props.criteriaDimension.operator,
-            values: props.criteriaDimension.values,
-          },
-        ]
-      : undefined;
+    const dimension =
+      props.criteriaDimensionName &&
+      props.criteriaDimensionOperator &&
+      props.criteriaDimensionValues
+        ? [
+            {
+              name: props.criteriaDimensionName,
+              operator: props.criteriaDimensionOperator,
+              values: props.criteriaDimensionValues,
+            },
+          ]
+        : undefined;
 
     const azurermMonitorQueryRuleAlert = new MonitorScheduledQueryRulesAlertV2(
       this,
