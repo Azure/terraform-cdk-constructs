@@ -87,7 +87,7 @@ export class Cluster extends AzureResource {
   constructor(scope: Construct, id: string, kustoProps: ClusterProps) {
     super(scope, id);
     this.kustoProps = kustoProps;
-    this.resourceGroupName = kustoProps.rg.Name;
+    this.resourceGroupName = kustoProps.rg.name;
 
     /**
      * Define default values.
@@ -117,8 +117,8 @@ export class Cluster extends AzureResource {
     const azurermKustoCluster = new KustoCluster(this, "Kusto", {
       ...defaults,
       name: kustoProps.name,
-      location: kustoProps.rg.Location,
-      resourceGroupName: kustoProps.rg.Name,
+      location: kustoProps.rg.location,
+      resourceGroupName: kustoProps.rg.name,
       tags: kustoProps.tags,
     });
 

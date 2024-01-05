@@ -56,30 +56,30 @@ export class exampleAzureLogAnalytics extends BaseTestStack {
       location: "eastus",
       retention: 90,
       sku: "PerGB2018",
-      resource_group_name: resourceGroup.name,
+      resourceGroupName: resourceGroup.name,
       functions: [
         {
           name: "function_name_1",
-          display_name: "Example function 1",
+          displayName: "Example function 1",
           query:
             "Event | where EventLevelName != 'Informational' | where TimeGenerated > ago(24h)",
-          function_alias: "function_name_1",
-          function_parameters: [],
+          functionAlias: "function_name_1",
+          functionParameters: [],
         },
         {
           name: "function_name_2",
-          display_name: "Example function 2",
+          displayName: "Example function 2",
           query:
             "Event | where EventLevelName != 'Informational' | where TimeGenerated > ago(24h)",
-          function_alias: "function_name_2",
-          function_parameters: ["typeArg:string=mail", "tagsArg:string=dc"],
+          functionAlias: "function_name_2",
+          functionParameters: ["typeArg:string=mail", "tagsArg:string=dc"],
         },
       ],
-      data_export: [
+      dataExport: [
         {
           name: "export-test",
-          export_destination_id: namespace.id,
-          table_names: ["Heartbeat"],
+          exportDestinationId: namespace.id,
+          tableNames: ["Heartbeat"],
           enabled: true,
         },
       ],

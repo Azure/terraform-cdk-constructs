@@ -16,7 +16,7 @@ describe("Log Analytics Workspace With Defaults", () => {
     new la.Workspace(stack, "testAzureLogAnalyticsDefaults", {
       name: "la-test",
       location: "eastus",
-      resource_group_name: "rg-test",
+      resourceGroupName: "rg-test",
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse

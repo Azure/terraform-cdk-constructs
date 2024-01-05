@@ -23,7 +23,7 @@ export interface VaultProps {
   /**
    * The name of the Azure Resource Group.
    */
-  readonly resource_group_name: string;
+  readonly resourceGroupName: string;
   /**
    * The tags to assign to the Key Vault.
    */
@@ -35,7 +35,7 @@ export interface VaultProps {
   /**
    * The Name of the SKU used for this Key Vault. Possible values are standard and premium.
    */
-  readonly tenant_id: string;
+  readonly tenantId: string;
   /**
    * The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
    */
@@ -114,7 +114,7 @@ export class Vault extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resource_group_name;
+    this.resourceGroupName = props.resourceGroupName;
 
     // Provide default values
     const purgeProtection = props.purgeProtection ?? true;
@@ -124,10 +124,10 @@ export class Vault extends AzureResource {
     const azurermKeyVault = new KeyVault(this, "key_vault", {
       name: props.name,
       location: props.location,
-      resourceGroupName: props.resource_group_name,
+      resourceGroupName: props.resourceGroupName,
       tags: props.tags,
       skuName: sku,
-      tenantId: props.tenant_id,
+      tenantId: props.tenantId,
       networkAcls: props.networkAcls,
       purgeProtectionEnabled: purgeProtection,
       softDeleteRetentionDays: softDeleteRetentionDays,
@@ -162,7 +162,7 @@ export class Vault extends AzureResource {
   public grantSecretReaderAccess(azureAdGroupId: string) {
     const policyProps: AccessPolicyProps = {
       keyVaultId: this,
-      tenantId: this.props.tenant_id,
+      tenantId: this.props.tenantId,
       objectId: azureAdGroupId,
       secretPermissions: ["Get", "List"],
     };
@@ -178,7 +178,7 @@ export class Vault extends AzureResource {
   public grantSecretAdminAccess(azureAdGroupId: string) {
     const policyProps: AccessPolicyProps = {
       keyVaultId: this,
-      tenantId: this.props.tenant_id,
+      tenantId: this.props.tenantId,
       objectId: azureAdGroupId,
       secretPermissions: [
         "Get",
@@ -202,7 +202,7 @@ export class Vault extends AzureResource {
   public grantCertAdminAccess(azureAdGroupId: string) {
     const policyProps: AccessPolicyProps = {
       keyVaultId: this,
-      tenantId: this.props.tenant_id,
+      tenantId: this.props.tenantId,
       objectId: azureAdGroupId,
       certificatePermissions: [
         "Get",
@@ -226,7 +226,7 @@ export class Vault extends AzureResource {
   public grantCertReaderAccess(azureAdGroupId: string) {
     const policyProps: AccessPolicyProps = {
       keyVaultId: this,
-      tenantId: this.props.tenant_id,
+      tenantId: this.props.tenantId,
       objectId: azureAdGroupId,
       certificatePermissions: ["Get", "List"],
     };
@@ -242,7 +242,7 @@ export class Vault extends AzureResource {
   public grantKeyAdminAccess(azureAdGroupId: string) {
     const policyProps: AccessPolicyProps = {
       keyVaultId: this,
-      tenantId: this.props.tenant_id,
+      tenantId: this.props.tenantId,
       objectId: azureAdGroupId,
       keyPermissions: [
         "Get",
@@ -266,7 +266,7 @@ export class Vault extends AzureResource {
   public grantKeyReaderAccess(azureAdGroupId: string) {
     const policyProps: AccessPolicyProps = {
       keyVaultId: this,
-      tenantId: this.props.tenant_id,
+      tenantId: this.props.tenantId,
       objectId: azureAdGroupId,
       certificatePermissions: ["Get", "List"],
     };
@@ -285,7 +285,7 @@ export class Vault extends AzureResource {
   ) {
     const policyProps: AccessPolicyProps = {
       keyVaultId: this,
-      tenantId: this.props.tenant_id,
+      tenantId: this.props.tenantId,
       objectId: azureAdGroupId,
       ...options,
     };

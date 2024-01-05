@@ -30,13 +30,13 @@ export interface GroupProps {
 export class Group extends AzureResource {
   public readonly resourceGroupName: string;
   readonly props: GroupProps;
-  IdOutput: cdktf.TerraformOutput;
-  LocationOutput: cdktf.TerraformOutput;
-  NameOutput: cdktf.TerraformOutput;
+  idOutput: cdktf.TerraformOutput;
+  locationOutput: cdktf.TerraformOutput;
+  nameOutput: cdktf.TerraformOutput;
 
-  public readonly Id: string;
-  public readonly Location: string;
-  public readonly Name: string;
+  public readonly id: string;
+  public readonly location: string;
+  public readonly name: string;
 
   constructor(scope: Construct, id: string, props: GroupProps = {}) {
     super(scope, id);
@@ -59,25 +59,25 @@ export class Group extends AzureResource {
       },
     ]);
 
-    this.Id = azurermResourceGroupRg.id;
-    this.Name = azurermResourceGroupRg.name;
-    this.Location = azurermResourceGroupRg.location;
+    this.id = azurermResourceGroupRg.id;
+    this.name = azurermResourceGroupRg.name;
+    this.location = azurermResourceGroupRg.location;
     this.resourceGroupName = azurermResourceGroupRg.name;
 
     // Terraform Outputs
-    this.IdOutput = new cdktf.TerraformOutput(this, "id", {
+    this.idOutput = new cdktf.TerraformOutput(this, "id", {
       value: azurermResourceGroupRg.id,
     });
-    this.LocationOutput = new cdktf.TerraformOutput(this, "location", {
+    this.locationOutput = new cdktf.TerraformOutput(this, "location", {
       value: azurermResourceGroupRg.location,
     });
-    this.NameOutput = new cdktf.TerraformOutput(this, "name", {
+    this.nameOutput = new cdktf.TerraformOutput(this, "name", {
       value: azurermResourceGroupRg.name,
     });
 
     /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
-    this.LocationOutput.overrideLogicalId("location");
-    this.NameOutput.overrideLogicalId("name");
-    this.IdOutput.overrideLogicalId("id");
+    this.locationOutput.overrideLogicalId("location");
+    this.nameOutput.overrideLogicalId("name");
+    this.idOutput.overrideLogicalId("id");
   }
 }

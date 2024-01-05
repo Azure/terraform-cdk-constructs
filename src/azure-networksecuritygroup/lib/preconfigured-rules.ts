@@ -25,7 +25,7 @@ export interface RuleOverrides {
 
 export class PreconfiguredRules {
   // Active Directory
-  static ActiveDirectoryAllowADReplication: RuleConfig = {
+  static activeDirectoryAllowADReplication: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "*",
@@ -37,7 +37,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowADReplicationSSL: RuleConfig = {
+  static activeDirectoryAllowADReplicationSSL: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "*",
@@ -49,7 +49,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowADGCReplication: RuleConfig = {
+  static activeDirectoryAllowADGCReplication: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "*",
@@ -61,7 +61,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowADGCReplicationSSL: RuleConfig = {
+  static activeDirectoryAllowADGCReplicationSSL: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "*",
@@ -73,7 +73,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowDNS: RuleConfig = {
+  static activeDirectoryAllowDNS: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "*",
@@ -85,7 +85,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowKerberosAuthentication: RuleConfig = {
+  static activeDirectoryAllowKerberosAuthentication: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "*",
@@ -97,7 +97,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowADReplicationTrust: RuleConfig = {
+  static activeDirectoryAllowADReplicationTrust: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "*",
@@ -109,7 +109,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowSMTPReplication: RuleConfig = {
+  static activeDirectoryAllowSMTPReplication: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -121,7 +121,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowRPCReplication: RuleConfig = {
+  static activeDirectoryAllowRPCReplication: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -133,7 +133,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowFileReplication: RuleConfig = {
+  static activeDirectoryAllowFileReplication: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -145,7 +145,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowWindowsTime: RuleConfig = {
+  static activeDirectoryAllowWindowsTime: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "UDP",
@@ -157,7 +157,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowPasswordChangeKerberes: RuleConfig = {
+  static activeDirectoryAllowPasswordChangeKerberes: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "*",
@@ -169,7 +169,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowDFSGroupPolicy: RuleConfig = {
+  static activeDirectoryAllowDFSGroupPolicy: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "UDP",
@@ -181,7 +181,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowADDSWebServices: RuleConfig = {
+  static activeDirectoryAllowADDSWebServices: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -193,7 +193,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowNETBIOSAuthentication: RuleConfig = {
+  static activeDirectoryAllowNETBIOSAuthentication: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "UDP",
@@ -205,7 +205,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static ActiveDirectoryAllowNETBIOSReplication: RuleConfig = {
+  static activeDirectoryAllowNETBIOSReplication: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -218,7 +218,7 @@ export class PreconfiguredRules {
   };
 
   // Cassandra
-  static Cassandra: RuleConfig = {
+  static cassandra: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -230,7 +230,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static CassandraJMX: RuleConfig = {
+  static cassandraJmx: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -242,7 +242,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static CassandraThrift: RuleConfig = {
+  static cassandraThrift: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -255,7 +255,7 @@ export class PreconfiguredRules {
   };
 
   // CouchDB
-  static CouchDB: RuleConfig = {
+  static couchDb: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -267,7 +267,7 @@ export class PreconfiguredRules {
     destinationAddressPrefix: "*",
   };
 
-  static CouchDBHTTPS: RuleConfig = {
+  static couchDbHttps: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -280,7 +280,7 @@ export class PreconfiguredRules {
   };
 
   // DNS-Tcp
-  static DNSTcp: RuleConfig = {
+  static dnsTcp: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -293,7 +293,7 @@ export class PreconfiguredRules {
   };
 
   // DNS-UDP
-  static DNSUDP: RuleConfig = {
+  static dnsUdp: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "UDP",
@@ -306,7 +306,7 @@ export class PreconfiguredRules {
   };
 
   // DynamicPorts
-  static DynamicPorts: RuleConfig = {
+  static dynamicPorts: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -319,7 +319,7 @@ export class PreconfiguredRules {
   };
 
   // ElasticSearch
-  static ElasticSearch: RuleConfig = {
+  static elasticSearch: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -332,7 +332,7 @@ export class PreconfiguredRules {
   };
 
   // FTP
-  static FTP: RuleConfig = {
+  static ftp: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -345,7 +345,7 @@ export class PreconfiguredRules {
   };
 
   // HTTP-Tcp
-  static HTTP_Tcp: RuleConfig = {
+  static httpTcp: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -358,7 +358,7 @@ export class PreconfiguredRules {
   };
 
   // HTTP-UDP
-  static HTTP_UDP: RuleConfig = {
+  static httpUdp: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "UDP",
@@ -371,7 +371,7 @@ export class PreconfiguredRules {
   };
 
   // HTTPS-Tcp
-  static HTTPS: RuleConfig = {
+  static https: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -384,7 +384,7 @@ export class PreconfiguredRules {
   };
 
   // IMAP
-  static IMAP: RuleConfig = {
+  static imap: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -397,7 +397,7 @@ export class PreconfiguredRules {
   };
 
   // IMAPS
-  static IMAPS: RuleConfig = {
+  static imaps: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -410,7 +410,7 @@ export class PreconfiguredRules {
   };
 
   // Kestrel
-  static Kestrel: RuleConfig = {
+  static kestrel: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -423,7 +423,7 @@ export class PreconfiguredRules {
   };
 
   // LDAP
-  static LDAP: RuleConfig = {
+  static ldap: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -436,7 +436,7 @@ export class PreconfiguredRules {
   };
 
   // MongoDB
-  static MongoDB: RuleConfig = {
+  static mongoDB: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -449,7 +449,7 @@ export class PreconfiguredRules {
   };
 
   // Memcached
-  static Memcached: RuleConfig = {
+  static memcached: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -462,7 +462,7 @@ export class PreconfiguredRules {
   };
 
   // MSSQL
-  static MSSQL: RuleConfig = {
+  static mssql: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -475,7 +475,7 @@ export class PreconfiguredRules {
   };
 
   // MySQL
-  static MySQL: RuleConfig = {
+  static mySQL: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -488,7 +488,7 @@ export class PreconfiguredRules {
   };
 
   // Neo4J
-  static Neo4J: RuleConfig = {
+  static neo4J: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -501,7 +501,7 @@ export class PreconfiguredRules {
   };
 
   // POP3
-  static POP3: RuleConfig = {
+  static pop3: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -514,7 +514,7 @@ export class PreconfiguredRules {
   };
 
   // POP3S
-  static POP3S: RuleConfig = {
+  static pop3s: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -527,7 +527,7 @@ export class PreconfiguredRules {
   };
 
   // PostgreSQL
-  static PostgreSQL: RuleConfig = {
+  static postgreSQL: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -540,7 +540,7 @@ export class PreconfiguredRules {
   };
 
   // RabbitMQ
-  static RabbitMQ: RuleConfig = {
+  static rabbitMQ: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -553,7 +553,7 @@ export class PreconfiguredRules {
   };
 
   // RDP
-  static RDP: RuleConfig = {
+  static rdp: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -566,7 +566,7 @@ export class PreconfiguredRules {
   };
 
   // Redis
-  static Redis: RuleConfig = {
+  static redis: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -579,7 +579,7 @@ export class PreconfiguredRules {
   };
 
   // Riak
-  static Riak: RuleConfig = {
+  static riak: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -592,7 +592,7 @@ export class PreconfiguredRules {
   };
 
   // RiakJMX
-  static RiakJMX: RuleConfig = {
+  static riakJMX: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -605,7 +605,7 @@ export class PreconfiguredRules {
   };
 
   // SMTP
-  static SMTP: RuleConfig = {
+  static smtp: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -618,7 +618,7 @@ export class PreconfiguredRules {
   };
 
   // SMTPS
-  static SMTPS: RuleConfig = {
+  static smtps: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -631,7 +631,7 @@ export class PreconfiguredRules {
   };
 
   // SSH
-  static SSH: RuleConfig = {
+  static ssh: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",
@@ -644,7 +644,7 @@ export class PreconfiguredRules {
   };
 
   // WinRM
-  static WinRM: RuleConfig = {
+  static winRM: RuleConfig = {
     direction: "Inbound",
     access: "Allow",
     protocol: "Tcp",

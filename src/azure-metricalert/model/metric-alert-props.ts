@@ -2,7 +2,7 @@ import * as actionProps from "./action-props";
 import * as criteriaProps from "./criteria-props";
 import * as dynamicCriteriaProps from "./dynamic-criteria-props";
 
-export interface BaseMetricAlertProps {
+export interface iBaseMetricAlertProps {
   /**
    * The name of the Metric Alert.
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#name}
@@ -22,28 +22,28 @@ export interface BaseMetricAlertProps {
    * @default true
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#enabled}
    */
-  readonly enabled?: boolean;
+  enabled?: boolean;
 
   /**
    * Should the alerts in this Metric Alert be auto resolved?
    * @default true
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#auto_mitigate}
    */
-  readonly automitigate?: boolean;
+  automitigate?: boolean;
 
   /**
    * The evaluation frequency of this Metric Alert, represented in ISO 8601 duration format. Possible values are PT1M, PT5M, PT15M, PT30M and PT1H.
    * @default PT5M
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#frequency}
    */
-  readonly frequency?: string;
+  frequency?: string;
 
   /**
    * The severity of this Metric Alert. Possible values are 0, 1, 2, 3 and 4.
    * @default 3
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#severity}
    */
-  readonly severity?: number;
+  severity?: number;
 
   /**
    * The resource type (e.g. Microsoft.Compute/virtualMachines) of the target resource. This is Required when using a Subscription as scope, a Resource Group as scope or Multiple Scopes.
@@ -62,7 +62,7 @@ export interface BaseMetricAlertProps {
    * @default PT5M
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#window_size}
    */
-  readonly windowSize?: string;
+  windowSize?: string;
 
   /**
    * A mapping of tags to assign to the resource.
@@ -83,7 +83,7 @@ export interface BaseMetricAlertProps {
   readonly dynamicCriteria?: dynamicCriteriaProps.MetricAlertDynamicCritiriaProps[];
 }
 
-export interface MetricAlertProps extends BaseMetricAlertProps {
+export interface MetricAlertProps extends iBaseMetricAlertProps {
   /**
    * The name of the resource group in which the Metric Alert is created.
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#resource_group_name}

@@ -16,7 +16,7 @@ describe("Azure Container Registry With Defaults", () => {
     new acr.Registry(stack, "testAzureContainerRegistryDefaults", {
       name: "latest",
       location: "eastus",
-      resource_group_name: "rg-test",
+      resourceGroupName: "rg-test",
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse

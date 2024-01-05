@@ -17,8 +17,8 @@ describe("Application Insights With Defaults", () => {
     new appi.AppInsights(stack, "testAzureApplicationInsightsDefaults", {
       name: "appi-test",
       location: "eastus",
-      resource_group_name: "rg-test",
-      application_type: "web",
+      resourceGroupName: "rg-test",
+      applicationType: "web",
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse

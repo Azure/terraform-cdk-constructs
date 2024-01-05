@@ -21,11 +21,11 @@ export interface AppInsightsProps {
   /**
    * The name of the Azure Resource Group to deploy to.
    */
-  readonly resource_group_name: string;
+  readonly resourceGroupName: string;
   /**
    * The number of days of retention.
    */
-  readonly retention_in_days?: number;
+  readonly retentionInDays?: number;
   /**
    * The tags to assign to the Application Insights resource.
    */
@@ -33,19 +33,19 @@ export interface AppInsightsProps {
   /**
    * The Application type.
    */
-  readonly application_type: string;
+  readonly applicationType: string;
   /**
    * The Application Insights daily data cap in GB.
    */
-  readonly daily_data_cap_in_gb?: number;
+  readonly dailyDataCapInGb?: number;
   /**
    * The Application Insights daily data cap notifications disabled.
    */
-  readonly daily_data_cap_notification_disabled?: boolean;
+  readonly dailyDataCapNotificationDisabled?: boolean;
   /**
    * The id of the Log Analytics Workspace.
    */
-  readonly workspace_id?: string;
+  readonly workspaceId?: string;
 }
 
 export class AppInsights extends AzureResource {
@@ -58,7 +58,7 @@ export class AppInsights extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resource_group_name;
+    this.resourceGroupName = props.resourceGroupName;
 
     const azurermApplicationInsightsAppinsights = new ApplicationInsights(
       this,
@@ -66,14 +66,14 @@ export class AppInsights extends AzureResource {
       {
         location: props.location,
         name: props.name,
-        resourceGroupName: props.resource_group_name,
+        resourceGroupName: props.resourceGroupName,
         tags: props.tags,
-        applicationType: props.application_type,
-        dailyDataCapInGb: props.daily_data_cap_in_gb,
+        applicationType: props.applicationType,
+        dailyDataCapInGb: props.dailyDataCapInGb,
         dailyDataCapNotificationsDisabled:
-          props.daily_data_cap_notification_disabled,
-        retentionInDays: props.retention_in_days,
-        workspaceId: props.workspace_id,
+          props.dailyDataCapNotificationDisabled,
+        retentionInDays: props.retentionInDays,
+        workspaceId: props.workspaceId,
       },
     );
 

@@ -3,7 +3,7 @@ import { WindowsVirtualMachineSourceImageReference } from "@cdktf/provider-azure
 
 export class WindowsImageReferences {
   // Windows Server 2022 Datacenter
-  static WindowsServer2022Datacenter: WindowsVirtualMachineSourceImageReference =
+  static windowsServer2022Datacenter: WindowsVirtualMachineSourceImageReference =
     {
       publisher: "MicrosoftWindowsServer",
       offer: "WindowsServer",
@@ -12,7 +12,7 @@ export class WindowsImageReferences {
     };
 
   // Windows Server 2019 Datacenter
-  static WindowsServer2019Datacenter: WindowsVirtualMachineSourceImageReference =
+  static windowsServer2019Datacenter: WindowsVirtualMachineSourceImageReference =
     {
       publisher: "MicrosoftWindowsServer",
       offer: "WindowsServer",
@@ -21,7 +21,7 @@ export class WindowsImageReferences {
     };
 
   // Windows Server 2016 Datacenter
-  static WindowsServer2016Datacenter: WindowsVirtualMachineSourceImageReference =
+  static windowsServer2016Datacenter: WindowsVirtualMachineSourceImageReference =
     {
       publisher: "MicrosoftWindowsServer",
       offer: "WindowsServer",
@@ -30,7 +30,7 @@ export class WindowsImageReferences {
     };
 
   // Windows Server 2012 R2 Datacenter
-  static WindowsServer2012R2Datacenter: WindowsVirtualMachineSourceImageReference =
+  static windowsServer2012R2Datacenter: WindowsVirtualMachineSourceImageReference =
     {
       publisher: "MicrosoftWindowsServer",
       offer: "WindowsServer",
@@ -39,7 +39,7 @@ export class WindowsImageReferences {
     };
 
   // Windows 10 Pro
-  static Windows10Pro: WindowsVirtualMachineSourceImageReference = {
+  static windows10Pro: WindowsVirtualMachineSourceImageReference = {
     publisher: "MicrosoftWindowsDesktop",
     offer: "Windows-10",
     sku: "19h1-pro",
@@ -47,7 +47,7 @@ export class WindowsImageReferences {
   };
 
   // Windows 10 Enterprise
-  static Windows10Enterprise: WindowsVirtualMachineSourceImageReference = {
+  static windows10Enterprise: WindowsVirtualMachineSourceImageReference = {
     publisher: "MicrosoftWindowsDesktop",
     offer: "Windows-10",
     sku: "19h1-ent",
@@ -55,7 +55,7 @@ export class WindowsImageReferences {
   };
 
   // Windows Server 2022 Datacenter Core
-  static WindowsServer2022DatacenterCore: WindowsVirtualMachineSourceImageReference =
+  static windowsServer2022DatacenterCore: WindowsVirtualMachineSourceImageReference =
     {
       publisher: "MicrosoftWindowsServer",
       offer: "WindowsServer",
@@ -64,7 +64,7 @@ export class WindowsImageReferences {
     };
 
   // Windows Server 2019 Datacenter Core
-  static WindowsServer2019DatacenterCore: WindowsVirtualMachineSourceImageReference =
+  static windowsServer2019DatacenterCore: WindowsVirtualMachineSourceImageReference =
     {
       publisher: "MicrosoftWindowsServer",
       offer: "WindowsServer",
@@ -73,7 +73,7 @@ export class WindowsImageReferences {
     };
 
   // Windows Server 2016 Datacenter Core
-  static WindowsServer2016DatacenterCore: WindowsVirtualMachineSourceImageReference =
+  static windowsServer2016DatacenterCore: WindowsVirtualMachineSourceImageReference =
     {
       publisher: "MicrosoftWindowsServer",
       offer: "WindowsServer",
@@ -82,7 +82,7 @@ export class WindowsImageReferences {
     };
 
   // Windows Server 2012 R2 Datacenter Core
-  static WindowsServer2012R2DatacenterCore: WindowsVirtualMachineSourceImageReference =
+  static windowsServer2012R2DatacenterCore: WindowsVirtualMachineSourceImageReference =
     {
       publisher: "MicrosoftWindowsServer",
       offer: "WindowsServer",
@@ -93,7 +93,7 @@ export class WindowsImageReferences {
 
 export class LinuxImageReferences {
   // Ubuntu Server 18.04 LTS
-  static UbuntuServer1804LTS: LinuxVirtualMachineSourceImageReference = {
+  static ubuntuServer1804LTS: LinuxVirtualMachineSourceImageReference = {
     publisher: "Canonical",
     offer: "UbuntuServer",
     sku: "18.04-LTS",
@@ -101,7 +101,7 @@ export class LinuxImageReferences {
   };
 
   // Ubuntu Server Jammy 22.04 LTS Gen2
-  static UbuntuServer2204LTS: LinuxVirtualMachineSourceImageReference = {
+  static ubuntuServer2204LTS: LinuxVirtualMachineSourceImageReference = {
     publisher: "Canonical",
     offer: "0001-com-ubuntu-server-jammy",
     sku: "22_04-lts-gen2",
@@ -109,7 +109,7 @@ export class LinuxImageReferences {
   };
 
   // Debian 10
-  static Debian10: LinuxVirtualMachineSourceImageReference = {
+  static debian10: LinuxVirtualMachineSourceImageReference = {
     publisher: "Debian",
     offer: "debian-10",
     sku: "10",
@@ -117,7 +117,7 @@ export class LinuxImageReferences {
   };
 
   // Debian 11 Backports Gen2
-  static Debian11BackportsGen2: LinuxVirtualMachineSourceImageReference = {
+  static debian11BackportsGen2: LinuxVirtualMachineSourceImageReference = {
     publisher: "Debian",
     offer: "debian-11",
     sku: "11-backports-gen2",
@@ -125,7 +125,7 @@ export class LinuxImageReferences {
   };
 
   // CentOS 7.5
-  static CentOS75: LinuxVirtualMachineSourceImageReference = {
+  static centOS75: LinuxVirtualMachineSourceImageReference = {
     publisher: "OpenLogic",
     offer: "CentOS",
     sku: "7.5",
@@ -133,7 +133,7 @@ export class LinuxImageReferences {
   };
 
   // CentOS 8.5 Gen2
-  static CentOS85Gen2: LinuxVirtualMachineSourceImageReference = {
+  static centOS85Gen2: LinuxVirtualMachineSourceImageReference = {
     publisher: "OpenLogic",
     offer: "CentOS",
     sku: "8_5-gen2",

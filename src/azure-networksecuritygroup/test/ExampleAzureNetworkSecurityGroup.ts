@@ -70,7 +70,7 @@ export class exampleAzureNetworkSecurityGroup extends BaseTestStack {
           destinationAddressPrefix: "VirtualNetwork",
         },
         PreconfiguredRules.addSourceAddress(
-          PreconfiguredRules.RDP,
+          PreconfiguredRules.rdp,
           "10.0.0.0/24",
         ),
       ],

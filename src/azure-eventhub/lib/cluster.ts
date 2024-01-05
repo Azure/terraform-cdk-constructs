@@ -32,8 +32,8 @@ export class Cluster extends AzureResource {
     super(scope, name);
 
     this.ehClusterProps = ehClusterProps;
-    this.rgName = ehClusterProps.rg.Name;
-    this.rgLocation = ehClusterProps.rg.Location;
+    this.rgName = ehClusterProps.rg.name;
+    this.rgLocation = ehClusterProps.rg.location;
 
     const defaults = {
       skuName: ehClusterProps.skuName || "Dedicated_1",

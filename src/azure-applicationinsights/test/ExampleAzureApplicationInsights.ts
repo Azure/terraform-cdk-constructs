@@ -74,9 +74,9 @@ export class exampleAzureApplicationInsights extends BaseTestStack {
     const applicationInsights = new appi.AppInsights(this, "testappi", {
       name: `appi-${this.name}`,
       location: "eastus",
-      resource_group_name: resourceGroup.name,
-      application_type: "web",
-      workspace_id: logAnalyticsWorkspace.id,
+      resourceGroupName: resourceGroup.name,
+      applicationType: "web",
+      workspaceId: logAnalyticsWorkspace.id,
     });
 
     // Save Ikey to Key Vault as secret

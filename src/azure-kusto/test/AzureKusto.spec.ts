@@ -11,8 +11,8 @@ describe("Kusto With Defaults", () => {
   beforeEach(() => {
     jest.mock("../../azure-resourcegroup", () => ({
       Group: {
-        Location: "eastus",
-        Name: "testrgname",
+        location: "eastus",
+        name: "testrgname",
       },
     }));
     const rgMock = jest.requireMock("../../azure-resourcegroup");

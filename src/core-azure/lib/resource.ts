@@ -46,7 +46,7 @@ export abstract class AzureResourceWithAlert extends AzureResource {
     });
   }
 
-  public addMetricAlert(props: metricalert.BaseMetricAlertProps) {
+  public addMetricAlert(props: metricalert.iBaseMetricAlertProps) {
     new metricalert.MetricAlert(this, "metricalert", {
       ...props,
       resourceGroupName: this.resourceGroupName,

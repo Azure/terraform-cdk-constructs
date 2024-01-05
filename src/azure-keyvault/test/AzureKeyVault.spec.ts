@@ -17,8 +17,8 @@ describe("Azure Key Vault With Defaults", () => {
     new kv.Vault(stack, "testAzureKeyVaultDefaults", {
       name: "kv-test",
       location: "eastus",
-      resource_group_name: "rg-test",
-      tenant_id: "123e4567-e89b-12d3-a456-426614174000",
+      resourceGroupName: "rg-test",
+      tenantId: "123e4567-e89b-12d3-a456-426614174000",
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse

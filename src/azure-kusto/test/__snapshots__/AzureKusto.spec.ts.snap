@@ -120,7 +120,7 @@ exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] =
       }
     },
     "azurerm_role_assignment": {
-      "kusto_TfTokenTOKEN47Contributor_role_1777E8D7": {
+      "kusto_TfTokenTOKEN49Contributor_role_0B8916FD": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_kusto_cluster.kusto_Kusto_6B093AC5.id}"

@@ -135,7 +135,7 @@ exports[`Azure Eventhub Example renders the Example Azure Eventhub and checks sn
       },
     },
     "azurerm_role_assignment": {
-      "eventhub_TfTokenTOKEN51Contributor_role_92808F4D": {
+      "eventhub_TfTokenTOKEN53Contributor_role_AAFEF3AB": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_eventhub_namespace.eventhub_ehnamespace_921C1DD7.id}",

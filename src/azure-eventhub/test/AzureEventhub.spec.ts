@@ -12,8 +12,8 @@ describe("Azure Eventhub With Defaults", () => {
   beforeEach(() => {
     jest.mock("../../azure-resourcegroup", () => ({
       Group: {
-        Location: "eastus",
-        Name: "test-rg",
+        location: "eastus",
+        name: "test-rg",
       },
     }));
     const rgMock = jest.requireMock("../../azure-resourcegroup");

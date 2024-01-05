@@ -88,8 +88,8 @@ export class Namespace extends AzureResourceWithAlert {
     super(scope, name);
 
     this.ehNamespaceProps = ehNamespaceProps;
-    this.resourceGroupName = ehNamespaceProps.rg.Name;
-    this.rgLocation = ehNamespaceProps.rg.Location;
+    this.resourceGroupName = ehNamespaceProps.rg.name;
+    this.rgLocation = ehNamespaceProps.rg.location;
     this.namespaceName = ehNamespaceProps.name;
 
     const defaults = {

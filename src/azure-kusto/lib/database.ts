@@ -66,15 +66,15 @@ export class Database extends Construct {
     super(scope, id);
     this.kustoDbProps = kustoDbProps;
     this.kustoProps = kustoDbProps.kusto.kustoProps;
-    this.rg = kustoDbProps.kusto.kustoProps.rg.Name;
+    this.rg = kustoDbProps.kusto.kustoProps.rg.name;
 
     const kustoDatabase = new KustoDatabase(
       this,
       `kusto-db-${this.kustoDbProps.name}`,
       {
         name: this.kustoDbProps.name,
-        location: kustoDbProps.kusto.kustoProps.rg.Location,
-        resourceGroupName: kustoDbProps.kusto.kustoProps.rg.Name,
+        location: kustoDbProps.kusto.kustoProps.rg.location,
+        resourceGroupName: kustoDbProps.kusto.kustoProps.rg.name,
         clusterName: kustoDbProps.kusto.kustoProps.name,
       },
     );

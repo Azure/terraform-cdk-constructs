@@ -19,7 +19,7 @@ describe("Azure Network Security Group With Defaults", () => {
       name: "my-nsg",
       location: "eastus",
       resourceGroupName: "rgtest",
-      rules: [network.PreconfiguredRules.SSH],
+      rules: [network.PreconfiguredRules.ssh],
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse

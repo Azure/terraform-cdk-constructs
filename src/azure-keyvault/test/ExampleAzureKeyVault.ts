@@ -35,8 +35,8 @@ export class exampleAzureKeyVault extends BaseTestStack {
       name: `kv-${this.name}`,
       location: "eastus",
       sku: "standard",
-      resource_group_name: resourceGroup.name,
-      tenant_id: util.getAzureTenantId(),
+      resourceGroupName: resourceGroup.name,
+      tenantId: util.getAzureTenantId(),
       networkAcls: {
         bypass: "AzureServices",
         defaultAction: "Allow",

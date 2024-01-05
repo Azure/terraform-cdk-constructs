@@ -15,7 +15,7 @@ export interface RegistryProps {
   /**
    * The name of the Azure Resource Group.
    */
-  readonly resource_group_name: string;
+  readonly resourceGroupName: string;
   /**
    * The SKU of the Log Analytics Workspace.
    */
@@ -27,11 +27,11 @@ export interface RegistryProps {
   /**
    * Create enable Admin user.
    */
-  readonly admin_enabled?: boolean;
+  readonly adminEnabled?: boolean;
   /**
    * Specify the locations to configure replication.
    */
-  readonly georeplication_locations?: any;
+  readonly geoReplicationLocations?: any;
 }
 
 export class Registry extends AzureResource {
@@ -43,17 +43,17 @@ export class Registry extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resource_group_name;
+    this.resourceGroupName = props.resourceGroupName;
 
     // Provide default values
     const sku = props.sku ?? "Basic";
-    const admin_enabled = props.admin_enabled ?? false;
-    const georeplication_locations = props.georeplication_locations ?? [];
+    const admin_enabled = props.adminEnabled ?? false;
+    const georeplication_locations = props.geoReplicationLocations ?? [];
 
     const azurermContainerRegistry = new ContainerRegistry(this, "acr", {
       location: props.location,
       name: props.name,
-      resourceGroupName: props.resource_group_name,
+      resourceGroupName: props.resourceGroupName,
       sku: sku,
       tags: props.tags,
       adminEnabled: admin_enabled,

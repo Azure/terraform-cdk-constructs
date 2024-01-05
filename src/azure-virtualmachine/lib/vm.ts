@@ -137,7 +137,7 @@ export class WindowsVM extends AzureResource {
       },
       sourceImageReference:
         props.sourceImageReference ||
-        WindowsImageReferences.WindowsServer2022DatacenterCore,
+        WindowsImageReferences.windowsServer2022DatacenterCore,
       subnet:
         props.subnet ||
         new Network(this, "vnet", {
@@ -368,7 +368,7 @@ export class LinuxVM extends AzureResource {
       },
       sourceImageReference:
         props.sourceImageReference ||
-        WindowsImageReferences.WindowsServer2022DatacenterCore,
+        WindowsImageReferences.windowsServer2022DatacenterCore,
       subnet:
         props.subnet ||
         new Network(this, "vnet", {

@@ -17,12 +17,12 @@ export interface DataExport {
   /**
    * The ID of the destination resource for the export.
    */
-  readonly export_destination_id: string;
+  readonly exportDestinationId: string;
 
   /**
    * An array of table names to be included in the data export.
    */
-  readonly table_names: string[];
+  readonly tableNames: string[];
 
   /**
    * Indicates whether the data export is enabled.
@@ -42,7 +42,7 @@ export interface LAFunctions {
   /**
    * The display name for the function.
    */
-  readonly display_name: string;
+  readonly displayName: string;
 
   /**
    * The query that the function will execute.
@@ -52,12 +52,12 @@ export interface LAFunctions {
   /**
    * The alias to be used for the function.
    */
-  readonly function_alias: string;
+  readonly functionAlias: string;
 
   /**
    * A list of parameters for the function.
    */
-  readonly function_parameters: string[];
+  readonly functionParameters: string[];
 }
 
 /**
@@ -77,7 +77,7 @@ export interface Queries {
   /**
    * The display name for the saved query.
    */
-  readonly display_name: string;
+  readonly displayName: string;
 
   /**
    * The query string.
@@ -97,7 +97,7 @@ export interface WorkspaceProps {
   /**
    * The name of the Azure Resource Group.
    */
-  readonly resource_group_name: string;
+  readonly resourceGroupName: string;
   /**
    * The SKU of the Log Analytics Workspace.
    */
@@ -113,7 +113,7 @@ export interface WorkspaceProps {
   /**
    * Create a DataExport for the Log Analytics Workspace.
    */
-  readonly data_export?: DataExport[];
+  readonly dataExport?: DataExport[];
   /**
    * A collection of Log Analytic functions.
    */
@@ -133,7 +133,7 @@ export class Workspace extends AzureResourceWithAlert {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resource_group_name;
+    this.resourceGroupName = props.resourceGroupName;
 
     // Provide default values
     const sku = props.sku ?? "PerGB2018";
@@ -145,7 +145,7 @@ export class Workspace extends AzureResourceWithAlert {
       {
         location: props.location,
         name: props.name,
-        resourceGroupName: props.resource_group_name,
+        resourceGroupName: props.resourceGroupName,
         retentionInDays: retention,
         sku: sku,
         tags: props.tags,
@@ -154,13 +154,13 @@ export class Workspace extends AzureResourceWithAlert {
 
     this.id = azurermLogAnalyticsWorkspaceLogAnalytics.id;
 
-    props.data_export?.forEach((v, k) => {
+    props.dataExport?.forEach((v, k) => {
       new LogAnalyticsDataExportRule(this, `export-${k}`, {
-        destinationResourceId: v.export_destination_id,
+        destinationResourceId: v.exportDestinationId,
         enabled: v.enabled,
         name: v.name,
-        resourceGroupName: props.resource_group_name,
-        tableNames: v.table_names,
+        resourceGroupName: props.resourceGroupName,
+        tableNames: v.tableNames,
         workspaceResourceId: azurermLogAnalyticsWorkspaceLogAnalytics.id,
       });
     });
@@ -168,9 +168,9 @@ export class Workspace extends AzureResourceWithAlert {
     props.functions?.forEach((v, k) => {
       new LogAnalyticsSavedSearch(this, `function-${k}`, {
         category: "Function",
-        displayName: v.display_name,
-        functionAlias: v.function_alias,
-        functionParameters: v.function_parameters,
+        displayName: v.displayName,
+        functionAlias: v.functionAlias,
+        functionParameters: v.functionParameters,
         logAnalyticsWorkspaceId: azurermLogAnalyticsWorkspaceLogAnalytics.id,
         name: v.name,
         query: v.query,
@@ -180,7 +180,7 @@ export class Workspace extends AzureResourceWithAlert {
     props.queries?.forEach((v, k) => {
       new LogAnalyticsSavedSearch(this, `function-${k}`, {
         category: v.category,
-        displayName: v.display_name,
+        displayName: v.displayName,
         functionParameters: [],
         logAnalyticsWorkspaceId: azurermLogAnalyticsWorkspaceLogAnalytics.id,
         name: v.name,

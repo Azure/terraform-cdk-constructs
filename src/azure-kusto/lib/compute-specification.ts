@@ -32,7 +32,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedLargeD14v2: IComputeSpecification = {
+  static computeOptimizedLargeD14v2: IComputeSpecification = {
     skuName: "Standard_D14_v2",
     workload: "Compute optimized",
     series: "Dv2/DSv2 Series",
@@ -43,7 +43,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedExtraSmallD11v2: IComputeSpecification = {
+  static computeOptimizedExtraSmallD11v2: IComputeSpecification = {
     skuName: "Standard_D11_v2",
     workload: "Compute optimized",
     series: "Dv2/DSv2 Series",
@@ -54,7 +54,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedLargeD16dv5: IComputeSpecification = {
+  static computeOptimizedLargeD16dv5: IComputeSpecification = {
     skuName: "Standard_D16d_v5",
     workload: "Compute optimized",
     series: "Ddv5 Series",
@@ -65,7 +65,7 @@ export class ComputeSpecification {
     availibleZones: [],
   };
 
-  static ComputeOptimizedMediumD13v2: IComputeSpecification = {
+  static computeOptimizedMediumD13v2: IComputeSpecification = {
     skuName: "Standard_D13_v2",
     workload: "Compute optimized",
     series: "Dv2/DSv2 Series",
@@ -76,7 +76,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedSmallD12v2: IComputeSpecification = {
+  static computeOptimizedSmallD12v2: IComputeSpecification = {
     skuName: "Standard_D12_v2",
     workload: "Compute optimized",
     series: "Dv2/DSv2 Series",
@@ -87,7 +87,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedLargeStandardDS14v24TBPS: IComputeSpecification = {
+  static storageOptimizedLargeStandardDS14v24TBPS: IComputeSpecification = {
     skuName: "Standard_DS14_v2+4TB_PS",
     workload: "Storage optimized",
     series: "Dv2/DSv2 Series",
@@ -98,7 +98,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedStandardDS14v23TBPS: IComputeSpecification = {
+  static storageOptimizedStandardDS14v23TBPS: IComputeSpecification = {
     skuName: "Standard_DS14_v2+3TB_PS",
     workload: "Storage optimized",
     series: "Dv2/DSv2 Series",
@@ -109,7 +109,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedMediumStandardDS13v21TBPS: IComputeSpecification = {
+  static storageOptimizedMediumStandardDS13v21TBPS: IComputeSpecification = {
     skuName: "Standard_DS13_v2+1TB_PS",
     workload: "Storage optimized",
     series: "Dv2/DSv2 Series",
@@ -120,7 +120,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedMediumStandardDS13v22TBPS: IComputeSpecification = {
+  static storageOptimizedMediumStandardDS13v22TBPS: IComputeSpecification = {
     skuName: "Standard_DS13_v2+2TB_PS",
     workload: "Storage optimized",
     series: "Dv2/DSv2 Series",
@@ -131,7 +131,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedExtraLargeStandardD32dv5: IComputeSpecification = {
+  static computeOptimizedExtraLargeStandardD32dv5: IComputeSpecification = {
     skuName: "Standard_D32d_v5",
     workload: "Compute optimized",
     series: "Ddv5 Series",
@@ -142,7 +142,7 @@ export class ComputeSpecification {
     availibleZones: [],
   };
 
-  static ComputeOptimizedExtraLargeStandardD32dv4: IComputeSpecification = {
+  static computeOptimizedExtraLargeStandardD32dv4: IComputeSpecification = {
     skuName: "Standard_D32d_v4",
     workload: "Compute optimized",
     series: "Ddv4 Series",
@@ -153,7 +153,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedMediumStandardEC8adsv5: IComputeSpecification = {
+  static storageOptimizedMediumStandardEC8adsv5: IComputeSpecification = {
     skuName: "Standard_EC8ads_v5",
     workload: "Storage optimized",
     series: "ECadsv5 Series",
@@ -164,7 +164,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "3"],
   };
 
-  static StorageOptimizedMediumStandardEC8asv51TBPS: IComputeSpecification = {
+  static storageOptimizedMediumStandardEC8asv51TBPS: IComputeSpecification = {
     skuName: "Standard_EC8as_v5+1TB_PS",
     workload: "Storage optimized",
     series: "ECasv5 Series",
@@ -175,7 +175,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "3"],
   };
 
-  static StorageOptimizedMediumStandardEC8asv52TBPS: IComputeSpecification = {
+  static storageOptimizedMediumStandardEC8asv52TBPS: IComputeSpecification = {
     skuName: "Standard_EC8as_v5+2TB_PS",
     workload: "Storage optimized",
     series: "ECasv5 Series",
@@ -186,7 +186,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "3"],
   };
 
-  static StorageOptimizedLargeStandardEC16adsv5: IComputeSpecification = {
+  static storageOptimizedLargeStandardEC16adsv5: IComputeSpecification = {
     skuName: "Standard_EC16ads_v5",
     workload: "Storage optimized",
     series: "ECadsv5 Series",
@@ -197,7 +197,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "3"],
   };
 
-  static StorageOptimizedLargeStandardEC16asv54TBPS: IComputeSpecification = {
+  static storageOptimizedLargeStandardEC16asv54TBPS: IComputeSpecification = {
     skuName: "Standard_EC16as_v5+4TB_PS",
     workload: "Storage optimized",
     series: "ECasv5 Series",
@@ -208,7 +208,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "3"],
   };
 
-  static StorageOptimizedLargeStandardEC16asv53TBPS: IComputeSpecification = {
+  static storageOptimizedLargeStandardEC16asv53TBPS: IComputeSpecification = {
     skuName: "Standard_EC16as_v5+3TB_PS",
     workload: "Storage optimized",
     series: "ECasv5 Series",
@@ -219,7 +219,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "3"],
   };
 
-  static ComputeOptimizedIsolatedStandardE80idsv4: IComputeSpecification = {
+  static computeOptimizedIsolatedStandardE80idsv4: IComputeSpecification = {
     skuName: "Standard_E80ids_v4",
     workload: "Compute optimized",
     series: "Eidsv4 Series",
@@ -230,7 +230,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedMediumStandardE8av4: IComputeSpecification = {
+  static computeOptimizedMediumStandardE8av4: IComputeSpecification = {
     skuName: "Standard_E8a_v4",
     workload: "Compute optimized",
     series: "Eav4/Easv4 Series",
@@ -241,7 +241,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedMediumStandardE8adsv5: IComputeSpecification = {
+  static computeOptimizedMediumStandardE8adsv5: IComputeSpecification = {
     skuName: "Standard_E8ads_v5",
     workload: "Compute optimized",
     series: "Eadsv5 Series",
@@ -252,7 +252,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedMediumStandardE8asv51TBPS: IComputeSpecification = {
+  static storageOptimizedMediumStandardE8asv51TBPS: IComputeSpecification = {
     skuName: "Standard_E8as_v5+1TB_PS",
     workload: "Storage optimized",
     series: "Easv5 Series",
@@ -263,7 +263,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedMediumStandardE8asv52TBPS: IComputeSpecification = {
+  static storageOptimizedMediumStandardE8asv52TBPS: IComputeSpecification = {
     skuName: "Standard_E8as_v5+2TB_PS",
     workload: "Storage optimized",
     series: "Easv5 Series",
@@ -274,7 +274,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedMediumStandardE8asv41TBPS: IComputeSpecification = {
+  static storageOptimizedMediumStandardE8asv41TBPS: IComputeSpecification = {
     skuName: "Standard_E8as_v4+1TB_PS",
     workload: "Storage optimized",
     series: "Eav4/Easv4 Series",
@@ -285,7 +285,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedMediumStandardE8asv42TBPS: IComputeSpecification = {
+  static storageOptimizedMediumStandardE8asv42TBPS: IComputeSpecification = {
     skuName: "Standard_E8as_v4+2TB_PS",
     workload: "Storage optimized",
     series: "Eav4/Easv4 Series",
@@ -296,7 +296,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedMediumStandardE8dv5: IComputeSpecification = {
+  static computeOptimizedMediumStandardE8dv5: IComputeSpecification = {
     skuName: "Standard_E8d_v5",
     workload: "Compute optimized",
     series: "Edv5 Series",
@@ -307,7 +307,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedMediumStandardE8dv4: IComputeSpecification = {
+  static computeOptimizedMediumStandardE8dv4: IComputeSpecification = {
     skuName: "Standard_E8d_v4",
     workload: "Compute optimized",
     series: "Edv4 Series",
@@ -318,7 +318,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedMediumStandardE8sv51TBPS: IComputeSpecification = {
+  static storageOptimizedMediumStandardE8sv51TBPS: IComputeSpecification = {
     skuName: "Standard_E8s_v5+1TB_PS",
     workload: "Storage optimized",
     series: "Esv5 Series",
@@ -329,7 +329,7 @@ export class ComputeSpecification {
     availibleZones: [],
   };
 
-  static StorageOptimizedMediumStandardE8sv52TBPS: IComputeSpecification = {
+  static storageOptimizedMediumStandardE8sv52TBPS: IComputeSpecification = {
     skuName: "Standard_E8s_v5+2TB_PS",
     workload: "Storage optimized",
     series: "Esv5 Series",
@@ -340,7 +340,7 @@ export class ComputeSpecification {
     availibleZones: [],
   };
 
-  static StorageOptimizedMediumSStandardE8sv41TBPS: IComputeSpecification = {
+  static storageOptimizedMediumSStandardE8sv41TBPS: IComputeSpecification = {
     skuName: "Standard_E8s_v4+1TB_PS",
     workload: "Storage optimized",
     series: "Esv4 Series",
@@ -351,7 +351,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedMediumStandardE8sv42TBPS: IComputeSpecification = {
+  static storageOptimizedMediumStandardE8sv42TBPS: IComputeSpecification = {
     skuName: "Standard_E8s_v4+2TB_PS",
     workload: "Storage optimized",
     series: "Esv4 Series",
@@ -362,7 +362,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedSmallStandardE4av4: IComputeSpecification = {
+  static computeOptimizedSmallStandardE4av4: IComputeSpecification = {
     skuName: "Standard_E4a_v4",
     workload: "Compute optimized",
     series: "Eav4/Easv4 Series",
@@ -373,7 +373,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedSmallStandardE4adsv5: IComputeSpecification = {
+  static computeOptimizedSmallStandardE4adsv5: IComputeSpecification = {
     skuName: "Standard_E4ads_v5",
     workload: "Compute optimized",
     series: "Eadsv5 Series",
@@ -384,7 +384,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedSmallStandardE4dv5: IComputeSpecification = {
+  static computeOptimizedSmallStandardE4dv5: IComputeSpecification = {
     skuName: "Standard_E4d_v5",
     workload: "Compute optimized",
     series: "Edv5 Series",
@@ -395,7 +395,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedSmallStandardE4dv4: IComputeSpecification = {
+  static computeOptimizedSmallStandardE4dv4: IComputeSpecification = {
     skuName: "Standard_E4d_v4",
     workload: "Compute optimized",
     series: "Edv4 Series",
@@ -406,7 +406,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedLargeStandardE16av4: IComputeSpecification = {
+  static computeOptimizedLargeStandardE16av4: IComputeSpecification = {
     skuName: "Standard_E16a_v4",
     workload: "Compute optimized",
     series: "Eav4/Easv4 Series",
@@ -417,7 +417,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedLargeStandardE16adsv5: IComputeSpecification = {
+  static computeOptimizedLargeStandardE16adsv5: IComputeSpecification = {
     skuName: "Standard_E16ads_v5",
     workload: "Compute optimized",
     series: "Eadsv5 Series",
@@ -428,7 +428,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedLargeStandardE16asv54TBPS: IComputeSpecification = {
+  static storageOptimizedLargeStandardE16asv54TBPS: IComputeSpecification = {
     skuName: "Standard_E16as_v5+4TB_PS",
     workload: "Storage optimized",
     series: "Easv5 Series",
@@ -439,7 +439,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedLargeStandardE16asv53TBPS: IComputeSpecification = {
+  static storageOptimizedLargeStandardE16asv53TBPS: IComputeSpecification = {
     skuName: "Standard_E16as_v5+3TB_PS",
     workload: "Storage optimized",
     series: "Easv5 Series",
@@ -461,7 +461,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedLargeStandardE16asv43TBPS: IComputeSpecification = {
+  static storageOptimizedLargeStandardE16asv43TBPS: IComputeSpecification = {
     skuName: "Standard_E16as_v4+3TB_PS",
     workload: "Storage optimized",
     series: "Eav4/Easv4 Series",
@@ -472,7 +472,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedLargeStandardE16dv5: IComputeSpecification = {
+  static computeOptimizedLargeStandardE16dv5: IComputeSpecification = {
     skuName: "Standard_E16d_v5",
     workload: "Compute optimized",
     series: "Edv5 Series",
@@ -483,7 +483,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedLargeStandardE16dv4: IComputeSpecification = {
+  static computeOptimizedLargeStandardE16dv4: IComputeSpecification = {
     skuName: "Standard_E16d_v4",
     workload: "Compute optimized",
     series: "Edv4 Series",
@@ -505,7 +505,7 @@ export class ComputeSpecification {
     availibleZones: [],
   };
 
-  static StorageOptimizedLargeStorageOptimizedLargeStandardE16sv53TBPS: IComputeSpecification =
+  static storageOptimizedLargestorageOptimizedLargeStandardE16sv53TBPS: IComputeSpecification =
     {
       skuName: "Standard_E16s_v5+3TB_PS",
       workload: "Storage optimized",
@@ -517,7 +517,7 @@ export class ComputeSpecification {
       availibleZones: [],
     };
 
-  static StorageOptimizedLargeStandardE16sv44TBPS: IComputeSpecification = {
+  static storageOptimizedLargeStandardE16sv44TBPS: IComputeSpecification = {
     skuName: "Standard_E16s_v4+4TB_PS",
     workload: "Storage optimized",
     series: "Esv4 Series",
@@ -528,7 +528,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedLargeStandardE16sv43TBPS: IComputeSpecification = {
+  static storageOptimizedLargeStandardE16sv43TBPS: IComputeSpecification = {
     skuName: "Standard_E16s_v4+3TB_PS",
     workload: "Storage optimized",
     series: "Esv4 Series",
@@ -539,7 +539,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedIsolatedStandardE64iv3: IComputeSpecification = {
+  static computeOptimizedIsolatedStandardE64iv3: IComputeSpecification = {
     skuName: "Standard_E64i_v3",
     workload: "Compute optimized",
     series: "Eiv3 Series",
@@ -550,7 +550,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedExtraSmallStandardE2av4: IComputeSpecification = {
+  static computeOptimizedExtraSmallStandardE2av4: IComputeSpecification = {
     skuName: "Standard_E2a_v4",
     workload: "Compute optimized",
     series: "Eav4/Easv4 Series",
@@ -561,7 +561,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedExtraSmallStandardE2adsv5: IComputeSpecification = {
+  static computeOptimizedExtraSmallStandardE2adsv5: IComputeSpecification = {
     skuName: "Standard_E2ads_v5",
     workload: "Compute optimized",
     series: "Eadsv5 Series",
@@ -572,7 +572,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedExtraSmallStandardE2dv5: IComputeSpecification = {
+  static computeOptimizedExtraSmallStandardE2dv5: IComputeSpecification = {
     skuName: "Standard_E2d_v5",
     workload: "Compute optimized",
     series: "Edv5 Series",
@@ -583,7 +583,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static ComputeOptimizedExtraSmallStandardE2dv4: IComputeSpecification = {
+  static computeOptimizedExtraSmallStandardE2dv4: IComputeSpecification = {
     skuName: "Standard_E2d_v4",
     workload: "Compute optimized",
     series: "Edv4 Series",
@@ -594,7 +594,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StorageOptimizedMediumStandardL8asv3: IComputeSpecification = {
+  static storageOptimizedMediumStandardL8asv3: IComputeSpecification = {
     skuName: "Standard_L8as_v3",
     workload: "Storage optimized",
     series: "Lasv3 Series",
@@ -605,7 +605,7 @@ export class ComputeSpecification {
     availibleZones: [],
   };
 
-  // static StorageOptimizedMediumStandardL8s: IComputeSpecification = {
+  // static storageOptimizedMediumStandardL8s: IComputeSpecification = {
   //   skuName: "Standard_L8s",
   //   workload: "Storage optimized",
   //   series: "Lasv3 Series",
@@ -616,7 +616,7 @@ export class ComputeSpecification {
   //   availibleZones: [],
   // }
 
-  static StorageOptimizedMediumStandardL8sv3: IComputeSpecification = {
+  static storageOptimizedMediumStandardL8sv3: IComputeSpecification = {
     skuName: "Standard_L8s_v3",
     workload: "Storage optimized",
     series: "Lasv3 Series",
@@ -649,7 +649,7 @@ export class ComputeSpecification {
   //   availibleZones: [],
   // }
 
-  static StorageOptimizedLargeStandardL16asv3: IComputeSpecification = {
+  static storageOptimizedLargeStandardL16asv3: IComputeSpecification = {
     skuName: "Standard_L16as_v3",
     workload: "Storage optimized",
     series: "Lasv3 Series",
@@ -671,7 +671,7 @@ export class ComputeSpecification {
   //   availibleZones: [],
   // }
 
-  static StorageOptimizedLargeStandardL16sv3: IComputeSpecification = {
+  static storageOptimizedLargeStandardL16sv3: IComputeSpecification = {
     skuName: "Standard_L16s_v3",
     workload: "Storage optimized",
     series: "Lasv3 Series",
@@ -693,7 +693,7 @@ export class ComputeSpecification {
   //   availibleZones: [],
   // }
 
-  static StorageOptimizedExtraLargeStandardL32asv3: IComputeSpecification = {
+  static storageOptimizedExtraLargeStandardL32asv3: IComputeSpecification = {
     skuName: "Standard_L32as_v3",
     workload: "Storage optimized",
     series: "Lasv3 Series",
@@ -704,7 +704,7 @@ export class ComputeSpecification {
     availibleZones: [],
   };
 
-  static StorageOptimizedExtraLargeStandardL32sv3: IComputeSpecification = {
+  static storageOptimizedExtraLargeStandardL32sv3: IComputeSpecification = {
     skuName: "Standard_L32s_v3",
     workload: "Storage optimized",
     series: "Lasv3 Series",
