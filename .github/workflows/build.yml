@@ -24,6 +24,11 @@ jobs:
         run: yarn install --check-files
       - name: build
         run: npx projen build
+        env:
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZTFREADER_SUBSCRIPTIONID }}
+          ARM_TENANT_ID: ${{ secrets.AZTFREADER_TENANT_ID }}
+          ARM_CLIENT_ID: ${{ secrets.AZTFREADER_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.AZTFREADER_CLIENT_SECRET }}
       - name: Find mutations
         id: self_mutation
         run: |-

@@ -81,6 +81,14 @@ releaseWorkflow?.patch(JsonPatch.remove("/jobs/release_npm/steps/8/env"));
 // Build Workflow
 const buildWorkflow = project.tryFindObjectFile(".github/workflows/build.yml");
 buildWorkflow?.patch(JsonPatch.remove("/jobs/build/steps/0/with")); // Remove because build tries to copy forked repo which is private
+buildWorkflow?.patch(
+  JsonPatch.add("/jobs/build/steps/3/env", {
+    ARM_SUBSCRIPTION_ID: "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
+    ARM_TENANT_ID: "${{ secrets.AZTFREADER_TENANT_ID }}",
+    ARM_CLIENT_ID: "${{ secrets.AZTFREADER_CLIENT_ID }}",
+    ARM_CLIENT_SECRET: "${{ secrets.AZTFREADER_CLIENT_SECRET }}",
+  }),
+);
 
 // Add .gitignore entries
 project.gitignore.include("cdk.out");
