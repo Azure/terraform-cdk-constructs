@@ -130,10 +130,10 @@ export interface AccountProps {
  */
 export class Account extends AzureResourceWithAlert {
   public readonly props: AccountProps;
-  public readonly id: string;
+  public id: string;
   public readonly name: string;
   public readonly resourceGroup: ResourceGroup;
-  public readonly resourceGroupName: string;
+  public resourceGroupName: string;
   public readonly accountKind: string;
   public readonly accountTier: string;
   private readonly containers: Map<string, Container>;

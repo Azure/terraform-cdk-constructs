@@ -106,8 +106,8 @@ export interface GrantCustomAccessOptions {
 
 export class Vault extends AzureResource {
   readonly props: VaultProps;
-  public readonly resourceGroupName: string;
-  public readonly id: string;
+  public resourceGroupName: string;
+  public id: string;
   private accessPolicies: AccessPolicy[] = [];
 
   constructor(scope: Construct, id: string, props: VaultProps) {

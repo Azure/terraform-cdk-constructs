@@ -138,8 +138,8 @@ export interface AzureQueryRuleAlertProps extends BaseAzureQueryRuleAlertProps {
 
 export class QueryRuleAlert extends Construct {
   readonly queryRuleAlertProps: AzureQueryRuleAlertProps;
-  public readonly id: string;
-  public readonly resourceGroupName: string;
+  public id: string;
+  public resourceGroupName: string;
 
   /**
    * Constructs a new instance of the AzureQueryRuleAlert class.

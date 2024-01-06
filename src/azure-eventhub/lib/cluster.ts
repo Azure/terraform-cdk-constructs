@@ -25,8 +25,8 @@ export class Cluster extends AzureResource {
   readonly ehClusterProps: ClusterProps;
   readonly rgName: string;
   readonly rgLocation: string;
-  readonly id: string;
-  readonly resourceGroupName: string;
+  public id: string;
+  public resourceGroupName: string;
 
   constructor(scope: Construct, name: string, ehClusterProps: ClusterProps) {
     super(scope, name);

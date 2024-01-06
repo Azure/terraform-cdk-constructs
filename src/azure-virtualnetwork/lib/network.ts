@@ -57,8 +57,8 @@ export interface NetworkProps {
 export class Network extends AzureResource {
   readonly props: NetworkProps;
   public readonly name: string;
-  public readonly resourceGroupName: string;
-  public readonly id: string;
+  public resourceGroupName: string;
+  public id: string;
   public readonly virtualNetwork: VirtualNetwork;
   public readonly subnets: { [name: string]: Subnet } = {}; // Map of subnet name to Subnet object
 

@@ -154,8 +154,8 @@ export interface LinuxClusterProps {
 
 export class LinuxCluster extends AzureResource {
   public readonly props: LinuxClusterProps;
-  public readonly resourceGroupName: string;
-  public readonly id: string;
+  public resourceGroupName: string;
+  public id: string;
   public readonly name: string;
   public readonly fqn: string;
 
@@ -361,8 +361,8 @@ export interface WindowsClusterProps {
 
 export class WindowsCluster extends AzureResource {
   readonly props: WindowsClusterProps;
-  public readonly resourceGroupName: string;
-  public readonly id: string;
+  public resourceGroupName: string;
+  public id: string;
   public readonly name: string;
 
   /**

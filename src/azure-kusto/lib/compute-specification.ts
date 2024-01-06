@@ -450,7 +450,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StandardE16asv44TBPS: IComputeSpecification = {
+  static standardE16asv44TBPS: IComputeSpecification = {
     skuName: "Standard_E16as_v4+4TB_PS",
     workload: "Storage optimized",
     series: "Eav4/Easv4 Series",
@@ -494,7 +494,7 @@ export class ComputeSpecification {
     availibleZones: ["1", "2", "3"],
   };
 
-  static StandardE16sv54TBPS: IComputeSpecification = {
+  static standardE16sv54TBPS: IComputeSpecification = {
     skuName: "Standard_E16s_v5+4TB_PS",
     workload: "Storage optimized",
     series: "Esv5 Series",

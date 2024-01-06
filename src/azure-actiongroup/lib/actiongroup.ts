@@ -81,8 +81,8 @@ export interface ActionGroupProps {
 
 export class ActionGroup extends AzureResource {
   readonly props: ActionGroupProps;
-  readonly resourceGroupName: string;
-  readonly id: string;
+  public resourceGroupName: string;
+  public id: string;
 
   constructor(scope: Construct, id: string, props: ActionGroupProps) {
     super(scope, id);

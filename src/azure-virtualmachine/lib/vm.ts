@@ -108,8 +108,8 @@ export interface WindowsVMProps {
 
 export class WindowsVM extends AzureResource {
   public readonly props: WindowsVMProps;
-  public readonly resourceGroupName: string;
-  public readonly id: string;
+  public resourceGroupName: string;
+  public id: string;
   public readonly name: string;
   public readonly publicIp?: string;
 
@@ -334,8 +334,8 @@ export interface LinuxVMProps {
 export class LinuxVM extends AzureResource {
   // Properties of the AzureLinuxVirtualMachine class
   readonly props: LinuxVMProps;
-  public readonly resourceGroupName: string;
-  public readonly id: string;
+  public resourceGroupName: string;
+  public id: string;
   public readonly name: string;
   public readonly publicIp?: string;
 

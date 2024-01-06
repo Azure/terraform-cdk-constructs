@@ -126,8 +126,8 @@ export interface WorkspaceProps {
 
 export class Workspace extends AzureResourceWithAlert {
   readonly props: WorkspaceProps;
-  readonly resourceGroupName: string;
-  public readonly id: string;
+  public resourceGroupName: string;
+  public id: string;
 
   constructor(scope: Construct, id: string, props: WorkspaceProps) {
     super(scope, id);

@@ -84,9 +84,9 @@ export interface SecurityGroupProps {
 
 export class SecurityGroup extends AzureResource {
   readonly props: SecurityGroupProps;
-  public readonly id: string;
+  public id: string;
   public readonly name: string;
-  public readonly resourceGroupName: string;
+  public resourceGroupName: string;
 
   constructor(scope: Construct, id: string, props: SecurityGroupProps) {
     super(scope, id);

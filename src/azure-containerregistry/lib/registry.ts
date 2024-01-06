@@ -36,8 +36,8 @@ export interface RegistryProps {
 
 export class Registry extends AzureResource {
   public readonly props: RegistryProps;
-  public readonly resourceGroupName: string;
-  public readonly id: string;
+  public resourceGroupName: string;
+  public id: string;
 
   constructor(scope: Construct, id: string, props: RegistryProps) {
     super(scope, id);

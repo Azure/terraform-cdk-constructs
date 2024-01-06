@@ -202,14 +202,14 @@ export interface FunctionAppLinuxProps {
 }
 
 export class FunctionAppLinux extends AzureResource {
-  public readonly id: string;
+  public id: string;
   public readonly defaultHostname: string;
   public readonly kind: string;
   public readonly name: string;
   public readonly storageAccount: StorageAccount;
   public readonly servicePlan: ServicePlan;
   public readonly resourceGroup: ResourceGroup;
-  public readonly resourceGroupName: string;
+  public resourceGroupName: string;
 
   /**
    * Constructs a new FunctionAppLinux.

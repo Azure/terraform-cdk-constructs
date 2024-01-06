@@ -80,8 +80,8 @@ export interface ClusterProps {
 
 export class Cluster extends AzureResource {
   readonly kustoProps: ClusterProps;
-  public readonly id: string;
-  public readonly resourceGroupName: string;
+  public id: string;
+  public resourceGroupName: string;
   public readonly uri: string;
 
   constructor(scope: Construct, id: string, kustoProps: ClusterProps) {

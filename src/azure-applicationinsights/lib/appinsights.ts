@@ -50,9 +50,9 @@ export interface AppInsightsProps {
 
 export class AppInsights extends AzureResource {
   readonly props: AppInsightsProps;
-  readonly resourceGroupName: string;
+  public resourceGroupName: string;
+  public id: string;
   private readonly instrumentationKey: string;
-  public readonly id: string;
 
   constructor(scope: Construct, id: string, props: AppInsightsProps) {
     super(scope, id);

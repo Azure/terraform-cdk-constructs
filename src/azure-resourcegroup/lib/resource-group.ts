@@ -28,13 +28,13 @@ export interface GroupProps {
 }
 
 export class Group extends AzureResource {
-  public readonly resourceGroupName: string;
+  public resourceGroupName: string;
   readonly props: GroupProps;
   idOutput: cdktf.TerraformOutput;
   locationOutput: cdktf.TerraformOutput;
   nameOutput: cdktf.TerraformOutput;
 
-  public readonly id: string;
+  public id: string;
   public readonly location: string;
   public readonly name: string;
 
