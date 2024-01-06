@@ -75,9 +75,9 @@ export interface NamespaceProps {
 
 export class Namespace extends AzureResourceWithAlert {
   readonly ehNamespaceProps: NamespaceProps;
-  readonly resourceGroupName: string;
+  public resourceGroupName: string;
   readonly rgLocation: string;
-  readonly id: string;
+  public id: string;
   readonly namespaceName: string;
 
   constructor(
