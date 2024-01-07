@@ -128,4 +128,6 @@ jobs:
       - name: Collect js Artifact
         run: mv .repo/dist dist
       - name: Release
-        run: npm publish
+        run: |-
+          PACKAGE_FILE=$(ls dist/js/*.tgz)
+          npm publish "$PACKAGE_FILE"
