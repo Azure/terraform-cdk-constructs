@@ -84,6 +84,9 @@ releaseWorkflow?.patch(
     ARM_CLIENT_SECRET: "${{ secrets.AZTFREADER_CLIENT_SECRET }}",
   }),
 );
+releaseWorkflow?.patch(
+  JsonPatch.add("/jobs/release_npm/steps/8/run", "npm publish"),
+);
 
 // Build Workflow
 const buildWorkflow = project.tryFindObjectFile(".github/workflows/build.yml");
