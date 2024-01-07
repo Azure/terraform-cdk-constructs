@@ -1,8 +1,8 @@
-import { App} from "cdktf";
-import {BaseTestStack} from "../../testing";
-import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
-import * as rg from ".."
-import { Construct } from 'constructs';
+import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { App } from "cdktf";
+import { Construct } from "constructs";
+import * as rg from "..";
+import { BaseTestStack } from "../../testing";
 
 const app = new App();
 
@@ -13,18 +13,16 @@ export class exampleAzureResourceGroup extends BaseTestStack {
     new AzurermProvider(this, "azure", {
       features: {},
     });
-  
-    new rg.Group(this, 'testRG', {
+
+    new rg.Group(this, "testRG", {
       name: `rg-${this.name}`,
-      location: 'eastus',
+      location: "eastus",
       tags: {
-          name: 'test',
-          Env: "NonProd",
+        name: "test",
+        Env: "NonProd",
       },
       ignoreChanges: ['tags["Environment"]'],
-      
     });
-
   }
 }
 

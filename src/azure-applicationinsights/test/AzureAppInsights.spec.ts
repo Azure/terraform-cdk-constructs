@@ -1,12 +1,11 @@
-import { Testing, TerraformStack} from 'cdktf';
-import { exampleAzureApplicationInsights} from './ExampleAzureApplicationInsights'
-import 'cdktf/lib/testing/adapters/jest';
+import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { Testing, TerraformStack } from "cdktf";
+import { exampleAzureApplicationInsights } from "./ExampleAzureApplicationInsights";
+import "cdktf/lib/testing/adapters/jest";
 import * as appi from "..";
-import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
 import * as util from "../../util/azureTenantIdHelpers";
 
-
-describe('Application Insights With Defaults', () => {
+describe("Application Insights With Defaults", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
 
@@ -14,21 +13,19 @@ describe('Application Insights With Defaults', () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", {features: {}});
-    new appi.AppInsights(stack, 'testAzureApplicationInsightsDefaults', {
+    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new appi.AppInsights(stack, "testAzureApplicationInsightsDefaults", {
       name: "appi-test",
-      location: 'eastus',
-      resource_group_name: "rg-test",
-      application_type: "web",
+      location: "eastus",
+      resourceGroupName: "rg-test",
+      applicationType: "web",
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });
 
   it("renders an Application Insights with defaults and checks snapshot", () => {
-    expect(
-      Testing.synth(stack)
-    ).toMatchSnapshot(); // Compare the already prepared stack
+    expect(Testing.synth(stack)).toMatchSnapshot(); // Compare the already prepared stack
   });
 
   it("check if the produced terraform configuration is valid", () => {
@@ -40,12 +37,12 @@ describe('Application Insights With Defaults', () => {
   });
 });
 
-
-describe('Application Insights Example', () => {
-  
+describe("Application Insights Example", () => {
   it("renders the Application Insights and checks snapshot", () => {
     // Need to remove the tenant_id from the snapshot as it will change wherever the test is run
-    const output = Testing.synth(new exampleAzureApplicationInsights(Testing.app(), "testAzureKeyVault"));
+    const output = Testing.synth(
+      new exampleAzureApplicationInsights(Testing.app(), "testAzureKeyVault"),
+    );
     const myObject: Record<string, any> = JSON.parse(output);
 
     expect(util.removeTenantIdFromSnapshot(myObject)).toMatchSnapshot();
@@ -53,13 +50,25 @@ describe('Application Insights Example', () => {
 
   it("check if the produced terraform configuration is valid", () => {
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureApplicationInsights(Testing.app(), "testAzureApplicationInsights"))).toBeValidTerraform();
+    expect(
+      Testing.fullSynth(
+        new exampleAzureApplicationInsights(
+          Testing.app(),
+          "testAzureApplicationInsights",
+        ),
+      ),
+    ).toBeValidTerraform();
   });
 
   it("check if this can be planned", () => {
-  
-    
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureApplicationInsights(Testing.app(), "testAzureApplicationInsights"))).toPlanSuccessfully();
+    expect(
+      Testing.fullSynth(
+        new exampleAzureApplicationInsights(
+          Testing.app(),
+          "testAzureApplicationInsights",
+        ),
+      ),
+    ).toPlanSuccessfully();
   });
 });

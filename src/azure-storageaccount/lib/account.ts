@@ -1,48 +1,50 @@
-import { Construct } from 'constructs';
-import { StorageAccount } from '@cdktf/provider-azurerm/lib/storage-account';
-import { AzureResourceWithAlert } from '../../core-azure/lib';
-import { ResourceGroup } from '@cdktf/provider-azurerm/lib/resource-group';
-import { Container } from './container';
-import { FileShare, FileShareProps } from './fileshare';
-import { Table } from './table';
-import { StorageTableAcl } from '@cdktf/provider-azurerm/lib/storage-table';
-import { Queue } from './queue';
-import { StorageAccountNetworkRulesA, StorageAccountNetworkRulesPrivateLinkAccessA } from "@cdktf/provider-azurerm/lib/storage-account-network-rules";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
+import { StorageAccount } from "@cdktf/provider-azurerm/lib/storage-account";
+import {
+  StorageAccountNetworkRulesA,
+  StorageAccountNetworkRulesPrivateLinkAccessA,
+} from "@cdktf/provider-azurerm/lib/storage-account-network-rules";
+import { StorageTableAcl } from "@cdktf/provider-azurerm/lib/storage-table";
+import { Construct } from "constructs";
+import { Container } from "./container";
+import { FileShare, FileShareProps } from "./fileshare";
+import { Queue } from "./queue";
+import { Table } from "./table";
+import { AzureResourceWithAlert } from "../../core-azure/lib";
 
-
-interface NetworkRulesProps {
+export interface NetworkRulesProps {
   /**
-   * Specifies which traffic to bypass from the network rules. The possible values are 'AzureServices', 'Logging', 'Metrics', 
+   * Specifies which traffic to bypass from the network rules. The possible values are 'AzureServices', 'Logging', 'Metrics',
    * and 'None'. Bypassing 'AzureServices' enables Azure's internal services to access the storage account.
    */
   readonly bypass?: string[];
 
   /**
-   * The default action of the network rule set. Options are 'Allow' or 'Deny'. Set to 'Deny' to enable network rules and restrict 
+   * The default action of the network rule set. Options are 'Allow' or 'Deny'. Set to 'Deny' to enable network rules and restrict
    * access to the storage account. 'Allow' permits access by default.
    */
   readonly defaultAction: string;
 
   /**
-   * An array of IP rules to allow access to the storage account. These are specified as CIDR ranges. 
+   * An array of IP rules to allow access to the storage account. These are specified as CIDR ranges.
    * Example: ['1.2.3.4/32', '5.6.7.0/24'] to allow specific IPs/subnets.
    */
   readonly ipRules?: string[];
 
   /**
-   * An array of virtual network subnet IDs that are allowed to access the storage account. This enables you to secure the storage 
+   * An array of virtual network subnet IDs that are allowed to access the storage account. This enables you to secure the storage
    * account to a specific virtual network and subnet within Azure.
    */
   readonly virtualNetworkSubnetIds?: string[];
 
   /**
-   * An array of objects representing the private link access settings. Each object in the array defines the sub-resource name 
+   * An array of objects representing the private link access settings. Each object in the array defines the sub-resource name
    * (e.g., 'blob', 'file') and its respective private endpoint connections for the storage account.
    */
   readonly privateLinkAccess?: StorageAccountNetworkRulesPrivateLinkAccessA[];
 }
 
-interface AccountProps {
+export interface AccountProps {
   /**
    * The type of replication to use for the storage account. This determines how your data is replicated across Azure's infrastructure.
    * Example values: LRS (Locally Redundant Storage), GRS (Geo-Redundant Storage), RAGRS (Read Access Geo-Redundant Storage).
@@ -127,11 +129,11 @@ interface AccountProps {
  * ```
  */
 export class Account extends AzureResourceWithAlert {
-  readonly props: AccountProps;
-  public readonly id: string;
+  public readonly props: AccountProps;
+  public id: string;
   public readonly name: string;
   public readonly resourceGroup: ResourceGroup;
-  public readonly resourceGroupName: string;
+  public resourceGroupName: string;
   public readonly accountKind: string;
   public readonly accountTier: string;
   private readonly containers: Map<string, Container>;
@@ -153,21 +155,19 @@ export class Account extends AzureResourceWithAlert {
     this.shares = new Map<string, FileShare>();
     this.tables = new Map<string, Table>();
 
-
     // default Storage Account Settings
     const defaults = {
-      accountReplicationType: props.accountReplicationType || 'LRS',
-      accountTier: props.accountTier || 'Standard',
+      accountReplicationType: props.accountReplicationType || "LRS",
+      accountTier: props.accountTier || "Standard",
       enableHttpsTrafficOnly: props.enableHttpsTrafficOnly || true,
-      accessTier: props.accessTier || 'Hot',
+      accessTier: props.accessTier || "Hot",
       isHnsEnabled: props.isHnsEnabled || true,
-      minTlsVersion: props.minTlsVersion || 'TLS1_2',
+      minTlsVersion: props.minTlsVersion || "TLS1_2",
       publicnetworkAccessEnabled: props.publicNetworkAccessEnabled || false,
     };
 
-
     // Create the storage account
-    const storageAccount = new StorageAccount(this, 'storageaccount', {
+    const storageAccount = new StorageAccount(this, "storageaccount", {
       ...defaults,
       name: props.name,
       resourceGroupName: this.resourceGroup.name,
@@ -180,14 +180,12 @@ export class Account extends AzureResourceWithAlert {
     this.accountKind = storageAccount.accountKind;
     this.accountTier = storageAccount.accountTier;
     this.resourceGroupName = this.resourceGroup.name;
-
   }
 
   private setupResourceGroup(props: AccountProps): ResourceGroup {
-
     if (!props.resourceGroup) {
       // Create a new resource group
-      const newResourceGroup = new ResourceGroup(this, 'rg', {
+      const newResourceGroup = new ResourceGroup(this, "rg", {
         name: `rg-${props.name}`,
         location: props.location,
         tags: props.tags,
@@ -213,7 +211,11 @@ export class Account extends AzureResourceWithAlert {
    * const container = storageAccount.addContainer('myContainer', 'private');
    * ```
    */
-  public addContainer(name: string, containerAccessType?: string, metadata?: { [key: string]: string }): Container {
+  public addContainer(
+    name: string,
+    containerAccessType?: string,
+    metadata?: { [key: string]: string },
+  ): Container {
     if (this.containers.has(name)) {
       throw new Error(`Container '${name}' already exists.`);
     }
@@ -221,7 +223,7 @@ export class Account extends AzureResourceWithAlert {
     const newContainer = new Container(this, name, {
       name: name,
       storageAccountName: this.name,
-      containerAccessType: containerAccessType || 'private',
+      containerAccessType: containerAccessType || "private",
       metadata: metadata || {},
     });
 
@@ -248,8 +250,8 @@ export class Account extends AzureResourceWithAlert {
 
     const defaults = {
       quota: props?.quota || 1024,
-      accessTier: props?.accessTier || 'Hot',
-      enabledProtocol: props?.enabledProtocol || 'SMB',
+      accessTier: props?.accessTier || "Hot",
+      enabledProtocol: props?.enabledProtocol || "SMB",
       acl: props?.acl || [],
       metadata: props?.metadata || {},
     };
@@ -311,21 +313,23 @@ export class Account extends AzureResourceWithAlert {
   }
 
   /**
-  * Adds network rules to the storage account.
-  * @param props Configuration properties for the network rules.
-  * @returns The configured StorageAccountNetworkRulesA.
-  *
-  * Example usage:
-  * ```typescript
-  * storageAccount.addNetworkRules({
-  *     bypass: ['AzureServices'],
-  *     defaultAction: 'Deny',
-  *     ipRules: ['1.2.3.4/32'],
-  *     virtualNetworkSubnetIds: ['subnetId'],
-  *  });  
-  * ```
-  */
-  public addNetworkRules(props: NetworkRulesProps): StorageAccountNetworkRulesA {
+   * Adds network rules to the storage account.
+   * @param props Configuration properties for the network rules.
+   * @returns The configured StorageAccountNetworkRulesA.
+   *
+   * Example usage:
+   * ```typescript
+   * storageAccount.addNetworkRules({
+   *     bypass: ['AzureServices'],
+   *     defaultAction: 'Deny',
+   *     ipRules: ['1.2.3.4/32'],
+   *     virtualNetworkSubnetIds: ['subnetId'],
+   *  });
+   * ```
+   */
+  public addNetworkRules(
+    props: NetworkRulesProps,
+  ): StorageAccountNetworkRulesA {
     return new StorageAccountNetworkRulesA(this, "rules", {
       storageAccountId: this.id,
       bypass: props.bypass,

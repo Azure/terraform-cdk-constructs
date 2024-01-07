@@ -1,10 +1,10 @@
-import { Testing, TerraformStack} from 'cdktf';
-import { exampleAzureResourceGroup} from './ExampleAzureResourceGroup'
-import 'cdktf/lib/testing/adapters/jest';
-import * as rg from ".."
-import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
+import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { Testing, TerraformStack } from "cdktf";
+import { exampleAzureResourceGroup } from "./ExampleAzureResourceGroup";
+import "cdktf/lib/testing/adapters/jest";
+import * as rg from "..";
 
-describe('Resource Group With Defaults', () => {
+describe("Resource Group With Defaults", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
 
@@ -12,16 +12,14 @@ describe('Resource Group With Defaults', () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", {features: {}});
-    new rg.Group(stack, 'testRG');
+    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new rg.Group(stack, "testRG");
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });
 
   it("renders a Resource Group with defaults and checks snapshot", () => {
-    expect(
-      Testing.synth(stack)
-    ).toMatchSnapshot(); // Compare the already prepared stack
+    expect(Testing.synth(stack)).toMatchSnapshot(); // Compare the already prepared stack
   });
 
   it("check if the produced terraform configuration is valid", () => {
@@ -33,25 +31,39 @@ describe('Resource Group With Defaults', () => {
   });
 });
 
-
-describe('Resource Group Example', () => {
-  
+describe("Resource Group Example", () => {
   it("renders the Example Resource Group and checks snapshot", () => {
     expect(
-      Testing.synth(new exampleAzureResourceGroup(Testing.app(), "testAzexampleAzureResourceGroup"))
-      
+      Testing.synth(
+        new exampleAzureResourceGroup(
+          Testing.app(),
+          "testAzexampleAzureResourceGroup",
+        ),
+      ),
     ).toMatchSnapshot();
   });
 
   it("check if the produced terraform configuration is valid", () => {
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureResourceGroup(Testing.app(), "testAzexampleAzureResourceGroup"))).toBeValidTerraform();
+    expect(
+      Testing.fullSynth(
+        new exampleAzureResourceGroup(
+          Testing.app(),
+          "testAzexampleAzureResourceGroup",
+        ),
+      ),
+    ).toBeValidTerraform();
   });
 
   it("check if this can be planned", () => {
-  
-    
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureResourceGroup(Testing.app(), "testAzexampleAzureResourceGroup"))).toPlanSuccessfully();
+    expect(
+      Testing.fullSynth(
+        new exampleAzureResourceGroup(
+          Testing.app(),
+          "testAzexampleAzureResourceGroup",
+        ),
+      ),
+    ).toPlanSuccessfully();
   });
 });

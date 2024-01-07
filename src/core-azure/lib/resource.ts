@@ -1,9 +1,11 @@
 import { Construct } from "constructs";
-import { Rbac } from './rbac';
-import { DiagnosticSettings, DiagnosticSettingsProps } from './diagsettings';
-import * as queryalert from "../../azure-queryrulealert";
+import {
+  DiagnosticSettings,
+  BaseDiagnosticSettingsProps,
+} from "./diagsettings";
+import { Rbac } from "./rbac";
 import * as metricalert from "../../azure-metricalert";
-
+import * as queryalert from "../../azure-queryrulealert";
 
 export abstract class AzureResource extends Construct {
   public id: string;
@@ -23,9 +25,9 @@ export abstract class AzureResource extends Construct {
   }
 
   // Diag Settings Methods
-  public addDiagSettings(props: Omit<DiagnosticSettingsProps, 'targetResourceId'>) {
-    new DiagnosticSettings(this, 'diagsettings', {
-      name: props.name || `diag-settings`,
+  public addDiagSettings(props: BaseDiagnosticSettingsProps) {
+    new DiagnosticSettings(this, "diagsettings", {
+      name: props.name || "diag-settings",
       logAnalyticsWorkspaceId: props.logAnalyticsWorkspaceId,
       eventhubAuthorizationRuleId: props.eventhubAuthorizationRuleId,
       eventhubName: props.eventhubName,
@@ -37,16 +39,15 @@ export abstract class AzureResource extends Construct {
 }
 
 export abstract class AzureResourceWithAlert extends AzureResource {
-
-  public addQueryRuleAlert(props: Omit<queryalert.AzureQueryRuleAlertProps, 'scopes'>) {
-    new queryalert.QueryRuleAlert(this, 'queryrulealert', {
+  public addQueryRuleAlert(props: queryalert.BaseAzureQueryRuleAlertProps) {
+    new queryalert.QueryRuleAlert(this, "queryrulealert", {
       ...props,
       scopes: [this.id],
     });
   }
 
-  public addMetricAlert(props: Omit<metricalert.MetricAlertProps, 'resourceGroupName' | 'scopes'>) {
-    new metricalert.MetricAlert(this, 'metricalert', {
+  public addMetricAlert(props: metricalert.IBaseMetricAlertProps) {
+    new metricalert.MetricAlert(this, "metricalert", {
       ...props,
       resourceGroupName: this.resourceGroupName,
       scopes: [this.id],

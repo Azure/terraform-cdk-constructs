@@ -1,19 +1,31 @@
-import { Construct } from 'constructs';
-import * as cdktf from 'cdktf';
-import { WindowsVirtualMachineOsDisk, WindowsVirtualMachineSourceImageReference } from "@cdktf/provider-azurerm/lib/windows-virtual-machine";
-import { WindowsVirtualMachineScaleSet, WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress } from "@cdktf/provider-azurerm/lib/windows-virtual-machine-scale-set";
-import { WindowsImageReferences, LinuxImageReferences } from '../../azure-virtualmachine';
-import {  LinuxVirtualMachineScaleSet, LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress} from "@cdktf/provider-azurerm/lib/linux-virtual-machine-scale-set"; 
 import {
-    LinuxVirtualMachineSourceImageReference, 
-    LinuxVirtualMachineOsDisk, 
-    LinuxVirtualMachineAdminSshKey, 
-    LinuxVirtualMachineIdentity} from "@cdktf/provider-azurerm/lib/linux-virtual-machine"; 
+  LinuxVirtualMachineSourceImageReference,
+  LinuxVirtualMachineOsDisk,
+  LinuxVirtualMachineAdminSshKey,
+  LinuxVirtualMachineIdentity,
+} from "@cdktf/provider-azurerm/lib/linux-virtual-machine";
+import {
+  LinuxVirtualMachineScaleSet,
+  LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress,
+} from "@cdktf/provider-azurerm/lib/linux-virtual-machine-scale-set";
 import { Subnet } from "@cdktf/provider-azurerm/lib/subnet";
+import { VirtualMachineScaleSetExtensionA } from "@cdktf/provider-azurerm/lib/virtual-machine-scale-set-extension";
+import {
+  WindowsVirtualMachineOsDisk,
+  WindowsVirtualMachineSourceImageReference,
+} from "@cdktf/provider-azurerm/lib/windows-virtual-machine";
+import {
+  WindowsVirtualMachineScaleSet,
+  WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress,
+} from "@cdktf/provider-azurerm/lib/windows-virtual-machine-scale-set";
+import * as cdktf from "cdktf";
+import { Construct } from "constructs";
+import {
+  WindowsImageReferences,
+  LinuxImageReferences,
+} from "../../azure-virtualmachine";
 import { Network } from "../../azure-virtualnetwork/lib/network";
 import { AzureResource } from "../../core-azure/lib";
-import {VirtualMachineScaleSetExtensionA} from '@cdktf/provider-azurerm/lib/virtual-machine-scale-set-extension';
-
 
 export interface LinuxClusterProps {
   /**
@@ -42,7 +54,7 @@ export interface LinuxClusterProps {
    * The name of the resource group in which the virtual machine scale set will be created.
    */
   readonly resourceGroupName: string;
-  
+
   /**
    * The size of the virtual machines in the scale set.
    * @default "Standard_B2s"
@@ -83,7 +95,7 @@ export interface LinuxClusterProps {
   /**
    * Tags to apply to the virtual machine scale set.
    */
-  readonly tags?: { [key: string]: string; };
+  readonly tags?: { [key: string]: string };
 
   /**
    * The OS disk configuration for the virtual machines.
@@ -142,14 +154,14 @@ export interface LinuxClusterProps {
 
 export class LinuxCluster extends AzureResource {
   public readonly props: LinuxClusterProps;
-  public readonly resourceGroupName: string;
-  public readonly id: string;
+  public resourceGroupName: string;
+  public id: string;
   public readonly name: string;
   public readonly fqn: string;
 
-    /**
+  /**
    * Constructs a new instance of the AzureLinuxVirtualMachine class.
-   * 
+   *
    * @param scope - The scope in which this construct is defined.
    * @param id - The ID of this construct.
    * @param props - The properties for defining a Linux Virtual Machine.
@@ -168,49 +180,64 @@ export class LinuxCluster extends AzureResource {
       adminUsername: props.adminUsername || `admin${pathName}`,
       location: props.location || "eastus",
       sku: props.sku || "Standard_B2s",
-      instances: props.instances || 1,  
+      instances: props.instances || 1,
       osDisk: props.osDisk || {
         caching: "ReadWrite",
         storageAccountType: "Standard_LRS",
       },
-      sourceImageReference: props.sourceImageReference || LinuxImageReferences.UbuntuServer2204LTS,
-      subnet: props.subnet || (new Network(this, 'vnet', { resourceGroupName: props.resourceGroupName, })).subnets["default"],
+      sourceImageReference:
+        props.sourceImageReference || LinuxImageReferences.ubuntuServer2204LTS,
+      subnet:
+        props.subnet ||
+        new Network(this, "vnet", {
+          resourceGroupName: props.resourceGroupName,
+        }).subnets.default,
     };
 
-
-
-    const azurermLinuxVirtualMachineScaleSet = new LinuxVirtualMachineScaleSet(this, "vmss", {
-      ...defaults,
-      resourceGroupName: props.resourceGroupName,
-      adminPassword: props.adminPassword,
-      disablePasswordAuthentication: props.adminPassword ? false : true,
-      tags: props.tags,
-      networkInterface: [{
-        name: `nic-${defaults.name}`,
-        primary: true,
-        ipConfiguration: [{
-          name: "internal",
-          subnetId: defaults.subnet.id,
-          primary: true,
-          publicIpAddress: props.publicIPAddress
-        }],
-      }],
-      osDisk: {
-        ...defaults.osDisk,
+    const azurermLinuxVirtualMachineScaleSet = new LinuxVirtualMachineScaleSet(
+      this,
+      "vmss",
+      {
+        ...defaults,
+        resourceGroupName: props.resourceGroupName,
+        adminPassword: props.adminPassword,
+        disablePasswordAuthentication: props.adminPassword ? false : true,
+        tags: props.tags,
+        networkInterface: [
+          {
+            name: `nic-${defaults.name}`,
+            primary: true,
+            ipConfiguration: [
+              {
+                name: "internal",
+                subnetId: defaults.subnet.id,
+                primary: true,
+                publicIpAddress: props.publicIPAddress,
+              },
+            ],
+          },
+        ],
+        osDisk: {
+          ...defaults.osDisk,
+        },
+        sourceImageId: props.sourceImageId,
+        customData: props.customData
+          ? Buffer.from(props.customData).toString("base64")
+          : undefined,
+        userData: props.userData
+          ? Buffer.from(props.userData).toString("base64")
+          : undefined,
+        adminSshKey: props.adminSshKey,
+        identity: props.identity,
       },
-      sourceImageId: props.sourceImageId,
-      customData: props.customData ? Buffer.from(props.customData).toString('base64') : undefined,
-      userData: props.userData ? Buffer.from(props.userData).toString('base64') : undefined,
-      adminSshKey: props.adminSshKey,
-      identity: props.identity,
-    });
+    );
 
     this.id = azurermLinuxVirtualMachineScaleSet.id;
     this.name = azurermLinuxVirtualMachineScaleSet.name;
-    this.fqn = azurermLinuxVirtualMachineScaleSet.fqn
+    this.fqn = azurermLinuxVirtualMachineScaleSet.fqn;
 
-     // Enable SSH Azure AD Login if specified
-     if (props.enableSshAzureADLogin) {
+    // Enable SSH Azure AD Login if specified
+    if (props.enableSshAzureADLogin) {
       new VirtualMachineScaleSetExtensionA(this, "AADSSHlogin", {
         name: "AADSSHLoginForLinux",
         virtualMachineScaleSetId: this.id,
@@ -256,16 +283,16 @@ export interface WindowsClusterProps {
    */
   readonly adminPassword: string;
 
-   /**
+  /**
    * The availability zone(s) in which the VMs should be placed.
    */
-   readonly zones?: string[];
+  readonly zones?: string[];
 
-   /**
+  /**
    * The number of VM instances in the scale set.
    * @default 2
    */
-   readonly instances?: number;
+  readonly instances?: number;
 
   /**
    * The source image reference for the virtual machine.
@@ -281,7 +308,7 @@ export interface WindowsClusterProps {
   /**
    * Tags to apply to the virtual machine.
    */
-  readonly tags?: { [key: string]: string; };
+  readonly tags?: { [key: string]: string };
 
   /**
    * The OS disk configuration for the virtual machine.
@@ -295,11 +322,10 @@ export interface WindowsClusterProps {
    */
   readonly subnet?: Subnet;
 
- /**
+  /**
    * The allocation method for the public IP.
    */
- readonly publicIPAddress?: WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress[];
-
+  readonly publicIPAddress?: WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress[];
 
   /**
    * Specifies the scale set's upgrade policy settings.
@@ -317,7 +343,7 @@ export interface WindowsClusterProps {
   readonly boostrapCustomData?: string;
 
   /**
-   * Bootdiagnostics settings for the VM. 
+   * Bootdiagnostics settings for the VM.
    */
   readonly bootDiagnosticsStorageURI?: string;
 
@@ -335,13 +361,13 @@ export interface WindowsClusterProps {
 
 export class WindowsCluster extends AzureResource {
   readonly props: WindowsClusterProps;
-  public readonly resourceGroupName: string;
-  public readonly id: string;
+  public resourceGroupName: string;
+  public id: string;
   public readonly name: string;
 
   /**
    * Constructs a new instance of the AzureWindowsVirtualMachine class.
-   * 
+   *
    * @param scope - The scope in which this construct is defined.
    * @param id - The ID of this construct.
    * @param props - The properties for defining a Windows Virtual Machine.
@@ -365,39 +391,54 @@ export class WindowsCluster extends AzureResource {
         caching: "ReadWrite",
         storageAccountType: "Standard_LRS",
       },
-      sourceImageReference: props.sourceImageReference || WindowsImageReferences.WindowsServer2022DatacenterCore,
-      subnet: props.subnet || (new Network(this, 'vnet', { resourceGroupName: props.resourceGroupName, })).subnets["default"],
+      sourceImageReference:
+        props.sourceImageReference ||
+        WindowsImageReferences.windowsServer2022DatacenterCore,
+      subnet:
+        props.subnet ||
+        new Network(this, "vnet", {
+          resourceGroupName: props.resourceGroupName,
+        }).subnets.default,
     };
-
 
     // Base64 encode custom data if provided.
     const customData = props.customData || props.boostrapCustomData;
-    const base64CustomData = customData ? Buffer.from(customData).toString('base64') : undefined;
+    const base64CustomData = customData
+      ? Buffer.from(customData).toString("base64")
+      : undefined;
 
     // Create the Windows Virtual Machine.
-    const azurermWindowsVirtualMachine = new WindowsVirtualMachineScaleSet(this, "vmss", {
-      ...defaults,
-      resourceGroupName: props.resourceGroupName,
-      adminUsername: props.adminUsername,
-      adminPassword: props.adminPassword,
-      tags: props.tags,
-      networkInterface: [{
-        name: `nic-${defaults.name}`,
-        primary: true,
-        ipConfiguration: [{
-          name: "internal",
-          subnetId: defaults.subnet.id,
-          primary: true,
-          publicIpAddress: props.publicIPAddress
-        }],
-      }],
-      osDisk: {
-        ...defaults.osDisk,
+    const azurermWindowsVirtualMachine = new WindowsVirtualMachineScaleSet(
+      this,
+      "vmss",
+      {
+        ...defaults,
+        resourceGroupName: props.resourceGroupName,
+        adminUsername: props.adminUsername,
+        adminPassword: props.adminPassword,
+        tags: props.tags,
+        networkInterface: [
+          {
+            name: `nic-${defaults.name}`,
+            primary: true,
+            ipConfiguration: [
+              {
+                name: "internal",
+                subnetId: defaults.subnet.id,
+                primary: true,
+                publicIpAddress: props.publicIPAddress,
+              },
+            ],
+          },
+        ],
+        osDisk: {
+          ...defaults.osDisk,
+        },
+        sourceImageId: props.sourceImageId,
+        customData: base64CustomData,
+        bootDiagnostics: { storageAccountUri: props.bootDiagnosticsStorageURI },
       },
-      sourceImageId: props.sourceImageId,
-      customData: base64CustomData,
-      bootDiagnostics: { storageAccountUri: props.bootDiagnosticsStorageURI},
-    });
+    );
 
     this.id = azurermWindowsVirtualMachine.id;
     this.name = azurermWindowsVirtualMachine.name;
@@ -410,7 +451,8 @@ export class WindowsCluster extends AzureResource {
         publisher: "Microsoft.Compute",
         type: "CustomScriptExtension",
         typeHandlerVersion: "1.10",
-        protectedSettings: "{\"commandToExecute\": \"rename  C:\\\\AzureData\\\\CustomData.bin  postdeploy.ps1 & powershell -ExecutionPolicy Unrestricted -File C:\\\\AzureData\\\\postdeploy.ps1\"}"
+        protectedSettings:
+          '{"commandToExecute": "rename  C:\\\\AzureData\\\\CustomData.bin  postdeploy.ps1 & powershell -ExecutionPolicy Unrestricted -File C:\\\\AzureData\\\\postdeploy.ps1"}',
       });
     }
   }

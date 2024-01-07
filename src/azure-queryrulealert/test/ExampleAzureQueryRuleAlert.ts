@@ -1,11 +1,11 @@
-import { BaseTestStack } from "../../testing";
-import { App } from "cdktf";
-import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
-import { Construct } from 'constructs';
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
+import { App } from "cdktf";
+import * as cdktf from "cdktf";
+import { Construct } from "constructs";
 import * as queryalert from "../../azure-queryrulealert";
-import * as cdktf from 'cdktf';
+import { BaseTestStack } from "../../testing";
 
 const app = new App();
 
@@ -22,24 +22,28 @@ export class exampleAzureQueryRuleAlert extends BaseTestStack {
     });
 
     const resourceGroup = new ResourceGroup(this, "rg", {
-      location: 'eastus',
+      location: "eastus",
       name: `rg-${this.name}`,
       tags: {
-        "test": "test",
-      }
+        test: "test",
+      },
     });
 
-    const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
-      location: 'eastus',
-      name: `la-${this.name}`,
-      resourceGroupName: resourceGroup.name,
-    });
+    const logAnalyticsWorkspace = new LogAnalyticsWorkspace(
+      this,
+      "log_analytics",
+      {
+        location: "eastus",
+        name: `la-${this.name}`,
+        resourceGroupName: resourceGroup.name,
+      },
+    );
 
     // Query Rule Alert
-    const alert = new queryalert.QueryRuleAlert(this, 'queryRuleAlert', {
+    const alert = new queryalert.QueryRuleAlert(this, "queryRuleAlert", {
       name: `qra-${this.name}`,
       resourceGroupName: resourceGroup.name,
-      location: 'eastus',
+      location: "eastus",
       criteriaOperator: "GreaterThan",
       criteriaQuery: `
 AppExceptions 
@@ -51,20 +55,26 @@ AppExceptions
       windowDuration: "PT30M",
       scopes: [logAnalyticsWorkspace.id],
       severity: 4,
-      criteriaFailingPeriods: {
-        minimumFailingPeriodsToTriggerAlert: 1,
-        numberOfEvaluationPeriods: 1,
-      },
+      criteriaFailMinimumFailingPeriodsToTriggerAlert: 1,
+      criteriaFailNumberOfEvaluationPeriods: 1,
     });
 
     // Create Terraform Outputs for Function Apps
-    const cdktfTerraformOutputRG = new cdktf.TerraformOutput(this, "resource_group_name", {
-      value: resourceGroup.name,
-    })
+    const cdktfTerraformOutputRG = new cdktf.TerraformOutput(
+      this,
+      "resource_group_name",
+      {
+        value: resourceGroup.name,
+      },
+    );
 
-    const cdktfTerraformOutputAlertId = new cdktf.TerraformOutput(this, "query_rule_alert_id", {
-      value: alert.id,
-    })
+    const cdktfTerraformOutputAlertId = new cdktf.TerraformOutput(
+      this,
+      "query_rule_alert_id",
+      {
+        value: alert.id,
+      },
+    );
 
     cdktfTerraformOutputRG.overrideLogicalId("resource_group_name");
     cdktfTerraformOutputAlertId.overrideLogicalId("query_rule_alert_id");

@@ -1,39 +1,41 @@
-import * as cdktf from "cdktf";
-import {BaseTestStack} from "../../testing";
-import * as appi from "../lib"
-import { App} from "cdktf";
-import {ResourceGroup} from "@cdktf/provider-azurerm/lib/resource-group";
-import {LogAnalyticsWorkspace} from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
-import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
-import { Construct } from 'constructs';
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import { KeyVault } from "@cdktf/provider-azurerm/lib/key-vault";
+import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
+import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
+import * as cdktf from "cdktf";
+import { App } from "cdktf";
+import { Construct } from "constructs";
+import { BaseTestStack } from "../../testing";
 import * as util from "../../util/azureTenantIdHelpers";
+import * as appi from "../lib";
 
 const app = new App();
-    
+
 export class exampleAzureApplicationInsights extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
-    const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
-
+    const clientConfig = new DataAzurermClientConfig(
+      this,
+      "CurrentClientConfig",
+      {},
+    );
 
     new AzurermProvider(this, "azureFeature", {
-        features: {
-          resourceGroup: {
-                   preventDeletionIfContainsResources: false,
-         },
+      features: {
+        resourceGroup: {
+          preventDeletionIfContainsResources: false,
         },
-      });
-
-    const resourceGroup = new ResourceGroup(this, "rg", {
-      location: 'eastus',
-      name: `rg-${this.name}`,
-
+      },
     });
 
-    const keyvault = new KeyVault(this, 'key_vault', {
+    const resourceGroup = new ResourceGroup(this, "rg", {
+      location: "eastus",
+      name: `rg-${this.name}`,
+    });
+
+    const keyvault = new KeyVault(this, "key_vault", {
       name: `kv-${this.name}`,
       location: resourceGroup.location,
       resourceGroupName: resourceGroup.name,
@@ -55,41 +57,51 @@ export class exampleAzureApplicationInsights extends BaseTestStack {
             "Recover",
             "Purge",
           ],
-        }
+        },
       ],
     });
 
-    const logAnalyticsWorkspace = new LogAnalyticsWorkspace(this, "log_analytics", {
-        location: 'eastus',
+    const logAnalyticsWorkspace = new LogAnalyticsWorkspace(
+      this,
+      "log_analytics",
+      {
+        location: "eastus",
         name: `la-${this.name}`,
         resourceGroupName: resourceGroup.name,
-    });
+      },
+    );
 
-    const applicationInsights = new appi.AppInsights(this, 'testappi', {
+    const applicationInsights = new appi.AppInsights(this, "testappi", {
       name: `appi-${this.name}`,
-      location: 'eastus',
-      resource_group_name: resourceGroup.name ,
-      application_type: "web",
-      workspace_id: logAnalyticsWorkspace.id,
+      location: "eastus",
+      resourceGroupName: resourceGroup.name,
+      applicationType: "web",
+      workspaceId: logAnalyticsWorkspace.id,
     });
 
     // Save Ikey to Key Vault as secret
     applicationInsights.saveIKeyToKeyVault(keyvault.id);
     applicationInsights.saveIKeyToKeyVault(keyvault.id, "customSecretName");
-    
+
     //Diag Settings
-    applicationInsights.addDiagSettings({name: "diagsettings", logAnalyticsWorkspaceId: logAnalyticsWorkspace.id})
-
-    //RBAC
-    applicationInsights.addAccess(clientConfig.objectId, "Contributor")
-
-    // Outputs to use for End to End Test
-    const cdktfTerraformOutputKVName = new cdktf.TerraformOutput(this, "key_vault_name", {
-      value: keyvault.name,
+    applicationInsights.addDiagSettings({
+      name: "diagsettings",
+      logAnalyticsWorkspaceId: logAnalyticsWorkspace.id,
     });
 
+    //RBAC
+    applicationInsights.addAccess(clientConfig.objectId, "Contributor");
+
+    // Outputs to use for End to End Test
+    const cdktfTerraformOutputKVName = new cdktf.TerraformOutput(
+      this,
+      "key_vault_name",
+      {
+        value: keyvault.name,
+      },
+    );
+
     cdktfTerraformOutputKVName.overrideLogicalId("key_vault_name");
-  
   }
 }
 

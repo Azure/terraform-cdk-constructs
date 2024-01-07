@@ -1,10 +1,10 @@
-import { Testing, TerraformStack} from 'cdktf';
-import { exampleAzureLogAnalytics} from './ExampleAzureLogAnalytics'
-import 'cdktf/lib/testing/adapters/jest';
-import * as la from '..';
-import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
+import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { Testing, TerraformStack } from "cdktf";
+import { exampleAzureLogAnalytics } from "./ExampleAzureLogAnalytics";
+import "cdktf/lib/testing/adapters/jest";
+import * as la from "..";
 
-describe('Log Analytics Workspace With Defaults', () => {
+describe("Log Analytics Workspace With Defaults", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
 
@@ -12,20 +12,18 @@ describe('Log Analytics Workspace With Defaults', () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", {features: {}});
-    new la.Workspace(stack, 'testAzureLogAnalyticsDefaults', {
+    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new la.Workspace(stack, "testAzureLogAnalyticsDefaults", {
       name: "la-test",
-      location: 'eastus',
-      resource_group_name: "rg-test",
+      location: "eastus",
+      resourceGroupName: "rg-test",
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });
 
   it("renders a Log Analytics Workspace with defaults and checks snapshot", () => {
-    expect(
-      Testing.synth(stack)
-    ).toMatchSnapshot(); // Compare the already prepared stack
+    expect(Testing.synth(stack)).toMatchSnapshot(); // Compare the already prepared stack
   });
 
   it("check if the produced terraform configuration is valid", () => {
@@ -37,26 +35,33 @@ describe('Log Analytics Workspace With Defaults', () => {
   });
 });
 
-
-describe('Log Analytics Workspace Example', () => {
-  
+describe("Log Analytics Workspace Example", () => {
   it("renders the Example Log Analytics Workspace and checks snapshot", () => {
-  
     expect(
-      Testing.synth(new exampleAzureLogAnalytics(Testing.app(), "testAzureApplicationInsights"))
-      
+      Testing.synth(
+        new exampleAzureLogAnalytics(
+          Testing.app(),
+          "testAzureApplicationInsights",
+        ),
+      ),
     ).toMatchSnapshot();
-});
+  });
 
   it("check if the produced terraform configuration is valid", () => {
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureLogAnalytics(Testing.app(), "testAzureLogAnalytics"))).toBeValidTerraform();
+    expect(
+      Testing.fullSynth(
+        new exampleAzureLogAnalytics(Testing.app(), "testAzureLogAnalytics"),
+      ),
+    ).toBeValidTerraform();
   });
 
   it("check if this can be planned", () => {
-  
-    
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureLogAnalytics(Testing.app(), "testAzureLogAnalytics"))).toPlanSuccessfully();
+    expect(
+      Testing.fullSynth(
+        new exampleAzureLogAnalytics(Testing.app(), "testAzureLogAnalytics"),
+      ),
+    ).toPlanSuccessfully();
   });
 });

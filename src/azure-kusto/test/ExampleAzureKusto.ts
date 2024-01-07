@@ -1,11 +1,11 @@
-import { BaseTestStack } from "../../testing";
-import * as kusto from "..";
-import { App } from "cdktf";
-import * as rg from "../../azure-resourcegroup";
-import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
-import { Construct } from 'constructs';
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
-import { ComputeSpecification } from '../lib/compute-specification';
+import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { App } from "cdktf";
+import { Construct } from "constructs";
+import * as kusto from "..";
+import * as rg from "../../azure-resourcegroup";
+import { BaseTestStack } from "../../testing";
+import { ComputeSpecification } from "../lib/compute-specification";
 
 const app = new App();
 
@@ -13,7 +13,11 @@ export class exampleAzureKusto extends BaseTestStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
-    const clientConfig = new DataAzurermClientConfig(this, 'CurrentClientConfig', {});
+    const clientConfig = new DataAzurermClientConfig(
+      this,
+      "CurrentClientConfig",
+      {},
+    );
 
     new AzurermProvider(this, "azureFeature", {
       features: {
@@ -25,13 +29,13 @@ export class exampleAzureKusto extends BaseTestStack {
 
     const resourceGroup = new rg.Group(this, "rg", {
       name: `rg-${this.name}`,
-      location: 'eastus',
+      location: "eastus",
     });
 
     // Create Kusto Cluster
     const kustoCluster = new kusto.Cluster(this, "kusto", {
       rg: resourceGroup,
-      name: `kusto${this.name}`,  // Only lowercase Alphanumeric characters allowed.
+      name: `kusto${this.name}`, // Only lowercase Alphanumeric characters allowed.
       sku: ComputeSpecification.devtestExtraSmallEav4,
     });
 
@@ -56,22 +60,25 @@ export class exampleAzureKusto extends BaseTestStack {
     });
 
     // Create Table in Kusto Database
-    testDB1.addTable('MyTestTable', [
+    testDB1.addTable("MyTestTable", [
       {
-        columnName: 'Timestamp',
-        columnType: 'datetime',
+        columnName: "Timestamp",
+        columnType: "datetime",
       },
       {
-        columnName: 'User',
-        columnType: 'string',
+        columnName: "User",
+        columnType: "string",
       },
       {
-        columnName: 'Value',
-        columnType: 'int32',
+        columnName: "Value",
+        columnType: "int32",
       },
     ]);
 
-    testDB1.addScript('MyTestScript', '.create table MyTestTable2 ( Timestamp:datetime, User:string, Value:int32 )');
+    testDB1.addScript(
+      "MyTestScript",
+      ".create table MyTestTable2 ( Timestamp:datetime, User:string, Value:int32 )",
+    );
   }
 }
 

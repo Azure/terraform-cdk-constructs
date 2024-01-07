@@ -1,1 +1,1 @@
-export * from './resource-group';
+export * from "./resource-group";

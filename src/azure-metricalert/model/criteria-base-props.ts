@@ -1,5 +1,4 @@
-import { MetricAlertCriteriaDimensionProp } from './criteria-dimension-props';
-
+import { MetricAlertCriteriaDimensionProp } from "./criteria-dimension-props";
 
 /**
  * @description The base criteria properties for a Metric Alert.
@@ -34,12 +33,12 @@ export interface MetricAlertCriteriaBaseProps {
    * One or more dimensions.
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#dimension}
    */
-  dimension?: MetricAlertCriteriaDimensionProp[];
+  readonly dimension?: MetricAlertCriteriaDimensionProp[];
 
   /**
    * Skip the metric validation to allow creating an alert rule on a custom metric that isn't yet emitted?
    * @default false.
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#skip_metric_validation}
    */
-  skipMetricValidation?: boolean;
+  readonly skipMetricValidation?: boolean;
 }

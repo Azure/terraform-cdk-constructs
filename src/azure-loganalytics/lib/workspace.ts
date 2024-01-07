@@ -1,13 +1,89 @@
-import * as cdktf from "cdktf";
-import { Construct } from 'constructs';
-import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import { LogAnalyticsDataExportRule } from "@cdktf/provider-azurerm/lib/log-analytics-data-export-rule";
 import { LogAnalyticsSavedSearch } from "@cdktf/provider-azurerm/lib/log-analytics-saved-search";
+import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
+import * as cdktf from "cdktf";
+import { Construct } from "constructs";
 import { AzureResourceWithAlert } from "../../core-azure/lib";
 
-type DataExport = { name: string, export_destination_id: string, table_names: string[], enabled: boolean };
-type LAFunctions = { name: string, display_name: string, query: string, function_alias: string, function_parameters: string[] }
-type Queries = { name: string, category: string, display_name: string, query: string }
+/**
+ * Properties for defining a data export in a Log Analytics Workspace.
+ */
+export interface DataExport {
+  /**
+   * The name of the data export.
+   */
+  readonly name: string;
+
+  /**
+   * The ID of the destination resource for the export.
+   */
+  readonly exportDestinationId: string;
+
+  /**
+   * An array of table names to be included in the data export.
+   */
+  readonly tableNames: string[];
+
+  /**
+   * Indicates whether the data export is enabled.
+   */
+  readonly enabled: boolean;
+}
+
+/**
+ * Properties for defining a Log Analytics function.
+ */
+export interface LAFunctions {
+  /**
+   * The name of the function.
+   */
+  readonly name: string;
+
+  /**
+   * The display name for the function.
+   */
+  readonly displayName: string;
+
+  /**
+   * The query that the function will execute.
+   */
+  readonly query: string;
+
+  /**
+   * The alias to be used for the function.
+   */
+  readonly functionAlias: string;
+
+  /**
+   * A list of parameters for the function.
+   */
+  readonly functionParameters: string[];
+}
+
+/**
+ * Properties for defining a saved query in a Log Analytics Workspace.
+ */
+export interface Queries {
+  /**
+   * The name of the saved query.
+   */
+  readonly name: string;
+
+  /**
+   * The category of the saved query.
+   */
+  readonly category: string;
+
+  /**
+   * The display name for the saved query.
+   */
+  readonly displayName: string;
+
+  /**
+   * The query string.
+   */
+  readonly query: string;
+}
 
 export interface WorkspaceProps {
   /**
@@ -21,27 +97,27 @@ export interface WorkspaceProps {
   /**
    * The name of the Azure Resource Group.
    */
-  readonly resource_group_name: string;
+  readonly resourceGroupName: string;
   /**
-  * The SKU of the Log Analytics Workspace.
-  */
+   * The SKU of the Log Analytics Workspace.
+   */
   readonly sku?: string;
   /**
-  * The number of days of retention. Default is 30.
-  */
+   * The number of days of retention. Default is 30.
+   */
   readonly retention?: number;
   /**
    * The tags to assign to the Resource Group.
    */
-  readonly tags?: { [key: string]: string; };
+  readonly tags?: { [key: string]: string };
   /**
-  * Create a DataExport for the Log Analytics Workspace.
-  */
-  readonly data_export?: DataExport[];
+   * Create a DataExport for the Log Analytics Workspace.
+   */
+  readonly dataExport?: DataExport[];
   /**
    * A collection of Log Analytic functions.
    */
-  readonly functions?: LAFunctions[]
+  readonly functions?: LAFunctions[];
   /**
    * A collection of log saved log analytics queries.
    */
@@ -50,85 +126,99 @@ export interface WorkspaceProps {
 
 export class Workspace extends AzureResourceWithAlert {
   readonly props: WorkspaceProps;
-  readonly resourceGroupName: string;
-  public readonly id: string;
-
+  public resourceGroupName: string;
+  public id: string;
 
   constructor(scope: Construct, id: string, props: WorkspaceProps) {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resource_group_name;
+    this.resourceGroupName = props.resourceGroupName;
 
     // Provide default values
-    const sku = props.sku ?? 'PerGB2018';
+    const sku = props.sku ?? "PerGB2018";
     const retention = props.retention ?? 30;
 
-    const azurermLogAnalyticsWorkspaceLogAnalytics =
-      new LogAnalyticsWorkspace(this, "log_analytics", {
+    const azurermLogAnalyticsWorkspaceLogAnalytics = new LogAnalyticsWorkspace(
+      this,
+      "log_analytics",
+      {
         location: props.location,
         name: props.name,
-        resourceGroupName: props.resource_group_name,
+        resourceGroupName: props.resourceGroupName,
         retentionInDays: retention,
         sku: sku,
         tags: props.tags,
-      });
+      },
+    );
 
     this.id = azurermLogAnalyticsWorkspaceLogAnalytics.id;
 
-    props.data_export?.forEach((v, k) => {
+    props.dataExport?.forEach((v, k) => {
       new LogAnalyticsDataExportRule(this, `export-${k}`, {
-        destinationResourceId: v.export_destination_id,
+        destinationResourceId: v.exportDestinationId,
         enabled: v.enabled,
         name: v.name,
-        resourceGroupName: props.resource_group_name,
-        tableNames: v.table_names,
+        resourceGroupName: props.resourceGroupName,
+        tableNames: v.tableNames,
         workspaceResourceId: azurermLogAnalyticsWorkspaceLogAnalytics.id,
       });
-    })
+    });
 
     props.functions?.forEach((v, k) => {
       new LogAnalyticsSavedSearch(this, `function-${k}`, {
         category: "Function",
-        displayName: v.display_name,
-        functionAlias: v.function_alias,
-        functionParameters: v.function_parameters,
+        displayName: v.displayName,
+        functionAlias: v.functionAlias,
+        functionParameters: v.functionParameters,
         logAnalyticsWorkspaceId: azurermLogAnalyticsWorkspaceLogAnalytics.id,
         name: v.name,
         query: v.query,
       });
-    })
-
+    });
 
     props.queries?.forEach((v, k) => {
       new LogAnalyticsSavedSearch(this, `function-${k}`, {
         category: v.category,
-        displayName: v.display_name,
+        displayName: v.displayName,
         functionParameters: [],
         logAnalyticsWorkspaceId: azurermLogAnalyticsWorkspaceLogAnalytics.id,
         name: v.name,
         query: v.query,
       });
-    })
+    });
 
     // Terraform Outputs
-    const cdktfTerraformOutputLaID = new cdktf.TerraformOutput(this, "log_analytics_id", {
-      value: azurermLogAnalyticsWorkspaceLogAnalytics.id,
-    });
-    const cdktfTerraformOutputLaSharedKey = new cdktf.TerraformOutput(this, "log_analytics_primary_shared_key", {
-      value: azurermLogAnalyticsWorkspaceLogAnalytics.primarySharedKey,
-      sensitive: true,
-    });
-    const cdktfTerraformOutputLaWorkspaceID = new cdktf.TerraformOutput(this, "log_analytics_workspace_id", {
-      value: azurermLogAnalyticsWorkspaceLogAnalytics.workspaceId,
-    });
+    const cdktfTerraformOutputLaID = new cdktf.TerraformOutput(
+      this,
+      "log_analytics_id",
+      {
+        value: azurermLogAnalyticsWorkspaceLogAnalytics.id,
+      },
+    );
+    const cdktfTerraformOutputLaSharedKey = new cdktf.TerraformOutput(
+      this,
+      "log_analytics_primary_shared_key",
+      {
+        value: azurermLogAnalyticsWorkspaceLogAnalytics.primarySharedKey,
+        sensitive: true,
+      },
+    );
+    const cdktfTerraformOutputLaWorkspaceID = new cdktf.TerraformOutput(
+      this,
+      "log_analytics_workspace_id",
+      {
+        value: azurermLogAnalyticsWorkspaceLogAnalytics.workspaceId,
+      },
+    );
 
     /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
     cdktfTerraformOutputLaID.overrideLogicalId("log_analytics_id");
-    cdktfTerraformOutputLaSharedKey.overrideLogicalId("log_analytics_primary_shared_key")
-    cdktfTerraformOutputLaWorkspaceID.overrideLogicalId("log_analytics_workspace_id")
-
-
+    cdktfTerraformOutputLaSharedKey.overrideLogicalId(
+      "log_analytics_primary_shared_key",
+    );
+    cdktfTerraformOutputLaWorkspaceID.overrideLogicalId(
+      "log_analytics_workspace_id",
+    );
   }
-
 }

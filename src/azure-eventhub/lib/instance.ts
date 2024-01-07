@@ -1,24 +1,18 @@
 import { Eventhub } from "@cdktf/provider-azurerm/lib/eventhub";
-import { Construct } from 'constructs';
-import * as cdktf from 'cdktf';
+import * as cdktf from "cdktf";
+import { Construct } from "constructs";
 import { AuthorizationRule, AuthorizationRuleProps } from "./authorization";
-import { ConsumerGroupProps, ConsumerGroup } from './consumer';
-import { KustoDataConnection, KustoDataConnectionProps } from "./kusto-connection";
+import { ConsumerGroup } from "./consumer";
+import {
+  KustoDataConnection,
+  BaseKustoDataConnectionProps,
+} from "./kusto-connection";
 
-
-export interface InstanceProps {
+export interface BaseInstanceProps {
   /**
-   * Specifies the name of the EventHub resource. 
+   * Specifies the name of the EventHub resource.
    */
   readonly name: string;
-  /**
-   * The name of the resource group in which the EventHub's parent Namespace exists.
-   */
-  readonly resourceGroupName: string;
-  /**
-   * Specifies the name of the EventHub Namespace.
-   */
-  readonly namespaceName: string;
   /**
    * Specifies the current number of shards on the Event Hub.
    * When using a shared parent EventHub Namespace, maximum value is 32.
@@ -42,6 +36,17 @@ export interface InstanceProps {
    */
 }
 
+export interface InstanceProps extends BaseInstanceProps {
+  /**
+   * The name of the resource group in which the EventHub's parent Namespace exists.
+   */
+  readonly resourceGroupName: string;
+  /**
+   * Specifies the name of the EventHub Namespace.
+   */
+  readonly namespaceName: string;
+}
+
 export class Instance extends Construct {
   readonly ehInstanceProps: InstanceProps;
   readonly id: string;
@@ -55,32 +60,43 @@ export class Instance extends Construct {
     const defaults = {
       partitionCount: ehInstanceProps.partitionCount || 2,
       messageRetention: ehInstanceProps.messageRetention || 1,
-      status: ehInstanceProps.status || 'Active',
-    }
+      status: ehInstanceProps.status || "Active",
+    };
 
-    const eventhubInstance = new Eventhub(this, `ehinstance-${ehInstanceProps.name}`, {
-      name: ehInstanceProps.name,
-      resourceGroupName: ehInstanceProps.resourceGroupName,
-      namespaceName: ehInstanceProps.namespaceName,
-      ...defaults,
-    })
+    const eventhubInstance = new Eventhub(
+      this,
+      `ehinstance-${ehInstanceProps.name}`,
+      {
+        name: ehInstanceProps.name,
+        resourceGroupName: ehInstanceProps.resourceGroupName,
+        namespaceName: ehInstanceProps.namespaceName,
+        ...defaults,
+      },
+    );
 
     // Outputs
     this.id = eventhubInstance.id;
     this.partitionIds = eventhubInstance.partitionIds;
 
-    const cdktfTerraformOutputEventhubInstanceId = new cdktf.TerraformOutput(this, 'id', {
-      value: eventhubInstance.id,
-    });
-    const cdktfTerraformOutputEventhubInstancePartitionIds = new cdktf.TerraformOutput(this, 'partition_ids', {
-      value: eventhubInstance.partitionIds,
-    });
+    const cdktfTerraformOutputEventhubInstanceId = new cdktf.TerraformOutput(
+      this,
+      "id",
+      {
+        value: eventhubInstance.id,
+      },
+    );
+    const cdktfTerraformOutputEventhubInstancePartitionIds =
+      new cdktf.TerraformOutput(this, "partition_ids", {
+        value: eventhubInstance.partitionIds,
+      });
 
-    cdktfTerraformOutputEventhubInstanceId.overrideLogicalId('id');
-    cdktfTerraformOutputEventhubInstancePartitionIds.overrideLogicalId('partition_ids');
+    cdktfTerraformOutputEventhubInstanceId.overrideLogicalId("id");
+    cdktfTerraformOutputEventhubInstancePartitionIds.overrideLogicalId(
+      "partition_ids",
+    );
   }
 
-  public addAuthorizationRule(props: Omit<AuthorizationRuleProps, 'resourceGroupName' | 'namespaceName' | 'eventhubName'>) {
+  public addAuthorizationRule(props: AuthorizationRuleProps) {
     return new AuthorizationRule(this, `ehauthrule-${props.name}`, {
       resourceGroupName: this.ehInstanceProps.resourceGroupName,
       namespaceName: this.ehInstanceProps.namespaceName,
@@ -89,20 +105,25 @@ export class Instance extends Construct {
     });
   }
 
-  public addConsumerGroup(props: Omit<ConsumerGroupProps, 'resourceGroupName' | 'namespaceName' | 'eventhubName'>) {
-    return new ConsumerGroup(this, `ehconsumergroup-${props.name}`, {
+  public addConsumerGroup(name: string, userMetadata?: string) {
+    return new ConsumerGroup(this, `ehconsumergroup-${name}`, {
       resourceGroupName: this.ehInstanceProps.resourceGroupName,
       namespaceName: this.ehInstanceProps.namespaceName,
       eventhubName: this.ehInstanceProps.name,
-      ...props,
+      name: name,
+      userMetadata: userMetadata,
     });
   }
 
-  public addKustoDataConnection(props: Omit<KustoDataConnectionProps, 'eventhubId'>) {
-    return new KustoDataConnection(this, `ehkustodataconnection-${this.ehInstanceProps.name}-${props.name}`, {
-      eventhubId: this.id,
-      ...props,
-    });
+  public addKustoDataConnection(props: BaseKustoDataConnectionProps) {
+    return new KustoDataConnection(
+      this,
+      `ehkustodataconnection-${this.ehInstanceProps.name}-${props.name}`,
+      {
+        eventhubId: this.id,
+        ...props,
+      },
+    );
   }
 
   // TODO: addAccess method, No addDiagnostics method

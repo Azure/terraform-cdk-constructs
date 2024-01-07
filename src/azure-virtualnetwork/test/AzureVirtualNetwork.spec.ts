@@ -1,10 +1,10 @@
-import { Testing, TerraformStack} from 'cdktf';
-import 'cdktf/lib/testing/adapters/jest';
-import * as vnet from ".."
-import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
-import { exampleAzureVirtualNetwork } from './ExampleAzureVirtualNetwork';
+import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { Testing, TerraformStack } from "cdktf";
+import "cdktf/lib/testing/adapters/jest";
+import { exampleAzureVirtualNetwork } from "./ExampleAzureVirtualNetwork";
+import * as vnet from "..";
 
-describe('Azure Virtual Network With Defaults', () => {
+describe("Azure Virtual Network With Defaults", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
 
@@ -12,16 +12,16 @@ describe('Azure Virtual Network With Defaults', () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", {features: {}});
-    new vnet.Network(stack, 'testAzureVirtualNetworkDefaults', {resourceGroupName: "rg-test",});
+    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new vnet.Network(stack, "testAzureVirtualNetworkDefaults", {
+      resourceGroupName: "rg-test",
+    });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });
 
   it("renders an Azure Virtual Network with defaults and checks snapshot", () => {
-    expect(
-      Testing.synth(stack)
-    ).toMatchSnapshot(); // Compare the already prepared stack
+    expect(Testing.synth(stack)).toMatchSnapshot(); // Compare the already prepared stack
   });
 
   it("check if the produced terraform configuration is valid", () => {
@@ -33,26 +33,39 @@ describe('Azure Virtual Network With Defaults', () => {
   });
 });
 
-
-describe('Azure Virtual Network Example', () => {
-  
+describe("Azure Virtual Network Example", () => {
   it("renders the Example Azure Virtual Network and checks snapshot", () => {
-  
     expect(
-      Testing.synth(new exampleAzureVirtualNetwork(Testing.app(), "testAzureVirtualNetwork"))
-      
+      Testing.synth(
+        new exampleAzureVirtualNetwork(
+          Testing.app(),
+          "testAzureVirtualNetwork",
+        ),
+      ),
     ).toMatchSnapshot();
-});
+  });
 
   it("check if the produced terraform configuration is valid", () => {
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureVirtualNetwork(Testing.app(), "testAzureVirtualNetwork"))).toBeValidTerraform();
+    expect(
+      Testing.fullSynth(
+        new exampleAzureVirtualNetwork(
+          Testing.app(),
+          "testAzureVirtualNetwork",
+        ),
+      ),
+    ).toBeValidTerraform();
   });
 
   it("check if this can be planned", () => {
-  
-    
     // We need to do a full synth to plan the terraform configuration
-    expect(Testing.fullSynth(new exampleAzureVirtualNetwork(Testing.app(), "testAzureVirtualNetwork"))).toPlanSuccessfully();
+    expect(
+      Testing.fullSynth(
+        new exampleAzureVirtualNetwork(
+          Testing.app(),
+          "testAzureVirtualNetwork",
+        ),
+      ),
+    ).toPlanSuccessfully();
   });
 });

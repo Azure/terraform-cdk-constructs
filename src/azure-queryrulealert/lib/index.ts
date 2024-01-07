@@ -1,1 +1,1 @@
-export * from './query-rule-alert'
+export * from "./query-rule-alert";
