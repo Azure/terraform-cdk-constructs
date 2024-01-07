@@ -76,6 +76,14 @@ releaseWorkflow?.patch(
   JsonPatch.add("/jobs/release_npm/steps/1", setupNpmrcScript),
 );
 releaseWorkflow?.patch(JsonPatch.remove("/jobs/release_npm/steps/8/env"));
+releaseWorkflow?.patch(
+  JsonPatch.add("/jobs/release/steps/4/env", {
+    ARM_SUBSCRIPTION_ID: "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
+    ARM_TENANT_ID: "${{ secrets.AZTFREADER_TENANT_ID }}",
+    ARM_CLIENT_ID: "${{ secrets.AZTFREADER_CLIENT_ID }}",
+    ARM_CLIENT_SECRET: "${{ secrets.AZTFREADER_CLIENT_SECRET }}",
+  }),
+);
 
 // Build Workflow
 const buildWorkflow = project.tryFindObjectFile(".github/workflows/build.yml");
@@ -98,6 +106,9 @@ project.gitignore.include("cdk.out");
 project.gitignore.exclude("cdktf.out");
 project.gitignore.exclude("test");
 project.gitignore.exclude("*terraform.*.tfstate*");
+
+project.prettier?.addIgnorePattern(".github");
+project.eslint?.addIgnorePattern(".github");
 
 // Add generate index script
 project.addScripts({
