@@ -85,7 +85,10 @@ releaseWorkflow?.patch(
   }),
 );
 releaseWorkflow?.patch(
-  JsonPatch.add("/jobs/release_npm/steps/8/run", "npm publish"),
+  JsonPatch.add(
+    "/jobs/release_npm/steps/8/run",
+    'PACKAGE_FILE=$(ls dist/js/*.tgz)\nnpm publish "$PACKAGE_FILE"',
+  ),
 );
 
 // Build Workflow
