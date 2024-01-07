@@ -128,4 +128,4 @@ jobs:
       - name: Collect js Artifact
         run: mv .repo/dist dist
       - name: Release
-        run: npx -p publib@latest publib-npm
+        run: npm publish
