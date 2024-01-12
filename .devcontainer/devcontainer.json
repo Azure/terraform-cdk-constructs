@@ -41,15 +41,21 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"dbaeumer.vscode-eslint",
 				"ms-vscode.azurecli",
 				"GitHub.copilot",
 				"GitHub.copilot-chat",
 				"hashicorp.terraform",
 				"ms-vscode.vscode-typescript-next",
 				"ms-azuretools.vscode-docker"
-			]
+			],
+            "settings": {
+                "editor.defaultFormatter": "dbaeumer.vscode-eslint", // Set ESLint as the default formatter
+                "editor.formatOnSave": true // Enable format on save
+            }
 		}
-	}
+	},
+    "postCreateCommand": "apt-get update && apt-get install -y vim && npm install"
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
