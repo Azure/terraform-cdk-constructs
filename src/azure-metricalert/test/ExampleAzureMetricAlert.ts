@@ -39,7 +39,7 @@ export class exampleAzureMetricAlert extends BaseTestStack {
     // Create Metric Alert
     new metricalert.MetricAlert(this, "metricAlert1", {
       name: `metricalert1-${this.name}`,
-      resourceGroupName: resourceGroup.name,
+      resourceGroup: resourceGroup,
       scopes: [logAnalyticsWorkspace.id],
       criteria: [
         {
@@ -66,7 +66,7 @@ export class exampleAzureMetricAlert extends BaseTestStack {
 
     new metricalert.MetricAlert(this, "metricAlert2", {
       name: `metricalert2-${this.name}`,
-      resourceGroupName: resourceGroup.name,
+      resourceGroup: resourceGroup,
       scopes: [logAnalyticsWorkspace.id],
       criteria: [
         {

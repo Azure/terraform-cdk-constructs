@@ -28,7 +28,7 @@ export interface GroupProps {
 }
 
 export class Group extends AzureResource {
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
   readonly props: GroupProps;
   idOutput: cdktf.TerraformOutput;
   locationOutput: cdktf.TerraformOutput;
@@ -62,7 +62,7 @@ export class Group extends AzureResource {
     this.id = azurermResourceGroupRg.id;
     this.name = azurermResourceGroupRg.name;
     this.location = azurermResourceGroupRg.location;
-    this.resourceGroupName = azurermResourceGroupRg.name;
+    this.resourceGroup = azurermResourceGroupRg;
 
     // Terraform Outputs
     this.idOutput = new cdktf.TerraformOutput(this, "id", {

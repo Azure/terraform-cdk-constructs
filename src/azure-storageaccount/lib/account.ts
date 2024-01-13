@@ -132,8 +132,8 @@ export class Account extends AzureResourceWithAlert {
   public readonly props: AccountProps;
   public id: string;
   public readonly name: string;
+  public readonly location: string;
   public readonly resourceGroup: ResourceGroup;
-  public resourceGroupName: string;
   public readonly accountKind: string;
   public readonly accountTier: string;
   private readonly containers: Map<string, Container>;
@@ -154,6 +154,8 @@ export class Account extends AzureResourceWithAlert {
     this.containers = new Map<string, Container>();
     this.shares = new Map<string, FileShare>();
     this.tables = new Map<string, Table>();
+    this.name = props.name;
+    this.location = props.location;
 
     // default Storage Account Settings
     const defaults = {
@@ -179,7 +181,6 @@ export class Account extends AzureResourceWithAlert {
     this.name = storageAccount.name;
     this.accountKind = storageAccount.accountKind;
     this.accountTier = storageAccount.accountTier;
-    this.resourceGroupName = this.resourceGroup.name;
   }
 
   private setupResourceGroup(props: AccountProps): ResourceGroup {

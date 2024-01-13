@@ -1,4 +1,5 @@
 import { KustoEventhubDataConnection } from "@cdktf/provider-azurerm/lib/kusto-eventhub-data-connection";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Construct } from "constructs";
 
 export interface BaseKustoDataConnectionProps {
@@ -15,7 +16,7 @@ export interface BaseKustoDataConnectionProps {
   /**
    * Specifies the Resource Group where the Kusto Database should exist.
    */
-  readonly kustoResourceGroupName: string;
+  readonly kustoResourceGroup: ResourceGroup;
 
   /**
    * Specifies the name of the Kusto Cluster this data connection will be added to.
@@ -106,7 +107,7 @@ export class KustoDataConnection extends Construct {
         name: this.eventhubKustoDataConnectionProps.name,
         location: this.eventhubKustoDataConnectionProps.location,
         resourceGroupName:
-          this.eventhubKustoDataConnectionProps.kustoResourceGroupName,
+          this.eventhubKustoDataConnectionProps.kustoResourceGroup.name,
         clusterName: this.eventhubKustoDataConnectionProps.kustoClusterName,
         databaseName: this.eventhubKustoDataConnectionProps.kustoDatabaseName,
         eventhubId: this.eventhubKustoDataConnectionProps.eventhubId,

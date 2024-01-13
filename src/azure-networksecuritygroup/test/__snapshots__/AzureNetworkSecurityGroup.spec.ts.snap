@@ -103,7 +103,7 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
       }
     },
     "azurerm_role_assignment": {
-      "nsg_TfTokenTOKEN51Contributor_role_DB635CCB": {
+      "nsg_TfTokenTOKEN61Contributor_role_D5E31B9D": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_network_security_group.nsg_291A0A95.id}"
@@ -128,11 +128,11 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
       }
     },
     "azurerm_subnet_network_security_group_association": {
-      "nsg_TfTokenTOKEN52_subassociation_7B1D4CE7": {
+      "nsg_TfTokenTOKEN62_subassociation_7ED085DA": {
         "network_security_group_id": "\${azurerm_network_security_group.nsg_291A0A95.id}",
         "subnet_id": "\${azurerm_subnet.subnet1.id}"
       },
-      "nsg_TfTokenTOKEN54_subassociation_9B9D14AA": {
+      "nsg_TfTokenTOKEN64_subassociation_278BD40D": {
         "network_security_group_id": "\${azurerm_network_security_group.nsg_291A0A95.id}",
         "subnet_id": "\${azurerm_subnet.subnet2.id}"
       }
@@ -181,7 +181,7 @@ exports[`Azure Network Security Group With Defaults renders an Azure Network Sec
       "testAzureNetworkSecurityGroupDefaults_nsg_EF1D027C": {
         "location": "eastus",
         "name": "my-nsg",
-        "resource_group_name": "rgtest"
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}"
       }
     },
     "azurerm_network_security_rule": {
@@ -194,9 +194,15 @@ exports[`Azure Network Security Group With Defaults renders an Azure Network Sec
         "network_security_group_name": "\${azurerm_network_security_group.testAzureNetworkSecurityGroupDefaults_nsg_EF1D027C.name}",
         "priority": 501,
         "protocol": "Tcp",
-        "resource_group_name": "rgtest",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
         "source_address_prefix": "*",
         "source_port_range": "*"
+      }
+    },
+    "azurerm_resource_group": {
+      "MyResourceGroup": {
+        "location": "eastus",
+        "name": "rg-test"
       }
     }
   },

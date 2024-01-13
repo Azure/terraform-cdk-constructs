@@ -42,7 +42,7 @@ export class exampleAzureQueryRuleAlert extends BaseTestStack {
     // Query Rule Alert
     const alert = new queryalert.QueryRuleAlert(this, "queryRuleAlert", {
       name: `qra-${this.name}`,
-      resourceGroupName: resourceGroup.name,
+      resourceGroup: resourceGroup,
       location: "eastus",
       criteriaOperator: "GreaterThan",
       criteriaQuery: `

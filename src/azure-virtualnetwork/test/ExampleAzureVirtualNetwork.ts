@@ -32,7 +32,7 @@ export class exampleAzureVirtualNetwork extends BaseTestStack {
     const network = new vnet.Network(this, "testAzureVirtualNetworkDefaults", {
       name: `vnet-${this.name}`,
       location: "eastus",
-      resourceGroupName: resourceGroup.name,
+      resourceGroup: resourceGroup,
       addressSpace: ["10.0.0.0/16"],
       subnets: [
         {
@@ -52,7 +52,7 @@ export class exampleAzureVirtualNetwork extends BaseTestStack {
       {
         name: `vnet-${this.name}2`,
         location: "westus",
-        resourceGroupName: resourceGroup.name,
+        resourceGroup: resourceGroup,
         addressSpace: ["10.1.0.0/16"],
         subnets: [
           {

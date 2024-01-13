@@ -1,3 +1,4 @@
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import * as actionProps from "./action-props";
 import * as criteriaProps from "./criteria-props";
 import * as dynamicCriteriaProps from "./dynamic-criteria-props";
@@ -88,7 +89,7 @@ export interface IMetricAlertProps extends IBaseMetricAlertProps {
    * The name of the resource group in which the Metric Alert is created.
    * @see {@link https://www.terraform.io/docs/providers/azurerm/r/monitor_metric_alert.html#resource_group_name}
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
 
   /**
    * A set of strings of resource IDs at which the metric criteria should be applied.

@@ -1,4 +1,5 @@
 import { Eventhub } from "@cdktf/provider-azurerm/lib/eventhub";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import { AuthorizationRule, AuthorizationRuleProps } from "./authorization";
@@ -40,7 +41,7 @@ export interface InstanceProps extends BaseInstanceProps {
   /**
    * The name of the resource group in which the EventHub's parent Namespace exists.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
   /**
    * Specifies the name of the EventHub Namespace.
    */
@@ -68,7 +69,7 @@ export class Instance extends Construct {
       `ehinstance-${ehInstanceProps.name}`,
       {
         name: ehInstanceProps.name,
-        resourceGroupName: ehInstanceProps.resourceGroupName,
+        resourceGroupName: ehInstanceProps.resourceGroup.name,
         namespaceName: ehInstanceProps.namespaceName,
         ...defaults,
       },
@@ -98,7 +99,7 @@ export class Instance extends Construct {
 
   public addAuthorizationRule(props: AuthorizationRuleProps) {
     return new AuthorizationRule(this, `ehauthrule-${props.name}`, {
-      resourceGroupName: this.ehInstanceProps.resourceGroupName,
+      resourceGroupName: this.ehInstanceProps.resourceGroup.name,
       namespaceName: this.ehInstanceProps.namespaceName,
       eventhubName: this.ehInstanceProps.name,
       ...props,
@@ -107,7 +108,7 @@ export class Instance extends Construct {
 
   public addConsumerGroup(name: string, userMetadata?: string) {
     return new ConsumerGroup(this, `ehconsumergroup-${name}`, {
-      resourceGroupName: this.ehInstanceProps.resourceGroupName,
+      resourceGroup: this.ehInstanceProps.resourceGroup,
       namespaceName: this.ehInstanceProps.namespaceName,
       eventhubName: this.ehInstanceProps.name,
       name: name,

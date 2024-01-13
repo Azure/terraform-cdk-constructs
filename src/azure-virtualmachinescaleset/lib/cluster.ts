@@ -8,6 +8,7 @@ import {
   LinuxVirtualMachineScaleSet,
   LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress,
 } from "@cdktf/provider-azurerm/lib/linux-virtual-machine-scale-set";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Subnet } from "@cdktf/provider-azurerm/lib/subnet";
 import { VirtualMachineScaleSetExtensionA } from "@cdktf/provider-azurerm/lib/virtual-machine-scale-set-extension";
 import {
@@ -53,7 +54,7 @@ export interface LinuxClusterProps {
   /**
    * The name of the resource group in which the virtual machine scale set will be created.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
 
   /**
    * The size of the virtual machines in the scale set.
@@ -154,7 +155,7 @@ export interface LinuxClusterProps {
 
 export class LinuxCluster extends AzureResource {
   public readonly props: LinuxClusterProps;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
   public id: string;
   public readonly name: string;
   public readonly fqn: string;
@@ -171,7 +172,7 @@ export class LinuxCluster extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resourceGroupName;
+    this.resourceGroup = props.resourceGroup;
 
     const pathName = this.node.path.split("/")[0];
 
@@ -190,7 +191,7 @@ export class LinuxCluster extends AzureResource {
       subnet:
         props.subnet ||
         new Network(this, "vnet", {
-          resourceGroupName: props.resourceGroupName,
+          resourceGroup: props.resourceGroup,
         }).subnets.default,
     };
 
@@ -199,7 +200,7 @@ export class LinuxCluster extends AzureResource {
       "vmss",
       {
         ...defaults,
-        resourceGroupName: props.resourceGroupName,
+        resourceGroupName: props.resourceGroup.name,
         adminPassword: props.adminPassword,
         disablePasswordAuthentication: props.adminPassword ? false : true,
         tags: props.tags,
@@ -265,7 +266,7 @@ export interface WindowsClusterProps {
   /**
    * The name of the resource group in which the virtual machine will be created.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
 
   /**
    * The size of the virtual machine.
@@ -361,7 +362,7 @@ export interface WindowsClusterProps {
 
 export class WindowsCluster extends AzureResource {
   readonly props: WindowsClusterProps;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
   public id: string;
   public readonly name: string;
 
@@ -376,7 +377,7 @@ export class WindowsCluster extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resourceGroupName;
+    this.resourceGroup = props.resourceGroup;
 
     const pathName = this.node.path.split("/")[0];
 
@@ -397,7 +398,7 @@ export class WindowsCluster extends AzureResource {
       subnet:
         props.subnet ||
         new Network(this, "vnet", {
-          resourceGroupName: props.resourceGroupName,
+          resourceGroup: props.resourceGroup,
         }).subnets.default,
     };
 
@@ -413,7 +414,7 @@ export class WindowsCluster extends AzureResource {
       "vmss",
       {
         ...defaults,
-        resourceGroupName: props.resourceGroupName,
+        resourceGroupName: props.resourceGroup.name,
         adminUsername: props.adminUsername,
         adminPassword: props.adminPassword,
         tags: props.tags,

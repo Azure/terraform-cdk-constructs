@@ -31,7 +31,7 @@ export class exampleAzureActionGroup extends BaseTestStack {
     const actiongroup = new ag.ActionGroup(this, "testAzureActionGroup", {
       name: "testactiongroup",
       location: "global",
-      resourceGroupName: resourceGroup.name,
+      resourceGroup: resourceGroup,
       shortName: "testshortn",
       emailReceivers: [
         {

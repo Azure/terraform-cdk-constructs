@@ -1,4 +1,5 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
 import { exampleAzureQueryRuleAlert } from "./ExampleAzureQueryRuleAlert";
@@ -15,9 +16,14 @@ describe("Azure Query Rule Alert With Defaults", () => {
 
     new AzurermProvider(stack, "azureQueryRuleAlert", { features: {} });
 
+    const rg = new ResourceGroup(stack, "MyResourceGroup", {
+      name: "rg-test",
+      location: "eastus",
+    });
+
     new queryalert.QueryRuleAlert(stack, "testAzureQueryRuleAlert", {
       name: "alert test",
-      resourceGroupName: "testResourceGroup",
+      resourceGroup: rg,
       location: "eastus",
       criteriaOperator: "GreaterThan",
       criteriaQuery: `

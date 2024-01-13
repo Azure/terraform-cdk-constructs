@@ -1,4 +1,5 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
 import { exampleAzureMetricAlert } from "./ExampleAzureMetricAlert";
@@ -15,9 +16,14 @@ describe("Azure Metric Alert With Defaults", () => {
 
     new AzurermProvider(stack, "azureQueryRuleAlert", { features: {} });
 
+    const rg = new ResourceGroup(stack, "MyResourceGroup", {
+      name: "rg-test",
+      location: "eastus",
+    });
+
     new metricalert.MetricAlert(stack, "testAzureQueryRuleAlert", {
       name: "metric alert test",
-      resourceGroupName: "testResourceGroup",
+      resourceGroup: rg,
       scopes: ["/subscriptions/00000000-0000-0000-0000-000000000000"],
       criteria: [
         {

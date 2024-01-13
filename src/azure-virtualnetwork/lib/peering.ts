@@ -65,7 +65,7 @@ export class Peer extends Construct {
 
     new VirtualNetworkPeering(this, "VNetPeerLocaltoRemote", {
       name: localtoRemotePeerName,
-      resourceGroupName: props.virtualNetwork.resourceGroupName,
+      resourceGroupName: props.virtualNetwork.resourceGroup.name,
       virtualNetworkName: props.virtualNetwork.name,
       remoteVirtualNetworkId: props.remoteVirtualNetwork.id,
       ...props.localToRemoteSettings,
@@ -76,7 +76,7 @@ export class Peer extends Construct {
 
     new VirtualNetworkPeering(this, "VNetPeerRemotetoLocal", {
       name: remoteToLocalPeerName,
-      resourceGroupName: props.remoteVirtualNetwork.resourceGroupName,
+      resourceGroupName: props.remoteVirtualNetwork.resourceGroup.name,
       virtualNetworkName: props.remoteVirtualNetwork.name,
       remoteVirtualNetworkId: props.virtualNetwork.id,
       ...props.remoteToLocalSettings,

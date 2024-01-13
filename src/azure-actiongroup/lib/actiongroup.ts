@@ -1,4 +1,5 @@
 import { MonitorActionGroup } from "@cdktf/provider-azurerm/lib/monitor-action-group";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import { AzureResource } from "../../core-azure/lib";
@@ -11,7 +12,7 @@ export interface ActionGroupProps {
   /**
    * The name of the resource group in which to create the Action Group instance.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
   /**
    * The short name of the action group. This will be used in SMS messages. The length should be in the range (1 - 12).
    */
@@ -81,14 +82,14 @@ export interface ActionGroupProps {
 
 export class ActionGroup extends AzureResource {
   readonly props: ActionGroupProps;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
   public id: string;
 
   constructor(scope: Construct, id: string, props: ActionGroupProps) {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resourceGroupName;
+    this.resourceGroup = props.resourceGroup;
 
     /**
      * Define default values.
@@ -106,7 +107,7 @@ export class ActionGroup extends AzureResource {
       {
         ...defaults,
         name: props.name,
-        resourceGroupName: props.resourceGroupName,
+        resourceGroupName: props.resourceGroup.name,
         shortName: props.shortName,
       },
     );

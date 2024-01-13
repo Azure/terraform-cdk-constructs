@@ -1,4 +1,5 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
 import * as vm from "..";
@@ -14,8 +15,13 @@ describe("Azure Linux Virtual Machine With Defaults", () => {
 
     new AzurermProvider(stack, "azureFeature", { features: {} });
 
+    const rg = new ResourceGroup(stack, "MyResourceGroup", {
+      name: "rg-test",
+      location: "eastus",
+    });
+
     new vm.LinuxVM(stack, "testVirtualMachine", {
-      resourceGroupName: "testResourceGroup",
+      resourceGroup: rg,
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse

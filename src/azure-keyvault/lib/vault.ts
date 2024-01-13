@@ -1,4 +1,5 @@
 import { KeyVault } from "@cdktf/provider-azurerm/lib/key-vault";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import {
@@ -23,7 +24,7 @@ export interface VaultProps {
   /**
    * The name of the Azure Resource Group.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
   /**
    * The tags to assign to the Key Vault.
    */
@@ -106,7 +107,7 @@ export interface GrantCustomAccessOptions {
 
 export class Vault extends AzureResource {
   readonly props: VaultProps;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
   public id: string;
   private accessPolicies: AccessPolicy[] = [];
 
@@ -114,7 +115,7 @@ export class Vault extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resourceGroupName;
+    this.resourceGroup = props.resourceGroup;
 
     // Provide default values
     const purgeProtection = props.purgeProtection ?? true;
@@ -124,7 +125,7 @@ export class Vault extends AzureResource {
     const azurermKeyVault = new KeyVault(this, "key_vault", {
       name: props.name,
       location: props.location,
-      resourceGroupName: props.resourceGroupName,
+      resourceGroupName: props.resourceGroup.name,
       tags: props.tags,
       skuName: sku,
       tenantId: props.tenantId,

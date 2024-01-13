@@ -24,12 +24,6 @@ exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] =
     },
     "id": {
       "value": "\${azurerm_kusto_database.kusto_testDB1_kusto-db-testDB1_D1A53426.id}"
-    },
-    "location": {
-      "value": "\${azurerm_resource_group.rg_1429A41A.location}"
-    },
-    "name": {
-      "value": "\${azurerm_resource_group.rg_1429A41A.name}"
     }
   },
   "provider": {
@@ -52,11 +46,11 @@ exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] =
           ],
           "type": "SystemAssigned"
         },
-        "location": "\${azurerm_resource_group.rg_1429A41A.location}",
+        "location": "\${azurerm_resource_group.rg.location}",
         "name": "kusto\${var.name}",
         "public_network_access_enabled": true,
         "purge_enabled": false,
-        "resource_group_name": "\${azurerm_resource_group.rg_1429A41A.name}",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "sku": {
           "capacity": 2,
           "name": "Dev(No SLA)_Standard_E2a_v4"
@@ -73,9 +67,9 @@ exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] =
       "kusto_testDB1_kusto-db-testDB1_D1A53426": {
         "cluster_name": "kusto\${var.name}",
         "hot_cache_period": "P7D",
-        "location": "\${azurerm_resource_group.rg_1429A41A.location}",
+        "location": "\${azurerm_resource_group.rg.location}",
         "name": "testDB1",
-        "resource_group_name": "\${azurerm_resource_group.rg_1429A41A.name}",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "soft_delete_period": "P31D"
       }
     },
@@ -86,7 +80,7 @@ exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] =
         "name": "User1Admin",
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.client_id}",
         "principal_type": "User",
-        "resource_group_name": "\${azurerm_resource_group.rg_1429A41A.name}",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "role": "Admin",
         "tenant_id": "\${data.azurerm_client_config.CurrentClientConfig.tenant_id}"
       }
@@ -108,19 +102,13 @@ exports[`Kusto Example renders the Azure Kusto Example and checks snapshot 1`] =
       }
     },
     "azurerm_resource_group": {
-      "rg_1429A41A": {
-        "lifecycle": [
-          {
-            "ignore_changes": [
-            ]
-          }
-        ],
+      "rg": {
         "location": "eastus",
         "name": "rg-\${var.name}"
       }
     },
     "azurerm_role_assignment": {
-      "kusto_TfTokenTOKEN49Contributor_role_0B8916FD": {
+      "kusto_TfTokenTOKEN48Contributor_role_001B6C70": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_kusto_cluster.kusto_Kusto_6B093AC5.id}"
@@ -179,11 +167,11 @@ exports[`Kusto With Defaults renders an Kusto with defaults and checks snapshot 
           ],
           "type": "SystemAssigned"
         },
-        "location": "eastus",
+        "location": "\${azurerm_resource_group.MyResourceGroup.location}",
         "name": "kustotest",
         "public_network_access_enabled": true,
         "purge_enabled": false,
-        "resource_group_name": "testrgname",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
         "sku": {
           "capacity": 2,
           "name": "Dev(No SLA)_Standard_E2a_v4"
@@ -194,6 +182,12 @@ exports[`Kusto With Defaults renders an Kusto with defaults and checks snapshot 
           "2",
           "3"
         ]
+      }
+    },
+    "azurerm_resource_group": {
+      "MyResourceGroup": {
+        "location": "eastus",
+        "name": "rg-test"
       }
     }
   },

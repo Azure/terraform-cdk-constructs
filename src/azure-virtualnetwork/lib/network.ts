@@ -1,3 +1,4 @@
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Subnet } from "@cdktf/provider-azurerm/lib/subnet";
 import { VirtualNetwork } from "@cdktf/provider-azurerm/lib/virtual-network";
 import { Construct } from "constructs";
@@ -27,7 +28,7 @@ export interface NetworkProps {
   /**
    * The name of the resource group under which the virtual network will be created.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
 
   /**
    * Optional: The name of the virtual network. Must be unique within the resource group.
@@ -57,7 +58,7 @@ export interface NetworkProps {
 export class Network extends AzureResource {
   readonly props: NetworkProps;
   public readonly name: string;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
   public id: string;
   public readonly virtualNetwork: VirtualNetwork;
   public readonly subnets: { [name: string]: Subnet } = {}; // Map of subnet name to Subnet object
@@ -82,19 +83,19 @@ export class Network extends AzureResource {
     // Create a virtual network
     const vnet = new VirtualNetwork(this, "vnet", {
       ...defaults,
-      resourceGroupName: props.resourceGroupName,
+      resourceGroupName: props.resourceGroup.name,
     });
 
     this.name = vnet.name;
     this.id = vnet.id;
-    this.resourceGroupName = vnet.resourceGroupName;
+    this.resourceGroup = props.resourceGroup;
     this.virtualNetwork = vnet;
 
     // Create subnets within the virtual network
     for (const subnetConfig of defaults.subnets) {
       const subnet = new Subnet(this, subnetConfig.name, {
         name: subnetConfig.name,
-        resourceGroupName: props.resourceGroupName,
+        resourceGroupName: props.resourceGroup.name,
         virtualNetworkName: vnet.name,
         addressPrefixes: subnetConfig.addressPrefixes,
       });

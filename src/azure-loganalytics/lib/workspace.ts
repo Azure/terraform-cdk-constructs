@@ -1,6 +1,7 @@
 import { LogAnalyticsDataExportRule } from "@cdktf/provider-azurerm/lib/log-analytics-data-export-rule";
 import { LogAnalyticsSavedSearch } from "@cdktf/provider-azurerm/lib/log-analytics-saved-search";
 import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import { AzureResourceWithAlert } from "../../core-azure/lib";
@@ -97,7 +98,7 @@ export interface WorkspaceProps {
   /**
    * The name of the Azure Resource Group.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
   /**
    * The SKU of the Log Analytics Workspace.
    */
@@ -126,14 +127,14 @@ export interface WorkspaceProps {
 
 export class Workspace extends AzureResourceWithAlert {
   readonly props: WorkspaceProps;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
   public id: string;
 
   constructor(scope: Construct, id: string, props: WorkspaceProps) {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resourceGroupName;
+    this.resourceGroup = props.resourceGroup;
 
     // Provide default values
     const sku = props.sku ?? "PerGB2018";
@@ -145,7 +146,7 @@ export class Workspace extends AzureResourceWithAlert {
       {
         location: props.location,
         name: props.name,
-        resourceGroupName: props.resourceGroupName,
+        resourceGroupName: props.resourceGroup.name,
         retentionInDays: retention,
         sku: sku,
         tags: props.tags,
@@ -159,7 +160,7 @@ export class Workspace extends AzureResourceWithAlert {
         destinationResourceId: v.exportDestinationId,
         enabled: v.enabled,
         name: v.name,
-        resourceGroupName: props.resourceGroupName,
+        resourceGroupName: props.resourceGroup.name,
         tableNames: v.tableNames,
         workspaceResourceId: azurermLogAnalyticsWorkspaceLogAnalytics.id,
       });

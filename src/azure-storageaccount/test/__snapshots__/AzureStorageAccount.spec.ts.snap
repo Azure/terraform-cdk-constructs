@@ -101,7 +101,7 @@ exports[`Azure Storage Account Example renders the Example Storage Account and c
       }
     },
     "azurerm_role_assignment": {
-      "storageaccount_TfTokenTOKEN57Contributor_role_F0C41B3D": {
+      "storageaccount_TfTokenTOKEN53Contributor_role_050C6243": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_storage_account.storageaccount_5B90F750.id}"

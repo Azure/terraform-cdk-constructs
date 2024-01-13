@@ -1,4 +1,5 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
 import { exampleAzureApplicationInsights } from "./ExampleAzureApplicationInsights";
 import "cdktf/lib/testing/adapters/jest";
@@ -14,10 +15,16 @@ describe("Application Insights With Defaults", () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", { features: {} });
+
+    const resourceGroup = new ResourceGroup(stack, "MyResourceGroup", {
+      name: "testrg",
+      location: "eastus",
+    });
+
     new appi.AppInsights(stack, "testAzureApplicationInsightsDefaults", {
       name: "appi-test",
       location: "eastus",
-      resourceGroupName: "rg-test",
+      resourceGroup: resourceGroup,
       applicationType: "web",
     });
 

@@ -74,7 +74,7 @@ export class exampleAzureApplicationInsights extends BaseTestStack {
     const applicationInsights = new appi.AppInsights(this, "testappi", {
       name: `appi-${this.name}`,
       location: "eastus",
-      resourceGroupName: resourceGroup.name,
+      resourceGroup: resourceGroup,
       applicationType: "web",
       workspaceId: logAnalyticsWorkspace.id,
     });

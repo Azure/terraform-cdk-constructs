@@ -1,4 +1,5 @@
 import { ContainerRegistry } from "@cdktf/provider-azurerm/lib/container-registry";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import { AzureResource } from "../../core-azure/lib";
@@ -15,7 +16,7 @@ export interface RegistryProps {
   /**
    * The name of the Azure Resource Group.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
   /**
    * The SKU of the Log Analytics Workspace.
    */
@@ -36,14 +37,14 @@ export interface RegistryProps {
 
 export class Registry extends AzureResource {
   public readonly props: RegistryProps;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
   public id: string;
 
   constructor(scope: Construct, id: string, props: RegistryProps) {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resourceGroupName;
+    this.resourceGroup = props.resourceGroup;
 
     // Provide default values
     const sku = props.sku ?? "Basic";
@@ -53,7 +54,7 @@ export class Registry extends AzureResource {
     const azurermContainerRegistry = new ContainerRegistry(this, "acr", {
       location: props.location,
       name: props.name,
-      resourceGroupName: props.resourceGroupName,
+      resourceGroupName: props.resourceGroup.name,
       sku: sku,
       tags: props.tags,
       adminEnabled: admin_enabled,

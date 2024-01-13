@@ -1,9 +1,9 @@
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { App } from "cdktf";
 import { Construct } from "constructs";
 import * as kusto from "..";
-import * as rg from "../../azure-resourcegroup";
 import { BaseTestStack } from "../../testing";
 import { ComputeSpecification } from "../lib/compute-specification";
 
@@ -27,14 +27,14 @@ export class exampleAzureKusto extends BaseTestStack {
       },
     });
 
-    const resourceGroup = new rg.Group(this, "rg", {
+    const resourceGroup = new ResourceGroup(this, "rg", {
       name: `rg-${this.name}`,
       location: "eastus",
     });
 
     // Create Kusto Cluster
     const kustoCluster = new kusto.Cluster(this, "kusto", {
-      rg: resourceGroup,
+      resourceGroup: resourceGroup,
       name: `kusto${this.name}`, // Only lowercase Alphanumeric characters allowed.
       sku: ComputeSpecification.devtestExtraSmallEav4,
     });

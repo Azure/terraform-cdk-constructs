@@ -11,12 +11,6 @@ exports[`Azure Eventhub Example renders the Example Azure Eventhub and checks sn
     "id": {
       "value": "\${azurerm_monitor_metric_alert.eventhub_metricalert_metricAlert_98164A67.id}",
     },
-    "location": {
-      "value": "\${azurerm_resource_group.rg_1429A41A.location}",
-    },
-    "name": {
-      "value": "\${azurerm_resource_group.rg_1429A41A.name}",
-    },
     "partition_ids": {
       "value": "\${tolist(azurerm_eventhub.eventhub_ehinstance_ehinstance-test-eventhub-instance_6C544BA5.partition_ids)}",
     },
@@ -43,7 +37,7 @@ exports[`Azure Eventhub Example renders the Example Azure Eventhub and checks sn
         "name": "test-eventhub-instance",
         "namespace_name": "ehns-\${var.name}",
         "partition_count": 2,
-        "resource_group_name": "\${azurerm_resource_group.rg_1429A41A.name}",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "status": "Active",
       },
     },
@@ -54,7 +48,7 @@ exports[`Azure Eventhub Example renders the Example Azure Eventhub and checks sn
         "manage": false,
         "name": "test-rule",
         "namespace_name": "ehns-\${var.name}",
-        "resource_group_name": "\${azurerm_resource_group.rg_1429A41A.name}",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "send": true,
       },
     },
@@ -63,7 +57,7 @@ exports[`Azure Eventhub Example renders the Example Azure Eventhub and checks sn
         "eventhub_name": "test-eventhub-instance",
         "name": "test-consumer-group",
         "namespace_name": "ehns-\${var.name}",
-        "resource_group_name": "\${azurerm_resource_group.rg_1429A41A.name}",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
       },
     },
     "azurerm_eventhub_namespace": {
@@ -74,12 +68,12 @@ exports[`Azure Eventhub Example renders the Example Azure Eventhub and checks sn
           "type": "SystemAssigned",
         },
         "local_authentication_enabled": true,
-        "location": "\${azurerm_resource_group.rg_1429A41A.location}",
+        "location": "\${azurerm_resource_group.rg.location}",
         "maximum_throughput_units": 2,
         "minimum_tls_version": "1.2",
         "name": "ehns-\${var.name}",
         "public_network_access_enabled": true,
-        "resource_group_name": "\${azurerm_resource_group.rg_1429A41A.name}",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "sku": "Basic",
         "tags": {},
         "zone_redundant": false,
@@ -96,7 +90,7 @@ exports[`Azure Eventhub Example renders the Example Azure Eventhub and checks sn
         "eventhub_id": "\${azurerm_eventhub.eventhub_ehinstance_ehinstance-test-eventhub-instance_6C544BA5.id}",
         "location": "eastus",
         "name": "test-kusto-data-connection",
-        "resource_group_name": "test-rg",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
       },
     },
     "azurerm_monitor_metric_alert": {
@@ -115,7 +109,7 @@ exports[`Azure Eventhub Example renders the Example Azure Eventhub and checks sn
         "enabled": true,
         "frequency": "PT5M",
         "name": "test-metric-alert",
-        "resource_group_name": "\${azurerm_resource_group.rg_1429A41A.name}",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "scopes": [
           "\${azurerm_eventhub_namespace.eventhub_ehnamespace_921C1DD7.id}",
         ],
@@ -124,18 +118,13 @@ exports[`Azure Eventhub Example renders the Example Azure Eventhub and checks sn
       },
     },
     "azurerm_resource_group": {
-      "rg_1429A41A": {
-        "lifecycle": [
-          {
-            "ignore_changes": [],
-          },
-        ],
+      "rg": {
         "location": "eastus",
         "name": "rg-\${var.name}",
       },
     },
     "azurerm_role_assignment": {
-      "eventhub_TfTokenTOKEN53Contributor_role_AAFEF3AB": {
+      "eventhub_TfTokenTOKEN57Contributor_role_26F7B48B": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_eventhub_namespace.eventhub_ehnamespace_921C1DD7.id}",
@@ -184,17 +173,23 @@ exports[`Azure Eventhub With Defaults renders an Azure Eventhub with defaults an
           "type": "SystemAssigned"
         },
         "local_authentication_enabled": true,
-        "location": "eastus",
+        "location": "\${azurerm_resource_group.MyResourceGroup.location}",
         "maximum_throughput_units": 2,
         "minimum_tls_version": "1.2",
         "name": "eh-test",
         "public_network_access_enabled": true,
-        "resource_group_name": "test-rg",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
         "sku": "Basic",
         "tags": {
           "test": "test"
         },
         "zone_redundant": false
+      }
+    },
+    "azurerm_resource_group": {
+      "MyResourceGroup": {
+        "location": "eastus",
+        "name": "rg-test"
       }
     }
   },

@@ -1,15 +1,15 @@
 import { EventhubNamespace } from "@cdktf/provider-azurerm/lib/eventhub-namespace";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import { Instance, BaseInstanceProps } from "./instance";
-import { Group } from "../../azure-resourcegroup";
 import { AzureResourceWithAlert } from "../../core-azure/lib";
 
 export interface NamespaceProps {
   /**
    * The Azure Resource Group in which to create the EventHub Namespace.
    */
-  readonly rg: Group;
+  readonly resourceGroup: ResourceGroup;
   /**
    * The name of the EventHub Namespace to create.
    */
@@ -75,8 +75,7 @@ export interface NamespaceProps {
 
 export class Namespace extends AzureResourceWithAlert {
   readonly ehNamespaceProps: NamespaceProps;
-  public resourceGroupName: string;
-  readonly rgLocation: string;
+  public resourceGroup: ResourceGroup;
   public id: string;
   readonly namespaceName: string;
 
@@ -88,8 +87,7 @@ export class Namespace extends AzureResourceWithAlert {
     super(scope, name);
 
     this.ehNamespaceProps = ehNamespaceProps;
-    this.resourceGroupName = ehNamespaceProps.rg.name;
-    this.rgLocation = ehNamespaceProps.rg.location;
+    this.resourceGroup = ehNamespaceProps.resourceGroup;
     this.namespaceName = ehNamespaceProps.name;
 
     const defaults = {
@@ -115,8 +113,8 @@ export class Namespace extends AzureResourceWithAlert {
 
     const eventhubNamespce = new EventhubNamespace(this, "ehnamespace", {
       name: ehNamespaceProps.name,
-      resourceGroupName: this.resourceGroupName,
-      location: this.rgLocation,
+      resourceGroupName: this.resourceGroup.name,
+      location: this.resourceGroup.location,
       ...defaults,
     });
 
@@ -135,7 +133,7 @@ export class Namespace extends AzureResourceWithAlert {
   // Create an EventHub Instance Method
   addEventhubInstance(props: BaseInstanceProps) {
     return new Instance(this, "ehinstance", {
-      resourceGroupName: this.resourceGroupName,
+      resourceGroup: this.resourceGroup,
       namespaceName: this.namespaceName,
       ...props,
     });

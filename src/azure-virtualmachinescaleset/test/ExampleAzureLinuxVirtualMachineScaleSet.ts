@@ -62,7 +62,7 @@ export class exampleAzureLinuxVirtualMachineScaleSet extends BaseTestStack {
     const vm = new vmss.LinuxCluster(this, "vm", {
       name: this.name,
       location: "eastus",
-      resourceGroupName: resourceGroup.name,
+      resourceGroup: resourceGroup,
       sku: "Standard_B1s",
       adminUsername: "testadmin",
       adminPassword: "Password1234!",

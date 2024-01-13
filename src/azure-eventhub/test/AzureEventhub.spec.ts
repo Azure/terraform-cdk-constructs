@@ -1,4 +1,5 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
 import { exampleAzureEventhub } from "./ExampleAzureEventhub";
@@ -10,20 +11,18 @@ describe("Azure Eventhub With Defaults", () => {
   let fullSynthResult: any;
 
   beforeEach(() => {
-    jest.mock("../../azure-resourcegroup", () => ({
-      Group: {
-        location: "eastus",
-        name: "test-rg",
-      },
-    }));
-    const rgMock = jest.requireMock("../../azure-resourcegroup");
-
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", { features: {} });
+
+    const rg = new ResourceGroup(stack, "MyResourceGroup", {
+      name: "rg-test",
+      location: "eastus",
+    });
+
     new eh.Namespace(stack, "testAzureEventhubDefaults", {
-      rg: rgMock.Group,
+      resourceGroup: rg,
       name: "eh-test",
       tags: {
         test: "test",

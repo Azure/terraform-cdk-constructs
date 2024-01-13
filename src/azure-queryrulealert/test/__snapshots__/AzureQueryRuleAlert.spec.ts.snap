@@ -35,7 +35,7 @@ exports[`Azure Query Rule Alert With Defaults renders an Azure Query Rule Alert 
         "evaluation_frequency": "PT5M",
         "location": "eastus",
         "name": "alert test",
-        "resource_group_name": "testResourceGroup",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
         "scopes": [
           "/subscriptions/00000000-0000-0000-0000-000000000000"
         ],
@@ -43,6 +43,12 @@ exports[`Azure Query Rule Alert With Defaults renders an Azure Query Rule Alert 
         "skip_query_validation": true,
         "window_duration": "PT30M",
         "workspace_alerts_storage_enabled": false
+      }
+    },
+    "azurerm_resource_group": {
+      "MyResourceGroup": {
+        "location": "eastus",
+        "name": "rg-test"
       }
     }
   },

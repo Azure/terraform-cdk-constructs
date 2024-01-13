@@ -1,14 +1,14 @@
 import { EventhubCluster } from "@cdktf/provider-azurerm/lib/eventhub-cluster";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
-import { Group } from "../../azure-resourcegroup";
 import { AzureResource } from "../../core-azure/lib";
 
 export interface ClusterProps {
   /**
    * The name of the Resource Group in which to create the EventHub Cluster.
    */
-  readonly rg: Group;
+  readonly resourceGroup: ResourceGroup;
   readonly name: string;
   /**
    * The SKU name of the EventHub Cluster. The only supported value at this time is Dedicated_1.
@@ -23,17 +23,14 @@ export interface ClusterProps {
 
 export class Cluster extends AzureResource {
   readonly ehClusterProps: ClusterProps;
-  readonly rgName: string;
-  readonly rgLocation: string;
   public id: string;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
 
   constructor(scope: Construct, name: string, ehClusterProps: ClusterProps) {
     super(scope, name);
 
     this.ehClusterProps = ehClusterProps;
-    this.rgName = ehClusterProps.rg.name;
-    this.rgLocation = ehClusterProps.rg.location;
+    this.resourceGroup = ehClusterProps.resourceGroup;
 
     const defaults = {
       skuName: ehClusterProps.skuName || "Dedicated_1",
@@ -42,13 +39,12 @@ export class Cluster extends AzureResource {
 
     const ehCluster = new EventhubCluster(this, "ehcluster", {
       name: ehClusterProps.name,
-      resourceGroupName: this.rgName,
-      location: this.rgLocation,
+      resourceGroupName: ehClusterProps.resourceGroup.name,
+      location: ehClusterProps.resourceGroup.location,
       ...defaults,
     });
 
     this.id = ehCluster.id;
-    this.resourceGroupName = ehCluster.resourceGroupName;
 
     // Outputs
     const cdktfTerraformOutputEventhubId = new cdktf.TerraformOutput(

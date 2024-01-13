@@ -62,7 +62,7 @@ export class exampleAzureWindowsVirtualMachineScaleSet extends BaseTestStack {
     const vm = new vmss.WindowsCluster(this, "vmss", {
       name: this.name,
       location: "eastus",
-      resourceGroupName: resourceGroup.name,
+      resourceGroup: resourceGroup,
       sku: "Standard_B1s",
       adminUsername: "testadmin",
       adminPassword: "Password1234!",

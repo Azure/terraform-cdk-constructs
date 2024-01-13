@@ -108,7 +108,7 @@ exports[`Azure Linux Virtual Machine  Scale Set Example renders the Azure Linux 
       }
     },
     "azurerm_role_assignment": {
-      "vm_TfTokenTOKEN62Contributor_role_1820190D": {
+      "vm_TfTokenTOKEN68Contributor_role_95B3165E": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_linux_virtual_machine_scale_set.vm_vmss_DAFCB7B9.id}"
@@ -214,7 +214,7 @@ exports[`Azure Linux Virtual Machine Scale Set With Defaults renders an Azure Li
           "caching": "ReadWrite",
           "storage_account_type": "Standard_LRS"
         },
-        "resource_group_name": "testResourceGroup",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
         "sku": "Standard_B2s",
         "source_image_reference": {
           "offer": "0001-com-ubuntu-server-jammy",
@@ -224,13 +224,19 @@ exports[`Azure Linux Virtual Machine Scale Set With Defaults renders an Azure Li
         }
       }
     },
+    "azurerm_resource_group": {
+      "MyResourceGroup": {
+        "location": "eastus",
+        "name": "rg-test"
+      }
+    },
     "azurerm_subnet": {
       "testVirtualMachineScaleSet_vnet_default_097110D2": {
         "address_prefixes": [
           "10.1.0.0/24"
         ],
         "name": "default",
-        "resource_group_name": "testResourceGroup",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
         "virtual_network_name": "\${azurerm_virtual_network.testVirtualMachineScaleSet_vnet_6B0AF69B.name}"
       }
     },
@@ -241,7 +247,7 @@ exports[`Azure Linux Virtual Machine Scale Set With Defaults renders an Azure Li
         ],
         "location": "eastus",
         "name": "vnet-testAzureVMSSWithDefaults",
-        "resource_group_name": "testResourceGroup"
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}"
       }
     }
   },

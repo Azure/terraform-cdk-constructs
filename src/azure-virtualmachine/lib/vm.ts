@@ -9,6 +9,7 @@ import {
 } from "@cdktf/provider-azurerm/lib/linux-virtual-machine";
 import { NetworkInterface } from "@cdktf/provider-azurerm/lib/network-interface";
 import { PublicIp } from "@cdktf/provider-azurerm/lib/public-ip";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Subnet } from "@cdktf/provider-azurerm/lib/subnet";
 import { VirtualMachineExtension } from "@cdktf/provider-azurerm/lib/virtual-machine-extension";
 import {
@@ -39,7 +40,7 @@ export interface WindowsVMProps {
   /**
    * The name of the resource group in which the virtual machine will be created.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
 
   /**
    * The size of the virtual machine.
@@ -108,7 +109,7 @@ export interface WindowsVMProps {
 
 export class WindowsVM extends AzureResource {
   public readonly props: WindowsVMProps;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
   public id: string;
   public readonly name: string;
   public readonly publicIp?: string;
@@ -124,7 +125,7 @@ export class WindowsVM extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resourceGroupName;
+    this.resourceGroup = props.resourceGroup;
 
     // Default configurations for the virtual machine.
     const defaults = {
@@ -141,7 +142,7 @@ export class WindowsVM extends AzureResource {
       subnet:
         props.subnet ||
         new Network(this, "vnet", {
-          resourceGroupName: props.resourceGroupName,
+          resourceGroup: props.resourceGroup,
         }).subnets.default,
     };
 
@@ -150,7 +151,7 @@ export class WindowsVM extends AzureResource {
     if (props.publicIPAllocationMethod) {
       const azurermPublicIp = new PublicIp(this, "public-ip", {
         name: `pip-${defaults.name}`,
-        resourceGroupName: props.resourceGroupName,
+        resourceGroupName: props.resourceGroup.name,
         location: defaults.location,
         allocationMethod: props.publicIPAllocationMethod,
         tags: props.tags,
@@ -164,7 +165,7 @@ export class WindowsVM extends AzureResource {
     const azurermNetworkInterface = new NetworkInterface(this, "nic", {
       ...defaults,
       name: `nic-${defaults.name}`,
-      resourceGroupName: props.resourceGroupName,
+      resourceGroupName: props.resourceGroup.name,
       ipConfiguration: [
         {
           name: "internal",
@@ -185,7 +186,7 @@ export class WindowsVM extends AzureResource {
     // Create the Windows Virtual Machine.
     const azurermWindowsVirtualMachine = new WindowsVirtualMachine(this, "vm", {
       ...defaults,
-      resourceGroupName: props.resourceGroupName,
+      resourceGroupName: props.resourceGroup.name,
       adminUsername: props.adminUsername,
       adminPassword: props.adminPassword,
       tags: props.tags,
@@ -229,7 +230,7 @@ export interface LinuxVMProps {
   /**
    * The name of the resource group in which the virtual machine will be created.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
 
   /**
    * The size of the virtual machine.
@@ -334,7 +335,7 @@ export interface LinuxVMProps {
 export class LinuxVM extends AzureResource {
   // Properties of the AzureLinuxVirtualMachine class
   readonly props: LinuxVMProps;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
   public id: string;
   public readonly name: string;
   public readonly publicIp?: string;
@@ -351,7 +352,7 @@ export class LinuxVM extends AzureResource {
 
     // Assigning the properties
     this.props = props;
-    this.resourceGroupName = props.resourceGroupName;
+    this.resourceGroup = props.resourceGroup;
 
     // Extracting the name from the node path
     const pathName = this.node.path.split("/")[0];
@@ -372,7 +373,7 @@ export class LinuxVM extends AzureResource {
       subnet:
         props.subnet ||
         new Network(this, "vnet", {
-          resourceGroupName: props.resourceGroupName,
+          resourceGroup: props.resourceGroup,
         }).subnets.default,
     };
 
@@ -381,7 +382,7 @@ export class LinuxVM extends AzureResource {
     if (props.publicIPAllocationMethod) {
       const azurermPublicIp = new PublicIp(this, "public-ip", {
         name: `pip-${defaults.name}`,
-        resourceGroupName: props.resourceGroupName,
+        resourceGroupName: props.resourceGroup.name,
         location: defaults.location,
         allocationMethod: props.publicIPAllocationMethod,
         tags: props.tags,
@@ -395,7 +396,7 @@ export class LinuxVM extends AzureResource {
     const azurermNetworkInterface = new NetworkInterface(this, "nic", {
       ...defaults,
       name: `nic-${defaults.name}`,
-      resourceGroupName: props.resourceGroupName,
+      resourceGroupName: props.resourceGroup.name,
       ipConfiguration: [
         {
           name: "internal",
@@ -410,7 +411,7 @@ export class LinuxVM extends AzureResource {
     // Create the Linux Virtual Machine
     const azurermLinuxVirtualMachine = new LinuxVirtualMachine(this, "vm", {
       ...defaults,
-      resourceGroupName: props.resourceGroupName,
+      resourceGroupName: props.resourceGroup.name,
       adminPassword: props.adminPassword,
       tags: props.tags,
       networkInterfaceIds: [azurermNetworkInterface.id],

@@ -1,4 +1,5 @@
 import { MonitorScheduledQueryRulesAlertV2 } from "@cdktf/provider-azurerm/lib/monitor-scheduled-query-rules-alert-v2";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import * as moment from "moment";
@@ -11,7 +12,7 @@ export interface BaseAzureQueryRuleAlertProps {
   /**
    * The name of the resource group in which the Monitor Scheduled Query Rule is created.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
   /**
    * The location of the Monitor Scheduled Query Rule.
    */
@@ -139,7 +140,7 @@ export interface AzureQueryRuleAlertProps extends BaseAzureQueryRuleAlertProps {
 export class QueryRuleAlert extends Construct {
   readonly queryRuleAlertProps: AzureQueryRuleAlertProps;
   public id: string;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
 
   /**
    * Constructs a new instance of the AzureQueryRuleAlert class.
@@ -252,7 +253,7 @@ export class QueryRuleAlert extends Construct {
     }
 
     this.queryRuleAlertProps = props;
-    this.resourceGroupName = props.resourceGroupName;
+    this.resourceGroup = props.resourceGroup;
 
     // Properties with default values
     const defaults = {
@@ -294,7 +295,7 @@ export class QueryRuleAlert extends Construct {
       {
         ...defaults,
         name: props.name,
-        resourceGroupName: props.resourceGroupName,
+        resourceGroupName: props.resourceGroup.name,
         location: props.location,
         scopes: props.scopes,
         windowDuration: props.windowDuration,

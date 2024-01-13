@@ -35,7 +35,7 @@ export class MetricAlert extends Construct {
     // Create Metric Alert
     const metricAlert = new MonitorMetricAlert(this, "metricAlert", {
       name: props.name,
-      resourceGroupName: props.resourceGroupName,
+      resourceGroupName: props.resourceGroup.name,
       scopes: props.scopes,
       description: props.description,
       targetResourceType: props.targetResourceType,

@@ -1,8 +1,8 @@
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { App } from "cdktf";
 import { Construct } from "constructs";
-import * as rg from "../../azure-resourcegroup";
 import { BaseTestStack } from "../../testing";
 import * as eh from "../lib";
 
@@ -20,14 +20,14 @@ export class exampleAzureEventhub extends BaseTestStack {
       features: {},
     });
 
-    const resourceGroup = new rg.Group(this, "rg", {
+    const resourceGroup = new ResourceGroup(this, "rg", {
       name: `rg-${this.name}`,
       location: "eastus",
     });
 
     // Create Eventhub Namespace
     const eventhubNamespace = new eh.Namespace(this, "eventhub", {
-      rg: resourceGroup,
+      resourceGroup: resourceGroup,
       name: `ehns-${this.name}`,
       sku: "Basic",
     });
@@ -58,7 +58,7 @@ export class exampleAzureEventhub extends BaseTestStack {
     eventhubInstance.addKustoDataConnection({
       name: "test-kusto-data-connection",
       location: "eastus",
-      kustoResourceGroupName: "test-rg", // Kusto resource group
+      kustoResourceGroup: resourceGroup, // Kusto resource group
       kustoClusterName: "testkustocluster", // Kusto cluster name
       kustoDatabaseName: "test-kusto-database", // Kusto database name
     });

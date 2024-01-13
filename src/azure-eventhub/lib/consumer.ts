@@ -1,4 +1,5 @@
 import { EventhubConsumerGroup } from "@cdktf/provider-azurerm/lib/eventhub-consumer-group";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { TerraformOutput } from "cdktf";
 import { Construct } from "constructs";
 
@@ -7,7 +8,7 @@ export interface ConsumerGroupProps {
   /**
    * The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
   /**
    * Specifies the name of the grandparent EventHub Namespace.
    */
@@ -40,7 +41,7 @@ export class ConsumerGroup extends Construct {
       ehConsumerGroupProps.name,
       {
         name: ehConsumerGroupProps.name,
-        resourceGroupName: ehConsumerGroupProps.resourceGroupName,
+        resourceGroupName: ehConsumerGroupProps.resourceGroup.name,
         namespaceName: ehConsumerGroupProps.namespaceName,
         eventhubName: ehConsumerGroupProps.eventhubName,
         userMetadata: ehConsumerGroupProps.userMetadata,
