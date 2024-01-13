@@ -133,7 +133,7 @@ export class Account extends AzureResourceWithAlert {
   public id: string;
   public readonly name: string;
   public readonly location: string;
-  public readonly resourceGroup: ResourceGroup;
+  public resourceGroup: ResourceGroup;
   public readonly accountKind: string;
   public readonly accountTier: string;
   private readonly containers: Map<string, Container>;
