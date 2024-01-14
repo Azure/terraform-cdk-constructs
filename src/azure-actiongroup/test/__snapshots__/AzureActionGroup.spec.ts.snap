@@ -102,11 +102,17 @@ exports[`Action Group With Defaults 2 renders an Action Group with defaults and 
         "enabled": false,
         "location": "global",
         "name": "testactiongroup",
-        "resource_group_name": "rg-test",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup2.name}",
         "short_name": "testshortn",
         "tags": {
           "test": "test"
         }
+      }
+    },
+    "azurerm_resource_group": {
+      "MyResourceGroup2": {
+        "location": "eastus",
+        "name": "testrg2"
       }
     }
   },
