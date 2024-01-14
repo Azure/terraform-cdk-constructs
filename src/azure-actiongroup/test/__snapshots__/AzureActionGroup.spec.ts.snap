@@ -21,52 +21,36 @@ exports[`Action Group Example renders and checks snapshot 1`] = `
   "resource": {
     "azurerm_monitor_action_group": {
       "testAzureActionGroup_actiongroup_73C559FB": {
-        "dynamic": {
-          "email_receiver": {
-            "content": {
-              "email_address": "\${email_receiver.value.emailAddress}",
-              "name": "\${email_receiver.value.name}",
-              "use_common_alert_schema": "\${email_receiver.value.useCommonAlertSchema}",
-            },
-            "for_each": [
-              {
-                "emailAddress": "test1@email.com",
-                "name": "testemail1",
-                "useCommonAlertSchema": true,
-              },
-              {
-                "emailAddress": "test2@email.com",
-                "name": "testemail2",
-                "useCommonAlertSchema": false,
-              },
-            ],
+        "email_receiver": [
+          {
+            "email_address": "test1@email.com",
+            "name": "testemail1",
+            "use_common_alert_schema": true,
           },
-          "webhook_receiver": {
-            "content": {
-              "name": "\${webhook_receiver.value.name}",
-              "service_uri": "\${webhook_receiver.value.serviceUri}",
-              "use_common_alert_schema": "\${webhook_receiver.value.useCommonAlertSchema}",
-            },
-            "for_each": [
-              {
-                "name": "testwebhook1",
-                "serviceUri": "https://www.example1.com",
-                "useCommonAlertSchema": true,
-              },
-              {
-                "name": "testwebhook2",
-                "serviceUri": "https://www.example2.com",
-                "useCommonAlertSchema": false,
-              },
-            ],
+          {
+            "email_address": "test2@email.com",
+            "name": "testemail2",
+            "use_common_alert_schema": false,
           },
-        },
+        ],
         "enabled": true,
         "location": "global",
         "name": "testactiongroup",
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
         "short_name": "testshortn",
         "tags": {},
+        "webhook_receiver": [
+          {
+            "name": "testwebhook1",
+            "service_uri": "https://www.example1.com",
+            "use_common_alert_schema": true,
+          },
+          {
+            "name": "testwebhook2",
+            "service_uri": "https://www.example2.com",
+            "use_common_alert_schema": false,
+          },
+        ],
       },
     },
     "azurerm_resource_group": {
@@ -97,6 +81,46 @@ exports[`Action Group Example renders and checks snapshot 1`] = `
 }
 `;
 
+exports[`Action Group With Defaults 2 renders an Action Group with defaults and checks snapshot 1`] = `
+"{
+  "output": {
+    "id": {
+      "value": "\${azurerm_monitor_action_group.testAzureActionGroupDefaults_actiongroup_ADD914FD.id}"
+    }
+  },
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_monitor_action_group": {
+      "testAzureActionGroupDefaults_actiongroup_ADD914FD": {
+        "enabled": false,
+        "location": "global",
+        "name": "testactiongroup",
+        "resource_group_name": "rg-test",
+        "short_name": "testshortn",
+        "tags": {
+          "test": "test"
+        }
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.70.0"
+      }
+    }
+  }
+}"
+`;
+
 exports[`Action Group With Defaults renders an Action Group with defaults and checks snapshot 1`] = `
 "{
   "output": {
@@ -116,7 +140,7 @@ exports[`Action Group With Defaults renders an Action Group with defaults and ch
     "azurerm_monitor_action_group": {
       "testAzureActionGroupDefaults_actiongroup_ADD914FD": {
         "enabled": true,
-        "location": "eastus",
+        "location": "global",
         "name": "testactiongroup",
         "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
         "short_name": "testshortn",
