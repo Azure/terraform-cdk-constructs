@@ -430,12 +430,12 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_storageaccount.Account.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_storageaccount.Account.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_storageaccount.Account.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_storageaccount.Account.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_storageaccount.Account.property.accountKind">accountKind</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_storageaccount.Account.property.accountTier">accountTier</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_storageaccount.Account.property.location">location</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_storageaccount.Account.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_storageaccount.Account.property.props">props</a></code> | <code>terraform-cdk-modules.azure_storageaccount.AccountProps</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_storageaccount.Account.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 
 ---
 
@@ -461,13 +461,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_storageaccount.Account.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_storageaccount.Account.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -491,6 +491,16 @@ public readonly accountTier: string;
 
 ---
 
+##### `location`<sup>Required</sup> <a name="location" id="terraform-cdk-modules.azure_storageaccount.Account.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
 ##### `name`<sup>Required</sup> <a name="name" id="terraform-cdk-modules.azure_storageaccount.Account.property.name"></a>
 
 ```typescript
@@ -508,16 +518,6 @@ public readonly props: AccountProps;
 ```
 
 - *Type:* terraform-cdk-modules.azure_storageaccount.AccountProps
-
----
-
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_storageaccount.Account.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -671,7 +671,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_applicationinsights.AppInsights.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_applicationinsights.AppInsights.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_applicationinsights.AppInsights.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_applicationinsights.AppInsights.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_applicationinsights.AppInsights.property.props">props</a></code> | <code>terraform-cdk-modules.azure_applicationinsights.AppInsightsProps</code> | *No description.* |
 
 ---
@@ -698,13 +698,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_applicationinsights.AppInsights.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_applicationinsights.AppInsights.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -1016,7 +1016,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.core_azure.AzureResource.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.core_azure.AzureResource.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.core_azure.AzureResource.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.core_azure.AzureResource.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 
 ---
 
@@ -1042,13 +1042,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.core_azure.AzureResource.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.core_azure.AzureResource.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -1202,7 +1202,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.core_azure.AzureResourceWithAlert.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.core_azure.AzureResourceWithAlert.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.core_azure.AzureResourceWithAlert.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.core_azure.AzureResourceWithAlert.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 
 ---
 
@@ -1228,13 +1228,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.core_azure.AzureResourceWithAlert.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.core_azure.AzureResourceWithAlert.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -1606,10 +1606,8 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.Cluster.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.Cluster.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_eventhub.Cluster.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_eventhub.Cluster.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.Cluster.property.ehClusterProps">ehClusterProps</a></code> | <code>terraform-cdk-modules.azure_eventhub.ClusterProps</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_eventhub.Cluster.property.rgLocation">rgLocation</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_eventhub.Cluster.property.rgName">rgName</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -1635,13 +1633,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_eventhub.Cluster.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_eventhub.Cluster.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -1652,26 +1650,6 @@ public readonly ehClusterProps: ClusterProps;
 ```
 
 - *Type:* terraform-cdk-modules.azure_eventhub.ClusterProps
-
----
-
-##### `rgLocation`<sup>Required</sup> <a name="rgLocation" id="terraform-cdk-modules.azure_eventhub.Cluster.property.rgLocation"></a>
-
-```typescript
-public readonly rgLocation: string;
-```
-
-- *Type:* string
-
----
-
-##### `rgName`<sup>Required</sup> <a name="rgName" id="terraform-cdk-modules.azure_eventhub.Cluster.property.rgName"></a>
-
-```typescript
-public readonly rgName: string;
-```
-
-- *Type:* string
 
 ---
 
@@ -1819,7 +1797,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_kusto.Cluster.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_kusto.Cluster.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_kusto.Cluster.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_kusto.Cluster.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_kusto.Cluster.property.kustoProps">kustoProps</a></code> | <code>terraform-cdk-modules.azure_kusto.ClusterProps</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_kusto.Cluster.property.uri">uri</a></code> | <code>string</code> | *No description.* |
 
@@ -1847,13 +1825,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_kusto.Cluster.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_kusto.Cluster.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -2979,11 +2957,10 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.property.defaultHostname">defaultHostname</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.property.kind">kind</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.property.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.property.servicePlan">servicePlan</a></code> | <code>@cdktf/provider-azurerm.servicePlan.ServicePlan</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.property.storageAccount">storageAccount</a></code> | <code>@cdktf/provider-azurerm.storageAccount.StorageAccount</code> | *No description.* |
 
@@ -3011,13 +2988,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_functionapp.FunctionAppLinux.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_functionapp.FunctionAppLinux.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -3048,16 +3025,6 @@ public readonly name: string;
 ```
 
 - *Type:* string
-
----
-
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_functionapp.FunctionAppLinux.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -3212,7 +3179,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_resourcegroup.Group.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_resourcegroup.Group.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_resourcegroup.Group.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_resourcegroup.Group.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_resourcegroup.Group.property.location">location</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_resourcegroup.Group.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_resourcegroup.Group.property.props">props</a></code> | <code>terraform-cdk-modules.azure_resourcegroup.GroupProps</code> | *No description.* |
@@ -3244,13 +3211,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_resourcegroup.Group.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_resourcegroup.Group.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -3879,7 +3846,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.LinuxCluster.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.LinuxCluster.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.LinuxCluster.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.LinuxCluster.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.LinuxCluster.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.LinuxCluster.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.LinuxCluster.property.props">props</a></code> | <code>terraform-cdk-modules.azure_virtualmachinescaleset.LinuxClusterProps</code> | *No description.* |
@@ -3908,13 +3875,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_virtualmachinescaleset.LinuxCluster.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_virtualmachinescaleset.LinuxCluster.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -4085,7 +4052,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.LinuxVM.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.LinuxVM.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_virtualmachine.LinuxVM.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_virtualmachine.LinuxVM.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.LinuxVM.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.LinuxVM.property.props">props</a></code> | <code>terraform-cdk-modules.azure_virtualmachine.LinuxVMProps</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.LinuxVM.property.publicIp">publicIp</a></code> | <code>string</code> | *No description.* |
@@ -4114,13 +4081,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_virtualmachine.LinuxVM.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_virtualmachine.LinuxVM.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -4465,10 +4432,9 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.Namespace.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.Namespace.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_eventhub.Namespace.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_eventhub.Namespace.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.Namespace.property.ehNamespaceProps">ehNamespaceProps</a></code> | <code>terraform-cdk-modules.azure_eventhub.NamespaceProps</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.Namespace.property.namespaceName">namespaceName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_eventhub.Namespace.property.rgLocation">rgLocation</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -4494,13 +4460,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_eventhub.Namespace.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_eventhub.Namespace.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -4518,16 +4484,6 @@ public readonly ehNamespaceProps: NamespaceProps;
 
 ```typescript
 public readonly namespaceName: string;
-```
-
-- *Type:* string
-
----
-
-##### `rgLocation`<sup>Required</sup> <a name="rgLocation" id="terraform-cdk-modules.azure_eventhub.Namespace.property.rgLocation"></a>
-
-```typescript
-public readonly rgLocation: string;
 ```
 
 - *Type:* string
@@ -4690,7 +4646,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_virtualnetwork.Network.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_virtualnetwork.Network.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_virtualnetwork.Network.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_virtualnetwork.Network.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualnetwork.Network.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualnetwork.Network.property.props">props</a></code> | <code>terraform-cdk-modules.azure_virtualnetwork.NetworkProps</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualnetwork.Network.property.subnets">subnets</a></code> | <code>{[ key: string ]: @cdktf/provider-azurerm.subnet.Subnet}</code> | *No description.* |
@@ -4720,13 +4676,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_virtualnetwork.Network.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_virtualnetwork.Network.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -4989,7 +4945,7 @@ Any object.
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.QueryRuleAlert.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.QueryRuleAlert.property.queryRuleAlertProps">queryRuleAlertProps</a></code> | <code>terraform-cdk-modules.azure_queryrulealert.AzureQueryRuleAlertProps</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.QueryRuleAlert.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_queryrulealert.QueryRuleAlert.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_queryrulealert.QueryRuleAlert.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 
 ---
 
@@ -5025,13 +4981,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_queryrulealert.QueryRuleAlert.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_queryrulealert.QueryRuleAlert.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -5409,7 +5365,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_containerregistry.Registry.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_containerregistry.Registry.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_containerregistry.Registry.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_containerregistry.Registry.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_containerregistry.Registry.property.props">props</a></code> | <code>terraform-cdk-modules.azure_containerregistry.RegistryProps</code> | *No description.* |
 
 ---
@@ -5436,13 +5392,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_containerregistry.Registry.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_containerregistry.Registry.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -5726,7 +5682,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_networksecuritygroup.SecurityGroup.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_networksecuritygroup.SecurityGroup.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_networksecuritygroup.SecurityGroup.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_networksecuritygroup.SecurityGroup.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_networksecuritygroup.SecurityGroup.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_networksecuritygroup.SecurityGroup.property.props">props</a></code> | <code>terraform-cdk-modules.azure_networksecuritygroup.SecurityGroupProps</code> | *No description.* |
 
@@ -5754,13 +5710,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_networksecuritygroup.SecurityGroup.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_networksecuritygroup.SecurityGroup.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -6505,7 +6461,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.Vault.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.Vault.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_keyvault.Vault.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_keyvault.Vault.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.Vault.property.props">props</a></code> | <code>terraform-cdk-modules.azure_keyvault.VaultProps</code> | *No description.* |
 
 ---
@@ -6532,13 +6488,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_keyvault.Vault.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_keyvault.Vault.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -6689,7 +6645,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.WindowsCluster.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.WindowsCluster.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.WindowsCluster.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.WindowsCluster.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.WindowsCluster.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.WindowsCluster.property.props">props</a></code> | <code>terraform-cdk-modules.azure_virtualmachinescaleset.WindowsClusterProps</code> | *No description.* |
 
@@ -6717,13 +6673,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_virtualmachinescaleset.WindowsCluster.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_virtualmachinescaleset.WindowsCluster.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -6884,7 +6840,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVM.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVM.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVM.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVM.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVM.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVM.property.props">props</a></code> | <code>terraform-cdk-modules.azure_virtualmachine.WindowsVMProps</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVM.property.publicIp">publicIp</a></code> | <code>string</code> | *No description.* |
@@ -6913,13 +6869,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_virtualmachine.WindowsVM.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_virtualmachine.WindowsVM.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -7110,7 +7066,7 @@ Any object.
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_loganalytics.Workspace.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#terraform-cdk-modules.azure_loganalytics.Workspace.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_loganalytics.Workspace.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_loganalytics.Workspace.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_loganalytics.Workspace.property.props">props</a></code> | <code>terraform-cdk-modules.azure_loganalytics.WorkspaceProps</code> | *No description.* |
 
 ---
@@ -7137,13 +7093,13 @@ public readonly id: string;
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_loganalytics.Workspace.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_loganalytics.Workspace.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 ---
 
@@ -7492,7 +7448,7 @@ const appInsightsProps: azure_applicationinsights.AppInsightsProps = { ... }
 | <code><a href="#terraform-cdk-modules.azure_applicationinsights.AppInsightsProps.property.applicationType">applicationType</a></code> | <code>string</code> | The Application type. |
 | <code><a href="#terraform-cdk-modules.azure_applicationinsights.AppInsightsProps.property.location">location</a></code> | <code>string</code> | The Azure Region to deploy. |
 | <code><a href="#terraform-cdk-modules.azure_applicationinsights.AppInsightsProps.property.name">name</a></code> | <code>string</code> | The name of the Application Insights resource. |
-| <code><a href="#terraform-cdk-modules.azure_applicationinsights.AppInsightsProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the Azure Resource Group to deploy to. |
+| <code><a href="#terraform-cdk-modules.azure_applicationinsights.AppInsightsProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the Azure Resource Group to deploy to. |
 | <code><a href="#terraform-cdk-modules.azure_applicationinsights.AppInsightsProps.property.dailyDataCapInGb">dailyDataCapInGb</a></code> | <code>number</code> | The Application Insights daily data cap in GB. |
 | <code><a href="#terraform-cdk-modules.azure_applicationinsights.AppInsightsProps.property.dailyDataCapNotificationDisabled">dailyDataCapNotificationDisabled</a></code> | <code>boolean</code> | The Application Insights daily data cap notifications disabled. |
 | <code><a href="#terraform-cdk-modules.azure_applicationinsights.AppInsightsProps.property.retentionInDays">retentionInDays</a></code> | <code>number</code> | The number of days of retention. |
@@ -7537,13 +7493,13 @@ The name of the Application Insights resource.
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_applicationinsights.AppInsightsProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_applicationinsights.AppInsightsProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the Azure Resource Group to deploy to.
 
@@ -7701,7 +7657,7 @@ const azureQueryRuleAlertProps: azure_queryrulealert.AzureQueryRuleAlertProps = 
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.AzureQueryRuleAlertProps.property.evaluationFrequency">evaluationFrequency</a></code> | <code>string</code> | How often the scheduled query rule is evaluated, represented in ISO 8601 duration format. |
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.AzureQueryRuleAlertProps.property.location">location</a></code> | <code>string</code> | The location of the Monitor Scheduled Query Rule. |
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.AzureQueryRuleAlertProps.property.name">name</a></code> | <code>string</code> | The name of the Monitor Scheduled Query Rule. |
-| <code><a href="#terraform-cdk-modules.azure_queryrulealert.AzureQueryRuleAlertProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the resource group in which the Monitor Scheduled Query Rule is created. |
+| <code><a href="#terraform-cdk-modules.azure_queryrulealert.AzureQueryRuleAlertProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group in which the Monitor Scheduled Query Rule is created. |
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.AzureQueryRuleAlertProps.property.severity">severity</a></code> | <code>number</code> | Severity of the alert. |
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.AzureQueryRuleAlertProps.property.windowDuration">windowDuration</a></code> | <code>string</code> | Specifies the period of time in ISO 8601 duration format on which the Scheduled Query Rule will be executed (bin size). |
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.AzureQueryRuleAlertProps.property.actionActionGroupId">actionActionGroupId</a></code> | <code>string[]</code> | Specifies the action group IDs to trigger when the alert fires. |
@@ -7816,13 +7772,13 @@ The name of the Monitor Scheduled Query Rule.
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_queryrulealert.AzureQueryRuleAlertProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_queryrulealert.AzureQueryRuleAlertProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the resource group in which the Monitor Scheduled Query Rule is created.
 
@@ -8100,7 +8056,7 @@ const baseAzureQueryRuleAlertProps: azure_queryrulealert.BaseAzureQueryRuleAlert
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.BaseAzureQueryRuleAlertProps.property.evaluationFrequency">evaluationFrequency</a></code> | <code>string</code> | How often the scheduled query rule is evaluated, represented in ISO 8601 duration format. |
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.BaseAzureQueryRuleAlertProps.property.location">location</a></code> | <code>string</code> | The location of the Monitor Scheduled Query Rule. |
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.BaseAzureQueryRuleAlertProps.property.name">name</a></code> | <code>string</code> | The name of the Monitor Scheduled Query Rule. |
-| <code><a href="#terraform-cdk-modules.azure_queryrulealert.BaseAzureQueryRuleAlertProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the resource group in which the Monitor Scheduled Query Rule is created. |
+| <code><a href="#terraform-cdk-modules.azure_queryrulealert.BaseAzureQueryRuleAlertProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group in which the Monitor Scheduled Query Rule is created. |
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.BaseAzureQueryRuleAlertProps.property.severity">severity</a></code> | <code>number</code> | Severity of the alert. |
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.BaseAzureQueryRuleAlertProps.property.windowDuration">windowDuration</a></code> | <code>string</code> | Specifies the period of time in ISO 8601 duration format on which the Scheduled Query Rule will be executed (bin size). |
 | <code><a href="#terraform-cdk-modules.azure_queryrulealert.BaseAzureQueryRuleAlertProps.property.actionActionGroupId">actionActionGroupId</a></code> | <code>string[]</code> | Specifies the action group IDs to trigger when the alert fires. |
@@ -8214,13 +8170,13 @@ The name of the Monitor Scheduled Query Rule.
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_queryrulealert.BaseAzureQueryRuleAlertProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_queryrulealert.BaseAzureQueryRuleAlertProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the resource group in which the Monitor Scheduled Query Rule is created.
 
@@ -8693,7 +8649,7 @@ const baseKustoDataConnectionProps: azure_eventhub.BaseKustoDataConnectionProps 
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.BaseKustoDataConnectionProps.property.kustoClusterName">kustoClusterName</a></code> | <code>string</code> | Specifies the name of the Kusto Cluster this data connection will be added to. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.BaseKustoDataConnectionProps.property.kustoDatabaseName">kustoDatabaseName</a></code> | <code>string</code> | Specifies the name of the Kusto Database this data connection will be added to. |
-| <code><a href="#terraform-cdk-modules.azure_eventhub.BaseKustoDataConnectionProps.property.kustoResourceGroupName">kustoResourceGroupName</a></code> | <code>string</code> | Specifies the Resource Group where the Kusto Database should exist. |
+| <code><a href="#terraform-cdk-modules.azure_eventhub.BaseKustoDataConnectionProps.property.kustoResourceGroup">kustoResourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | Specifies the Resource Group where the Kusto Database should exist. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.BaseKustoDataConnectionProps.property.location">location</a></code> | <code>string</code> | The location where the Kusto EventHub Data Connection should be created. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.BaseKustoDataConnectionProps.property.name">name</a></code> | <code>string</code> | The name of the Kusto EventHub Data Connection to create. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.BaseKustoDataConnectionProps.property.compression">compression</a></code> | <code>string</code> | Specifies compression type for the connection. |
@@ -8730,13 +8686,13 @@ Specifies the name of the Kusto Database this data connection will be added to.
 
 ---
 
-##### `kustoResourceGroupName`<sup>Required</sup> <a name="kustoResourceGroupName" id="terraform-cdk-modules.azure_eventhub.BaseKustoDataConnectionProps.property.kustoResourceGroupName"></a>
+##### `kustoResourceGroup`<sup>Required</sup> <a name="kustoResourceGroup" id="terraform-cdk-modules.azure_eventhub.BaseKustoDataConnectionProps.property.kustoResourceGroup"></a>
 
 ```typescript
-public readonly kustoResourceGroupName: string;
+public readonly kustoResourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 Specifies the Resource Group where the Kusto Database should exist.
 
@@ -8964,7 +8920,7 @@ const clusterProps: azure_eventhub.ClusterProps = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.ClusterProps.property.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#terraform-cdk-modules.azure_eventhub.ClusterProps.property.rg">rg</a></code> | <code>terraform-cdk-modules.azure_resourcegroup.Group</code> | The name of the Resource Group in which to create the EventHub Cluster. |
+| <code><a href="#terraform-cdk-modules.azure_eventhub.ClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the Resource Group in which to create the EventHub Cluster. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.ClusterProps.property.skuName">skuName</a></code> | <code>string</code> | The SKU name of the EventHub Cluster. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.ClusterProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | The tags to assign to the Application Insights resource. |
 
@@ -8980,13 +8936,13 @@ public readonly name: string;
 
 ---
 
-##### `rg`<sup>Required</sup> <a name="rg" id="terraform-cdk-modules.azure_eventhub.ClusterProps.property.rg"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_eventhub.ClusterProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly rg: Group;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* terraform-cdk-modules.azure_resourcegroup.Group
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the Resource Group in which to create the EventHub Cluster.
 
@@ -9034,7 +8990,7 @@ const clusterProps: azure_kusto.ClusterProps = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_kusto.ClusterProps.property.name">name</a></code> | <code>string</code> | The name of the Kusto Cluster to create. |
-| <code><a href="#terraform-cdk-modules.azure_kusto.ClusterProps.property.rg">rg</a></code> | <code>terraform-cdk-modules.azure_resourcegroup.Group</code> | The Azure Resource Group in which to create the Kusto Cluster. |
+| <code><a href="#terraform-cdk-modules.azure_kusto.ClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The Azure Resource Group in which to create the Kusto Cluster. |
 | <code><a href="#terraform-cdk-modules.azure_kusto.ClusterProps.property.autoStopEnabled">autoStopEnabled</a></code> | <code>boolean</code> | Specifies if the cluster could be automatically stopped. |
 | <code><a href="#terraform-cdk-modules.azure_kusto.ClusterProps.property.capacity">capacity</a></code> | <code>number</code> | The node count for the cluster. |
 | <code><a href="#terraform-cdk-modules.azure_kusto.ClusterProps.property.enableZones">enableZones</a></code> | <code>boolean</code> | Specifies if the purge operations are enabled. |
@@ -9064,13 +9020,13 @@ Only 4-22 lowercase alphanumeric characters allowed, starting with a letter.
 
 ---
 
-##### `rg`<sup>Required</sup> <a name="rg" id="terraform-cdk-modules.azure_kusto.ClusterProps.property.rg"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_kusto.ClusterProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly rg: Group;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* terraform-cdk-modules.azure_resourcegroup.Group
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The Azure Resource Group in which to create the Kusto Cluster.
 
@@ -9255,7 +9211,7 @@ const consumerGroupProps: azure_eventhub.ConsumerGroupProps = { ... }
 | <code><a href="#terraform-cdk-modules.azure_eventhub.ConsumerGroupProps.property.eventhubName">eventhubName</a></code> | <code>string</code> | Specifies the name of the EventHub. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.ConsumerGroupProps.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.ConsumerGroupProps.property.namespaceName">namespaceName</a></code> | <code>string</code> | Specifies the name of the grandparent EventHub Namespace. |
-| <code><a href="#terraform-cdk-modules.azure_eventhub.ConsumerGroupProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists. |
+| <code><a href="#terraform-cdk-modules.azure_eventhub.ConsumerGroupProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.ConsumerGroupProps.property.userMetadata">userMetadata</a></code> | <code>string</code> | Specifies the user metadata. |
 
 ---
@@ -9294,13 +9250,13 @@ Specifies the name of the grandparent EventHub Namespace.
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_eventhub.ConsumerGroupProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_eventhub.ConsumerGroupProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists.
 
@@ -10385,7 +10341,7 @@ const instanceProps: azure_eventhub.InstanceProps = { ... }
 | <code><a href="#terraform-cdk-modules.azure_eventhub.InstanceProps.property.partitionCount">partitionCount</a></code> | <code>number</code> | Specifies the current number of shards on the Event Hub. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.InstanceProps.property.status">status</a></code> | <code>string</code> | Specifies the status of the Event Hub resource. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.InstanceProps.property.namespaceName">namespaceName</a></code> | <code>string</code> | Specifies the name of the EventHub Namespace. |
-| <code><a href="#terraform-cdk-modules.azure_eventhub.InstanceProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the resource group in which the EventHub's parent Namespace exists. |
+| <code><a href="#terraform-cdk-modules.azure_eventhub.InstanceProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group in which the EventHub's parent Namespace exists. |
 
 ---
 
@@ -10456,13 +10412,13 @@ Specifies the name of the EventHub Namespace.
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_eventhub.InstanceProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_eventhub.InstanceProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the resource group in which the EventHub's parent Namespace exists.
 
@@ -10656,7 +10612,7 @@ const kustoDataConnectionProps: azure_eventhub.KustoDataConnectionProps = { ... 
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.KustoDataConnectionProps.property.kustoClusterName">kustoClusterName</a></code> | <code>string</code> | Specifies the name of the Kusto Cluster this data connection will be added to. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.KustoDataConnectionProps.property.kustoDatabaseName">kustoDatabaseName</a></code> | <code>string</code> | Specifies the name of the Kusto Database this data connection will be added to. |
-| <code><a href="#terraform-cdk-modules.azure_eventhub.KustoDataConnectionProps.property.kustoResourceGroupName">kustoResourceGroupName</a></code> | <code>string</code> | Specifies the Resource Group where the Kusto Database should exist. |
+| <code><a href="#terraform-cdk-modules.azure_eventhub.KustoDataConnectionProps.property.kustoResourceGroup">kustoResourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | Specifies the Resource Group where the Kusto Database should exist. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.KustoDataConnectionProps.property.location">location</a></code> | <code>string</code> | The location where the Kusto EventHub Data Connection should be created. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.KustoDataConnectionProps.property.name">name</a></code> | <code>string</code> | The name of the Kusto EventHub Data Connection to create. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.KustoDataConnectionProps.property.compression">compression</a></code> | <code>string</code> | Specifies compression type for the connection. |
@@ -10694,13 +10650,13 @@ Specifies the name of the Kusto Database this data connection will be added to.
 
 ---
 
-##### `kustoResourceGroupName`<sup>Required</sup> <a name="kustoResourceGroupName" id="terraform-cdk-modules.azure_eventhub.KustoDataConnectionProps.property.kustoResourceGroupName"></a>
+##### `kustoResourceGroup`<sup>Required</sup> <a name="kustoResourceGroup" id="terraform-cdk-modules.azure_eventhub.KustoDataConnectionProps.property.kustoResourceGroup"></a>
 
 ```typescript
-public readonly kustoResourceGroupName: string;
+public readonly kustoResourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 Specifies the Resource Group where the Kusto Database should exist.
 
@@ -10938,7 +10894,7 @@ const linuxClusterProps: azure_virtualmachinescaleset.LinuxClusterProps = { ... 
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.LinuxClusterProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the resource group in which the virtual machine scale set will be created. |
+| <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.LinuxClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group in which the virtual machine scale set will be created. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.LinuxClusterProps.property.adminPassword">adminPassword</a></code> | <code>string</code> | The admin password for the virtual machine. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.LinuxClusterProps.property.adminSshKey">adminSshKey</a></code> | <code>cdktf.IResolvable \| @cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineAdminSshKey[]</code> | An array of SSH keys for the admin user. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.LinuxClusterProps.property.adminUsername">adminUsername</a></code> | <code>string</code> | The admin username for the virtual machine. |
@@ -10964,13 +10920,13 @@ const linuxClusterProps: azure_virtualmachinescaleset.LinuxClusterProps = { ... 
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_virtualmachinescaleset.LinuxClusterProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_virtualmachinescaleset.LinuxClusterProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the resource group in which the virtual machine scale set will be created.
 
@@ -11262,7 +11218,7 @@ const linuxVMProps: azure_virtualmachine.LinuxVMProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#terraform-cdk-modules.azure_virtualmachine.LinuxVMProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the resource group in which the virtual machine will be created. |
+| <code><a href="#terraform-cdk-modules.azure_virtualmachine.LinuxVMProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group in which the virtual machine will be created. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.LinuxVMProps.property.additionalCapabilities">additionalCapabilities</a></code> | <code>@cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineAdditionalCapabilities</code> | Additional capabilities like Ultra Disk compatibility. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.LinuxVMProps.property.adminPassword">adminPassword</a></code> | <code>string</code> | The admin password for the virtual machine. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.LinuxVMProps.property.adminSshKey">adminSshKey</a></code> | <code>cdktf.IResolvable \| @cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineAdminSshKey[]</code> | An array of SSH keys for the admin user. |
@@ -11287,13 +11243,13 @@ const linuxVMProps: azure_virtualmachine.LinuxVMProps = { ... }
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_virtualmachine.LinuxVMProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_virtualmachine.LinuxVMProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the resource group in which the virtual machine will be created.
 
@@ -12099,7 +12055,7 @@ const namespaceProps: azure_eventhub.NamespaceProps = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.NamespaceProps.property.name">name</a></code> | <code>string</code> | The name of the EventHub Namespace to create. |
-| <code><a href="#terraform-cdk-modules.azure_eventhub.NamespaceProps.property.rg">rg</a></code> | <code>terraform-cdk-modules.azure_resourcegroup.Group</code> | The Azure Resource Group in which to create the EventHub Namespace. |
+| <code><a href="#terraform-cdk-modules.azure_eventhub.NamespaceProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The Azure Resource Group in which to create the EventHub Namespace. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.NamespaceProps.property.autoInflateEnabled">autoInflateEnabled</a></code> | <code>boolean</code> | Specifies if the EventHub Namespace should be Auto Inflate enabled. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.NamespaceProps.property.capacity">capacity</a></code> | <code>number</code> | Specifies the Capacity / Throughput Units for a Standard SKU namespace. |
 | <code><a href="#terraform-cdk-modules.azure_eventhub.NamespaceProps.property.identityIds">identityIds</a></code> | <code>string[]</code> | Specifies a list of User Assigned Managed Identity IDs to be assigned to this EventHub namespace. |
@@ -12126,13 +12082,13 @@ The name of the EventHub Namespace to create.
 
 ---
 
-##### `rg`<sup>Required</sup> <a name="rg" id="terraform-cdk-modules.azure_eventhub.NamespaceProps.property.rg"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_eventhub.NamespaceProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly rg: Group;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* terraform-cdk-modules.azure_resourcegroup.Group
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The Azure Resource Group in which to create the EventHub Namespace.
 
@@ -12305,7 +12261,7 @@ const networkProps: azure_virtualnetwork.NetworkProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#terraform-cdk-modules.azure_virtualnetwork.NetworkProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the resource group under which the virtual network will be created. |
+| <code><a href="#terraform-cdk-modules.azure_virtualnetwork.NetworkProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group under which the virtual network will be created. |
 | <code><a href="#terraform-cdk-modules.azure_virtualnetwork.NetworkProps.property.addressSpace">addressSpace</a></code> | <code>string[]</code> | Optional: A list of address spaces for the virtual network, specified in CIDR notation. |
 | <code><a href="#terraform-cdk-modules.azure_virtualnetwork.NetworkProps.property.location">location</a></code> | <code>string</code> | Optional: The Azure region in which to create the virtual network, e.g., 'East US', 'West Europe'. If not specified, the region of the resource group will be used. |
 | <code><a href="#terraform-cdk-modules.azure_virtualnetwork.NetworkProps.property.name">name</a></code> | <code>string</code> | Optional: The name of the virtual network. |
@@ -12313,13 +12269,13 @@ const networkProps: azure_virtualnetwork.NetworkProps = { ... }
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_virtualnetwork.NetworkProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_virtualnetwork.NetworkProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the resource group under which the virtual network will be created.
 
@@ -12784,7 +12740,7 @@ const registryProps: azure_containerregistry.RegistryProps = { ... }
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_containerregistry.RegistryProps.property.location">location</a></code> | <code>string</code> | The Azure Region to deploy. |
 | <code><a href="#terraform-cdk-modules.azure_containerregistry.RegistryProps.property.name">name</a></code> | <code>string</code> | The name of the Log Analytics Workspace. |
-| <code><a href="#terraform-cdk-modules.azure_containerregistry.RegistryProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the Azure Resource Group. |
+| <code><a href="#terraform-cdk-modules.azure_containerregistry.RegistryProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the Azure Resource Group. |
 | <code><a href="#terraform-cdk-modules.azure_containerregistry.RegistryProps.property.adminEnabled">adminEnabled</a></code> | <code>boolean</code> | Create enable Admin user. |
 | <code><a href="#terraform-cdk-modules.azure_containerregistry.RegistryProps.property.geoReplicationLocations">geoReplicationLocations</a></code> | <code>any</code> | Specify the locations to configure replication. |
 | <code><a href="#terraform-cdk-modules.azure_containerregistry.RegistryProps.property.sku">sku</a></code> | <code>string</code> | The SKU of the Log Analytics Workspace. |
@@ -12816,13 +12772,13 @@ The name of the Log Analytics Workspace.
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_containerregistry.RegistryProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_containerregistry.RegistryProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the Azure Resource Group.
 
@@ -13280,7 +13236,7 @@ const securityGroupProps: azure_networksecuritygroup.SecurityGroupProps = { ... 
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_networksecuritygroup.SecurityGroupProps.property.location">location</a></code> | <code>string</code> | The Azure region in which to create the network security group, e.g., 'East US', 'West Europe'. |
 | <code><a href="#terraform-cdk-modules.azure_networksecuritygroup.SecurityGroupProps.property.name">name</a></code> | <code>string</code> | The name of the network security group. |
-| <code><a href="#terraform-cdk-modules.azure_networksecuritygroup.SecurityGroupProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the resource group under which the network security group will be created. |
+| <code><a href="#terraform-cdk-modules.azure_networksecuritygroup.SecurityGroupProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group under which the network security group will be created. |
 | <code><a href="#terraform-cdk-modules.azure_networksecuritygroup.SecurityGroupProps.property.rules">rules</a></code> | <code>terraform-cdk-modules.azure_networksecuritygroup.RuleConfig[]</code> | An array of rule configurations to be applied to the network security group. |
 
 ---
@@ -13311,13 +13267,13 @@ Must be unique within the resource group.
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_networksecuritygroup.SecurityGroupProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_networksecuritygroup.SecurityGroupProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the resource group under which the network security group will be created.
 
@@ -13547,7 +13503,7 @@ const vaultProps: azure_keyvault.VaultProps = { ... }
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.location">location</a></code> | <code>string</code> | The Azure Region to deploy the Key Vault. |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.name">name</a></code> | <code>string</code> | The name of the Key Vault. |
-| <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the Azure Resource Group. |
+| <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the Azure Resource Group. |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.tenantId">tenantId</a></code> | <code>string</code> | The Name of the SKU used for this Key Vault. |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.networkAcls">networkAcls</a></code> | <code>terraform-cdk-modules.azure_keyvault.KeyVaultNetworkAcls</code> | The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.purgeProtection">purgeProtection</a></code> | <code>boolean</code> | A map of IP network ACL rules. |
@@ -13581,13 +13537,13 @@ The name of the Key Vault.
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_keyvault.VaultProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_keyvault.VaultProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the Azure Resource Group.
 
@@ -13689,7 +13645,7 @@ const windowsClusterProps: azure_virtualmachinescaleset.WindowsClusterProps = { 
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.WindowsClusterProps.property.adminPassword">adminPassword</a></code> | <code>string</code> | The admin password for the virtual machine. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.WindowsClusterProps.property.adminUsername">adminUsername</a></code> | <code>string</code> | The admin username for the virtual machine. |
-| <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.WindowsClusterProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the resource group in which the virtual machine will be created. |
+| <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.WindowsClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group in which the virtual machine will be created. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.WindowsClusterProps.property.boostrapCustomData">boostrapCustomData</a></code> | <code>string</code> | Custom data to bootstrap the virtual machine. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.WindowsClusterProps.property.bootDiagnosticsStorageURI">bootDiagnosticsStorageURI</a></code> | <code>string</code> | Bootdiagnostics settings for the VM. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachinescaleset.WindowsClusterProps.property.customData">customData</a></code> | <code>string</code> | Custom data to pass to the virtual machine upon creation. |
@@ -13734,13 +13690,13 @@ The admin username for the virtual machine.
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_virtualmachinescaleset.WindowsClusterProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_virtualmachinescaleset.WindowsClusterProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the resource group in which the virtual machine will be created.
 
@@ -13976,7 +13932,7 @@ const windowsVMProps: azure_virtualmachine.WindowsVMProps = { ... }
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVMProps.property.adminPassword">adminPassword</a></code> | <code>string</code> | The admin password for the virtual machine. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVMProps.property.adminUsername">adminUsername</a></code> | <code>string</code> | The admin username for the virtual machine. |
-| <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVMProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the resource group in which the virtual machine will be created. |
+| <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVMProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group in which the virtual machine will be created. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVMProps.property.boostrapCustomData">boostrapCustomData</a></code> | <code>string</code> | Custom data to bootstrap the virtual machine. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVMProps.property.bootDiagnosticsStorageURI">bootDiagnosticsStorageURI</a></code> | <code>string</code> | Bootdiagnostics settings for the VM. |
 | <code><a href="#terraform-cdk-modules.azure_virtualmachine.WindowsVMProps.property.customData">customData</a></code> | <code>string</code> | Custom data to pass to the virtual machine upon creation. |
@@ -14016,13 +13972,13 @@ The admin username for the virtual machine.
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_virtualmachine.WindowsVMProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_virtualmachine.WindowsVMProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the resource group in which the virtual machine will be created.
 
@@ -14196,7 +14152,7 @@ const workspaceProps: azure_loganalytics.WorkspaceProps = { ... }
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_loganalytics.WorkspaceProps.property.location">location</a></code> | <code>string</code> | The Azure Region to deploy. |
 | <code><a href="#terraform-cdk-modules.azure_loganalytics.WorkspaceProps.property.name">name</a></code> | <code>string</code> | The name of the Log Analytics Workspace. |
-| <code><a href="#terraform-cdk-modules.azure_loganalytics.WorkspaceProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the Azure Resource Group. |
+| <code><a href="#terraform-cdk-modules.azure_loganalytics.WorkspaceProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the Azure Resource Group. |
 | <code><a href="#terraform-cdk-modules.azure_loganalytics.WorkspaceProps.property.dataExport">dataExport</a></code> | <code>terraform-cdk-modules.azure_loganalytics.DataExport[]</code> | Create a DataExport for the Log Analytics Workspace. |
 | <code><a href="#terraform-cdk-modules.azure_loganalytics.WorkspaceProps.property.functions">functions</a></code> | <code>terraform-cdk-modules.azure_loganalytics.LAFunctions[]</code> | A collection of Log Analytic functions. |
 | <code><a href="#terraform-cdk-modules.azure_loganalytics.WorkspaceProps.property.queries">queries</a></code> | <code>terraform-cdk-modules.azure_loganalytics.Queries[]</code> | A collection of log saved log analytics queries. |
@@ -14230,13 +14186,13 @@ The name of the Log Analytics Workspace.
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_loganalytics.WorkspaceProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_loganalytics.WorkspaceProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the Azure Resource Group.
 
@@ -16225,7 +16181,7 @@ public readonly workload: string;
 | <code><a href="#terraform-cdk-modules.azure_metricalert.IMetricAlertProps.property.frequency">frequency</a></code> | <code>string</code> | The evaluation frequency of this Metric Alert, represented in ISO 8601 duration format. |
 | <code><a href="#terraform-cdk-modules.azure_metricalert.IMetricAlertProps.property.severity">severity</a></code> | <code>number</code> | The severity of this Metric Alert. |
 | <code><a href="#terraform-cdk-modules.azure_metricalert.IMetricAlertProps.property.windowSize">windowSize</a></code> | <code>string</code> | The period of time that is used to monitor alert activity, represented in ISO 8601 duration format. |
-| <code><a href="#terraform-cdk-modules.azure_metricalert.IMetricAlertProps.property.resourceGroupName">resourceGroupName</a></code> | <code>string</code> | The name of the resource group in which the Metric Alert is created. |
+| <code><a href="#terraform-cdk-modules.azure_metricalert.IMetricAlertProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group in which the Metric Alert is created. |
 | <code><a href="#terraform-cdk-modules.azure_metricalert.IMetricAlertProps.property.scopes">scopes</a></code> | <code>string[]</code> | A set of strings of resource IDs at which the metric criteria should be applied. |
 
 ---
@@ -16421,13 +16377,13 @@ This value must be greater than frequency. Possible values are PT1M, PT5M, PT15M
 
 ---
 
-##### `resourceGroupName`<sup>Required</sup> <a name="resourceGroupName" id="terraform-cdk-modules.azure_metricalert.IMetricAlertProps.property.resourceGroupName"></a>
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_metricalert.IMetricAlertProps.property.resourceGroup"></a>
 
 ```typescript
-public readonly resourceGroupName: string;
+public readonly resourceGroup: ResourceGroup;
 ```
 
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the resource group in which the Metric Alert is created.
 
