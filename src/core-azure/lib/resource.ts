@@ -1,3 +1,4 @@
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Construct } from "constructs";
 import {
   DiagnosticSettings,
@@ -9,7 +10,7 @@ import * as queryalert from "../../azure-queryrulealert";
 
 export abstract class AzureResource extends Construct {
   public id: string;
-  public abstract resourceGroupName: string;
+  public abstract resourceGroup: ResourceGroup;
 
   constructor(scope: Construct, id: string) {
     super(scope, id);
@@ -49,7 +50,7 @@ export abstract class AzureResourceWithAlert extends AzureResource {
   public addMetricAlert(props: metricalert.IBaseMetricAlertProps) {
     new metricalert.MetricAlert(this, "metricalert", {
       ...props,
-      resourceGroupName: this.resourceGroupName,
+      resourceGroup: this.resourceGroup,
       scopes: [this.id],
     });
   }

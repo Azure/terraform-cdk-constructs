@@ -1,4 +1,5 @@
 import { KustoCluster } from "@cdktf/provider-azurerm/lib/kusto-cluster";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import {
@@ -6,14 +7,13 @@ import {
   IComputeSpecification,
 } from "./compute-specification";
 import { Database, DatabaseProps } from "./database";
-import { Group } from "../../azure-resourcegroup";
 import { AzureResource } from "../../core-azure/lib/index";
 
 export interface ClusterProps {
   /**
    * The Azure Resource Group in which to create the Kusto Cluster.
    */
-  readonly rg: Group;
+  readonly resourceGroup: ResourceGroup;
   /**
    * The name of the Kusto Cluster to create.
    * Only 4-22 lowercase alphanumeric characters allowed, starting with a letter.
@@ -81,13 +81,13 @@ export interface ClusterProps {
 export class Cluster extends AzureResource {
   readonly kustoProps: ClusterProps;
   public id: string;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
   public readonly uri: string;
 
   constructor(scope: Construct, id: string, kustoProps: ClusterProps) {
     super(scope, id);
     this.kustoProps = kustoProps;
-    this.resourceGroupName = kustoProps.rg.name;
+    this.resourceGroup = kustoProps.resourceGroup;
 
     /**
      * Define default values.
@@ -117,8 +117,8 @@ export class Cluster extends AzureResource {
     const azurermKustoCluster = new KustoCluster(this, "Kusto", {
       ...defaults,
       name: kustoProps.name,
-      location: kustoProps.rg.location,
-      resourceGroupName: kustoProps.rg.name,
+      location: kustoProps.resourceGroup.location,
+      resourceGroupName: kustoProps.resourceGroup.name,
       tags: kustoProps.tags,
     });
 

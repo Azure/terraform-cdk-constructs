@@ -1,5 +1,6 @@
 import { ApplicationInsights } from "@cdktf/provider-azurerm/lib/application-insights";
 import { KeyVaultSecret } from "@cdktf/provider-azurerm/lib/key-vault-secret";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import { AzureResource } from "../../core-azure/lib";
@@ -21,7 +22,7 @@ export interface AppInsightsProps {
   /**
    * The name of the Azure Resource Group to deploy to.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
   /**
    * The number of days of retention.
    */
@@ -50,7 +51,7 @@ export interface AppInsightsProps {
 
 export class AppInsights extends AzureResource {
   readonly props: AppInsightsProps;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
   public id: string;
   private readonly instrumentationKey: string;
 
@@ -58,7 +59,7 @@ export class AppInsights extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resourceGroupName;
+    this.resourceGroup = props.resourceGroup;
 
     const azurermApplicationInsightsAppinsights = new ApplicationInsights(
       this,
@@ -66,7 +67,7 @@ export class AppInsights extends AzureResource {
       {
         location: props.location,
         name: props.name,
-        resourceGroupName: props.resourceGroupName,
+        resourceGroupName: props.resourceGroup.name,
         tags: props.tags,
         applicationType: props.applicationType,
         dailyDataCapInGb: props.dailyDataCapInGb,

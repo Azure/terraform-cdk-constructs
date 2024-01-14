@@ -46,7 +46,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
       },
     },
     "azurerm_key_vault_access_policy": {
-      "kv_kv_custom_policy_access_TfTokenTOKEN35_policy_5605FEBA": {
+      "kv_kv_custom_policy_access_TfTokenTOKEN38_policy_60A63615": {
         "certificate_permissions": [
           "Get",
           "List",
@@ -155,7 +155,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
         },
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN35_policy_5605FEBA",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN38_policy_60A63615",
         ],
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
         "name": "cert1",
@@ -165,7 +165,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
       "kv_issuer1_AzureKeyVaultCertificate_90383EBD": {
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN35_policy_5605FEBA",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN38_policy_60A63615",
         ],
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
         "name": "issuer1",
@@ -176,7 +176,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
       "kv_key1_AzureKeyVaultKey_02CD8333": {
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN35_policy_5605FEBA",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN38_policy_60A63615",
         ],
         "expiration_date": "2033-08-23T15:23:17Z",
         "key_opts": [
@@ -195,7 +195,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
       "kv_key2_AzureKeyVaultKey_AB98C26C": {
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN35_policy_5605FEBA",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN38_policy_60A63615",
         ],
         "expiration_date": "2033-08-23T15:23:17Z",
         "key_opts": [
@@ -217,7 +217,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
         "content_type": "application/x-pkcs12",
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN35_policy_5605FEBA",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN38_policy_60A63615",
         ],
         "expiration_date": "2033-08-23T15:23:17Z",
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
@@ -228,7 +228,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
         "content_type": "application/x-pkcs12",
         "depends_on": [
           "azurerm_key_vault_access_policy.kv_kv_secret_admin_access_bc26a701-6acb-4117-93e0-e44054e22d60_policy_BF8031B5",
-          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN35_policy_5605FEBA",
+          "azurerm_key_vault_access_policy.kv_kv_custom_policy_access_TfTokenTOKEN38_policy_60A63615",
         ],
         "expiration_date": "2033-08-23T15:23:17Z",
         "key_vault_id": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
@@ -271,7 +271,7 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
       },
     },
     "azurerm_role_assignment": {
-      "kv_TfTokenTOKEN34Contributor_role_B8D0928B": {
+      "kv_TfTokenTOKEN37Contributor_role_E528CF9B": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_key_vault.kv_key_vault_6CCDEEF8.id}",
@@ -320,10 +320,16 @@ exports[`Azure Key Vault With Defaults renders an Azure Key Vault with defaults 
         "location": "eastus",
         "name": "kv-test",
         "purge_protection_enabled": true,
-        "resource_group_name": "rg-test",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
         "sku_name": "standard",
         "soft_delete_retention_days": 90,
         "tenant_id": "123e4567-e89b-12d3-a456-426614174000"
+      }
+    },
+    "azurerm_resource_group": {
+      "MyResourceGroup": {
+        "location": "eastus",
+        "name": "rg-test"
       }
     }
   },

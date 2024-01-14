@@ -62,7 +62,7 @@ export class exampleAzureLinuxVirtualMachine extends BaseTestStack {
     const linuxVm = new vm.LinuxVM(this, "vm", {
       name: this.name,
       location: "eastus",
-      resourceGroupName: resourceGroup.name,
+      resourceGroup: resourceGroup,
       size: "Standard_B1s",
       adminUsername: "testadmin",
       adminPassword: "Password1234!",

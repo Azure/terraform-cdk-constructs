@@ -62,7 +62,7 @@ export class exampleAzureWindowsVirtualMachine extends BaseTestStack {
     const winVm = new vm.WindowsVM(this, "vm", {
       name: this.name,
       location: "eastus",
-      resourceGroupName: resourceGroup.name,
+      resourceGroup: resourceGroup,
       size: "Standard_B1s",
       adminUsername: "testadmin",
       adminPassword: "Password1234!",

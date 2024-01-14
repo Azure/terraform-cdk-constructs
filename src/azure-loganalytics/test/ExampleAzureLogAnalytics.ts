@@ -56,7 +56,7 @@ export class exampleAzureLogAnalytics extends BaseTestStack {
       location: "eastus",
       retention: 90,
       sku: "PerGB2018",
-      resourceGroupName: resourceGroup.name,
+      resourceGroup: resourceGroup,
       functions: [
         {
           name: "function_name_1",

@@ -12,19 +12,19 @@ const app = new App();
 
 class TestStorageAccount extends AzureResource {
   public readonly id: string;
-  public readonly resourceGroupName: string;
+  public readonly resourceGroup: ResourceGroup;
 
   constructor(
     scope: Construct,
     name: string,
-    resourceGroup: string,
+    resourceGroup: ResourceGroup,
     location: string,
   ) {
     super(scope, name);
 
     const storage = new StorageAccount(this, "storage", {
       name: `sta${name}96m98`,
-      resourceGroupName: resourceGroup,
+      resourceGroupName: resourceGroup.name,
       location: location,
       accountReplicationType: "LRS",
       accountTier: "Standard",
@@ -37,7 +37,7 @@ class TestStorageAccount extends AzureResource {
     });
 
     this.id = storage.id;
-    this.resourceGroupName = resourceGroup;
+    this.resourceGroup = resourceGroup;
   }
 }
 
@@ -63,7 +63,7 @@ export class exampleAzureResource extends BaseTestStack {
     const storageAccount = new TestStorageAccount(
       this,
       `${this.name}`,
-      resourceGroup.name,
+      resourceGroup,
       resourceGroup.location,
     );
 

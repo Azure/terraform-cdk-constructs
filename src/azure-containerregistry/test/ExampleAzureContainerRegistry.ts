@@ -42,7 +42,7 @@ export class exampleAzureContainerRegistry extends BaseTestStack {
     const azureContainerRegistry = new acr.Registry(this, "testACR", {
       name: `acr${this.name}`,
       location: resourceGroup.location,
-      resourceGroupName: resourceGroup.name,
+      resourceGroup: resourceGroup,
       sku: "Premium",
       adminEnabled: false,
       geoReplicationLocations: [{ location: "westus" }],

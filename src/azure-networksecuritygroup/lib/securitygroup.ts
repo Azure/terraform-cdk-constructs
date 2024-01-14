@@ -2,6 +2,7 @@ import { NetworkInterface } from "@cdktf/provider-azurerm/lib/network-interface"
 import { NetworkInterfaceSecurityGroupAssociation } from "@cdktf/provider-azurerm/lib/network-interface-security-group-association";
 import { NetworkSecurityGroup } from "@cdktf/provider-azurerm/lib/network-security-group";
 import { NetworkSecurityRule } from "@cdktf/provider-azurerm/lib/network-security-rule";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Subnet } from "@cdktf/provider-azurerm/lib/subnet";
 import { SubnetNetworkSecurityGroupAssociation } from "@cdktf/provider-azurerm/lib/subnet-network-security-group-association";
 import { Construct } from "constructs";
@@ -64,7 +65,7 @@ export interface SecurityGroupProps {
   /**
    * The name of the resource group under which the network security group will be created.
    */
-  readonly resourceGroupName: string;
+  readonly resourceGroup: ResourceGroup;
 
   /**
    * The Azure region in which to create the network security group, e.g., 'East US', 'West Europe'.
@@ -86,18 +87,18 @@ export class SecurityGroup extends AzureResource {
   readonly props: SecurityGroupProps;
   public id: string;
   public readonly name: string;
-  public resourceGroupName: string;
+  public resourceGroup: ResourceGroup;
 
   constructor(scope: Construct, id: string, props: SecurityGroupProps) {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroupName = props.resourceGroupName;
+    this.resourceGroup = props.resourceGroup;
 
     // Create a network security group
     const nsg = new NetworkSecurityGroup(this, "nsg", {
       name: props.name,
-      resourceGroupName: props.resourceGroupName,
+      resourceGroupName: props.resourceGroup.name,
       location: props.location,
     });
 
@@ -105,7 +106,7 @@ export class SecurityGroup extends AzureResource {
     for (const ruleConfig of props.rules) {
       new NetworkSecurityRule(this, ruleConfig.name, {
         name: ruleConfig.name,
-        resourceGroupName: props.resourceGroupName,
+        resourceGroupName: props.resourceGroup.name,
         networkSecurityGroupName: nsg.name,
         priority: ruleConfig.priority,
         direction: ruleConfig.direction,

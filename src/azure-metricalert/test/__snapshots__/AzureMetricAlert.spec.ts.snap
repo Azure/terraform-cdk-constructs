@@ -32,12 +32,18 @@ exports[`Azure Metric Alert With Defaults renders an Azure Metric Alert with def
         "enabled": true,
         "frequency": "PT5M",
         "name": "metric alert test",
-        "resource_group_name": "testResourceGroup",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
         "scopes": [
           "/subscriptions/00000000-0000-0000-0000-000000000000"
         ],
         "severity": 3,
         "window_size": "PT5M"
+      }
+    },
+    "azurerm_resource_group": {
+      "MyResourceGroup": {
+        "location": "eastus",
+        "name": "rg-test"
       }
     }
   },

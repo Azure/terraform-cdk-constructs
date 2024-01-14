@@ -208,9 +208,7 @@ export class FunctionAppLinux extends AzureResource {
   public readonly name: string;
   public readonly storageAccount: StorageAccount;
   public readonly servicePlan: ServicePlan;
-  public readonly resourceGroup: ResourceGroup;
-  public resourceGroupName: string;
-
+  public resourceGroup: ResourceGroup;
   /**
    * Constructs a new FunctionAppLinux.
    *
@@ -242,7 +240,7 @@ export class FunctionAppLinux extends AzureResource {
     this.storageAccount = this.setupStorageAccount(props);
     this.servicePlan = this.setupServicePlan(props);
 
-    this.resourceGroupName = this.resourceGroup.name;
+    this.resourceGroup = this.resourceGroup;
 
     // Default siteConfig settings for each hosting plan
     let defaultSiteConfig: LinuxFunctionAppSiteConfig = {

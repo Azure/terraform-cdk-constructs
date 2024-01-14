@@ -13,6 +13,7 @@ const project = new cdktf.ConstructLibraryCdktf({
   defaultReleaseBranch: "main",
   name: "terraform-cdk-modules",
   projenrcTs: true,
+  prerelease: "pre",
   jest: true,
   testdir: "",
   prettier: true,

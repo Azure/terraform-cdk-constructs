@@ -1,4 +1,5 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
 import { exampleAzureKeyVault } from "./ExampleAzureKeyVault";
 import "cdktf/lib/testing/adapters/jest";
@@ -14,10 +15,16 @@ describe("Azure Key Vault With Defaults", () => {
     stack = new TerraformStack(app, "test");
 
     new AzurermProvider(stack, "azureFeature", { features: {} });
+
+    const rg = new ResourceGroup(stack, "MyResourceGroup", {
+      name: "rg-test",
+      location: "eastus",
+    });
+
     new kv.Vault(stack, "testAzureKeyVaultDefaults", {
       name: "kv-test",
       location: "eastus",
-      resourceGroupName: "rg-test",
+      resourceGroup: rg,
       tenantId: "123e4567-e89b-12d3-a456-426614174000",
     });
 

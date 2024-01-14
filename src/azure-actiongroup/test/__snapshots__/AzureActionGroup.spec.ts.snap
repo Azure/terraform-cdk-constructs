@@ -118,10 +118,16 @@ exports[`Action Group With Defaults renders an Action Group with defaults and ch
         "enabled": true,
         "location": "eastus",
         "name": "testactiongroup",
-        "resource_group_name": "rg-test",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
         "short_name": "testshortn",
         "tags": {
         }
+      }
+    },
+    "azurerm_resource_group": {
+      "MyResourceGroup": {
+        "location": "eastus",
+        "name": "testrg"
       }
     }
   },

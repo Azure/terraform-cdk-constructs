@@ -56,7 +56,7 @@ export class exampleAzureNetworkSecurityGroup extends BaseTestStack {
     const nsg = new network.SecurityGroup(this, "nsg", {
       name: `nsg-${this.name}`,
       location: "eastus",
-      resourceGroupName: resourceGroup.name,
+      resourceGroup: resourceGroup,
       rules: [
         {
           name: "SSH",
