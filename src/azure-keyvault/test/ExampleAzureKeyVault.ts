@@ -40,6 +40,7 @@ export class exampleAzureKeyVault extends BaseTestStack {
       networkAcls: {
         bypass: "AzureServices",
         defaultAction: "Allow",
+        ipRules: ["0.0.0.0/0"],
       },
       softDeleteRetentionDays: 7,
     });

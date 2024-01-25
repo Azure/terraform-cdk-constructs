@@ -24,6 +24,19 @@ export interface RuleOverrides {
 }
 
 export class PreconfiguredRules {
+  // SMTP
+  static smtp: RuleConfig = {
+    direction: "Inbound",
+    access: "Allow",
+    protocol: "Tcp",
+    sourcePortRange: "*",
+    destinationPortRange: "25",
+    name: "SMTP",
+    priority: 570,
+    sourceAddressPrefix: "*",
+    destinationAddressPrefix: "*",
+  };
+
   // Active Directory
   static activeDirectoryAllowADReplication: RuleConfig = {
     direction: "Inbound",
