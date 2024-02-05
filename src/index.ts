@@ -14,3 +14,4 @@ export * as azure_virtualnetwork from "./azure-virtualnetwork";
 export * as core_azure from "./core-azure";
 export * as azure_queryrulealert from "./azure-queryrulealert";
 export * as azure_metricalert from "./azure-metricalert";
+export * as azure_applicationgateway from "./azure-applicationgateway";

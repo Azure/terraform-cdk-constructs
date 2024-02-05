@@ -1,4 +1,7 @@
-import { KeyVault, KeyVaultNetworkAcls } from "@cdktf/provider-azurerm/lib/key-vault";
+import {
+  KeyVault,
+  KeyVaultNetworkAcls,
+} from "@cdktf/provider-azurerm/lib/key-vault";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";

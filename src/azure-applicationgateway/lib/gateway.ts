@@ -127,86 +127,85 @@ export interface GatewayProps {
    */
   readonly keyVault?: KeyVault;
 
-    /**
+  /**
    * Optional authentication certificates for mutual authentication.
    */
-    readonly authenticationCertificate?: azapgw.ApplicationGatewayAuthenticationCertificate[];
+  readonly authenticationCertificate?: azapgw.ApplicationGatewayAuthenticationCertificate[];
 
-    /**
-     * Optional autoscale configuration for dynamically adjusting the capacity of the Application Gateway.
-     */
-    readonly autoscaleConfiguration?: azapgw.ApplicationGatewayAutoscaleConfiguration;
-  
-    /**
-     * Optional custom error configurations to specify custom error pages.
-     */
-    readonly customErrorConfiguration?: azapgw.ApplicationGatewayCustomErrorConfiguration[];
-  
-    /**
-     * Optional identity for the Application Gateway, used for accessing other Azure resources.
-     */
-    readonly identity?: azapgw.ApplicationGatewayIdentity;
-  
-    /**
-     * Optional configurations for enabling Private Link on the Application Gateway.
-     */
-    readonly privateLinkConfiguration?: azapgw.ApplicationGatewayPrivateLinkConfiguration[];
-  
-    /**
-     * Optional probes for health checks of the backend HTTP settings.
-     */
-    readonly probe?: azapgw.ApplicationGatewayProbe[];
-  
-    /**
-     * Optional configurations for redirect rules.
-     */
-    readonly redirectConfiguration?: azapgw.ApplicationGatewayRedirectConfiguration[];
-  
-    /**
-     * Optional rewrite rule sets for modifying HTTP request and response headers and bodies.
-     */
-    readonly rewriteRuleSet?: azapgw.ApplicationGatewayRewriteRuleSet[];
-  
-    /**
-     * Optional SSL certificates for enabling HTTPS on the Application Gateway.
-     */
-    readonly sslCertificate?: azapgw.ApplicationGatewaySslCertificate[];
-  
-    /**
-     * Optional SSL policy configurations, defining the protocol and cipher suites used.
-     */
-    readonly sslPolicy?: azapgw.ApplicationGatewaySslPolicy;
-  
-    /**
-     * Optional SSL profiles for managing SSL termination and policy settings.
-     */
-    readonly sslProfile?: azapgw.ApplicationGatewaySslProfile[];
-  
-    /**
-     * Optional timeout settings for the Application Gateway resources.
-     */
-    readonly timeouts?: azapgw.ApplicationGatewayTimeouts;
-  
-    /**
-     * Optional trusted client certificates for mutual authentication.
-     */
-    readonly trustedClientCertificate?: azapgw.ApplicationGatewayTrustedClientCertificate[];
-  
-    /**
-     * Optional trusted root certificates for backend authentication.
-     */
-    readonly trustedRootCertificate?: azapgw.ApplicationGatewayTrustedRootCertificate[];
-  
-    /**
-     * Optional URL path map for routing based on URL paths.
-     */
-    readonly urlPathMap?: azapgw.ApplicationGatewayUrlPathMap[];
-  
-    /**
-     * Optional Web Application Firewall (WAF) configuration to provide enhanced security.
-     */
-    readonly wafConfiguration?: azapgw.ApplicationGatewayWafConfiguration;
-  
+  /**
+   * Optional autoscale configuration for dynamically adjusting the capacity of the Application Gateway.
+   */
+  readonly autoscaleConfiguration?: azapgw.ApplicationGatewayAutoscaleConfiguration;
+
+  /**
+   * Optional custom error configurations to specify custom error pages.
+   */
+  readonly customErrorConfiguration?: azapgw.ApplicationGatewayCustomErrorConfiguration[];
+
+  /**
+   * Optional identity for the Application Gateway, used for accessing other Azure resources.
+   */
+  readonly identity?: azapgw.ApplicationGatewayIdentity;
+
+  /**
+   * Optional configurations for enabling Private Link on the Application Gateway.
+   */
+  readonly privateLinkConfiguration?: azapgw.ApplicationGatewayPrivateLinkConfiguration[];
+
+  /**
+   * Optional probes for health checks of the backend HTTP settings.
+   */
+  readonly probe?: azapgw.ApplicationGatewayProbe[];
+
+  /**
+   * Optional configurations for redirect rules.
+   */
+  readonly redirectConfiguration?: azapgw.ApplicationGatewayRedirectConfiguration[];
+
+  /**
+   * Optional rewrite rule sets for modifying HTTP request and response headers and bodies.
+   */
+  readonly rewriteRuleSet?: azapgw.ApplicationGatewayRewriteRuleSet[];
+
+  /**
+   * Optional SSL certificates for enabling HTTPS on the Application Gateway.
+   */
+  readonly sslCertificate?: azapgw.ApplicationGatewaySslCertificate[];
+
+  /**
+   * Optional SSL policy configurations, defining the protocol and cipher suites used.
+   */
+  readonly sslPolicy?: azapgw.ApplicationGatewaySslPolicy;
+
+  /**
+   * Optional SSL profiles for managing SSL termination and policy settings.
+   */
+  readonly sslProfile?: azapgw.ApplicationGatewaySslProfile[];
+
+  /**
+   * Optional timeout settings for the Application Gateway resources.
+   */
+  readonly timeouts?: azapgw.ApplicationGatewayTimeouts;
+
+  /**
+   * Optional trusted client certificates for mutual authentication.
+   */
+  readonly trustedClientCertificate?: azapgw.ApplicationGatewayTrustedClientCertificate[];
+
+  /**
+   * Optional trusted root certificates for backend authentication.
+   */
+  readonly trustedRootCertificate?: azapgw.ApplicationGatewayTrustedRootCertificate[];
+
+  /**
+   * Optional URL path map for routing based on URL paths.
+   */
+  readonly urlPathMap?: azapgw.ApplicationGatewayUrlPathMap[];
+
+  /**
+   * Optional Web Application Firewall (WAF) configuration to provide enhanced security.
+   */
+  readonly wafConfiguration?: azapgw.ApplicationGatewayWafConfiguration;
 }
 
 // Define the class for Azure Application Gateway
@@ -334,7 +333,6 @@ export class Gateway extends AzureResource {
       identity: defaults.identity,
       zones: props.zones,
       tags: props.tags,
-
     });
 
     this.id = apgw.id;
