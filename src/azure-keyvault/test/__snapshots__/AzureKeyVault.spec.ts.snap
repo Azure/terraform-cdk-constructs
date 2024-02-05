@@ -269,6 +269,11 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
     },
     "azurerm_resource_group": {
       "rg": {
+        "lifecycle": {
+          "ignore_changes": [
+            "tags",
+          ],
+        },
         "location": "eastus",
         "name": "rg-\${var.name}",
       },

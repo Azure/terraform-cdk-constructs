@@ -91,7 +91,7 @@ export interface GrantCustomAccessOptions {
 
 export class Vault extends AzureResource {
   readonly props: VaultProps;
-  public vault: KeyVault;
+  public keyVault: KeyVault;
   public resourceGroup: ResourceGroup;
   public id: string;
   private accessPolicies: AccessPolicy[] = [];
@@ -119,7 +119,7 @@ export class Vault extends AzureResource {
       softDeleteRetentionDays: softDeleteRetentionDays,
     });
     this.id = azurermKeyVault.id;
-    this.vault = azurermKeyVault;
+    this.keyVault = azurermKeyVault;
 
     // Terraform Outputs
     const cdktfTerraformOutputKeyVaultid = new cdktf.TerraformOutput(

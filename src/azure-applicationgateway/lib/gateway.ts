@@ -11,7 +11,7 @@ import * as vnet from "../../azure-virtualnetwork";
 import { AzureResource } from "../../core-azure";
 
 // Define the interface for Application Gateway properties
-export interface GatewayProps {
+export interface IGatewayProps {
   /**
    * Optional public IP address for the frontend of the Application Gateway.
    */
@@ -213,7 +213,7 @@ export class Gateway extends AzureResource {
   public resourceGroup: ResourceGroup;
   public id: string;
 
-  constructor(scope: Construct, id: string, props: GatewayProps) {
+  constructor(scope: Construct, id: string, props: IGatewayProps) {
     super(scope, id);
 
     // Define the identity

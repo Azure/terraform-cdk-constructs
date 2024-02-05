@@ -82,6 +82,19 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
         "source_address_prefix": "10.0.0.0/24",
         "source_port_range": "*"
       },
+      "nsg_SMTP_8BC7E6E8": {
+        "access": "Allow",
+        "destination_address_prefix": "*",
+        "destination_port_range": "25",
+        "direction": "Inbound",
+        "name": "SMTP",
+        "network_security_group_name": "\${azurerm_network_security_group.nsg_291A0A95.name}",
+        "priority": 570,
+        "protocol": "Tcp",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "source_address_prefix": "*",
+        "source_port_range": "*"
+      },
       "nsg_SSH_56EE6BE4": {
         "access": "Allow",
         "destination_address_prefix": "VirtualNetwork",
@@ -103,7 +116,7 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
       }
     },
     "azurerm_role_assignment": {
-      "nsg_TfTokenTOKEN61Contributor_role_D5E31B9D": {
+      "nsg_TfTokenTOKEN65Contributor_role_C8CE2A14": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_network_security_group.nsg_291A0A95.id}"
@@ -128,11 +141,11 @@ exports[`Azure Network Security Group Example renders the Example Network Securi
       }
     },
     "azurerm_subnet_network_security_group_association": {
-      "nsg_TfTokenTOKEN62_subassociation_7ED085DA": {
+      "nsg_TfTokenTOKEN66_subassociation_15C3C273": {
         "network_security_group_id": "\${azurerm_network_security_group.nsg_291A0A95.id}",
         "subnet_id": "\${azurerm_subnet.subnet1.id}"
       },
-      "nsg_TfTokenTOKEN64_subassociation_278BD40D": {
+      "nsg_TfTokenTOKEN68_subassociation_EB9F594A": {
         "network_security_group_id": "\${azurerm_network_security_group.nsg_291A0A95.id}",
         "subnet_id": "\${azurerm_subnet.subnet2.id}"
       }
