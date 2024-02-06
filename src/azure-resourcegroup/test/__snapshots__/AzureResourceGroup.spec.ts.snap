@@ -27,7 +27,8 @@ exports[`Resource Group Example renders the Example Resource Group and checks sn
         "lifecycle": [
           {
             "ignore_changes": [
-              "tags[\\"Environment\\"]"
+              "tags[\\"Environment\\"]",
+              "tags[\\"SkipSecurity\\"]"
             ]
           }
         ],

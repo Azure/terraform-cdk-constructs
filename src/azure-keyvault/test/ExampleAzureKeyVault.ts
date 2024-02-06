@@ -29,6 +29,9 @@ export class exampleAzureKeyVault extends BaseTestStack {
     const resourceGroup = new ResourceGroup(this, "rg", {
       location: "eastus",
       name: `rg-${this.name}`,
+      lifecycle: {
+        ignoreChanges: ["tags"],
+      },
     });
 
     const azureKeyVault = new kv.Vault(this, "kv", {
@@ -40,6 +43,7 @@ export class exampleAzureKeyVault extends BaseTestStack {
       networkAcls: {
         bypass: "AzureServices",
         defaultAction: "Allow",
+        ipRules: ["0.0.0.0/0"],
       },
       softDeleteRetentionDays: 7,
     });
@@ -58,6 +62,7 @@ export class exampleAzureKeyVault extends BaseTestStack {
     azureKeyVault.addDiagSettings({
       name: "diagsettings",
       logAnalyticsWorkspaceId: logAnalyticsWorkspace.id,
+      metricCategories: ["AllMetrics"],
     });
 
     //RBAC

@@ -214,12 +214,21 @@ export class FunctionAppLinux extends AzureResource {
    *
    * @param scope - The scope in which to define this construct.
    * @param id - The ID of this construct.
-   * @param props - The properties for the Azure Function App.
-   *
+   * @param props - The properties for configuring the Azure Function App on Linux. The properties include:
+   *                - `name`: Required. Unique name for the Function App within Azure.
+   *                - `location`: Required. Azure Region for deployment.
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
+   *                - `storageAccount`: Optional. Reference to the storage account used by the Function App.
+   *                - `runtimeVersion`: Optional. Specifies the runtime version (Node.js, .NET, Java, etc.).
+   *                - `servicePlan`: Optional. ID of an existing App Service Plan.
+   *                - `servicePlanSku`: Optional. SKU for the App Service Plan.
+   *                - `tags`: Optional. Tags for resource management.
+   *                - `siteConfig`: Optional. Additional site configuration settings.
+   *                - Additional optional properties as described in `FunctionAppLinuxProps` interface.
    *
    * Example usage:
    * ```typescript
-   *new FunctionAppLinux(this, 'premiumFA', {
+   * new FunctionAppLinux(this, 'premiumFA', {
    *   name: `faprem${this.name}`,
    *   location: 'eastus',
    *   servicePlanSku: ServicePlanSkus.PremiumEP1,
@@ -230,7 +239,6 @@ export class FunctionAppLinux extends AzureResource {
    *     "test": "test"
    *   }
    * });
-   *
    * ```
    */
   constructor(scope: Construct, id: string, props: FunctionAppLinuxProps) {
