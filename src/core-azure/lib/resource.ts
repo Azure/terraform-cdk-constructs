@@ -1,5 +1,5 @@
-import { Construct } from "constructs";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
+import { Construct } from "constructs";
 import {
   DiagnosticSettings,
   BaseDiagnosticSettingsProps,
@@ -26,7 +26,9 @@ export abstract class AzureResource extends Construct {
   }
 
   // Diag Settings Methods
-  public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings {
+  public addDiagSettings(
+    props: BaseDiagnosticSettingsProps,
+  ): DiagnosticSettings {
     return new DiagnosticSettings(this, "diagsettings", {
       name: props.name || "diag-settings",
       logAnalyticsWorkspaceId: props.logAnalyticsWorkspaceId,

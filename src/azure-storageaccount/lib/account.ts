@@ -109,6 +109,11 @@ export interface AccountProps {
    * A boolean flag indicating whether public network access to the storage account is allowed.
    */
   readonly publicNetworkAccessEnabled?: boolean;
+
+  /**
+   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.92.0/docs/resources/storage_account#account_kind StorageAccount#account_kind}
+   */
+  readonly accountKind?: string;
 }
 
 /**
@@ -157,13 +162,14 @@ export class Account extends AzureResourceWithAlert {
 
     // default Storage Account Settings
     const defaults = {
-      accountReplicationType: props.accountReplicationType || "LRS",
-      accountTier: props.accountTier || "Standard",
-      enableHttpsTrafficOnly: props.enableHttpsTrafficOnly || true,
-      accessTier: props.accessTier || "Hot",
-      isHnsEnabled: props.isHnsEnabled || true,
-      minTlsVersion: props.minTlsVersion || "TLS1_2",
-      publicnetworkAccessEnabled: props.publicNetworkAccessEnabled || false,
+      accountReplicationType: "LRS",
+      accountTier: "Standard",
+      enableHttpsTrafficOnly: true,
+      accessTier: "Hot",
+      isHnsEnabled: true,
+      minTlsVersion: "TLS1_2",
+      publicnetworkAccessEnabled: false,
+      ...props,
     };
 
     // Create the storage account
@@ -180,22 +186,6 @@ export class Account extends AzureResourceWithAlert {
     this.accountKind = storageAccount.accountKind;
     this.accountTier = storageAccount.accountTier;
     this.resourceGroupName = this.resourceGroup.name;
-  }
-
-  private setupResourceGroup(props: AccountProps): ResourceGroup {
-    if (!props.resourceGroup) {
-      // Create a new resource group
-      const newResourceGroup = new ResourceGroup(this, "rg", {
-        name: `rg-${props.name}`,
-        location: props.location,
-        tags: props.tags,
-      });
-      // Use the name of the new resource group
-      return newResourceGroup;
-    } else {
-      // Use the provided resource group name
-      return props.resourceGroup;
-    }
   }
 
   /**
