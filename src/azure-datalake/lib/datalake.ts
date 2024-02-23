@@ -11,7 +11,7 @@ export class DataLake extends AzureResource {
   public resourceGroup: ResourceGroup;
   public readonly filesystems: Map<string, DataLakeFilesystem>;
 
-  private storageAccount: sa.Account;
+  public readonly storageAccount: sa.Account;
 
   constructor(scope: Construct, id: string, props: any) {
     super(scope, id);
