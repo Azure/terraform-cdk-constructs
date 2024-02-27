@@ -110,6 +110,7 @@ export class Vault extends AzureResource {
   public resourceGroup: ResourceGroup;
   public id: string;
   private accessPolicies: AccessPolicy[] = [];
+  public keyVault: KeyVault;
 
   constructor(scope: Construct, id: string, props: VaultProps) {
     super(scope, id);
@@ -134,6 +135,7 @@ export class Vault extends AzureResource {
       softDeleteRetentionDays: softDeleteRetentionDays,
     });
     this.id = azurermKeyVault.id;
+    this.keyVault = azurermKeyVault;
 
     // Terraform Outputs
     const cdktfTerraformOutputKeyVaultid = new cdktf.TerraformOutput(
