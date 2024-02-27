@@ -1,0 +1,595 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Application Gateway Example renders the Application Gateway and checks snapshot 1`] = `
+{
+  "data": {
+    "azurerm_client_config": {
+      "CurrentClientConfig": {},
+    },
+    "azurerm_monitor_diagnostic_categories": {
+      "appgw_diagsettings_diagcategories_A1E0B03C": {
+        "resource_id": "\${azurerm_application_gateway.appgw_ApplicationGateway_698001D9.id}",
+      },
+    },
+  },
+  "output": {
+    "id": {
+      "value": "\${azurerm_key_vault.keyvault_key_vault_53A151E3.id}",
+    },
+    "key_vault_name": {
+      "value": "\${azurerm_key_vault.keyvault_key_vault_53A151E3.name}",
+    },
+    "resource_group_name": {
+      "value": "\${azurerm_resource_group.rg.name}",
+    },
+  },
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+          "resource_group": {
+            "prevent_deletion_if_contains_resources": false,
+          },
+        },
+      },
+    ],
+  },
+  "resource": {
+    "azurerm_application_gateway": {
+      "appgw_ApplicationGateway_698001D9": {
+        "backend_address_pool": [
+          {
+            "name": "backend-address-pool-1",
+          },
+          {
+            "ip_addresses": [
+              "10.1.0.4",
+              "10.1.0.5",
+              "10.1.0.6",
+            ],
+            "name": "backend-address-pool-2",
+          },
+        ],
+        "backend_http_settings": [
+          {
+            "cookie_based_affinity": "Disabled",
+            "name": "backend-http-setting",
+            "port": 80,
+            "protocol": "Http",
+            "request_timeout": 20,
+          },
+        ],
+        "frontend_ip_configuration": [
+          {
+            "name": "Public-frontend-ip-configuration",
+            "public_ip_address_id": "\${azurerm_public_ip.publicIp.id}",
+          },
+        ],
+        "frontend_port": [
+          {
+            "name": "80",
+            "port": 80,
+          },
+          {
+            "name": "443",
+            "port": 443,
+          },
+        ],
+        "gateway_ip_configuration": [
+          {
+            "name": "apgw-\${var.name}-configuration",
+            "subnet_id": "\${azurerm_subnet.subnet.id}",
+          },
+        ],
+        "http_listener": [
+          {
+            "frontend_ip_configuration_name": "Public-frontend-ip-configuration",
+            "frontend_port_name": "80",
+            "name": "http-listener",
+            "protocol": "Http",
+          },
+        ],
+        "location": "eastus",
+        "name": "apgw-\${var.name}",
+        "request_routing_rule": [
+          {
+            "backend_address_pool_name": "backend-address-pool-1",
+            "backend_http_settings_name": "backend-http-setting",
+            "http_listener_name": "http-listener",
+            "name": "request-routing-rule-1",
+            "priority": 1,
+            "rule_type": "Basic",
+          },
+        ],
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "sku": {
+          "capacity": 2,
+          "name": "Standard_v2",
+          "tier": "Standard_v2",
+        },
+      },
+      "appgw_waf_ApplicationGateway_E57FD855": {
+        "backend_address_pool": [
+          {
+            "name": "backend-address-pool-1",
+          },
+          {
+            "ip_addresses": [
+              "10.1.0.4",
+              "10.1.0.5",
+              "10.1.0.6",
+            ],
+            "name": "backend-address-pool-2",
+          },
+        ],
+        "backend_http_settings": [
+          {
+            "cookie_based_affinity": "Disabled",
+            "name": "backend-http-setting",
+            "port": 80,
+            "protocol": "Http",
+            "request_timeout": 20,
+          },
+        ],
+        "frontend_ip_configuration": [
+          {
+            "name": "Public-frontend-ip-configuration",
+            "public_ip_address_id": "\${azurerm_public_ip.publicIpwaf.id}",
+          },
+        ],
+        "frontend_port": [
+          {
+            "name": "80",
+            "port": 80,
+          },
+          {
+            "name": "443",
+            "port": 443,
+          },
+        ],
+        "gateway_ip_configuration": [
+          {
+            "name": "apgw-\${var.name}waf-configuration",
+            "subnet_id": "\${azurerm_subnet.subnet.id}",
+          },
+        ],
+        "http_listener": [
+          {
+            "frontend_ip_configuration_name": "Public-frontend-ip-configuration",
+            "frontend_port_name": "443",
+            "name": "http-listener",
+            "protocol": "Https",
+            "ssl_certificate_name": "internal.contoso.com",
+          },
+        ],
+        "identity": {
+          "identity_ids": [
+            "\${azurerm_user_assigned_identity.appgw_waf_ManagedIdentity_5D2DB2C2.id}",
+          ],
+          "type": "UserAssigned",
+        },
+        "location": "eastus",
+        "name": "apgw-\${var.name}waf",
+        "probe": [
+          {
+            "host": "test",
+            "interval": 3,
+            "name": "probe-8080",
+            "path": "/status",
+            "port": 8080,
+            "protocol": "Http",
+            "timeout": 15,
+            "unhealthy_threshold": 3,
+          },
+        ],
+        "redirect_configuration": [
+          {
+            "include_path": true,
+            "include_query_string": true,
+            "name": "http-redirect",
+            "redirect_type": "Permanent",
+            "target_listener_name": "http-listener",
+          },
+        ],
+        "request_routing_rule": [
+          {
+            "backend_address_pool_name": "backend-address-pool-1",
+            "backend_http_settings_name": "backend-http-setting",
+            "http_listener_name": "http-listener",
+            "name": "request-routing-rule-1",
+            "priority": 1,
+            "rule_type": "Basic",
+          },
+        ],
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "sku": {
+          "capacity": 2,
+          "name": "WAF_v2",
+          "tier": "WAF_v2",
+        },
+        "ssl_certificate": [
+          {
+            "key_vault_secret_id": "\${azurerm_key_vault_certificate.keyvault_ssl-cert_AzureKeyVaultCertificate_9B2476CE.secret_id}",
+            "name": "internal.contoso.com",
+          },
+        ],
+        "url_path_map": [
+          {
+            "default_redirect_configuration_name": "http-redirect",
+            "name": "url-path-map",
+            "path_rule": [
+              {
+                "name": "path-rule-01",
+                "paths": [
+                  "/helloworld",
+                ],
+                "redirect_configuration_name": "http-redirect",
+              },
+            ],
+          },
+        ],
+        "waf_configuration": {
+          "enabled": true,
+          "firewall_mode": "Detection",
+          "rule_set_version": "3.0",
+        },
+      },
+    },
+    "azurerm_key_vault": {
+      "keyvault_key_vault_53A151E3": {
+        "location": "eastus",
+        "name": "kv-\${var.name}",
+        "purge_protection_enabled": true,
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "sku_name": "standard",
+        "soft_delete_retention_days": 90,
+      },
+    },
+    "azurerm_key_vault_access_policy": {
+      "appgw_waf_policy_F1E21F34": {
+        "key_vault_id": "\${azurerm_key_vault.keyvault_key_vault_53A151E3.id}",
+        "object_id": "\${azurerm_user_assigned_identity.appgw_waf_ManagedIdentity_5D2DB2C2.principal_id}",
+        "secret_permissions": [
+          "Get",
+          "List",
+        ],
+      },
+      "keyvault_kv_custom_policy_access_TfTokenTOKEN74_policy_FC0549F8": {
+        "certificate_permissions": [
+          "Get",
+          "List",
+          "Create",
+          "Delete",
+          "GetIssuers",
+          "ManageIssuers",
+        ],
+        "key_permissions": [
+          "Backup",
+          "Create",
+          "Decrypt",
+          "Delete",
+          "Encrypt",
+          "Get",
+          "Import",
+          "List",
+          "Purge",
+          "Recover",
+          "Restore",
+          "Sign",
+          "UnwrapKey",
+          "Update",
+          "Verify",
+          "WrapKey",
+          "Release",
+          "Rotate",
+          "GetRotationPolicy",
+          "SetRotationPolicy",
+        ],
+        "key_vault_id": "\${azurerm_key_vault.keyvault_key_vault_53A151E3.id}",
+        "object_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
+        "secret_permissions": [
+          "Get",
+          "List",
+          "Set",
+          "Delete",
+        ],
+      },
+    },
+    "azurerm_key_vault_certificate": {
+      "keyvault_ssl-cert_AzureKeyVaultCertificate_9B2476CE": {
+        "certificate_policy": {
+          "issuer_parameters": {
+            "name": "Self",
+          },
+          "key_properties": {
+            "exportable": true,
+            "key_size": 2048,
+            "key_type": "RSA",
+            "reuse_key": true,
+          },
+          "lifetime_action": [
+            {
+              "action": {
+                "action_type": "AutoRenew",
+              },
+              "trigger": {
+                "days_before_expiry": 45,
+              },
+            },
+          ],
+          "secret_properties": {
+            "content_type": "application/x-pkcs12",
+          },
+          "x509_certificate_properties": {
+            "extended_key_usage": [
+              "1.3.6.1.5.5.7.3.1",
+            ],
+            "key_usage": [
+              "cRLSign",
+              "dataEncipherment",
+              "digitalSignature",
+              "keyAgreement",
+              "keyCertSign",
+              "keyEncipherment",
+            ],
+            "subject": "CN=contoso.com",
+            "subject_alternative_names": {
+              "dns_names": [
+                "internal.contoso.com",
+              ],
+            },
+            "validity_in_months": 12,
+          },
+        },
+        "depends_on": [
+          "azurerm_key_vault_access_policy.keyvault_kv_custom_policy_access_TfTokenTOKEN74_policy_FC0549F8",
+        ],
+        "key_vault_id": "\${azurerm_key_vault.keyvault_key_vault_53A151E3.id}",
+        "name": "ssl-cert",
+      },
+    },
+    "azurerm_log_analytics_workspace": {
+      "log_analytics": {
+        "location": "eastus",
+        "name": "la-\${var.name}",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+      },
+    },
+    "azurerm_monitor_diagnostic_setting": {
+      "appgw_diagsettings_8B8E708F": {
+        "dynamic": {
+          "enabled_log": {
+            "content": {
+              "category": "\${enabled_log.value}",
+            },
+            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.appgw_diagsettings_diagcategories_A1E0B03C.log_category_types)}",
+          },
+          "metric": {
+            "content": {
+              "category": "\${metric.value}",
+            },
+            "for_each": "\${tolist(data.azurerm_monitor_diagnostic_categories.appgw_diagsettings_diagcategories_A1E0B03C.metrics)}",
+          },
+        },
+        "log_analytics_workspace_id": "\${azurerm_log_analytics_workspace.log_analytics.id}",
+        "name": "diagsettings",
+        "target_resource_id": "\${azurerm_application_gateway.appgw_ApplicationGateway_698001D9.id}",
+      },
+    },
+    "azurerm_public_ip": {
+      "publicIp": {
+        "allocation_method": "Static",
+        "location": "eastus",
+        "name": "testip",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "sku": "Standard",
+      },
+      "publicIpwaf": {
+        "allocation_method": "Static",
+        "location": "eastus",
+        "name": "testipwaf",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "sku": "Standard",
+      },
+    },
+    "azurerm_resource_group": {
+      "rg": {
+        "lifecycle": {
+          "ignore_changes": [
+            "tags",
+          ],
+        },
+        "location": "eastus",
+        "name": "rg-\${var.name}",
+      },
+    },
+    "azurerm_role_assignment": {
+      "appgw_TfTokenTOKEN94Contributor_role_5B14AD03": {
+        "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
+        "role_definition_name": "Contributor",
+        "scope": "\${azurerm_application_gateway.appgw_ApplicationGateway_698001D9.id}",
+      },
+    },
+    "azurerm_subnet": {
+      "subnet": {
+        "address_prefixes": [
+          "10.0.0.0/24",
+        ],
+        "name": "subnet-\${var.name}",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+        "virtual_network_name": "\${azurerm_virtual_network.vnet.name}",
+      },
+    },
+    "azurerm_user_assigned_identity": {
+      "appgw_waf_ManagedIdentity_5D2DB2C2": {
+        "location": "eastus",
+        "name": "mi-apgw-\${var.name}waf",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+      },
+    },
+    "azurerm_virtual_network": {
+      "vnet": {
+        "address_space": [
+          "10.0.0.0/24",
+        ],
+        "location": "eastus",
+        "name": "vnet-\${var.name}",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}",
+      },
+    },
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.70.0",
+      },
+    },
+  },
+  "variable": {
+    "name": {
+      "default": "test",
+      "description": "System name used to randomize the resources",
+      "type": "string",
+    },
+  },
+}
+`;
+
+exports[`Application Gateway With Defaults renders an Application Gateway with defaults and checks snapshot 1`] = `
+"{
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_application_gateway": {
+      "testAzureApplicationGatewayDefaults2_ApplicationGateway_04B13FBA": {
+        "backend_address_pool": [
+          {
+            "name": "backend-address-pool-1"
+          },
+          {
+            "ip_addresses": [
+              "10.0.0.4",
+              "10.0.0.5",
+              "10.0.0.6"
+            ],
+            "name": "backend-address-pool-2"
+          }
+        ],
+        "backend_http_settings": [
+          {
+            "cookie_based_affinity": "Disabled",
+            "name": "backend-http-setting",
+            "port": 80,
+            "protocol": "Http",
+            "request_timeout": 20
+          }
+        ],
+        "frontend_ip_configuration": [
+          {
+            "name": "Public-frontend-ip-configuration",
+            "public_ip_address_id": "\${azurerm_public_ip.publicIp.id}"
+          }
+        ],
+        "frontend_port": [
+          {
+            "name": "80",
+            "port": 80
+          },
+          {
+            "name": "443",
+            "port": 443
+          }
+        ],
+        "gateway_ip_configuration": [
+          {
+            "name": "application-gateway-configuration",
+            "subnet_id": "\${azurerm_subnet.testAzureApplicationGatewayDefaults2_vnet_default_94DB58C1.id}"
+          }
+        ],
+        "http_listener": [
+          {
+            "frontend_ip_configuration_name": "Public",
+            "frontend_port_name": "frontend-port",
+            "name": "http-listener",
+            "protocol": "Http"
+          }
+        ],
+        "location": "eastus",
+        "name": "application-gateway",
+        "request_routing_rule": [
+          {
+            "backend_address_pool_name": "backend-address-pool-1",
+            "backend_http_settings_name": "backend-http-setting",
+            "http_listener_name": "http-listener",
+            "name": "request-routing-rule-1",
+            "rule_type": "Basic"
+          },
+          {
+            "backend_address_pool_name": "backend-address-pool-2",
+            "backend_http_settings_name": "backend-http-setting",
+            "http_listener_name": "http-listener",
+            "name": "request-routing-rule-2",
+            "rule_type": "Basic"
+          }
+        ],
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "sku": {
+          "capacity": 2,
+          "name": "WAF_v2",
+          "tier": "WAF_v2"
+        }
+      }
+    },
+    "azurerm_public_ip": {
+      "publicIp": {
+        "allocation_method": "Dynamic",
+        "location": "eastus",
+        "name": "testip",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "sku": "Standard"
+      }
+    },
+    "azurerm_resource_group": {
+      "MyResourceGroup": {
+        "location": "eastus",
+        "name": "testrg"
+      }
+    },
+    "azurerm_subnet": {
+      "testAzureApplicationGatewayDefaults2_vnet_default_94DB58C1": {
+        "address_prefixes": [
+          "10.1.0.0/24"
+        ],
+        "name": "default",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "virtual_network_name": "\${azurerm_virtual_network.testAzureApplicationGatewayDefaults2_vnet_33CC9CBF.name}"
+      }
+    },
+    "azurerm_virtual_network": {
+      "testAzureApplicationGatewayDefaults2_vnet_33CC9CBF": {
+        "address_space": [
+          "10.0.0.0/16"
+        ],
+        "location": "eastus",
+        "name": "vnet-test",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}"
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.70.0"
+      }
+    }
+  }
+}"
+`;
