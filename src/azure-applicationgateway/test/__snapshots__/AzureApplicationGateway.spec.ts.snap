@@ -254,7 +254,7 @@ exports[`Application Gateway Example renders the Application Gateway and checks 
           "List",
         ],
       },
-      "keyvault_kv_custom_policy_access_TfTokenTOKEN74_policy_FC0549F8": {
+      "keyvault_kv_custom_policy_access_TfTokenTOKEN73_policy_8B37DC21": {
         "certificate_permissions": [
           "Get",
           "List",
@@ -342,7 +342,7 @@ exports[`Application Gateway Example renders the Application Gateway and checks 
           },
         },
         "depends_on": [
-          "azurerm_key_vault_access_policy.keyvault_kv_custom_policy_access_TfTokenTOKEN74_policy_FC0549F8",
+          "azurerm_key_vault_access_policy.keyvault_kv_custom_policy_access_TfTokenTOKEN73_policy_8B37DC21",
         ],
         "key_vault_id": "\${azurerm_key_vault.keyvault_key_vault_53A151E3.id}",
         "name": "ssl-cert",
@@ -404,7 +404,7 @@ exports[`Application Gateway Example renders the Application Gateway and checks 
       },
     },
     "azurerm_role_assignment": {
-      "appgw_TfTokenTOKEN94Contributor_role_5B14AD03": {
+      "appgw_TfTokenTOKEN92Contributor_role_B616FFCC": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_application_gateway.appgw_ApplicationGateway_698001D9.id}",

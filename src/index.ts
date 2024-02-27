@@ -1,8 +1,10 @@
 export * as azure_applicationinsights from "./azure-applicationinsights";
+export * as azure_applicationgateway from "./azure-applicationgateway";
 export * as azure_containerregistry from "./azure-containerregistry";
 export * as azure_eventhub from "./azure-eventhub";
 export * as azure_functionapp from "./azure-functionapp";
 export * as azure_keyvault from "./azure-keyvault";
+export * as azure_kubernetes from "./azure-kubernetes";
 export * as azure_kusto from "./azure-kusto";
 export * as azure_loganalytics from "./azure-loganalytics";
 export * as azure_networksecuritygroup from "./azure-networksecuritygroup";

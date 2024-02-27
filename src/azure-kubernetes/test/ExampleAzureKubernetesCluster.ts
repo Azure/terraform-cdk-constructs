@@ -45,6 +45,7 @@ export class exampleAzureKubernetesCluster extends BaseTestStack {
       name: "akstest",
       location: "eastus",
       resourceGroup: resourceGroup,
+      apiServerAuthorizedIpRanges: ["0.0.0.0"],
       defaultNodePool: {
         name: "default",
         nodeCount: 1,
@@ -52,6 +53,9 @@ export class exampleAzureKubernetesCluster extends BaseTestStack {
       },
       identity: {
         type: "SystemAssigned",
+      },
+      azureActiveDirectoryRoleBasedAccessControl: {
+        azureRbacEnabled: true,
       },
     });
 

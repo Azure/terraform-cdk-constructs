@@ -1654,6 +1654,185 @@ public readonly ehClusterProps: ClusterProps;
 ---
 
 
+### Cluster <a name="Cluster" id="terraform-cdk-modules.azure_kubernetes.Cluster"></a>
+
+Class representing the AKS cluster resource.
+
+#### Initializers <a name="Initializers" id="terraform-cdk-modules.azure_kubernetes.Cluster.Initializer"></a>
+
+```typescript
+import { azure_kubernetes } from 'terraform-cdk-modules'
+
+new azure_kubernetes.Cluster(scope: Construct, id: string, props: ClusterProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.Initializer.parameter.id">id</a></code> | <code>string</code> | The unique ID or name for this construct. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.Initializer.parameter.props">props</a></code> | <code>terraform-cdk-modules.azure_kubernetes.ClusterProps</code> | The properties required to configure the AKS cluster. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="terraform-cdk-modules.azure_kubernetes.Cluster.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="terraform-cdk-modules.azure_kubernetes.Cluster.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique ID or name for this construct.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_kubernetes.Cluster.Initializer.parameter.props"></a>
+
+- *Type:* terraform-cdk-modules.azure_kubernetes.ClusterProps
+
+The properties required to configure the AKS cluster.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.addAccess">addAccess</a></code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+
+---
+
+##### `toString` <a name="toString" id="terraform-cdk-modules.azure_kubernetes.Cluster.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="terraform-cdk-modules.azure_kubernetes.Cluster.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, customRoleName: string): void
+```
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="terraform-cdk-modules.azure_kubernetes.Cluster.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+---
+
+###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="terraform-cdk-modules.azure_kubernetes.Cluster.addAccess.parameter.customRoleName"></a>
+
+- *Type:* string
+
+---
+
+##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_kubernetes.Cluster.addDiagSettings"></a>
+
+```typescript
+public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+```
+
+###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_kubernetes.Cluster.addDiagSettings.parameter.props"></a>
+
+- *Type:* terraform-cdk-modules.core_azure.BaseDiagnosticSettingsProps
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="terraform-cdk-modules.azure_kubernetes.Cluster.isConstruct"></a>
+
+```typescript
+import { azure_kubernetes } from 'terraform-cdk-modules'
+
+azure_kubernetes.Cluster.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="terraform-cdk-modules.azure_kubernetes.Cluster.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.property.id">id</a></code> | <code>string</code> | The unique identifier of the AKS cluster resource. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The Resource Group associated with the AKS cluster. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="terraform-cdk-modules.azure_kubernetes.Cluster.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="terraform-cdk-modules.azure_kubernetes.Cluster.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The unique identifier of the AKS cluster resource.
+
+---
+
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_kubernetes.Cluster.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+The Resource Group associated with the AKS cluster.
+
+---
+
+
 ### Cluster <a name="Cluster" id="terraform-cdk-modules.azure_kusto.Cluster"></a>
 
 #### Initializers <a name="Initializers" id="terraform-cdk-modules.azure_kusto.Cluster.Initializer"></a>
@@ -3049,6 +3228,173 @@ public readonly storageAccount: StorageAccount;
 ---
 
 
+### Gateway <a name="Gateway" id="terraform-cdk-modules.azure_applicationgateway.Gateway"></a>
+
+#### Initializers <a name="Initializers" id="terraform-cdk-modules.azure_applicationgateway.Gateway.Initializer"></a>
+
+```typescript
+import { azure_applicationgateway } from 'terraform-cdk-modules'
+
+new azure_applicationgateway.Gateway(scope: Construct, id: string, props: IGatewayProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.Gateway.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.Gateway.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.Gateway.Initializer.parameter.props">props</a></code> | <code>terraform-cdk-modules.azure_applicationgateway.IGatewayProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="terraform-cdk-modules.azure_applicationgateway.Gateway.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="terraform-cdk-modules.azure_applicationgateway.Gateway.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_applicationgateway.Gateway.Initializer.parameter.props"></a>
+
+- *Type:* terraform-cdk-modules.azure_applicationgateway.IGatewayProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.Gateway.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.Gateway.addAccess">addAccess</a></code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.Gateway.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+
+---
+
+##### `toString` <a name="toString" id="terraform-cdk-modules.azure_applicationgateway.Gateway.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="terraform-cdk-modules.azure_applicationgateway.Gateway.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, customRoleName: string): void
+```
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="terraform-cdk-modules.azure_applicationgateway.Gateway.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+---
+
+###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="terraform-cdk-modules.azure_applicationgateway.Gateway.addAccess.parameter.customRoleName"></a>
+
+- *Type:* string
+
+---
+
+##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_applicationgateway.Gateway.addDiagSettings"></a>
+
+```typescript
+public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+```
+
+###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_applicationgateway.Gateway.addDiagSettings.parameter.props"></a>
+
+- *Type:* terraform-cdk-modules.core_azure.BaseDiagnosticSettingsProps
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.Gateway.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="terraform-cdk-modules.azure_applicationgateway.Gateway.isConstruct"></a>
+
+```typescript
+import { azure_applicationgateway } from 'terraform-cdk-modules'
+
+azure_applicationgateway.Gateway.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="terraform-cdk-modules.azure_applicationgateway.Gateway.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.Gateway.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.Gateway.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.Gateway.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="terraform-cdk-modules.azure_applicationgateway.Gateway.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="terraform-cdk-modules.azure_applicationgateway.Gateway.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_applicationgateway.Gateway.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+---
+
+
 ### Group <a name="Group" id="terraform-cdk-modules.azure_resourcegroup.Group"></a>
 
 #### Initializers <a name="Initializers" id="terraform-cdk-modules.azure_resourcegroup.Group.Initializer"></a>
@@ -3570,6 +3916,7 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.Key.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#terraform-cdk-modules.azure_keyvault.Key.property.vaultKey">vaultKey</a></code> | <code>@cdktf/provider-azurerm.keyVaultKey.KeyVaultKey</code> | *No description.* |
 
 ---
 
@@ -3582,6 +3929,16 @@ public readonly node: Node;
 - *Type:* constructs.Node
 
 The tree node.
+
+---
+
+##### `vaultKey`<sup>Required</sup> <a name="vaultKey" id="terraform-cdk-modules.azure_keyvault.Key.property.vaultKey"></a>
+
+```typescript
+public readonly vaultKey: KeyVaultKey;
+```
+
+- *Type:* @cdktf/provider-azurerm.keyVaultKey.KeyVaultKey
 
 ---
 
@@ -5510,6 +5867,7 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.Secret.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#terraform-cdk-modules.azure_keyvault.Secret.property.secretId">secretId</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -5522,6 +5880,16 @@ public readonly node: Node;
 - *Type:* constructs.Node
 
 The tree node.
+
+---
+
+##### `secretId`<sup>Required</sup> <a name="secretId" id="terraform-cdk-modules.azure_keyvault.Secret.property.secretId"></a>
+
+```typescript
+public readonly secretId: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -5951,6 +6319,7 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.SelfSignedCertificate.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#terraform-cdk-modules.azure_keyvault.SelfSignedCertificate.property.certificate">certificate</a></code> | <code>@cdktf/provider-azurerm.keyVaultCertificate.KeyVaultCertificate</code> | *No description.* |
 
 ---
 
@@ -5963,6 +6332,16 @@ public readonly node: Node;
 - *Type:* constructs.Node
 
 The tree node.
+
+---
+
+##### `certificate`<sup>Required</sup> <a name="certificate" id="terraform-cdk-modules.azure_keyvault.SelfSignedCertificate.property.certificate"></a>
+
+```typescript
+public readonly certificate: KeyVaultCertificate;
+```
+
+- *Type:* @cdktf/provider-azurerm.keyVaultCertificate.KeyVaultCertificate
 
 ---
 
@@ -6208,7 +6587,7 @@ public addCertIssuer(name: string, provider: string): void
 ##### `addKey` <a name="addKey" id="terraform-cdk-modules.azure_keyvault.Vault.addKey"></a>
 
 ```typescript
-public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts: string[], expirationDate?: string): void
+public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts: string[], expirationDate?: string): KeyVaultKey
 ```
 
 ###### `keyVaultKeyName`<sup>Required</sup> <a name="keyVaultKeyName" id="terraform-cdk-modules.azure_keyvault.Vault.addKey.parameter.keyVaultKeyName"></a>
@@ -6244,7 +6623,7 @@ public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts
 ##### `addRSAKey` <a name="addRSAKey" id="terraform-cdk-modules.azure_keyvault.Vault.addRSAKey"></a>
 
 ```typescript
-public addRSAKey(keyVaultKeyName: string, expirationDate?: string): void
+public addRSAKey(keyVaultKeyName: string, expirationDate?: string): KeyVaultKey
 ```
 
 ###### `keyVaultKeyName`<sup>Required</sup> <a name="keyVaultKeyName" id="terraform-cdk-modules.azure_keyvault.Vault.addRSAKey.parameter.keyVaultKeyName"></a>
@@ -6292,7 +6671,7 @@ public addSecret(keyVaultSecretName: string, secretValue: string, expirationDate
 ##### `addSelfSignedCert` <a name="addSelfSignedCert" id="terraform-cdk-modules.azure_keyvault.Vault.addSelfSignedCert"></a>
 
 ```typescript
-public addSelfSignedCert(certName: string, subject: string, dnsNames: string[], actionType?: string, daysBeforeExpiry?: number): void
+public addSelfSignedCert(certName: string, subject: string, dnsNames: string[], actionType?: string, daysBeforeExpiry?: number): KeyVaultCertificate
 ```
 
 ###### `certName`<sup>Required</sup> <a name="certName" id="terraform-cdk-modules.azure_keyvault.Vault.addSelfSignedCert.parameter.certName"></a>
@@ -6463,6 +6842,7 @@ Any object.
 | <code><a href="#terraform-cdk-modules.azure_keyvault.Vault.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.Vault.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.Vault.property.props">props</a></code> | <code>terraform-cdk-modules.azure_keyvault.VaultProps</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_keyvault.Vault.property.keyVault">keyVault</a></code> | <code>@cdktf/provider-azurerm.keyVault.KeyVault</code> | *No description.* |
 
 ---
 
@@ -6505,6 +6885,16 @@ public readonly props: VaultProps;
 ```
 
 - *Type:* terraform-cdk-modules.azure_keyvault.VaultProps
+
+---
+
+##### `keyVault`<sup>Required</sup> <a name="keyVault" id="terraform-cdk-modules.azure_keyvault.Vault.property.keyVault"></a>
+
+```typescript
+public readonly keyVault: KeyVault;
+```
+
+- *Type:* @cdktf/provider-azurerm.keyVault.KeyVault
 
 ---
 
@@ -8972,6 +9362,112 @@ public readonly tags: {[ key: string ]: string};
 - *Type:* {[ key: string ]: string}
 
 The tags to assign to the Application Insights resource.
+
+---
+
+### ClusterProps <a name="ClusterProps" id="terraform-cdk-modules.azure_kubernetes.ClusterProps"></a>
+
+Interface defining the properties required to create an AKS cluster.
+
+#### Initializer <a name="Initializer" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.Initializer"></a>
+
+```typescript
+import { azure_kubernetes } from 'terraform-cdk-modules'
+
+const clusterProps: azure_kubernetes.ClusterProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.defaultNodePool">defaultNodePool</a></code> | <code>@cdktf/provider-azurerm.kubernetesCluster.KubernetesClusterDefaultNodePool</code> | Configuration for the default node pool of the AKS cluster. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.location">location</a></code> | <code>string</code> | The Azure region where the AKS cluster will be deployed. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.name">name</a></code> | <code>string</code> | The name of the AKS cluster. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.identity">identity</a></code> | <code>@cdktf/provider-azurerm.kubernetesCluster.KubernetesClusterIdentity</code> | The identity used for the AKS cluster. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The Azure Resource Group where the AKS cluster will be deployed. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to be applied to the AKS cluster resources for organizational purposes. |
+
+---
+
+##### `defaultNodePool`<sup>Required</sup> <a name="defaultNodePool" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.defaultNodePool"></a>
+
+```typescript
+public readonly defaultNodePool: KubernetesClusterDefaultNodePool;
+```
+
+- *Type:* @cdktf/provider-azurerm.kubernetesCluster.KubernetesClusterDefaultNodePool
+
+Configuration for the default node pool of the AKS cluster.
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The Azure region where the AKS cluster will be deployed.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the AKS cluster.
+
+Must be unique within the Azure region.
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.identity"></a>
+
+```typescript
+public readonly identity: KubernetesClusterIdentity;
+```
+
+- *Type:* @cdktf/provider-azurerm.kubernetesCluster.KubernetesClusterIdentity
+
+The identity used for the AKS cluster.
+
+Can be either SystemAssigned or UserAssigned.
+Optional.
+
+---
+
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+The Azure Resource Group where the AKS cluster will be deployed.
+
+Optional. If not provided, a new resource group will be created.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to be applied to the AKS cluster resources for organizational purposes.
+
+Key-value pairs. Optional.
 
 ---
 
@@ -16154,6 +16650,525 @@ public readonly workload: string;
 ```
 
 - *Type:* string
+
+---
+
+### IGatewayProps <a name="IGatewayProps" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps"></a>
+
+- *Implemented By:* terraform-cdk-modules.azure_applicationgateway.IGatewayProps
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.backendAddressPools">backendAddressPools</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayBackendAddressPool[]</code> | The backend address pools for the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.backendHttpSettings">backendHttpSettings</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayBackendHttpSettings[]</code> | The backend HTTP settings for the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.capacity">capacity</a></code> | <code>number</code> | The capacity (instance count) of the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.httpListeners">httpListeners</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayHttpListener[]</code> | The HTTP listeners for the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.location">location</a></code> | <code>string</code> | The location where the Application Gateway will be deployed (e.g., region). |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.name">name</a></code> | <code>string</code> | The name of the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.requestRoutingRules">requestRoutingRules</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayRequestRoutingRule[]</code> | The request routing rules for the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The resource group under which the Application Gateway will be deployed. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.skuSize">skuSize</a></code> | <code>string</code> | The size of the SKU for the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.skuTier">skuTier</a></code> | <code>string</code> | The SKU tier of the Application Gateway (e.g., Standard, WAF). |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.authenticationCertificate">authenticationCertificate</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayAuthenticationCertificate[]</code> | Optional authentication certificates for mutual authentication. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.autoscaleConfiguration">autoscaleConfiguration</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayAutoscaleConfiguration</code> | Optional autoscale configuration for dynamically adjusting the capacity of the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.customErrorConfiguration">customErrorConfiguration</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayCustomErrorConfiguration[]</code> | Optional custom error configurations to specify custom error pages. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.enableHttp2">enableHttp2</a></code> | <code>boolean</code> | Flag to enable HTTP2. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.fipsEnabled">fipsEnabled</a></code> | <code>boolean</code> | Flag to enable FIPS-compliant algorithms. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.firewallPolicyId">firewallPolicyId</a></code> | <code>string</code> | Optional ID of the firewall policy. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.forceFirewallPolicyAssociation">forceFirewallPolicyAssociation</a></code> | <code>boolean</code> | Flag to enforce association of the firewall policy. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.frontendPorts">frontendPorts</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayFrontendPort[]</code> | Optional frontend ports for the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.identity">identity</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayIdentity</code> | Optional identity for the Application Gateway, used for accessing other Azure resources. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.keyVault">keyVault</a></code> | <code>@cdktf/provider-azurerm.keyVault.KeyVault</code> | Optional Key Vault resource for storing SSL certificates. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.privateLinkConfiguration">privateLinkConfiguration</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayPrivateLinkConfiguration[]</code> | Optional configurations for enabling Private Link on the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.probe">probe</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayProbe[]</code> | Optional probes for health checks of the backend HTTP settings. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.redirectConfiguration">redirectConfiguration</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayRedirectConfiguration[]</code> | Optional configurations for redirect rules. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.rewriteRuleSet">rewriteRuleSet</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayRewriteRuleSet[]</code> | Optional rewrite rule sets for modifying HTTP request and response headers and bodies. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.sslCertificate">sslCertificate</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewaySslCertificate[]</code> | Optional SSL certificates for enabling HTTPS on the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.sslPolicy">sslPolicy</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewaySslPolicy</code> | Optional SSL policy configurations, defining the protocol and cipher suites used. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.sslProfile">sslProfile</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewaySslProfile[]</code> | Optional SSL profiles for managing SSL termination and policy settings. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.subnet">subnet</a></code> | <code>@cdktf/provider-azurerm.subnet.Subnet</code> | Optional subnet for the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Optional tags for the Application Gateway resource. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.tenantId">tenantId</a></code> | <code>string</code> | Optional tenant ID for use with Key Vault, if applicable. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.timeouts">timeouts</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayTimeouts</code> | Optional timeout settings for the Application Gateway resources. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.trustedClientCertificate">trustedClientCertificate</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayTrustedClientCertificate[]</code> | Optional trusted client certificates for mutual authentication. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.trustedRootCertificate">trustedRootCertificate</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayTrustedRootCertificate[]</code> | Optional trusted root certificates for backend authentication. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.urlPathMap">urlPathMap</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayUrlPathMap[]</code> | Optional URL path map for routing based on URL paths. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.wafConfiguration">wafConfiguration</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayWafConfiguration</code> | Optional Web Application Firewall (WAF) configuration to provide enhanced security. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.zones">zones</a></code> | <code>string[]</code> | Optional availability zones for the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.privateIpAddress">privateIpAddress</a></code> | <code>string</code> | Optional private IP address for the frontend of the Application Gateway. |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.privateIpAddressAllocation">privateIpAddressAllocation</a></code> | <code>string</code> | Allocation method for the private IP address (e.g., Static, Dynamic). |
+| <code><a href="#terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.publicIpAddress">publicIpAddress</a></code> | <code>@cdktf/provider-azurerm.publicIp.PublicIp</code> | Optional public IP address for the frontend of the Application Gateway. |
+
+---
+
+##### `backendAddressPools`<sup>Required</sup> <a name="backendAddressPools" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.backendAddressPools"></a>
+
+```typescript
+public readonly backendAddressPools: ApplicationGatewayBackendAddressPool[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayBackendAddressPool[]
+
+The backend address pools for the Application Gateway.
+
+---
+
+##### `backendHttpSettings`<sup>Required</sup> <a name="backendHttpSettings" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.backendHttpSettings"></a>
+
+```typescript
+public readonly backendHttpSettings: ApplicationGatewayBackendHttpSettings[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayBackendHttpSettings[]
+
+The backend HTTP settings for the Application Gateway.
+
+---
+
+##### `capacity`<sup>Required</sup> <a name="capacity" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.capacity"></a>
+
+```typescript
+public readonly capacity: number;
+```
+
+- *Type:* number
+
+The capacity (instance count) of the Application Gateway.
+
+---
+
+##### `httpListeners`<sup>Required</sup> <a name="httpListeners" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.httpListeners"></a>
+
+```typescript
+public readonly httpListeners: ApplicationGatewayHttpListener[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayHttpListener[]
+
+The HTTP listeners for the Application Gateway.
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the Application Gateway will be deployed (e.g., region).
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the Application Gateway.
+
+---
+
+##### `requestRoutingRules`<sup>Required</sup> <a name="requestRoutingRules" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.requestRoutingRules"></a>
+
+```typescript
+public readonly requestRoutingRules: ApplicationGatewayRequestRoutingRule[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayRequestRoutingRule[]
+
+The request routing rules for the Application Gateway.
+
+---
+
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+The resource group under which the Application Gateway will be deployed.
+
+---
+
+##### `skuSize`<sup>Required</sup> <a name="skuSize" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.skuSize"></a>
+
+```typescript
+public readonly skuSize: string;
+```
+
+- *Type:* string
+
+The size of the SKU for the Application Gateway.
+
+---
+
+##### `skuTier`<sup>Required</sup> <a name="skuTier" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.skuTier"></a>
+
+```typescript
+public readonly skuTier: string;
+```
+
+- *Type:* string
+
+The SKU tier of the Application Gateway (e.g., Standard, WAF).
+
+---
+
+##### `authenticationCertificate`<sup>Optional</sup> <a name="authenticationCertificate" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.authenticationCertificate"></a>
+
+```typescript
+public readonly authenticationCertificate: ApplicationGatewayAuthenticationCertificate[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayAuthenticationCertificate[]
+
+Optional authentication certificates for mutual authentication.
+
+---
+
+##### `autoscaleConfiguration`<sup>Optional</sup> <a name="autoscaleConfiguration" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.autoscaleConfiguration"></a>
+
+```typescript
+public readonly autoscaleConfiguration: ApplicationGatewayAutoscaleConfiguration;
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayAutoscaleConfiguration
+
+Optional autoscale configuration for dynamically adjusting the capacity of the Application Gateway.
+
+---
+
+##### `customErrorConfiguration`<sup>Optional</sup> <a name="customErrorConfiguration" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.customErrorConfiguration"></a>
+
+```typescript
+public readonly customErrorConfiguration: ApplicationGatewayCustomErrorConfiguration[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayCustomErrorConfiguration[]
+
+Optional custom error configurations to specify custom error pages.
+
+---
+
+##### `enableHttp2`<sup>Optional</sup> <a name="enableHttp2" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.enableHttp2"></a>
+
+```typescript
+public readonly enableHttp2: boolean;
+```
+
+- *Type:* boolean
+
+Flag to enable HTTP2.
+
+---
+
+##### `fipsEnabled`<sup>Optional</sup> <a name="fipsEnabled" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.fipsEnabled"></a>
+
+```typescript
+public readonly fipsEnabled: boolean;
+```
+
+- *Type:* boolean
+
+Flag to enable FIPS-compliant algorithms.
+
+---
+
+##### `firewallPolicyId`<sup>Optional</sup> <a name="firewallPolicyId" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.firewallPolicyId"></a>
+
+```typescript
+public readonly firewallPolicyId: string;
+```
+
+- *Type:* string
+
+Optional ID of the firewall policy.
+
+---
+
+##### `forceFirewallPolicyAssociation`<sup>Optional</sup> <a name="forceFirewallPolicyAssociation" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.forceFirewallPolicyAssociation"></a>
+
+```typescript
+public readonly forceFirewallPolicyAssociation: boolean;
+```
+
+- *Type:* boolean
+
+Flag to enforce association of the firewall policy.
+
+---
+
+##### `frontendPorts`<sup>Optional</sup> <a name="frontendPorts" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.frontendPorts"></a>
+
+```typescript
+public readonly frontendPorts: ApplicationGatewayFrontendPort[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayFrontendPort[]
+
+Optional frontend ports for the Application Gateway.
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.identity"></a>
+
+```typescript
+public readonly identity: ApplicationGatewayIdentity;
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayIdentity
+
+Optional identity for the Application Gateway, used for accessing other Azure resources.
+
+---
+
+##### `keyVault`<sup>Optional</sup> <a name="keyVault" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.keyVault"></a>
+
+```typescript
+public readonly keyVault: KeyVault;
+```
+
+- *Type:* @cdktf/provider-azurerm.keyVault.KeyVault
+
+Optional Key Vault resource for storing SSL certificates.
+
+---
+
+##### `privateLinkConfiguration`<sup>Optional</sup> <a name="privateLinkConfiguration" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.privateLinkConfiguration"></a>
+
+```typescript
+public readonly privateLinkConfiguration: ApplicationGatewayPrivateLinkConfiguration[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayPrivateLinkConfiguration[]
+
+Optional configurations for enabling Private Link on the Application Gateway.
+
+---
+
+##### `probe`<sup>Optional</sup> <a name="probe" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.probe"></a>
+
+```typescript
+public readonly probe: ApplicationGatewayProbe[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayProbe[]
+
+Optional probes for health checks of the backend HTTP settings.
+
+---
+
+##### `redirectConfiguration`<sup>Optional</sup> <a name="redirectConfiguration" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.redirectConfiguration"></a>
+
+```typescript
+public readonly redirectConfiguration: ApplicationGatewayRedirectConfiguration[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayRedirectConfiguration[]
+
+Optional configurations for redirect rules.
+
+---
+
+##### `rewriteRuleSet`<sup>Optional</sup> <a name="rewriteRuleSet" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.rewriteRuleSet"></a>
+
+```typescript
+public readonly rewriteRuleSet: ApplicationGatewayRewriteRuleSet[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayRewriteRuleSet[]
+
+Optional rewrite rule sets for modifying HTTP request and response headers and bodies.
+
+---
+
+##### `sslCertificate`<sup>Optional</sup> <a name="sslCertificate" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.sslCertificate"></a>
+
+```typescript
+public readonly sslCertificate: ApplicationGatewaySslCertificate[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewaySslCertificate[]
+
+Optional SSL certificates for enabling HTTPS on the Application Gateway.
+
+---
+
+##### `sslPolicy`<sup>Optional</sup> <a name="sslPolicy" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.sslPolicy"></a>
+
+```typescript
+public readonly sslPolicy: ApplicationGatewaySslPolicy;
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewaySslPolicy
+
+Optional SSL policy configurations, defining the protocol and cipher suites used.
+
+---
+
+##### `sslProfile`<sup>Optional</sup> <a name="sslProfile" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.sslProfile"></a>
+
+```typescript
+public readonly sslProfile: ApplicationGatewaySslProfile[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewaySslProfile[]
+
+Optional SSL profiles for managing SSL termination and policy settings.
+
+---
+
+##### `subnet`<sup>Optional</sup> <a name="subnet" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.subnet"></a>
+
+```typescript
+public readonly subnet: Subnet;
+```
+
+- *Type:* @cdktf/provider-azurerm.subnet.Subnet
+
+Optional subnet for the Application Gateway.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Optional tags for the Application Gateway resource.
+
+---
+
+##### `tenantId`<sup>Optional</sup> <a name="tenantId" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.tenantId"></a>
+
+```typescript
+public readonly tenantId: string;
+```
+
+- *Type:* string
+
+Optional tenant ID for use with Key Vault, if applicable.
+
+---
+
+##### `timeouts`<sup>Optional</sup> <a name="timeouts" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.timeouts"></a>
+
+```typescript
+public readonly timeouts: ApplicationGatewayTimeouts;
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayTimeouts
+
+Optional timeout settings for the Application Gateway resources.
+
+---
+
+##### `trustedClientCertificate`<sup>Optional</sup> <a name="trustedClientCertificate" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.trustedClientCertificate"></a>
+
+```typescript
+public readonly trustedClientCertificate: ApplicationGatewayTrustedClientCertificate[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayTrustedClientCertificate[]
+
+Optional trusted client certificates for mutual authentication.
+
+---
+
+##### `trustedRootCertificate`<sup>Optional</sup> <a name="trustedRootCertificate" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.trustedRootCertificate"></a>
+
+```typescript
+public readonly trustedRootCertificate: ApplicationGatewayTrustedRootCertificate[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayTrustedRootCertificate[]
+
+Optional trusted root certificates for backend authentication.
+
+---
+
+##### `urlPathMap`<sup>Optional</sup> <a name="urlPathMap" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.urlPathMap"></a>
+
+```typescript
+public readonly urlPathMap: ApplicationGatewayUrlPathMap[];
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayUrlPathMap[]
+
+Optional URL path map for routing based on URL paths.
+
+---
+
+##### `wafConfiguration`<sup>Optional</sup> <a name="wafConfiguration" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.wafConfiguration"></a>
+
+```typescript
+public readonly wafConfiguration: ApplicationGatewayWafConfiguration;
+```
+
+- *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayWafConfiguration
+
+Optional Web Application Firewall (WAF) configuration to provide enhanced security.
+
+---
+
+##### `zones`<sup>Optional</sup> <a name="zones" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.zones"></a>
+
+```typescript
+public readonly zones: string[];
+```
+
+- *Type:* string[]
+
+Optional availability zones for the Application Gateway.
+
+---
+
+##### `privateIpAddress`<sup>Optional</sup> <a name="privateIpAddress" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.privateIpAddress"></a>
+
+```typescript
+public readonly privateIpAddress: string;
+```
+
+- *Type:* string
+
+Optional private IP address for the frontend of the Application Gateway.
+
+---
+
+##### `privateIpAddressAllocation`<sup>Optional</sup> <a name="privateIpAddressAllocation" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.privateIpAddressAllocation"></a>
+
+```typescript
+public readonly privateIpAddressAllocation: string;
+```
+
+- *Type:* string
+
+Allocation method for the private IP address (e.g., Static, Dynamic).
+
+---
+
+##### `publicIpAddress`<sup>Optional</sup> <a name="publicIpAddress" id="terraform-cdk-modules.azure_applicationgateway.IGatewayProps.property.publicIpAddress"></a>
+
+```typescript
+public readonly publicIpAddress: PublicIp;
+```
+
+- *Type:* @cdktf/provider-azurerm.publicIp.PublicIp
+
+Optional public IP address for the frontend of the Application Gateway.
 
 ---
 

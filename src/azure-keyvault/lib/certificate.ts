@@ -43,6 +43,8 @@ export interface CertificateIssuerProps {
 }
 
 export class SelfSignedCertificate extends Construct {
+  public certificate: KeyVaultCertificate;
+
   constructor(scope: Construct, id: string, props: SelfSignedCertificateProps) {
     super(scope, id);
 
@@ -98,6 +100,7 @@ export class SelfSignedCertificate extends Construct {
         },
       },
     );
+    this.certificate = certificate;
 
     // Accumulate all the fqdn values
     const dependencies: string[] = [];

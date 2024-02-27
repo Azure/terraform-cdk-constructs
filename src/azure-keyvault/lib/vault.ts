@@ -1,5 +1,8 @@
 import { KeyVault } from "@cdktf/provider-azurerm/lib/key-vault";
+import { KeyVaultCertificate } from "@cdktf/provider-azurerm/lib/key-vault-certificate"; // Adjust the import path based on the actual module location.
+import { KeyVaultKey } from "@cdktf/provider-azurerm/lib/key-vault-key";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
+
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import {
@@ -321,7 +324,10 @@ export class Vault extends AzureResource {
   }
 
   // Create Key Methods
-  public addRSAKey(keyVaultKeyName: string, expirationDate?: string) {
+  public addRSAKey(
+    keyVaultKeyName: string,
+    expirationDate?: string,
+  ): KeyVaultKey {
     const keyProps: KeyProps = {
       keyVaultId: this,
       name: keyVaultKeyName,
@@ -332,7 +338,8 @@ export class Vault extends AzureResource {
       accessPolicies: this.accessPolicies,
     };
 
-    new Key(this, keyVaultKeyName, keyProps);
+    const key = new Key(this, keyVaultKeyName, keyProps);
+    return key.vaultKey;
   }
 
   public addKey(
@@ -341,7 +348,7 @@ export class Vault extends AzureResource {
     keySize: number,
     keyOpts: string[],
     expirationDate?: string,
-  ) {
+  ): KeyVaultKey {
     const keyProps: KeyProps = {
       keyVaultId: this,
       name: keyVaultKeyName,
@@ -352,7 +359,8 @@ export class Vault extends AzureResource {
       accessPolicies: this.accessPolicies,
     };
 
-    new Key(this, keyVaultKeyName, keyProps);
+    const key = new Key(this, keyVaultKeyName, keyProps);
+    return key.vaultKey;
   }
 
   // Create Certificate Methods
@@ -363,7 +371,7 @@ export class Vault extends AzureResource {
     dnsNames: string[],
     actionType?: string,
     daysBeforeExpiry?: number,
-  ) {
+  ): KeyVaultCertificate {
     const keyProps: SelfSignedCertificateProps = {
       keyVaultId: this,
       name: certName,
@@ -373,8 +381,9 @@ export class Vault extends AzureResource {
       daysBeforeExpiry: daysBeforeExpiry,
       accessPolicies: this.accessPolicies,
     };
+    const cert = new SelfSignedCertificate(this, certName, keyProps);
 
-    new SelfSignedCertificate(this, certName, keyProps);
+    return cert.certificate;
   }
 
   public addCertIssuer(name: string, provider: string) {
