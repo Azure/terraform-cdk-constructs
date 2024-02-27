@@ -2998,7 +2998,7 @@ new azure_functionapp.FunctionAppLinux(scope: Construct, id: string, props: Func
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
 | <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.Initializer.parameter.id">id</a></code> | <code>string</code> | - The ID of this construct. |
-| <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.Initializer.parameter.props">props</a></code> | <code>terraform-cdk-modules.azure_functionapp.FunctionAppLinuxProps</code> | - The properties for the Azure Function App. |
+| <code><a href="#terraform-cdk-modules.azure_functionapp.FunctionAppLinux.Initializer.parameter.props">props</a></code> | <code>terraform-cdk-modules.azure_functionapp.FunctionAppLinuxProps</code> | - The properties for configuring the Azure Function App on Linux. |
 
 ---
 
@@ -3022,7 +3022,19 @@ The ID of this construct.
 
 - *Type:* terraform-cdk-modules.azure_functionapp.FunctionAppLinuxProps
 
-The properties for the Azure Function App.
+The properties for configuring the Azure Function App on Linux.
+
+The properties include:
+  - `name`: Required. Unique name for the Function App within Azure.
+  - `location`: Required. Azure Region for deployment.
+  - `resourceGroup`: Optional. Reference to the resource group for deployment.
+  - `storageAccount`: Optional. Reference to the storage account used by the Function App.
+  - `runtimeVersion`: Optional. Specifies the runtime version (Node.js, .NET, Java, etc.).
+  - `servicePlan`: Optional. ID of an existing App Service Plan.
+  - `servicePlanSku`: Optional. SKU for the App Service Plan.
+  - `tags`: Optional. Tags for resource management.
+  - `siteConfig`: Optional. Additional site configuration settings.
+  - Additional optional properties as described in `FunctionAppLinuxProps` interface.
 
 Example usage:
 ```typescript
@@ -3037,7 +3049,6 @@ tags: {
 "test": "test"
 }
 });
-
 ```
 
 ---
@@ -3229,6 +3240,7 @@ public readonly storageAccount: StorageAccount;
 
 
 ### Gateway <a name="Gateway" id="terraform-cdk-modules.azure_applicationgateway.Gateway"></a>
+
 
 #### Initializers <a name="Initializers" id="terraform-cdk-modules.azure_applicationgateway.Gateway.Initializer"></a>
 
@@ -11039,59 +11051,6 @@ The policy for key rotation.
 
 ---
 
-### KeyVaultNetworkAcls <a name="KeyVaultNetworkAcls" id="terraform-cdk-modules.azure_keyvault.KeyVaultNetworkAcls"></a>
-
-Network Access Control Lists (ACLs) configuration for an Azure Key Vault.
-
-#### Initializer <a name="Initializer" id="terraform-cdk-modules.azure_keyvault.KeyVaultNetworkAcls.Initializer"></a>
-
-```typescript
-import { azure_keyvault } from 'terraform-cdk-modules'
-
-const keyVaultNetworkAcls: azure_keyvault.KeyVaultNetworkAcls = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#terraform-cdk-modules.azure_keyvault.KeyVaultNetworkAcls.property.bypass">bypass</a></code> | <code>string</code> | Specifies whether traffic is bypassed or not. |
-| <code><a href="#terraform-cdk-modules.azure_keyvault.KeyVaultNetworkAcls.property.defaultAction">defaultAction</a></code> | <code>string</code> | The default action of the network rule set. |
-
----
-
-##### `bypass`<sup>Required</sup> <a name="bypass" id="terraform-cdk-modules.azure_keyvault.KeyVaultNetworkAcls.property.bypass"></a>
-
-```typescript
-public readonly bypass: string;
-```
-
-- *Type:* string
-
-Specifies whether traffic is bypassed or not.
-
-Accepted values are 'AzureServices' or 'None'.
-'AzureServices' allows bypassing of the network ACLs for Azure services.
-'None' means no bypass, all traffic is subjected to the network ACLs.
-
----
-
-##### `defaultAction`<sup>Required</sup> <a name="defaultAction" id="terraform-cdk-modules.azure_keyvault.KeyVaultNetworkAcls.property.defaultAction"></a>
-
-```typescript
-public readonly defaultAction: string;
-```
-
-- *Type:* string
-
-The default action of the network rule set.
-
-Accepted values are 'Allow' or 'Deny'.
-'Allow' means that all traffic is allowed unless explicitly denied by a rule.
-'Deny' means that all traffic is denied unless explicitly allowed by a rule.
-
----
-
 ### KustoDataConnectionProps <a name="KustoDataConnectionProps" id="terraform-cdk-modules.azure_eventhub.KustoDataConnectionProps"></a>
 
 #### Initializer <a name="Initializer" id="terraform-cdk-modules.azure_eventhub.KustoDataConnectionProps.Initializer"></a>
@@ -14001,7 +13960,7 @@ const vaultProps: azure_keyvault.VaultProps = { ... }
 | <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.name">name</a></code> | <code>string</code> | The name of the Key Vault. |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the Azure Resource Group. |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.tenantId">tenantId</a></code> | <code>string</code> | The Name of the SKU used for this Key Vault. |
-| <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.networkAcls">networkAcls</a></code> | <code>terraform-cdk-modules.azure_keyvault.KeyVaultNetworkAcls</code> | The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. |
+| <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.networkAcls">networkAcls</a></code> | <code>@cdktf/provider-azurerm.keyVault.KeyVaultNetworkAcls</code> | The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.purgeProtection">purgeProtection</a></code> | <code>boolean</code> | A map of IP network ACL rules. |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.sku">sku</a></code> | <code>string</code> | The tags to assign to the Key Vault. |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.VaultProps.property.softDeleteRetentionDays">softDeleteRetentionDays</a></code> | <code>number</code> | Specifies whether protection against purge is enabled for this Key Vault. |
@@ -14065,7 +14024,7 @@ Possible values are standard and premium.
 public readonly networkAcls: KeyVaultNetworkAcls;
 ```
 
-- *Type:* terraform-cdk-modules.azure_keyvault.KeyVaultNetworkAcls
+- *Type:* @cdktf/provider-azurerm.keyVault.KeyVaultNetworkAcls
 
 The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
 

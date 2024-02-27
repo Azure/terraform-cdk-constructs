@@ -21,7 +21,7 @@ export class exampleAzureResourceGroup extends BaseTestStack {
         name: "test",
         Env: "NonProd",
       },
-      ignoreChanges: ['tags["Environment"]'],
+      ignoreChanges: ['tags["Environment"]', 'tags["SkipSecurity"]'],
     });
   }
 }

@@ -61,25 +61,6 @@ export interface VaultProps {
 }
 
 /**
- * Network Access Control Lists (ACLs) configuration for an Azure Key Vault.
- */
-export interface KeyVaultNetworkAcls {
-  /**
-   * Specifies whether traffic is bypassed or not. Accepted values are 'AzureServices' or 'None'.
-   * 'AzureServices' allows bypassing of the network ACLs for Azure services.
-   * 'None' means no bypass, all traffic is subjected to the network ACLs.
-   */
-  readonly bypass: string;
-
-  /**
-   * The default action of the network rule set. Accepted values are 'Allow' or 'Deny'.
-   * 'Allow' means that all traffic is allowed unless explicitly denied by a rule.
-   * 'Deny' means that all traffic is denied unless explicitly allowed by a rule.
-   */
-  readonly defaultAction: string;
-}
-
-/**
  * Options for granting custom access permissions in Azure Key Vault.
  */
 export interface GrantCustomAccessOptions {
@@ -110,6 +91,7 @@ export interface GrantCustomAccessOptions {
 
 export class Vault extends AzureResource {
   readonly props: VaultProps;
+  public keyVault: KeyVault;
   public resourceGroup: ResourceGroup;
   public id: string;
   private accessPolicies: AccessPolicy[] = [];
@@ -382,7 +364,7 @@ export class Vault extends AzureResource {
       accessPolicies: this.accessPolicies,
     };
     const cert = new SelfSignedCertificate(this, certName, keyProps);
-
+      
     return cert.certificate;
   }
 

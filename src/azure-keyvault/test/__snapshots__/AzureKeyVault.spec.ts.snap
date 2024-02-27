@@ -38,6 +38,9 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
         "network_acls": {
           "bypass": "AzureServices",
           "default_action": "Allow",
+          "ip_rules": [
+            "0.0.0.0/0",
+          ],
         },
         "purge_protection_enabled": true,
         "resource_group_name": "\${azurerm_resource_group.rg.name}",
@@ -266,6 +269,11 @@ exports[`Azure Key Vault Example renders the Example Azure KeyVault and checks s
     },
     "azurerm_resource_group": {
       "rg": {
+        "lifecycle": {
+          "ignore_changes": [
+            "tags",
+          ],
+        },
         "location": "eastus",
         "name": "rg-\${var.name}",
       },
