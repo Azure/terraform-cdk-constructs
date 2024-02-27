@@ -6,8 +6,6 @@ junit.xml
 permissions-backup.acl
 /dist/changelog.md
 /dist/version.txt
-/.prettierignore
-/.prettierrc.json
 //
 /tsconfig.dev.json
 /src/
@@ -23,5 +21,3 @@ dist
 tsconfig.tsbuildinfo
 /.eslintrc.json
 !.jsii
-/.gitattributes
-/.projenrc.ts

@@ -29,6 +29,7 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
+!/.projenrc.js
 /test-reports/
 junit.xml
 /coverage/
@@ -50,6 +51,5 @@ tsconfig.json
 !/API.md
 !cdk.out
 cdktf.out
-test
+/test
 *terraform.*.tfstate*
-!/.projenrc.ts

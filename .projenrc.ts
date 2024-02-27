@@ -111,7 +111,7 @@ project.projectBuild.testTask.exec(
 // Add .gitignore entries
 project.gitignore.include("cdk.out");
 project.gitignore.exclude("cdktf.out");
-project.gitignore.exclude("test");
+project.gitignore.exclude("/test");
 project.gitignore.exclude("*terraform.*.tfstate*");
 
 project.prettier?.addIgnorePattern(".github");
