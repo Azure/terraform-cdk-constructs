@@ -1,4 +1,7 @@
-import { KeyVault } from "@cdktf/provider-azurerm/lib/key-vault";
+import {
+  KeyVault,
+  KeyVaultNetworkAcls,
+} from "@cdktf/provider-azurerm/lib/key-vault";
 import { KeyVaultCertificate } from "@cdktf/provider-azurerm/lib/key-vault-certificate"; // Adjust the import path based on the actual module location.
 import { KeyVaultKey } from "@cdktf/provider-azurerm/lib/key-vault-key";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
@@ -95,7 +98,6 @@ export class Vault extends AzureResource {
   public resourceGroup: ResourceGroup;
   public id: string;
   private accessPolicies: AccessPolicy[] = [];
-  public keyVault: KeyVault;
 
   constructor(scope: Construct, id: string, props: VaultProps) {
     super(scope, id);
@@ -364,7 +366,6 @@ export class Vault extends AzureResource {
       accessPolicies: this.accessPolicies,
     };
     const cert = new SelfSignedCertificate(this, certName, keyProps);
-      
     return cert.certificate;
   }
 

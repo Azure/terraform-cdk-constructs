@@ -44,7 +44,8 @@ export interface CertificateIssuerProps {
 
 export class SelfSignedCertificate extends Construct {
   public certificate: KeyVaultCertificate;
-
+  public id: string;
+  public secretId: string;
 
   constructor(scope: Construct, id: string, props: SelfSignedCertificateProps) {
     super(scope, id);
