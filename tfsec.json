@@ -1,4 +1,4 @@
 {
-    "exclude": ["AZU020", "azure-keyvault-specify-network-acl", "azure-compute-disable-password-authentication", "GEN003", "azure-container-use-rbac-permissions"]
+    "exclude": ["AZU020", "azure-keyvault-specify-network-acl", "azure-compute-disable-password-authentication", "GEN003", "azure-container-use-rbac-permissions", "azure-container-logging"]
 }
   

@@ -1,11 +1,11 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { PublicIp } from "@cdktf/provider-azurerm/lib/public-ip";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
 import { exampleAzureApplicationGateway } from "./ExampleAzureApplicationGateway";
 import "cdktf/lib/testing/adapters/jest";
 import * as apgw from "..";
 import * as util from "../../util/azureTenantIdHelpers";
-import { PublicIp } from "@cdktf/provider-azurerm/lib/public-ip";
 
 describe("Application Gateway With Defaults", () => {
   let stack: TerraformStack;
