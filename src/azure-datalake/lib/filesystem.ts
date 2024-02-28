@@ -42,7 +42,7 @@ export class DataLakeFilesystem extends Construct {
     }
 
     var config: StorageDataLakeGen2PathConfig = {
-      filesystemName: this.name,
+      filesystemName: this.filesystem.name,
       storageAccountId: this.storageAccountId,
       path: name,
       resource: "directory",
