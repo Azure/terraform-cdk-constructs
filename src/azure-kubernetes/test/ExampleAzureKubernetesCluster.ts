@@ -54,6 +54,10 @@ export class exampleAzureKubernetesCluster extends BaseTestStack {
       identity: {
         type: "SystemAssigned",
       },
+      azureActiveDirectoryRoleBasedAccessControl: {
+        managed: true,
+        azureRbacEnabled: true,
+      },
     });
 
     //Diag Settings

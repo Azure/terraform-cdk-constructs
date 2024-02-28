@@ -97,6 +97,7 @@ export class Cluster extends AzureResource {
       apiServerAuthorizedIpRanges: props.apiServerAuthorizedIpRanges,
       dnsPrefix: props.name,
       tags: props.tags,
+      roleBasedAccessControlEnabled: true,
       azureActiveDirectoryRoleBasedAccessControl:
         props.azureActiveDirectoryRoleBasedAccessControl,
       identity: props.identity,
