@@ -7758,8 +7758,11 @@ public readonly retentionInDays: number;
 ```
 
 - *Type:* number
+- *Default:* 90
 
 The number of days of retention.
+
+Possible values are 30, 60, 90, 120, 180, 270, 365, 550 or 730. Defaults to 90.
 
 ---
 
@@ -7782,6 +7785,7 @@ public readonly workspaceId: string;
 ```
 
 - *Type:* string
+- *Default:* If no workspace id is provided, a new one will be created automatically in the same resource group. The name will be the same as the Application Insights resource with a "-la" suffix.
 
 The id of the Log Analytics Workspace.
 
