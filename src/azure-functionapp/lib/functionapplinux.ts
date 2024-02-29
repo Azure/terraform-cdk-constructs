@@ -294,22 +294,6 @@ export class FunctionAppLinux extends AzureResource {
     this.name = functionApp.name;
   }
 
-  private setupResourceGroup(props: FunctionAppLinuxProps): ResourceGroup {
-    if (!props.resourceGroup) {
-      // Create a new resource group
-      const newResourceGroup = new ResourceGroup(this, "rg", {
-        name: `rg-${props.name}`,
-        location: props.location,
-        tags: props.tags,
-      });
-      // Use the name of the new resource group
-      return newResourceGroup;
-    } else {
-      // Use the provided resource group name
-      return props.resourceGroup;
-    }
-  }
-
   private setupStorageAccount(props: FunctionAppLinuxProps): StorageAccount {
     // Reference or create a new storage account that will be used by the Function App to store files
     if (!props.storageAccount) {

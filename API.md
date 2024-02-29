@@ -231,7 +231,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_storageaccount.Account.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_storageaccount.Account.addDiagSettings.parameter.props"></a>
@@ -598,7 +598,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_applicationinsights.AppInsights.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_applicationinsights.AppInsights.addDiagSettings.parameter.props"></a>
@@ -961,7 +961,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.core_azure.AzureResource.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.core_azure.AzureResource.addDiagSettings.parameter.props"></a>
@@ -1123,7 +1123,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.core_azure.AzureResourceWithAlert.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.core_azure.AzureResourceWithAlert.addDiagSettings.parameter.props"></a>
@@ -1551,7 +1551,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_eventhub.Cluster.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_eventhub.Cluster.addDiagSettings.parameter.props"></a>
@@ -1752,7 +1752,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_kusto.Cluster.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_kusto.Cluster.addDiagSettings.parameter.props"></a>
@@ -2924,7 +2924,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_functionapp.FunctionAppLinux.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_functionapp.FunctionAppLinux.addDiagSettings.parameter.props"></a>
@@ -3157,7 +3157,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_resourcegroup.Group.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_resourcegroup.Group.addDiagSettings.parameter.props"></a>
@@ -3824,7 +3824,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_virtualmachinescaleset.LinuxCluster.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_virtualmachinescaleset.LinuxCluster.addDiagSettings.parameter.props"></a>
@@ -4030,7 +4030,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_virtualmachine.LinuxVM.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_virtualmachine.LinuxVM.addDiagSettings.parameter.props"></a>
@@ -4374,7 +4374,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_eventhub.Namespace.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_eventhub.Namespace.addDiagSettings.parameter.props"></a>
@@ -4611,7 +4611,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_virtualnetwork.Network.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_virtualnetwork.Network.addDiagSettings.parameter.props"></a>
@@ -5354,7 +5354,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_containerregistry.Registry.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_containerregistry.Registry.addDiagSettings.parameter.props"></a>
@@ -5647,7 +5647,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_networksecuritygroup.SecurityGroup.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_networksecuritygroup.SecurityGroup.addDiagSettings.parameter.props"></a>
@@ -6222,7 +6222,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_keyvault.Vault.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_keyvault.Vault.addDiagSettings.parameter.props"></a>
@@ -6634,7 +6634,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_virtualmachinescaleset.WindowsCluster.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_virtualmachinescaleset.WindowsCluster.addDiagSettings.parameter.props"></a>
@@ -6829,7 +6829,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_virtualmachine.WindowsVM.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_virtualmachine.WindowsVM.addDiagSettings.parameter.props"></a>
@@ -7031,7 +7031,7 @@ public addAccess(objectId: string, customRoleName: string): void
 ##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_loganalytics.Workspace.addDiagSettings"></a>
 
 ```typescript
-public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
 ###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_loganalytics.Workspace.addDiagSettings.parameter.props"></a>
@@ -7301,6 +7301,7 @@ const accountProps: azure_storageaccount.AccountProps = { ... }
 | <code><a href="#terraform-cdk-modules.azure_storageaccount.AccountProps.property.location">location</a></code> | <code>string</code> | The Azure region in which to create the storage account. |
 | <code><a href="#terraform-cdk-modules.azure_storageaccount.AccountProps.property.name">name</a></code> | <code>string</code> | The name of the storage account. |
 | <code><a href="#terraform-cdk-modules.azure_storageaccount.AccountProps.property.accessTier">accessTier</a></code> | <code>string</code> | The data access tier of the storage account, which impacts storage costs and data retrieval speeds. |
+| <code><a href="#terraform-cdk-modules.azure_storageaccount.AccountProps.property.accountKind">accountKind</a></code> | <code>string</code> | Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.92.0/docs/resources/storage_account#account_kind StorageAccount#account_kind}. |
 | <code><a href="#terraform-cdk-modules.azure_storageaccount.AccountProps.property.accountReplicationType">accountReplicationType</a></code> | <code>string</code> | The type of replication to use for the storage account. |
 | <code><a href="#terraform-cdk-modules.azure_storageaccount.AccountProps.property.accountTier">accountTier</a></code> | <code>string</code> | The performance tier of the storage account. |
 | <code><a href="#terraform-cdk-modules.azure_storageaccount.AccountProps.property.enableHttpsTrafficOnly">enableHttpsTrafficOnly</a></code> | <code>boolean</code> | A boolean flag indicating whether to enforce HTTPS for data transfer to the storage account. |
@@ -7350,6 +7351,18 @@ public readonly accessTier: string;
 The data access tier of the storage account, which impacts storage costs and data retrieval speeds.
 
 Example values: Hot, Cool.
+
+---
+
+##### `accountKind`<sup>Optional</sup> <a name="accountKind" id="terraform-cdk-modules.azure_storageaccount.AccountProps.property.accountKind"></a>
+
+```typescript
+public readonly accountKind: string;
+```
+
+- *Type:* string
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.92.0/docs/resources/storage_account#account_kind StorageAccount#account_kind}.
 
 ---
 
