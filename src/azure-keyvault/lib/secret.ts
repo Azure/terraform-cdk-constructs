@@ -42,7 +42,7 @@ export interface SecretProps {
 }
 
 export class Secret extends Construct {
-  public readonly id: string;
+  public secretId: string;
 
   constructor(scope: Construct, id: string, props: SecretProps) {
     super(scope, id);
@@ -57,7 +57,7 @@ export class Secret extends Construct {
       expirationDate: props.expirationDate,
     });
 
-    this.id = secret.id;
+    this.secretId = secret.id;
 
     // Accumulate all the fqdn values
     const dependencies: string[] = [];

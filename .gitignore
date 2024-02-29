@@ -50,6 +50,6 @@ tsconfig.json
 !/API.md
 !cdk.out
 cdktf.out
-test
+/test
 *terraform.*.tfstate*
 !/.projenrc.ts

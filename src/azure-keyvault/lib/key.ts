@@ -43,6 +43,8 @@ export interface KeyProps {
 }
 
 export class Key extends Construct {
+  public vaultKey: KeyVaultKey;
+
   constructor(scope: Construct, id: string, props: KeyProps) {
     super(scope, id);
 
@@ -55,6 +57,7 @@ export class Key extends Construct {
       rotationPolicy: props.rotationPolicy,
       expirationDate: props.expires,
     });
+    this.vaultKey = key;
 
     // Accumulate all the fqdn values
     const dependencies: string[] = [];

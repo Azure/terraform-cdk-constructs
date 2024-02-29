@@ -1654,6 +1654,185 @@ public readonly ehClusterProps: ClusterProps;
 ---
 
 
+### Cluster <a name="Cluster" id="terraform-cdk-modules.azure_kubernetes.Cluster"></a>
+
+Class representing the AKS cluster resource.
+
+#### Initializers <a name="Initializers" id="terraform-cdk-modules.azure_kubernetes.Cluster.Initializer"></a>
+
+```typescript
+import { azure_kubernetes } from 'terraform-cdk-modules'
+
+new azure_kubernetes.Cluster(scope: Construct, id: string, props: ClusterProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.Initializer.parameter.id">id</a></code> | <code>string</code> | The unique ID or name for this construct. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.Initializer.parameter.props">props</a></code> | <code>terraform-cdk-modules.azure_kubernetes.ClusterProps</code> | The properties required to configure the AKS cluster. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="terraform-cdk-modules.azure_kubernetes.Cluster.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="terraform-cdk-modules.azure_kubernetes.Cluster.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique ID or name for this construct.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_kubernetes.Cluster.Initializer.parameter.props"></a>
+
+- *Type:* terraform-cdk-modules.azure_kubernetes.ClusterProps
+
+The properties required to configure the AKS cluster.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.addAccess">addAccess</a></code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+
+---
+
+##### `toString` <a name="toString" id="terraform-cdk-modules.azure_kubernetes.Cluster.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="terraform-cdk-modules.azure_kubernetes.Cluster.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, customRoleName: string): void
+```
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="terraform-cdk-modules.azure_kubernetes.Cluster.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+---
+
+###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="terraform-cdk-modules.azure_kubernetes.Cluster.addAccess.parameter.customRoleName"></a>
+
+- *Type:* string
+
+---
+
+##### `addDiagSettings` <a name="addDiagSettings" id="terraform-cdk-modules.azure_kubernetes.Cluster.addDiagSettings"></a>
+
+```typescript
+public addDiagSettings(props: BaseDiagnosticSettingsProps): void
+```
+
+###### `props`<sup>Required</sup> <a name="props" id="terraform-cdk-modules.azure_kubernetes.Cluster.addDiagSettings.parameter.props"></a>
+
+- *Type:* terraform-cdk-modules.core_azure.BaseDiagnosticSettingsProps
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="terraform-cdk-modules.azure_kubernetes.Cluster.isConstruct"></a>
+
+```typescript
+import { azure_kubernetes } from 'terraform-cdk-modules'
+
+azure_kubernetes.Cluster.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="terraform-cdk-modules.azure_kubernetes.Cluster.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.property.id">id</a></code> | <code>string</code> | The unique identifier of the AKS cluster resource. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.Cluster.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The Resource Group associated with the AKS cluster. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="terraform-cdk-modules.azure_kubernetes.Cluster.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="terraform-cdk-modules.azure_kubernetes.Cluster.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The unique identifier of the AKS cluster resource.
+
+---
+
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_kubernetes.Cluster.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+The Resource Group associated with the AKS cluster.
+
+---
+
+
 ### Cluster <a name="Cluster" id="terraform-cdk-modules.azure_kusto.Cluster"></a>
 
 #### Initializers <a name="Initializers" id="terraform-cdk-modules.azure_kusto.Cluster.Initializer"></a>
@@ -3748,6 +3927,7 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.Key.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#terraform-cdk-modules.azure_keyvault.Key.property.vaultKey">vaultKey</a></code> | <code>@cdktf/provider-azurerm.keyVaultKey.KeyVaultKey</code> | *No description.* |
 
 ---
 
@@ -3760,6 +3940,16 @@ public readonly node: Node;
 - *Type:* constructs.Node
 
 The tree node.
+
+---
+
+##### `vaultKey`<sup>Required</sup> <a name="vaultKey" id="terraform-cdk-modules.azure_keyvault.Key.property.vaultKey"></a>
+
+```typescript
+public readonly vaultKey: KeyVaultKey;
+```
+
+- *Type:* @cdktf/provider-azurerm.keyVaultKey.KeyVaultKey
 
 ---
 
@@ -5688,7 +5878,7 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.Secret.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#terraform-cdk-modules.azure_keyvault.Secret.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#terraform-cdk-modules.azure_keyvault.Secret.property.secretId">secretId</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -5704,10 +5894,10 @@ The tree node.
 
 ---
 
-##### `id`<sup>Required</sup> <a name="id" id="terraform-cdk-modules.azure_keyvault.Secret.property.id"></a>
+##### `secretId`<sup>Required</sup> <a name="secretId" id="terraform-cdk-modules.azure_keyvault.Secret.property.secretId"></a>
 
 ```typescript
-public readonly id: string;
+public readonly secretId: string;
 ```
 
 - *Type:* string
@@ -6140,6 +6330,7 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.SelfSignedCertificate.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#terraform-cdk-modules.azure_keyvault.SelfSignedCertificate.property.certificate">certificate</a></code> | <code>@cdktf/provider-azurerm.keyVaultCertificate.KeyVaultCertificate</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.SelfSignedCertificate.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#terraform-cdk-modules.azure_keyvault.SelfSignedCertificate.property.secretId">secretId</a></code> | <code>string</code> | *No description.* |
 
@@ -6154,6 +6345,16 @@ public readonly node: Node;
 - *Type:* constructs.Node
 
 The tree node.
+
+---
+
+##### `certificate`<sup>Required</sup> <a name="certificate" id="terraform-cdk-modules.azure_keyvault.SelfSignedCertificate.property.certificate"></a>
+
+```typescript
+public readonly certificate: KeyVaultCertificate;
+```
+
+- *Type:* @cdktf/provider-azurerm.keyVaultCertificate.KeyVaultCertificate
 
 ---
 
@@ -6419,7 +6620,7 @@ public addCertIssuer(name: string, provider: string): void
 ##### `addKey` <a name="addKey" id="terraform-cdk-modules.azure_keyvault.Vault.addKey"></a>
 
 ```typescript
-public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts: string[], expirationDate?: string): void
+public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts: string[], expirationDate?: string): KeyVaultKey
 ```
 
 ###### `keyVaultKeyName`<sup>Required</sup> <a name="keyVaultKeyName" id="terraform-cdk-modules.azure_keyvault.Vault.addKey.parameter.keyVaultKeyName"></a>
@@ -6455,7 +6656,7 @@ public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts
 ##### `addRSAKey` <a name="addRSAKey" id="terraform-cdk-modules.azure_keyvault.Vault.addRSAKey"></a>
 
 ```typescript
-public addRSAKey(keyVaultKeyName: string, expirationDate?: string): void
+public addRSAKey(keyVaultKeyName: string, expirationDate?: string): KeyVaultKey
 ```
 
 ###### `keyVaultKeyName`<sup>Required</sup> <a name="keyVaultKeyName" id="terraform-cdk-modules.azure_keyvault.Vault.addRSAKey.parameter.keyVaultKeyName"></a>
@@ -6503,7 +6704,7 @@ public addSecret(keyVaultSecretName: string, secretValue: string, expirationDate
 ##### `addSelfSignedCert` <a name="addSelfSignedCert" id="terraform-cdk-modules.azure_keyvault.Vault.addSelfSignedCert"></a>
 
 ```typescript
-public addSelfSignedCert(certName: string, subject: string, dnsNames: string[], actionType?: string, daysBeforeExpiry?: number): SelfSignedCertificate
+public addSelfSignedCert(certName: string, subject: string, dnsNames: string[], actionType?: string, daysBeforeExpiry?: number): KeyVaultCertificate
 ```
 
 ###### `certName`<sup>Required</sup> <a name="certName" id="terraform-cdk-modules.azure_keyvault.Vault.addSelfSignedCert.parameter.certName"></a>
@@ -9211,6 +9412,158 @@ public readonly tags: {[ key: string ]: string};
 - *Type:* {[ key: string ]: string}
 
 The tags to assign to the Application Insights resource.
+
+---
+
+### ClusterProps <a name="ClusterProps" id="terraform-cdk-modules.azure_kubernetes.ClusterProps"></a>
+
+Interface defining the properties required to create an AKS cluster.
+
+#### Initializer <a name="Initializer" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.Initializer"></a>
+
+```typescript
+import { azure_kubernetes } from 'terraform-cdk-modules'
+
+const clusterProps: azure_kubernetes.ClusterProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.defaultNodePool">defaultNodePool</a></code> | <code>@cdktf/provider-azurerm.kubernetesCluster.KubernetesClusterDefaultNodePool</code> | Configuration for the default node pool of the AKS cluster. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.location">location</a></code> | <code>string</code> | The Azure region where the AKS cluster will be deployed. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.name">name</a></code> | <code>string</code> | The name of the AKS cluster. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.apiServerAuthorizedIpRanges">apiServerAuthorizedIpRanges</a></code> | <code>string[]</code> | A list of IP address ranges that are authorized to access the AKS API server. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.azureActiveDirectoryRoleBasedAccessControl">azureActiveDirectoryRoleBasedAccessControl</a></code> | <code>@cdktf/provider-azurerm.kubernetesCluster.KubernetesClusterAzureActiveDirectoryRoleBasedAccessControl</code> | Configures integration of Azure Active Directory (AAD) with Kubernetes Role-Based Access Control (RBAC) for the AKS cluster. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.identity">identity</a></code> | <code>@cdktf/provider-azurerm.kubernetesCluster.KubernetesClusterIdentity</code> | The identity used for the AKS cluster. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The Azure Resource Group where the AKS cluster will be deployed. |
+| <code><a href="#terraform-cdk-modules.azure_kubernetes.ClusterProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to be applied to the AKS cluster resources for organizational purposes. |
+
+---
+
+##### `defaultNodePool`<sup>Required</sup> <a name="defaultNodePool" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.defaultNodePool"></a>
+
+```typescript
+public readonly defaultNodePool: KubernetesClusterDefaultNodePool;
+```
+
+- *Type:* @cdktf/provider-azurerm.kubernetesCluster.KubernetesClusterDefaultNodePool
+
+Configuration for the default node pool of the AKS cluster.
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The Azure region where the AKS cluster will be deployed.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the AKS cluster.
+
+Must be unique within the Azure region.
+
+---
+
+##### `apiServerAuthorizedIpRanges`<sup>Optional</sup> <a name="apiServerAuthorizedIpRanges" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.apiServerAuthorizedIpRanges"></a>
+
+```typescript
+public readonly apiServerAuthorizedIpRanges: string[];
+```
+
+- *Type:* string[]
+
+A list of IP address ranges that are authorized to access the AKS API server.
+
+This enhances the security of your cluster by ensuring that only traffic from these IP ranges can communicate with the Kubernetes API server.
+
+Specifying this list helps to protect your cluster from unauthorized access attempts. It's a critical security measure for clusters that are exposed to the internet. If you specify an empty array, no IP addresses will be allowed to access the API server, effectively blocking all access. If this property is not defined, all IP addresses are allowed by default, which is not recommended for production environments.
+
+Example:
+apiServerAuthorizedIpRanges: ['203.0.113.0/24', '198.51.100.0/24']
+
+It's important to configure this property carefully, based on your organization's network policies and access requirements.
+
+---
+
+##### `azureActiveDirectoryRoleBasedAccessControl`<sup>Optional</sup> <a name="azureActiveDirectoryRoleBasedAccessControl" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.azureActiveDirectoryRoleBasedAccessControl"></a>
+
+```typescript
+public readonly azureActiveDirectoryRoleBasedAccessControl: KubernetesClusterAzureActiveDirectoryRoleBasedAccessControl;
+```
+
+- *Type:* @cdktf/provider-azurerm.kubernetesCluster.KubernetesClusterAzureActiveDirectoryRoleBasedAccessControl
+
+Configures integration of Azure Active Directory (AAD) with Kubernetes Role-Based Access Control (RBAC) for the AKS cluster.
+
+This feature enables the use of AAD to manage user and group access permissions to the Kubernetes cluster resources, leveraging AAD's robust identity and access management capabilities.
+
+Utilizing AAD with Kubernetes RBAC provides:
+- Enhanced security through AAD's identity protection features.
+- Simplified user and group management by leveraging existing AAD definitions.
+- Streamlined access control for Kubernetes resources, allowing for the definition of roles and role bindings based on AAD identities.
+
+This property is optional but highly recommended for clusters where security and access governance are a priority. It allows for finer-grained access control and integrates the cluster's authentication and authorization processes with corporate identity management systems.
+
+Example configuration might include specifying the AAD tenant details, enabling Azure RBAC for Kubernetes authorization, and optionally defining specific AAD groups for cluster admin roles.
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.identity"></a>
+
+```typescript
+public readonly identity: KubernetesClusterIdentity;
+```
+
+- *Type:* @cdktf/provider-azurerm.kubernetesCluster.KubernetesClusterIdentity
+
+The identity used for the AKS cluster.
+
+Can be either SystemAssigned or UserAssigned.
+Optional.
+
+---
+
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+The Azure Resource Group where the AKS cluster will be deployed.
+
+Optional. If not provided, a new resource group will be created.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="terraform-cdk-modules.azure_kubernetes.ClusterProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to be applied to the AKS cluster resources for organizational purposes.
+
+Key-value pairs. Optional.
 
 ---
 
