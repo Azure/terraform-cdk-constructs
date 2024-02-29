@@ -131,7 +131,7 @@ exports[`Application Insights Example renders the Application Insights and check
       },
     },
     "azurerm_role_assignment": {
-      "testappi_TfTokenTOKEN68Contributor_role_E3D14DFD": {
+      "testappi_TfTokenTOKEN74Contributor_role_3A86341D": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_application_insights.testappi_appinsights_8B7486B2.id}",
@@ -191,7 +191,16 @@ exports[`Application Insights With Defaults renders an Application Insights with
         "application_type": "web",
         "location": "eastus",
         "name": "appi-test",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}"
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "workspace_id": "\${azurerm_log_analytics_workspace.testAzureApplicationInsightsDefaults_log_analytics_5C943AED.id}"
+      }
+    },
+    "azurerm_log_analytics_workspace": {
+      "testAzureApplicationInsightsDefaults_log_analytics_5C943AED": {
+        "location": "eastus",
+        "name": "appi-test-la",
+        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "sku": "PerGB2018"
       }
     },
     "azurerm_resource_group": {

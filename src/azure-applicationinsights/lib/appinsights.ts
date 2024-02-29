@@ -1,5 +1,6 @@
 import { ApplicationInsights } from "@cdktf/provider-azurerm/lib/application-insights";
 import { KeyVaultSecret } from "@cdktf/provider-azurerm/lib/key-vault-secret";
+import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
@@ -25,6 +26,8 @@ export interface AppInsightsProps {
   readonly resourceGroup: ResourceGroup;
   /**
    * The number of days of retention.
+   * Possible values are 30, 60, 90, 120, 180, 270, 365, 550 or 730. Defaults to 90.
+   * @default 90
    */
   readonly retentionInDays?: number;
   /**
@@ -45,6 +48,9 @@ export interface AppInsightsProps {
   readonly dailyDataCapNotificationDisabled?: boolean;
   /**
    * The id of the Log Analytics Workspace.
+   * @default - If no workspace id is provided, a new one will be created automatically
+   * in the same resource group. The name will be the same as the Application Insights
+   * resource with a "-la" suffix.
    */
   readonly workspaceId?: string;
 }
@@ -74,7 +80,7 @@ export class AppInsights extends AzureResource {
         dailyDataCapNotificationsDisabled:
           props.dailyDataCapNotificationDisabled,
         retentionInDays: props.retentionInDays,
-        workspaceId: props.workspaceId,
+        workspaceId: this.setupLogAnalytics(props),
       },
     );
 
@@ -135,5 +141,27 @@ export class AppInsights extends AzureResource {
       name: keyVaultSecretName,
       value: this.instrumentationKey,
     });
+  }
+
+  private setupLogAnalytics(props: AppInsightsProps): string {
+    if (cdktf.canInspect(props.workspaceId)) {
+      // Use the provided Log Analytics Workspace
+      return props.workspaceId!;
+    } else {
+      // Create a new Log Analytics Workspace
+      const logAnalyticsWorkspace = new LogAnalyticsWorkspace(
+        this,
+        "log_analytics",
+        {
+          location: props.location,
+          name: `${props.name}-la`,
+          resourceGroupName: props.resourceGroup.name,
+          sku: "PerGB2018",
+          retentionInDays: props.retentionInDays,
+          tags: props.tags,
+        },
+      );
+      return logAnalyticsWorkspace.id;
+    }
   }
 }

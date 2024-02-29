@@ -26,8 +26,10 @@ export abstract class AzureResource extends Construct {
   }
 
   // Diag Settings Methods
-  public addDiagSettings(props: BaseDiagnosticSettingsProps) {
-    new DiagnosticSettings(this, "diagsettings", {
+  public addDiagSettings(
+    props: BaseDiagnosticSettingsProps,
+  ): DiagnosticSettings {
+    return new DiagnosticSettings(this, "diagsettings", {
       name: props.name || "diag-settings",
       logAnalyticsWorkspaceId: props.logAnalyticsWorkspaceId,
       eventhubAuthorizationRuleId: props.eventhubAuthorizationRuleId,
@@ -36,6 +38,22 @@ export abstract class AzureResource extends Construct {
       targetResourceId: this.id,
       logAnalyticsDestinationType: undefined,
     });
+  }
+
+  protected setupResourceGroup(props: any): ResourceGroup {
+    if (!props.resourceGroup) {
+      // Create a new resource group
+      const newResourceGroup = new ResourceGroup(this, "rg", {
+        name: `rg-${props.name}`,
+        location: props.location,
+        tags: props.tags,
+      });
+      // Use the name of the new resource group
+      return newResourceGroup;
+    } else {
+      // Use the provided resource group name
+      return props.resourceGroup;
+    }
   }
 }
 
