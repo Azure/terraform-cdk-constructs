@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Azure Data Lake Example renders the Example Data Lake and checks snapshot 1`] = `
+"{
+  "output": {
+    "resource_group_name": {
+      "value": "\${azurerm_resource_group.rg.name}"
+    },
+    "storage_account_account_kind": {
+      "value": "\${azurerm_storage_account.datalakestorageAccount_storageaccount_8587B918.account_kind}"
+    },
+    "storage_account_account_tier": {
+      "value": "\${azurerm_storage_account.datalakestorageAccount_storageaccount_8587B918.account_tier}"
+    },
+    "storage_account_name": {
+      "value": "\${azurerm_storage_account.datalakestorageAccount_storageaccount_8587B918.name}"
+    }
+  },
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_resource_group": {
+      "rg": {
+        "location": "eastus",
+        "name": "rg-\${var.name}"
+      }
+    },
+    "azurerm_storage_account": {
+      "datalakestorageAccount_storageaccount_8587B918": {
+        "access_tier": "Hot",
+        "account_kind": "StorageV2",
+        "account_replication_type": "LRS",
+        "account_tier": "Standard",
+        "enable_https_traffic_only": true,
+        "is_hns_enabled": true,
+        "location": "eastus",
+        "min_tls_version": "TLS1_2",
+        "name": "test42348808",
+        "resource_group_name": "\${azurerm_resource_group.rg.name}"
+      }
+    },
+    "azurerm_storage_data_lake_gen2_filesystem": {
+      "datalake_16ED4CF8": {
+        "name": "datalake",
+        "storage_account_id": "\${azurerm_storage_account.datalakestorageAccount_storageaccount_8587B918.id}"
+      }
+    },
+    "azurerm_storage_data_lake_gen2_path": {
+      "datalake_test_path_F1438236": {
+        "filesystem_name": "datalake",
+        "path": "test",
+        "resource": "directory",
+        "storage_account_id": "\${azurerm_storage_account.datalakestorageAccount_storageaccount_8587B918.id}"
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.70.0"
+      }
+    }
+  },
+  "variable": {
+    "name": {
+      "default": "test",
+      "description": "System name used to randomize the resources",
+      "type": "string"
+    }
+  }
+}"
+`;
+
+exports[`Azure Data Lake With Defaults renders an Azure Data Lake with defaults and checks snapshot 1`] = `
+"{
+  "provider": {
+    "azurerm": [
+      {
+        "features": {
+        }
+      }
+    ]
+  },
+  "resource": {
+    "azurerm_resource_group": {
+      "datalake_rg_1A5E6EEB": {
+        "location": "eastus",
+        "name": "rg-test42348808"
+      }
+    },
+    "azurerm_storage_account": {
+      "datalakestorageAccount_storageaccount_8587B918": {
+        "access_tier": "Hot",
+        "account_kind": "StorageV2",
+        "account_replication_type": "LRS",
+        "account_tier": "Standard",
+        "enable_https_traffic_only": true,
+        "is_hns_enabled": true,
+        "location": "eastus",
+        "min_tls_version": "TLS1_2",
+        "name": "test42348808",
+        "resource_group_name": "\${azurerm_resource_group.datalake_rg_1A5E6EEB.name}"
+      }
+    }
+  },
+  "terraform": {
+    "required_providers": {
+      "azurerm": {
+        "source": "azurerm",
+        "version": "3.70.0"
+      }
+    }
+  }
+}"
+`;
