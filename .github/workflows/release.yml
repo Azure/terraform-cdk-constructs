@@ -33,6 +33,11 @@ jobs:
         run: yarn install --check-files --frozen-lockfile
       - name: release
         run: npx projen release
+        env:
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZTFREADER_SUBSCRIPTIONID }}
+          ARM_TENANT_ID: ${{ secrets.AZTFREADER_TENANT_ID }}
+          ARM_CLIENT_ID: ${{ secrets.AZTFREADER_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.AZTFREADER_CLIENT_SECRET }}
       - name: Check if version has already been tagged
         id: check_tag_exists
         run: |-

@@ -73,6 +73,19 @@ if (project.jest && project.jest.config) {
 }
 project.tsconfigDev.include.push("**/*.spec.ts");
 
+const releaseWorkflow = project.tryFindObjectFile(
+  ".github/workflows/release.yml",
+);
+
+releaseWorkflow?.patch(
+  JsonPatch.add("/jobs/release/steps/4/env", {
+    ARM_SUBSCRIPTION_ID: "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
+    ARM_TENANT_ID: "${{ secrets.AZTFREADER_TENANT_ID }}",
+    ARM_CLIENT_ID: "${{ secrets.AZTFREADER_CLIENT_ID }}",
+    ARM_CLIENT_SECRET: "${{ secrets.AZTFREADER_CLIENT_SECRET }}",
+  }),
+);
+
 // Build Workflow
 const buildWorkflow = project.tryFindObjectFile(".github/workflows/build.yml");
 buildWorkflow?.patch(JsonPatch.remove("/jobs/build/steps/0/with")); // Remove because build tries to copy forked repo which is private
