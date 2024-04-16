@@ -113,18 +113,4 @@ export class Cluster extends AzureResource {
    * @param props The properties provided to configure the AKS cluster.
    * @returns The Resource Group where the AKS cluster will be deployed.
    */
-  private setupResourceGroup(props: ClusterProps): ResourceGroup {
-    if (!props.resourceGroup) {
-      // Create a new resource group if not provided
-      const newResourceGroup = new ResourceGroup(this, "rg", {
-        name: `rg-${props.name}`,
-        location: props.location,
-        tags: props.tags,
-      });
-      return newResourceGroup;
-    } else {
-      // Use the provided resource group
-      return props.resourceGroup;
-    }
-  }
 }

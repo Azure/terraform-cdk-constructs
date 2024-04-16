@@ -7,11 +7,22 @@ const project = new cdktf.ConstructLibraryCdktf({
   authorAddress: "https://microsoft.com",
   cdktfVersion: "0.17.3",
   jsiiVersion: "~5.2.0",
+  description:
+    "A collection of CDK modules for provisioning and managing Terraform resources efficiently.",
+  keywords: [
+    "cdk",
+    "cdktf",
+    "terraform",
+    "infrastructure",
+    "cloud",
+    "devops",
+    "azure",
+  ],
   constructsVersion: "^10.1.106",
   typescriptVersion: "~5.2.0", // should always be the same major/minor as JSII
   minNodeVersion: "20.10.0",
   defaultReleaseBranch: "main",
-  name: "terraform-cdk-modules",
+  name: "@microsoft/terraform-cdk-constructs",
   projenrcTs: true,
   prerelease: "pre",
   jest: true,
@@ -47,7 +58,7 @@ const project = new cdktf.ConstructLibraryCdktf({
     //"constructs@10.1.106",
     "@types/moment@^2.13.0",
   ],
-  releaseToNpm: true,
+  releaseToNpm: false,
 });
 
 // Required for jest to work with CDK tests
@@ -61,36 +72,6 @@ if (project.jest && project.jest.config) {
   };
 }
 project.tsconfigDev.include.push("**/*.spec.ts");
-// Release Workflow
-
-// Add internal npm auth to pipelines
-const setupNpmrcScript = {
-  name: "Setup .npmrc",
-  run: 'ENCODED_TOKEN=$(echo -n ${{ secrets.AZURE_DEVOPS_FEED_PAT }} | base64)\necho "AUTH_TOKEN=$ENCODED_TOKEN" >> $GITHUB_ENV\nexport AUTH_TOKEN=$ENCODED_TOKEN\n\nAZURE_DEVOPS_URL=${{ secrets.AZURE_DEVOPS_URL }}\n\ncat << EOF > .npmrc\nregistry=https://$AZURE_DEVOPS_URL/npm/registry/\nalways-auth=true\n; begin auth token\n//${AZURE_DEVOPS_URL}/npm/registry/:username=msasg\n//${AZURE_DEVOPS_URL}/npm/registry/:_password=\\${AUTH_TOKEN}\n//${AZURE_DEVOPS_URL}/npm/registry/:email=nothing\n//${AZURE_DEVOPS_URL}/npm/:username=msasg\n//${AZURE_DEVOPS_URL}/npm/:_password=\\${AUTH_TOKEN}\n//${AZURE_DEVOPS_URL}/npm/:email=nothing\n; end auth token\nEOF',
-  shell: "bash",
-};
-
-const releaseWorkflow = project.tryFindObjectFile(
-  ".github/workflows/release.yml",
-);
-releaseWorkflow?.patch(
-  JsonPatch.add("/jobs/release_npm/steps/1", setupNpmrcScript),
-);
-releaseWorkflow?.patch(JsonPatch.remove("/jobs/release_npm/steps/8/env"));
-releaseWorkflow?.patch(
-  JsonPatch.add("/jobs/release/steps/4/env", {
-    ARM_SUBSCRIPTION_ID: "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
-    ARM_TENANT_ID: "${{ secrets.AZTFREADER_TENANT_ID }}",
-    ARM_CLIENT_ID: "${{ secrets.AZTFREADER_CLIENT_ID }}",
-    ARM_CLIENT_SECRET: "${{ secrets.AZTFREADER_CLIENT_SECRET }}",
-  }),
-);
-releaseWorkflow?.patch(
-  JsonPatch.add(
-    "/jobs/release_npm/steps/8/run",
-    'PACKAGE_FILE=$(ls dist/js/*.tgz)\nnpm publish "$PACKAGE_FILE"',
-  ),
-);
 
 // Build Workflow
 const buildWorkflow = project.tryFindObjectFile(".github/workflows/build.yml");
