@@ -1,0 +1,82 @@
+# Azure DevOps Pipeline Configuration
+parameters:
+- name: releaseTag
+  displayName: 'Release Tag'
+  type: string
+  default: 'latest'  # Default can be set to 'latest' or a specific version
+
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    echo "Fetching GitHub release artifact for tag ${{ parameters.releaseTag }}..."
+    # Fetch the release data
+    release_data=$(curl -s -H "Authorization: token $(GitHubPAT)" \
+      "https://api.github.com/repos/Azure/terraform-cdk-modules/releases/tags/${{ parameters.releaseTag }}")
+    
+    # Parse the JSON to get the download URL of the first asset
+    artifact_url=$(echo $release_data | jq -r '.assets[0].browser_download_url')
+    
+    # Check if the artifact URL exists
+    if [ -z "$artifact_url" ] || [ "$artifact_url" == "null" ]; then
+      echo "No assets found for this release."
+      exit 1
+    else
+      echo "Downloading artifact from $artifact_url..."
+      # Download the artifact
+      curl -L -H "Authorization: token $(GitHubPAT)" -o $(Build.ArtifactStagingDirectory)/release_artifact.zip "$artifact_url"
+    fi
+  displayName: 'Download GitHub Release Artifact'
+  env:
+    GitHubPAT: $(GitHubPAT)  # Ensure this is stored as a secret in Azure DevOps
+
+- task: ExtractFiles@1
+  inputs:
+    archiveFilePatterns: '$(Build.ArtifactStagingDirectory)/release_artifact.zip'
+    destinationFolder: '$(Build.ArtifactStagingDirectory)'
+    cleanDestinationFolder: true
+  displayName: 'Extract Release Artifact'
+
+- script: |
+    echo "Restoring build artifact permissions..."
+    cd $(Build.ArtifactStagingDirectory)/dist && setfacl --restore=permissions-backup.acl
+  displayName: 'Restore Build Artifact Permissions'
+  continueOnError: true
+
+- script: |
+    echo "Preparing repository..."
+    mv $(Build.ArtifactStagingDirectory)/dist $(Build.ArtifactStagingDirectory)/.repo
+  displayName: 'Prepare Repository'
+
+- script: |
+    echo "Installing dependencies..."
+    cd $(Build.ArtifactStagingDirectory)/.repo && yarn install --check-files --frozen-lockfile
+  displayName: 'Install Dependencies'
+
+- script: |
+    echo "Creating JavaScript artifact..."
+    cd $(Build.ArtifactStagingDirectory)/.repo && npx projen package:js
+  displayName: 'Create JavaScript Artifact'
+
+- script: |
+    echo "Collecting JavaScript artifact..."
+    mv $(Build.ArtifactStagingDirectory)/.repo/dist $(Build.ArtifactStagingDirectory)/dist
+  displayName: 'Collect JavaScript Artifact'
+
+# Add the EsrpRelease task to publish the artifact
+- task: EsrpRelease@6
+  inputs:
+    ConnectedServiceName: 'ESRPReleaseConnection'
+    Intent: 'PackageDistribution'
+    ContentType: 'npm'
+    ContentSource: 'Folder'
+    FolderLocation: '$(Build.ArtifactStagingDirectory)/dist'
+    WaitForReleaseCompletion: true
+    Owners: 'lukeorellana@microsoft.com;zgleason@microsoft.com;alexho@microsoft.com'
+    Approvers: 'dabryant@microsoft.com'
+    ServiceEndpointUrl: 'https://api.esrp.microsoft.com'
+    MainPublisher: 'ESRPRELPACMAN'
+    DomainTenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47'
