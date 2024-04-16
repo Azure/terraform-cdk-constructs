@@ -1,5 +1,6 @@
 {
-  "name": "terraform-cdk-modules",
+  "name": "@microsoft/terraform-cdk-constructs",
+  "description": "A collection of CDK modules for provisioning and managing Terraform resources efficiently.",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/terraform-cdk-modules.git"
@@ -16,7 +17,6 @@
     "eslint": "npx projen eslint",
     "package": "npx projen package",
     "package-all": "npx projen package-all",
-    "package:js": "npx projen package:js",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
@@ -81,14 +81,22 @@
     "ts-md5"
   ],
   "keywords": [
+    "azure",
     "cdk",
-    "cdktf"
+    "cdktf",
+    "cloud",
+    "devops",
+    "infrastructure",
+    "terraform"
   ],
   "engines": {
     "node": ">= 20.10.0"
   },
   "main": "lib/index.js",
   "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.0.0",
   "jest": {
     "testMatch": [
