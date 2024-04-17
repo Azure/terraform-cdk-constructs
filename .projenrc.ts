@@ -58,7 +58,7 @@ const project = new cdktf.ConstructLibraryCdktf({
     //"constructs@10.1.106",
     "@types/moment@^2.13.0",
   ],
-  releaseToNpm: false,
+  releaseToNpm: true,
 });
 
 // Required for jest to work with CDK tests
@@ -85,6 +85,7 @@ releaseWorkflow?.patch(
     ARM_CLIENT_SECRET: "${{ secrets.AZTFREADER_CLIENT_SECRET }}",
   }),
 );
+releaseWorkflow?.patch(JsonPatch.remove("/jobs/release_npm")); // remove npm release job, release is handled elsewhere
 
 // Build Workflow
 const buildWorkflow = project.tryFindObjectFile(".github/workflows/build.yml");
