@@ -13,7 +13,7 @@ With L2 Constructs, you get the following benefits:
 
 ## Quick Example
 
-Let's dive into a quick example that showcases the simplicity and power of L2 Constructs. We'll create a storage account, add a container to it, and then upload a blob—all with a few lines of intuitive, object-oriented code:
+This is a quick example that showcases the simplicity and power of L2 Constructs. We'll create a storage account, add a container to it, and then upload a blob—all with a few lines of intuitive, object-oriented code:
 
 ```typescript
 
@@ -35,7 +35,7 @@ container.addBlob("testblob.txt", "../../../test.txt");
 
 ## Getting Started
 
-This guide will walk you through the process of using the Cloud Development Kit for Terraform (CDKTF) to define and provision infrastructure on Azure. We'll be using the Azure modules to build and manage cloud resources in an object-oriented way.
+This guide will walk you through the process of using the Azure L2 Constructs to define and provision infrastructure on Azure. 
 
 ### Prerequisites
 Make sure you have Node.js and npm installed on your machine. These will be used to install the CDK for Terraform and Azure provider packages.
@@ -106,6 +106,20 @@ Finally, deploy your infrastructure to Azure:
 ```sh
 cdktf deploy
 ```
+## Supported Languages
+
+Currently, our CDK L2 constructs are available in the following languages:
+
+| Language   | Status       |
+|------------|--------------|
+| TypeScript | Available    |
+| Python     | Coming soon  |
+| Java       | Coming soon  |
+| Go         | Coming soon  |
+| C#         | Coming soon  |
+
+Stay tuned for updates as we work to expand support to other popular programming languages!
+
 
 ## Contributing
 
