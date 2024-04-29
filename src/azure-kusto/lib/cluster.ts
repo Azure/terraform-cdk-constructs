@@ -84,6 +84,30 @@ export class Cluster extends AzureResource {
   public resourceGroup: ResourceGroup;
   public readonly uri: string;
 
+  /**
+   * Represents a Kusto (Azure Data Explorer) cluster in Azure.
+   *
+   * This class is responsible for the creation and management of a Kusto Cluster, which is a highly scalable and secure
+   * analytics service for ingesting, storing, and analyzing large volumes of data. The cluster supports various configurations
+   * tailored to the needs of specific data workloads and security requirements.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+   * @param id - The unique identifier for this instance of the cluster.
+   * @param kustoProps - The properties required to configure the Kusto cluster, as defined in the ClusterProps interface.
+   *
+   * Example usage:
+   * ```typescript
+   * new Cluster(this, 'MyKustoCluster', {
+   *   name: 'example-cluster',
+   *   location: 'West US',
+   *   resourceGroup: myResourceGroup,
+   *   sku: { tier: 'Standard', name: 'D13_v2', capacity: 2 },
+   *   tags: {
+   *     project: 'Data Analytics'
+   *   }
+   * });
+   * ```
+   */
   constructor(scope: Construct, id: string, kustoProps: ClusterProps) {
     super(scope, id);
     this.kustoProps = kustoProps;
@@ -183,6 +207,35 @@ export class Cluster extends AzureResource {
     cdktfTerraformOutputKustoIdentity.overrideLogicalId("Kusto_identity");
   }
 
+  /**
+   * Adds a new database to the Azure Kusto Cluster.
+   *
+   * This method creates a database within the Azure Data Explorer (Kusto) cluster, defined by the properties provided.
+   * A database in Kusto serves as a logical group to manage various tables and store data. It is essential for performing
+   * data analytics and running queries. The database configuration can include settings like hot cache and soft delete periods,
+   * which optimize query performance and manage data lifecycle according to specific requirements.
+   *
+   * @param databaseProps - The properties required to create the database. These properties should include:
+   *                        - `kusto`: Reference to the Kusto cluster to which the database will be added.
+   *                        - `name`: The name of the database, which must be unique within the cluster.
+   *                        - `hotCachePeriod`: Optional. Specifies the duration that data should be kept in cache for faster query access.
+   *                        - `softDeletePeriod`: Optional. Specifies the duration that data should be retained before it stops being accessible to queries.
+   *                          Both the hot cache and soft delete periods should be specified in ISO 8601 duration format.
+   *
+   * @returns A `Database` object representing the newly created database within the Kusto cluster.
+   *
+   * Example usage:
+   * ```typescript
+   * const myDatabase = myCluster.addDatabase({
+   *   kusto: myKustoCluster,
+   *   name: 'OperationalData',
+   *   hotCachePeriod: 'P14D', // 14 days
+   *   softDeletePeriod: 'P365D' // 1 year
+   * });
+   * ```
+   * This method facilitates the efficient setup and scaling of databases within an Azure Kusto cluster, allowing
+   * for complex data analytics operations across large datasets.
+   */
   public addDatabase(databaseProps: DatabaseProps) {
     return new Database(this, databaseProps.name, databaseProps);
   }

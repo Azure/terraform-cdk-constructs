@@ -77,10 +77,31 @@ export class Cluster extends AzureResource {
   public resourceGroup: ResourceGroup;
 
   /**
-   * Constructs a new AKS cluster.
-   * @param scope The scope in which to define this construct.
-   * @param id The unique ID or name for this construct.
-   * @param props The properties required to configure the AKS cluster.
+   * Represents an Azure Kubernetes Service (AKS) cluster resource in Azure.
+   *
+   * This class is responsible for the creation and management of an AKS cluster, allowing for the deployment and orchestration
+   * of containerized applications using Kubernetes within the Azure cloud platform.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+   * @param id - The unique identifier for this instance of the AKS cluster.
+   * @param props - The properties required to configure the AKS cluster, as defined in the ClusterProps interface.
+   *
+   * Example usage:
+   * ```typescript
+   * new Cluster(this, 'MyAKSCluster', {
+   *   name: 'example-cluster',
+   *   location: 'East US',
+   *   defaultNodePool: {
+   *     vmSize: 'Standard_D2_v3',
+   *     nodeCount: 3,
+   *     type: 'VirtualMachineScaleSets'
+   *   },
+   *   resourceGroup: existingResourceGroup,
+   *   tags: {
+   *     environment: 'production'
+   *   }
+   * });
+   * ```
    */
   constructor(scope: Construct, id: string, props: ClusterProps) {
     super(scope, id);

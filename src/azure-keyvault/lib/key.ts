@@ -45,6 +45,42 @@ export interface KeyProps {
 export class Key extends Construct {
   public vaultKey: KeyVaultKey;
 
+  /**
+   * Constructs a new Key resource in Azure Key Vault.
+   *
+   * This class is responsible for the creation and management of a cryptographic key stored in Azure Key Vault.
+   * The key can be used for a variety of cryptographic operations, such as encryption, decryption, signing, or
+   * verifying signatures, depending on the permissions granted. It supports different key types and configurations,
+   * allowing for customization to meet specific security requirements.
+   *
+   * @param scope - The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack.
+   * @param id - The unique identifier for this instance of the Key.
+   * @param props - The properties for creating the key as defined in KeyProps. These properties include:
+   *                - `name`: Required. The name of the key as it will appear in Azure Key Vault.
+   *                - `keyVaultId`: Required. The ID of the Azure Key Vault where the key will be created.
+   *                - `keyType`: Required. The type of cryptographic key to create (e.g., RSA, EC).
+   *                - `keySize`: Optional. The size of the key, typically specified for RSA keys.
+   *                - `keyOpts`: Optional. Additional options or attributes related to the key's capabilities such as encrypt, decrypt, wrapKey, unwrapKey.
+   *                - `rotationPolicy`: Optional. The policy settings for rotating the key automatically.
+   *                - `expires`: Optional. The expiration date of the key in UTC format (YYYY-MM-DDTHH:MM:SSZ).
+   *                - `accessPolicies`: Required. Access policies defining who can access this key within the Key Vault.
+   *
+   * Example usage:
+   * ```typescript
+   * new Key(this, 'myKey', {
+   *   name: 'encryptionKey',
+   *   keyVaultId: myKeyVault,
+   *   keyType: 'RSA',
+   *   keySize: 2048,
+   *   keyOpts: ['encrypt', 'decrypt', 'sign', 'verify'],
+   *   rotationPolicy: {
+   *     expiryTime: 'P90D'
+   *   },
+   *   expires: '2030-01-01T00:00:00Z',
+   *   accessPolicies: [{ userId: 'user123', permissions: ['get', 'list', 'update'] }]
+   * });
+   * ```
+   */
   constructor(scope: Construct, id: string, props: KeyProps) {
     super(scope, id);
 

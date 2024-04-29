@@ -80,6 +80,47 @@ export interface KustoDataConnectionProps extends BaseKustoDataConnectionProps {
 export class KustoDataConnection extends Construct {
   public readonly eventhubKustoDataConnectionProps: KustoDataConnectionProps;
 
+  /**
+   * Constructs a new Azure Kusto Data Connection for ingesting data from an EventHub.
+   *
+   * This class creates a data connection within a specified Kusto (Azure Data Explorer) database that connects
+   * to an Azure EventHub. This setup enables seamless data ingestion from EventHub into the Kusto database,
+   * allowing for real-time analytics on streamed data.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+   * @param id - The unique identifier for this instance of the data connection.
+   * @param kustoDataConnectionProps - The properties for configuring the Kusto EventHub Data Connection. These properties include:
+   *                - `name`: Required. The name of the data connection.
+   *                - `location`: Required. The Azure region where the data connection will be created.
+   *                - `kustoResourceGroup`: Required. The Resource Group where the Kusto database exists.
+   *                - `kustoClusterName`: Required. The name of the Kusto Cluster to which this data connection will be added.
+   *                - `kustoDatabaseName`: Required. The name of the Kusto Database to which this data connection will be added.
+   *                - `eventhubId`: Required. The resource ID of the EventHub used for data ingestion.
+   *                - `consumerGroup`: Optional. The EventHub consumer group used for ingestion. Defaults to "$Default".
+   *                - `tableName`: Optional. The target table name in the Kusto database used for data ingestion.
+   *                - `identityId`: Optional. The resource ID of a managed identity used for authentication with EventHub.
+   *                - `mappingRuleName`: Optional. The mapping rule name used for data ingestion.
+   *                - `dataFormat`: Optional. Specifies the data format of EventHub messages. Defaults to "JSON".
+   *                - `databaseRoutingType`: Optional. Indicates the routing type for the database. Defaults to "Single".
+   *                - `compression`: Optional. Specifies the compression type for the data connection. Defaults to "None".
+   *
+   * Example usage:
+   * ```typescript
+   * const kustoDataConnection = new KustoDataConnection(this, 'myDataConnection', {
+   *   name: 'exampleDataConnection',
+   *   location: 'East US',
+   *   kustoResourceGroup: resourceGroup,
+   *   kustoClusterName: 'exampleCluster',
+   *   kustoDatabaseName: 'exampleDatabase',
+   *   eventhubId: '/subscriptions/{sub-id}/resourceGroups/{rg}/providers/Microsoft.EventHub/namespaces/{namespace}/eventhubs/{eventhub}',
+   *   consumerGroup: '$Default',
+   *   tableName: 'destinationTable',
+   *   dataFormat: 'JSON',
+   *   databaseRoutingType: 'Single',
+   *   compression: 'None'
+   * });
+   * ```
+   */
   constructor(
     scope: Construct,
     id: string,

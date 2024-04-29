@@ -62,7 +62,35 @@ export class Network extends AzureResource {
   public id: string;
   public readonly virtualNetwork: VirtualNetwork;
   public readonly subnets: { [name: string]: Subnet } = {}; // Map of subnet name to Subnet object
-
+  /**
+   * Represents an Azure Virtual Network (VNet) within Microsoft Azure.
+   *
+   * This class is responsible for the creation and management of a virtual network, which provides an isolated environment
+   * where Azure resources, such as VMs and databases, can securely communicate with each other, the internet, and on-premises
+   * networks. It supports configurations such as multiple address spaces and subnets, enabling complex networking scenarios.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application.
+   * @param id - The unique identifier for this instance of the network, used within the scope for reference.
+   * @param props - Configuration properties for the Azure Virtual Network, derived from the NetworkProps interface. These include:
+   *                - `resourceGroup`: The ResourceGroup within which the virtual network will be created.
+   *                - `name`: Optional. The name of the virtual network. If not provided, a default name will be assigned.
+   *                - `location`: Optional. The Azure region where the virtual network will be deployed. Defaults to the resource group's region.
+   *                - `addressSpace`: Optional. A list of CIDR blocks that define the address spaces of the virtual network.
+   *                - `subnets`: Optional. An array of subnets to be created within the virtual network, each defined by a name and a CIDR block.
+   *
+   * Example usage:
+   * ```typescript
+   * const network = new Network(this, 'MyVirtualNetwork', {
+   *   resourceGroup: myResourceGroup,
+   *   name: 'myVNet',
+   *   location: 'West US',
+   *   addressSpace: ['10.0.0.0/16'],
+   *   subnets: [{ name: 'subnet1', addressPrefixes: ['10.0.1.0/24'] }]
+   * });
+   * ```
+   * This class initializes a virtual network with the specified configurations and handles the provisioning of subnets
+   * within the network, providing a foundational networking layer for hosting cloud resources.
+   */
   constructor(scope: Construct, id: string, props: NetworkProps) {
     super(scope, id);
 
@@ -104,7 +132,38 @@ export class Network extends AzureResource {
     }
   }
 
-  // Create Vnet Peering Method
+  /**
+   * Establishes a peering connection between this virtual network and another remote virtual network.
+   *
+   * This method configures a two-way peering connection, allowing resources in both virtual networks to communicate
+   * seamlessly. It sets up peering settings such as network access, traffic forwarding, and gateway transit based on
+   * provided configurations.
+   *
+   * @param remoteVirtualNetwork - The remote virtual network with which to establish a peering connection.
+   * @param localPeerSettings - Optional settings applied from this virtual network to the remote virtual network.
+   *                             Controls aspects like virtual network access, traffic forwarding, and use of gateways.
+   * @param remotePeerSettings - Optional settings applied from the remote virtual network to this virtual network.
+   *                             Allows customization of how the remote network interacts with this one.
+   *
+   * Example usage:
+   * ```typescript
+   * // Assuming 'this' is a reference to a local virtual network instance.
+   * const partnerVNet = new Network(this, 'PartnerVNet', { ... });
+   * this.addVnetPeering(partnerVNet, {
+   *   allowVirtualNetworkAccess: true,
+   *   allowForwardedTraffic: false,
+   *   allowGatewayTransit: true,
+   *   useRemoteGateways: false
+   * }, {
+   *   allowVirtualNetworkAccess: true,
+   *   allowForwardedTraffic: true,
+   *   allowGatewayTransit: false,
+   *   useRemoteGateways: false
+   * });
+   * ```
+   * This method invokes the `Peer` class to create a peering between 'this' virtual network and 'partnerVNet'.
+   * The settings control traffic behavior and access permissions in both directions of the peering.
+   */
   public addVnetPeering(
     remoteVirtualNetwork: Network,
     localPeerSettings?: PeerSettings,

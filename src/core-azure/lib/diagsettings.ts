@@ -56,7 +56,43 @@ export interface DiagnosticSettingsProps extends BaseDiagnosticSettingsProps {
 
 export class DiagnosticSettings extends Construct {
   readonly props: DiagnosticSettingsProps;
-
+  /**
+   * Manages the diagnostic settings for monitoring Azure resources.
+   *
+   * This class is responsible for configuring Azure Monitor Diagnostic Settings to collect and route metrics and logs from
+   * Azure resources to monitoring and analytics services. Diagnostic settings can be applied to resources like VMs,
+   * App Services, and more, allowing collected data to be sent to Event Hubs, Log Analytics workspaces, or Azure Storage.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+   * @param id - The unique identifier for this instance of the diagnostic settings.
+   * @param props - Configuration properties for diagnostic settings. These properties include:
+   *                - `name`: Optional. The name of the diagnostic settings. If not provided, a unique name will be generated.
+   *                - `targetResourceId`: The ID of the Azure resource to which these diagnostic settings apply.
+   *                - `storageAccountId`: Optional. The ID of the Azure Storage account to which logs and metrics are sent.
+   *                - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for the Event Hub namespace.
+   *                - `eventhubName`: Optional. The name of the Event Hub where metrics and logs will be sent.
+   *                - `logAnalyticsWorkspaceId`: Optional. The ID of the Log Analytics workspace to which logs and metrics are sent.
+   *                - `partnerSolutionId`: Optional. ID of a partner solution that configurations are fetched from.
+   *                - `logCategories`: Optional. Categories of logs to collect.
+   *                - `metricCategories`: Optional. Categories of metrics to collect.
+   *                - `logAnalyticsDestinationType`: Optional. Specifies whether logs should be stored in a dedicated table or the
+   *                  legacy AzureDiagnostics table in the Log Analytics workspace.
+   *
+   * Example usage:
+   * ```typescript
+   * const resourceGroup = new ResourceGroup(this, 'ResourceGroup', { ... });
+   * const diagnostics = new DiagnosticSettings(this, 'MyDiagnostics', {
+   *   name: 'example-diagnostics',
+   *   targetResourceId: resourceGroup.id,
+   *   logAnalyticsWorkspaceId: logAnalyticsWorkspace.id,
+   *   storageAccountId: storageAccount.id,
+   *   logCategories: ['Write', 'Delete'],
+   *   metricCategories: ['AllMetrics']
+   * });
+   * ```
+   * This class configures the diagnostic settings to collect specific logs and metrics from the target resource and routes them
+   * to specified destinations such as Log Analytics, Storage Account, or Event Hubs.
+   */
   constructor(scope: Construct, id: string, props: DiagnosticSettingsProps) {
     super(scope, id);
 

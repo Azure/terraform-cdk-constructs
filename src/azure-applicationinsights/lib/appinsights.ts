@@ -61,6 +61,40 @@ export class AppInsights extends AzureResource {
   public id: string;
   private readonly instrumentationKey: string;
 
+  /**
+   * Constructs a new Azure Application Insights resource.
+   *
+   * @param scope - The scope in which to define this construct.
+   * @param id - The ID of this construct.
+   * @param props - The properties for configuring the Azure Application Insights. The properties include:
+   *                - `name`: Required. Unique name for the Application Insights resource within Azure.
+   *                - `location`: Required. Azure Region for deployment.
+   *                - `resourceGroup`: Required. Reference to the Azure Resource Group for deployment.
+   *                - `retentionInDays`: Optional. Number of days to retain data. Default is 90 days.
+   *                - `tags`: Optional. Tags for resource management.
+   *                - `applicationType`: Required. The type of application (e.g., web, other).
+   *                - `dailyDataCapInGb`: Optional. Daily data cap in gigabytes.
+   *                - `dailyDataCapNotificationDisabled`: Optional. Flag to disable notifications when the daily data cap is reached.
+   *                - `workspaceId`: Optional. ID of the Log Analytics Workspace to associate with Application Insights. If not provided, a new workspace is created automatically.
+   *
+   * Example usage:
+   * ```typescript
+   * new AppInsights(this, 'myAppInsights', {
+   *   name: 'myAppInsightsResource',
+   *   location: 'West US',
+   *   resourceGroup: resourceGroup,
+   *   retentionInDays: 120,
+   *   tags: {
+   *     "environment": "production"
+   *   },
+   *   applicationType: 'web',
+   *   dailyDataCapInGb: 10,
+   *   dailyDataCapNotificationDisabled: true,
+   *   workspaceId: 'existing-workspace-id'
+   * });
+   * ```
+   */
+
   constructor(scope: Construct, id: string, props: AppInsightsProps) {
     super(scope, id);
 
@@ -131,7 +165,23 @@ export class AppInsights extends AzureResource {
     cdktfTerraformOutputAppiConnectStr.overrideLogicalId("connection_string");
   }
 
-  // Save Instrumentation Key to Key Vault
+  /**
+   * Saves the Application Insights instrumentation key to an Azure Key Vault.
+   *
+   * This method creates a new secret in the specified Azure Key Vault with the
+   * instrumentation key of the Application Insights resource. This enables secure storage
+   * and management of the instrumentation key, facilitating secure access across various
+   * Azure services.
+   *
+   * @param keyVaultId - The unique identifier of the Azure Key Vault where the secret will be stored.
+   * @param keyVaultSecretName - The name of the secret within the Key Vault. Defaults to 'instrumentation-key'.
+   *                             This name can be used to retrieve the secret in client applications.
+   *
+   * Example usage:
+   * ```typescript
+   * appInsightsInstance.saveIKeyToKeyVault('my-key-vault-id');
+   * ```
+   */
   public saveIKeyToKeyVault(
     keyVaultId: string,
     keyVaultSecretName: string = "instrumentation-key",

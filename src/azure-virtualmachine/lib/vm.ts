@@ -115,11 +115,47 @@ export class WindowsVM extends AzureResource {
   public readonly publicIp?: string;
 
   /**
-   * Constructs a new instance of the AzureWindowsVirtualMachine class.
+   * Represents a Windows-based Virtual Machine (VM) within Microsoft Azure.
    *
-   * @param scope - The scope in which this construct is defined.
-   * @param id - The ID of this construct.
-   * @param props - The properties for defining a Windows Virtual Machine.
+   * This class is designed to provision and manage a Windows VM in Azure, allowing for detailed configuration including
+   * the VM's size, the operating system image, network settings, and administrative credentials. It supports customization
+   * of the OS disk, networking setup, and optional features like custom data scripts and boot diagnostics.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application.
+   * @param id - The unique identifier for this instance of the Windows VM, used within the scope for reference.
+   * @param props - Configuration properties for the Windows Virtual Machine, derived from the WindowsVMProps interface. These include:
+   *                - `location`: The geographic location where the VM will be hosted (e.g., "eastus").
+   *                - `name`: The name of the VM, which must be unique within the resource group.
+   *                - `resourceGroup`: The ResourceGroup within which the VM will be created.
+   *                - `size`: The size specification of the VM (e.g., "Standard_B2s").
+   *                - `adminUsername`: The administrator username for accessing the VM.
+   *                - `adminPassword`: The administrator password for accessing the VM.
+   *                - `sourceImageReference`: A reference to the specific Windows image to be used for the VM.
+   *                - `sourceImageId`: The identifier for a custom image to use for the VM.
+   *                - `tags`: Key-value pairs for resource tagging.
+   *                - `osDisk`: Configuration for the VM's operating system disk.
+   *                - `subnet`: Specifies the subnet within which the VM will be placed.
+   *                - `publicIPAllocationMethod`: The method used to allocate a public IP address to the VM.
+   *                - `customData`: Scripts or commands passed to the VM at startup.
+   *                - `bootstrapCustomData`: Custom data used to trigger the Azure Custom Script Extension for VM setup tasks.
+   *                - `bootDiagnosticsStorageURI`: URI for storage where VM boot diagnostics are collected.
+   *
+   * Example usage:
+   * ```typescript
+   * const vm = new WindowsVM(this, 'MyWindowsVM', {
+   *   resourceGroup: myResourceGroup,
+   *   name: 'myVM',
+   *   size: 'Standard_DS1_v2',
+   *   adminUsername: 'adminuser',
+   *   adminPassword: 'securepassword123',
+   *   sourceImageReference: { publisher: 'MicrosoftWindowsServer', offer: 'WindowsServer', sku: '2019-Datacenter', version: 'latest' },
+   *   osDisk: { caching: 'ReadWrite', storageAccountType: 'Standard_LRS' },
+   *   subnet: mySubnet,
+   *   tags: { environment: 'production' }
+   * });
+   * ```
+   * This class initializes a Windows VM with the specified configurations, handling details like network setup, OS installation,
+   * and security settings, thus providing a robust infrastructure for hosting applications on Windows Server environments.
    */
   constructor(scope: Construct, id: string, props: WindowsVMProps) {
     super(scope, id);
@@ -341,11 +377,51 @@ export class LinuxVM extends AzureResource {
   public readonly publicIp?: string;
 
   /**
-   * Constructs a new instance of the AzureLinuxVirtualMachine class.
+   * Represents a Linux-based Virtual Machine (VM) within Microsoft Azure.
    *
-   * @param scope - The scope in which this construct is defined.
-   * @param id - The ID of this construct.
-   * @param props - The properties for defining a Linux Virtual Machine.
+   * This class is designed to provision and manage a Linux VM in Azure, facilitating detailed configuration including
+   * VM size, the operating system image, network settings, and administrative credentials. It supports custom data scripts,
+   * SSH configurations, and optional features like managed identity and boot diagnostics.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application.
+   * @param id - The unique identifier for this instance of the Linux VM, used within the scope for reference.
+   * @param props - Configuration properties for the Linux Virtual Machine, derived from the LinuxVMProps interface. These include:
+   *                - `location`: The geographic location where the VM will be hosted (e.g., "eastus").
+   *                - `name`: The name of the VM, which must be unique within the resource group.
+   *                - `resourceGroup`: The ResourceGroup within which the VM will be created.
+   *                - `size`: The size specification of the VM (e.g., "Standard_B2s").
+   *                - `availabilitySetId`: The ID of the availability set in which to include the VM.
+   *                - `userData`: Custom data scripts to pass to the VM upon creation.
+   *                - `adminSshKey`: SSH keys for secure access to the VM.
+   *                - `zone`: The availability zone for deploying the VM.
+   *                - `identity`: Managed identity settings for accessing other Azure services.
+   *                - `additionalCapabilities`: Special capabilities like Ultra Disk support.
+   *                - `sourceImageReference`: A reference to the specific Linux image to be used for the VM.
+   *                - `sourceImageId`: The identifier for a custom image to use for the VM.
+   *                - `tags`: Key-value pairs for resource tagging.
+   *                - `osDisk`: Configuration for the VM's operating system disk.
+   *                - `subnet`: Specifies the subnet within which the VM will be placed.
+   *                - `publicIPAllocationMethod`: Method used to allocate a public IP address.
+   *                - `customData`: Additional scripts or commands passed to the VM at startup.
+   *                - `enableSshAzureADLogin`: Option to enable Azure AD login for SSH.
+   *                - `bootDiagnosticsStorageURI`: URI for storage where VM boot diagnostics are collected.
+   *
+   * Example usage:
+   * ```typescript
+   * const linuxVM = new LinuxVM(this, 'MyLinuxVM', {
+   *   resourceGroup: myResourceGroup,
+   *   name: 'myVM',
+   *   size: 'Standard_DS1_v2',
+   *   adminUsername: 'adminuser',
+   *   adminSshKey: [{ publicKey: 'ssh-rsa AAAAB...' }],
+   *   sourceImageReference: { publisher: 'Canonical', offer: 'UbuntuServer', sku: '18.04-LTS', version: 'latest' },
+   *   osDisk: { caching: 'ReadWrite', storageAccountType: 'Standard_LRS' },
+   *   subnet: mySubnet,
+   *   tags: { environment: 'production' }
+   * });
+   * ```
+   * This class initializes a Linux VM with the specified configurations, handling details like network setup, OS installation,
+   * and security settings, thus providing a robust infrastructure for hosting applications on Linux environments.
    */
   constructor(scope: Construct, id: string, props: LinuxVMProps) {
     super(scope, id);

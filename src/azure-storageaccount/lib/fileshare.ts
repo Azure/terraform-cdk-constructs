@@ -115,6 +115,42 @@ export class File extends Construct {
   public readonly name: string;
   public readonly id: string;
 
+  /**
+   * Represents a file within an Azure Storage Share.
+   *
+   * This class is responsible for the creation and management of a file in an Azure Storage Share, which allows for cloud file storage
+   * that can be accessed and managed like a file system. The File class enables detailed configuration of file properties including
+   * content type, encoding, and metadata, making it suitable for storing and accessing various types of data.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+   * @param id - The unique identifier for this instance of the file.
+   * @param props - Configuration properties for the Azure Storage Share File. These properties include:
+   *                - `name`: The name of the file within the storage share.
+   *                - `storageShareId`: The identifier for the storage share in which this file is located.
+   *                - `source`: The source of the file's content, which can be a path to a local file or a URL.
+   *                - `contentType`: The MIME type of the file's content, helping clients handle the file appropriately when downloaded.
+   *                - `contentEncoding`: The encoding format of the file's content (e.g., 'gzip').
+   *                - `contentDisposition`: Provides instructions on how the content should be displayed or handled.
+   *                - `contentMd5`: An MD5 hash of the file content for verifying the integrity of the file upon transfer.
+   *                - `metadata`: A dictionary of key-value pairs to store as metadata with the file. Metadata is typically used to store additional
+   *                  details about the file such as tags, descriptions, or other attributes.
+   *
+   * Example usage:
+   * ```typescript
+   * const myFile = new File(this, 'MyFile', {
+   *   name: 'examplefile.txt',
+   *   storageShareId: 'share123',
+   *   source: './path/to/local/file.txt',
+   *   contentType: 'text/plain',
+   *   contentEncoding: 'utf-8',
+   *   metadata: {
+   *     createdBy: 'John Doe'
+   *   }
+   * });
+   * ```
+   * This class initializes a file with the specified configurations and handles the uploading of content from the specified source, providing
+   * a way to manage file storage in Azure efficiently.
+   */
   constructor(scope: Construct, id: string, props: StorageShareFileConfig) {
     super(scope, id);
 

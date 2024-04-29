@@ -213,6 +213,83 @@ export class Gateway extends AzureResource {
   public resourceGroup: ResourceGroup;
   public id: string;
 
+  /**
+   * Constructs a new Azure Application Gateway.
+   *
+   * @param scope - The scope in which to define this construct.
+   * @param id - The ID of this construct.
+   * @param props - The properties for configuring the Azure Application Gateway. The properties include:
+   *                - `name`: Required. Unique name for the Application Gateway within Azure.
+   *                - `location`: Required. Azure Region for deployment.
+   *                - `resourceGroup`: Required. Reference to the resource group for deployment.
+   *                - `skuTier`: Required. SKU tier of the Application Gateway (e.g., Standard, WAF).
+   *                - `skuSize`: Required. Size of the SKU for the Application Gateway.
+   *                - `capacity`: Required. Capacity (instance count) of the Application Gateway.
+   *                - `backendAddressPools`: Required. Backend address pools for the Application Gateway.
+   *                - `backendHttpSettings`: Required. Backend HTTP settings for the Application Gateway.
+   *                - `httpListeners`: Required. HTTP listeners for the Application Gateway.
+   *                - `requestRoutingRules`: Required. Request routing rules for the Application Gateway.
+   *                - `publicIpAddress`: Optional. Public IP address for the frontend.
+   *                - `privateIpAddress`: Optional. Private IP address for the frontend.
+   *                - `privateIpAddressAllocation`: Optional. Allocation method for the private IP (Static, Dynamic).
+   *                - `frontendPorts`: Optional. Frontend ports for the Application Gateway.
+   *                - `subnet`: Optional. Subnet for the Application Gateway.
+   *                - `enableHttp2`: Optional. Flag to enable HTTP2.
+   *                - `fipsEnabled`: Optional. Flag to enable FIPS-compliant algorithms.
+   *                - `firewallPolicyId`: Optional. ID of the firewall policy.
+   *                - `forceFirewallPolicyAssociation`: Optional. Flag to enforce association of the firewall policy.
+   *                - `tags`: Optional. Tags for resource management.
+   *                - Additional optional properties as described in `IGatewayProps` interface.
+   *
+   * Example usage:
+   * ```typescript
+   * new Gateway(this, 'appGateway1', {
+   *   name: 'gatewayEast',
+   *   resourceGroup: resourceGroup,
+      location: "eastus",
+      skuTier: "Standard_v2",
+      skuSize: "Standard_v2",
+      capacity: 2,
+      publicIpAddress: publicIp,
+      subnet: subnet,
+      backendAddressPools: [
+        { name: "backend-address-pool-1" },
+        {
+          name: "backend-address-pool-2",
+          ipAddresses: ["10.1.0.4", "10.1.0.5", "10.1.0.6"],
+        },
+      ],
+      httpListeners: [
+        {
+          name: "http-listener",
+          frontendPortName: "80",
+          frontendIpConfigurationName: "Public-frontend-ip-configuration",
+          protocol: "Http",
+        },
+      ],
+      backendHttpSettings: [
+        {
+          name: "backend-http-setting",
+          port: 80,
+          protocol: "Http",
+          requestTimeout: 20,
+          cookieBasedAffinity: "Disabled",
+        },
+      ],
+      requestRoutingRules: [
+        {
+          name: "request-routing-rule-1",
+          httpListenerName: "http-listener",
+          priority: 1,
+          backendAddressPoolName: "backend-address-pool-1",
+          backendHttpSettingsName: "backend-http-setting",
+          ruleType: "Basic",
+        },
+      ],
+   * });
+   * ```
+   */
+
   constructor(scope: Construct, id: string, props: IGatewayProps) {
     super(scope, id);
 
