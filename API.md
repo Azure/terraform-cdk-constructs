@@ -14,9 +14,9 @@ new azure_keyvault.AccessPolicy(scope: Construct, id: string, props: AccessPolic
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicyProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the access policy. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicyProps</code> | - The properties for creating the access policy as defined in AccessPolicyProps. |
 
 ---
 
@@ -24,17 +24,45 @@ new azure_keyvault.AccessPolicy(scope: Construct, id: string, props: AccessPolic
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the access policy.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicyProps
+
+The properties for creating the access policy as defined in AccessPolicyProps.
+
+These include:
+  - `keyVaultId`: The Azure Key Vault identifier where the policy will be set.
+  - `tenantId`: The tenant ID of the Azure AD tenant where the Key Vault is hosted.
+  - `objectId`: The object ID of the Azure AD identity (user, group, or service principal).
+  - `secretPermissions`: Optional list of permissions to secrets within the Key Vault.
+  - `certificatePermissions`: Optional list of permissions to certificates within the Key Vault.
+  - `keyPermissions`: Optional list of permissions to keys within the Key Vault.
+  - `storagePermissions`: Optional list of permissions to storage accounts linked to the Key Vault.
+
+Example usage:
+```typescript
+new AccessPolicy(this, 'MyAccessPolicy', {
+keyVaultId: myKeyVault,
+tenantId: 'my-tenant-id',
+objectId: 'user-object-id',
+keyPermissions: ['get', 'list', 'update'],
+secretPermissions: ['get'],
+certificatePermissions: ['get', 'list'],
+storagePermissions: ['get', 'list']
+});
+```
 
 ---
 
@@ -128,23 +156,6 @@ public readonly fqdn: string;
 
 ### Account <a name="Account" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Account"></a>
 
-Represents an Azure Storage Account within a Terraform deployment.
-
-This class provides methods to easily manage storage resources such as Containers,
-File Shares, Tables, Queues, and Network Rules.
-
-Example usage:
-```typescript
-const storageAccount = new AzureStorageAccount(this, 'storageaccount', {
-  name: 'myStorageAccount',
-  location: 'East US',
-  resourceGroup: myResourceGroup,
-  accountReplicationType: 'LRS',
-  accountTier: 'Standard',
-  // other properties
-});
-```
-
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.Initializer"></a>
 
 ```typescript
@@ -155,9 +166,9 @@ new azure_storageaccount.Account(scope: Construct, id: string, props: AccountPro
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_storageaccount.AccountProps</code> | Configuration properties for the Azure Storage Account. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the storage account. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_storageaccount.AccountProps</code> | - The properties required to configure the Azure Storage Account, as defined in the AccountProps interface. |
 
 ---
 
@@ -165,7 +176,7 @@ new azure_storageaccount.Account(scope: Construct, id: string, props: AccountPro
 
 - *Type:* constructs.Construct
 
-The scope in which to define this construct.
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
 
 ---
 
@@ -173,7 +184,7 @@ The scope in which to define this construct.
 
 - *Type:* string
 
-The scoped construct ID.
+The unique identifier for this instance of the storage account.
 
 ---
 
@@ -181,7 +192,32 @@ The scoped construct ID.
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_storageaccount.AccountProps
 
-Configuration properties for the Azure Storage Account.
+The properties required to configure the Azure Storage Account, as defined in the AccountProps interface.
+
+These include:
+  - `name`: The name of the storage account, which must be unique within the Azure region.
+  - `location`: The Azure region where the storage account will be created.
+  - `resourceGroup`: The Azure Resource Group under which the storage account will be deployed.
+  - `accountReplicationType`: The type of data replication to ensure data durability and availability.
+  - `accountTier`: The performance tier that affects the type of hardware used for the storage account.
+  - `tags`: A dictionary of tags to apply to the storage account for organizational purposes.
+
+Example usage:
+```typescript
+const storageAccount = new Account(this, 'MyStorageAccount', {
+location: 'East US',
+name: 'myStorageAccount',
+resourceGroup: myResourceGroup,
+accountReplicationType: 'LRS',
+accountTier: 'Standard',
+enableHttpsTrafficOnly: true,
+tags: {
+environment: 'production'
+}
+});
+```
+This class sets up the storage account with the specified configurations, handles resource allocation, and applies security
+settings based on the properties provided.
 
 ---
 
@@ -190,13 +226,13 @@ Configuration properties for the Azure Storage Account.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addMetricAlert">addMetricAlert</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addQueryRuleAlert">addQueryRuleAlert</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addContainer">addContainer</a></code> | Adds a new container to the storage account. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addFileShare">addFileShare</a></code> | Adds a new file share to the storage account. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addNetworkRules">addNetworkRules</a></code> | Adds network rules to the storage account. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addNetworkRules">addNetworkRules</a></code> | Adds network rules to the storage account to control access based on IP and virtual network settings. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addQueue">addQueue</a></code> | Adds a new queue to the storage account. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addTable">addTable</a></code> | Adds a new table to the storage account. |
 
@@ -216,15 +252,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -234,9 +288,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -278,13 +349,17 @@ Adds a new container to the storage account.
 
 The name of the container.
 
+It must be unique within the storage account.
+
 ---
 
 ###### `containerAccessType`<sup>Optional</sup> <a name="containerAccessType" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addContainer.parameter.containerAccessType"></a>
 
 - *Type:* string
 
-The access type of the container (e.g., 'blob', 'private').
+The level of public access to the container.
+
+Defaults to 'private'.
 
 ---
 
@@ -292,7 +367,7 @@ The access type of the container (e.g., 'blob', 'private').
 
 - *Type:* {[ key: string ]: string}
 
-Metadata for the container.
+Optional metadata for the container as key-value pairs.
 
 ---
 
@@ -310,13 +385,15 @@ Adds a new file share to the storage account.
 
 The name of the file share.
 
+Must be unique within the storage account.
+
 ---
 
 ###### `props`<sup>Optional</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addFileShare.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_storageaccount.FileShareProps
 
-Optional properties for the file share (e.g., quota, access tier).
+Optional properties for configuring the file share, such as quota and access tier.
 
 ---
 
@@ -326,13 +403,13 @@ Optional properties for the file share (e.g., quota, access tier).
 public addNetworkRules(props: NetworkRulesProps): StorageAccountNetworkRulesA
 ```
 
-Adds network rules to the storage account.
+Adds network rules to the storage account to control access based on IP and virtual network settings.
 
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addNetworkRules.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_storageaccount.NetworkRulesProps
 
-Configuration properties for the network rules.
+Configuration properties for the network rules, including allowed IPs and virtual network subnet IDs.
 
 ---
 
@@ -350,13 +427,15 @@ Adds a new queue to the storage account.
 
 The name of the queue.
 
+Must be unique within the storage account.
+
 ---
 
 ###### `metadata`<sup>Optional</sup> <a name="metadata" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addQueue.parameter.metadata"></a>
 
 - *Type:* {[ key: string ]: string}
 
-Optional metadata for the queue.
+Optional metadata for the queue as key-value pairs.
 
 ---
 
@@ -374,13 +453,15 @@ Adds a new table to the storage account.
 
 The name of the table.
 
+Must be unique within the storage account.
+
 ---
 
 ###### `acl`<sup>Optional</sup> <a name="acl" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Account.addTable.parameter.acl"></a>
 
 - *Type:* @cdktf/provider-azurerm.storageTable.StorageTableAcl[]
 
-Optional access control list for the table.
+Optional access control list for the table, specifying permissions.
 
 ---
 
@@ -534,9 +615,9 @@ new azure_applicationinsights.AppInsights(scope: Construct, id: string, props: A
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.Initializer.parameter.id">id</a></code> | <code>string</code> | - The ID of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps</code> | - The properties for configuring the Azure Application Insights. |
 
 ---
 
@@ -544,17 +625,51 @@ new azure_applicationinsights.AppInsights(scope: Construct, id: string, props: A
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The ID of this construct.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps
+
+The properties for configuring the Azure Application Insights.
+
+The properties include:
+  - `name`: Required. Unique name for the Application Insights resource within Azure.
+  - `location`: Required. Azure Region for deployment.
+  - `resourceGroup`: Required. Reference to the Azure Resource Group for deployment.
+  - `retentionInDays`: Optional. Number of days to retain data. Default is 90 days.
+  - `tags`: Optional. Tags for resource management.
+  - `applicationType`: Required. The type of application (e.g., web, other).
+  - `dailyDataCapInGb`: Optional. Daily data cap in gigabytes.
+  - `dailyDataCapNotificationDisabled`: Optional. Flag to disable notifications when the daily data cap is reached.
+  - `workspaceId`: Optional. ID of the Log Analytics Workspace to associate with Application Insights. If not provided, a new workspace is created automatically.
+
+Example usage:
+```typescript
+new AppInsights(this, 'myAppInsights', {
+name: 'myAppInsightsResource',
+location: 'West US',
+resourceGroup: resourceGroup,
+retentionInDays: 120,
+tags: {
+"environment": "production"
+},
+applicationType: 'web',
+dailyDataCapInGb: 10,
+dailyDataCapNotificationDisabled: true,
+workspaceId: 'existing-workspace-id'
+});
+```
 
 ---
 
@@ -563,9 +678,9 @@ new azure_applicationinsights.AppInsights(scope: Construct, id: string, props: A
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.addDiagSettings">addDiagSettings</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.saveIKeyToKeyVault">saveIKeyToKeyVault</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.saveIKeyToKeyVault">saveIKeyToKeyVault</a></code> | Saves the Application Insights instrumentation key to an Azure Key Vault. |
 
 ---
 
@@ -583,15 +698,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -601,9 +734,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -613,15 +763,34 @@ public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 public saveIKeyToKeyVault(keyVaultId: string, keyVaultSecretName?: string): void
 ```
 
+Saves the Application Insights instrumentation key to an Azure Key Vault.
+
+This method creates a new secret in the specified Azure Key Vault with the
+instrumentation key of the Application Insights resource. This enables secure storage
+and management of the instrumentation key, facilitating secure access across various
+Azure services.
+
 ###### `keyVaultId`<sup>Required</sup> <a name="keyVaultId" id="@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.saveIKeyToKeyVault.parameter.keyVaultId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure Key Vault where the secret will be stored.
 
 ---
 
 ###### `keyVaultSecretName`<sup>Optional</sup> <a name="keyVaultSecretName" id="@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsights.saveIKeyToKeyVault.parameter.keyVaultSecretName"></a>
 
 - *Type:* string
+
+The name of the secret within the Key Vault.
+
+Defaults to 'instrumentation-key'.
+  This name can be used to retrieve the secret in client applications.
+
+Example usage:
+```typescript
+appInsightsInstance.saveIKeyToKeyVault('my-key-vault-id');
+```
 
 ---
 
@@ -731,9 +900,9 @@ new azure_eventhub.AuthorizationRule(scope: Construct, name: string, ehInstanceA
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.AuthorizationRule.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.AuthorizationRule.Initializer.parameter.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.AuthorizationRule.Initializer.parameter.ehInstanceAuthProps">ehInstanceAuthProps</a></code> | <code>@cdktf/provider-azurerm.eventhubAuthorizationRule.EventhubAuthorizationRuleConfig</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.AuthorizationRule.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically used for managing lifecycles and creation order. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.AuthorizationRule.Initializer.parameter.name">name</a></code> | <code>string</code> | - The unique name for this instance of the Authorization Rule. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.AuthorizationRule.Initializer.parameter.ehInstanceAuthProps">ehInstanceAuthProps</a></code> | <code>@cdktf/provider-azurerm.eventhubAuthorizationRule.EventhubAuthorizationRuleConfig</code> | - The properties for configuring the Authorization Rule. |
 
 ---
 
@@ -741,17 +910,40 @@ new azure_eventhub.AuthorizationRule(scope: Construct, name: string, ehInstanceA
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically used for managing lifecycles and creation order.
+
 ---
 
 ##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.AuthorizationRule.Initializer.parameter.name"></a>
 
 - *Type:* string
 
+The unique name for this instance of the Authorization Rule.
+
 ---
 
 ##### `ehInstanceAuthProps`<sup>Required</sup> <a name="ehInstanceAuthProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.AuthorizationRule.Initializer.parameter.ehInstanceAuthProps"></a>
 
 - *Type:* @cdktf/provider-azurerm.eventhubAuthorizationRule.EventhubAuthorizationRuleConfig
+
+The properties for configuring the Authorization Rule.
+
+The properties include:
+- `name`: Required. The name of the Authorization Rule.
+- `listen`: Optional. Specifies whether the rule allows listening to the Event Hub. Defaults to false.
+- `send`: Optional. Specifies whether the rule allows sending events to the Event Hub. Defaults to false.
+- `manage`: Optional. Specifies whether the rule allows managing the Event Hub, including sending and listening. Defaults to false.
+When `manage` is true, both `listen` and `send` are implicitly set to true.
+
+Example usage:
+```typescript
+const authRule = new AuthorizationRule(this, 'exampleAuthRule', {
+name: 'myAuthRule',
+listen: true,
+send: true,
+manage: false // Only listening and sending are enabled; not managing.
+});
+```
 
 ---
 
@@ -927,8 +1119,8 @@ new core_azure.AzureResource(scope: Construct, id: string)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzureResource.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzureResource.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzureResource.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzureResource.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzureResource.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 
 ---
 
@@ -946,15 +1138,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.core_azure.AzureResource.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.core_azure.AzureResource.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -964,9 +1174,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.core_azure.AzureResource.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -1087,8 +1314,8 @@ new core_azure.AzureResourceWithAlert(scope: Construct, id: string)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzureResourceWithAlert.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzureResourceWithAlert.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzureResourceWithAlert.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzureResourceWithAlert.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzureResourceWithAlert.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzureResourceWithAlert.addMetricAlert">addMetricAlert</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzureResourceWithAlert.addQueryRuleAlert">addQueryRuleAlert</a></code> | *No description.* |
 
@@ -1108,15 +1335,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.core_azure.AzureResourceWithAlert.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.core_azure.AzureResourceWithAlert.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -1126,9 +1371,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.core_azure.AzureResourceWithAlert.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -1251,9 +1513,9 @@ new azure_storageaccount.Blob(scope: Construct, id: string, props: StorageBlobCo
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Blob.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Blob.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Blob.Initializer.parameter.props">props</a></code> | <code>@cdktf/provider-azurerm.storageBlob.StorageBlobConfig</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Blob.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Blob.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the blob. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Blob.Initializer.parameter.props">props</a></code> | <code>@cdktf/provider-azurerm.storageBlob.StorageBlobConfig</code> | - Configuration properties for the Azure Storage Blob. |
 
 ---
 
@@ -1261,17 +1523,51 @@ new azure_storageaccount.Blob(scope: Construct, id: string, props: StorageBlobCo
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Blob.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the blob.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Blob.Initializer.parameter.props"></a>
 
 - *Type:* @cdktf/provider-azurerm.storageBlob.StorageBlobConfig
+
+Configuration properties for the Azure Storage Blob.
+
+These properties may include:
+  - `name`: The name of the blob, which must be unique within the container.
+  - `storageAccountName`: The name of the storage account in which the blob is stored.
+  - `storageContainerName`: The name of the storage container in which the blob resides.
+  - `type`: The type of the blob (e.g., 'Block', 'Append', 'Page').
+  - `source`: The source of the blob's content, which could be a path to a file or a URL.
+  - `contentType`: The MIME type of the blob's content, such as 'application/octet-stream' for binary data.
+  - `metadata`: A dictionary of strings that represents metadata to associate with the blob.
+  - `accessTier`: The data access tier, affecting storage costs and data retrieval speeds.
+  - `cacheControl`, `contentEncoding`, `contentDisposition`, `contentMd5`: Optional parameters for controlling the caching behavior,
+    encoding, content disposition, and integrity check of the blob.
+
+Example usage:
+```typescript
+const myBlob = new Blob(this, 'MyBlob', {
+name: 'exampleblob',
+storageAccountName: 'mystorageaccount',
+storageContainerName: 'mycontainer',
+type: 'Block',
+source: './path/to/file.jpg',
+contentType: 'image/jpeg',
+metadata: {
+author: 'John Doe'
+}
+});
+```
+This class initializes a blob with the specified configurations and handles the uploading of content from the specified source.
 
 ---
 
@@ -1375,9 +1671,9 @@ new azure_keyvault.CertificateIssuer(scope: Construct, id: string, props: Certif
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuer.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuer.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuer.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuer.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuer.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the certificate issuer. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuer.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps</code> | - The properties for configuring the certificate issuer as defined in CertificateIssuerProps. |
 
 ---
 
@@ -1385,17 +1681,43 @@ new azure_keyvault.CertificateIssuer(scope: Construct, id: string, props: Certif
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuer.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the certificate issuer.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuer.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps
+
+The properties for configuring the certificate issuer as defined in CertificateIssuerProps.
+
+These properties include:
+  - `name`: Required. The name of the issuer as it will appear in Azure Key Vault.
+  - `providerName`: Required. The name of the provider that will issue the certificates, such as 'DigiCert' or 'GlobalSign'.
+  - `keyVaultId`: Required. The ID of the Azure Key Vault where the issuer will be configured.
+  - `accessPolicies`: Required. Access policies defining who can manage this issuer within the Key Vault.
+  - `username`: Optional. The username required to authenticate with the certificate provider (if applicable).
+  - `password`: Optional. The password required to authenticate with the certificate provider (if applicable).
+
+Example usage:
+```typescript
+new CertificateIssuer(this, 'MyCertIssuer', {
+name: 'MyIssuer',
+providerName: 'DigiCert',
+keyVaultId: myKeyVault,
+accessPolicies: [{ userId: 'user123', permissions: ['manageIssuer'] }],
+username: 'user@example.com',
+password: 'securepassword'
+});
+```
 
 ---
 
@@ -1488,9 +1810,9 @@ new azure_eventhub.Cluster(scope: Construct, name: string, ehClusterProps: Clust
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.ehClusterProps">ehClusterProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.name">name</a></code> | <code>string</code> | - The unique name for this instance of the Event Hub Cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.ehClusterProps">ehClusterProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps</code> | - The properties for configuring the Event Hub Cluster. |
 
 ---
 
@@ -1498,17 +1820,42 @@ new azure_eventhub.Cluster(scope: Construct, name: string, ehClusterProps: Clust
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.name"></a>
 
 - *Type:* string
 
+The unique name for this instance of the Event Hub Cluster.
+
 ---
 
 ##### `ehClusterProps`<sup>Required</sup> <a name="ehClusterProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.ehClusterProps"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps
+
+The properties for configuring the Event Hub Cluster.
+
+These properties include:
+- `resourceGroup`: Required. The Azure Resource Group in which the cluster will be deployed.
+- `name`: Required. The name of the Event Hub Cluster.
+- `skuName`: Optional. The SKU name for the cluster, which determines the pricing and capabilities.
+      Currently, the only supported value is "Dedicated_1". Defaults to "Dedicated_1" if not specified.
+- `tags`: Optional. Tags for resource management and categorization.
+
+Example usage:
+```typescript
+const eventHubCluster = new Cluster(this, 'myEventHubCluster', {
+resourceGroup: resourceGroup,
+name: 'myCluster',
+skuName: 'Dedicated_1', // This is optional since it defaults to 'Dedicated_1'
+tags: {
+department: 'IT'
+}
+});
+```
 
 ---
 
@@ -1517,8 +1864,8 @@ new azure_eventhub.Cluster(scope: Construct, name: string, ehClusterProps: Clust
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 
 ---
 
@@ -1536,15 +1883,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -1554,9 +1919,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -1668,9 +2050,9 @@ new azure_kubernetes.Cluster(scope: Construct, id: string, props: ClusterProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.Initializer.parameter.id">id</a></code> | <code>string</code> | The unique ID or name for this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kubernetes.ClusterProps</code> | The properties required to configure the AKS cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the AKS cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kubernetes.ClusterProps</code> | - The properties required to configure the AKS cluster, as defined in the ClusterProps interface. |
 
 ---
 
@@ -1678,7 +2060,7 @@ new azure_kubernetes.Cluster(scope: Construct, id: string, props: ClusterProps)
 
 - *Type:* constructs.Construct
 
-The scope in which to define this construct.
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
 
 ---
 
@@ -1686,7 +2068,7 @@ The scope in which to define this construct.
 
 - *Type:* string
 
-The unique ID or name for this construct.
+The unique identifier for this instance of the AKS cluster.
 
 ---
 
@@ -1694,7 +2076,24 @@ The unique ID or name for this construct.
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_kubernetes.ClusterProps
 
-The properties required to configure the AKS cluster.
+The properties required to configure the AKS cluster, as defined in the ClusterProps interface.
+
+Example usage:
+```typescript
+new Cluster(this, 'MyAKSCluster', {
+name: 'example-cluster',
+location: 'East US',
+defaultNodePool: {
+vmSize: 'Standard_D2_v3',
+nodeCount: 3,
+type: 'VirtualMachineScaleSets'
+},
+resourceGroup: existingResourceGroup,
+tags: {
+environment: 'production'
+}
+});
+```
 
 ---
 
@@ -1703,8 +2102,8 @@ The properties required to configure the AKS cluster.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 
 ---
 
@@ -1722,15 +2121,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -1740,9 +2157,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_kubernetes.Cluster.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -1845,9 +2279,9 @@ new azure_kusto.Cluster(scope: Construct, id: string, kustoProps: ClusterProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.kustoProps">kustoProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.kustoProps">kustoProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps</code> | - The properties required to configure the Kusto cluster, as defined in the ClusterProps interface. |
 
 ---
 
@@ -1855,17 +2289,36 @@ new azure_kusto.Cluster(scope: Construct, id: string, kustoProps: ClusterProps)
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the cluster.
+
 ---
 
 ##### `kustoProps`<sup>Required</sup> <a name="kustoProps" id="@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.kustoProps"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps
+
+The properties required to configure the Kusto cluster, as defined in the ClusterProps interface.
+
+Example usage:
+```typescript
+new Cluster(this, 'MyKustoCluster', {
+name: 'example-cluster',
+location: 'West US',
+resourceGroup: myResourceGroup,
+sku: { tier: 'Standard', name: 'D13_v2', capacity: 2 },
+tags: {
+project: 'Data Analytics'
+}
+});
+```
 
 ---
 
@@ -1874,9 +2327,9 @@ new azure_kusto.Cluster(scope: Construct, id: string, kustoProps: ClusterProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.addDiagSettings">addDiagSettings</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.addDatabase">addDatabase</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.addDatabase">addDatabase</a></code> | Adds a new database to the Azure Kusto Cluster. |
 
 ---
 
@@ -1894,15 +2347,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -1912,9 +2383,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -1924,9 +2412,25 @@ public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 public addDatabase(databaseProps: DatabaseProps): Database
 ```
 
+Adds a new database to the Azure Kusto Cluster.
+
+This method creates a database within the Azure Data Explorer (Kusto) cluster, defined by the properties provided.
+A database in Kusto serves as a logical group to manage various tables and store data. It is essential for performing
+data analytics and running queries. The database configuration can include settings like hot cache and soft delete periods,
+which optimize query performance and manage data lifecycle according to specific requirements.
+
 ###### `databaseProps`<sup>Required</sup> <a name="databaseProps" id="@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.addDatabase.parameter.databaseProps"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps
+
+The properties required to create the database.
+
+These properties should include:
+  - `kusto`: Reference to the Kusto cluster to which the database will be added.
+  - `name`: The name of the database, which must be unique within the cluster.
+  - `hotCachePeriod`: Optional. Specifies the duration that data should be kept in cache for faster query access.
+  - `softDeletePeriod`: Optional. Specifies the duration that data should be retained before it stops being accessible to queries.
+    Both the hot cache and soft delete periods should be specified in ISO 8601 duration format.
 
 ---
 
@@ -2047,9 +2551,9 @@ new azure_eventhub.ConsumerGroup(scope: Construct, name: string, ehConsumerGroup
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.ConsumerGroup.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.ConsumerGroup.Initializer.parameter.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.ConsumerGroup.Initializer.parameter.ehConsumerGroupProps">ehConsumerGroupProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.ConsumerGroupProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.ConsumerGroup.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.ConsumerGroup.Initializer.parameter.name">name</a></code> | <code>string</code> | - The unique name for this instance of the Consumer Group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.ConsumerGroup.Initializer.parameter.ehConsumerGroupProps">ehConsumerGroupProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.ConsumerGroupProps</code> | - The properties for configuring the Consumer Group. |
 
 ---
 
@@ -2057,17 +2561,41 @@ new azure_eventhub.ConsumerGroup(scope: Construct, name: string, ehConsumerGroup
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.ConsumerGroup.Initializer.parameter.name"></a>
 
 - *Type:* string
 
+The unique name for this instance of the Consumer Group.
+
 ---
 
 ##### `ehConsumerGroupProps`<sup>Required</sup> <a name="ehConsumerGroupProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.ConsumerGroup.Initializer.parameter.ehConsumerGroupProps"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.ConsumerGroupProps
+
+The properties for configuring the Consumer Group.
+
+These properties include:
+- `name`: Required. The name of the Consumer Group.
+- `resourceGroup`: Required. The Azure Resource Group in which the Consumer Group's grandparent Namespace exists.
+- `namespaceName`: Required. The name of the grandparent EventHub Namespace.
+- `eventhubName`: Required. The name of the Event Hub for which the consumer group is created.
+- `userMetadata`: Optional. User-defined metadata to provide additional context about the Consumer Group.
+
+Example usage:
+```typescript
+const consumerGroup = new ConsumerGroup(this, 'myConsumerGroup', {
+resourceGroup: resourceGroup,
+namespaceName: 'exampleNamespace',
+eventhubName: 'exampleEventHub',
+name: 'myConsumerGroupName',
+userMetadata: 'Information about consumer group'
+});
+```
 
 ---
 
@@ -2182,9 +2710,9 @@ new azure_storageaccount.Container(scope: Construct, id: string, props: StorageC
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Container.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Container.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Container.Initializer.parameter.props">props</a></code> | <code>@cdktf/provider-azurerm.storageContainer.StorageContainerConfig</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Container.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically a reference to the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Container.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the container. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Container.Initializer.parameter.props">props</a></code> | <code>@cdktf/provider-azurerm.storageContainer.StorageContainerConfig</code> | - Configuration properties for the Azure Storage Container, based on the StorageContainerConfig interface. |
 
 ---
 
@@ -2192,17 +2720,51 @@ new azure_storageaccount.Container(scope: Construct, id: string, props: StorageC
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically a reference to the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Container.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the container.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Container.Initializer.parameter.props"></a>
 
 - *Type:* @cdktf/provider-azurerm.storageContainer.StorageContainerConfig
+
+Configuration properties for the Azure Storage Container, based on the StorageContainerConfig interface.
+
+These include:
+  - `name`: The name of the storage container, which must be unique within the associated storage account.
+  - `storageAccountName`: The name of the storage account where this container is located.
+  - `containerAccessType`: Defines the level of public access to the container. Options include 'container',
+    'blob', or 'none', controlling how the blobs within the container can be accessed.
+  - `defaultEncryptionScope`: Specifies the default encryption scope for the container, enhancing data security.
+  - `encryptionScopeOverrideEnabled`: Allows or prevents overriding the encryption scope on a per-blob basis.
+  - `metadata`: Key-value pairs that provide additional information about the container, which can be used for
+    organizational, search, or billing purposes.
+  - `timeouts`: Specifies custom timeout settings for CRUD operations on the container, providing control over
+    operation durations and retries.
+
+Example usage:
+```typescript
+const storageContainer = new Container(this, 'MyContainer', {
+name: 'mycontainer',
+storageAccountName: 'mystorageaccount',
+containerAccessType: 'blob',
+defaultEncryptionScope: 'myEncryptionScope',
+encryptionScopeOverrideEnabled: true,
+metadata: {
+department: 'Finance'
+}
+});
+```
+This instantiation sets up a storage container with specified properties including access types and metadata. It is ready
+to house blobs and provides methods to manage these blobs effectively.
 
 ---
 
@@ -2211,7 +2773,7 @@ new azure_storageaccount.Container(scope: Construct, id: string, props: StorageC
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Container.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Container.addBlob">addBlob</a></code> | Adds a blob to an Azure Storage Container. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Container.addBlob">addBlob</a></code> | Adds a blob to this Azure Storage Container. |
 
 ---
 
@@ -2229,13 +2791,17 @@ Returns a string representation of this construct.
 public addBlob(blobName: string, filePath: string, props?: StorageBlobConfig): Blob
 ```
 
-Adds a blob to an Azure Storage Container.
+Adds a blob to this Azure Storage Container.
+
+This method facilitates the addition of a blob to an Azure Storage Container managed by this class. It handles the creation and
+configuration of the blob, including setting its type, source content, and metadata. This is useful for uploading various types
+of unstructured data, such as images, videos, documents, or other binary files, into a cloud-based storage solution.
 
 ###### `blobName`<sup>Required</sup> <a name="blobName" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Container.addBlob.parameter.blobName"></a>
 
 - *Type:* string
 
-The name of the blob to be added.
+The name of the blob to be added, which will be used as the blob's unique identifier within the container.
 
 ---
 
@@ -2245,13 +2811,15 @@ The name of the blob to be added.
 
 The file path or URL for the source of the blob's content.
 
+This specifies the location of the file to be uploaded.
+
 ---
 
 ###### `props`<sup>Optional</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Container.addBlob.parameter.props"></a>
 
 - *Type:* @cdktf/provider-azurerm.storageBlob.StorageBlobConfig
 
-Optional configuration properties for the blob, such as blob type, content type, and metadata.
+Optional configuration properties for the blob, which include:   - `type`: The type of the blob (e.g., 'Block', 'Append', 'Page'). Default is 'Block'.   - `contentType`: The MIME type of the blob's content, such as 'application/octet-stream' for binary data. This helps browsers     and other clients handle the file correctly when it's downloaded or accessed.   - `metadata`: A dictionary of key-value pairs to store as metadata with the blob. Metadata is typically used to store additional     details about the blob, such as tags, descriptions, or other attributes.
 
 ---
 
@@ -2339,9 +2907,9 @@ new azure_kusto.Database(scope: Construct, id: string, kustoDbProps: DatabasePro
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.kustoDbProps">kustoDbProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the Kusto database. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.kustoDbProps">kustoDbProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps</code> | - The properties required to configure the Kusto database. |
 
 ---
 
@@ -2349,17 +2917,44 @@ new azure_kusto.Database(scope: Construct, id: string, kustoDbProps: DatabasePro
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the Kusto database.
+
 ---
 
 ##### `kustoDbProps`<sup>Required</sup> <a name="kustoDbProps" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.kustoDbProps"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps
+
+The properties required to configure the Kusto database.
+
+These include:
+  - `kusto`: Reference to the Kusto cluster to which the database will belong.
+  - `name`: The name of the database to be created within the Kusto cluster.
+  - `hotCachePeriod`: Optional. Specifies the duration that data should be kept in cache for faster query performance.
+                      Expressed in ISO 8601 duration format.
+  - `softDeletePeriod`: Optional. Specifies the duration that data should be retained before it stops being accessible.
+                        Expressed in ISO 8601 duration format.
+
+Example usage:
+```typescript
+const myDatabase = new Database(this, 'MyKustoDatabase', {
+kusto: myKustoCluster,
+name: 'AnalyticsDB',
+hotCachePeriod: 'P30D',  // 30 days
+softDeletePeriod: 'P365D' // 365 days
+});
+```
+
+This class sets up the database configurations and integrates it within the specified Kusto cluster,
+providing capabilities to manage and query large datasets effectively.
 
 ---
 
@@ -2368,9 +2963,9 @@ new azure_kusto.Database(scope: Construct, id: string, kustoDbProps: DatabasePro
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.addPermission">addPermission</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.addScript">addScript</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.addTable">addTable</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.addPermission">addPermission</a></code> | Adds a database principal assignment in the Kusto cluster, assigning specified access rights to a principal. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.addScript">addScript</a></code> | Adds and executes a control command or script within the Kusto database. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.addTable">addTable</a></code> | Adds a new table to an existing Azure Kusto database. |
 
 ---
 
@@ -2388,9 +2983,39 @@ Returns a string representation of this construct.
 public addPermission(kustoDatabaseAccessProps: DatabaseAccessProps): void
 ```
 
+Adds a database principal assignment in the Kusto cluster, assigning specified access rights to a principal.
+
+This method is used to grant access permissions to a specific user, group, or service principal within an Azure Active Directory.
+These permissions determine the level of access that the principal has over the Kusto database, such as viewing, ingesting, or managing data.
+The assignment is made by creating a KustoDatabasePrincipalAssignment resource, specifying the principal details and the type of role
+they should assume.
+
 ###### `kustoDatabaseAccessProps`<sup>Required</sup> <a name="kustoDatabaseAccessProps" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.addPermission.parameter.kustoDatabaseAccessProps"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_kusto.DatabaseAccessProps
+
+The properties defining the principal assignment.
+
+This includes:
+- `name`: A unique name identifying this principal assignment.
+- `tenantId`: The Azure Active Directory tenant ID where the principal resides.
+- `principalId`: The object ID of the principal (user, group, or service principal) in Azure AD.
+- `principalType`: The type of principal (e.g., User, Group, App).
+- `role`: The database role assigned to the principal. Roles can include Admin, User, Viewer, among others.
+
+Example usage:
+```typescript
+myDatabase.addPermission({
+name: 'DataScienceTeamAccess',
+tenantId: 'tenant-id',
+principalId: 'principal-id',
+principalType: 'Group',
+role: 'Viewer'
+});
+```
+This method creates a new principal assignment, enabling specified access controls for the principal
+on the Kusto database based on the role assigned. It is crucial for managing security and access
+governance within the Kusto environment.
 
 ---
 
@@ -2400,15 +3025,36 @@ public addPermission(kustoDatabaseAccessProps: DatabaseAccessProps): void
 public addScript(scriptName: string, scriptContent: string): void
 ```
 
+Adds and executes a control command or script within the Kusto database.
+
+This method facilitates the execution of Kusto Query Language (KQL) scripts or control commands within the specified
+Kusto database. Scripts can perform a variety of functions, from schema modifications, like adding new tables or altering
+existing ones, to data management operations, such as data ingestion or cleanup tasks. Each script is executed as a
+KustoScript resource, which ensures that the script is applied correctly and atomically to the database.
+
 ###### `scriptName`<sup>Required</sup> <a name="scriptName" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.addScript.parameter.scriptName"></a>
 
 - *Type:* string
+
+A unique name for the script, which helps in identifying the script resource within the deployment.
 
 ---
 
 ###### `scriptContent`<sup>Required</sup> <a name="scriptContent" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.addScript.parameter.scriptContent"></a>
 
 - *Type:* string
+
+The KQL script or control command to be executed. This should be a valid KQL command string.
+
+Example usage:
+```typescript
+myDatabase.addScript('InitializeSalesTable', `
+.create table SalesData (TransactionId: int, TransactionDate: datetime, Amount: real)
+.alter-merge table SalesData policy retentionsoftdelete = 365d
+`);
+```
+This method will create a `KustoScript` resource that encapsulates the command, ensuring it is executed against the
+database, and is tracked as part of the resource management within Azure.
 
 ---
 
@@ -2418,15 +3064,36 @@ public addScript(scriptName: string, scriptContent: string): void
 public addTable(tableName: string, tableSchema: TableSchemaProps[]): void
 ```
 
+Adds a new table to an existing Azure Kusto database.
+
+This method creates a table within the specified Kusto database using a given schema. Tables in Kusto store structured data with
+defined columns and types, which are crucial for storing and querying large datasets efficiently. The method constructs a Kusto
+Data Explorer control command to create the table and then executes this command within the context of the database.
+
 ###### `tableName`<sup>Required</sup> <a name="tableName" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.addTable.parameter.tableName"></a>
 
 - *Type:* string
+
+The name of the table to create, which must be unique within the database.
 
 ---
 
 ###### `tableSchema`<sup>Required</sup> <a name="tableSchema" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.addTable.parameter.tableSchema"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_kusto.TableSchemaProps[]
+
+An array of schema properties defining the columns of the table, including column names and their data types.
+
+Example usage:
+```typescript
+myDatabase.addTable('SalesData', [
+{ columnName: 'TransactionId', columnType: 'int' },
+{ columnName: 'TransactionDate', columnType: 'datetime' },
+{ columnName: 'Amount', columnType: 'real' }
+]);
+```
+This method constructs the command to create the table and applies it directly within the Kusto database,
+ensuring the table is ready for data ingestion and querying.
 
 ---
 
@@ -2547,9 +3214,9 @@ new core_azure.DiagnosticSettings(scope: Construct, id: string, props: Diagnosti
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettings.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettings.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettings.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettings.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettings.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the diagnostic settings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettings.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps</code> | - Configuration properties for diagnostic settings. |
 
 ---
 
@@ -2557,17 +3224,51 @@ new core_azure.DiagnosticSettings(scope: Construct, id: string, props: Diagnosti
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettings.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the diagnostic settings.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettings.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps
+
+Configuration properties for diagnostic settings.
+
+These properties include:
+  - `name`: Optional. The name of the diagnostic settings. If not provided, a unique name will be generated.
+  - `targetResourceId`: The ID of the Azure resource to which these diagnostic settings apply.
+  - `storageAccountId`: Optional. The ID of the Azure Storage account to which logs and metrics are sent.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for the Event Hub namespace.
+  - `eventhubName`: Optional. The name of the Event Hub where metrics and logs will be sent.
+  - `logAnalyticsWorkspaceId`: Optional. The ID of the Log Analytics workspace to which logs and metrics are sent.
+  - `partnerSolutionId`: Optional. ID of a partner solution that configurations are fetched from.
+  - `logCategories`: Optional. Categories of logs to collect.
+  - `metricCategories`: Optional. Categories of metrics to collect.
+  - `logAnalyticsDestinationType`: Optional. Specifies whether logs should be stored in a dedicated table or the
+    legacy AzureDiagnostics table in the Log Analytics workspace.
+
+Example usage:
+```typescript
+const resourceGroup = new ResourceGroup(this, 'ResourceGroup', { ... });
+const diagnostics = new DiagnosticSettings(this, 'MyDiagnostics', {
+name: 'example-diagnostics',
+targetResourceId: resourceGroup.id,
+logAnalyticsWorkspaceId: logAnalyticsWorkspace.id,
+storageAccountId: storageAccount.id,
+logCategories: ['Write', 'Delete'],
+metricCategories: ['AllMetrics']
+});
+```
+This class configures the diagnostic settings to collect specific logs and metrics from the target resource and routes them
+to specified destinations such as Log Analytics, Storage Account, or Event Hubs.
 
 ---
 
@@ -2671,9 +3372,9 @@ new azure_storageaccount.File(scope: Construct, id: string, props: StorageShareF
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.File.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.File.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.File.Initializer.parameter.props">props</a></code> | <code>@cdktf/provider-azurerm.storageShareFile.StorageShareFileConfig</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.File.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.File.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the file. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.File.Initializer.parameter.props">props</a></code> | <code>@cdktf/provider-azurerm.storageShareFile.StorageShareFileConfig</code> | - Configuration properties for the Azure Storage Share File. |
 
 ---
 
@@ -2681,17 +3382,50 @@ new azure_storageaccount.File(scope: Construct, id: string, props: StorageShareF
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.File.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the file.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.File.Initializer.parameter.props"></a>
 
 - *Type:* @cdktf/provider-azurerm.storageShareFile.StorageShareFileConfig
+
+Configuration properties for the Azure Storage Share File.
+
+These properties include:
+  - `name`: The name of the file within the storage share.
+  - `storageShareId`: The identifier for the storage share in which this file is located.
+  - `source`: The source of the file's content, which can be a path to a local file or a URL.
+  - `contentType`: The MIME type of the file's content, helping clients handle the file appropriately when downloaded.
+  - `contentEncoding`: The encoding format of the file's content (e.g., 'gzip').
+  - `contentDisposition`: Provides instructions on how the content should be displayed or handled.
+  - `contentMd5`: An MD5 hash of the file content for verifying the integrity of the file upon transfer.
+  - `metadata`: A dictionary of key-value pairs to store as metadata with the file. Metadata is typically used to store additional
+    details about the file such as tags, descriptions, or other attributes.
+
+Example usage:
+```typescript
+const myFile = new File(this, 'MyFile', {
+name: 'examplefile.txt',
+storageShareId: 'share123',
+source: './path/to/local/file.txt',
+contentType: 'text/plain',
+contentEncoding: 'utf-8',
+metadata: {
+createdBy: 'John Doe'
+}
+});
+```
+This class initializes a file with the specified configurations and handles the uploading of content from the specified source, providing
+a way to manage file storage in Azure efficiently.
 
 ---
 
@@ -3058,8 +3792,8 @@ tags: {
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionAppLinux.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionAppLinux.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionAppLinux.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionAppLinux.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionAppLinux.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 
 ---
 
@@ -3077,15 +3811,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionAppLinux.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionAppLinux.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -3095,9 +3847,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionAppLinux.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -3251,9 +4020,9 @@ new azure_applicationgateway.Gateway(scope: Construct, id: string, props: IGatew
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.Initializer.parameter.id">id</a></code> | <code>string</code> | - The ID of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps</code> | - The properties for configuring the Azure Application Gateway. |
 
 ---
 
@@ -3261,17 +4030,94 @@ new azure_applicationgateway.Gateway(scope: Construct, id: string, props: IGatew
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The ID of this construct.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps
+
+The properties for configuring the Azure Application Gateway.
+
+The properties include:
+  - `name`: Required. Unique name for the Application Gateway within Azure.
+  - `location`: Required. Azure Region for deployment.
+  - `resourceGroup`: Required. Reference to the resource group for deployment.
+  - `skuTier`: Required. SKU tier of the Application Gateway (e.g., Standard, WAF).
+  - `skuSize`: Required. Size of the SKU for the Application Gateway.
+  - `capacity`: Required. Capacity (instance count) of the Application Gateway.
+  - `backendAddressPools`: Required. Backend address pools for the Application Gateway.
+  - `backendHttpSettings`: Required. Backend HTTP settings for the Application Gateway.
+  - `httpListeners`: Required. HTTP listeners for the Application Gateway.
+  - `requestRoutingRules`: Required. Request routing rules for the Application Gateway.
+  - `publicIpAddress`: Optional. Public IP address for the frontend.
+  - `privateIpAddress`: Optional. Private IP address for the frontend.
+  - `privateIpAddressAllocation`: Optional. Allocation method for the private IP (Static, Dynamic).
+  - `frontendPorts`: Optional. Frontend ports for the Application Gateway.
+  - `subnet`: Optional. Subnet for the Application Gateway.
+  - `enableHttp2`: Optional. Flag to enable HTTP2.
+  - `fipsEnabled`: Optional. Flag to enable FIPS-compliant algorithms.
+  - `firewallPolicyId`: Optional. ID of the firewall policy.
+  - `forceFirewallPolicyAssociation`: Optional. Flag to enforce association of the firewall policy.
+  - `tags`: Optional. Tags for resource management.
+  - Additional optional properties as described in `IGatewayProps` interface.
+
+Example usage:
+```typescript
+new Gateway(this, 'appGateway1', {
+name: 'gatewayEast',
+resourceGroup: resourceGroup,
+location: "eastus",
+skuTier: "Standard_v2",
+skuSize: "Standard_v2",
+capacity: 2,
+publicIpAddress: publicIp,
+subnet: subnet,
+backendAddressPools: [
+{ name: "backend-address-pool-1" },
+{
+name: "backend-address-pool-2",
+ipAddresses: ["10.1.0.4", "10.1.0.5", "10.1.0.6"],
+},
+],
+httpListeners: [
+{
+name: "http-listener",
+frontendPortName: "80",
+frontendIpConfigurationName: "Public-frontend-ip-configuration",
+protocol: "Http",
+},
+],
+backendHttpSettings: [
+{
+name: "backend-http-setting",
+port: 80,
+protocol: "Http",
+requestTimeout: 20,
+cookieBasedAffinity: "Disabled",
+},
+],
+requestRoutingRules: [
+{
+name: "request-routing-rule-1",
+httpListenerName: "http-listener",
+priority: 1,
+backendAddressPoolName: "backend-address-pool-1",
+backendHttpSettingsName: "backend-http-setting",
+ruleType: "Basic",
+},
+],
+});
+```
 
 ---
 
@@ -3280,8 +4126,8 @@ new azure_applicationgateway.Gateway(scope: Construct, id: string, props: IGatew
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 
 ---
 
@@ -3299,15 +4145,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -3317,9 +4181,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -3418,9 +4299,9 @@ new azure_resourcegroup.Group(scope: Construct, id: string, props?: GroupProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_resourcegroup.GroupProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the Resource Group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_resourcegroup.GroupProps</code> | - Optional properties for configuring the Resource Group. |
 
 ---
 
@@ -3428,17 +4309,42 @@ new azure_resourcegroup.Group(scope: Construct, id: string, props?: GroupProps)
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the Resource Group.
+
 ---
 
 ##### `props`<sup>Optional</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_resourcegroup.GroupProps
+
+Optional properties for configuring the Resource Group.
+
+These can include:
+  - `location`: The Azure region where the Resource Group will be created.
+  - `name`: The name of the Resource Group, which must be unique within your Azure subscription.
+  - `tags`: A dictionary of tags to apply to the Resource Group for organizational, billing, or other purposes.
+  - `ignoreChanges`: A list of properties which should be ignored if changes are made after initial deployment,
+    useful in certain scenarios where properties are externally managed or should not trigger updates.
+
+Example usage:
+```typescript
+new Group(this, 'MyResourceGroup', {
+location: 'East US',
+name: 'ApplicationResources',
+tags: {
+environment: 'production'
+}
+});
+```
+This class sets up the resource group and applies any specified configurations, making it ready to hold other Azure resources.
 
 ---
 
@@ -3447,8 +4353,8 @@ new azure_resourcegroup.Group(scope: Construct, id: string, props?: GroupProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 
 ---
 
@@ -3466,15 +4372,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -3484,9 +4408,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -3651,9 +4592,9 @@ new azure_eventhub.Instance(scope: Construct, name: string, ehInstanceProps: Ins
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.Initializer.parameter.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.Initializer.parameter.ehInstanceProps">ehInstanceProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.InstanceProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically used for managing lifecycles and creation order. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.Initializer.parameter.name">name</a></code> | <code>string</code> | - The unique name for this instance of the Event Hub. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.Initializer.parameter.ehInstanceProps">ehInstanceProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.InstanceProps</code> | - The properties for configuring the Event Hub instance. |
 
 ---
 
@@ -3661,17 +4602,43 @@ new azure_eventhub.Instance(scope: Construct, name: string, ehInstanceProps: Ins
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically used for managing lifecycles and creation order.
+
 ---
 
 ##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.Initializer.parameter.name"></a>
 
 - *Type:* string
 
+The unique name for this instance of the Event Hub.
+
 ---
 
 ##### `ehInstanceProps`<sup>Required</sup> <a name="ehInstanceProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.Initializer.parameter.ehInstanceProps"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.InstanceProps
+
+The properties for configuring the Event Hub instance.
+
+The properties include:
+- `name`: Required. The name of the Event Hub instance.
+- `partitionCount`: Optional. The number of partitions for the Event Hub. Defaults to 2. Max value is 32 for shared namespaces.
+- `messageRetention`: Optional. The number of days to retain the messages. Defaults to 1.
+- `status`: Optional. Specifies the operational status of the Event Hub (Active, Disabled, SendDisabled). Defaults to "Active".
+- `resourceGroup`: Required. The name of the resource group in which the Event Hub's parent namespace exists.
+- `namespaceName`: Required. The name of the Event Hub Namespace where this instance will be created.
+
+Example usage:
+```typescript
+const eventHubInstance = new Instance(this, 'myEventHubInstance', {
+name: 'exampleEventHub',
+namespaceName: 'exampleNamespace',
+resourceGroup: resourceGroup,
+partitionCount: 4,
+messageRetention: 7,
+status: 'Active'
+});
+```
 
 ---
 
@@ -3680,9 +4647,9 @@ new azure_eventhub.Instance(scope: Construct, name: string, ehInstanceProps: Ins
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.addAuthorizationRule">addAuthorizationRule</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.addConsumerGroup">addConsumerGroup</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.addKustoDataConnection">addKustoDataConnection</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.addAuthorizationRule">addAuthorizationRule</a></code> | Adds an Authorization Rule to an Event Hub instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.addConsumerGroup">addConsumerGroup</a></code> | Adds a Consumer Group to an existing Event Hub instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.addKustoDataConnection">addKustoDataConnection</a></code> | Adds a Kusto Data Connection to an existing Kusto Cluster and Database for ingesting data from an EventHub. |
 
 ---
 
@@ -3700,9 +4667,23 @@ Returns a string representation of this construct.
 public addAuthorizationRule(props: AuthorizationRuleProps): AuthorizationRule
 ```
 
+Adds an Authorization Rule to an Event Hub instance.
+
+This method creates a new Authorization Rule associated with the specified Event Hub,
+granting specified permissions such as 'listen', 'send', and 'manage' based on the properties provided.
+The rule determines the access level granted to users and applications for the Event Hub.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.addAuthorizationRule.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.AuthorizationRuleProps
+
+The properties for the Authorization Rule, which include:   - `name`: Required.
+
+A unique identifier for the Authorization Rule within the Event Hub.
+  - `listen`: Optional. Specifies if the rule allows listening to the Event Hub. Defaults to false.
+  - `send`: Optional. Specifies if the rule allows sending events to the Event Hub. Defaults to false.
+  - `manage`: Optional. Specifies if the rule allows managing the Event Hub. When set to true,
+              both 'listen' and 'send' are implicitly enabled. Defaults to false.
 
 ---
 
@@ -3712,15 +4693,30 @@ public addAuthorizationRule(props: AuthorizationRuleProps): AuthorizationRule
 public addConsumerGroup(name: string, userMetadata?: string): ConsumerGroup
 ```
 
+Adds a Consumer Group to an existing Event Hub instance.
+
+This method creates a new Consumer Group for the specified Event Hub. Consumer groups represent a view of the entire Event Hub,
+allowing consumer applications to have separate, independent views of the event stream. They read the stream at their own pace
+and maintain their own sequence point or offset. This enables a single Event Hub to support multiple consumer applications.
+
 ###### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.addConsumerGroup.parameter.name"></a>
 
 - *Type:* string
+
+The name of the Consumer Group to be added.
+
+This name must be unique within the Event Hub namespace.
 
 ---
 
 ###### `userMetadata`<sup>Optional</sup> <a name="userMetadata" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.addConsumerGroup.parameter.userMetadata"></a>
 
 - *Type:* string
+
+Optional.
+
+User-defined metadata for the Consumer Group. This metadata is useful for storing additional
+  information about the consumer group, such as its purpose or operational details.
 
 ---
 
@@ -3730,9 +4726,30 @@ public addConsumerGroup(name: string, userMetadata?: string): ConsumerGroup
 public addKustoDataConnection(props: BaseKustoDataConnectionProps): KustoDataConnection
 ```
 
+Adds a Kusto Data Connection to an existing Kusto Cluster and Database for ingesting data from an EventHub.
+
+This method configures a new Kusto Data Connection linked to the specified EventHub. It facilitates the ingestion of streaming data
+into the Kusto database, allowing for real-time analytics on streamed data. This connection specifies how data from EventHub
+is to be ingested into tables within the Kusto Database.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.addKustoDataConnection.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.BaseKustoDataConnectionProps
+
+The properties for the Kusto Data Connection, derived from BaseKustoDataConnectionProps, which include:   - `name`: Required.
+
+The name of the data connection to create.
+  - `location`: Required. The Azure region where the data connection will be created.
+  - `kustoResourceGroup`: Required. The Resource Group where the Kusto database exists.
+  - `kustoClusterName`: Required. The name of the Kusto Cluster to which this data connection will be added.
+  - `kustoDatabaseName`: Required. The name of the Kusto Database to which this data connection will be added.
+  - `consumerGroup`: Optional. The EventHub consumer group used for ingestion. Defaults to "$Default".
+  - `tableName`: Optional. The target table name in the Kusto database used for data ingestion.
+  - `identityId`: Optional. The resource ID of a managed identity used for authentication with EventHub.
+  - `mappingRuleName`: Optional. The mapping rule name used for data ingestion.
+  - `dataFormat`: Optional. Specifies the data format of EventHub messages. Defaults to "JSON".
+  - `databaseRoutingType`: Optional. Indicates the routing type for the database. Defaults to "Single".
+  - `compression`: Optional. Specifies the compression type for the data connection. Defaults to "None".
 
 ---
 
@@ -3842,9 +4859,9 @@ new azure_keyvault.Key(scope: Construct, id: string, props: KeyProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Key.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Key.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Key.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.KeyProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Key.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Key.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the Key. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Key.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.KeyProps</code> | - The properties for creating the key as defined in KeyProps. |
 
 ---
 
@@ -3852,17 +4869,49 @@ new azure_keyvault.Key(scope: Construct, id: string, props: KeyProps)
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Key.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the Key.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Key.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_keyvault.KeyProps
+
+The properties for creating the key as defined in KeyProps.
+
+These properties include:
+  - `name`: Required. The name of the key as it will appear in Azure Key Vault.
+  - `keyVaultId`: Required. The ID of the Azure Key Vault where the key will be created.
+  - `keyType`: Required. The type of cryptographic key to create (e.g., RSA, EC).
+  - `keySize`: Optional. The size of the key, typically specified for RSA keys.
+  - `keyOpts`: Optional. Additional options or attributes related to the key's capabilities such as encrypt, decrypt, wrapKey, unwrapKey.
+  - `rotationPolicy`: Optional. The policy settings for rotating the key automatically.
+  - `expires`: Optional. The expiration date of the key in UTC format (YYYY-MM-DDTHH:MM:SSZ).
+  - `accessPolicies`: Required. Access policies defining who can access this key within the Key Vault.
+
+Example usage:
+```typescript
+new Key(this, 'myKey', {
+name: 'encryptionKey',
+keyVaultId: myKeyVault,
+keyType: 'RSA',
+keySize: 2048,
+keyOpts: ['encrypt', 'decrypt', 'sign', 'verify'],
+rotationPolicy: {
+expiryTime: 'P90D'
+},
+expires: '2030-01-01T00:00:00Z',
+accessPolicies: [{ userId: 'user123', permissions: ['get', 'list', 'update'] }]
+});
+```
 
 ---
 
@@ -3966,9 +5015,9 @@ new azure_eventhub.KustoDataConnection(scope: Construct, id: string, kustoDataCo
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.KustoDataConnection.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.KustoDataConnection.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.KustoDataConnection.Initializer.parameter.kustoDataConnectionProps">kustoDataConnectionProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.KustoDataConnectionProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.KustoDataConnection.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.KustoDataConnection.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the data connection. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.KustoDataConnection.Initializer.parameter.kustoDataConnectionProps">kustoDataConnectionProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.KustoDataConnectionProps</code> | - The properties for configuring the Kusto EventHub Data Connection. |
 
 ---
 
@@ -3976,17 +5025,55 @@ new azure_eventhub.KustoDataConnection(scope: Construct, id: string, kustoDataCo
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_eventhub.KustoDataConnection.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the data connection.
+
 ---
 
 ##### `kustoDataConnectionProps`<sup>Required</sup> <a name="kustoDataConnectionProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.KustoDataConnection.Initializer.parameter.kustoDataConnectionProps"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.KustoDataConnectionProps
+
+The properties for configuring the Kusto EventHub Data Connection.
+
+These properties include:
+- `name`: Required. The name of the data connection.
+- `location`: Required. The Azure region where the data connection will be created.
+- `kustoResourceGroup`: Required. The Resource Group where the Kusto database exists.
+- `kustoClusterName`: Required. The name of the Kusto Cluster to which this data connection will be added.
+- `kustoDatabaseName`: Required. The name of the Kusto Database to which this data connection will be added.
+- `eventhubId`: Required. The resource ID of the EventHub used for data ingestion.
+- `consumerGroup`: Optional. The EventHub consumer group used for ingestion. Defaults to "$Default".
+- `tableName`: Optional. The target table name in the Kusto database used for data ingestion.
+- `identityId`: Optional. The resource ID of a managed identity used for authentication with EventHub.
+- `mappingRuleName`: Optional. The mapping rule name used for data ingestion.
+- `dataFormat`: Optional. Specifies the data format of EventHub messages. Defaults to "JSON".
+- `databaseRoutingType`: Optional. Indicates the routing type for the database. Defaults to "Single".
+- `compression`: Optional. Specifies the compression type for the data connection. Defaults to "None".
+
+Example usage:
+```typescript
+const kustoDataConnection = new KustoDataConnection(this, 'myDataConnection', {
+name: 'exampleDataConnection',
+location: 'East US',
+kustoResourceGroup: resourceGroup,
+kustoClusterName: 'exampleCluster',
+kustoDatabaseName: 'exampleDatabase',
+eventhubId: '/subscriptions/{sub-id}/resourceGroups/{rg}/providers/Microsoft.EventHub/namespaces/{namespace}/eventhubs/{eventhub}',
+consumerGroup: '$Default',
+tableName: 'destinationTable',
+dataFormat: 'JSON',
+databaseRoutingType: 'Single',
+compression: 'None'
+});
+```
 
 ---
 
@@ -4090,9 +5177,9 @@ new azure_virtualmachinescaleset.LinuxCluster(scope: Construct, id: string, prop
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which this construct is defined. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.Initializer.parameter.id">id</a></code> | <code>string</code> | - The ID of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps</code> | - The properties for defining a Linux Virtual Machine. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the Linux cluster, used within the scope for reference. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps</code> | - Configuration properties for the Linux VM Scale Set, derived from the LinuxClusterProps interface. |
 
 ---
 
@@ -4100,7 +5187,7 @@ new azure_virtualmachinescaleset.LinuxCluster(scope: Construct, id: string, prop
 
 - *Type:* constructs.Construct
 
-The scope in which this construct is defined.
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application.
 
 ---
 
@@ -4108,7 +5195,7 @@ The scope in which this construct is defined.
 
 - *Type:* string
 
-The ID of this construct.
+The unique identifier for this instance of the Linux cluster, used within the scope for reference.
 
 ---
 
@@ -4116,7 +5203,50 @@ The ID of this construct.
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps
 
-The properties for defining a Linux Virtual Machine.
+Configuration properties for the Linux VM Scale Set, derived from the LinuxClusterProps interface.
+
+These include:
+  - `location`: The geographic location where the scale set will be hosted (e.g., "eastus").
+  - `name`: The name of the scale set, which must be unique within the resource group.
+  - `resourceGroup`: The ResourceGroup within which the scale set will be created.
+  - `sku`: The size specification of the VMs (e.g., "Standard_B2s").
+  - `adminUsername`: The administrator username for the VMs.
+  - `adminPassword`: The administrator password for the VMs.
+  - `adminSshKey`: SSH keys for secure access to the VMs.
+  - `zones`: The availability zones for deploying the VMs.
+  - `identity`: Managed identity settings for accessing other Azure services.
+  - `sourceImageReference`: A reference to the specific Linux image to be used for the VMs.
+  - `sourceImageId`: The identifier for a custom image to use for the VMs.
+  - `tags`: Key-value pairs for resource tagging.
+  - `osDisk`: Configuration for the VMs' operating system disks.
+  - `subnet`: Specifies the subnet within which the VMs will be placed.
+  - `publicIPAddress`: Method used to allocate public IP addresses to the VMs.
+  - `customData`: Scripts or commands passed to the VMs at startup.
+  - `instances`: The number of VM instances in the scale set.
+  - `upgradePolicyMode`: The upgrade policy mode for the VMSS.
+  - `overprovision`: Specifies if the VMSS should be overprovisioned to maintain capacity during updates.
+  - `scaleInPolicy`: The scale-in policy for the VMSS.
+  - `bootDiagnosticsStorageURI`: URI for storage where VMSS boot diagnostics are collected.
+  - `enableSshAzureADLogin`: Option to enable Azure AD login for SSH on the VMs.
+
+Example usage:
+```typescript
+const linuxCluster = new LinuxCluster(this, 'MyLinuxCluster', {
+resourceGroup: myResourceGroup,
+name: 'myCluster',
+sku: 'Standard_DS1_v2',
+adminUsername: 'adminuser',
+adminSshKey: [{ publicKey: 'ssh-rsa AAAAB...' }],
+sourceImageReference: { publisher: 'Canonical', offer: 'UbuntuServer', sku: '18.04-LTS', version: 'latest' },
+osDisk: { caching: 'ReadWrite', storageAccountType: 'Standard_LRS' },
+subnet: mySubnet,
+instances: 3,
+tags: { environment: 'production' }
+});
+```
+This class initializes a Linux VM Scale Set with the specified configurations, handling details like VM creation,
+scaling policies, network setup, OS installation, and security settings, providing a robust and scalable infrastructure
+for hosting cloud-based Linux applications.
 
 ---
 
@@ -4125,8 +5255,8 @@ The properties for defining a Linux Virtual Machine.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 
 ---
 
@@ -4144,15 +5274,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -4162,9 +5310,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxCluster.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -4296,9 +5461,9 @@ new azure_virtualmachine.LinuxVM(scope: Construct, id: string, props: LinuxVMPro
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which this construct is defined. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.Initializer.parameter.id">id</a></code> | <code>string</code> | - The ID of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps</code> | - The properties for defining a Linux Virtual Machine. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the Linux VM, used within the scope for reference. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps</code> | - Configuration properties for the Linux Virtual Machine, derived from the LinuxVMProps interface. |
 
 ---
 
@@ -4306,7 +5471,7 @@ new azure_virtualmachine.LinuxVM(scope: Construct, id: string, props: LinuxVMPro
 
 - *Type:* constructs.Construct
 
-The scope in which this construct is defined.
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application.
 
 ---
 
@@ -4314,7 +5479,7 @@ The scope in which this construct is defined.
 
 - *Type:* string
 
-The ID of this construct.
+The unique identifier for this instance of the Linux VM, used within the scope for reference.
 
 ---
 
@@ -4322,7 +5487,45 @@ The ID of this construct.
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps
 
-The properties for defining a Linux Virtual Machine.
+Configuration properties for the Linux Virtual Machine, derived from the LinuxVMProps interface.
+
+These include:
+  - `location`: The geographic location where the VM will be hosted (e.g., "eastus").
+  - `name`: The name of the VM, which must be unique within the resource group.
+  - `resourceGroup`: The ResourceGroup within which the VM will be created.
+  - `size`: The size specification of the VM (e.g., "Standard_B2s").
+  - `availabilitySetId`: The ID of the availability set in which to include the VM.
+  - `userData`: Custom data scripts to pass to the VM upon creation.
+  - `adminSshKey`: SSH keys for secure access to the VM.
+  - `zone`: The availability zone for deploying the VM.
+  - `identity`: Managed identity settings for accessing other Azure services.
+  - `additionalCapabilities`: Special capabilities like Ultra Disk support.
+  - `sourceImageReference`: A reference to the specific Linux image to be used for the VM.
+  - `sourceImageId`: The identifier for a custom image to use for the VM.
+  - `tags`: Key-value pairs for resource tagging.
+  - `osDisk`: Configuration for the VM's operating system disk.
+  - `subnet`: Specifies the subnet within which the VM will be placed.
+  - `publicIPAllocationMethod`: Method used to allocate a public IP address.
+  - `customData`: Additional scripts or commands passed to the VM at startup.
+  - `enableSshAzureADLogin`: Option to enable Azure AD login for SSH.
+  - `bootDiagnosticsStorageURI`: URI for storage where VM boot diagnostics are collected.
+
+Example usage:
+```typescript
+const linuxVM = new LinuxVM(this, 'MyLinuxVM', {
+resourceGroup: myResourceGroup,
+name: 'myVM',
+size: 'Standard_DS1_v2',
+adminUsername: 'adminuser',
+adminSshKey: [{ publicKey: 'ssh-rsa AAAAB...' }],
+sourceImageReference: { publisher: 'Canonical', offer: 'UbuntuServer', sku: '18.04-LTS', version: 'latest' },
+osDisk: { caching: 'ReadWrite', storageAccountType: 'Standard_LRS' },
+subnet: mySubnet,
+tags: { environment: 'production' }
+});
+```
+This class initializes a Linux VM with the specified configurations, handling details like network setup, OS installation,
+and security settings, thus providing a robust infrastructure for hosting applications on Linux environments.
 
 ---
 
@@ -4331,8 +5534,8 @@ The properties for defining a Linux Virtual Machine.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 
 ---
 
@@ -4350,15 +5553,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -4368,9 +5589,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVM.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -4502,9 +5740,9 @@ new azure_metricalert.MetricAlert(scope: Construct, id: string, props: IMetricAl
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which this construct is defined. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.id">id</a></code> | <code>string</code> | - The ID of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.IMetricAlertProps</code> | - The properties required for Metric Alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.IMetricAlertProps</code> | *No description.* |
 
 ---
 
@@ -4512,23 +5750,17 @@ new azure_metricalert.MetricAlert(scope: Construct, id: string, props: IMetricAl
 
 - *Type:* constructs.Construct
 
-The scope in which this construct is defined.
-
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.id"></a>
 
 - *Type:* string
 
-The ID of this construct.
-
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.IMetricAlertProps
-
-The properties required for Metric Alert.
 
 ---
 
@@ -4643,9 +5875,9 @@ new azure_eventhub.Namespace(scope: Construct, name: string, ehNamespaceProps: N
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.ehNamespaceProps">ehNamespaceProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.name">name</a></code> | <code>string</code> | - The unique name for this instance of the Event Hub Namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.ehNamespaceProps">ehNamespaceProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps</code> | - The properties for configuring the Event Hub Namespace. |
 
 ---
 
@@ -4653,17 +5885,58 @@ new azure_eventhub.Namespace(scope: Construct, name: string, ehNamespaceProps: N
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.name"></a>
 
 - *Type:* string
 
+The unique name for this instance of the Event Hub Namespace.
+
 ---
 
 ##### `ehNamespaceProps`<sup>Required</sup> <a name="ehNamespaceProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.ehNamespaceProps"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps
+
+The properties for configuring the Event Hub Namespace.
+
+These properties include:
+- `resourceGroup`: Required. The Azure Resource Group in which the namespace will be created.
+- `name`: Required. The name of the Event Hub Namespace to create.
+- `sku`: Optional. The SKU tier of the namespace (Basic, Standard, Premium). Defaults to "Basic".
+- `capacity`: Optional. Specifies the throughput units for a Standard SKU namespace. Defaults to 2.
+- `autoInflateEnabled`: Optional. Enables or disables Auto Inflate. Defaults to false.
+- `maximumThroughputUnits`: Optional. The maximum number of throughput units when Auto Inflate is enabled. Defaults to 2.
+- `zoneRedundant`: Optional. Specifies if the namespace should be zone redundant. Defaults to true.
+- `tags`: Optional. Tags for resource management and categorization.
+- `minimumTlsVersion`: Optional. Specifies the minimum supported TLS version. Defaults to "1.2".
+- `publicNetworkAccessEnabled`: Optional. Specifies if public network access is enabled. Defaults to true.
+- `localAuthenticationEnabled`: Optional. Specifies if SAS authentication is enabled. Defaults to false.
+- `identityType`: Optional. The type of Managed Service Identity. Defaults to "SystemAssigned".
+- `identityIds`: Optional. A list of User Assigned Managed Identity IDs.
+
+Example usage:
+```typescript
+const eventHubNamespace = new Namespace(this, 'myNamespace', {
+resourceGroup: resourceGroup,
+name: 'myEventHubNamespace',
+sku: 'Standard',
+capacity: 4,
+autoInflateEnabled: true,
+maximumThroughputUnits: 10,
+zoneRedundant: false,
+tags: {
+department: 'IT'
+},
+minimumTlsVersion: '1.2',
+publicNetworkAccessEnabled: false,
+localAuthenticationEnabled: true,
+identityType: 'SystemAssigned'
+});
+```
 
 ---
 
@@ -4672,11 +5945,11 @@ new azure_eventhub.Namespace(scope: Construct, name: string, ehNamespaceProps: N
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.addMetricAlert">addMetricAlert</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.addQueryRuleAlert">addQueryRuleAlert</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.addEventhubInstance">addEventhubInstance</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.addEventhubInstance">addEventhubInstance</a></code> | Creates and adds an Event Hub instance to the current namespace. |
 
 ---
 
@@ -4694,15 +5967,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -4712,9 +6003,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -4748,9 +6056,24 @@ public addQueryRuleAlert(props: BaseAzureQueryRuleAlertProps): void
 public addEventhubInstance(props: BaseInstanceProps): Instance
 ```
 
+Creates and adds an Event Hub instance to the current namespace.
+
+This method sets up a new Event Hub instance within the namespace defined by this class. An Event Hub instance
+serves as a container that processes and stores events. This method facilitates the setup of multiple Event Hubs
+within a single namespace, each configured according to the specified properties.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.addEventhubInstance.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.BaseInstanceProps
+
+The properties for configuring the new Event Hub instance.
+
+These properties extend `BaseInstanceProps`, which include:
+  - `name`: Required. The name of the Event Hub instance.
+  - `partitionCount`: Optional. The number of partitions in the Event Hub. Default is 2.
+  - `messageRetention`: Optional. The number of days to retain messages in the Event Hub. Default is 1.
+  - `status`: Optional. The operational status of the Event Hub (Active, Disabled, SendDisabled). Default is "Active".
+  Other properties from `BaseInstanceProps` can also be passed and will be used in the creation of the Event Hub.
 
 ---
 
@@ -4871,9 +6194,9 @@ new azure_virtualnetwork.Network(scope: Construct, id: string, props: NetworkPro
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualnetwork.NetworkProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the network, used within the scope for reference. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualnetwork.NetworkProps</code> | - Configuration properties for the Azure Virtual Network, derived from the NetworkProps interface. |
 
 ---
 
@@ -4881,17 +6204,43 @@ new azure_virtualnetwork.Network(scope: Construct, id: string, props: NetworkPro
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the network, used within the scope for reference.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_virtualnetwork.NetworkProps
+
+Configuration properties for the Azure Virtual Network, derived from the NetworkProps interface.
+
+These include:
+  - `resourceGroup`: The ResourceGroup within which the virtual network will be created.
+  - `name`: Optional. The name of the virtual network. If not provided, a default name will be assigned.
+  - `location`: Optional. The Azure region where the virtual network will be deployed. Defaults to the resource group's region.
+  - `addressSpace`: Optional. A list of CIDR blocks that define the address spaces of the virtual network.
+  - `subnets`: Optional. An array of subnets to be created within the virtual network, each defined by a name and a CIDR block.
+
+Example usage:
+```typescript
+const network = new Network(this, 'MyVirtualNetwork', {
+resourceGroup: myResourceGroup,
+name: 'myVNet',
+location: 'West US',
+addressSpace: ['10.0.0.0/16'],
+subnets: [{ name: 'subnet1', addressPrefixes: ['10.0.1.0/24'] }]
+});
+```
+This class initializes a virtual network with the specified configurations and handles the provisioning of subnets
+within the network, providing a foundational networking layer for hosting cloud resources.
 
 ---
 
@@ -4900,9 +6249,9 @@ new azure_virtualnetwork.Network(scope: Construct, id: string, props: NetworkPro
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.addDiagSettings">addDiagSettings</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.addVnetPeering">addVnetPeering</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.addVnetPeering">addVnetPeering</a></code> | Establishes a peering connection between this virtual network and another remote virtual network. |
 
 ---
 
@@ -4920,15 +6269,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -4938,9 +6305,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -4950,9 +6334,17 @@ public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 public addVnetPeering(remoteVirtualNetwork: Network, localPeerSettings?: PeerSettings, remotePeerSettings?: PeerSettings): void
 ```
 
+Establishes a peering connection between this virtual network and another remote virtual network.
+
+This method configures a two-way peering connection, allowing resources in both virtual networks to communicate
+seamlessly. It sets up peering settings such as network access, traffic forwarding, and gateway transit based on
+provided configurations.
+
 ###### `remoteVirtualNetwork`<sup>Required</sup> <a name="remoteVirtualNetwork" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.addVnetPeering.parameter.remoteVirtualNetwork"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network
+
+The remote virtual network with which to establish a peering connection.
 
 ---
 
@@ -4960,11 +6352,38 @@ public addVnetPeering(remoteVirtualNetwork: Network, localPeerSettings?: PeerSet
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_virtualnetwork.PeerSettings
 
+Optional settings applied from this virtual network to the remote virtual network.
+
+Controls aspects like virtual network access, traffic forwarding, and use of gateways.
+
 ---
 
 ###### `remotePeerSettings`<sup>Optional</sup> <a name="remotePeerSettings" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Network.addVnetPeering.parameter.remotePeerSettings"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_virtualnetwork.PeerSettings
+
+Optional settings applied from the remote virtual network to this virtual network.
+
+Allows customization of how the remote network interacts with this one.
+
+Example usage:
+```typescript
+// Assuming 'this' is a reference to a local virtual network instance.
+const partnerVNet = new Network(this, 'PartnerVNet', { ... });
+this.addVnetPeering(partnerVNet, {
+allowVirtualNetworkAccess: true,
+allowForwardedTraffic: false,
+allowGatewayTransit: true,
+useRemoteGateways: false
+}, {
+allowVirtualNetworkAccess: true,
+allowForwardedTraffic: true,
+allowGatewayTransit: false,
+useRemoteGateways: false
+});
+```
+This method invokes the `Peer` class to create a peering between 'this' virtual network and 'partnerVNet'.
+The settings control traffic behavior and access permissions in both directions of the peering.
 
 ---
 
@@ -5107,9 +6526,9 @@ new azure_virtualnetwork.Peer(scope: Construct, name: string, props: PeerProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Peer.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Peer.Initializer.parameter.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Peer.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualnetwork.PeerProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Peer.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Peer.Initializer.parameter.name">name</a></code> | <code>string</code> | - The unique name for this instance of the network peering. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Peer.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualnetwork.PeerProps</code> | - Configuration properties for the network peering, derived from the PeerProps interface. |
 
 ---
 
@@ -5117,17 +6536,52 @@ new azure_virtualnetwork.Peer(scope: Construct, name: string, props: PeerProps)
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application.
+
 ---
 
 ##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Peer.Initializer.parameter.name"></a>
 
 - *Type:* string
 
+The unique name for this instance of the network peering.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.Peer.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_virtualnetwork.PeerProps
+
+Configuration properties for the network peering, derived from the PeerProps interface.
+
+These include:
+  - `virtualNetwork`: The local virtual network object.
+  - `remoteVirtualNetwork`: The remote virtual network object.
+  - `localToRemoteSettings`: Configuration settings applied from the local virtual network to the remote virtual network.
+  - `remoteToLocalSettings`: Configuration settings applied from the remote virtual network to the local virtual network.
+
+Example usage:
+```typescript
+const vnetPeering = new Peer(this, 'VNetPeering', {
+virtualNetwork: myVNet,
+remoteVirtualNetwork: partnerVNet,
+localToRemoteSettings: {
+allowVirtualNetworkAccess: true,
+allowForwardedTraffic: false,
+allowGatewayTransit: false,
+useRemoteGateways: false
+},
+remoteToLocalSettings: {
+allowVirtualNetworkAccess: true,
+allowForwardedTraffic: true,
+allowGatewayTransit: false,
+useRemoteGateways: false
+}
+});
+```
+This class initializes a VNet peering with the specified configurations, enabling direct connectivity between
+the specified virtual networks. It manages the creation and configuration of network peering settings, ensuring
+that both VNets are appropriately linked and configured according to the defined properties.
 
 ---
 
@@ -5220,9 +6674,9 @@ new azure_queryrulealert.QueryRuleAlert(scope: Construct, id: string, props: Azu
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_queryrulealert.QueryRuleAlert.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which this construct is defined. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_queryrulealert.QueryRuleAlert.Initializer.parameter.id">id</a></code> | <code>string</code> | - The ID of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_queryrulealert.QueryRuleAlert.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_queryrulealert.AzureQueryRuleAlertProps</code> | - The properties required for Azure Query Rule Alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_queryrulealert.QueryRuleAlert.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_queryrulealert.QueryRuleAlert.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the Scheduled Query Rule Alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_queryrulealert.QueryRuleAlert.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_queryrulealert.AzureQueryRuleAlertProps</code> | - The properties required to configure the Scheduled Query Rule Alert, as defined in the AzureQueryRuleAlertProps interface. |
 
 ---
 
@@ -5230,7 +6684,7 @@ new azure_queryrulealert.QueryRuleAlert(scope: Construct, id: string, props: Azu
 
 - *Type:* constructs.Construct
 
-The scope in which this construct is defined.
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
 
 ---
 
@@ -5238,7 +6692,7 @@ The scope in which this construct is defined.
 
 - *Type:* string
 
-The ID of this construct.
+The unique identifier for this instance of the Scheduled Query Rule Alert.
 
 ---
 
@@ -5246,7 +6700,34 @@ The ID of this construct.
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_queryrulealert.AzureQueryRuleAlertProps
 
-The properties required for Azure Query Rule Alert.
+The properties required to configure the Scheduled Query Rule Alert, as defined in the AzureQueryRuleAlertProps interface.
+
+These include:
+  - `name`: The name of the Scheduled Query Rule.
+  - `resourceGroup`: The Azure Resource Group under which the alert will be created.
+  - `location`: The Azure region where the alert will be deployed.
+  - `criteriaQuery`: The query to execute. The results of this query determine whether an alert should be triggered.
+  - `evaluationFrequency`: How often the query should be run.
+  - `windowDuration`: The time period over which data is collected for each execution of the query.
+  - `severity`: The severity of the alert.
+  - `actionActionGroupId`: The action group to invoke when the alert criteria are met.
+  - `enabled`: Indicates whether the alert rule is enabled.
+
+Example usage:
+```typescript
+new QueryRuleAlert(this, 'MyAlertRule', {
+name: 'HighErrorRateAlert',
+resourceGroup: myResourceGroup,
+location: 'West US 2',
+criteriaQuery: 'Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m)',
+evaluationFrequency: 'PT5M',
+windowDuration: 'PT1H',
+severity: 3,
+actionActionGroupId: ['/subscriptions/sub-id/resourceGroups/rg/providers/microsoft.insights/actionGroups/myActionGroup'],
+enabled: true
+});
+```
+This class sets up the alert rule and ensures it is ready to trigger actions based on the specified criteria and schedule.
 
 ---
 
@@ -5372,9 +6853,9 @@ new azure_storageaccount.Queue(scope: Construct, id: string, props: StorageQueue
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Queue.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Queue.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Queue.Initializer.parameter.props">props</a></code> | <code>@cdktf/provider-azurerm.storageQueue.StorageQueueConfig</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Queue.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Queue.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the queue. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Queue.Initializer.parameter.props">props</a></code> | <code>@cdktf/provider-azurerm.storageQueue.StorageQueueConfig</code> | - Configuration properties for the Azure Storage Queue. |
 
 ---
 
@@ -5382,17 +6863,42 @@ new azure_storageaccount.Queue(scope: Construct, id: string, props: StorageQueue
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Queue.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the queue.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Queue.Initializer.parameter.props"></a>
 
 - *Type:* @cdktf/provider-azurerm.storageQueue.StorageQueueConfig
+
+Configuration properties for the Azure Storage Queue.
+
+These properties may include:
+  - `name`: The name of the queue, which must be unique within the storage account.
+  - `storageAccountName`: The name of the storage account in which this queue is being created.
+  - `metadata`: A dictionary of strings that represents metadata to associate with the queue.
+  - `timeouts`: Custom timeout settings for CRUD operations on the queue to manage operation durations and retries.
+
+Example usage:
+```typescript
+const myQueue = new Queue(this, 'MyQueue', {
+name: 'taskqueue',
+storageAccountName: 'mystorageaccount',
+metadata: {
+department: 'IT'
+}
+});
+```
+This class initializes a storage queue with the specified configurations. It can be used to enqueue and process messages as needed
+within applications, providing a reliable messaging solution for asynchronous communication and coordination of tasks across systems.
 
 ---
 
@@ -5496,9 +7002,9 @@ new core_azure.Rbac(scope: Construct, id: string, props: RbacProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Rbac.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which this construct is defined. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Rbac.Initializer.parameter.id">id</a></code> | <code>string</code> | - The ID of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Rbac.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.RbacProps</code> | - The properties required for Azure RBAC. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Rbac.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Rbac.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the RBAC assignment. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Rbac.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.RbacProps</code> | - Configuration properties for the RBAC assignment. |
 
 ---
 
@@ -5506,7 +7012,7 @@ new core_azure.Rbac(scope: Construct, id: string, props: RbacProps)
 
 - *Type:* constructs.Construct
 
-The scope in which this construct is defined.
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
 
 ---
 
@@ -5514,7 +7020,7 @@ The scope in which this construct is defined.
 
 - *Type:* string
 
-The ID of this construct.
+The unique identifier for this instance of the RBAC assignment.
 
 ---
 
@@ -5522,7 +7028,23 @@ The ID of this construct.
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.RbacProps
 
-The properties required for Azure RBAC.
+Configuration properties for the RBAC assignment.
+
+These properties include:
+  - `objectId`: The Azure AD object ID for the user, group, or service principal to which the role is assigned.
+  - `roleDefinitionUUID`: Optional. The UUID of the Azure RBAC role definition. This can be obtained via Azure CLI.
+  - `roleDefinitionName`: The name of the role to be assigned, such as 'Contributor', 'Reader', or 'Owner'.
+  - `scope`: The scope at which the role is assigned, which could be a subscription, resource group, or specific resource.
+
+Example usage:
+```typescript
+const rbac = new Rbac(this, 'rbacAssignment', {
+objectId: 'user-or-group-object-id',
+roleDefinitionName: 'Contributor',
+scope: '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}'
+});
+```
+This RBAC instance assigns the 'Contributor' role to a user or group specified by 'objectId' at the scope of a specific resource group.
 
 ---
 
@@ -5615,9 +7137,9 @@ new azure_containerregistry.Registry(scope: Construct, id: string, props: Regist
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically used for managing lifecycles and creation order. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this construct instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps</code> | - The properties for configuring the Azure Container Registry. |
 
 ---
 
@@ -5625,17 +7147,44 @@ new azure_containerregistry.Registry(scope: Construct, id: string, props: Regist
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically used for managing lifecycles and creation order.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this construct instance.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps
+
+The properties for configuring the Azure Container Registry.
+
+The properties include:
+  - `location`: Required. The Azure region where the registry will be deployed.
+  - `name`: Required. The name of the Container Registry.
+  - `resourceGroup`: Required. The Azure Resource Group in which to deploy the registry.
+  - `sku`: Optional. The SKU of the Container Registry (e.g., Basic, Standard, Premium). Determines the features available.
+  - `tags`: Optional. Tags for resource management.
+  - `adminEnabled`: Optional. Specifies whether the admin user is enabled for the registry. Defaults to false if not set.
+  - `geoReplicationLocations`: Optional. Specifies additional Azure regions where the registry should be geo-replicated.
+
+Example usage:
+```typescript
+new Registry(this, 'myRegistry', {
+location: 'West US',
+name: 'myContainerRegistry',
+resourceGroup: resourceGroup,
+sku: 'Premium',
+adminEnabled: true,
+geoReplicationLocations: ['East US', 'West Europe']
+});
+```
 
 ---
 
@@ -5644,8 +7193,8 @@ new azure_containerregistry.Registry(scope: Construct, id: string, props: Regist
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 
 ---
 
@@ -5663,15 +7212,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -5681,9 +7248,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_containerregistry.Registry.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -5793,9 +7377,9 @@ new azure_keyvault.Secret(scope: Construct, id: string, props: SecretProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Secret.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Secret.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Secret.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.SecretProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Secret.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Secret.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the secret. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Secret.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.SecretProps</code> | - The properties for creating the secret as defined in SecretProps. |
 
 ---
 
@@ -5803,17 +7387,46 @@ new azure_keyvault.Secret(scope: Construct, id: string, props: SecretProps)
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Secret.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the secret.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Secret.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_keyvault.SecretProps
+
+The properties for creating the secret as defined in SecretProps.
+
+These include:
+  - `keyVaultId`: The ID of the Key Vault in which to store the secret.
+  - `name`: The name of the secret.
+  - `value`: The confidential data to be stored as the secret.
+  - `expirationDate`: Optional. The expiration date of the secret.
+  - `contentType`: Optional. A label hinting at the content type of the secret's value.
+  - `accessPolicies`: Access policies that dictate permissions for the secret.
+
+Example usage:
+```typescript
+new Secret(this, 'mySecret', {
+keyVaultId: myKeyVault,
+name: 'dbPassword',
+value: 'p@ssw0rd!',
+expirationDate: '2030-01-01T00:00:00Z',
+contentType: 'password',
+accessPolicies: [{
+objectId: '12345-user-object-id',
+permissions: ['get', 'list']
+}]
+});
+```
 
 ---
 
@@ -5917,9 +7530,9 @@ new azure_networksecuritygroup.SecurityGroup(scope: Construct, id: string, props
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the security group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupProps</code> | - The properties required to configure the Network Security Group, as defined in the SecurityGroupProps interface. |
 
 ---
 
@@ -5927,17 +7540,50 @@ new azure_networksecuritygroup.SecurityGroup(scope: Construct, id: string, props
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the security group.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupProps
+
+The properties required to configure the Network Security Group, as defined in the SecurityGroupProps interface.
+
+These include:
+  - `resourceGroup`: The Azure Resource Group under which the NSG will be deployed.
+  - `location`: The Azure region where the NSG will be created.
+  - `name`: The name of the NSG, which must be unique within the resource group.
+  - `rules`: A list of rules that define the security policies for traffic control.
+
+Example usage:
+```typescript
+new SecurityGroup(this, 'MySecurityGroup', {
+resourceGroup: myResourceGroup,
+location: 'East US',
+name: 'myNsg',
+rules: [{
+name: 'AllowSSH',
+priority: 100,
+direction: 'Inbound',
+access: 'Allow',
+protocol: 'Tcp',
+sourcePortRange: '*',
+destinationPortRange: '22',
+sourceAddressPrefix: '*',
+destinationAddressPrefix: '*'
+}]
+});
+```
+This class initializes a Network Security Group with specified rules, handling network security management tasks efficiently.
 
 ---
 
@@ -5946,10 +7592,10 @@ new azure_networksecuritygroup.SecurityGroup(scope: Construct, id: string, props
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.addDiagSettings">addDiagSettings</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.associateToNetworkInterface">associateToNetworkInterface</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.associateToSubnet">associateToSubnet</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.associateToNetworkInterface">associateToNetworkInterface</a></code> | Associates this Network Security Group with a specified network interface. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.associateToSubnet">associateToSubnet</a></code> | Associates this Network Security Group with a specified subnet. |
 
 ---
 
@@ -5967,15 +7613,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -5985,9 +7649,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -5997,9 +7678,24 @@ public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 public associateToNetworkInterface(networkInterface: NetworkInterface): void
 ```
 
+Associates this Network Security Group with a specified network interface.
+
+This method attaches the security group to a network interface, applying the security group's rules to the network interface.
+This allows for fine-grained control of network traffic to and from the specific network interface.
+
 ###### `networkInterface`<sup>Required</sup> <a name="networkInterface" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.associateToNetworkInterface.parameter.networkInterface"></a>
 
 - *Type:* @cdktf/provider-azurerm.networkInterface.NetworkInterface
+
+The network interface object to which this network security group will be associated.
+
+Example usage:
+```typescript
+const myNetworkInterface = { id: 'nic-456', name: 'NetworkInterfaceA' };
+mySecurityGroup.associateToNetworkInterface(myNetworkInterface);
+```
+This operation ensures that the security rules defined in the network security group are applied directly to the specified
+network interface, controlling access in a more targeted manner.
 
 ---
 
@@ -6009,9 +7705,24 @@ public associateToNetworkInterface(networkInterface: NetworkInterface): void
 public associateToSubnet(subnet: Subnet): void
 ```
 
+Associates this Network Security Group with a specified subnet.
+
+This method facilitates the attachment of the security group to a subnet, applying the security group's rules to all
+resources within the subnet. This is crucial for managing network access and security policies at the subnet level.
+
 ###### `subnet`<sup>Required</sup> <a name="subnet" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroup.associateToSubnet.parameter.subnet"></a>
 
 - *Type:* @cdktf/provider-azurerm.subnet.Subnet
+
+The subnet object to which this network security group will be associated.
+
+Example usage:
+```typescript
+const mySubnet = { id: 'subnet-123', name: 'SubnetA' };
+mySecurityGroup.associateToSubnet(mySubnet);
+```
+This operation ensures that the security rules defined in the network security group are enforced on all network interfaces
+attached to the specified subnet.
 
 ---
 
@@ -6132,9 +7843,9 @@ new azure_networksecuritygroup.SecurityGroupAssociations(scope: Construct, id: s
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupAssociations.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupAssociations.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupAssociations.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupAssociationsProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupAssociations.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupAssociations.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for the association instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupAssociations.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupAssociationsProps</code> | - The properties for the association. |
 
 ---
 
@@ -6142,17 +7853,36 @@ new azure_networksecuritygroup.SecurityGroupAssociations(scope: Construct, id: s
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupAssociations.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for the association instance.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupAssociations.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupAssociationsProps
+
+The properties for the association.
+
+Includes the network security group ID and optionally a subnet ID or network interface ID.
+
+Example usage:
+```typescript
+new SecurityGroupAssociations(this, 'MyAssociations', {
+networkSecurityGroupId: 'nsg-123',
+subnetId: 'subnet-123',
+networkInterfaceId: 'nic-456',
+});
+```
+Depending on the properties provided, this class will create the appropriate associations to apply the network security group
+to the specified subnet or network interface.
 
 ---
 
@@ -6245,9 +7975,9 @@ new azure_keyvault.SelfSignedCertificate(scope: Construct, id: string, props: Se
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificate.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificate.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificate.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificate.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificate.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the certificate. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificate.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps</code> | - The properties for creating the self-signed certificate as defined in SelfSignedCertificateProps. |
 
 ---
 
@@ -6255,17 +7985,35 @@ new azure_keyvault.SelfSignedCertificate(scope: Construct, id: string, props: Se
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificate.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the certificate.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificate.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps
+
+The properties for creating the self-signed certificate as defined in SelfSignedCertificateProps.
+
+Example usage:
+```typescript
+new SelfSignedCertificate(this, 'MySelfSignedCert', {
+name: 'exampleCert',
+subject: 'CN=example.com',
+dnsNames: ['example.com', 'www.example.com'],
+keyVaultId: myKeyVault,
+accessPolicies: [{ userId: 'user123', permissions: ['all'] }],
+tags: { project: 'My Project' }
+});
+```
 
 ---
 
@@ -6391,9 +8139,9 @@ new azure_storageaccount.Table(scope: Construct, id: string, props: StorageTable
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Table.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Table.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Table.Initializer.parameter.props">props</a></code> | <code>@cdktf/provider-azurerm.storageTable.StorageTableConfig</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Table.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Table.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the table. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.Table.Initializer.parameter.props">props</a></code> | <code>@cdktf/provider-azurerm.storageTable.StorageTableConfig</code> | - Configuration properties for the Azure Storage Table. |
 
 ---
 
@@ -6401,17 +8149,46 @@ new azure_storageaccount.Table(scope: Construct, id: string, props: StorageTable
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Table.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the table.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.Table.Initializer.parameter.props"></a>
 
 - *Type:* @cdktf/provider-azurerm.storageTable.StorageTableConfig
+
+Configuration properties for the Azure Storage Table.
+
+These properties include:
+  - `name`: The name of the table, which must be unique within the storage account.
+  - `storageAccountName`: The name of the storage account in which this table is being created.
+  - `acl`: An optional list of access control entries that define permissions for accessing the table.
+  - `timeouts`: Optional timeout settings for create/read/update/delete operations on the table.
+
+Example usage:
+```typescript
+const storageTable = new Table(this, 'MyTable', {
+name: 'tasktable',
+storageAccountName: 'mystorageaccount',
+acl: [{
+id: 'myacl',
+permissions: 'rwdl',
+start: '2020-01-01T01:00:00Z',
+expiry: '2030-01-01T01:00:00Z',
+policy: 'mypolicy'
+}]
+});
+```
+This class initializes a storage table with the specified configurations and provides an interface to manage access controls and
+other properties. It is ideal for applications that require structured, scalable, and fast access to data.
 
 ---
 
@@ -6515,9 +8292,9 @@ new azure_keyvault.Vault(scope: Construct, id: string, props: VaultProps)
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the Key Vault. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps</code> | - The properties for creating the Key Vault as defined in VaultProps. |
 
 ---
 
@@ -6525,17 +8302,41 @@ new azure_keyvault.Vault(scope: Construct, id: string, props: VaultProps)
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the Key Vault.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps
+
+The properties for creating the Key Vault as defined in VaultProps.
+
+These include settings for location, SKU, tenant ID, etc.
+
+Example usage:
+```typescript
+new Vault(this, 'MyKeyVault', {
+name: 'mySecureVault',
+location: 'East US',
+resourceGroup: myResourceGroup,
+sku: 'premium',
+tenantId: 'my-tenant-id',
+softDeleteRetentionDays: 90,
+purgeProtection: true,
+tags: {
+project: 'My Application'
+}
+});
+```
 
 ---
 
@@ -6544,20 +8345,20 @@ new azure_keyvault.Vault(scope: Construct, id: string, props: VaultProps)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addDiagSettings">addDiagSettings</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addCertIssuer">addCertIssuer</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addKey">addKey</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addRSAKey">addRSAKey</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addSecret">addSecret</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addSelfSignedCert">addSelfSignedCert</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantCertAdminAccess">grantCertAdminAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantCertReaderAccess">grantCertReaderAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantCustomAccess">grantCustomAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantKeyAdminAccess">grantKeyAdminAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantKeyReaderAccess">grantKeyReaderAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantSecretAdminAccess">grantSecretAdminAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantSecretReaderAccess">grantSecretReaderAccess</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addCertIssuer">addCertIssuer</a></code> | Adds a certificate issuer to the Azure Key Vault. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addKey">addKey</a></code> | Creates a cryptographic key within the Azure Key Vault. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addRSAKey">addRSAKey</a></code> | Creates an RSA cryptographic key within the Azure Key Vault. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addSecret">addSecret</a></code> | Creates a new secret within the Azure Key Vault. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addSelfSignedCert">addSelfSignedCert</a></code> | Creates a self-signed certificate within the Azure Key Vault. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantCertAdminAccess">grantCertAdminAccess</a></code> | Grants administrative access to certificates stored in the Key Vault to a specified Azure AD group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantCertReaderAccess">grantCertReaderAccess</a></code> | Grants read-only access to certificates stored in the Key Vault to a specified Azure AD group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantCustomAccess">grantCustomAccess</a></code> | Grants custom access based on specified options to an Azure AD group in the Key Vault. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantKeyAdminAccess">grantKeyAdminAccess</a></code> | Grants administrative access to keys stored in the Key Vault to a specified Azure AD group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantKeyReaderAccess">grantKeyReaderAccess</a></code> | Grants read-only access to keys stored in the Key Vault to a specified Azure AD group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantSecretAdminAccess">grantSecretAdminAccess</a></code> | Grants administrative access to secrets stored in the Key Vault to a specified Azure AD group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantSecretReaderAccess">grantSecretReaderAccess</a></code> | Grants read-only access to secrets stored in the Key Vault to a specified Azure AD group. |
 
 ---
 
@@ -6575,15 +8376,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -6593,9 +8412,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -6605,15 +8441,36 @@ public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 public addCertIssuer(name: string, provider: string): void
 ```
 
+Adds a certificate issuer to the Azure Key Vault.
+
+This method configures a certificate issuer within the Key Vault, allowing the Key Vault to issue certificates
+through external providers. Configuring an issuer is essential for enabling automated certificate management
+processes, such as issuance and renewal, directly through the Key Vault with a specified Certificate Authority (CA).
+
 ###### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addCertIssuer.parameter.name"></a>
 
 - *Type:* string
+
+The unique name for the certificate issuer within the Key Vault.
 
 ---
 
 ###### `provider`<sup>Required</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addCertIssuer.parameter.provider"></a>
 
 - *Type:* string
+
+The name of the external provider that will issue the certificates, such as 'DigiCert' or 'GlobalSign'.
+
+Example usage:
+```typescript
+vault.addCertIssuer(
+'myCertIssuer',
+'DigiCert'
+);
+```
+This method configures a certificate issuer but does not return any value. The issuer details, including provider name
+and any necessary credentials (managed externally or through additional method parameters), are set up in the Key Vault
+for future certificate operations.
 
 ---
 
@@ -6623,9 +8480,18 @@ public addCertIssuer(name: string, provider: string): void
 public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts: string[], expirationDate?: string): KeyVaultKey
 ```
 
+Creates a cryptographic key within the Azure Key Vault.
+
+This method allows the creation of a cryptographic key of specified type and size within the Key Vault. The key can be
+configured with specific operations it can perform, such as encryption, decryption, signing, etc. An optional expiration
+date can also be set to control the key's lifecycle. This method is flexible, supporting various key types and sizes,
+making it suitable for a wide range of cryptographic needs.
+
 ###### `keyVaultKeyName`<sup>Required</sup> <a name="keyVaultKeyName" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addKey.parameter.keyVaultKeyName"></a>
 
 - *Type:* string
+
+The unique name for the cryptographic key within the Key Vault.
 
 ---
 
@@ -6633,11 +8499,15 @@ public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts
 
 - *Type:* string
 
+The type of cryptographic key to create (e.g., 'RSA', 'EC', 'oct-HSM').
+
 ---
 
 ###### `keySize`<sup>Required</sup> <a name="keySize" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addKey.parameter.keySize"></a>
 
 - *Type:* number
+
+The size of the cryptographic key in bits (e.g., 2048, 3072, 4096 for RSA).
 
 ---
 
@@ -6645,11 +8515,21 @@ public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts
 
 - *Type:* string[]
 
+A list of cryptographic operations that the key is allowed to perform.
+
+Possible values might include
+  'encrypt', 'decrypt', 'sign', 'verify', 'wrapKey', 'unwrapKey'.
+
 ---
 
 ###### `expirationDate`<sup>Optional</sup> <a name="expirationDate" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addKey.parameter.expirationDate"></a>
 
 - *Type:* string
+
+Optional.
+
+The expiration date of the key in ISO 8601 format (YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ).
+  If provided, the key will no longer be valid after this date, aligning with best practices for key management.
 
 ---
 
@@ -6659,15 +8539,29 @@ public addKey(keyVaultKeyName: string, keyType: string, keySize: number, keyOpts
 public addRSAKey(keyVaultKeyName: string, expirationDate?: string): KeyVaultKey
 ```
 
+Creates an RSA cryptographic key within the Azure Key Vault.
+
+This method facilitates the creation of an RSA key, which is useful for a variety of cryptographic operations such as
+encryption, decryption, digital signature verification, and more. The RSA key created by this method is configurable
+with an optional expiration date and a default key size of 2048 bits. The key operations allowed include decryption,
+encryption, signing, verifying signatures, and key wrapping/unwrapping.
+
 ###### `keyVaultKeyName`<sup>Required</sup> <a name="keyVaultKeyName" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addRSAKey.parameter.keyVaultKeyName"></a>
 
 - *Type:* string
+
+The unique name for the RSA key within the Key Vault.
 
 ---
 
 ###### `expirationDate`<sup>Optional</sup> <a name="expirationDate" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addRSAKey.parameter.expirationDate"></a>
 
 - *Type:* string
+
+Optional.
+
+The expiration date of the key in ISO 8601 format (YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ).
+  If provided, the key will no longer be valid after this date.
 
 ---
 
@@ -6677,9 +8571,18 @@ public addRSAKey(keyVaultKeyName: string, expirationDate?: string): KeyVaultKey
 public addSecret(keyVaultSecretName: string, secretValue: string, expirationDate?: string, contentType?: string): void
 ```
 
+Creates a new secret within the Azure Key Vault.
+
+This method facilitates the storage of sensitive information in the form of a secret within the Key Vault.
+Secrets are protected items such as passwords, database connection strings, or any other piece of information
+that needs to be securely stored and accessed. This method allows setting additional properties such as
+expiration date and content type for better management and compliance.
+
 ###### `keyVaultSecretName`<sup>Required</sup> <a name="keyVaultSecretName" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addSecret.parameter.keyVaultSecretName"></a>
 
 - *Type:* string
+
+The unique name for the secret within the Key Vault.
 
 ---
 
@@ -6687,17 +8590,40 @@ public addSecret(keyVaultSecretName: string, secretValue: string, expirationDate
 
 - *Type:* string
 
+The sensitive information or data that needs to be securely stored as a secret.
+
 ---
 
 ###### `expirationDate`<sup>Optional</sup> <a name="expirationDate" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addSecret.parameter.expirationDate"></a>
 
 - *Type:* string
 
+Optional.
+
+The expiration date of the secret in ISO 8601 format (YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSZ).
+  If provided, the secret will no longer be valid after this date.
+
 ---
 
 ###### `contentType`<sup>Optional</sup> <a name="contentType" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addSecret.parameter.contentType"></a>
 
 - *Type:* string
+
+Optional.
+
+A description of the type of information the secret contains (e.g., 'password', 'connectionString').
+  This can be used by applications to handle the secret appropriately.
+
+Example usage:
+```typescript
+vault.addSecret(
+'myDatabasePassword',
+'p@ssw0rd123!',
+'2030-01-01',
+'databasePassword'
+);
+```
+This method does not return a value. It creates a secret within the Key Vault with the specified properties.
 
 ---
 
@@ -6707,9 +8633,18 @@ public addSecret(keyVaultSecretName: string, secretValue: string, expirationDate
 public addSelfSignedCert(certName: string, subject: string, dnsNames: string[], actionType?: string, daysBeforeExpiry?: number): KeyVaultCertificate
 ```
 
+Creates a self-signed certificate within the Azure Key Vault.
+
+This method facilitates the creation of a self-signed certificate, which is a digital certificate that is signed by
+its own creator rather than a trusted authority. Self-signed certificates can be useful for testing, internal
+communications, or any scenario where public trust is not required. The method allows specifying subject details,
+DNS names for the certificate, and managing its lifecycle with action types and expiry.
+
 ###### `certName`<sup>Required</sup> <a name="certName" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addSelfSignedCert.parameter.certName"></a>
 
 - *Type:* string
+
+The unique name for the certificate within the Key Vault.
 
 ---
 
@@ -6717,11 +8652,18 @@ public addSelfSignedCert(certName: string, subject: string, dnsNames: string[], 
 
 - *Type:* string
 
+The subject name of the certificate, typically formatted as an X.500 Distinguished Name (e.g., "CN=example.com").
+
 ---
 
 ###### `dnsNames`<sup>Required</sup> <a name="dnsNames" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addSelfSignedCert.parameter.dnsNames"></a>
 
 - *Type:* string[]
+
+An array of DNS names that should be associated with this certificate.
+
+This is useful for certificates
+  that need to be valid for multiple hostnames.
 
 ---
 
@@ -6729,11 +8671,19 @@ public addSelfSignedCert(certName: string, subject: string, dnsNames: string[], 
 
 - *Type:* string
 
+Optional.
+
+Specifies the action to be performed with the certificate, such as 'create' or 'renew'.
+
 ---
 
 ###### `daysBeforeExpiry`<sup>Optional</sup> <a name="daysBeforeExpiry" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.addSelfSignedCert.parameter.daysBeforeExpiry"></a>
 
 - *Type:* number
+
+Optional.
+
+Number of days before expiry when an action should be taken, useful for auto-renewal scenarios.
 
 ---
 
@@ -6743,9 +8693,13 @@ public addSelfSignedCert(certName: string, subject: string, dnsNames: string[], 
 public grantCertAdminAccess(azureAdGroupId: string): void
 ```
 
+Grants administrative access to certificates stored in the Key Vault to a specified Azure AD group.
+
 ###### `azureAdGroupId`<sup>Required</sup> <a name="azureAdGroupId" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantCertAdminAccess.parameter.azureAdGroupId"></a>
 
 - *Type:* string
+
+The Azure Active Directory group ID that will receive administrative access to certificates.
 
 ---
 
@@ -6755,9 +8709,13 @@ public grantCertAdminAccess(azureAdGroupId: string): void
 public grantCertReaderAccess(azureAdGroupId: string): void
 ```
 
+Grants read-only access to certificates stored in the Key Vault to a specified Azure AD group.
+
 ###### `azureAdGroupId`<sup>Required</sup> <a name="azureAdGroupId" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantCertReaderAccess.parameter.azureAdGroupId"></a>
 
 - *Type:* string
+
+The Azure Active Directory group ID that will receive read access to certificates.
 
 ---
 
@@ -6767,15 +8725,21 @@ public grantCertReaderAccess(azureAdGroupId: string): void
 public grantCustomAccess(azureAdGroupId: string, options: GrantCustomAccessOptions): void
 ```
 
+Grants custom access based on specified options to an Azure AD group in the Key Vault.
+
 ###### `azureAdGroupId`<sup>Required</sup> <a name="azureAdGroupId" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantCustomAccess.parameter.azureAdGroupId"></a>
 
 - *Type:* string
+
+The Azure Active Directory group ID that will receive the custom access.
 
 ---
 
 ###### `options`<sup>Required</sup> <a name="options" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantCustomAccess.parameter.options"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_keyvault.GrantCustomAccessOptions
+
+Custom access options specifying various permissions for secrets, keys, certificates, and storage.
 
 ---
 
@@ -6785,9 +8749,13 @@ public grantCustomAccess(azureAdGroupId: string, options: GrantCustomAccessOptio
 public grantKeyAdminAccess(azureAdGroupId: string): void
 ```
 
+Grants administrative access to keys stored in the Key Vault to a specified Azure AD group.
+
 ###### `azureAdGroupId`<sup>Required</sup> <a name="azureAdGroupId" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantKeyAdminAccess.parameter.azureAdGroupId"></a>
 
 - *Type:* string
+
+The Azure Active Directory group ID that will receive administrative access to keys.
 
 ---
 
@@ -6797,9 +8765,13 @@ public grantKeyAdminAccess(azureAdGroupId: string): void
 public grantKeyReaderAccess(azureAdGroupId: string): void
 ```
 
+Grants read-only access to keys stored in the Key Vault to a specified Azure AD group.
+
 ###### `azureAdGroupId`<sup>Required</sup> <a name="azureAdGroupId" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantKeyReaderAccess.parameter.azureAdGroupId"></a>
 
 - *Type:* string
+
+The Azure Active Directory group ID that will receive read access to keys.
 
 ---
 
@@ -6809,9 +8781,13 @@ public grantKeyReaderAccess(azureAdGroupId: string): void
 public grantSecretAdminAccess(azureAdGroupId: string): void
 ```
 
+Grants administrative access to secrets stored in the Key Vault to a specified Azure AD group.
+
 ###### `azureAdGroupId`<sup>Required</sup> <a name="azureAdGroupId" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantSecretAdminAccess.parameter.azureAdGroupId"></a>
 
 - *Type:* string
+
+The Azure Active Directory group ID that will receive administrative access to secrets.
 
 ---
 
@@ -6821,9 +8797,13 @@ public grantSecretAdminAccess(azureAdGroupId: string): void
 public grantSecretReaderAccess(azureAdGroupId: string): void
 ```
 
+Grants read-only access to secrets stored in the Key Vault to a specified Azure AD group.
+
 ###### `azureAdGroupId`<sup>Required</sup> <a name="azureAdGroupId" id="@microsoft/terraform-cdk-constructs.azure_keyvault.Vault.grantSecretReaderAccess.parameter.azureAdGroupId"></a>
 
 - *Type:* string
+
+The Azure Active Directory group ID that will receive read access to secrets.
 
 ---
 
@@ -6944,9 +8924,9 @@ new azure_virtualmachinescaleset.WindowsCluster(scope: Construct, id: string, pr
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which this construct is defined. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.Initializer.parameter.id">id</a></code> | <code>string</code> | - The ID of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps</code> | - The properties for defining a Windows Virtual Machine. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the Windows cluster, used within the scope for reference. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps</code> | - Configuration properties for the Windows VM Scale Set, derived from the WindowsClusterProps interface. |
 
 ---
 
@@ -6954,7 +8934,7 @@ new azure_virtualmachinescaleset.WindowsCluster(scope: Construct, id: string, pr
 
 - *Type:* constructs.Construct
 
-The scope in which this construct is defined.
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application.
 
 ---
 
@@ -6962,7 +8942,7 @@ The scope in which this construct is defined.
 
 - *Type:* string
 
-The ID of this construct.
+The unique identifier for this instance of the Windows cluster, used within the scope for reference.
 
 ---
 
@@ -6970,7 +8950,48 @@ The ID of this construct.
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps
 
-The properties for defining a Windows Virtual Machine.
+Configuration properties for the Windows VM Scale Set, derived from the WindowsClusterProps interface.
+
+These include:
+  - `location`: The geographic location where the scale set will be hosted (e.g., "eastus").
+  - `name`: The name of the scale set, which must be unique within the resource group.
+  - `resourceGroup`: The ResourceGroup within which the scale set will be created.
+  - `sku`: The size specification of the VMs (e.g., "Standard_B2s").
+  - `adminUsername`: The administrator username for the VMs.
+  - `adminPassword`: The administrator password for the VMs.
+  - `zones`: The availability zones for deploying the VMs.
+  - `instances`: The number of VM instances in the scale set.
+  - `sourceImageReference`: A reference to the specific Windows image to be used for the VMs.
+  - `sourceImageId`: The identifier for a custom image to use for the VMs.
+  - `tags`: Key-value pairs for resource tagging.
+  - `osDisk`: Configuration for the VMs' operating system disks.
+  - `subnet`: Specifies the subnet within which the VMs will be placed.
+  - `publicIPAddress`: Method used to allocate public IP addresses to the VMs.
+  - `customData`: Scripts or commands passed to the VMs at startup.
+  - `upgradePolicyMode`: The upgrade policy mode for the VMSS.
+  - `overprovision`: Specifies if the VMSS should be overprovisioned to maintain capacity during updates.
+  - `scaleInPolicy`: The scale-in policy for the VMSS.
+  - `bootDiagnosticsStorageURI`: URI for storage where VMSS boot diagnostics are collected.
+  - `enableSshAzureADLogin`: Option to enable Azure AD login for SSH on the VMs.
+
+Example usage:
+```typescript
+const windowsCluster = new WindowsCluster(this, 'MyWindowsCluster', {
+resourceGroup: myResourceGroup,
+name: 'myCluster',
+sku: 'Standard_DS1_v2',
+adminUsername: 'adminuser',
+adminPassword: 'securepassword123',
+sourceImageReference: { publisher: 'MicrosoftWindowsServer', offer: 'WindowsServer', sku: '2019-Datacenter', version: 'latest' },
+osDisk: { caching: 'ReadWrite', storageAccountType: 'Standard_LRS' },
+subnet: mySubnet,
+instances: 3,
+tags: { environment: 'production' }
+});
+```
+This class initializes a Windows VM Scale Set with the specified configurations, handling details like VM creation,
+scaling policies, network setup, OS installation, and security settings, providing a robust and scalable infrastructure
+for hosting cloud-based Windows applications.
 
 ---
 
@@ -6979,8 +9000,8 @@ The properties for defining a Windows Virtual Machine.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 
 ---
 
@@ -6998,15 +9019,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -7016,9 +9055,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsCluster.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -7139,9 +9195,9 @@ new azure_virtualmachine.WindowsVM(scope: Construct, id: string, props: WindowsV
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which this construct is defined. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.Initializer.parameter.id">id</a></code> | <code>string</code> | - The ID of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps</code> | - The properties for defining a Windows Virtual Machine. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the Windows VM, used within the scope for reference. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps</code> | - Configuration properties for the Windows Virtual Machine, derived from the WindowsVMProps interface. |
 
 ---
 
@@ -7149,7 +9205,7 @@ new azure_virtualmachine.WindowsVM(scope: Construct, id: string, props: WindowsV
 
 - *Type:* constructs.Construct
 
-The scope in which this construct is defined.
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application.
 
 ---
 
@@ -7157,7 +9213,7 @@ The scope in which this construct is defined.
 
 - *Type:* string
 
-The ID of this construct.
+The unique identifier for this instance of the Windows VM, used within the scope for reference.
 
 ---
 
@@ -7165,7 +9221,41 @@ The ID of this construct.
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps
 
-The properties for defining a Windows Virtual Machine.
+Configuration properties for the Windows Virtual Machine, derived from the WindowsVMProps interface.
+
+These include:
+  - `location`: The geographic location where the VM will be hosted (e.g., "eastus").
+  - `name`: The name of the VM, which must be unique within the resource group.
+  - `resourceGroup`: The ResourceGroup within which the VM will be created.
+  - `size`: The size specification of the VM (e.g., "Standard_B2s").
+  - `adminUsername`: The administrator username for accessing the VM.
+  - `adminPassword`: The administrator password for accessing the VM.
+  - `sourceImageReference`: A reference to the specific Windows image to be used for the VM.
+  - `sourceImageId`: The identifier for a custom image to use for the VM.
+  - `tags`: Key-value pairs for resource tagging.
+  - `osDisk`: Configuration for the VM's operating system disk.
+  - `subnet`: Specifies the subnet within which the VM will be placed.
+  - `publicIPAllocationMethod`: The method used to allocate a public IP address to the VM.
+  - `customData`: Scripts or commands passed to the VM at startup.
+  - `bootstrapCustomData`: Custom data used to trigger the Azure Custom Script Extension for VM setup tasks.
+  - `bootDiagnosticsStorageURI`: URI for storage where VM boot diagnostics are collected.
+
+Example usage:
+```typescript
+const vm = new WindowsVM(this, 'MyWindowsVM', {
+resourceGroup: myResourceGroup,
+name: 'myVM',
+size: 'Standard_DS1_v2',
+adminUsername: 'adminuser',
+adminPassword: 'securepassword123',
+sourceImageReference: { publisher: 'MicrosoftWindowsServer', offer: 'WindowsServer', sku: '2019-Datacenter', version: 'latest' },
+osDisk: { caching: 'ReadWrite', storageAccountType: 'Standard_LRS' },
+subnet: mySubnet,
+tags: { environment: 'production' }
+});
+```
+This class initializes a Windows VM with the specified configurations, handling details like network setup, OS installation,
+and security settings, thus providing a robust infrastructure for hosting applications on Windows Server environments.
 
 ---
 
@@ -7174,8 +9264,8 @@ The properties for defining a Windows Virtual Machine.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 
 ---
 
@@ -7193,15 +9283,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -7211,9 +9319,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVM.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -7345,9 +9470,9 @@ new azure_loganalytics.Workspace(scope: Construct, id: string, props: WorkspaceP
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the Log Analytics workspace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps</code> | - The properties required to configure the Log Analytics workspace, as defined in the WorkspaceProps interface. |
 
 ---
 
@@ -7355,17 +9480,60 @@ new azure_loganalytics.Workspace(scope: Construct, id: string, props: WorkspaceP
 
 - *Type:* constructs.Construct
 
+The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+
 ---
 
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.Initializer.parameter.id"></a>
 
 - *Type:* string
 
+The unique identifier for this instance of the Log Analytics workspace.
+
 ---
 
 ##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps
+
+The properties required to configure the Log Analytics workspace, as defined in the WorkspaceProps interface.
+
+These include:
+  - `location`: The Azure region where the workspace will be deployed.
+  - `name`: The name of the workspace, which must be globally unique.
+  - `resourceGroup`: The Azure Resource Group under which the workspace is deployed.
+  - `sku`: Optional. The SKU of the workspace, affecting pricing and features.
+  - `retention`: Optional. The number of days data will be retained in the workspace.
+  - `tags`: Optional. Tags to assign to the workspace for organizational purposes.
+  - `dataExport`: Optional. Configurations for exporting data to other Azure resources.
+  - `functions`: Optional. Custom functions defined within the workspace for query operations.
+  - `queries`: Optional. Saved queries that can be used for data analysis or visualizations.
+
+Example usage:
+```typescript
+new Workspace(this, 'MyLogAnalyticsWorkspace', {
+location: 'East US',
+name: 'myWorkspace',
+resourceGroup: myResourceGroup,
+sku: 'PerGB2018',
+retention: 60,
+tags: { department: 'IT' },
+functions: [{
+name: 'ErrorCount',
+displayName: 'Error Count',
+query: 'AzureActivity | summarize count() by bin(timestamp, 1h), type',
+functionAlias: 'error_count',
+functionParameters: 'timestamp, type'
+}],
+queries: [{
+name: 'HighCPUUsage',
+category: 'Performance',
+displayName: 'High CPU Usage',
+query: 'Perf | where CounterName == "% Processor Time" and CounterValue > 80'
+}]
+});
+```
+This class sets up the workspace and applies configurations, providing a centralized environment for monitoring and analytics.
 
 ---
 
@@ -7374,8 +9542,8 @@ new azure_loganalytics.Workspace(scope: Construct, id: string, props: WorkspaceP
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.toString">toString</a></code> | Returns a string representation of this construct. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.addAccess">addAccess</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.addDiagSettings">addDiagSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.addDiagSettings">addDiagSettings</a></code> | Adds diagnostic settings to a specified resource within this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.addMetricAlert">addMetricAlert</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.addQueryRuleAlert">addQueryRuleAlert</a></code> | *No description.* |
 
@@ -7395,15 +9563,33 @@ Returns a string representation of this construct.
 public addAccess(objectId: string, customRoleName: string): void
 ```
 
+Adds an access role assignment for a specified Azure AD object (e.g., user, group, service principal) within this RBAC construct's scope.
+
+This method creates a new role assignment which grants the specified Azure AD object access to resources
+at the scope defined by this construct. This is useful for programmatically managing access controls,
+ensuring only authorized users or systems can perform specific actions on Azure resources.
+
 ###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.addAccess.parameter.objectId"></a>
 
 - *Type:* string
+
+The unique identifier of the Azure AD object (user, group, or service principal) that will receive the role assignment.
 
 ---
 
 ###### `customRoleName`<sup>Required</sup> <a name="customRoleName" id="@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.addAccess.parameter.customRoleName"></a>
 
 - *Type:* string
+
+The human-readable name of the Azure RBAC role to be assigned.
+
+This role defines the permissions that the object will have.
+
+Example usage:
+```typescript
+// Example: Assign a "Reader" role to a user for the current RBAC scope
+rbacInstance.addAccess('user-object-id', 'Reader');
+```
 
 ---
 
@@ -7413,9 +9599,26 @@ public addAccess(objectId: string, customRoleName: string): void
 public addDiagSettings(props: BaseDiagnosticSettingsProps): DiagnosticSettings
 ```
 
+Adds diagnostic settings to a specified resource within this construct.
+
+This method creates and configures a new DiagnosticSettings instance which captures and routes
+diagnostic data (logs and metrics) to the specified destinations such as Azure Monitor,
+an Event Hubs instance, a Log Analytics workspace, or an Azure Storage account.
+
 ###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.addDiagSettings.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps
+
+The properties required to configure the diagnostic settings.
+
+These include:
+  - `name`: Optional. The name of the diagnostic settings resource. Defaults to 'diag-settings'.
+  - `logAnalyticsWorkspaceId`: Optional. The identifier of the Log Analytics workspace to send logs.
+  - `eventhubAuthorizationRuleId`: Optional. The authorization rule ID for an Event Hub where logs will be forwarded.
+  - `eventhubName`: Optional. The name of the Event Hub to which logs will be sent.
+  - `storageAccountId`: Optional. The identifier of the Azure Storage account where logs will be stored.
+  - `logAnalyticsDestinationType`: Optional. Determines if logs are sent to dedicated or legacy tables in Log Analytics. Defaults to undefined which uses the default settings.
+  The `targetResourceId` is automatically set to the ID of this construct instance.
 
 ---
 
@@ -9262,6 +11465,8 @@ Table must exist before resource is created.
 
 ### CertificateIssuerProps <a name="CertificateIssuerProps" id="@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps"></a>
 
+Properties required to configure a certificate issuer within Azure Key Vault.
+
 #### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.Initializer"></a>
 
 ```typescript
@@ -9274,12 +11479,12 @@ const certificateIssuerProps: azure_keyvault.CertificateIssuerProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.accessPolicies">accessPolicies</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy[]</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.keyVaultId">keyVaultId</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.Vault</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.name">name</a></code> | <code>string</code> | The name of the certificate issuer in the Azure Key Vault. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.providerName">providerName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.password">password</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.username">username</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.accessPolicies">accessPolicies</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy[]</code> | Access policies defining who can manage this issuer and the certificates it issues within the Key Vault. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.keyVaultId">keyVaultId</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.Vault</code> | The ID of the Azure Key Vault where the issuer will be configured. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.name">name</a></code> | <code>string</code> | The name of the certificate issuer as it will appear in Azure Key Vault. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.providerName">providerName</a></code> | <code>string</code> | The name of the provider that will issue the certificate, such as 'DigiCert' or 'GlobalSign'. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.password">password</a></code> | <code>string</code> | The password required to authenticate with the certificate provider (if applicable). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.username">username</a></code> | <code>string</code> | The username required to authenticate with the certificate provider (if applicable). |
 
 ---
 
@@ -9291,6 +11496,8 @@ public readonly accessPolicies: AccessPolicy[];
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy[]
 
+Access policies defining who can manage this issuer and the certificates it issues within the Key Vault.
+
 ---
 
 ##### `keyVaultId`<sup>Required</sup> <a name="keyVaultId" id="@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.keyVaultId"></a>
@@ -9300,6 +11507,8 @@ public readonly keyVaultId: Vault;
 ```
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_keyvault.Vault
+
+The ID of the Azure Key Vault where the issuer will be configured.
 
 ---
 
@@ -9311,7 +11520,7 @@ public readonly name: string;
 
 - *Type:* string
 
-The name of the certificate issuer in the Azure Key Vault.
+The name of the certificate issuer as it will appear in Azure Key Vault.
 
 ---
 
@@ -9323,6 +11532,8 @@ public readonly providerName: string;
 
 - *Type:* string
 
+The name of the provider that will issue the certificate, such as 'DigiCert' or 'GlobalSign'.
+
 ---
 
 ##### `password`<sup>Optional</sup> <a name="password" id="@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.password"></a>
@@ -9333,6 +11544,8 @@ public readonly password: string;
 
 - *Type:* string
 
+The password required to authenticate with the certificate provider (if applicable).
+
 ---
 
 ##### `username`<sup>Optional</sup> <a name="username" id="@microsoft/terraform-cdk-constructs.azure_keyvault.CertificateIssuerProps.property.username"></a>
@@ -9342,6 +11555,8 @@ public readonly username: string;
 ```
 
 - *Type:* string
+
+The username required to authenticate with the certificate provider (if applicable).
 
 ---
 
@@ -13832,6 +16047,8 @@ An array of rule configurations to be applied to the network security group.
 
 ### SelfSignedCertificateProps <a name="SelfSignedCertificateProps" id="@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps"></a>
 
+Properties required to create a self-signed certificate within Azure Key Vault.
+
 #### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.Initializer"></a>
 
 ```typescript
@@ -13844,14 +16061,14 @@ const selfSignedCertificateProps: azure_keyvault.SelfSignedCertificateProps = { 
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.accessPolicies">accessPolicies</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy[]</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.dnsNames">dnsNames</a></code> | <code>string[]</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.keyVaultId">keyVaultId</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.Vault</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.name">name</a></code> | <code>string</code> | The name of the certificate in the Azure Key Vault. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.subject">subject</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.actionType">actionType</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.daysBeforeExpiry">daysBeforeExpiry</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.accessPolicies">accessPolicies</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy[]</code> | Access policies defining who can access this certificate within the Azure Key Vault. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.dnsNames">dnsNames</a></code> | <code>string[]</code> | Additional DNS names to be included in the certificate. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.keyVaultId">keyVaultId</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_keyvault.Vault</code> | The ID of the Azure Key Vault where the certificate will be created and stored. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.name">name</a></code> | <code>string</code> | The name of the certificate to be stored in Azure Key Vault. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.subject">subject</a></code> | <code>string</code> | The subject name for the certificate, typically represented in X.509 distinguished name format. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.actionType">actionType</a></code> | <code>string</code> | Specifies the type of action to perform with the certificate, such as 'create' or 'renew'. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.daysBeforeExpiry">daysBeforeExpiry</a></code> | <code>number</code> | Specifies the number of days before expiry when an action should be taken (e.g., renew the certificate). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to be associated with the certificate for organizational purposes. |
 
 ---
 
@@ -13863,6 +16080,8 @@ public readonly accessPolicies: AccessPolicy[];
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_keyvault.AccessPolicy[]
 
+Access policies defining who can access this certificate within the Azure Key Vault.
+
 ---
 
 ##### `dnsNames`<sup>Required</sup> <a name="dnsNames" id="@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.dnsNames"></a>
@@ -13872,6 +16091,10 @@ public readonly dnsNames: string[];
 ```
 
 - *Type:* string[]
+
+Additional DNS names to be included in the certificate.
+
+Useful for creating certificates valid for multiple hostnames.
 
 ---
 
@@ -13883,6 +16106,8 @@ public readonly keyVaultId: Vault;
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_keyvault.Vault
 
+The ID of the Azure Key Vault where the certificate will be created and stored.
+
 ---
 
 ##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.name"></a>
@@ -13893,7 +16118,7 @@ public readonly name: string;
 
 - *Type:* string
 
-The name of the certificate in the Azure Key Vault.
+The name of the certificate to be stored in Azure Key Vault.
 
 ---
 
@@ -13905,6 +16130,8 @@ public readonly subject: string;
 
 - *Type:* string
 
+The subject name for the certificate, typically represented in X.509 distinguished name format.
+
 ---
 
 ##### `actionType`<sup>Optional</sup> <a name="actionType" id="@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.actionType"></a>
@@ -13914,6 +16141,8 @@ public readonly actionType: string;
 ```
 
 - *Type:* string
+
+Specifies the type of action to perform with the certificate, such as 'create' or 'renew'.
 
 ---
 
@@ -13925,6 +16154,8 @@ public readonly daysBeforeExpiry: number;
 
 - *Type:* number
 
+Specifies the number of days before expiry when an action should be taken (e.g., renew the certificate).
+
 ---
 
 ##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_keyvault.SelfSignedCertificateProps.property.tags"></a>
@@ -13934,6 +16165,8 @@ public readonly tags: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
+
+Tags to be associated with the certificate for organizational purposes.
 
 ---
 
