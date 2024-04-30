@@ -1,31 +1,125 @@
-# Terraform-Azure-CDK-Modules
+# Azure Terraform CDK Constructs
+Welcome to the Azure Terraform CDK Constructs project! This library offers a comprehensive suite of L2 Constructs designed to simplify and enhance the experience of building and managing Azure infrastructure with the Cloud Development Kit for Terraform (CDKTF).
 
-This repository contains code for building infrastructure using Terraform Azure CDK modules.
+## Benefits of Using L2 Constructs
+
+With L2 Constructs, you get the following benefits:
+
+- **Abstraction**: Higher-level abstractions over Azure resources make your infrastructure code more declarative and easier to understand.
+- **Reusability**: Encapsulate common patterns and best practices in your infrastructure code, promoting reusability across different projects and teams.
+- **Rapid Development**: Accelerate your cloud development process with pre-built constructs that have been tested for common use cases, allowing you to focus on your unique application logic.
+- **Direct IDE Integration**: Access detailed documentation directly within your Integrated Development Environment (IDE), streamlining your development workflow: ![alt text](./docs/images/ide-documentation.png)
 
 
+## Quick Example
 
-## Using the Libraries
-
-This project includes several libraries for building infrastructure using Azure modules. Here are some examples of how to use them:
-
-### Example 1: Creating a Virtual Machine
+This is a quick example that showcases the simplicity and power of L2 Constructs. We'll create a storage account, add a container to it, and then upload a blob—all with a few lines of intuitive, object-oriented code:
 
 ```typescript
-import { VirtualMachine } from '@my-awesome-infra/virtual-machine';
 
-const vm = new VirtualMachine({
-  name: 'my-vm',
-  location: 'eastus',
-  resourceGroup: 'my-resource-group',
-  size: 'Standard_D2s_v3',
-  osDisk: {
-    storageAccountType: 'Standard_LRS',
-    diskSizeGB: 128,
-  },
-  adminUsername: 'admin',
-  adminPassword: 'password',
+// Create a new instance of a storage account as an object
+const sa = new azcdk.azure_storageaccount.Account(stack, "storageaccount", {
+  name: "testStorageAccount",
+  location: "eastus",
 });
+
+// Add a container to the storage account by calling a method on the storage account object
+const container = sa.addContainer("testcontainer");
+
+// Add a blob to the container by calling a method on the container object
+// The path "../../../test.txt" points to the source file to be uploaded as a blob
+container.addBlob("testblob.txt", "../../../test.txt");
 ```
+
+
+
+## Getting Started
+
+This guide will walk you through the process of using the Azure L2 Constructs to define and provision infrastructure on Azure. 
+
+### Prerequisites
+Make sure you have Node.js and npm installed on your machine. These will be used to install the CDK for Terraform and Azure provider packages.
+
+### Installation
+
+First, install the CDK for Terraform CLI globally using npm:
+
+```sh
+npm install -g cdktf-cli
+```
+
+Next, initialize a new CDK for Terraform project with TypeScript template:
+```sh
+cdktf init --template="TypeScript" --local
+```
+Install the AzureRM provider for CDKTF:
+
+```sh
+npm install @cdktf/provider-azurerm
+```
+
+Then, add the Microsoft Terraform CDK constructs for Azure:
+
+```sh
+npm install @micrsoft/terraform-cdk-constructs
+
+```
+
+
+### Example 1: Creating a Storage Account
+Now let's create a simple Azure storage account. The following TypeScript snippet defines a storage account resource using the CDKTF:
+
+```typescript
+// Import necessary modules and classes
+import * as azcdk from "@microsoft/terraform-cdk-constructs";
+import { Construct } from 'constructs';
+import { App, TerraformStack } from 'cdktf';
+import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+
+// Define a new Terraform stack
+class AzureAppInfra extends TerraformStack {
+ constructor(scope: Construct, name: string) {
+   super(scope, name);
+
+   // Initialize Azure provider
+   new AzurermProvider(this, "azureFeature", { features: {} });
+
+   // Create a new Azure storage account with the specified name and location
+   new azcdk.azure_storageaccount.Account(this, "storageaccount", {
+     name: "test42348808",
+     location: "eastus",
+   });
+ }
+}
+
+// Initialize the CDK app and synthesize Terraform configurations
+const app = new App();
+new AzureAppInfra(app, 'cdk');
+app.synth();
+```
+After defining your infrastructure, generate the Terraform configuration files:
+```sh
+cdktf synth
+```
+Finally, deploy your infrastructure to Azure:
+
+```sh
+cdktf deploy
+```
+## Supported Languages
+
+Currently, our CDK L2 constructs are available in the following languages:
+
+| Language   | Status       |
+|------------|--------------|
+| TypeScript | Available    |
+| Python     | Coming soon  |
+| Java       | Coming soon  |
+| Go         | Coming soon  |
+| C#         | Coming soon  |
+
+Stay tuned for updates as we work to expand support to other popular programming languages!
+
 
 ## Contributing
 

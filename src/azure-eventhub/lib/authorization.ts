@@ -29,6 +29,36 @@ export class AuthorizationRule extends Construct {
   private readonly primaryConnectionString: string;
   private readonly primaryKey: string;
 
+  /**
+   * Constructs a new Authorization Rule for an Azure Event Hub.
+   *
+   * This class creates an authorization rule which defines the permissions granted to users and applications
+   * for accessing and managing the Event Hub. An Authorization Rule can grant listening, sending, and full manage
+   * permissions based on the properties specified.
+   *
+   * @param scope - The scope in which to define this construct, typically used for managing lifecycles and creation order.
+   * @param name - The unique name for this instance of the Authorization Rule.
+   * @param ehInstanceAuthProps - The properties for configuring the Authorization Rule. The properties include:
+   *                - `name`: Required. The name of the Authorization Rule.
+   *                - `listen`: Optional. Specifies whether the rule allows listening to the Event Hub. Defaults to false.
+   *                - `send`: Optional. Specifies whether the rule allows sending events to the Event Hub. Defaults to false.
+   *                - `manage`: Optional. Specifies whether the rule allows managing the Event Hub, including sending and listening. Defaults to false.
+   *                When `manage` is true, both `listen` and `send` are implicitly set to true.
+   *
+   * Example usage:
+   * ```typescript
+   * const authRule = new AuthorizationRule(this, 'exampleAuthRule', {
+   *   name: 'myAuthRule',
+   *   listen: true,
+   *   send: true,
+   *   manage: false // Only listening and sending are enabled; not managing.
+   * });
+   * ```
+   *
+   * @remarks
+   * The primary connection string and primary key are accessible after the instance creation,
+   * allowing for integration with other Azure services or client applications.
+   */
   constructor(
     scope: Construct,
     name: string,

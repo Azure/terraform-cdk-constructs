@@ -116,23 +116,6 @@ export interface AccountProps {
   readonly accountKind?: string;
 }
 
-/**
- * Represents an Azure Storage Account within a Terraform deployment.
- * This class provides methods to easily manage storage resources such as Containers,
- * File Shares, Tables, Queues, and Network Rules.
- *
- * Example usage:
- * ```typescript
- * const storageAccount = new AzureStorageAccount(this, 'storageaccount', {
- *   name: 'myStorageAccount',
- *   location: 'East US',
- *   resourceGroup: myResourceGroup,
- *   accountReplicationType: 'LRS',
- *   accountTier: 'Standard',
- *   // other properties
- * });
- * ```
- */
 export class Account extends AzureResourceWithAlert {
   public readonly props: AccountProps;
   public id: string;
@@ -146,10 +129,39 @@ export class Account extends AzureResourceWithAlert {
   private readonly tables: Map<string, Table>;
 
   /**
-   * Initializes a new AzureStorageAccount.
-   * @param scope The scope in which to define this construct.
-   * @param id The scoped construct ID.
-   * @param props Configuration properties for the Azure Storage Account.
+   * Represents an Azure Storage Account within a Terraform deployment.
+   *
+   * This class is responsible for the creation and management of an Azure Storage Account, which is a scalable and secure service
+   * for storing large amounts of unstructured data that can be accessed from anywhere in the world over HTTP or HTTPS. Common uses
+   * of the Azure Storage Account include storing of blobs (objects), file shares, tables, and queues. This class provides methods
+   * to manage storage resources, configure network rules, and integrate with Azure Active Directory for secure access management.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+   * @param id - The unique identifier for this instance of the storage account.
+   * @param props - The properties required to configure the Azure Storage Account, as defined in the AccountProps interface. These include:
+   *                - `name`: The name of the storage account, which must be unique within the Azure region.
+   *                - `location`: The Azure region where the storage account will be created.
+   *                - `resourceGroup`: The Azure Resource Group under which the storage account will be deployed.
+   *                - `accountReplicationType`: The type of data replication to ensure data durability and availability.
+   *                - `accountTier`: The performance tier that affects the type of hardware used for the storage account.
+   *                - `tags`: A dictionary of tags to apply to the storage account for organizational purposes.
+   *
+   * Example usage:
+   * ```typescript
+   * const storageAccount = new Account(this, 'MyStorageAccount', {
+   *   location: 'East US',
+   *   name: 'myStorageAccount',
+   *   resourceGroup: myResourceGroup,
+   *   accountReplicationType: 'LRS',
+   *   accountTier: 'Standard',
+   *   enableHttpsTrafficOnly: true,
+   *   tags: {
+   *     environment: 'production'
+   *   }
+   * });
+   * ```
+   * This class sets up the storage account with the specified configurations, handles resource allocation, and applies security
+   * settings based on the properties provided.
    */
   constructor(scope: Construct, id: string, props: AccountProps) {
     super(scope, id);
@@ -191,17 +203,21 @@ export class Account extends AzureResourceWithAlert {
 
   /**
    * Adds a new container to the storage account.
-   * @param name The name of the container.
-   * @param containerAccessType The access type of the container (e.g., 'blob', 'private').
-   * @param metadata Metadata for the container.
-   * @returns The created AzureStorageContainer.
-   * @throws Error if a container with the same name already exists.
+   * @param name The name of the container. It must be unique within the storage account.
+   * @param containerAccessType The level of public access to the container. Defaults to 'private'.
+   * @param metadata Optional metadata for the container as key-value pairs.
+   * @returns The created Container instance.
+   * @throws Error if a container with the same name already exists within the storage account.
+   *
+   * This method creates a new container within the Azure storage account, allowing for the specification of access
+   * level and metadata. If the container already exists, it throws an error to prevent duplication.
    *
    * Example usage:
    * ```typescript
-   * const container = storageAccount.addContainer('myContainer', 'private');
+   * const container = storageAccount.addContainer('myContainer', 'private', { owner: 'IT' });
    * ```
    */
+
   public addContainer(
     name: string,
     containerAccessType?: string,
@@ -224,16 +240,20 @@ export class Account extends AzureResourceWithAlert {
 
   /**
    * Adds a new file share to the storage account.
-   * @param name The name of the file share.
-   * @param props Optional properties for the file share (e.g., quota, access tier).
-   * @returns The created AzureStorageShare.
-   * @throws Error if a share with the same name already exists.
+   * @param name The name of the file share. Must be unique within the storage account.
+   * @param props Optional properties for configuring the file share, such as quota and access tier.
+   * @returns The created FileShare instance.
+   * @throws Error if a file share with the same name already exists.
+   *
+   * This method facilitates the addition of a file share to the storage account, with optional settings for
+   * capacity (quota) and data access frequency (access tier). If a file share with the same name exists, an error is thrown.
    *
    * Example usage:
    * ```typescript
-   * const fileShare = storageAccount.addShare('myFileShare', { quota: 1024, accessTier: 'Hot' });
+   * const fileShare = storageAccount.addFileShare('myFileShare', { quota: 1024, accessTier: 'Hot' });
    * ```
    */
+
   public addFileShare(name: string, props?: FileShareProps): FileShare {
     if (this.shares.has(name)) {
       throw new Error(`Share '${name}' already exists.`);
@@ -259,16 +279,20 @@ export class Account extends AzureResourceWithAlert {
 
   /**
    * Adds a new table to the storage account.
-   * @param name The name of the table.
-   * @param acl Optional access control list for the table.
-   * @returns The created AzureStorageTable.
+   * @param name The name of the table. Must be unique within the storage account.
+   * @param acl Optional access control list for the table, specifying permissions.
+   * @returns The created Table instance.
    * @throws Error if a table with the same name already exists.
+   *
+   * This method creates a new table within the storage account, optionally allowing for access control configurations.
+   * It throws an error if a table with the same name already exists, ensuring uniqueness within the account.
    *
    * Example usage:
    * ```typescript
-   * const table = storageAccount.addTable('myTable');
+   * const table = storageAccount.addTable('myTable', [{ id: 'policy1', type: 'read' }]);
    * ```
    */
+
   public addTable(name: string, acl?: StorageTableAcl[]): Table {
     if (this.tables.has(name)) {
       throw new Error(`Table '${name}' already exists.`);
@@ -286,15 +310,19 @@ export class Account extends AzureResourceWithAlert {
 
   /**
    * Adds a new queue to the storage account.
-   * @param name The name of the queue.
-   * @param metadata Optional metadata for the queue.
-   * @returns The created AzureStorageQueue.
+   * @param name The name of the queue. Must be unique within the storage account.
+   * @param metadata Optional metadata for the queue as key-value pairs.
+   * @returns The created Queue instance.
+   *
+   * This method creates a new queue in the storage account, with optional metadata. It is useful for message queuing
+   * in applications, enabling asynchronous task processing and inter-service communication.
    *
    * Example usage:
    * ```typescript
-   * const queue = storageAccount.addQueue('myQueue');
+   * const queue = storageAccount.addQueue('myQueue', { priority: 'high' });
    * ```
    */
+
   public addQueue(name: string, metadata?: { [key: string]: string }): Queue {
     return new Queue(this, name, {
       name: name,
@@ -304,20 +332,24 @@ export class Account extends AzureResourceWithAlert {
   }
 
   /**
-   * Adds network rules to the storage account.
-   * @param props Configuration properties for the network rules.
-   * @returns The configured StorageAccountNetworkRulesA.
+   * Adds network rules to the storage account to control access based on IP and virtual network settings.
+   * @param props Configuration properties for the network rules, including allowed IPs and virtual network subnet IDs.
+   * @returns The configured network rules.
+   *
+   * This method configures network rules for the storage account, specifying which IPs and virtual networks can access
+   * the storage resources. It allows detailed control over data security and access management.
    *
    * Example usage:
    * ```typescript
    * storageAccount.addNetworkRules({
-   *     bypass: ['AzureServices'],
-   *     defaultAction: 'Deny',
-   *     ipRules: ['1.2.3.4/32'],
-   *     virtualNetworkSubnetIds: ['subnetId'],
-   *  });
+   *   bypass: ['AzureServices'],
+   *   defaultAction: 'Deny',
+   *   ipRules: ['1.2.3.4/32'],
+   *   virtualNetworkSubnetIds: ['subnetId'],
+   * });
    * ```
    */
+
   public addNetworkRules(
     props: NetworkRulesProps,
   ): StorageAccountNetworkRulesA {

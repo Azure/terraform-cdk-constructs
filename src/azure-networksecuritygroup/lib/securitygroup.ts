@@ -89,6 +89,44 @@ export class SecurityGroup extends AzureResource {
   public readonly name: string;
   public resourceGroup: ResourceGroup;
 
+  /**
+   * Represents an Azure Network Security Group (NSG).
+   *
+   * This class is responsible for the creation and management of an Azure Network Security Group, which acts as a virtual firewall
+   * for virtual network resources. A Network Security Group contains a list of security rules that allow or deny network traffic
+   * to resources connected to Azure Virtual Networks (VNet). Each rule specifies a combination of source and destination, port,
+   * and protocol, and an action (allow or deny) based on those combinations. This class allows for detailed configuration of these
+   * rules to enforce security policies for inbound and outbound network traffic.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+   * @param id - The unique identifier for this instance of the security group.
+   * @param props - The properties required to configure the Network Security Group, as defined in the SecurityGroupProps interface. These include:
+   *                - `resourceGroup`: The Azure Resource Group under which the NSG will be deployed.
+   *                - `location`: The Azure region where the NSG will be created.
+   *                - `name`: The name of the NSG, which must be unique within the resource group.
+   *                - `rules`: A list of rules that define the security policies for traffic control.
+   *
+   * Example usage:
+   * ```typescript
+   * new SecurityGroup(this, 'MySecurityGroup', {
+   *   resourceGroup: myResourceGroup,
+   *   location: 'East US',
+   *   name: 'myNsg',
+   *   rules: [{
+   *     name: 'AllowSSH',
+   *     priority: 100,
+   *     direction: 'Inbound',
+   *     access: 'Allow',
+   *     protocol: 'Tcp',
+   *     sourcePortRange: '*',
+   *     destinationPortRange: '22',
+   *     sourceAddressPrefix: '*',
+   *     destinationAddressPrefix: '*'
+   *   }]
+   * });
+   * ```
+   * This class initializes a Network Security Group with specified rules, handling network security management tasks efficiently.
+   */
   constructor(scope: Construct, id: string, props: SecurityGroupProps) {
     super(scope, id);
 
@@ -123,7 +161,22 @@ export class SecurityGroup extends AzureResource {
     this.name = nsg.name;
   }
 
-  // Method to associate the network security group to a subnet
+  /**
+   * Associates this Network Security Group with a specified subnet.
+   *
+   * This method facilitates the attachment of the security group to a subnet, applying the security group's rules to all
+   * resources within the subnet. This is crucial for managing network access and security policies at the subnet level.
+   *
+   * @param subnet - The subnet object to which this network security group will be associated.
+   *
+   * Example usage:
+   * ```typescript
+   * const mySubnet = { id: 'subnet-123', name: 'SubnetA' };
+   * mySecurityGroup.associateToSubnet(mySubnet);
+   * ```
+   * This operation ensures that the security rules defined in the network security group are enforced on all network interfaces
+   * attached to the specified subnet.
+   */
   public associateToSubnet(subnet: Subnet) {
     new SecurityGroupAssociations(this, subnet.name, {
       subnetId: subnet.id,
@@ -131,7 +184,22 @@ export class SecurityGroup extends AzureResource {
     });
   }
 
-  // Method to associate the network security group to a network interface
+  /**
+   * Associates this Network Security Group with a specified network interface.
+   *
+   * This method attaches the security group to a network interface, applying the security group's rules to the network interface.
+   * This allows for fine-grained control of network traffic to and from the specific network interface.
+   *
+   * @param networkInterface - The network interface object to which this network security group will be associated.
+   *
+   * Example usage:
+   * ```typescript
+   * const myNetworkInterface = { id: 'nic-456', name: 'NetworkInterfaceA' };
+   * mySecurityGroup.associateToNetworkInterface(myNetworkInterface);
+   * ```
+   * This operation ensures that the security rules defined in the network security group are applied directly to the specified
+   * network interface, controlling access in a more targeted manner.
+   */
   public associateToNetworkInterface(networkInterface: NetworkInterface) {
     new SecurityGroupAssociations(this, networkInterface.name, {
       networkInterfaceId: networkInterface.id,
@@ -163,6 +231,28 @@ export interface SecurityGroupAssociationsProps {
 }
 
 export class SecurityGroupAssociations extends Construct {
+  /**
+   * Manages the associations of Azure Network Security Groups with subnets and network interfaces.
+   *
+   * This class provides the functionality to associate a network security group with either subnets or network interfaces
+   * within the Azure environment. By managing these associations, it helps enforce security rules at both the subnet level
+   * and the network interface level, enhancing security configurations and compliance.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+   * @param id - The unique identifier for the association instance.
+   * @param props - The properties for the association. Includes the network security group ID and optionally a subnet ID or network interface ID.
+   *
+   * Example usage:
+   * ```typescript
+   * new SecurityGroupAssociations(this, 'MyAssociations', {
+   *   networkSecurityGroupId: 'nsg-123',
+   *   subnetId: 'subnet-123',
+   *   networkInterfaceId: 'nic-456',
+   * });
+   * ```
+   * Depending on the properties provided, this class will create the appropriate associations to apply the network security group
+   * to the specified subnet or network interface.
+   */
   constructor(
     scope: Construct,
     id: string,

@@ -161,13 +161,58 @@ export class LinuxCluster extends AzureResource {
   public readonly fqn: string;
 
   /**
-   * Constructs a new instance of the AzureLinuxVirtualMachine class.
+   * Represents a Linux Virtual Machine Scale Set (VMSS) within Microsoft Azure.
    *
-   * @param scope - The scope in which this construct is defined.
-   * @param id - The ID of this construct.
-   * @param props - The properties for defining a Linux Virtual Machine.
+   * This class is designed to provision and manage a scale set of Linux virtual machines, providing capabilities such as
+   * auto-scaling, high availability, and simplified management. It supports detailed configurations like VM size, operating
+   * system image, network settings, and administrative credentials. Additional functionalities include custom data scripts,
+   * SSH configurations, and optional features like managed identity and boot diagnostics.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application.
+   * @param id - The unique identifier for this instance of the Linux cluster, used within the scope for reference.
+   * @param props - Configuration properties for the Linux VM Scale Set, derived from the LinuxClusterProps interface. These include:
+   *                - `location`: The geographic location where the scale set will be hosted (e.g., "eastus").
+   *                - `name`: The name of the scale set, which must be unique within the resource group.
+   *                - `resourceGroup`: The ResourceGroup within which the scale set will be created.
+   *                - `sku`: The size specification of the VMs (e.g., "Standard_B2s").
+   *                - `adminUsername`: The administrator username for the VMs.
+   *                - `adminPassword`: The administrator password for the VMs.
+   *                - `adminSshKey`: SSH keys for secure access to the VMs.
+   *                - `zones`: The availability zones for deploying the VMs.
+   *                - `identity`: Managed identity settings for accessing other Azure services.
+   *                - `sourceImageReference`: A reference to the specific Linux image to be used for the VMs.
+   *                - `sourceImageId`: The identifier for a custom image to use for the VMs.
+   *                - `tags`: Key-value pairs for resource tagging.
+   *                - `osDisk`: Configuration for the VMs' operating system disks.
+   *                - `subnet`: Specifies the subnet within which the VMs will be placed.
+   *                - `publicIPAddress`: Method used to allocate public IP addresses to the VMs.
+   *                - `customData`: Scripts or commands passed to the VMs at startup.
+   *                - `instances`: The number of VM instances in the scale set.
+   *                - `upgradePolicyMode`: The upgrade policy mode for the VMSS.
+   *                - `overprovision`: Specifies if the VMSS should be overprovisioned to maintain capacity during updates.
+   *                - `scaleInPolicy`: The scale-in policy for the VMSS.
+   *                - `bootDiagnosticsStorageURI`: URI for storage where VMSS boot diagnostics are collected.
+   *                - `enableSshAzureADLogin`: Option to enable Azure AD login for SSH on the VMs.
+   *
+   * Example usage:
+   * ```typescript
+   * const linuxCluster = new LinuxCluster(this, 'MyLinuxCluster', {
+   *   resourceGroup: myResourceGroup,
+   *   name: 'myCluster',
+   *   sku: 'Standard_DS1_v2',
+   *   adminUsername: 'adminuser',
+   *   adminSshKey: [{ publicKey: 'ssh-rsa AAAAB...' }],
+   *   sourceImageReference: { publisher: 'Canonical', offer: 'UbuntuServer', sku: '18.04-LTS', version: 'latest' },
+   *   osDisk: { caching: 'ReadWrite', storageAccountType: 'Standard_LRS' },
+   *   subnet: mySubnet,
+   *   instances: 3,
+   *   tags: { environment: 'production' }
+   * });
+   * ```
+   * This class initializes a Linux VM Scale Set with the specified configurations, handling details like VM creation,
+   * scaling policies, network setup, OS installation, and security settings, providing a robust and scalable infrastructure
+   * for hosting cloud-based Linux applications.
    */
-
   constructor(scope: Construct, id: string, props: LinuxClusterProps) {
     super(scope, id);
 
@@ -367,11 +412,55 @@ export class WindowsCluster extends AzureResource {
   public readonly name: string;
 
   /**
-   * Constructs a new instance of the AzureWindowsVirtualMachine class.
+   * Represents a Windows Virtual Machine Scale Set (VMSS) within Microsoft Azure.
    *
-   * @param scope - The scope in which this construct is defined.
-   * @param id - The ID of this construct.
-   * @param props - The properties for defining a Windows Virtual Machine.
+   * This class provides a way to deploy and manage a scale set of Windows virtual machines, allowing for configurations such as
+   * auto-scaling, high availability, and simplified patch management. It supports detailed specifications including
+   * VM size, the operating system image, network settings, and administrative credentials. Additional capabilities include
+   * custom data scripts, automatic OS updates, and optional features like managed identity and boot diagnostics.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application.
+   * @param id - The unique identifier for this instance of the Windows cluster, used within the scope for reference.
+   * @param props - Configuration properties for the Windows VM Scale Set, derived from the WindowsClusterProps interface. These include:
+   *                - `location`: The geographic location where the scale set will be hosted (e.g., "eastus").
+   *                - `name`: The name of the scale set, which must be unique within the resource group.
+   *                - `resourceGroup`: The ResourceGroup within which the scale set will be created.
+   *                - `sku`: The size specification of the VMs (e.g., "Standard_B2s").
+   *                - `adminUsername`: The administrator username for the VMs.
+   *                - `adminPassword`: The administrator password for the VMs.
+   *                - `zones`: The availability zones for deploying the VMs.
+   *                - `instances`: The number of VM instances in the scale set.
+   *                - `sourceImageReference`: A reference to the specific Windows image to be used for the VMs.
+   *                - `sourceImageId`: The identifier for a custom image to use for the VMs.
+   *                - `tags`: Key-value pairs for resource tagging.
+   *                - `osDisk`: Configuration for the VMs' operating system disks.
+   *                - `subnet`: Specifies the subnet within which the VMs will be placed.
+   *                - `publicIPAddress`: Method used to allocate public IP addresses to the VMs.
+   *                - `customData`: Scripts or commands passed to the VMs at startup.
+   *                - `upgradePolicyMode`: The upgrade policy mode for the VMSS.
+   *                - `overprovision`: Specifies if the VMSS should be overprovisioned to maintain capacity during updates.
+   *                - `scaleInPolicy`: The scale-in policy for the VMSS.
+   *                - `bootDiagnosticsStorageURI`: URI for storage where VMSS boot diagnostics are collected.
+   *                - `enableSshAzureADLogin`: Option to enable Azure AD login for SSH on the VMs.
+   *
+   * Example usage:
+   * ```typescript
+   * const windowsCluster = new WindowsCluster(this, 'MyWindowsCluster', {
+   *   resourceGroup: myResourceGroup,
+   *   name: 'myCluster',
+   *   sku: 'Standard_DS1_v2',
+   *   adminUsername: 'adminuser',
+   *   adminPassword: 'securepassword123',
+   *   sourceImageReference: { publisher: 'MicrosoftWindowsServer', offer: 'WindowsServer', sku: '2019-Datacenter', version: 'latest' },
+   *   osDisk: { caching: 'ReadWrite', storageAccountType: 'Standard_LRS' },
+   *   subnet: mySubnet,
+   *   instances: 3,
+   *   tags: { environment: 'production' }
+   * });
+   * ```
+   * This class initializes a Windows VM Scale Set with the specified configurations, handling details like VM creation,
+   * scaling policies, network setup, OS installation, and security settings, providing a robust and scalable infrastructure
+   * for hosting cloud-based Windows applications.
    */
   constructor(scope: Construct, id: string, props: WindowsClusterProps) {
     super(scope, id);

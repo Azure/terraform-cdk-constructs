@@ -9,7 +9,45 @@ export class ActionGroup extends AzureResource {
   readonly props: model.ActionGroupProps;
   public resourceGroup: ResourceGroup;
   public id: string;
-
+  /**
+   * Manages an Azure Monitor Action Group, which is used to trigger actions or notifications based on alerts or conditions met within Azure Monitor.
+   *
+   * An Action Group in Azure Monitor defines a collection of individual actions that are triggered when the conditions of an associated alert rule are met. Actions can include sending emails, triggering Azure Functions, calling webhooks, and more. This class allows for configuring and managing these actions, making it essential for setting up comprehensive monitoring and response systems in Azure applications.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+   * @param id - The unique identifier for this instance of the Action Group.
+   * @param props - Configuration properties for the Action Group. These properties may include:
+   *                - `name`: The name of the Action Group.
+   *                - `resourceGroup`: The resource group under which the Action Group is created.
+   *                - `shortName`: A shorter name for the Action Group used in notifications.
+   *                - `enabled`: Specifies if the Action Group is active. Defaults to true.
+   *                - `location`: The Azure region where the Action Group is hosted. Defaults to global.
+   *                - `tags`: A dictionary of tags to apply to the Action Group for resource management.
+   *                - Receivers: Configurations for various types of notifications (e.g., email, SMS, webhook).
+   *
+   * Example usage:
+   * ```typescript
+   * const actionGroup = new ActionGroup(this, 'myActionGroup', {
+   *   name: 'criticalAlertsGroup',
+   *   resourceGroup: myResourceGroup,
+   *   shortName: 'Alerts',
+   *   location: 'East US',
+   *   emailReceivers: [{
+   *     name: 'admin',
+   *     emailAddress: 'admin@example.com'
+   *   }],
+   *   smsReceivers: [{
+   *     name: 'adminSms',
+   *     countryCode: '1',
+   *     phoneNumber: '5551234567'
+   *   }],
+   *   tags: {
+   *     environment: 'production'
+   *   }
+   * });
+   * ```
+   * This setup creates an Action Group that sends email and SMS notifications when triggered by an alert.
+   */
   constructor(scope: Construct, id: string, props: model.ActionGroupProps) {
     super(scope, id);
 

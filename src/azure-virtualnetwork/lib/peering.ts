@@ -57,6 +57,45 @@ export interface PeerProps {
 }
 
 export class Peer extends Construct {
+  /**
+   * Represents a Virtual Network Peering within Microsoft Azure.
+   *
+   * This class facilitates the peering between two virtual networks, allowing resources in either network to communicate
+   * with each other as if they were within the same network. It supports advanced configurations such as traffic forwarding,
+   * gateway transit, and access settings. This peering does not require a VPN gateway and offers low-latency, high-bandwidth
+   * connections between resources in different virtual networks.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application.
+   * @param name - The unique name for this instance of the network peering.
+   * @param props - Configuration properties for the network peering, derived from the PeerProps interface. These include:
+   *                - `virtualNetwork`: The local virtual network object.
+   *                - `remoteVirtualNetwork`: The remote virtual network object.
+   *                - `localToRemoteSettings`: Configuration settings applied from the local virtual network to the remote virtual network.
+   *                - `remoteToLocalSettings`: Configuration settings applied from the remote virtual network to the local virtual network.
+   *
+   * Example usage:
+   * ```typescript
+   * const vnetPeering = new Peer(this, 'VNetPeering', {
+   *   virtualNetwork: myVNet,
+   *   remoteVirtualNetwork: partnerVNet,
+   *   localToRemoteSettings: {
+   *     allowVirtualNetworkAccess: true,
+   *     allowForwardedTraffic: false,
+   *     allowGatewayTransit: false,
+   *     useRemoteGateways: false
+   *   },
+   *   remoteToLocalSettings: {
+   *     allowVirtualNetworkAccess: true,
+   *     allowForwardedTraffic: true,
+   *     allowGatewayTransit: false,
+   *     useRemoteGateways: false
+   *   }
+   * });
+   * ```
+   * This class initializes a VNet peering with the specified configurations, enabling direct connectivity between
+   * the specified virtual networks. It manages the creation and configuration of network peering settings, ensuring
+   * that both VNets are appropriately linked and configured according to the defined properties.
+   */
   constructor(scope: Construct, name: string, props: PeerProps) {
     super(scope, name);
 

@@ -44,6 +44,37 @@ export interface SecretProps {
 export class Secret extends Construct {
   public secretId: string;
 
+  /**
+   * Constructs a new Azure Key Vault Secret within a specified Key Vault.
+   *
+   * This class facilitates the creation and management of a secret, allowing sensitive information to be stored securely
+   * and accessed as needed while maintaining confidentiality and control through defined access policies.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+   * @param id - The unique identifier for this instance of the secret.
+   * @param props - The properties for creating the secret as defined in SecretProps. These include:
+   *                - `keyVaultId`: The ID of the Key Vault in which to store the secret.
+   *                - `name`: The name of the secret.
+   *                - `value`: The confidential data to be stored as the secret.
+   *                - `expirationDate`: Optional. The expiration date of the secret.
+   *                - `contentType`: Optional. A label hinting at the content type of the secret's value.
+   *                - `accessPolicies`: Access policies that dictate permissions for the secret.
+   *
+   * Example usage:
+   * ```typescript
+   * new Secret(this, 'mySecret', {
+   *   keyVaultId: myKeyVault,
+   *   name: 'dbPassword',
+   *   value: 'p@ssw0rd!',
+   *   expirationDate: '2030-01-01T00:00:00Z',
+   *   contentType: 'password',
+   *   accessPolicies: [{
+   *     objectId: '12345-user-object-id',
+   *     permissions: ['get', 'list']
+   *   }]
+   * });
+   * ```
+   */
   constructor(scope: Construct, id: string, props: SecretProps) {
     super(scope, id);
 

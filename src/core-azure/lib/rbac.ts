@@ -28,11 +28,29 @@ export interface RbacProps {
 
 export class Rbac extends Construct {
   /**
-   * Constructs a new instance of the AzureRbac class.
+   * Manages Role-Based Access Control (RBAC) assignments within Azure.
    *
-   * @param scope - The scope in which this construct is defined.
-   * @param id - The ID of this construct.
-   * @param props - The properties required for Azure RBAC.
+   * This class is responsible for creating and managing RBAC role assignments in Azure, which control permissions for Azure AD
+   * identities to manage Azure resources. It supports assigning roles at different scopes such as subscriptions, resource groups,
+   * or specific resources.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+   * @param id - The unique identifier for this instance of the RBAC assignment.
+   * @param props - Configuration properties for the RBAC assignment. These properties include:
+   *                - `objectId`: The Azure AD object ID for the user, group, or service principal to which the role is assigned.
+   *                - `roleDefinitionUUID`: Optional. The UUID of the Azure RBAC role definition. This can be obtained via Azure CLI.
+   *                - `roleDefinitionName`: The name of the role to be assigned, such as 'Contributor', 'Reader', or 'Owner'.
+   *                - `scope`: The scope at which the role is assigned, which could be a subscription, resource group, or specific resource.
+   *
+   * Example usage:
+   * ```typescript
+   * const rbac = new Rbac(this, 'rbacAssignment', {
+   *   objectId: 'user-or-group-object-id',
+   *   roleDefinitionName: 'Contributor',
+   *   scope: '/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}'
+   * });
+   * ```
+   * This RBAC instance assigns the 'Contributor' role to a user or group specified by 'objectId' at the scope of a specific resource group.
    */
   constructor(scope: Construct, id: string, props: RbacProps) {
     super(scope, id);

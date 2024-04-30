@@ -143,11 +143,42 @@ export class QueryRuleAlert extends Construct {
   public resourceGroup: ResourceGroup;
 
   /**
-   * Constructs a new instance of the AzureQueryRuleAlert class.
+   * Represents an Azure Monitor Scheduled Query Rule Alert.
    *
-   * @param scope - The scope in which this construct is defined.
-   * @param id - The ID of this construct.
-   * @param props - The properties required for Azure Query Rule Alert.
+   * This class is responsible for the creation and management of a Scheduled Query Rule Alert in Azure Monitor.
+   * Scheduled Query Rule Alerts execute specified queries at regular intervals over the data collected in Log Analytics
+   * Workspaces or Application Insights, and alert based on the results of these queries. These alerts can be used to monitor
+   * application health, infrastructure changes, or compliance with certain conditions.
+   *
+   * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
+   * @param id - The unique identifier for this instance of the Scheduled Query Rule Alert.
+   * @param props - The properties required to configure the Scheduled Query Rule Alert, as defined in the AzureQueryRuleAlertProps interface.
+   *                These include:
+   *                - `name`: The name of the Scheduled Query Rule.
+   *                - `resourceGroup`: The Azure Resource Group under which the alert will be created.
+   *                - `location`: The Azure region where the alert will be deployed.
+   *                - `criteriaQuery`: The query to execute. The results of this query determine whether an alert should be triggered.
+   *                - `evaluationFrequency`: How often the query should be run.
+   *                - `windowDuration`: The time period over which data is collected for each execution of the query.
+   *                - `severity`: The severity of the alert.
+   *                - `actionActionGroupId`: The action group to invoke when the alert criteria are met.
+   *                - `enabled`: Indicates whether the alert rule is enabled.
+   *
+   * Example usage:
+   * ```typescript
+   * new QueryRuleAlert(this, 'MyAlertRule', {
+   *   name: 'HighErrorRateAlert',
+   *   resourceGroup: myResourceGroup,
+   *   location: 'West US 2',
+   *   criteriaQuery: 'Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m)',
+   *   evaluationFrequency: 'PT5M',
+   *   windowDuration: 'PT1H',
+   *   severity: 3,
+   *   actionActionGroupId: ['/subscriptions/sub-id/resourceGroups/rg/providers/microsoft.insights/actionGroups/myActionGroup'],
+   *   enabled: true
+   * });
+   * ```
+   * This class sets up the alert rule and ensures it is ready to trigger actions based on the specified criteria and schedule.
    */
   constructor(scope: Construct, id: string, props: AzureQueryRuleAlertProps) {
     super(scope, id);
