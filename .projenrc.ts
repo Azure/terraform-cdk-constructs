@@ -28,8 +28,9 @@ const project = new cdktf.ConstructLibraryCdktf({
   jest: true,
   testdir: "",
   prettier: true,
-  repositoryUrl: "https://github.com/azure/terraform-cdk-modules.git",
-  licensed: false,
+  repositoryUrl: "https://github.com/azure/terraform-cdk-constructs.git",
+  licensed: true,
+  license: "MIT",
   pullRequestTemplate: false,
   mergify: false,
   npmAccess: NpmAccess.PUBLIC,
@@ -66,6 +67,7 @@ project.jest?.addSetupFileAfterEnv("<rootDir>/setup.js");
 
 // Fix jest warnings
 if (project.jest && project.jest.config) {
+  project.jest.config.maxWorkers = "100%";
   project.jest.config.globals = {};
   project.jest.config.transform = {
     "^.+\\.tsx?$": ["ts-jest", { tsconfig: "tsconfig.dev.json" }],
