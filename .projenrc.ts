@@ -67,6 +67,7 @@ project.jest?.addSetupFileAfterEnv("<rootDir>/setup.js");
 
 // Fix jest warnings
 if (project.jest && project.jest.config) {
+  project.jest.config.maxWorkers = "100%";
   project.jest.config.globals = {};
   project.jest.config.transform = {
     "^.+\\.tsx?$": ["ts-jest", { tsconfig: "tsconfig.dev.json" }],

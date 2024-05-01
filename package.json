@@ -143,6 +143,7 @@
     "setupFilesAfterEnv": [
       "<rootDir>/setup.js"
     ],
+    "maxWorkers": "100%",
     "globals": {}
   },
   "types": "lib/index.d.ts",
