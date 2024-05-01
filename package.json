@@ -3,7 +3,7 @@
   "description": "A collection of CDK modules for provisioning and managing Terraform resources efficiently.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/azure/terraform-cdk-modules.git"
+    "url": "https://github.com/azure/terraform-cdk-constructs.git"
   },
   "scripts": {
     "build": "npx projen build",
@@ -94,7 +94,7 @@
     "node": ">= 20.10.0"
   },
   "main": "lib/index.js",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
