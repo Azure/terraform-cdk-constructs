@@ -18,6 +18,11 @@ To open this repository in a Code Space, click the button below:
 
 [![Open in Code Spaces](https://img.shields.io/badge/Open%20in%20Code%20Spaces-Terraform%20Azure%20CDK%20Modules%20Project-blue?logo=github)](https://github.com/microsoft/terraform-azure-cdk-modules/codespaces)
 
+Then run the following commands:
+- npm install
+- npx projen
+- npm install
+
 ## Pull Requests
 
 Pull requests are a key mechanism by which contributions are made to the project. They allow developers to propose changes, get feedback, and iterate on their ideas before merging them into the main project.
