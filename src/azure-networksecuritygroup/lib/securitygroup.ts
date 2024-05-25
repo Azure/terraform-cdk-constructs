@@ -63,9 +63,10 @@ export interface RuleConfig {
  */
 export interface SecurityGroupProps {
   /**
-   * The name of the resource group under which the network security group will be created.
+   * An optional reference to the resource group in which to deploy the Workspace.
+   * If not provided, the Workspace will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
 
   /**
    * The Azure region in which to create the network security group, e.g., 'East US', 'West Europe'.
@@ -101,7 +102,7 @@ export class SecurityGroup extends AzureResource {
    * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
    * @param id - The unique identifier for this instance of the security group.
    * @param props - The properties required to configure the Network Security Group, as defined in the SecurityGroupProps interface. These include:
-   *                - `resourceGroup`: The Azure Resource Group under which the NSG will be deployed.
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
    *                - `location`: The Azure region where the NSG will be created.
    *                - `name`: The name of the NSG, which must be unique within the resource group.
    *                - `rules`: A list of rules that define the security policies for traffic control.
@@ -131,12 +132,12 @@ export class SecurityGroup extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroup = props.resourceGroup;
+    this.resourceGroup = this.setupResourceGroup(props);
 
     // Create a network security group
     const nsg = new NetworkSecurityGroup(this, "nsg", {
       name: props.name,
-      resourceGroupName: props.resourceGroup.name,
+      resourceGroupName: this.resourceGroup.name,
       location: props.location,
     });
 
@@ -144,7 +145,7 @@ export class SecurityGroup extends AzureResource {
     for (const ruleConfig of props.rules) {
       new NetworkSecurityRule(this, ruleConfig.name, {
         name: ruleConfig.name,
-        resourceGroupName: props.resourceGroup.name,
+        resourceGroupName: this.resourceGroup.name,
         networkSecurityGroupName: nsg.name,
         priority: ruleConfig.priority,
         direction: ruleConfig.direction,

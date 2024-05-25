@@ -89,7 +89,7 @@ export abstract class AzureResource extends Construct {
       // Create a new resource group
       const newResourceGroup = new ResourceGroup(this, "rg", {
         name: `rg-${props.name}`,
-        location: props.location,
+        location: props.location || "eastus",
         tags: props.tags,
       });
       // Use the name of the new resource group

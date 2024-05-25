@@ -254,7 +254,7 @@ exports[`Application Gateway Example renders the Application Gateway and checks 
           "List",
         ],
       },
-      "keyvault_kv_custom_policy_access_TfTokenTOKEN75_policy_450D91E5": {
+      "keyvault_kv_custom_policy_access_TfTokenTOKEN69_policy_980B30BC": {
         "certificate_permissions": [
           "Get",
           "List",
@@ -342,7 +342,7 @@ exports[`Application Gateway Example renders the Application Gateway and checks 
           },
         },
         "depends_on": [
-          "azurerm_key_vault_access_policy.keyvault_kv_custom_policy_access_TfTokenTOKEN75_policy_450D91E5",
+          "azurerm_key_vault_access_policy.keyvault_kv_custom_policy_access_TfTokenTOKEN69_policy_980B30BC",
         ],
         "key_vault_id": "\${azurerm_key_vault.keyvault_key_vault_53A151E3.id}",
         "name": "ssl-cert",
@@ -404,7 +404,7 @@ exports[`Application Gateway Example renders the Application Gateway and checks 
       },
     },
     "azurerm_role_assignment": {
-      "appgw_TfTokenTOKEN96Contributor_role_68A30423": {
+      "appgw_TfTokenTOKEN90Contributor_role_7EB2F294": {
         "principal_id": "\${data.azurerm_client_config.CurrentClientConfig.object_id}",
         "role_definition_name": "Contributor",
         "scope": "\${azurerm_application_gateway.appgw_ApplicationGateway_698001D9.id}",
@@ -493,8 +493,7 @@ exports[`Application Gateway With Defaults renders an Application Gateway with d
         ],
         "frontend_ip_configuration": [
           {
-            "name": "Public-frontend-ip-configuration",
-            "public_ip_address_id": "\${azurerm_public_ip.publicIp.id}"
+            "name": "Dummy-frontend-ip-configuration"
           }
         ],
         "frontend_port": [
@@ -539,7 +538,7 @@ exports[`Application Gateway With Defaults renders an Application Gateway with d
             "rule_type": "Basic"
           }
         ],
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "resource_group_name": "\${azurerm_resource_group.testAzureApplicationGatewayDefaults2_rg_0D1F3FC1.name}",
         "sku": {
           "capacity": 2,
           "name": "WAF_v2",
@@ -547,19 +546,10 @@ exports[`Application Gateway With Defaults renders an Application Gateway with d
         }
       }
     },
-    "azurerm_public_ip": {
-      "publicIp": {
-        "allocation_method": "Dynamic",
-        "location": "eastus",
-        "name": "testip",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
-        "sku": "Standard"
-      }
-    },
     "azurerm_resource_group": {
-      "MyResourceGroup": {
+      "testAzureApplicationGatewayDefaults2_rg_0D1F3FC1": {
         "location": "eastus",
-        "name": "testrg"
+        "name": "rg-application-gateway"
       }
     },
     "azurerm_subnet": {
@@ -568,7 +558,7 @@ exports[`Application Gateway With Defaults renders an Application Gateway with d
           "10.1.0.0/24"
         ],
         "name": "default",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "resource_group_name": "\${azurerm_resource_group.testAzureApplicationGatewayDefaults2_rg_0D1F3FC1.name}",
         "virtual_network_name": "\${azurerm_virtual_network.testAzureApplicationGatewayDefaults2_vnet_33CC9CBF.name}"
       }
     },
@@ -579,7 +569,7 @@ exports[`Application Gateway With Defaults renders an Application Gateway with d
         ],
         "location": "eastus",
         "name": "vnet-test",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}"
+        "resource_group_name": "\${azurerm_resource_group.testAzureApplicationGatewayDefaults2_rg_0D1F3FC1.name}"
       }
     }
   },

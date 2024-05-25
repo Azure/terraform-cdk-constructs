@@ -1,5 +1,4 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
-import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
 import { exampleAzureNetworkSecurityGroup } from "./ExampleAzureNetworkSecurityGroup";
@@ -15,16 +14,10 @@ describe("Azure Network Security Group With Defaults", () => {
 
     new AzurermProvider(stack, "azureFeature", { features: {} });
 
-    const rg = new ResourceGroup(stack, "MyResourceGroup", {
-      name: "rg-test",
-      location: "eastus",
-    });
-
     // Create a network security group with the defined rules
     new network.SecurityGroup(stack, "testAzureNetworkSecurityGroupDefaults", {
       name: "my-nsg",
       location: "eastus",
-      resourceGroup: rg,
       rules: [
         network.PreconfiguredRules.addSourceAddress(
           network.PreconfiguredRules.ssh,

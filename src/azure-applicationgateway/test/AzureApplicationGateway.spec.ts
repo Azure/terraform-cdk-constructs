@@ -1,6 +1,4 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
-import { PublicIp } from "@cdktf/provider-azurerm/lib/public-ip";
-import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
 import { exampleAzureApplicationGateway } from "./ExampleAzureApplicationGateway";
 import "cdktf/lib/testing/adapters/jest";
@@ -17,27 +15,12 @@ describe("Application Gateway With Defaults", () => {
 
     new AzurermProvider(stack, "azureFeature", { features: {} });
 
-    const resourceGroup = new ResourceGroup(stack, "MyResourceGroup", {
-      name: "testrg",
-      location: "eastus",
-    });
-
-    const publicIp = new PublicIp(stack, "publicIp", {
-      name: "testip",
-      location: "eastus",
-      resourceGroupName: resourceGroup.name,
-      allocationMethod: "Dynamic",
-      sku: "Standard",
-    });
-
     new apgw.Gateway(stack, "testAzureApplicationGatewayDefaults2", {
       name: "application-gateway",
-      resourceGroup: resourceGroup,
       location: "eastus",
       skuTier: "WAF_v2",
       skuSize: "WAF_v2",
       capacity: 2,
-      publicIpAddress: publicIp,
       backendAddressPools: [
         { name: "backend-address-pool-1" },
         {

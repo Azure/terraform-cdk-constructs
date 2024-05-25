@@ -26,9 +26,10 @@ export interface SubnetConfig {
  */
 export interface NetworkProps {
   /**
-   * The name of the resource group under which the virtual network will be created.
+   * An optional reference to the resource group in which to deploy the Virtual Machine.
+   * If not provided, the Virtual Machine will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
 
   /**
    * Optional: The name of the virtual network. Must be unique within the resource group.
@@ -72,7 +73,7 @@ export class Network extends AzureResource {
    * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) application.
    * @param id - The unique identifier for this instance of the network, used within the scope for reference.
    * @param props - Configuration properties for the Azure Virtual Network, derived from the NetworkProps interface. These include:
-   *                - `resourceGroup`: The ResourceGroup within which the virtual network will be created.
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
    *                - `name`: Optional. The name of the virtual network. If not provided, a default name will be assigned.
    *                - `location`: Optional. The Azure region where the virtual network will be deployed. Defaults to the resource group's region.
    *                - `addressSpace`: Optional. A list of CIDR blocks that define the address spaces of the virtual network.
@@ -95,6 +96,7 @@ export class Network extends AzureResource {
     super(scope, id);
 
     this.props = props;
+    this.resourceGroup = this.setupResourceGroup(props);
 
     const defaults = {
       name: props.name || `vnet-${this.node.path.split("/")[0]}`,
@@ -111,19 +113,19 @@ export class Network extends AzureResource {
     // Create a virtual network
     const vnet = new VirtualNetwork(this, "vnet", {
       ...defaults,
-      resourceGroupName: props.resourceGroup.name,
+      resourceGroupName: this.resourceGroup.name,
     });
 
     this.name = vnet.name;
     this.id = vnet.id;
-    this.resourceGroup = props.resourceGroup;
+    this.resourceGroup = this.resourceGroup;
     this.virtualNetwork = vnet;
 
     // Create subnets within the virtual network
     for (const subnetConfig of defaults.subnets) {
       const subnet = new Subnet(this, subnetConfig.name, {
         name: subnetConfig.name,
-        resourceGroupName: props.resourceGroup.name,
+        resourceGroupName: this.resourceGroup.name,
         virtualNetworkName: vnet.name,
         addressPrefixes: subnetConfig.addressPrefixes,
       });

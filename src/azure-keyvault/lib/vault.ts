@@ -28,9 +28,10 @@ export interface VaultProps {
    */
   readonly location: string;
   /**
-   * The name of the Azure Resource Group.
+   * An optional reference to the resource group in which to deploy the Key Vault.
+   * If not provided, the Key Vault will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
   /**
    * The tags to assign to the Key Vault.
    */
@@ -129,7 +130,7 @@ export class Vault extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroup = props.resourceGroup;
+    this.resourceGroup = this.setupResourceGroup(props);
 
     // Provide default values
     const purgeProtection = props.purgeProtection ?? true;
@@ -139,7 +140,7 @@ export class Vault extends AzureResource {
     const azurermKeyVault = new KeyVault(this, "key_vault", {
       name: props.name,
       location: props.location,
-      resourceGroupName: props.resourceGroup.name,
+      resourceGroupName: this.resourceGroup.name,
       tags: props.tags,
       skuName: sku,
       tenantId: props.tenantId,

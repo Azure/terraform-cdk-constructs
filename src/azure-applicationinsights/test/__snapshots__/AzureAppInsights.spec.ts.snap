@@ -191,7 +191,7 @@ exports[`Application Insights With Defaults renders an Application Insights with
         "application_type": "web",
         "location": "eastus",
         "name": "appi-test",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "resource_group_name": "\${azurerm_resource_group.testAzureApplicationInsightsDefaults_rg_6BE48C73.name}",
         "workspace_id": "\${azurerm_log_analytics_workspace.testAzureApplicationInsightsDefaults_log_analytics_5C943AED.id}"
       }
     },
@@ -199,14 +199,14 @@ exports[`Application Insights With Defaults renders an Application Insights with
       "testAzureApplicationInsightsDefaults_log_analytics_5C943AED": {
         "location": "eastus",
         "name": "appi-test-la",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "resource_group_name": "\${azurerm_resource_group.testAzureApplicationInsightsDefaults_rg_6BE48C73.name}",
         "sku": "PerGB2018"
       }
     },
     "azurerm_resource_group": {
-      "MyResourceGroup": {
+      "testAzureApplicationInsightsDefaults_rg_6BE48C73": {
         "location": "eastus",
-        "name": "testrg"
+        "name": "rg-appi-test"
       }
     }
   },

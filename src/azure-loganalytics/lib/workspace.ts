@@ -96,9 +96,10 @@ export interface WorkspaceProps {
    */
   readonly name: string;
   /**
-   * The name of the Azure Resource Group.
+   * An optional reference to the resource group in which to deploy the Workspace.
+   * If not provided, the Workspace will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
   /**
    * The SKU of the Log Analytics Workspace.
    */
@@ -143,7 +144,7 @@ export class Workspace extends AzureResourceWithAlert {
    * @param props - The properties required to configure the Log Analytics workspace, as defined in the WorkspaceProps interface. These include:
    *                - `location`: The Azure region where the workspace will be deployed.
    *                - `name`: The name of the workspace, which must be globally unique.
-   *                - `resourceGroup`: The Azure Resource Group under which the workspace is deployed.
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
    *                - `sku`: Optional. The SKU of the workspace, affecting pricing and features.
    *                - `retention`: Optional. The number of days data will be retained in the workspace.
    *                - `tags`: Optional. Tags to assign to the workspace for organizational purposes.
@@ -181,7 +182,7 @@ export class Workspace extends AzureResourceWithAlert {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroup = props.resourceGroup;
+    this.resourceGroup = this.setupResourceGroup(props);
 
     // Provide default values
     const sku = props.sku ?? "PerGB2018";
@@ -193,7 +194,7 @@ export class Workspace extends AzureResourceWithAlert {
       {
         location: props.location,
         name: props.name,
-        resourceGroupName: props.resourceGroup.name,
+        resourceGroupName: this.resourceGroup.name,
         retentionInDays: retention,
         sku: sku,
         tags: props.tags,
@@ -207,7 +208,7 @@ export class Workspace extends AzureResourceWithAlert {
         destinationResourceId: v.exportDestinationId,
         enabled: v.enabled,
         name: v.name,
-        resourceGroupName: props.resourceGroup.name,
+        resourceGroupName: this.resourceGroup.name,
         tableNames: v.tableNames,
         workspaceResourceId: azurermLogAnalyticsWorkspaceLogAnalytics.id,
       });

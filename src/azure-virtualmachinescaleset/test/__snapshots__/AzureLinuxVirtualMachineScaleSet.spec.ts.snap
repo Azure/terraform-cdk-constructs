@@ -214,7 +214,7 @@ exports[`Azure Linux Virtual Machine Scale Set With Defaults renders an Azure Li
           "caching": "ReadWrite",
           "storage_account_type": "Standard_LRS"
         },
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "resource_group_name": "\${azurerm_resource_group.testVirtualMachineScaleSet_rg_41B4540E.name}",
         "sku": "Standard_B2s",
         "source_image_reference": {
           "offer": "0001-com-ubuntu-server-jammy",
@@ -225,9 +225,9 @@ exports[`Azure Linux Virtual Machine Scale Set With Defaults renders an Azure Li
       }
     },
     "azurerm_resource_group": {
-      "MyResourceGroup": {
+      "testVirtualMachineScaleSet_rg_41B4540E": {
         "location": "eastus",
-        "name": "rg-test"
+        "name": "rg-undefined"
       }
     },
     "azurerm_subnet": {
@@ -236,7 +236,7 @@ exports[`Azure Linux Virtual Machine Scale Set With Defaults renders an Azure Li
           "10.1.0.0/24"
         ],
         "name": "default",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "resource_group_name": "\${azurerm_resource_group.testVirtualMachineScaleSet_rg_41B4540E.name}",
         "virtual_network_name": "\${azurerm_virtual_network.testVirtualMachineScaleSet_vnet_6B0AF69B.name}"
       }
     },
@@ -247,7 +247,7 @@ exports[`Azure Linux Virtual Machine Scale Set With Defaults renders an Azure Li
         ],
         "location": "eastus",
         "name": "vnet-testAzureVMSSWithDefaults",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}"
+        "resource_group_name": "\${azurerm_resource_group.testVirtualMachineScaleSet_rg_41B4540E.name}"
       }
     }
   },

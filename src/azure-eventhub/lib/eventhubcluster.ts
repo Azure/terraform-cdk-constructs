@@ -4,11 +4,15 @@ import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import { AzureResource } from "../../core-azure/lib";
 
-export interface ClusterProps {
+export interface EventHubClusterProps {
   /**
-   * The name of the Resource Group in which to create the EventHub Cluster.
+   * An optional reference to the resource group in which to deploy the Event Hub Cluster.
+   * If not provided, the Event Hub Cluster will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
+  /**
+   * The name of the EventHub Cluster.
+   */
   readonly name: string;
   /**
    * The SKU name of the EventHub Cluster. The only supported value at this time is Dedicated_1.
@@ -22,7 +26,7 @@ export interface ClusterProps {
 }
 
 export class Cluster extends AzureResource {
-  readonly ehClusterProps: ClusterProps;
+  readonly props: EventHubClusterProps;
   public id: string;
   public resourceGroup: ResourceGroup;
 
@@ -36,8 +40,8 @@ export class Cluster extends AzureResource {
    *
    * @param scope - The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack.
    * @param name - The unique name for this instance of the Event Hub Cluster.
-   * @param ehClusterProps - The properties for configuring the Event Hub Cluster. These properties include:
-   *                - `resourceGroup`: Required. The Azure Resource Group in which the cluster will be deployed.
+   * @param props - The properties for configuring the Event Hub Cluster. These properties include:
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
    *                - `name`: Required. The name of the Event Hub Cluster.
    *                - `skuName`: Optional. The SKU name for the cluster, which determines the pricing and capabilities.
    *                             Currently, the only supported value is "Dedicated_1". Defaults to "Dedicated_1" if not specified.
@@ -55,21 +59,21 @@ export class Cluster extends AzureResource {
    * });
    * ```
    */
-  constructor(scope: Construct, name: string, ehClusterProps: ClusterProps) {
+  constructor(scope: Construct, name: string, props: EventHubClusterProps) {
     super(scope, name);
 
-    this.ehClusterProps = ehClusterProps;
-    this.resourceGroup = ehClusterProps.resourceGroup;
+    this.props = props;
+    this.resourceGroup = this.setupResourceGroup(props);
 
     const defaults = {
-      skuName: ehClusterProps.skuName || "Dedicated_1",
-      tags: ehClusterProps.tags || {},
+      skuName: props.skuName || "Dedicated_1",
+      tags: props.tags || {},
     };
 
     const ehCluster = new EventhubCluster(this, "ehcluster", {
-      name: ehClusterProps.name,
-      resourceGroupName: ehClusterProps.resourceGroup.name,
-      location: ehClusterProps.resourceGroup.location,
+      name: props.name,
+      resourceGroupName: this.resourceGroup.name,
+      location: this.resourceGroup.location,
       ...defaults,
     });
 

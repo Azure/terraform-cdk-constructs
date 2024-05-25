@@ -1,5 +1,4 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
-import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
 import { exampleAzureActionGroup } from "./ExampleAzureActionGroup";
 import "cdktf/lib/testing/adapters/jest";
@@ -17,14 +16,8 @@ describe("Action Group With Defaults", () => {
 
     new AzurermProvider(stack, "azureFeature", { features: {} });
 
-    const resourceGroup = new ResourceGroup(stack, "MyResourceGroup", {
-      name: "testrg",
-      location: "eastus",
-    });
-
     new ActionGroup(stack, "testAzureActionGroupDefaults", {
       name: "testactiongroup",
-      resourceGroup: resourceGroup,
       shortName: "testshortn",
     });
 
@@ -54,14 +47,8 @@ describe("Action Group With Defaults 2", () => {
 
     new AzurermProvider(stack, "azureFeature", { features: {} });
 
-    const resourceGroup2 = new ResourceGroup(stack, "MyResourceGroup2", {
-      name: "testrg2",
-      location: "eastus",
-    });
-
     new ActionGroup(stack, "testAzureActionGroupDefaults", {
       name: "testactiongroup",
-      resourceGroup: resourceGroup2,
       shortName: "testshortn",
       enabled: false,
       location: "global",

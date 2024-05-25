@@ -1,5 +1,4 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
-import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
 import { exampleAzureWindowsVirtualMachine } from "./ExampleAzureWindowsVirtualMachine";
@@ -15,13 +14,7 @@ describe("Azure Windows Virtual Machine With Defaults", () => {
 
     new AzurermProvider(stack, "azureFeature", { features: {} });
 
-    const rg = new ResourceGroup(stack, "MyResourceGroup", {
-      name: "rg-test",
-      location: "eastus",
-    });
-
     new vm.WindowsVM(stack, "testVirtualMachine", {
-      resourceGroup: rg,
       adminUsername: "testAdmin",
       adminPassword: "testPassword&@34$$123",
     });

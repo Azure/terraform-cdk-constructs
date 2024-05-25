@@ -1,5 +1,4 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
-import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
 import { exampleAzureLogAnalytics } from "./ExampleAzureLogAnalytics";
 import "cdktf/lib/testing/adapters/jest";
@@ -15,15 +14,9 @@ describe("Log Analytics Workspace With Defaults", () => {
 
     new AzurermProvider(stack, "azureFeature", { features: {} });
 
-    const rg = new ResourceGroup(stack, "MyResourceGroup", {
-      name: "rg-test",
-      location: "eastus",
-    });
-
     new la.Workspace(stack, "testAzureLogAnalyticsDefaults", {
       name: "la-test",
       location: "eastus",
-      resourceGroup: rg,
     });
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse

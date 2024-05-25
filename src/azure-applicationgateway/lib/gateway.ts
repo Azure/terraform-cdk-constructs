@@ -38,9 +38,10 @@ export interface IGatewayProps {
   readonly location: string;
 
   /**
-   * The resource group under which the Application Gateway will be deployed.
+   * An optional reference to the resource group in which to deploy the Application Gateway.
+   * If not provided, the Application Gateway will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
 
   /**
    * The SKU tier of the Application Gateway (e.g., Standard, WAF).
@@ -210,6 +211,7 @@ export interface IGatewayProps {
 
 // Define the class for Azure Application Gateway
 export class Gateway extends AzureResource {
+  public readonly props: IGatewayProps;
   public resourceGroup: ResourceGroup;
   public id: string;
 
@@ -221,7 +223,7 @@ export class Gateway extends AzureResource {
    * @param props - The properties for configuring the Azure Application Gateway. The properties include:
    *                - `name`: Required. Unique name for the Application Gateway within Azure.
    *                - `location`: Required. Azure Region for deployment.
-   *                - `resourceGroup`: Required. Reference to the resource group for deployment.
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
    *                - `skuTier`: Required. SKU tier of the Application Gateway (e.g., Standard, WAF).
    *                - `skuSize`: Required. Size of the SKU for the Application Gateway.
    *                - `capacity`: Required. Capacity (instance count) of the Application Gateway.
@@ -293,6 +295,9 @@ export class Gateway extends AzureResource {
   constructor(scope: Construct, id: string, props: IGatewayProps) {
     super(scope, id);
 
+    this.props = props;
+    this.resourceGroup = this.setupResourceGroup(props);
+
     // Define the identity
     let identity;
 
@@ -304,7 +309,7 @@ export class Gateway extends AzureResource {
         "ManagedIdentity",
         {
           name: `mi-${props.name}`,
-          resourceGroupName: props.resourceGroup.name,
+          resourceGroupName: this.resourceGroup.name,
           location: props.location,
         },
       );
@@ -326,7 +331,7 @@ export class Gateway extends AzureResource {
       subnetId:
         props.subnet?.id ||
         new vnet.Network(this, "vnet", {
-          resourceGroup: props.resourceGroup,
+          resourceGroup: this.resourceGroup,
         }).subnets.default.id,
       identity: props.identity || identity,
     };
@@ -341,7 +346,7 @@ export class Gateway extends AzureResource {
       : undefined;
 
     // Dynamically create frontend IP configurations
-    let frontendIpConfigs = [];
+    let frontendIpConfigs : azapgw.ApplicationGatewayFrontendIpConfiguration[] = [];
 
     // Public IP configuration
     if (props.publicIpAddress) {
@@ -361,6 +366,13 @@ export class Gateway extends AzureResource {
       });
     }
 
+    // If no frontend ports are provided, use default dummy frontend ip configuration
+    if (frontendIpConfigs.length == 0) {
+      frontendIpConfigs.push({
+        name: "Dummy-frontend-ip-configuration",
+      });
+    }
+
     // Set default frontend ports if not provided
     const defaultFrontendPorts = [
       { name: "80", port: 80 },
@@ -375,7 +387,7 @@ export class Gateway extends AzureResource {
     // Create the Application Gateway
     const apgw = new ApplicationGateway(this, "ApplicationGateway", {
       name: props.name,
-      resourceGroupName: props.resourceGroup.name,
+      resourceGroupName: this.resourceGroup.name,
       location: props.location,
       sslCertificate: props.sslCertificate,
       sslPolicy: props.sslPolicy,
@@ -413,6 +425,5 @@ export class Gateway extends AzureResource {
     });
 
     this.id = apgw.id;
-    this.resourceGroup = props.resourceGroup;
   }
 }

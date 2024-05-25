@@ -102,7 +102,7 @@ exports[`Action Group With Defaults 2 renders an Action Group with defaults and 
         "enabled": false,
         "location": "global",
         "name": "testactiongroup",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup2.name}",
+        "resource_group_name": "\${azurerm_resource_group.testAzureActionGroupDefaults_rg_E07CD696.name}",
         "short_name": "testshortn",
         "tags": {
           "test": "test"
@@ -110,9 +110,12 @@ exports[`Action Group With Defaults 2 renders an Action Group with defaults and 
       }
     },
     "azurerm_resource_group": {
-      "MyResourceGroup2": {
-        "location": "eastus",
-        "name": "testrg2"
+      "testAzureActionGroupDefaults_rg_E07CD696": {
+        "location": "global",
+        "name": "rg-testactiongroup",
+        "tags": {
+          "test": "test"
+        }
       }
     }
   },
@@ -148,16 +151,16 @@ exports[`Action Group With Defaults renders an Action Group with defaults and ch
         "enabled": true,
         "location": "global",
         "name": "testactiongroup",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "resource_group_name": "\${azurerm_resource_group.testAzureActionGroupDefaults_rg_E07CD696.name}",
         "short_name": "testshortn",
         "tags": {
         }
       }
     },
     "azurerm_resource_group": {
-      "MyResourceGroup": {
+      "testAzureActionGroupDefaults_rg_E07CD696": {
         "location": "eastus",
-        "name": "testrg"
+        "name": "rg-testactiongroup"
       }
     }
   },
