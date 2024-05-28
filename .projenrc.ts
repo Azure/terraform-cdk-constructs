@@ -34,6 +34,19 @@ const project = new cdktf.ConstructLibraryCdktf({
   pullRequestTemplate: false,
   mergify: false,
   npmAccess: NpmAccess.PUBLIC,
+  publishToNuget: {
+    dotNetNamespace: "Microsoft.Cdktf.Azure.TFConstructs",
+    packageId: "Microsoft.Cdktf.Azure.TFConstructs",
+  },
+  publishToPypi: {
+    distName: "microsoft-cdktfconstructs",
+    module: "microsoft_cdktfconstructs",
+  },
+  publishToMaven: {
+    javaPackage: "com.microsoft.terraformcdkconstructs",
+    mavenGroupId: "com.microsoft",
+    mavenArtifactId: "cdktf-azure-constructs",
+  },
   jestOptions: {
     updateSnapshot: UpdateSnapshot.NEVER,
   },

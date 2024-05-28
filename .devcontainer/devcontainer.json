@@ -6,25 +6,39 @@
 	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
 	"features": {
 		"ghcr.io/devcontainers/features/azure-cli:1": {
-			"installUsingPython": true,
 			"version": "latest"
 		},
 		"ghcr.io/devcontainers/features/go:1": {
-			"version": "1.19"
+			"version": "latest"
 		},
 		"ghcr.io/devcontainers/features/terraform:1": {
-			"version": "1.5.4",
-			"tflint": "latest",
+			"installTFsec": true,
+			"version": "1.1",
+			"tflint": "0.47.0",
 			"terragrunt": "latest"
 		},
 		"ghcr.io/devcontainers-contrib/features/tfcdk-cli:1": {
-			"version": "0.17.3"
+			"version": "latest"
 		},
 		"ghcr.io/devcontainers-contrib/features/jest:2": {
 			"version": "latest"
 		},
 		"ghcr.io/devcontainers-contrib/features/projen:1": {
 			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/dotnet:2": {
+			"version": "8.0"
+		},
+		"ghcr.io/devcontainers/features/java:1": {
+			"installMaven": true,
+			"version": "17",
+			"jdkDistro": "ms",
+			"mavenVersion": "3.8.6"
+
+		},
+		"ghcr.io/devcontainers/features/python:1": {
+			"installTools": true,
+			"version": "3.12"
 		}
 	},
 
