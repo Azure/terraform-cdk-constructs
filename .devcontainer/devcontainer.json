@@ -9,7 +9,7 @@
 			"version": "latest"
 		},
 		"ghcr.io/devcontainers/features/go:1": {
-			"version": "latest"
+			"version": "1.19"
 		},
 		"ghcr.io/devcontainers/features/terraform:1": {
 			"installTFsec": true,
@@ -18,7 +18,7 @@
 			"terragrunt": "latest"
 		},
 		"ghcr.io/devcontainers-contrib/features/tfcdk-cli:1": {
-			"version": "latest"
+			"version": "0.17.3"
 		},
 		"ghcr.io/devcontainers-contrib/features/jest:2": {
 			"version": "latest"
