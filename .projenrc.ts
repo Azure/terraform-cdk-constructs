@@ -110,12 +110,11 @@ if (buildWorkflow) {
     JsonPatch.add("/jobs/build/steps/2", {
       name: "Authenticate with Azure",
       id: "azure_login",
-      uses: "azure/login@v1",
+      uses: "azure/login@v2",
       with: {
         "client-id": "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
         "tenant-id": "${{ secrets.AZTFREADER_TENANT_ID }}",
         "subscription-id": "${{ secrets.AZTFREADER_CLIENT_ID }}",
-        "federated-token": "${{ steps.azure_login.outputs.oidc-token }}",
       },
     }),
   );
