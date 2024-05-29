@@ -10,7 +10,8 @@ jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
+      id-token: write
     outputs:
       latest_commit: ${{ steps.git_remote.outputs.latest_commit }}
       tag_exists: ${{ steps.check_tag_exists.outputs.exists }}
@@ -29,15 +30,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.10.0
+      - name: Authenticate with Azure
+        id: azure_login
+        uses: azure/login@v2
+        with:
+          subscription-id: ${{ env.AZTFREADER_SUBSCRIPTIONID }}
+          tenant-id: ${{ env.AZTFREADER_TENANT_ID }}
+          client-id: ${{ env.AZTFREADER_CLIENT_ID }}
       - name: Install dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: release
         run: npx projen release
-        env:
-          ARM_SUBSCRIPTION_ID: ${{ secrets.AZTFREADER_SUBSCRIPTIONID }}
-          ARM_TENANT_ID: ${{ secrets.AZTFREADER_TENANT_ID }}
-          ARM_CLIENT_ID: ${{ secrets.AZTFREADER_CLIENT_ID }}
-          ARM_CLIENT_SECRET: ${{ secrets.AZTFREADER_CLIENT_SECRET }}
       - name: Check if version has already been tagged
         id: check_tag_exists
         run: |-

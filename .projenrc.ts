@@ -91,17 +91,28 @@ project.tsconfigDev.include.push("**/*.spec.ts");
 const releaseWorkflow = project.tryFindObjectFile(
   ".github/workflows/release.yml",
 );
+if (releaseWorkflow) {
+  releaseWorkflow.patch(
+    JsonPatch.add("/jobs/release/permissions/id-token", "write"),
+  );
+  releaseWorkflow.patch(
+    JsonPatch.add("/jobs/release/permissions/contents", "read"),
+  );
 
-releaseWorkflow?.patch(
-  JsonPatch.add("/jobs/release/steps/4/env", {
-    ARM_SUBSCRIPTION_ID: "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
-    ARM_TENANT_ID: "${{ secrets.AZTFREADER_TENANT_ID }}",
-    ARM_CLIENT_ID: "${{ secrets.AZTFREADER_CLIENT_ID }}",
-    ARM_CLIENT_SECRET: "${{ secrets.AZTFREADER_CLIENT_SECRET }}",
-  }),
-);
-releaseWorkflow?.patch(JsonPatch.remove("/jobs/release_npm")); // remove npm release job, release is handled elsewhere
-
+  releaseWorkflow?.patch(
+    JsonPatch.add("/jobs/release/steps/3", {
+      name: "Authenticate with Azure",
+      id: "azure_login",
+      uses: "azure/login@v2",
+      with: {
+        "subscription-id": "${{ env.AZTFREADER_SUBSCRIPTIONID }}",
+        "tenant-id": "${{ env.AZTFREADER_TENANT_ID }}",
+        "client-id": "${{ env.AZTFREADER_CLIENT_ID }}",
+      },
+    }),
+  );
+  releaseWorkflow.patch(JsonPatch.remove("/jobs/release_npm")); // remove npm release job, release is handled elsewhere
+}
 // Build Workflow
 const buildWorkflow = project.tryFindObjectFile(".github/workflows/build.yml");
 //buildWorkflow?.patch(JsonPatch.remove("/jobs/build/steps/0/with")); // Remove because build tries to copy forked repo which is private
@@ -118,9 +129,9 @@ if (buildWorkflow) {
       id: "azure_login",
       uses: "azure/login@v2",
       with: {
-        "subscription-id": "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
-        "tenant-id": "${{ secrets.AZTFREADER_TENANT_ID }}",
-        "client-id": "${{ secrets.AZTFREADER_CLIENT_ID }}",
+        "subscription-id": "${{ env.AZTFREADER_SUBSCRIPTIONID }}",
+        "tenant-id": "${{ env.AZTFREADER_TENANT_ID }}",
+        "client-id": "${{ env.AZTFREADER_CLIENT_ID }}",
       },
     }),
   );
