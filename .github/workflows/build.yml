@@ -2,8 +2,13 @@
 
 name: build
 on:
-  pull_request: {}
   workflow_dispatch: {}
+  pull_request_target:
+    branches:
+      - main
+    paths-ignore:
+      - .devcontainer/**
+      - README.md
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,9 +33,9 @@ jobs:
         id: azure_login
         uses: azure/login@v2
         with:
-          subscription-id: 635ff6b0-25c0-4b95-ae39-e04703583504
-          tenant-id: 24e2975c-af72-454e-8dc0-579d886a1589
-          client-id: 759f5326-9a8b-4e66-af1c-c55baff18ab4
+          subscription-id: ${{ secrets.AZTFREADER_SUBSCRIPTIONID }}
+          tenant-id: ${{ secrets.AZTFREADER_TENANT_ID }}
+          client-id: ${{ secrets.AZTFREADER_CLIENT_ID }}
       - name: Install dependencies
         run: yarn install --check-files
       - name: build
@@ -62,7 +67,7 @@ jobs:
           name: build-artifact
           path: dist
           overwrite: true
-    environment: build
+    environment: Build
   self-mutation:
     needs: build
     runs-on: ubuntu-latest

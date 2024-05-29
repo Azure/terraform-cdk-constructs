@@ -63,7 +63,7 @@ jobs:
           name: build-artifact
           path: dist
           overwrite: true
-    environment: build
+    environment: Build
   release_github:
     name: Publish to GitHub Releases
     needs: release

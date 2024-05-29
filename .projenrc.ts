@@ -98,8 +98,7 @@ if (releaseWorkflow) {
   releaseWorkflow.patch(
     JsonPatch.add("/jobs/release/permissions/contents", "read"),
   );
-  releaseWorkflow.patch(JsonPatch.add("/jobs/release/environment", "build"));
-
+  releaseWorkflow.patch(JsonPatch.add("/jobs/release/environment", "Build"));
   releaseWorkflow.patch(
     JsonPatch.add("/jobs/release/steps/3", {
       name: "Authenticate with Azure",
@@ -116,15 +115,22 @@ if (releaseWorkflow) {
 }
 // Build Workflow
 const buildWorkflow = project.tryFindObjectFile(".github/workflows/build.yml");
-//buildWorkflow?.patch(JsonPatch.remove("/jobs/build/steps/0/with")); // Remove because build tries to copy forked repo which is private
 if (buildWorkflow) {
+  buildWorkflow.addOverride("on", {
+    pull_request_target: {
+      branches: ["main"],
+      "paths-ignore": [".devcontainer/**", "README.md"],
+    },
+    pull_request: {},
+  });
+
   buildWorkflow.patch(
     JsonPatch.add("/jobs/build/permissions/id-token", "write"),
   );
   buildWorkflow.patch(
     JsonPatch.add("/jobs/build/permissions/contents", "read"),
   );
-  buildWorkflow.patch(JsonPatch.add("/jobs/build/environment", "build"));
+  buildWorkflow.patch(JsonPatch.add("/jobs/build/environment", "Build"));
   buildWorkflow.patch(
     JsonPatch.add("/jobs/build/steps/2", {
       name: "Authenticate with Azure",
