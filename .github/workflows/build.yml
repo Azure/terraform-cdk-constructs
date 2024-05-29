@@ -8,7 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
+      id-token: write
     outputs:
       self_mutation_happened: ${{ steps.self_mutation.outputs.self_mutation_happened }}
     env:
@@ -202,6 +203,3 @@ jobs:
         run: cd .repo && npx projen package:dotnet
       - name: Collect dotnet Artifact
         run: mv .repo/dist dist
-permissions:
-  id-token: write
-  contents: read

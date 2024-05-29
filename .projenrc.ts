@@ -107,10 +107,10 @@ const buildWorkflow = project.tryFindObjectFile(".github/workflows/build.yml");
 //buildWorkflow?.patch(JsonPatch.remove("/jobs/build/steps/0/with")); // Remove because build tries to copy forked repo which is private
 if (buildWorkflow) {
   buildWorkflow.patch(
-    JsonPatch.add("/permissions", {
-      "id-token": "write",
-      contents: "read",
-    }),
+    JsonPatch.add("/jobs/build/permissions/id-token", "write"),
+  );
+  buildWorkflow.patch(
+    JsonPatch.add("/jobs/build/permissions/contents", "read"),
   );
   buildWorkflow.patch(
     JsonPatch.add("/jobs/build/steps/2", {
