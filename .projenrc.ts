@@ -122,6 +122,7 @@ if (buildWorkflow) {
       "paths-ignore": [".devcontainer/**", "README.md"],
     },
     pull_request: {},
+    workflow_dispatch: {},
   });
 
   buildWorkflow.patch(
