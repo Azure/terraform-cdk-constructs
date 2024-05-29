@@ -121,7 +121,6 @@ if (buildWorkflow) {
       branches: ["main"],
       "paths-ignore": [".devcontainer/**", "README.md"],
     },
-    pull_request: {},
   });
 
   buildWorkflow.patch(
