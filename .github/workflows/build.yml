@@ -16,19 +16,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20.10.0
+      - name: Authenticate with Azure
+        id: azure_login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZTFREADER_SUBSCRIPTIONID }}
+          tenant-id: ${{ secrets.AZTFREADER_TENANT_ID }}
+          subscription-id: ${{ secrets.AZTFREADER_CLIENT_ID }}
+          federated-token: ${{ steps.azure_login.outputs.oidc-token }}
       - name: Install dependencies
         run: yarn install --check-files
       - name: build
         run: npx projen build
-        env:
-          ARM_SUBSCRIPTION_ID: ${{ secrets.AZTFREADER_SUBSCRIPTIONID }}
-          ARM_TENANT_ID: ${{ secrets.AZTFREADER_TENANT_ID }}
-          ARM_CLIENT_ID: ${{ secrets.AZTFREADER_CLIENT_ID }}
-          ARM_CLIENT_SECRET: ${{ secrets.AZTFREADER_CLIENT_SECRET }}
       - name: Find mutations
         id: self_mutation
         run: |-

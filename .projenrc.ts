@@ -104,15 +104,22 @@ releaseWorkflow?.patch(JsonPatch.remove("/jobs/release_npm")); // remove npm rel
 
 // Build Workflow
 const buildWorkflow = project.tryFindObjectFile(".github/workflows/build.yml");
-buildWorkflow?.patch(JsonPatch.remove("/jobs/build/steps/0/with")); // Remove because build tries to copy forked repo which is private
-buildWorkflow?.patch(
-  JsonPatch.add("/jobs/build/steps/3/env", {
-    ARM_SUBSCRIPTION_ID: "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
-    ARM_TENANT_ID: "${{ secrets.AZTFREADER_TENANT_ID }}",
-    ARM_CLIENT_ID: "${{ secrets.AZTFREADER_CLIENT_ID }}",
-    ARM_CLIENT_SECRET: "${{ secrets.AZTFREADER_CLIENT_SECRET }}",
-  }),
-);
+//buildWorkflow?.patch(JsonPatch.remove("/jobs/build/steps/0/with")); // Remove because build tries to copy forked repo which is private
+if (buildWorkflow) {
+  buildWorkflow.patch(
+    JsonPatch.add("/jobs/build/steps/2", {
+      name: "Authenticate with Azure",
+      id: "azure_login",
+      uses: "azure/login@v1",
+      with: {
+        "client-id": "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
+        "tenant-id": "${{ secrets.AZTFREADER_TENANT_ID }}",
+        "subscription-id": "${{ secrets.AZTFREADER_CLIENT_ID }}",
+        "federated-token": "${{ steps.azure_login.outputs.oidc-token }}",
+      },
+    }),
+  );
+}
 
 project.projectBuild.testTask.exec(
   "curl -L 'https://github.com/tfsec/tfsec/releases/download/v0.58.14/tfsec-linux-amd64' > tfsec && chmod +x tfsec && sudo mv tfsec /usr/local/bin/ && tfsec --config-file tfsec.json cdktf.out",
