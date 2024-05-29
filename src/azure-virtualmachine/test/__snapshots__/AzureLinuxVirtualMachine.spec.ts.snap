@@ -213,7 +213,7 @@ exports[`Azure Linux Virtual Machine With Defaults renders an Azure Linux Virtua
           "caching": "ReadWrite",
           "storage_account_type": "Standard_LRS"
         },
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "resource_group_name": "\${azurerm_resource_group.testVirtualMachine_rg_3C7206A4.name}",
         "size": "Standard_B2s",
         "source_image_reference": {
           "offer": "WindowsServer",
@@ -234,13 +234,13 @@ exports[`Azure Linux Virtual Machine With Defaults renders an Azure Linux Virtua
         ],
         "location": "eastus",
         "name": "nic-testAzureVMWithDefaults",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}"
+        "resource_group_name": "\${azurerm_resource_group.testVirtualMachine_rg_3C7206A4.name}"
       }
     },
     "azurerm_resource_group": {
-      "MyResourceGroup": {
+      "testVirtualMachine_rg_3C7206A4": {
         "location": "eastus",
-        "name": "rg-test"
+        "name": "rg-undefined"
       }
     },
     "azurerm_subnet": {
@@ -249,7 +249,7 @@ exports[`Azure Linux Virtual Machine With Defaults renders an Azure Linux Virtua
           "10.1.0.0/24"
         ],
         "name": "default",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "resource_group_name": "\${azurerm_resource_group.testVirtualMachine_rg_3C7206A4.name}",
         "virtual_network_name": "\${azurerm_virtual_network.testVirtualMachine_vnet_029EB3FA.name}"
       }
     },
@@ -260,7 +260,7 @@ exports[`Azure Linux Virtual Machine With Defaults renders an Azure Linux Virtua
         ],
         "location": "eastus",
         "name": "vnet-testAzureVMWithDefaults",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}"
+        "resource_group_name": "\${azurerm_resource_group.testVirtualMachine_rg_3C7206A4.name}"
       }
     }
   },

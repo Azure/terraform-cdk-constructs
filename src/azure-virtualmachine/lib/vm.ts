@@ -38,9 +38,10 @@ export interface WindowsVMProps {
   readonly name?: string;
 
   /**
-   * The name of the resource group in which the virtual machine will be created.
+   * An optional reference to the resource group in which to deploy the Virtual Machine.
+   * If not provided, the Virtual Machine will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
 
   /**
    * The size of the virtual machine.
@@ -126,7 +127,7 @@ export class WindowsVM extends AzureResource {
    * @param props - Configuration properties for the Windows Virtual Machine, derived from the WindowsVMProps interface. These include:
    *                - `location`: The geographic location where the VM will be hosted (e.g., "eastus").
    *                - `name`: The name of the VM, which must be unique within the resource group.
-   *                - `resourceGroup`: The ResourceGroup within which the VM will be created.
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
    *                - `size`: The size specification of the VM (e.g., "Standard_B2s").
    *                - `adminUsername`: The administrator username for accessing the VM.
    *                - `adminPassword`: The administrator password for accessing the VM.
@@ -161,7 +162,7 @@ export class WindowsVM extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroup = props.resourceGroup;
+    this.resourceGroup = this.setupResourceGroup(props);
 
     // Default configurations for the virtual machine.
     const defaults = {
@@ -178,7 +179,7 @@ export class WindowsVM extends AzureResource {
       subnet:
         props.subnet ||
         new Network(this, "vnet", {
-          resourceGroup: props.resourceGroup,
+          resourceGroup: this.resourceGroup,
         }).subnets.default,
     };
 
@@ -187,7 +188,7 @@ export class WindowsVM extends AzureResource {
     if (props.publicIPAllocationMethod) {
       const azurermPublicIp = new PublicIp(this, "public-ip", {
         name: `pip-${defaults.name}`,
-        resourceGroupName: props.resourceGroup.name,
+        resourceGroupName: this.resourceGroup.name,
         location: defaults.location,
         allocationMethod: props.publicIPAllocationMethod,
         tags: props.tags,
@@ -201,7 +202,7 @@ export class WindowsVM extends AzureResource {
     const azurermNetworkInterface = new NetworkInterface(this, "nic", {
       ...defaults,
       name: `nic-${defaults.name}`,
-      resourceGroupName: props.resourceGroup.name,
+      resourceGroupName: this.resourceGroup.name,
       ipConfiguration: [
         {
           name: "internal",
@@ -222,7 +223,7 @@ export class WindowsVM extends AzureResource {
     // Create the Windows Virtual Machine.
     const azurermWindowsVirtualMachine = new WindowsVirtualMachine(this, "vm", {
       ...defaults,
-      resourceGroupName: props.resourceGroup.name,
+      resourceGroupName: this.resourceGroup.name,
       adminUsername: props.adminUsername,
       adminPassword: props.adminPassword,
       tags: props.tags,
@@ -264,9 +265,10 @@ export interface LinuxVMProps {
   readonly name?: string;
 
   /**
-   * The name of the resource group in which the virtual machine will be created.
+   * An optional reference to the resource group in which to deploy the Virtual Machine.
+   * If not provided, the Virtual Machine will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
 
   /**
    * The size of the virtual machine.
@@ -388,7 +390,7 @@ export class LinuxVM extends AzureResource {
    * @param props - Configuration properties for the Linux Virtual Machine, derived from the LinuxVMProps interface. These include:
    *                - `location`: The geographic location where the VM will be hosted (e.g., "eastus").
    *                - `name`: The name of the VM, which must be unique within the resource group.
-   *                - `resourceGroup`: The ResourceGroup within which the VM will be created.
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
    *                - `size`: The size specification of the VM (e.g., "Standard_B2s").
    *                - `availabilitySetId`: The ID of the availability set in which to include the VM.
    *                - `userData`: Custom data scripts to pass to the VM upon creation.
@@ -428,7 +430,7 @@ export class LinuxVM extends AzureResource {
 
     // Assigning the properties
     this.props = props;
-    this.resourceGroup = props.resourceGroup;
+    this.resourceGroup = this.setupResourceGroup(props);
 
     // Extracting the name from the node path
     const pathName = this.node.path.split("/")[0];
@@ -449,7 +451,7 @@ export class LinuxVM extends AzureResource {
       subnet:
         props.subnet ||
         new Network(this, "vnet", {
-          resourceGroup: props.resourceGroup,
+          resourceGroup: this.resourceGroup,
         }).subnets.default,
     };
 
@@ -458,7 +460,7 @@ export class LinuxVM extends AzureResource {
     if (props.publicIPAllocationMethod) {
       const azurermPublicIp = new PublicIp(this, "public-ip", {
         name: `pip-${defaults.name}`,
-        resourceGroupName: props.resourceGroup.name,
+        resourceGroupName: this.resourceGroup.name,
         location: defaults.location,
         allocationMethod: props.publicIPAllocationMethod,
         tags: props.tags,
@@ -472,7 +474,7 @@ export class LinuxVM extends AzureResource {
     const azurermNetworkInterface = new NetworkInterface(this, "nic", {
       ...defaults,
       name: `nic-${defaults.name}`,
-      resourceGroupName: props.resourceGroup.name,
+      resourceGroupName: this.resourceGroup.name,
       ipConfiguration: [
         {
           name: "internal",
@@ -487,7 +489,7 @@ export class LinuxVM extends AzureResource {
     // Create the Linux Virtual Machine
     const azurermLinuxVirtualMachine = new LinuxVirtualMachine(this, "vm", {
       ...defaults,
-      resourceGroupName: props.resourceGroup.name,
+      resourceGroupName: this.resourceGroup.name,
       adminPassword: props.adminPassword,
       tags: props.tags,
       networkInterfaceIds: [azurermNetworkInterface.id],

@@ -167,11 +167,11 @@ exports[`Kusto With Defaults renders an Kusto with defaults and checks snapshot 
           ],
           "type": "SystemAssigned"
         },
-        "location": "\${azurerm_resource_group.MyResourceGroup.location}",
+        "location": "\${azurerm_resource_group.testAzureKustoDefaults_rg_D07F28C5.location}",
         "name": "kustotest",
         "public_network_access_enabled": true,
         "purge_enabled": false,
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "resource_group_name": "\${azurerm_resource_group.testAzureKustoDefaults_rg_D07F28C5.name}",
         "sku": {
           "capacity": 2,
           "name": "Dev(No SLA)_Standard_E2a_v4"
@@ -185,9 +185,9 @@ exports[`Kusto With Defaults renders an Kusto with defaults and checks snapshot 
       }
     },
     "azurerm_resource_group": {
-      "MyResourceGroup": {
+      "testAzureKustoDefaults_rg_D07F28C5": {
         "location": "eastus",
-        "name": "rg-test"
+        "name": "rg-kustotest"
       }
     }
   },

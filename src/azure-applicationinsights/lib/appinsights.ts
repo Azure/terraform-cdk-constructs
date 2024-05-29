@@ -20,10 +20,12 @@ export interface AppInsightsProps {
    * The name of the Application Insights resource.
    */
   readonly name: string;
+
   /**
-   * The name of the Azure Resource Group to deploy to.
+   * An optional reference to the resource group in which to deploy the Application Insights.
+   * If not provided, the Application Insights will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
   /**
    * The number of days of retention.
    * Possible values are 30, 60, 90, 120, 180, 270, 365, 550 or 730. Defaults to 90.
@@ -69,7 +71,7 @@ export class AppInsights extends AzureResource {
    * @param props - The properties for configuring the Azure Application Insights. The properties include:
    *                - `name`: Required. Unique name for the Application Insights resource within Azure.
    *                - `location`: Required. Azure Region for deployment.
-   *                - `resourceGroup`: Required. Reference to the Azure Resource Group for deployment.
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
    *                - `retentionInDays`: Optional. Number of days to retain data. Default is 90 days.
    *                - `tags`: Optional. Tags for resource management.
    *                - `applicationType`: Required. The type of application (e.g., web, other).
@@ -99,7 +101,7 @@ export class AppInsights extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroup = props.resourceGroup;
+    this.resourceGroup = this.setupResourceGroup(props);
 
     const azurermApplicationInsightsAppinsights = new ApplicationInsights(
       this,
@@ -107,7 +109,7 @@ export class AppInsights extends AzureResource {
       {
         location: props.location,
         name: props.name,
-        resourceGroupName: props.resourceGroup.name,
+        resourceGroupName: this.resourceGroup.name,
         tags: props.tags,
         applicationType: props.applicationType,
         dailyDataCapInGb: props.dailyDataCapInGb,
@@ -205,7 +207,7 @@ export class AppInsights extends AzureResource {
         {
           location: props.location,
           name: `${props.name}-la`,
-          resourceGroupName: props.resourceGroup.name,
+          resourceGroupName: this.resourceGroup.name,
           sku: "PerGB2018",
           retentionInDays: props.retentionInDays,
           tags: props.tags,

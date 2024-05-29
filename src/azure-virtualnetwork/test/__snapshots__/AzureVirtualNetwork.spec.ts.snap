@@ -171,9 +171,9 @@ exports[`Azure Virtual Network With Defaults renders an Azure Virtual Network wi
   },
   "resource": {
     "azurerm_resource_group": {
-      "MyResourceGroup": {
+      "testAzureVirtualNetworkDefaults_rg_7BEFA93E": {
         "location": "eastus",
-        "name": "rg-test"
+        "name": "rg-undefined"
       }
     },
     "azurerm_subnet": {
@@ -182,7 +182,7 @@ exports[`Azure Virtual Network With Defaults renders an Azure Virtual Network wi
           "10.1.0.0/24"
         ],
         "name": "default",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "resource_group_name": "\${azurerm_resource_group.testAzureVirtualNetworkDefaults_rg_7BEFA93E.name}",
         "virtual_network_name": "\${azurerm_virtual_network.testAzureVirtualNetworkDefaults_vnet_D8C7A0F3.name}"
       }
     },
@@ -193,7 +193,7 @@ exports[`Azure Virtual Network With Defaults renders an Azure Virtual Network wi
         ],
         "location": "eastus",
         "name": "vnet-test",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}"
+        "resource_group_name": "\${azurerm_resource_group.testAzureVirtualNetworkDefaults_rg_7BEFA93E.name}"
       }
     }
   },

@@ -52,9 +52,10 @@ export interface LinuxClusterProps {
   readonly adminPassword?: string;
 
   /**
-   * The name of the resource group in which the virtual machine scale set will be created.
+   * An optional reference to the resource group in which to deploy the Virtual Machine.
+   * If not provided, the Virtual Machine will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
 
   /**
    * The size of the virtual machines in the scale set.
@@ -173,7 +174,7 @@ export class LinuxCluster extends AzureResource {
    * @param props - Configuration properties for the Linux VM Scale Set, derived from the LinuxClusterProps interface. These include:
    *                - `location`: The geographic location where the scale set will be hosted (e.g., "eastus").
    *                - `name`: The name of the scale set, which must be unique within the resource group.
-   *                - `resourceGroup`: The ResourceGroup within which the scale set will be created.
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
    *                - `sku`: The size specification of the VMs (e.g., "Standard_B2s").
    *                - `adminUsername`: The administrator username for the VMs.
    *                - `adminPassword`: The administrator password for the VMs.
@@ -217,7 +218,7 @@ export class LinuxCluster extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroup = props.resourceGroup;
+    this.resourceGroup = this.setupResourceGroup(props);
 
     const pathName = this.node.path.split("/")[0];
 
@@ -236,7 +237,7 @@ export class LinuxCluster extends AzureResource {
       subnet:
         props.subnet ||
         new Network(this, "vnet", {
-          resourceGroup: props.resourceGroup,
+          resourceGroup: this.resourceGroup,
         }).subnets.default,
     };
 
@@ -245,7 +246,7 @@ export class LinuxCluster extends AzureResource {
       "vmss",
       {
         ...defaults,
-        resourceGroupName: props.resourceGroup.name,
+        resourceGroupName: this.resourceGroup.name,
         adminPassword: props.adminPassword,
         disablePasswordAuthentication: props.adminPassword ? false : true,
         tags: props.tags,
@@ -309,9 +310,10 @@ export interface WindowsClusterProps {
   readonly name?: string;
 
   /**
-   * The name of the resource group in which the virtual machine will be created.
+   * An optional reference to the resource group in which to deploy the Virtual Machine.
+   * If not provided, the Virtual Machine will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
 
   /**
    * The size of the virtual machine.
@@ -424,7 +426,7 @@ export class WindowsCluster extends AzureResource {
    * @param props - Configuration properties for the Windows VM Scale Set, derived from the WindowsClusterProps interface. These include:
    *                - `location`: The geographic location where the scale set will be hosted (e.g., "eastus").
    *                - `name`: The name of the scale set, which must be unique within the resource group.
-   *                - `resourceGroup`: The ResourceGroup within which the scale set will be created.
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
    *                - `sku`: The size specification of the VMs (e.g., "Standard_B2s").
    *                - `adminUsername`: The administrator username for the VMs.
    *                - `adminPassword`: The administrator password for the VMs.
@@ -466,7 +468,7 @@ export class WindowsCluster extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroup = props.resourceGroup;
+    this.resourceGroup = this.setupResourceGroup(props);
 
     const pathName = this.node.path.split("/")[0];
 
@@ -487,7 +489,7 @@ export class WindowsCluster extends AzureResource {
       subnet:
         props.subnet ||
         new Network(this, "vnet", {
-          resourceGroup: props.resourceGroup,
+          resourceGroup: this.resourceGroup,
         }).subnets.default,
     };
 
@@ -503,7 +505,7 @@ export class WindowsCluster extends AzureResource {
       "vmss",
       {
         ...defaults,
-        resourceGroupName: props.resourceGroup.name,
+        resourceGroupName: this.resourceGroup.name,
         adminUsername: props.adminUsername,
         adminPassword: props.adminPassword,
         tags: props.tags,

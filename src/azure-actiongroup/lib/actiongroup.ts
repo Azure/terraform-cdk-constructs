@@ -18,7 +18,7 @@ export class ActionGroup extends AzureResource {
    * @param id - The unique identifier for this instance of the Action Group.
    * @param props - Configuration properties for the Action Group. These properties may include:
    *                - `name`: The name of the Action Group.
-   *                - `resourceGroup`: The resource group under which the Action Group is created.
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
    *                - `shortName`: A shorter name for the Action Group used in notifications.
    *                - `enabled`: Specifies if the Action Group is active. Defaults to true.
    *                - `location`: The Azure region where the Action Group is hosted. Defaults to global.
@@ -52,7 +52,7 @@ export class ActionGroup extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroup = props.resourceGroup;
+    this.resourceGroup = this.setupResourceGroup(props);
 
     /**
      * Define default values.
@@ -70,7 +70,7 @@ export class ActionGroup extends AzureResource {
       {
         ...defaults,
         name: props.name,
-        resourceGroupName: props.resourceGroup.name,
+        resourceGroupName: this.resourceGroup.name,
         shortName: props.shortName,
         armRoleReceiver: cdktf.listMapper(
           model.monitorActionGroupArmRoleReceiverToTerraform,

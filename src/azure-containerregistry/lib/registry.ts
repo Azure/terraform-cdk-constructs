@@ -14,9 +14,10 @@ export interface RegistryProps {
    */
   readonly name: string;
   /**
-   * The name of the Azure Resource Group.
+   * An optional reference to the resource group in which to deploy the Container Registry.
+   * If not provided, the Container Registry will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
   /**
    * The SKU of the Log Analytics Workspace.
    */
@@ -51,7 +52,7 @@ export class Registry extends AzureResource {
    * @param props - The properties for configuring the Azure Container Registry. The properties include:
    *                - `location`: Required. The Azure region where the registry will be deployed.
    *                - `name`: Required. The name of the Container Registry.
-   *                - `resourceGroup`: Required. The Azure Resource Group in which to deploy the registry.
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
    *                - `sku`: Optional. The SKU of the Container Registry (e.g., Basic, Standard, Premium). Determines the features available.
    *                - `tags`: Optional. Tags for resource management.
    *                - `adminEnabled`: Optional. Specifies whether the admin user is enabled for the registry. Defaults to false if not set.
@@ -73,7 +74,7 @@ export class Registry extends AzureResource {
     super(scope, id);
 
     this.props = props;
-    this.resourceGroup = props.resourceGroup;
+    this.resourceGroup = this.setupResourceGroup(props);
 
     // Provide default values
     const sku = props.sku ?? "Basic";
@@ -83,7 +84,7 @@ export class Registry extends AzureResource {
     const azurermContainerRegistry = new ContainerRegistry(this, "acr", {
       location: props.location,
       name: props.name,
-      resourceGroupName: props.resourceGroup.name,
+      resourceGroupName: this.resourceGroup.name,
       sku: sku,
       tags: props.tags,
       adminEnabled: admin_enabled,

@@ -7,9 +7,10 @@ import { AzureResourceWithAlert } from "../../core-azure/lib";
 
 export interface NamespaceProps {
   /**
-   * The Azure Resource Group in which to create the EventHub Namespace.
+   * An optional reference to the resource group in which to deploy the Event Hub Cluster.
+   * If not provided, the Event Hub Cluster will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
   /**
    * The name of the EventHub Namespace to create.
    */
@@ -74,10 +75,10 @@ export interface NamespaceProps {
 }
 
 export class Namespace extends AzureResourceWithAlert {
-  readonly ehNamespaceProps: NamespaceProps;
+  readonly props: NamespaceProps;
   public resourceGroup: ResourceGroup;
   public id: string;
-  readonly namespaceName: string;
+  readonly name: string;
 
   /**
    * Constructs a new Event Hub Namespace.
@@ -89,7 +90,7 @@ export class Namespace extends AzureResourceWithAlert {
    * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
    * @param name - The unique name for this instance of the Event Hub Namespace.
    * @param ehNamespaceProps - The properties for configuring the Event Hub Namespace. These properties include:
-   *                - `resourceGroup`: Required. The Azure Resource Group in which the namespace will be created.
+   *                - `resourceGroup`: Optional. Reference to the resource group for deployment.
    *                - `name`: Required. The name of the Event Hub Namespace to create.
    *                - `sku`: Optional. The SKU tier of the namespace (Basic, Standard, Premium). Defaults to "Basic".
    *                - `capacity`: Optional. Specifies the throughput units for a Standard SKU namespace. Defaults to 2.
@@ -126,37 +127,37 @@ export class Namespace extends AzureResourceWithAlert {
   constructor(
     scope: Construct,
     name: string,
-    ehNamespaceProps: NamespaceProps,
+    props: NamespaceProps,
   ) {
     super(scope, name);
 
-    this.ehNamespaceProps = ehNamespaceProps;
-    this.resourceGroup = ehNamespaceProps.resourceGroup;
-    this.namespaceName = ehNamespaceProps.name;
+    this.props = props;
+    this.resourceGroup = this.setupResourceGroup(props);
+    this.name = props.name;
 
     const defaults = {
-      sku: ehNamespaceProps.sku || "Basic",
-      capacity: ehNamespaceProps.capacity || 2,
-      autoInflateEnabled: ehNamespaceProps.autoInflateEnabled || false,
-      maximumThroughputUnits: ehNamespaceProps.maximumThroughputUnits || 2,
-      zoneRedundant: ehNamespaceProps.zoneRedundant || false,
-      tags: ehNamespaceProps.tags || {},
-      minimumTlsVersion: ehNamespaceProps.minimumTlsVersion || "1.2",
+      sku: props.sku || "Basic",
+      capacity: props.capacity || 2,
+      autoInflateEnabled: props.autoInflateEnabled || false,
+      maximumThroughputUnits: props.maximumThroughputUnits || 2,
+      zoneRedundant: props.zoneRedundant || false,
+      tags: props.tags || {},
+      minimumTlsVersion: props.minimumTlsVersion || "1.2",
       publicNetworkAccessEnabled:
-        ehNamespaceProps.publicNetworkAccessEnabled || true,
+        props.publicNetworkAccessEnabled || true,
       localAuthenticationEnabled:
-        ehNamespaceProps.localAuthenticationEnabled || true,
+        props.localAuthenticationEnabled || true,
       identity: {
-        type: ehNamespaceProps.identityType || "SystemAssigned",
+        type: props.identityType || "SystemAssigned",
         identityIds:
-          ehNamespaceProps.identityType == "UserAssigned"
-            ? ehNamespaceProps.identityIds
+          props.identityType == "UserAssigned"
+            ? props.identityIds
             : undefined,
       },
     };
 
     const eventhubNamespce = new EventhubNamespace(this, "ehnamespace", {
-      name: ehNamespaceProps.name,
+      name: props.name,
       resourceGroupName: this.resourceGroup.name,
       location: this.resourceGroup.location,
       ...defaults,
@@ -207,7 +208,7 @@ export class Namespace extends AzureResourceWithAlert {
   addEventhubInstance(props: BaseInstanceProps) {
     return new Instance(this, "ehinstance", {
       resourceGroup: this.resourceGroup,
-      namespaceName: this.namespaceName,
+      namespaceName: this.name,
       ...props,
     });
   }

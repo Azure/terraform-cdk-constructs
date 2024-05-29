@@ -646,7 +646,7 @@ The properties for configuring the Azure Application Insights.
 The properties include:
   - `name`: Required. Unique name for the Application Insights resource within Azure.
   - `location`: Required. Azure Region for deployment.
-  - `resourceGroup`: Required. Reference to the Azure Resource Group for deployment.
+  - `resourceGroup`: Optional. Reference to the resource group for deployment.
   - `retentionInDays`: Optional. Number of days to retain data. Default is 90 days.
   - `tags`: Optional. Tags for resource management.
   - `applicationType`: Required. The type of application (e.g., web, other).
@@ -1805,14 +1805,14 @@ The tree node.
 ```typescript
 import { azure_eventhub } from '@microsoft/terraform-cdk-constructs'
 
-new azure_eventhub.Cluster(scope: Construct, name: string, ehClusterProps: ClusterProps)
+new azure_eventhub.Cluster(scope: Construct, name: string, props: EventHubClusterProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, usually representing the Cloud Development Kit (CDK) stack. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.name">name</a></code> | <code>string</code> | - The unique name for this instance of the Event Hub Cluster. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.ehClusterProps">ehClusterProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps</code> | - The properties for configuring the Event Hub Cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps</code> | - The properties for configuring the Event Hub Cluster. |
 
 ---
 
@@ -1832,18 +1832,18 @@ The unique name for this instance of the Event Hub Cluster.
 
 ---
 
-##### `ehClusterProps`<sup>Required</sup> <a name="ehClusterProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.ehClusterProps"></a>
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.Initializer.parameter.props"></a>
 
-- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps
 
 The properties for configuring the Event Hub Cluster.
 
 These properties include:
-- `resourceGroup`: Required. The Azure Resource Group in which the cluster will be deployed.
-- `name`: Required. The name of the Event Hub Cluster.
-- `skuName`: Optional. The SKU name for the cluster, which determines the pricing and capabilities.
-      Currently, the only supported value is "Dedicated_1". Defaults to "Dedicated_1" if not specified.
-- `tags`: Optional. Tags for resource management and categorization.
+  - `resourceGroup`: Optional. Reference to the resource group for deployment.
+  - `name`: Required. The name of the Event Hub Cluster.
+  - `skuName`: Optional. The SKU name for the cluster, which determines the pricing and capabilities.
+               Currently, the only supported value is "Dedicated_1". Defaults to "Dedicated_1" if not specified.
+  - `tags`: Optional. Tags for resource management and categorization.
 
 Example usage:
 ```typescript
@@ -1989,7 +1989,7 @@ Any object.
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.property.ehClusterProps">ehClusterProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps</code> | *No description.* |
 
 ---
 
@@ -2025,13 +2025,13 @@ public readonly resourceGroup: ResourceGroup;
 
 ---
 
-##### `ehClusterProps`<sup>Required</sup> <a name="ehClusterProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.property.ehClusterProps"></a>
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Cluster.property.props"></a>
 
 ```typescript
-public readonly ehClusterProps: ClusterProps;
+public readonly props: EventHubClusterProps;
 ```
 
-- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps
 
 ---
 
@@ -2274,14 +2274,14 @@ The Resource Group associated with the AKS cluster.
 ```typescript
 import { azure_kusto } from '@microsoft/terraform-cdk-constructs'
 
-new azure_kusto.Cluster(scope: Construct, id: string, kustoProps: ClusterProps)
+new azure_kusto.Cluster(scope: Construct, id: string, props: ClusterProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the cluster. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.kustoProps">kustoProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps</code> | - The properties required to configure the Kusto cluster, as defined in the ClusterProps interface. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps</code> | - The properties required to configure the Kusto cluster, as defined in the ClusterProps interface. |
 
 ---
 
@@ -2301,7 +2301,7 @@ The unique identifier for this instance of the cluster.
 
 ---
 
-##### `kustoProps`<sup>Required</sup> <a name="kustoProps" id="@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.kustoProps"></a>
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps
 
@@ -2481,7 +2481,7 @@ Any object.
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.kustoProps">kustoProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.uri">uri</a></code> | <code>string</code> | *No description.* |
 
 ---
@@ -2518,10 +2518,10 @@ public readonly resourceGroup: ResourceGroup;
 
 ---
 
-##### `kustoProps`<sup>Required</sup> <a name="kustoProps" id="@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.kustoProps"></a>
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.props"></a>
 
 ```typescript
-public readonly kustoProps: ClusterProps;
+public readonly props: ClusterProps;
 ```
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps
@@ -4051,7 +4051,7 @@ The properties for configuring the Azure Application Gateway.
 The properties include:
   - `name`: Required. Unique name for the Application Gateway within Azure.
   - `location`: Required. Azure Region for deployment.
-  - `resourceGroup`: Required. Reference to the resource group for deployment.
+  - `resourceGroup`: Optional. Reference to the resource group for deployment.
   - `skuTier`: Required. SKU tier of the Application Gateway (e.g., Standard, WAF).
   - `skuSize`: Required. Size of the SKU for the Application Gateway.
   - `capacity`: Required. Capacity (instance count) of the Application Gateway.
@@ -4251,6 +4251,7 @@ Any object.
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps</code> | *No description.* |
 
 ---
 
@@ -4283,6 +4284,16 @@ public readonly resourceGroup: ResourceGroup;
 ```
 
 - *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_applicationgateway.Gateway.property.props"></a>
+
+```typescript
+public readonly props: IGatewayProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps
 
 ---
 
@@ -5208,7 +5219,7 @@ Configuration properties for the Linux VM Scale Set, derived from the LinuxClust
 These include:
   - `location`: The geographic location where the scale set will be hosted (e.g., "eastus").
   - `name`: The name of the scale set, which must be unique within the resource group.
-  - `resourceGroup`: The ResourceGroup within which the scale set will be created.
+  - `resourceGroup`: Optional. Reference to the resource group for deployment.
   - `sku`: The size specification of the VMs (e.g., "Standard_B2s").
   - `adminUsername`: The administrator username for the VMs.
   - `adminPassword`: The administrator password for the VMs.
@@ -5492,7 +5503,7 @@ Configuration properties for the Linux Virtual Machine, derived from the LinuxVM
 These include:
   - `location`: The geographic location where the VM will be hosted (e.g., "eastus").
   - `name`: The name of the VM, which must be unique within the resource group.
-  - `resourceGroup`: The ResourceGroup within which the VM will be created.
+  - `resourceGroup`: Optional. Reference to the resource group for deployment.
   - `size`: The size specification of the VM (e.g., "Standard_B2s").
   - `availabilitySetId`: The ID of the availability set in which to include the VM.
   - `userData`: Custom data scripts to pass to the VM upon creation.
@@ -5870,14 +5881,14 @@ public readonly props: IMetricAlertProps;
 ```typescript
 import { azure_eventhub } from '@microsoft/terraform-cdk-constructs'
 
-new azure_eventhub.Namespace(scope: Construct, name: string, ehNamespaceProps: NamespaceProps)
+new azure_eventhub.Namespace(scope: Construct, name: string, props: NamespaceProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.name">name</a></code> | <code>string</code> | - The unique name for this instance of the Event Hub Namespace. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.ehNamespaceProps">ehNamespaceProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps</code> | - The properties for configuring the Event Hub Namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps</code> | *No description.* |
 
 ---
 
@@ -5897,46 +5908,9 @@ The unique name for this instance of the Event Hub Namespace.
 
 ---
 
-##### `ehNamespaceProps`<sup>Required</sup> <a name="ehNamespaceProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.ehNamespaceProps"></a>
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps
-
-The properties for configuring the Event Hub Namespace.
-
-These properties include:
-- `resourceGroup`: Required. The Azure Resource Group in which the namespace will be created.
-- `name`: Required. The name of the Event Hub Namespace to create.
-- `sku`: Optional. The SKU tier of the namespace (Basic, Standard, Premium). Defaults to "Basic".
-- `capacity`: Optional. Specifies the throughput units for a Standard SKU namespace. Defaults to 2.
-- `autoInflateEnabled`: Optional. Enables or disables Auto Inflate. Defaults to false.
-- `maximumThroughputUnits`: Optional. The maximum number of throughput units when Auto Inflate is enabled. Defaults to 2.
-- `zoneRedundant`: Optional. Specifies if the namespace should be zone redundant. Defaults to true.
-- `tags`: Optional. Tags for resource management and categorization.
-- `minimumTlsVersion`: Optional. Specifies the minimum supported TLS version. Defaults to "1.2".
-- `publicNetworkAccessEnabled`: Optional. Specifies if public network access is enabled. Defaults to true.
-- `localAuthenticationEnabled`: Optional. Specifies if SAS authentication is enabled. Defaults to false.
-- `identityType`: Optional. The type of Managed Service Identity. Defaults to "SystemAssigned".
-- `identityIds`: Optional. A list of User Assigned Managed Identity IDs.
-
-Example usage:
-```typescript
-const eventHubNamespace = new Namespace(this, 'myNamespace', {
-resourceGroup: resourceGroup,
-name: 'myEventHubNamespace',
-sku: 'Standard',
-capacity: 4,
-autoInflateEnabled: true,
-maximumThroughputUnits: 10,
-zoneRedundant: false,
-tags: {
-department: 'IT'
-},
-minimumTlsVersion: '1.2',
-publicNetworkAccessEnabled: false,
-localAuthenticationEnabled: true,
-identityType: 'SystemAssigned'
-});
-```
 
 ---
 
@@ -6124,8 +6098,8 @@ Any object.
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.property.ehNamespaceProps">ehNamespaceProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.property.namespaceName">namespaceName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps</code> | *No description.* |
 
 ---
 
@@ -6161,23 +6135,23 @@ public readonly resourceGroup: ResourceGroup;
 
 ---
 
-##### `ehNamespaceProps`<sup>Required</sup> <a name="ehNamespaceProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.property.ehNamespaceProps"></a>
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.property.name"></a>
 
 ```typescript
-public readonly ehNamespaceProps: NamespaceProps;
-```
-
-- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps
-
----
-
-##### `namespaceName`<sup>Required</sup> <a name="namespaceName" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.property.namespaceName"></a>
-
-```typescript
-public readonly namespaceName: string;
+public readonly name: string;
 ```
 
 - *Type:* string
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Namespace.property.props"></a>
+
+```typescript
+public readonly props: NamespaceProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps
 
 ---
 
@@ -6223,7 +6197,7 @@ The unique identifier for this instance of the network, used within the scope fo
 Configuration properties for the Azure Virtual Network, derived from the NetworkProps interface.
 
 These include:
-  - `resourceGroup`: The ResourceGroup within which the virtual network will be created.
+  - `resourceGroup`: Optional. Reference to the resource group for deployment.
   - `name`: Optional. The name of the virtual network. If not provided, a default name will be assigned.
   - `location`: Optional. The Azure region where the virtual network will be deployed. Defaults to the resource group's region.
   - `addressSpace`: Optional. A list of CIDR blocks that define the address spaces of the virtual network.
@@ -7168,7 +7142,7 @@ The properties for configuring the Azure Container Registry.
 The properties include:
   - `location`: Required. The Azure region where the registry will be deployed.
   - `name`: Required. The name of the Container Registry.
-  - `resourceGroup`: Required. The Azure Resource Group in which to deploy the registry.
+  - `resourceGroup`: Optional. Reference to the resource group for deployment.
   - `sku`: Optional. The SKU of the Container Registry (e.g., Basic, Standard, Premium). Determines the features available.
   - `tags`: Optional. Tags for resource management.
   - `adminEnabled`: Optional. Specifies whether the admin user is enabled for the registry. Defaults to false if not set.
@@ -7559,7 +7533,7 @@ The unique identifier for this instance of the security group.
 The properties required to configure the Network Security Group, as defined in the SecurityGroupProps interface.
 
 These include:
-  - `resourceGroup`: The Azure Resource Group under which the NSG will be deployed.
+  - `resourceGroup`: Optional. Reference to the resource group for deployment.
   - `location`: The Azure region where the NSG will be created.
   - `name`: The name of the NSG, which must be unique within the resource group.
   - `rules`: A list of rules that define the security policies for traffic control.
@@ -8955,7 +8929,7 @@ Configuration properties for the Windows VM Scale Set, derived from the WindowsC
 These include:
   - `location`: The geographic location where the scale set will be hosted (e.g., "eastus").
   - `name`: The name of the scale set, which must be unique within the resource group.
-  - `resourceGroup`: The ResourceGroup within which the scale set will be created.
+  - `resourceGroup`: Optional. Reference to the resource group for deployment.
   - `sku`: The size specification of the VMs (e.g., "Standard_B2s").
   - `adminUsername`: The administrator username for the VMs.
   - `adminPassword`: The administrator password for the VMs.
@@ -9226,7 +9200,7 @@ Configuration properties for the Windows Virtual Machine, derived from the Windo
 These include:
   - `location`: The geographic location where the VM will be hosted (e.g., "eastus").
   - `name`: The name of the VM, which must be unique within the resource group.
-  - `resourceGroup`: The ResourceGroup within which the VM will be created.
+  - `resourceGroup`: Optional. Reference to the resource group for deployment.
   - `size`: The size specification of the VM (e.g., "Standard_B2s").
   - `adminUsername`: The administrator username for accessing the VM.
   - `adminPassword`: The administrator password for accessing the VM.
@@ -9501,7 +9475,7 @@ The properties required to configure the Log Analytics workspace, as defined in 
 These include:
   - `location`: The Azure region where the workspace will be deployed.
   - `name`: The name of the workspace, which must be globally unique.
-  - `resourceGroup`: The Azure Resource Group under which the workspace is deployed.
+  - `resourceGroup`: Optional. Reference to the resource group for deployment.
   - `sku`: Optional. The SKU of the workspace, affecting pricing and features.
   - `retention`: Optional. The number of days data will be retained in the workspace.
   - `tags`: Optional. Tags to assign to the workspace for organizational purposes.
@@ -10087,9 +10061,9 @@ const appInsightsProps: azure_applicationinsights.AppInsightsProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps.property.applicationType">applicationType</a></code> | <code>string</code> | The Application type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps.property.location">location</a></code> | <code>string</code> | The Azure Region to deploy. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps.property.name">name</a></code> | <code>string</code> | The name of the Application Insights resource. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the Azure Resource Group to deploy to. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps.property.dailyDataCapInGb">dailyDataCapInGb</a></code> | <code>number</code> | The Application Insights daily data cap in GB. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps.property.dailyDataCapNotificationDisabled">dailyDataCapNotificationDisabled</a></code> | <code>boolean</code> | The Application Insights daily data cap notifications disabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Application Insights. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps.property.retentionInDays">retentionInDays</a></code> | <code>number</code> | The number of days of retention. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | The tags to assign to the Application Insights resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps.property.workspaceId">workspaceId</a></code> | <code>string</code> | The id of the Log Analytics Workspace. |
@@ -10132,18 +10106,6 @@ The name of the Application Insights resource.
 
 ---
 
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The name of the Azure Resource Group to deploy to.
-
----
-
 ##### `dailyDataCapInGb`<sup>Optional</sup> <a name="dailyDataCapInGb" id="@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps.property.dailyDataCapInGb"></a>
 
 ```typescript
@@ -10165,6 +10127,20 @@ public readonly dailyDataCapNotificationDisabled: boolean;
 - *Type:* boolean
 
 The Application Insights daily data cap notifications disabled.
+
+---
+
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_applicationinsights.AppInsightsProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Application Insights.
+
+If not provided, the Application Insights will be deployed in the default resource group.
 
 ---
 
@@ -11560,76 +11536,6 @@ The username required to authenticate with the certificate provider (if applicab
 
 ---
 
-### ClusterProps <a name="ClusterProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps"></a>
-
-#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps.Initializer"></a>
-
-```typescript
-import { azure_eventhub } from '@microsoft/terraform-cdk-constructs'
-
-const clusterProps: azure_eventhub.ClusterProps = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps.property.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the Resource Group in which to create the EventHub Cluster. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps.property.skuName">skuName</a></code> | <code>string</code> | The SKU name of the EventHub Cluster. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | The tags to assign to the Application Insights resource. |
-
----
-
-##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps.property.name"></a>
-
-```typescript
-public readonly name: string;
-```
-
-- *Type:* string
-
----
-
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The name of the Resource Group in which to create the EventHub Cluster.
-
----
-
-##### `skuName`<sup>Optional</sup> <a name="skuName" id="@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps.property.skuName"></a>
-
-```typescript
-public readonly skuName: string;
-```
-
-- *Type:* string
-- *Default:* "Dedicated_1"
-
-The SKU name of the EventHub Cluster.
-
-The only supported value at this time is Dedicated_1.
-
----
-
-##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_eventhub.ClusterProps.property.tags"></a>
-
-```typescript
-public readonly tags: {[ key: string ]: string};
-```
-
-- *Type:* {[ key: string ]: string}
-
-The tags to assign to the Application Insights resource.
-
----
-
 ### ClusterProps <a name="ClusterProps" id="@microsoft/terraform-cdk-constructs.azure_kubernetes.ClusterProps"></a>
 
 Interface defining the properties required to create an AKS cluster.
@@ -11797,7 +11703,6 @@ const clusterProps: azure_kusto.ClusterProps = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.name">name</a></code> | <code>string</code> | The name of the Kusto Cluster to create. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The Azure Resource Group in which to create the Kusto Cluster. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.autoStopEnabled">autoStopEnabled</a></code> | <code>boolean</code> | Specifies if the cluster could be automatically stopped. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.capacity">capacity</a></code> | <code>number</code> | The node count for the cluster. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.enableZones">enableZones</a></code> | <code>boolean</code> | Specifies if the purge operations are enabled. |
@@ -11807,6 +11712,7 @@ const clusterProps: azure_kusto.ClusterProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.minimumInstances">minimumInstances</a></code> | <code>number</code> | The minimum number of allowed instances. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.publicNetworkAccessEnabled">publicNetworkAccessEnabled</a></code> | <code>boolean</code> | Is the public network access enabled? |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.purgeEnabled">purgeEnabled</a></code> | <code>boolean</code> | Specifies if the purge operations are enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Kusto Cluster. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.sku">sku</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.IComputeSpecification</code> | The SKU of the Kusto Cluster. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.streamingIngestionEnabled">streamingIngestionEnabled</a></code> | <code>boolean</code> | Specifies if the streaming ingest is enabled. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | A mapping of tags to assign to the Kusto. |
@@ -11824,18 +11730,6 @@ public readonly name: string;
 The name of the Kusto Cluster to create.
 
 Only 4-22 lowercase alphanumeric characters allowed, starting with a letter.
-
----
-
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The Azure Resource Group in which to create the Kusto Cluster.
 
 ---
 
@@ -11958,6 +11852,20 @@ public readonly purgeEnabled: boolean;
 - *Default:* false
 
 Specifies if the purge operations are enabled.
+
+---
+
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Kusto Cluster.
+
+If not provided, the Kusto Cluster will be deployed in the default resource group.
 
 ---
 
@@ -12457,6 +12365,80 @@ public readonly targetResourceId: string;
 - *Type:* string
 
 Target resource id to enable diagnostic settings on.
+
+---
+
+### EventHubClusterProps <a name="EventHubClusterProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps.Initializer"></a>
+
+```typescript
+import { azure_eventhub } from '@microsoft/terraform-cdk-constructs'
+
+const eventHubClusterProps: azure_eventhub.EventHubClusterProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps.property.name">name</a></code> | <code>string</code> | The name of the EventHub Cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Event Hub Cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps.property.skuName">skuName</a></code> | <code>string</code> | The SKU name of the EventHub Cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | The tags to assign to the Application Insights resource. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the EventHub Cluster.
+
+---
+
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Event Hub Cluster.
+
+If not provided, the Event Hub Cluster will be deployed in the default resource group.
+
+---
+
+##### `skuName`<sup>Optional</sup> <a name="skuName" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps.property.skuName"></a>
+
+```typescript
+public readonly skuName: string;
+```
+
+- *Type:* string
+- *Default:* "Dedicated_1"
+
+The SKU name of the EventHub Cluster.
+
+The only supported value at this time is Dedicated_1.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventHubClusterProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+The tags to assign to the Application Insights resource.
 
 ---
 
@@ -13648,7 +13630,6 @@ const linuxClusterProps: azure_virtualmachinescaleset.LinuxClusterProps = { ... 
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group in which the virtual machine scale set will be created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.adminPassword">adminPassword</a></code> | <code>string</code> | The admin password for the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.adminSshKey">adminSshKey</a></code> | <code>cdktf.IResolvable \| @cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineAdminSshKey[]</code> | An array of SSH keys for the admin user. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.adminUsername">adminUsername</a></code> | <code>string</code> | The admin username for the virtual machine. |
@@ -13662,6 +13643,7 @@ const linuxClusterProps: azure_virtualmachinescaleset.LinuxClusterProps = { ... 
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.osDisk">osDisk</a></code> | <code>@cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineOsDisk</code> | The OS disk configuration for the virtual machines. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.overprovision">overprovision</a></code> | <code>boolean</code> | Specifies if the VMSS should be overprovisioned. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.publicIPAddress">publicIPAddress</a></code> | <code>@cdktf/provider-azurerm.linuxVirtualMachineScaleSet.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress[]</code> | The allocation method for the public IP. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Virtual Machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.scaleInPolicy">scaleInPolicy</a></code> | <code>string</code> | Specifies the scale-in policy for the VMSS. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.sku">sku</a></code> | <code>string</code> | The size of the virtual machines in the scale set. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.sourceImageId">sourceImageId</a></code> | <code>string</code> | The ID of the source image for the virtual machines. |
@@ -13671,18 +13653,6 @@ const linuxClusterProps: azure_virtualmachinescaleset.LinuxClusterProps = { ... 
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.upgradePolicyMode">upgradePolicyMode</a></code> | <code>string</code> | Specifies the scale set's upgrade policy settings. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.userData">userData</a></code> | <code>string</code> | Custom data to pass to the virtual machines upon creation. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.zones">zones</a></code> | <code>string[]</code> | The availability zone(s) in which the VMs should be placed. |
-
----
-
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The name of the resource group in which the virtual machine scale set will be created.
 
 ---
 
@@ -13848,6 +13818,20 @@ The allocation method for the public IP.
 
 ---
 
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Virtual Machine.
+
+If not provided, the Virtual Machine will be deployed in the default resource group.
+
+---
+
 ##### `scaleInPolicy`<sup>Optional</sup> <a name="scaleInPolicy" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.scaleInPolicy"></a>
 
 ```typescript
@@ -13972,7 +13956,6 @@ const linuxVMProps: azure_virtualmachine.LinuxVMProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group in which the virtual machine will be created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.additionalCapabilities">additionalCapabilities</a></code> | <code>@cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineAdditionalCapabilities</code> | Additional capabilities like Ultra Disk compatibility. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.adminPassword">adminPassword</a></code> | <code>string</code> | The admin password for the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.adminSshKey">adminSshKey</a></code> | <code>cdktf.IResolvable \| @cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineAdminSshKey[]</code> | An array of SSH keys for the admin user. |
@@ -13986,6 +13969,7 @@ const linuxVMProps: azure_virtualmachine.LinuxVMProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.name">name</a></code> | <code>string</code> | The name of the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.osDisk">osDisk</a></code> | <code>@cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineOsDisk</code> | The OS disk configuration for the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.publicIPAllocationMethod">publicIPAllocationMethod</a></code> | <code>string</code> | The allocation method for the public IP. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Virtual Machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.secret">secret</a></code> | <code>@cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineSecret[]</code> | An array of secrets to be passed to the VM. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.size">size</a></code> | <code>string</code> | The size of the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.sourceImageId">sourceImageId</a></code> | <code>string</code> | The ID of the source image for the virtual machine. |
@@ -13994,18 +13978,6 @@ const linuxVMProps: azure_virtualmachine.LinuxVMProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.userData">userData</a></code> | <code>string</code> | Custom data to pass to the virtual machine upon creation. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.zone">zone</a></code> | <code>string</code> | The availability zone in which the VM should be placed. |
-
----
-
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The name of the resource group in which the virtual machine will be created.
 
 ---
 
@@ -14165,6 +14137,20 @@ public readonly publicIPAllocationMethod: string;
 - *Type:* string
 
 The allocation method for the public IP.
+
+---
+
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Virtual Machine.
+
+If not provided, the Virtual Machine will be deployed in the default resource group.
 
 ---
 
@@ -14809,7 +14795,6 @@ const namespaceProps: azure_eventhub.NamespaceProps = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.name">name</a></code> | <code>string</code> | The name of the EventHub Namespace to create. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The Azure Resource Group in which to create the EventHub Namespace. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.autoInflateEnabled">autoInflateEnabled</a></code> | <code>boolean</code> | Specifies if the EventHub Namespace should be Auto Inflate enabled. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.capacity">capacity</a></code> | <code>number</code> | Specifies the Capacity / Throughput Units for a Standard SKU namespace. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.identityIds">identityIds</a></code> | <code>string[]</code> | Specifies a list of User Assigned Managed Identity IDs to be assigned to this EventHub namespace. |
@@ -14818,6 +14803,7 @@ const namespaceProps: azure_eventhub.NamespaceProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.maximumThroughputUnits">maximumThroughputUnits</a></code> | <code>number</code> | Specifies the maximum number of throughput units when Auto Inflate is Enabled. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.minimumTlsVersion">minimumTlsVersion</a></code> | <code>string</code> | The minimum supported TLS version for this EventHub Namespace. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.publicNetworkAccessEnabled">publicNetworkAccessEnabled</a></code> | <code>boolean</code> | Is public network access enabled for the EventHub Namespace? |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Event Hub Cluster. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.sku">sku</a></code> | <code>string</code> | Defines which tier to use. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | The tags to assign to the Key Vault. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.zoneRedundant">zoneRedundant</a></code> | <code>boolean</code> | Specifies if the EventHub Namespace should be Zone Redundant (created across Availability Zones). |
@@ -14833,18 +14819,6 @@ public readonly name: string;
 - *Type:* string
 
 The name of the EventHub Namespace to create.
-
----
-
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The Azure Resource Group in which to create the EventHub Namespace.
 
 ---
 
@@ -14959,6 +14933,20 @@ Is public network access enabled for the EventHub Namespace?
 
 ---
 
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Event Hub Cluster.
+
+If not provided, the Event Hub Cluster will be deployed in the default resource group.
+
+---
+
 ##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_eventhub.NamespaceProps.property.sku"></a>
 
 ```typescript
@@ -15015,23 +15003,11 @@ const networkProps: azure_virtualnetwork.NetworkProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.NetworkProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group under which the virtual network will be created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.NetworkProps.property.addressSpace">addressSpace</a></code> | <code>string[]</code> | Optional: A list of address spaces for the virtual network, specified in CIDR notation. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.NetworkProps.property.location">location</a></code> | <code>string</code> | Optional: The Azure region in which to create the virtual network, e.g., 'East US', 'West Europe'. If not specified, the region of the resource group will be used. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.NetworkProps.property.name">name</a></code> | <code>string</code> | Optional: The name of the virtual network. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.NetworkProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Virtual Machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.NetworkProps.property.subnets">subnets</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualnetwork.SubnetConfig[]</code> | Optional: An array of subnet configurations to be created within the virtual network. |
-
----
-
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.NetworkProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The name of the resource group under which the virtual network will be created.
 
 ---
 
@@ -15073,6 +15049,20 @@ Optional: The name of the virtual network.
 
 Must be unique within the resource group.
 If not provided, a default name will be assigned.
+
+---
+
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.NetworkProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Virtual Machine.
+
+If not provided, the Virtual Machine will be deployed in the default resource group.
 
 ---
 
@@ -15494,9 +15484,9 @@ const registryProps: azure_containerregistry.RegistryProps = { ... }
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps.property.location">location</a></code> | <code>string</code> | The Azure Region to deploy. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps.property.name">name</a></code> | <code>string</code> | The name of the Log Analytics Workspace. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the Azure Resource Group. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps.property.adminEnabled">adminEnabled</a></code> | <code>boolean</code> | Create enable Admin user. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps.property.geoReplicationLocations">geoReplicationLocations</a></code> | <code>any</code> | Specify the locations to configure replication. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Container Registry. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps.property.sku">sku</a></code> | <code>string</code> | The SKU of the Log Analytics Workspace. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | The tags to assign to the Resource Group. |
 
@@ -15526,18 +15516,6 @@ The name of the Log Analytics Workspace.
 
 ---
 
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The name of the Azure Resource Group.
-
----
-
 ##### `adminEnabled`<sup>Optional</sup> <a name="adminEnabled" id="@microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps.property.adminEnabled"></a>
 
 ```typescript
@@ -15559,6 +15537,20 @@ public readonly geoReplicationLocations: any;
 - *Type:* any
 
 Specify the locations to configure replication.
+
+---
+
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_containerregistry.RegistryProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Container Registry.
+
+If not provided, the Container Registry will be deployed in the default resource group.
 
 ---
 
@@ -15990,8 +15982,8 @@ const securityGroupProps: azure_networksecuritygroup.SecurityGroupProps = { ... 
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupProps.property.location">location</a></code> | <code>string</code> | The Azure region in which to create the network security group, e.g., 'East US', 'West Europe'. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupProps.property.name">name</a></code> | <code>string</code> | The name of the network security group. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group under which the network security group will be created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupProps.property.rules">rules</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.RuleConfig[]</code> | An array of rule configurations to be applied to the network security group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Workspace. |
 
 ---
 
@@ -16021,18 +16013,6 @@ Must be unique within the resource group.
 
 ---
 
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The name of the resource group under which the network security group will be created.
-
----
-
 ##### `rules`<sup>Required</sup> <a name="rules" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupProps.property.rules"></a>
 
 ```typescript
@@ -16042,6 +16022,20 @@ public readonly rules: RuleConfig[];
 - *Type:* @microsoft/terraform-cdk-constructs.azure_networksecuritygroup.RuleConfig[]
 
 An array of rule configurations to be applied to the network security group.
+
+---
+
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityGroupProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Workspace.
+
+If not provided, the Workspace will be deployed in the default resource group.
 
 ---
 
@@ -16275,10 +16269,10 @@ const vaultProps: azure_keyvault.VaultProps = { ... }
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps.property.location">location</a></code> | <code>string</code> | The Azure Region to deploy the Key Vault. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps.property.name">name</a></code> | <code>string</code> | The name of the Key Vault. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the Azure Resource Group. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps.property.tenantId">tenantId</a></code> | <code>string</code> | The Name of the SKU used for this Key Vault. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps.property.networkAcls">networkAcls</a></code> | <code>@cdktf/provider-azurerm.keyVault.KeyVaultNetworkAcls</code> | The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps.property.purgeProtection">purgeProtection</a></code> | <code>boolean</code> | A map of IP network ACL rules. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Key Vault. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps.property.sku">sku</a></code> | <code>string</code> | The tags to assign to the Key Vault. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps.property.softDeleteRetentionDays">softDeleteRetentionDays</a></code> | <code>number</code> | Specifies whether protection against purge is enabled for this Key Vault. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | The tags to assign to the Key Vault. |
@@ -16306,18 +16300,6 @@ public readonly name: string;
 - *Type:* string
 
 The name of the Key Vault.
-
----
-
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The name of the Azure Resource Group.
 
 ---
 
@@ -16359,6 +16341,20 @@ A map of IP network ACL rules.
 
 The key is the IP or IP range in CIDR notation.
 The value is a description of that IP range.
+
+---
+
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_keyvault.VaultProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Key Vault.
+
+If not provided, the Key Vault will be deployed in the default resource group.
 
 ---
 
@@ -16417,7 +16413,6 @@ const windowsClusterProps: azure_virtualmachinescaleset.WindowsClusterProps = { 
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.adminPassword">adminPassword</a></code> | <code>string</code> | The admin password for the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.adminUsername">adminUsername</a></code> | <code>string</code> | The admin username for the virtual machine. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group in which the virtual machine will be created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.boostrapCustomData">boostrapCustomData</a></code> | <code>string</code> | Custom data to bootstrap the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.bootDiagnosticsStorageURI">bootDiagnosticsStorageURI</a></code> | <code>string</code> | Bootdiagnostics settings for the VM. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.customData">customData</a></code> | <code>string</code> | Custom data to pass to the virtual machine upon creation. |
@@ -16427,6 +16422,7 @@ const windowsClusterProps: azure_virtualmachinescaleset.WindowsClusterProps = { 
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.osDisk">osDisk</a></code> | <code>@cdktf/provider-azurerm.windowsVirtualMachine.WindowsVirtualMachineOsDisk</code> | The OS disk configuration for the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.overprovision">overprovision</a></code> | <code>boolean</code> | Specifies if the VMSS should be overprovisioned. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.publicIPAddress">publicIPAddress</a></code> | <code>@cdktf/provider-azurerm.windowsVirtualMachineScaleSet.WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress[]</code> | The allocation method for the public IP. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Virtual Machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.scaleInPolicy">scaleInPolicy</a></code> | <code>string</code> | Specifies the scale-in policy for the VMSS. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.sku">sku</a></code> | <code>string</code> | The size of the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.sourceImageId">sourceImageId</a></code> | <code>string</code> | The ID of the source image for the virtual machine. |
@@ -16459,18 +16455,6 @@ public readonly adminUsername: string;
 - *Type:* string
 
 The admin username for the virtual machine.
-
----
-
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The name of the resource group in which the virtual machine will be created.
 
 ---
 
@@ -16589,6 +16573,20 @@ The allocation method for the public IP.
 
 ---
 
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Virtual Machine.
+
+If not provided, the Virtual Machine will be deployed in the default resource group.
+
+---
+
 ##### `scaleInPolicy`<sup>Optional</sup> <a name="scaleInPolicy" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.scaleInPolicy"></a>
 
 ```typescript
@@ -16704,7 +16702,6 @@ const windowsVMProps: azure_virtualmachine.WindowsVMProps = { ... }
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.adminPassword">adminPassword</a></code> | <code>string</code> | The admin password for the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.adminUsername">adminUsername</a></code> | <code>string</code> | The admin username for the virtual machine. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the resource group in which the virtual machine will be created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.boostrapCustomData">boostrapCustomData</a></code> | <code>string</code> | Custom data to bootstrap the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.bootDiagnosticsStorageURI">bootDiagnosticsStorageURI</a></code> | <code>string</code> | Bootdiagnostics settings for the VM. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.customData">customData</a></code> | <code>string</code> | Custom data to pass to the virtual machine upon creation. |
@@ -16712,6 +16709,7 @@ const windowsVMProps: azure_virtualmachine.WindowsVMProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.name">name</a></code> | <code>string</code> | The name of the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.osDisk">osDisk</a></code> | <code>@cdktf/provider-azurerm.windowsVirtualMachine.WindowsVirtualMachineOsDisk</code> | The OS disk configuration for the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.publicIPAllocationMethod">publicIPAllocationMethod</a></code> | <code>string</code> | The allocation method for the public IP. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Virtual Machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.size">size</a></code> | <code>string</code> | The size of the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.sourceImageId">sourceImageId</a></code> | <code>string</code> | The ID of the source image for the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.sourceImageReference">sourceImageReference</a></code> | <code>@cdktf/provider-azurerm.windowsVirtualMachine.WindowsVirtualMachineSourceImageReference</code> | The source image reference for the virtual machine. |
@@ -16741,18 +16739,6 @@ public readonly adminUsername: string;
 - *Type:* string
 
 The admin username for the virtual machine.
-
----
-
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The name of the resource group in which the virtual machine will be created.
 
 ---
 
@@ -16845,6 +16831,20 @@ The allocation method for the public IP.
 
 ---
 
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Virtual Machine.
+
+If not provided, the Virtual Machine will be deployed in the default resource group.
+
+---
+
 ##### `size`<sup>Optional</sup> <a name="size" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.size"></a>
 
 ```typescript
@@ -16924,10 +16924,10 @@ const workspaceProps: azure_loganalytics.WorkspaceProps = { ... }
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps.property.location">location</a></code> | <code>string</code> | The Azure Region to deploy. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps.property.name">name</a></code> | <code>string</code> | The name of the Log Analytics Workspace. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the Azure Resource Group. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps.property.dataExport">dataExport</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalytics.DataExport[]</code> | Create a DataExport for the Log Analytics Workspace. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps.property.functions">functions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalytics.LAFunctions[]</code> | A collection of Log Analytic functions. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps.property.queries">queries</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalytics.Queries[]</code> | A collection of log saved log analytics queries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Workspace. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps.property.retention">retention</a></code> | <code>number</code> | The number of days of retention. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps.property.sku">sku</a></code> | <code>string</code> | The SKU of the Log Analytics Workspace. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | The tags to assign to the Resource Group. |
@@ -16955,18 +16955,6 @@ public readonly name: string;
 - *Type:* string
 
 The name of the Log Analytics Workspace.
-
----
-
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The name of the Azure Resource Group.
 
 ---
 
@@ -17003,6 +16991,20 @@ public readonly queries: Queries[];
 - *Type:* @microsoft/terraform-cdk-constructs.azure_loganalytics.Queries[]
 
 A collection of log saved log analytics queries.
+
+---
+
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Workspace.
+
+If not provided, the Workspace will be deployed in the default resource group.
 
 ---
 
@@ -18945,7 +18947,6 @@ public readonly workload: string;
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.location">location</a></code> | <code>string</code> | The location where the Application Gateway will be deployed (e.g., region). |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.name">name</a></code> | <code>string</code> | The name of the Application Gateway. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.requestRoutingRules">requestRoutingRules</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayRequestRoutingRule[]</code> | The request routing rules for the Application Gateway. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The resource group under which the Application Gateway will be deployed. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.skuSize">skuSize</a></code> | <code>string</code> | The size of the SKU for the Application Gateway. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.skuTier">skuTier</a></code> | <code>string</code> | The SKU tier of the Application Gateway (e.g., Standard, WAF). |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.authenticationCertificate">authenticationCertificate</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayAuthenticationCertificate[]</code> | Optional authentication certificates for mutual authentication. |
@@ -18961,6 +18962,7 @@ public readonly workload: string;
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.privateLinkConfiguration">privateLinkConfiguration</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayPrivateLinkConfiguration[]</code> | Optional configurations for enabling Private Link on the Application Gateway. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.probe">probe</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayProbe[]</code> | Optional probes for health checks of the backend HTTP settings. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.redirectConfiguration">redirectConfiguration</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayRedirectConfiguration[]</code> | Optional configurations for redirect rules. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | An optional reference to the resource group in which to deploy the Application Gateway. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.rewriteRuleSet">rewriteRuleSet</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewayRewriteRuleSet[]</code> | Optional rewrite rule sets for modifying HTTP request and response headers and bodies. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.sslCertificate">sslCertificate</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewaySslCertificate[]</code> | Optional SSL certificates for enabling HTTPS on the Application Gateway. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.sslPolicy">sslPolicy</a></code> | <code>@cdktf/provider-azurerm.applicationGateway.ApplicationGatewaySslPolicy</code> | Optional SSL policy configurations, defining the protocol and cipher suites used. |
@@ -19061,18 +19063,6 @@ public readonly requestRoutingRules: ApplicationGatewayRequestRoutingRule[];
 - *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayRequestRoutingRule[]
 
 The request routing rules for the Application Gateway.
-
----
-
-##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.resourceGroup"></a>
-
-```typescript
-public readonly resourceGroup: ResourceGroup;
-```
-
-- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
-
-The resource group under which the Application Gateway will be deployed.
 
 ---
 
@@ -19253,6 +19243,20 @@ public readonly redirectConfiguration: ApplicationGatewayRedirectConfiguration[]
 - *Type:* @cdktf/provider-azurerm.applicationGateway.ApplicationGatewayRedirectConfiguration[]
 
 Optional configurations for redirect rules.
+
+---
+
+##### `resourceGroup`<sup>Optional</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.azure_applicationgateway.IGatewayProps.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: ResourceGroup;
+```
+
+- *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
+
+An optional reference to the resource group in which to deploy the Application Gateway.
+
+If not provided, the Application Gateway will be deployed in the default resource group.
 
 ---
 

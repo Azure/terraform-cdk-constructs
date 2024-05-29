@@ -142,14 +142,14 @@ exports[`Azure Container Registry With Defaults renders an Azure Container Regis
         ],
         "location": "eastus",
         "name": "latest",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "resource_group_name": "\${azurerm_resource_group.testAzureContainerRegistryDefaults_rg_96E1CBF6.name}",
         "sku": "Basic"
       }
     },
     "azurerm_resource_group": {
-      "MyResourceGroup": {
+      "testAzureContainerRegistryDefaults_rg_96E1CBF6": {
         "location": "eastus",
-        "name": "rg-test"
+        "name": "rg-latest"
       }
     }
   },

@@ -13,10 +13,12 @@ export interface ActionGroupProps {
    * The name of the Action Group.
    */
   readonly name: string;
+
   /**
-   * The name of the resource group in which to create the Action Group instance.
+   * An optional reference to the resource group in which to deploy the Action Group.
+   * If not provided, the Action Group will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
   /**
    * The short name of the action group. This will be used in SMS messages. The length should be in the range (1 - 12).
    */

@@ -228,15 +228,15 @@ exports[`Log Analytics Workspace With Defaults renders a Log Analytics Workspace
       "testAzureLogAnalyticsDefaults_log_analytics_A4DF54D3": {
         "location": "eastus",
         "name": "la-test",
-        "resource_group_name": "\${azurerm_resource_group.MyResourceGroup.name}",
+        "resource_group_name": "\${azurerm_resource_group.testAzureLogAnalyticsDefaults_rg_72C25C7A.name}",
         "retention_in_days": 30,
         "sku": "PerGB2018"
       }
     },
     "azurerm_resource_group": {
-      "MyResourceGroup": {
+      "testAzureLogAnalyticsDefaults_rg_72C25C7A": {
         "location": "eastus",
-        "name": "rg-test"
+        "name": "rg-la-test"
       }
     }
   },

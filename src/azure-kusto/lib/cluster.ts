@@ -11,9 +11,10 @@ import { AzureResource } from "../../core-azure/lib/index";
 
 export interface ClusterProps {
   /**
-   * The Azure Resource Group in which to create the Kusto Cluster.
+   * An optional reference to the resource group in which to deploy the Kusto Cluster.
+   * If not provided, the Kusto Cluster will be deployed in the default resource group.
    */
-  readonly resourceGroup: ResourceGroup;
+  readonly resourceGroup?: ResourceGroup;
   /**
    * The name of the Kusto Cluster to create.
    * Only 4-22 lowercase alphanumeric characters allowed, starting with a letter.
@@ -79,7 +80,7 @@ export interface ClusterProps {
 }
 
 export class Cluster extends AzureResource {
-  readonly kustoProps: ClusterProps;
+  readonly props: ClusterProps;
   public id: string;
   public resourceGroup: ResourceGroup;
   public readonly uri: string;
@@ -93,7 +94,7 @@ export class Cluster extends AzureResource {
    *
    * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
    * @param id - The unique identifier for this instance of the cluster.
-   * @param kustoProps - The properties required to configure the Kusto cluster, as defined in the ClusterProps interface.
+   * @param props - The properties required to configure the Kusto cluster, as defined in the ClusterProps interface.
    *
    * Example usage:
    * ```typescript
@@ -108,26 +109,27 @@ export class Cluster extends AzureResource {
    * });
    * ```
    */
-  constructor(scope: Construct, id: string, kustoProps: ClusterProps) {
+  constructor(scope: Construct, id: string, props: ClusterProps) {
     super(scope, id);
-    this.kustoProps = kustoProps;
-    this.resourceGroup = kustoProps.resourceGroup;
+
+    this.props = props;
+    this.resourceGroup = this.setupResourceGroup(props);
 
     /**
      * Define default values.
      */
-    const sku = kustoProps.sku || ComputeSpecification.devtestExtraSmallDv2;
-    const enableZones = kustoProps.enableZones || true;
+    const sku = props.sku || ComputeSpecification.devtestExtraSmallDv2;
+    const enableZones = props.enableZones || true;
 
     const defaults = {
-      publicNetworkAccessEnabled: kustoProps.publicNetworkAccessEnabled || true,
-      autoStopEnabled: kustoProps.autoStopEnabled || true,
-      streamingIngestionEnabled: kustoProps.streamingIngestionEnabled || true,
-      purgeEnabled: kustoProps.purgeEnabled || false,
+      publicNetworkAccessEnabled: props.publicNetworkAccessEnabled || true,
+      autoStopEnabled: props.autoStopEnabled || true,
+      streamingIngestionEnabled: props.streamingIngestionEnabled || true,
+      purgeEnabled: props.purgeEnabled || false,
       zones: enableZones ? sku.availibleZones : [],
       sku: {
         name: sku.skuName,
-        capacity: kustoProps.capacity || 2,
+        capacity: props.capacity || 2,
       },
       identity: {
         type: "SystemAssigned",
@@ -140,27 +142,27 @@ export class Cluster extends AzureResource {
      */
     const azurermKustoCluster = new KustoCluster(this, "Kusto", {
       ...defaults,
-      name: kustoProps.name,
-      location: kustoProps.resourceGroup.location,
-      resourceGroupName: kustoProps.resourceGroup.name,
-      tags: kustoProps.tags,
+      name: props.name,
+      location: this.resourceGroup.location,
+      resourceGroupName: this.resourceGroup.name,
+      tags: props.tags,
     });
 
-    if (kustoProps.identityType) {
+    if (props.identityType) {
       azurermKustoCluster.addOverride("identity", {
-        type: kustoProps.identityType,
-        identityIds: kustoProps.identityIds,
+        type: props.identityType,
+        identityIds: props.identityIds,
       });
     }
 
-    if (kustoProps.minimumInstances && kustoProps.maximumInstances) {
+    if (props.minimumInstances && props.maximumInstances) {
       azurermKustoCluster.addOverride(
         "minimum_instances",
-        kustoProps.minimumInstances,
+        props.minimumInstances,
       );
       azurermKustoCluster.addOverride(
         "maximum_instances",
-        kustoProps.maximumInstances,
+        props.maximumInstances,
       );
     }
 
