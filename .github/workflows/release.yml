@@ -34,9 +34,9 @@ jobs:
         id: azure_login
         uses: azure/login@v2
         with:
-          subscription-id: ${{ env.AZTFREADER_SUBSCRIPTIONID }}
-          tenant-id: ${{ env.AZTFREADER_TENANT_ID }}
-          client-id: ${{ env.AZTFREADER_CLIENT_ID }}
+          subscription-id: ${{ secrets.AZTFREADER_SUBSCRIPTIONID }}
+          tenant-id: ${{ secrets.AZTFREADER_TENANT_ID }}
+          client-id: ${{ secrets.AZTFREADER_CLIENT_ID }}
       - name: Install dependencies
         run: yarn install --check-files --frozen-lockfile
       - name: release
@@ -63,6 +63,7 @@ jobs:
           name: build-artifact
           path: dist
           overwrite: true
+    environment: build
   release_github:
     name: Publish to GitHub Releases
     needs: release

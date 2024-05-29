@@ -98,16 +98,17 @@ if (releaseWorkflow) {
   releaseWorkflow.patch(
     JsonPatch.add("/jobs/release/permissions/contents", "read"),
   );
+  releaseWorkflow.patch(JsonPatch.add("/jobs/release/environment", "build"));
 
-  releaseWorkflow?.patch(
+  releaseWorkflow.patch(
     JsonPatch.add("/jobs/release/steps/3", {
       name: "Authenticate with Azure",
       id: "azure_login",
       uses: "azure/login@v2",
       with: {
-        "subscription-id": "${{ env.AZTFREADER_SUBSCRIPTIONID }}",
-        "tenant-id": "${{ env.AZTFREADER_TENANT_ID }}",
-        "client-id": "${{ env.AZTFREADER_CLIENT_ID }}",
+        "subscription-id": "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
+        "tenant-id": "${{ secrets.AZTFREADER_TENANT_ID }}",
+        "client-id": "${{ secrets.AZTFREADER_CLIENT_ID }}",
       },
     }),
   );
@@ -123,15 +124,16 @@ if (buildWorkflow) {
   buildWorkflow.patch(
     JsonPatch.add("/jobs/build/permissions/contents", "read"),
   );
+  buildWorkflow.patch(JsonPatch.add("/jobs/build/environment", "build"));
   buildWorkflow.patch(
     JsonPatch.add("/jobs/build/steps/2", {
       name: "Authenticate with Azure",
       id: "azure_login",
       uses: "azure/login@v2",
       with: {
-        "subscription-id": "${{ env.AZTFREADER_SUBSCRIPTIONID }}",
-        "tenant-id": "${{ env.AZTFREADER_TENANT_ID }}",
-        "client-id": "${{ env.AZTFREADER_CLIENT_ID }}",
+        "subscription-id": "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
+        "tenant-id": "${{ secrets.AZTFREADER_TENANT_ID }}",
+        "client-id": "${{ secrets.AZTFREADER_CLIENT_ID }}",
       },
     }),
   );
