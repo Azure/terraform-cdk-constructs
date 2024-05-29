@@ -107,14 +107,20 @@ const buildWorkflow = project.tryFindObjectFile(".github/workflows/build.yml");
 //buildWorkflow?.patch(JsonPatch.remove("/jobs/build/steps/0/with")); // Remove because build tries to copy forked repo which is private
 if (buildWorkflow) {
   buildWorkflow.patch(
+    JsonPatch.add("/permissions", {
+      "id-token": "write",
+      contents: "read",
+    }),
+  );
+  buildWorkflow.patch(
     JsonPatch.add("/jobs/build/steps/2", {
       name: "Authenticate with Azure",
       id: "azure_login",
       uses: "azure/login@v2",
       with: {
-        "client-id": "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
+        "subscription-id": "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
         "tenant-id": "${{ secrets.AZTFREADER_TENANT_ID }}",
-        "subscription-id": "${{ secrets.AZTFREADER_CLIENT_ID }}",
+        "client-id": "${{ secrets.AZTFREADER_CLIENT_ID }}",
       },
     }),
   );

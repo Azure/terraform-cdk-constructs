@@ -27,9 +27,9 @@ jobs:
         id: azure_login
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZTFREADER_SUBSCRIPTIONID }}
+          subscription-id: ${{ secrets.AZTFREADER_SUBSCRIPTIONID }}
           tenant-id: ${{ secrets.AZTFREADER_TENANT_ID }}
-          subscription-id: ${{ secrets.AZTFREADER_CLIENT_ID }}
+          client-id: ${{ secrets.AZTFREADER_CLIENT_ID }}
       - name: Install dependencies
         run: yarn install --check-files
       - name: build
@@ -202,3 +202,6 @@ jobs:
         run: cd .repo && npx projen package:dotnet
       - name: Collect dotnet Artifact
         run: mv .repo/dist dist
+permissions:
+  id-token: write
+  contents: read
