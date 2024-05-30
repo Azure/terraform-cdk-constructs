@@ -124,11 +124,7 @@ export class Namespace extends AzureResourceWithAlert {
    * });
    * ```
    */
-  constructor(
-    scope: Construct,
-    name: string,
-    props: NamespaceProps,
-  ) {
+  constructor(scope: Construct, name: string, props: NamespaceProps) {
     super(scope, name);
 
     this.props = props;
@@ -143,16 +139,12 @@ export class Namespace extends AzureResourceWithAlert {
       zoneRedundant: props.zoneRedundant || false,
       tags: props.tags || {},
       minimumTlsVersion: props.minimumTlsVersion || "1.2",
-      publicNetworkAccessEnabled:
-        props.publicNetworkAccessEnabled || true,
-      localAuthenticationEnabled:
-        props.localAuthenticationEnabled || true,
+      publicNetworkAccessEnabled: props.publicNetworkAccessEnabled || true,
+      localAuthenticationEnabled: props.localAuthenticationEnabled || true,
       identity: {
         type: props.identityType || "SystemAssigned",
         identityIds:
-          props.identityType == "UserAssigned"
-            ? props.identityIds
-            : undefined,
+          props.identityType == "UserAssigned" ? props.identityIds : undefined,
       },
     };
 
