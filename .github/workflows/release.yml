@@ -68,10 +68,6 @@ jobs:
     name: Publish to GitHub Releases
     needs:
       - release
-      - release_npm
-      - release_maven
-      - release_pypi
-      - release_nuget
     runs-on: ubuntu-latest
     permissions:
       contents: write
