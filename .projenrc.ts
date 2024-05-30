@@ -105,9 +105,9 @@ if (releaseWorkflow) {
       id: "azure_login",
       uses: "azure/login@v2",
       with: {
-        "subscription-id": "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
-        "tenant-id": "${{ secrets.AZTFREADER_TENANT_ID }}",
-        "client-id": "${{ secrets.AZTFREADER_CLIENT_ID }}",
+        "subscription-id": "${{ secrets.AZURE_SUBSCRIPTION_ID }}",
+        "tenant-id": "${{ secrets.AZURE_TENANT_ID }}",
+        "client-id": "${{ secrets.AZURE_CLIENT_ID }}",
       },
     }),
   );
@@ -136,9 +136,9 @@ if (buildWorkflow) {
       id: "azure_login",
       uses: "azure/login@v2",
       with: {
-        "subscription-id": "${{ secrets.AZTFREADER_SUBSCRIPTIONID }}",
-        "tenant-id": "${{ secrets.AZTFREADER_TENANT_ID }}",
-        "client-id": "${{ secrets.AZTFREADER_CLIENT_ID }}",
+        "subscription-id": "${{ secrets.AZURE_SUBSCRIPTION_ID }}",
+        "tenant-id": "${{ secrets.AZURE_TENANT_ID }}",
+        "client-id": "${{ secrets.AZURE_CLIENT_ID }}",
       },
     }),
   );
