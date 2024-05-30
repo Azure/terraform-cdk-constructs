@@ -346,7 +346,8 @@ export class Gateway extends AzureResource {
       : undefined;
 
     // Dynamically create frontend IP configurations
-    let frontendIpConfigs : azapgw.ApplicationGatewayFrontendIpConfiguration[] = [];
+    let frontendIpConfigs: azapgw.ApplicationGatewayFrontendIpConfiguration[] =
+      [];
 
     // Public IP configuration
     if (props.publicIpAddress) {

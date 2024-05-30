@@ -4,11 +4,18 @@ name: build
 on:
   pull_request: {}
   workflow_dispatch: {}
+  pull_request_target:
+    branches:
+      - main
+    paths-ignore:
+      - .devcontainer/**
+      - README.md
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
+      id-token: write
     outputs:
       self_mutation_happened: ${{ steps.self_mutation.outputs.self_mutation_happened }}
     env:
@@ -16,19 +23,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20.10.0
+      - name: Authenticate with Azure
+        id: azure_login
+        uses: azure/login@v2
+        with:
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
       - name: Install dependencies
         run: yarn install --check-files
       - name: build
         run: npx projen build
-        env:
-          ARM_SUBSCRIPTION_ID: ${{ secrets.AZTFREADER_SUBSCRIPTIONID }}
-          ARM_TENANT_ID: ${{ secrets.AZTFREADER_TENANT_ID }}
-          ARM_CLIENT_ID: ${{ secrets.AZTFREADER_CLIENT_ID }}
-          ARM_CLIENT_SECRET: ${{ secrets.AZTFREADER_CLIENT_SECRET }}
       - name: Find mutations
         id: self_mutation
         run: |-
@@ -57,6 +69,7 @@ jobs:
           name: build-artifact
           path: dist
           overwrite: true
+    environment: Build
   self-mutation:
     needs: build
     runs-on: ubuntu-latest
@@ -112,4 +125,89 @@ jobs:
       - name: Create js artifact
         run: cd .repo && npx projen package:js
       - name: Collect js Artifact
+        run: mv .repo/dist dist
+  package-java:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions: {}
+    if: "! needs.build.outputs.self_mutation_happened"
+    steps:
+      - uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 11.x
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.10.0
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+          path: dist
+      - name: Restore build artifact permissions
+        run: cd dist && setfacl --restore=permissions-backup.acl
+        continue-on-error: true
+      - name: Prepare Repository
+        run: mv dist .repo
+      - name: Install Dependencies
+        run: cd .repo && yarn install --check-files --frozen-lockfile
+      - name: Create java artifact
+        run: cd .repo && npx projen package:java
+      - name: Collect java Artifact
+        run: mv .repo/dist dist
+  package-python:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions: {}
+    if: "! needs.build.outputs.self_mutation_happened"
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.10.0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+          path: dist
+      - name: Restore build artifact permissions
+        run: cd dist && setfacl --restore=permissions-backup.acl
+        continue-on-error: true
+      - name: Prepare Repository
+        run: mv dist .repo
+      - name: Install Dependencies
+        run: cd .repo && yarn install --check-files --frozen-lockfile
+      - name: Create python artifact
+        run: cd .repo && npx projen package:python
+      - name: Collect python Artifact
+        run: mv .repo/dist dist
+  package-dotnet:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions: {}
+    if: "! needs.build.outputs.self_mutation_happened"
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.10.0
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 3.x
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+          path: dist
+      - name: Restore build artifact permissions
+        run: cd dist && setfacl --restore=permissions-backup.acl
+        continue-on-error: true
+      - name: Prepare Repository
+        run: mv dist .repo
+      - name: Install Dependencies
+        run: cd .repo && yarn install --check-files --frozen-lockfile
+      - name: Create dotnet artifact
+        run: cd .repo && npx projen package:dotnet
+      - name: Collect dotnet Artifact
         run: mv .repo/dist dist
