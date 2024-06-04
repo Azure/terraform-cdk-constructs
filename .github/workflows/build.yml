@@ -4,6 +4,12 @@ name: build
 on:
   pull_request: {}
   workflow_dispatch: {}
+  pull_request_target:
+    branches:
+      - main
+    paths-ignore:
+      - .devcontainer/**
+      - README.md
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -64,37 +70,6 @@ jobs:
           path: dist
           overwrite: true
     environment: Build
-  self-mutation:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    if: always() && needs.build.outputs.self_mutation_happened && !(github.event.pull_request.head.repo.full_name != github.repository)
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PROJEN_GITHUB_TOKEN }}
-          ref: ${{ github.event.pull_request.head.ref }}
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-      - name: Download patch
-        uses: actions/download-artifact@v4
-        with:
-          name: .repo.patch
-          path: ${{ runner.temp }}
-      - name: Apply patch
-        run: '[ -s ${{ runner.temp }}/.repo.patch ] && git apply ${{ runner.temp }}/.repo.patch || echo "Empty patch. Skipping."'
-      - name: Set git identity
-        run: |-
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-      - name: Push changes
-        env:
-          PULL_REQUEST_REF: ${{ github.event.pull_request.head.ref }}
-        run: |-
-          git add .
-          git commit -s -m "chore: self mutation"
-          git push origin HEAD:$PULL_REQUEST_REF
   package-js:
     needs: build
     runs-on: ubuntu-latest

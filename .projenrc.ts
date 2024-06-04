@@ -120,12 +120,19 @@ if (releaseWorkflow) {
 // Build Workflow
 const buildWorkflow = project.tryFindObjectFile(".github/workflows/build.yml");
 if (buildWorkflow) {
+  buildWorkflow.addOverride("on", {
+    pull_request_target: {
+      branches: ["main"],
+      "paths-ignore": [".devcontainer/**", "README.md"],
+    },
+  });
   buildWorkflow.patch(
     JsonPatch.add("/jobs/build/permissions/id-token", "write"),
   );
   buildWorkflow.patch(
     JsonPatch.add("/jobs/build/permissions/contents", "read"),
   );
+  buildWorkflow.patch(JsonPatch.remove("/jobs/self-mutation")); // remove self-mutate job
   buildWorkflow.patch(JsonPatch.add("/jobs/build/environment", "Build"));
   buildWorkflow.patch(
     JsonPatch.add("/jobs/build/steps/2", {
