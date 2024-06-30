@@ -157,7 +157,7 @@
       "java": {
         "package": "com.microsoft.terraformcdkconstructs",
         "maven": {
-          "groupId": "com.microsoft",
+          "groupId": "com.microsoft.terraformcdkconstructs",
           "artifactId": "cdktf-azure-constructs"
         }
       },
