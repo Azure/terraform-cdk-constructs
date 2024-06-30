@@ -8,7 +8,7 @@ With L2 Constructs, you get the following benefits:
 - **Abstraction**: Higher-level abstractions over Azure resources make your infrastructure code more declarative and easier to understand.
 - **Reusability**: Encapsulate common patterns and best practices in your infrastructure code, promoting reusability across different projects and teams.
 - **Rapid Development**: Accelerate your cloud development process with pre-built constructs that have been tested for common use cases, allowing you to focus on your unique application logic.
-- **Direct IDE Integration**: Access detailed documentation directly within your Integrated Development Environment (IDE), streamlining your development workflow: ![alt text](./docs/images/ide-documentation.png)
+- **Direct IDE Integration**: Access detailed documentation directly within your Integrated Development Environment (IDE), streamlining your development workflow: ![alt text](https://raw.githubusercontent.com/Azure/terraform-cdk-constructs/main/docs/images/ide-documentation.png)
 
 
 ## Quick Example
@@ -112,11 +112,10 @@ Currently, our CDK L2 constructs are available in the following languages:
 
 | Language   | Status       |
 |------------|--------------|
-| TypeScript | Available    |
-| Python     | Coming soon  |
+| TypeScript | [Available](https://www.npmjs.com/package/@microsoft/terraform-cdk-constructs)    |
+| Python     | [Available](https://pypi.org/project/microsoft-cdktfconstructs/)  |
 | Java       | Coming soon  |
-| Go         | Coming soon  |
-| C#         | Coming soon  |
+| C#         | [Available](https://www.nuget.org/packages/Microsoft.Cdktf.Azure.TFConstructs)  |
 
 Stay tuned for updates as we work to expand support to other popular programming languages!
 

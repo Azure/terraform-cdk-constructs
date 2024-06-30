@@ -44,7 +44,7 @@ const project = new cdktf.ConstructLibraryCdktf({
   },
   publishToMaven: {
     javaPackage: "com.microsoft.terraformcdkconstructs",
-    mavenGroupId: "com.microsoft",
+    mavenGroupId: "com.microsoft.terraformcdkconstructs",
     mavenArtifactId: "cdktf-azure-constructs",
   },
   jestOptions: {
