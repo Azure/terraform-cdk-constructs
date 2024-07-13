@@ -51,6 +51,7 @@ export interface InstanceProps extends BaseInstanceProps {
 export class Instance extends Construct {
   readonly ehInstanceProps: InstanceProps;
   readonly id: string;
+  readonly name: string;
   readonly partitionIds: string[];
 
   /**
@@ -107,6 +108,7 @@ export class Instance extends Construct {
     // Outputs
     this.id = eventhubInstance.id;
     this.partitionIds = eventhubInstance.partitionIds;
+    this.name = eventhubInstance.name;
 
     const cdktfTerraformOutputEventhubInstanceId = new cdktf.TerraformOutput(
       this,
@@ -157,7 +159,7 @@ export class Instance extends Construct {
     return new AuthorizationRule(this, `ehauthrule-${props.name}`, {
       resourceGroupName: this.ehInstanceProps.resourceGroup.name,
       namespaceName: this.ehInstanceProps.namespaceName,
-      eventhubName: this.ehInstanceProps.name,
+      eventhubName: this.name,
       ...props,
     });
   }
@@ -190,7 +192,7 @@ export class Instance extends Construct {
     return new ConsumerGroup(this, `ehconsumergroup-${name}`, {
       resourceGroup: this.ehInstanceProps.resourceGroup,
       namespaceName: this.ehInstanceProps.namespaceName,
-      eventhubName: this.ehInstanceProps.name,
+      eventhubName: this.name,
       name: name,
       userMetadata: userMetadata,
     });

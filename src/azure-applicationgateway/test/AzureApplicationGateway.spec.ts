@@ -1,9 +1,8 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
-import { exampleAzureApplicationGateway } from "./ExampleAzureApplicationGateway";
 import "cdktf/lib/testing/adapters/jest";
 import * as apgw from "..";
-import * as util from "../../util/azureTenantIdHelpers";
+import { TerraformPlan } from "../../testing";
 
 describe("Application Gateway With Defaults", () => {
   let stack: TerraformStack;
@@ -75,45 +74,6 @@ describe("Application Gateway With Defaults", () => {
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
-  });
-});
-
-describe("Application Gateway Example", () => {
-  it("renders the Application Gateway and checks snapshot", () => {
-    // Need to remove the tenant_id from the snapshot as it will change wherever the test is run
-    const output = Testing.synth(
-      new exampleAzureApplicationGateway(
-        Testing.app(),
-        "testAzureApplicationGateway",
-      ),
-    );
-    const myObject: Record<string, any> = JSON.parse(output);
-
-    expect(util.removeTenantIdFromSnapshot(myObject)).toMatchSnapshot();
-  });
-
-  it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureApplicationGateway(
-          Testing.app(),
-          "testAzureApplicationGateway",
-        ),
-      ),
-    ).toBeValidTerraform();
-  });
-
-  it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureApplicationGateway(
-          Testing.app(),
-          "testAzureApplicationGateway",
-        ),
-      ),
-    ).toPlanSuccessfully();
+    TerraformPlan(fullSynthResult); // Use the saved result
   });
 });

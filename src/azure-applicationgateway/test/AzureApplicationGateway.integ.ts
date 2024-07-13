@@ -1,3 +1,9 @@
+import { Testing, TerraformStack } from "cdktf";
+import {
+  TerraformApplyAndCheckIdempotency,
+  TerraformDestroy,
+} from "../../testing";
+import "cdktf/lib/testing/adapters/jest";
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
@@ -5,67 +11,60 @@ import { PublicIp } from "@cdktf/provider-azurerm/lib/public-ip";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Subnet } from "@cdktf/provider-azurerm/lib/subnet";
 import { VirtualNetwork } from "@cdktf/provider-azurerm/lib/virtual-network";
-import * as cdktf from "cdktf";
-import { App } from "cdktf";
-import { Construct } from "constructs";
 import * as kv from "../../azure-keyvault";
-import { BaseTestStack } from "../../testing";
 import * as util from "../../util/azureTenantIdHelpers";
+import { generateRandomName } from "../../util/randomName";
 import * as apgw from "../lib";
 
-const app = new App();
+describe("Resource Group With Defaults", () => {
+  let stack: TerraformStack;
+  let fullSynthResult: any;
+  const streamOutput = process.env.STREAM_OUTPUT !== "false";
 
-export class exampleAzureApplicationGateway extends BaseTestStack {
-  constructor(scope: Construct, id: string) {
-    super(scope, id);
+  beforeEach(() => {
+    const app = Testing.app();
+    stack = new TerraformStack(app, "test");
+    const randomName = generateRandomName(12);
 
     const clientConfig = new DataAzurermClientConfig(
-      this,
+      stack,
       "CurrentClientConfig",
       {},
     );
 
-    new AzurermProvider(this, "azureFeature", {
-      features: {
-        resourceGroup: {
-          preventDeletionIfContainsResources: false,
-        },
-      },
-    });
+    new AzurermProvider(stack, "azureFeature", { features: {} });
 
-    const resourceGroup = new ResourceGroup(this, "rg", {
+    // Create a resource group
+    const resourceGroup = new ResourceGroup(stack, "rg", {
+      name: `rg-${randomName}`,
       location: "eastus",
-      name: `rg-${this.name}`,
-      lifecycle: {
-        ignoreChanges: ["tags"],
-      },
     });
 
     const logAnalyticsWorkspace = new LogAnalyticsWorkspace(
-      this,
+      stack,
       "log_analytics",
       {
         location: "eastus",
-        name: `la-${this.name}`,
+        name: `la-${randomName}`,
         resourceGroupName: resourceGroup.name,
       },
     );
 
-    const vnet = new VirtualNetwork(this, "vnet", {
-      name: `vnet-${this.name}`,
+    const vnet = new VirtualNetwork(stack, "vnet", {
+      name: `vnet-${randomName}`,
       location: "eastus",
       resourceGroupName: resourceGroup.name,
       addressSpace: ["10.0.0.0/24"],
     });
 
-    const subnet = new Subnet(this, "subnet", {
-      name: `subnet-${this.name}`,
+    const subnet = new Subnet(stack, "subnet", {
+      name: `subnet-${randomName}`,
       resourceGroupName: resourceGroup.name,
       virtualNetworkName: vnet.name,
       addressPrefixes: ["10.0.0.0/24"],
     });
 
-    const publicIp = new PublicIp(this, "publicIp", {
+    const publicIp = new PublicIp(stack, "publicIp", {
       name: "testip",
       location: "eastus",
       resourceGroupName: resourceGroup.name,
@@ -73,7 +72,7 @@ export class exampleAzureApplicationGateway extends BaseTestStack {
       sku: "Standard",
     });
 
-    const publicIpwaf = new PublicIp(this, "publicIpwaf", {
+    const publicIpwaf = new PublicIp(stack, "publicIpwaf", {
       name: "testipwaf",
       location: "eastus",
       resourceGroupName: resourceGroup.name,
@@ -81,8 +80,8 @@ export class exampleAzureApplicationGateway extends BaseTestStack {
       sku: "Standard",
     });
 
-    const azureKeyVault = new kv.Vault(this, "keyvault", {
-      name: `kv-${this.name}`,
+    const azureKeyVault = new kv.Vault(stack, "keyvault", {
+      name: `kv-${randomName}`,
       resourceGroup: resourceGroup,
       location: "eastus",
       tenantId: util.getAzureTenantId(),
@@ -125,8 +124,8 @@ export class exampleAzureApplicationGateway extends BaseTestStack {
       "internal.contoso.com",
     ]);
 
-    const applicationGateway = new apgw.Gateway(this, "appgw", {
-      name: `apgw-${this.name}`,
+    const applicationGateway = new apgw.Gateway(stack, "appgw", {
+      name: `apgw-${randomName}`,
       resourceGroup: resourceGroup,
       location: "eastus",
       skuTier: "Standard_v2",
@@ -170,8 +169,8 @@ export class exampleAzureApplicationGateway extends BaseTestStack {
       ],
     });
 
-    new apgw.Gateway(this, "appgw_waf", {
-      name: `apgw-${this.name}waf`,
+    new apgw.Gateway(stack, "appgw_waf", {
+      name: `apgw-${randomName}waf`,
       resourceGroup: resourceGroup,
       location: "eastus",
       skuTier: "WAF_v2",
@@ -272,24 +271,28 @@ export class exampleAzureApplicationGateway extends BaseTestStack {
     applicationGateway.addDiagSettings({
       name: "diagsettings",
       logAnalyticsWorkspaceId: logAnalyticsWorkspace.id,
+      metric: [
+        {
+          category: "AllMetrics",
+        },
+      ],
     });
 
     //RBAC
     applicationGateway.addAccess(clientConfig.objectId, "Contributor");
 
-    // Outputs to use for End to End Test
-    const cdktfTerraformOutputKVName = new cdktf.TerraformOutput(
-      this,
-      "resource_group_name",
-      {
-        value: resourceGroup.name,
-      },
-    );
+    fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
+  });
 
-    cdktfTerraformOutputKVName.overrideLogicalId("resource_group_name");
-  }
-}
+  afterEach(() => {
+    try {
+      TerraformDestroy(fullSynthResult, streamOutput);
+    } catch (error) {
+      console.error("Error during Terraform destroy:", error);
+    }
+  });
 
-new exampleAzureApplicationGateway(app, "testAzureApplicationGateway");
-
-app.synth();
+  it("check if stack can be deployed", () => {
+    TerraformApplyAndCheckIdempotency(fullSynthResult, streamOutput); // Set to true to stream output
+  });
+});

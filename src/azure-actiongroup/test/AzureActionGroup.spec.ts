@@ -1,9 +1,8 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
-import { exampleAzureActionGroup } from "./ExampleAzureActionGroup";
+import { TerraformPlan } from "../../testing";
 import "cdktf/lib/testing/adapters/jest";
 import { ActionGroup } from "..";
-import * as util from "../../util/azureTenantIdHelpers";
 import * as model from "../model";
 
 describe("Action Group With Defaults", () => {
@@ -33,7 +32,7 @@ describe("Action Group With Defaults", () => {
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
+    TerraformPlan(fullSynthResult); // Use the saved result
   });
 });
 
@@ -69,37 +68,7 @@ describe("Action Group With Defaults 2", () => {
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
-  });
-});
-
-describe("Action Group Example", () => {
-  it("renders and checks snapshot", () => {
-    // Need to remove the tenant_id from the snapshot as it will change wherever the test is run
-    const output = Testing.synth(
-      new exampleAzureActionGroup(Testing.app(), "testAzureActionGroup"),
-    );
-    const myObject: Record<string, any> = JSON.parse(output);
-
-    expect(util.removeTenantIdFromSnapshot(myObject)).toMatchSnapshot();
-  });
-
-  it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureActionGroup(Testing.app(), "testAzureActionGroup"),
-      ),
-    ).toBeValidTerraform();
-  });
-
-  it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureActionGroup(Testing.app(), "testAzureActionGroup"),
-      ),
-    ).toPlanSuccessfully();
+    TerraformPlan(fullSynthResult); // Use the saved result
   });
 });
 

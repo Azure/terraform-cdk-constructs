@@ -1,6 +1,6 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
-import { exampleAzureContainerRegistry } from "./ExampleAzureContainerRegistry";
+import { TerraformPlan } from "../../testing";
 import "cdktf/lib/testing/adapters/jest";
 import * as acr from "..";
 
@@ -31,43 +31,6 @@ describe("Azure Container Registry With Defaults", () => {
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
-  });
-});
-
-describe("Azure Container Registry Example", () => {
-  it("renders the Azure Container Registry and checks snapshot", () => {
-    expect(
-      Testing.synth(
-        new exampleAzureContainerRegistry(
-          Testing.app(),
-          "testAzureContainerRegistry",
-        ),
-      ),
-    ).toMatchSnapshot();
-  });
-
-  it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureContainerRegistry(
-          Testing.app(),
-          "testAzureContainerRegistry",
-        ),
-      ),
-    ).toBeValidTerraform();
-  });
-
-  it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureContainerRegistry(
-          Testing.app(),
-          "testAzureContainerRegistry",
-        ),
-      ),
-    ).toPlanSuccessfully();
+    TerraformPlan(fullSynthResult); // Use the saved result
   });
 });

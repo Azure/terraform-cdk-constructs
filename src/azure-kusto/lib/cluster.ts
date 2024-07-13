@@ -1,6 +1,5 @@
 import { KustoCluster } from "@cdktf/provider-azurerm/lib/kusto-cluster";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
-import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import {
   ComputeSpecification,
@@ -81,8 +80,10 @@ export interface ClusterProps {
 
 export class Cluster extends AzureResource {
   readonly props: ClusterProps;
+  public cluster: KustoCluster;
   public id: string;
   public resourceGroup: ResourceGroup;
+  public name: string;
   public readonly uri: string;
 
   /**
@@ -147,7 +148,6 @@ export class Cluster extends AzureResource {
       resourceGroupName: this.resourceGroup.name,
       tags: props.tags,
     });
-
     if (props.identityType) {
       azurermKustoCluster.addOverride("identity", {
         type: props.identityType,
@@ -167,46 +167,48 @@ export class Cluster extends AzureResource {
     }
 
     this.id = azurermKustoCluster.id;
+    this.name = azurermKustoCluster.name;
     this.uri = azurermKustoCluster.uri;
+    this.cluster = azurermKustoCluster;
 
     // Outputs
-    const cdktfTerraformOutputKustoId = new cdktf.TerraformOutput(
-      this,
-      "Kusto_id",
-      {
-        value: azurermKustoCluster.id,
-      },
-    );
-    const cdktfTerraformOutputKustoUri = new cdktf.TerraformOutput(
-      this,
-      "Kusto_uri",
-      {
-        value: azurermKustoCluster.uri,
-      },
-    );
-    const cdktfTerraformOutputDataIngestionUri = new cdktf.TerraformOutput(
-      this,
-      "Kusto_data_ingestion_uri",
-      {
-        value: azurermKustoCluster.dataIngestionUri,
-      },
-    );
-    const cdktfTerraformOutputKustoIdentity = new cdktf.TerraformOutput(
-      this,
-      "Kusto_identity",
-      {
-        value: azurermKustoCluster.identity,
-        sensitive: true,
-      },
-    );
+    // const cdktfTerraformOutputKustoId = new cdktf.TerraformOutput(
+    //   this,
+    //   "Kusto_id",
+    //   {
+    //     value: azurermKustoCluster.id,
+    //   },
+    // );
+    // const cdktfTerraformOutputKustoUri = new cdktf.TerraformOutput(
+    //   this,
+    //   "Kusto_uri",
+    //   {
+    //     value: azurermKustoCluster.uri,
+    //   },
+    // );
+    // const cdktfTerraformOutputDataIngestionUri = new cdktf.TerraformOutput(
+    //   this,
+    //   "Kusto_data_ingestion_uri",
+    //   {
+    //     value: azurermKustoCluster.dataIngestionUri,
+    //   },
+    // );
+    // const cdktfTerraformOutputKustoIdentity = new cdktf.TerraformOutput(
+    //   this,
+    //   "Kusto_identity",
+    //   {
+    //     value: azurermKustoCluster.identity,
+    //     sensitive: true,
+    //   },
+    // );
 
     /*This allows the Terraform resource name to match the original name. You can remove the call if you don't need them to match.*/
-    cdktfTerraformOutputKustoId.overrideLogicalId("Kusto_id");
-    cdktfTerraformOutputKustoUri.overrideLogicalId("Kusto_uri");
-    cdktfTerraformOutputDataIngestionUri.overrideLogicalId(
-      "Kusto_data_ingestion_uri",
-    );
-    cdktfTerraformOutputKustoIdentity.overrideLogicalId("Kusto_identity");
+    // cdktfTerraformOutputKustoId.overrideLogicalId("Kusto_id");
+    // cdktfTerraformOutputKustoUri.overrideLogicalId("Kusto_uri");
+    // cdktfTerraformOutputDataIngestionUri.overrideLogicalId(
+    //   "Kusto_data_ingestion_uri",
+    // );
+    // cdktfTerraformOutputKustoIdentity.overrideLogicalId("Kusto_identity");
   }
 
   /**
@@ -239,6 +241,11 @@ export class Cluster extends AzureResource {
    * for complex data analytics operations across large datasets.
    */
   public addDatabase(databaseProps: DatabaseProps) {
-    return new Database(this, databaseProps.name, databaseProps);
+    return new Database(this, databaseProps.name, {
+      kustoCluster: this.cluster,
+      name: databaseProps.name,
+      hotCachePeriod: databaseProps.hotCachePeriod,
+      softDeletePeriod: databaseProps.softDeletePeriod,
+    });
   }
 }

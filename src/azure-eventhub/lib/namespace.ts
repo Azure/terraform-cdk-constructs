@@ -129,13 +129,12 @@ export class Namespace extends AzureResourceWithAlert {
 
     this.props = props;
     this.resourceGroup = this.setupResourceGroup(props);
-    this.name = props.name;
 
     const defaults = {
       sku: props.sku || "Basic",
       capacity: props.capacity || 2,
       autoInflateEnabled: props.autoInflateEnabled || false,
-      maximumThroughputUnits: props.maximumThroughputUnits || 2,
+      maximumThroughputUnits: props.maximumThroughputUnits || 0,
       zoneRedundant: props.zoneRedundant || false,
       tags: props.tags || {},
       minimumTlsVersion: props.minimumTlsVersion || "1.2",
@@ -148,20 +147,22 @@ export class Namespace extends AzureResourceWithAlert {
       },
     };
 
-    const eventhubNamespce = new EventhubNamespace(this, "ehnamespace", {
+    const eventhubNamespace = new EventhubNamespace(this, "ehnamespace", {
       name: props.name,
       resourceGroupName: this.resourceGroup.name,
       location: this.resourceGroup.location,
       ...defaults,
     });
 
+    this.name = eventhubNamespace.name;
+
     // Outputs
-    this.id = eventhubNamespce.id;
+    this.id = eventhubNamespace.id;
     const cdktfTerraformOutputEventhubNamespceId = new cdktf.TerraformOutput(
       this,
       "id",
       {
-        value: eventhubNamespce.id,
+        value: eventhubNamespace.id,
       },
     );
     cdktfTerraformOutputEventhubNamespceId.overrideLogicalId("id");
@@ -198,7 +199,7 @@ export class Namespace extends AzureResourceWithAlert {
    * especially in terms of partition count and throughput units if applicable.
    */
   addEventhubInstance(props: BaseInstanceProps) {
-    return new Instance(this, "ehinstance", {
+    return new Instance(this, props.name, {
       resourceGroup: this.resourceGroup,
       namespaceName: this.name,
       ...props,

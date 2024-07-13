@@ -129,6 +129,7 @@ export interface WorkspaceProps {
 export class Workspace extends AzureResourceWithAlert {
   readonly props: WorkspaceProps;
   public resourceGroup: ResourceGroup;
+  public workspace: LogAnalyticsWorkspace;
   public id: string;
 
   /**
@@ -202,6 +203,7 @@ export class Workspace extends AzureResourceWithAlert {
     );
 
     this.id = azurermLogAnalyticsWorkspaceLogAnalytics.id;
+    this.workspace = azurermLogAnalyticsWorkspaceLogAnalytics;
 
     props.dataExport?.forEach((v, k) => {
       new LogAnalyticsDataExportRule(this, `export-${k}`, {

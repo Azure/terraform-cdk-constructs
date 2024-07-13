@@ -119,7 +119,7 @@ export function TerraformPlanExitCode(
         );
 
       const planResult = execTerraformCommand(
-        `terraform plan -input=false -lock=false`,
+        `terraform plan -input=false -lock=false -detailed-exitcode`,
         opts,
         streamOutput,
       );
@@ -291,7 +291,7 @@ export function TerraformApplyCheckAndDestroy(stack: any): void {
   }
 }
 
-export function TerraformPlanAndDebug(stack: any): AssertionReturn {
+export function TerraformPlan(stack: any): AssertionReturn {
   try {
     // Assuming the presence of a received variable pointing to the relevant directory
     const manifest = JSON.parse(

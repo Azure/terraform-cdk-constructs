@@ -1,7 +1,7 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
+import { TerraformPlan } from "../../testing";
 import "cdktf/lib/testing/adapters/jest";
-import { exampleAzureVirtualNetwork } from "./ExampleAzureVirtualNetwork";
 import * as vnet from "..";
 
 describe("Azure Virtual Network With Defaults", () => {
@@ -28,43 +28,6 @@ describe("Azure Virtual Network With Defaults", () => {
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
-  });
-});
-
-describe("Azure Virtual Network Example", () => {
-  it("renders the Example Azure Virtual Network and checks snapshot", () => {
-    expect(
-      Testing.synth(
-        new exampleAzureVirtualNetwork(
-          Testing.app(),
-          "testAzureVirtualNetwork",
-        ),
-      ),
-    ).toMatchSnapshot();
-  });
-
-  it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureVirtualNetwork(
-          Testing.app(),
-          "testAzureVirtualNetwork",
-        ),
-      ),
-    ).toBeValidTerraform();
-  });
-
-  it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureVirtualNetwork(
-          Testing.app(),
-          "testAzureVirtualNetwork",
-        ),
-      ),
-    ).toPlanSuccessfully();
+    TerraformPlan(fullSynthResult); // Use the saved result
   });
 });

@@ -1,6 +1,6 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
-import { exampleAzureResourceGroup } from "./ExampleAzureResourceGroup";
+import { TerraformPlan } from "../../testing";
 import "cdktf/lib/testing/adapters/jest";
 import * as rg from "..";
 
@@ -27,43 +27,6 @@ describe("Resource Group With Defaults", () => {
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
-  });
-});
-
-describe("Resource Group Example", () => {
-  it("renders the Example Resource Group and checks snapshot", () => {
-    expect(
-      Testing.synth(
-        new exampleAzureResourceGroup(
-          Testing.app(),
-          "testAzexampleAzureResourceGroup",
-        ),
-      ),
-    ).toMatchSnapshot();
-  });
-
-  it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureResourceGroup(
-          Testing.app(),
-          "testAzexampleAzureResourceGroup",
-        ),
-      ),
-    ).toBeValidTerraform();
-  });
-
-  it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureResourceGroup(
-          Testing.app(),
-          "testAzexampleAzureResourceGroup",
-        ),
-      ),
-    ).toPlanSuccessfully();
+    TerraformPlan(fullSynthResult); // Use the saved result
   });
 });

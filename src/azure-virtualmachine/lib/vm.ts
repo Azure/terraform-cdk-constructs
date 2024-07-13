@@ -106,6 +106,26 @@ export interface WindowsVMProps {
    * Bootdiagnostics settings for the VM.
    */
   readonly bootDiagnosticsStorageURI?: string;
+
+  /**
+   * Lifecycle settings for the Terraform resource.
+   *
+   * @remarks
+   * This property specifies the lifecycle customizations for the Terraform resource,
+   * allowing you to define specific actions to be taken during the lifecycle of the
+   * resource. It can include settings such as create before destroy, prevent destroy,
+   * ignore changes, etc.
+   *
+   * @example
+   * ```
+   * lifecycle: {
+   *   createBeforeDestroy: true,
+   *   preventDestroy: true,
+   *   ignoreChanges: ["tags"],
+   * }
+   * ```
+   */
+  readonly lifecycle?: cdktf.TerraformMetaArguments["lifecycle"];
 }
 
 export class WindowsVM extends AzureResource {
@@ -231,6 +251,7 @@ export class WindowsVM extends AzureResource {
       sourceImageId: props.sourceImageId,
       customData: base64CustomData,
       bootDiagnostics: { storageAccountUri: props.bootDiagnosticsStorageURI },
+      lifecycle: props.lifecycle,
     });
 
     this.id = azurermWindowsVirtualMachine.id;
@@ -368,6 +389,26 @@ export interface LinuxVMProps {
    * Bootdiagnostics settings for the VM.
    */
   readonly bootDiagnosticsStorageURI?: string;
+
+  /**
+   * Lifecycle settings for the Terraform resource.
+   *
+   * @remarks
+   * This property specifies the lifecycle customizations for the Terraform resource,
+   * allowing you to define specific actions to be taken during the lifecycle of the
+   * resource. It can include settings such as create before destroy, prevent destroy,
+   * ignore changes, etc.
+   *
+   * @example
+   * ```
+   * lifecycle: {
+   *   createBeforeDestroy: true,
+   *   preventDestroy: true,
+   *   ignoreChanges: ["tags"],
+   * }
+   * ```
+   */
+  readonly lifecycle?: cdktf.TerraformMetaArguments["lifecycle"];
 }
 
 export class LinuxVM extends AzureResource {
@@ -508,6 +549,7 @@ export class LinuxVM extends AzureResource {
       additionalCapabilities: props.additionalCapabilities,
       secret: props.secret,
       disablePasswordAuthentication: props.adminPassword ? false : true,
+      lifecycle: props.lifecycle,
     });
 
     // Assigning the VM's ID and name to the class properties

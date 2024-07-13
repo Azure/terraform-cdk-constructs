@@ -1,16 +1,16 @@
+import { KustoCluster } from "@cdktf/provider-azurerm/lib/kusto-cluster";
 import { KustoDatabase } from "@cdktf/provider-azurerm/lib/kusto-database";
 import { KustoDatabasePrincipalAssignment } from "@cdktf/provider-azurerm/lib/kusto-database-principal-assignment";
 import { KustoScript } from "@cdktf/provider-azurerm/lib/kusto-script";
 import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import { Md5 } from "ts-md5";
-import { ClusterProps, Cluster } from "./cluster";
 
 export interface DatabaseProps {
   /**
    * The Azure Kusto cluster to which this database belongs.
    */
-  readonly kusto: Cluster;
+  readonly kustoCluster: KustoCluster;
   /**
    * The name of the Kusto Database to create.
    */
@@ -57,10 +57,8 @@ export interface TableSchemaProps {
 }
 
 export class Database extends Construct {
-  public readonly kustoDbProps: DatabaseProps;
-  public readonly kustoProps: ClusterProps;
-  public readonly rg: string;
-  public readonly id: string;
+  public readonly database: KustoDatabase;
+  public readonly databaseName: string;
 
   /**
    * Represents a Kusto Database within an Azure Kusto Cluster.
@@ -73,7 +71,7 @@ export class Database extends Construct {
    *
    * @param scope - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack.
    * @param id - The unique identifier for this instance of the Kusto database.
-   * @param kustoDbProps - The properties required to configure the Kusto database. These include:
+   * @param props - The properties required to configure the Kusto database. These include:
    *                       - `kusto`: Reference to the Kusto cluster to which the database will belong.
    *                       - `name`: The name of the database to be created within the Kusto cluster.
    *                       - `hotCachePeriod`: Optional. Specifies the duration that data should be kept in cache for faster query performance.
@@ -94,43 +92,32 @@ export class Database extends Construct {
    * This class sets up the database configurations and integrates it within the specified Kusto cluster,
    * providing capabilities to manage and query large datasets effectively.
    */
-  constructor(scope: Construct, id: string, kustoDbProps: DatabaseProps) {
+  constructor(scope: Construct, id: string, props: DatabaseProps) {
     super(scope, id);
-    this.kustoDbProps = kustoDbProps;
-    this.kustoProps = kustoDbProps.kusto.props;
-    this.rg = kustoDbProps.kusto.resourceGroup.name;
 
-    const kustoDatabase = new KustoDatabase(
-      this,
-      `kusto-db-${this.kustoDbProps.name}`,
-      {
-        name: this.kustoDbProps.name,
-        location: kustoDbProps.kusto.resourceGroup.location,
-        resourceGroupName: kustoDbProps.kusto.resourceGroup.name,
-        clusterName: kustoDbProps.kusto.props.name,
-      },
-    );
+    const kustoDatabase = new KustoDatabase(this, `kusto-db-${props.name}`, {
+      name: props.name,
+      location: props.kustoCluster.location,
+      resourceGroupName: props.kustoCluster.resourceGroupName,
+      clusterName: props.kustoCluster.name,
+    });
 
-    if (this.kustoDbProps.hotCachePeriod) {
-      kustoDatabase.addOverride(
-        "hot_cache_period",
-        this.kustoDbProps.hotCachePeriod,
-      );
+    if (props.hotCachePeriod) {
+      kustoDatabase.addOverride("hot_cache_period", props.hotCachePeriod);
     }
-    if (this.kustoDbProps.softDeletePeriod) {
-      kustoDatabase.addOverride(
-        "soft_delete_period",
-        this.kustoDbProps.softDeletePeriod,
-      );
+    if (props.softDeletePeriod) {
+      kustoDatabase.addOverride("soft_delete_period", props.softDeletePeriod);
     }
 
     // Outputs
-    this.id = kustoDatabase.id;
+    this.database = kustoDatabase;
+    this.databaseName = props.name;
+
     const cdktfTerraformOutputKustoDbId = new cdktf.TerraformOutput(
       this,
       "id",
       {
-        value: this.id,
+        value: this.database.id,
       },
     );
     cdktfTerraformOutputKustoDbId.overrideLogicalId("id");
@@ -171,9 +158,9 @@ export class Database extends Construct {
       `kusto-db-${kustoDatabaseAccessProps.name}-access`,
       {
         name: kustoDatabaseAccessProps.name,
-        resourceGroupName: this.rg,
-        clusterName: this.kustoProps.name,
-        databaseName: this.kustoDbProps.name,
+        resourceGroupName: this.database.resourceGroupName,
+        clusterName: this.database.clusterName,
+        databaseName: this.database.name,
         tenantId: kustoDatabaseAccessProps.tenantId,
         principalId: kustoDatabaseAccessProps.principalId,
         principalType: kustoDatabaseAccessProps.principalType,
@@ -211,17 +198,13 @@ export class Database extends Construct {
       .join(", ");
     const scriptContent = `.create table ${tableName} ( ${schemaContent} )`;
 
-    new KustoScript(
-      this,
-      `kusto-db-${this.kustoDbProps.name}-table-${tableName}`,
-      {
-        name: tableName,
-        databaseId: this.id,
-        scriptContent: scriptContent,
-        continueOnErrorsEnabled: false,
-        forceAnUpdateWhenValueChanged: Md5.hashStr(scriptContent),
-      },
-    );
+    new KustoScript(this, `kusto-db-${this.databaseName}-table-${tableName}`, {
+      name: tableName,
+      databaseId: this.database.id,
+      scriptContent: scriptContent,
+      continueOnErrorsEnabled: false,
+      forceAnUpdateWhenValueChanged: Md5.hashStr(scriptContent),
+    });
   }
 
   /**
@@ -248,10 +231,10 @@ export class Database extends Construct {
   public addScript(scriptName: string, scriptContent: string) {
     new KustoScript(
       this,
-      `kusto-db-${this.kustoDbProps.name}-script-${scriptName}`,
+      `kusto-db-${this.databaseName}-script-${scriptName}`,
       {
         name: `script-${scriptName}`,
-        databaseId: this.id,
+        databaseId: this.database.id,
         scriptContent: scriptContent,
         continueOnErrorsEnabled: false,
         forceAnUpdateWhenValueChanged: Md5.hashStr(scriptContent),

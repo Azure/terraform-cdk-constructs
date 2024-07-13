@@ -1,3 +1,4 @@
+import * as https from "https";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { StorageAccount } from "@cdktf/provider-azurerm/lib/storage-account";
 import {
@@ -111,6 +112,12 @@ export interface AccountProps {
   readonly publicNetworkAccessEnabled?: boolean;
 
   /**
+   * Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD).
+   * Terraform uses Shared Key Authorisation to provision Storage Containers, Blobs and other items - when Shared Key Access is disabled, you will need to enable the storage_use_azuread flag in the Provider block to use Azure AD for authentication, however not all Azure Storage services support Active Directory authentication.
+   */
+  readonly sharedAccessKeyEnabled?: boolean;
+
+  /**
    * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.92.0/docs/resources/storage_account#account_kind StorageAccount#account_kind}
    */
   readonly accountKind?: string;
@@ -183,6 +190,7 @@ export class Account extends AzureResourceWithAlert {
       isHnsEnabled: true,
       minTlsVersion: "TLS1_2",
       publicnetworkAccessEnabled: false,
+      sharedAccessKeyEnabled: true,
       ...props,
     };
 

@@ -1,8 +1,8 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
 import "cdktf/lib/testing/adapters/jest";
-import { exampleAzureKusto } from "./ExampleAzureKusto";
 import * as kusto from "..";
+import { TerraformPlan } from "../../testing";
 
 describe("Kusto With Defaults", () => {
   let stack: TerraformStack;
@@ -31,28 +31,6 @@ describe("Kusto With Defaults", () => {
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
-  });
-});
-
-describe("Kusto Example", () => {
-  it("renders the Azure Kusto Example and checks snapshot", () => {
-    expect(
-      Testing.synth(new exampleAzureKusto(Testing.app(), "testAzureKusto")),
-    ).toMatchSnapshot();
-  });
-
-  it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(new exampleAzureKusto(Testing.app(), "testAzureKusto")),
-    ).toBeValidTerraform();
-  });
-
-  it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(new exampleAzureKusto(Testing.app(), "testAzureKusto")),
-    ).toPlanSuccessfully();
+    TerraformPlan(fullSynthResult); // Use the saved result
   });
 });

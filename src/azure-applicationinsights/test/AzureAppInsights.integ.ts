@@ -1,28 +1,35 @@
+import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
+import { Testing, TerraformStack } from "cdktf";
+import {
+  TerraformApplyAndCheckIdempotency,
+  TerraformDestroy,
+} from "../../testing";
+import { generateRandomName } from "../../util/randomName";
+import "cdktf/lib/testing/adapters/jest";
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import { KeyVault } from "@cdktf/provider-azurerm/lib/key-vault";
 import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
-import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
-import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
-import * as cdktf from "cdktf";
-import { App } from "cdktf";
-import { Construct } from "constructs";
-import { BaseTestStack } from "../../testing";
 import * as util from "../../util/azureTenantIdHelpers";
 import * as appi from "../lib";
 
-const app = new App();
+describe("Resource Group With Defaults", () => {
+  let stack: TerraformStack;
+  let fullSynthResult: any;
+  const streamOutput = process.env.STREAM_OUTPUT !== "false";
 
-export class exampleAzureApplicationInsights extends BaseTestStack {
-  constructor(scope: Construct, id: string) {
-    super(scope, id);
+  beforeEach(() => {
+    const app = Testing.app();
+    stack = new TerraformStack(app, "test");
+    const randomName = generateRandomName(12);
 
     const clientConfig = new DataAzurermClientConfig(
-      this,
+      stack,
       "CurrentClientConfig",
       {},
     );
 
-    new AzurermProvider(this, "azureFeature", {
+    new AzurermProvider(stack, "azureFeature", {
       features: {
         resourceGroup: {
           preventDeletionIfContainsResources: false,
@@ -30,13 +37,14 @@ export class exampleAzureApplicationInsights extends BaseTestStack {
       },
     });
 
-    const resourceGroup = new ResourceGroup(this, "rg", {
+    // Create a resource group
+    const resourceGroup = new ResourceGroup(stack, "rg", {
+      name: `rg-${randomName}`,
       location: "eastus",
-      name: `rg-${this.name}`,
     });
 
-    const keyvault = new KeyVault(this, "key_vault", {
-      name: `kv-${this.name}`,
+    const keyvault = new KeyVault(stack, "key_vault", {
+      name: `kv-${randomName}`,
       location: resourceGroup.location,
       resourceGroupName: resourceGroup.name,
       skuName: "standard",
@@ -62,17 +70,17 @@ export class exampleAzureApplicationInsights extends BaseTestStack {
     });
 
     const logAnalyticsWorkspace = new LogAnalyticsWorkspace(
-      this,
+      stack,
       "log_analytics",
       {
         location: "eastus",
-        name: `la-${this.name}`,
+        name: `la-${randomName}`,
         resourceGroupName: resourceGroup.name,
       },
     );
 
-    const applicationInsights = new appi.AppInsights(this, "testappi", {
-      name: `appi-${this.name}`,
+    const applicationInsights = new appi.AppInsights(stack, "testappi", {
+      name: `appi-${randomName}`,
       location: "eastus",
       resourceGroup: resourceGroup,
       applicationType: "web",
@@ -87,24 +95,28 @@ export class exampleAzureApplicationInsights extends BaseTestStack {
     applicationInsights.addDiagSettings({
       name: "diagsettings",
       logAnalyticsWorkspaceId: logAnalyticsWorkspace.id,
+      metric: [
+        {
+          category: "AllMetrics",
+        },
+      ],
     });
 
     //RBAC
     applicationInsights.addAccess(clientConfig.objectId, "Contributor");
 
-    // Outputs to use for End to End Test
-    const cdktfTerraformOutputKVName = new cdktf.TerraformOutput(
-      this,
-      "key_vault_name",
-      {
-        value: keyvault.name,
-      },
-    );
+    fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
+  });
 
-    cdktfTerraformOutputKVName.overrideLogicalId("key_vault_name");
-  }
-}
+  afterEach(() => {
+    try {
+      TerraformDestroy(fullSynthResult, streamOutput);
+    } catch (error) {
+      console.error("Error during Terraform destroy:", error);
+    }
+  });
 
-new exampleAzureApplicationInsights(app, "testAzureApplicationInsights");
-
-app.synth();
+  it("check if stack can be deployed", () => {
+    TerraformApplyAndCheckIdempotency(fullSynthResult, streamOutput); // Set to true to stream output
+  });
+});

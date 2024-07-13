@@ -3,42 +3,50 @@ import { EventhubNamespace } from "@cdktf/provider-azurerm/lib/eventhub-namespac
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { StorageAccount } from "@cdktf/provider-azurerm/lib/storage-account";
-import * as cdktf from "cdktf";
-import { App } from "cdktf";
-import { Construct } from "constructs";
+import { Testing, TerraformStack } from "cdktf";
+
 import * as la from "..";
-import { BaseTestStack } from "../../testing";
 
-const app = new App();
+import {
+  TerraformApplyAndCheckIdempotency,
+  TerraformDestroy,
+} from "../../testing";
+import { generateRandomName } from "../../util/randomName";
+import "cdktf/lib/testing/adapters/jest";
 
-export class exampleAzureLogAnalytics extends BaseTestStack {
-  constructor(scope: Construct, id: string) {
-    super(scope, id);
+describe("Resource Group With Defaults", () => {
+  let stack: TerraformStack;
+  let fullSynthResult: any;
+  const streamOutput = process.env.STREAM_OUTPUT !== "false";
+
+  beforeEach(() => {
+    const app = Testing.app();
+    stack = new TerraformStack(app, "test");
+    const randomName = generateRandomName(12);
 
     const clientConfig = new DataAzurermClientConfig(
-      this,
+      stack,
       "CurrentClientConfig",
       {},
     );
 
-    new AzurermProvider(this, "azureFeature", {
-      features: {},
-    });
+    new AzurermProvider(stack, "azureFeature", { features: {} });
 
-    const resourceGroup = new ResourceGroup(this, "rg", {
+    // Create a resource group
+    const resourceGroup = new ResourceGroup(stack, "rg", {
+      name: `rg-${randomName}`,
       location: "eastus",
-      name: `rg-${this.name}`,
     });
 
-    const namespace = new EventhubNamespace(this, "ehns", {
-      name: `ehns-${this.name}`,
+    const namespace = new EventhubNamespace(stack, "ehns", {
+      name: `ehns-${randomName}`,
       resourceGroupName: resourceGroup.name,
       location: resourceGroup.location,
       sku: "Standard",
     });
 
-    const storage = new StorageAccount(this, "storage", {
-      name: `sta${this.name}88t97`,
+    const storage = new StorageAccount(stack, "storage", {
+      name: `sta${randomName}88t97`,
       resourceGroupName: resourceGroup.name,
       location: resourceGroup.location,
       accountReplicationType: "LRS",
@@ -51,8 +59,8 @@ export class exampleAzureLogAnalytics extends BaseTestStack {
       },
     });
 
-    const logAnalyticsWorkspace = new la.Workspace(this, "la", {
-      name: `la-${this.name}`,
+    const logAnalyticsWorkspace = new la.Workspace(stack, "la", {
+      name: `la-${randomName}`,
       location: "eastus",
       retention: 90,
       sku: "PerGB2018",
@@ -90,7 +98,14 @@ export class exampleAzureLogAnalytics extends BaseTestStack {
     logAnalyticsWorkspace.addAccess(clientConfig.objectId, "Monitoring Reader");
 
     // Test Diag Settings
-    logAnalyticsWorkspace.addDiagSettings({ storageAccountId: storage.id });
+    logAnalyticsWorkspace.addDiagSettings({
+      storageAccountId: storage.id,
+      metric: [
+        {
+          category: "AllMetrics",
+        },
+      ],
+    });
 
     // Test Metric Alert
     logAnalyticsWorkspace.addMetricAlert({
@@ -106,45 +121,18 @@ export class exampleAzureLogAnalytics extends BaseTestStack {
       ],
     });
 
-    // Outputs to use for End to End Test
-    const cdktfTerraformOutputRG = new cdktf.TerraformOutput(
-      this,
-      "resource_group_name",
-      {
-        value: resourceGroup.name,
-      },
-    );
-    const cdktfTerraformOutputLAName = new cdktf.TerraformOutput(
-      this,
-      "loganalytics_workspace_name",
-      {
-        value: logAnalyticsWorkspace.props.name,
-      },
-    );
-    const cdktfTerraformOutputLASku = new cdktf.TerraformOutput(
-      this,
-      "loganalytics_workspace_sku",
-      {
-        value: logAnalyticsWorkspace.props.sku,
-      },
-    );
-    const cdktfTerraformOutputLARetention = new cdktf.TerraformOutput(
-      this,
-      "loganalytics_workspace_retention",
-      {
-        value: logAnalyticsWorkspace.props.retention,
-      },
-    );
+    fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
+  });
 
-    cdktfTerraformOutputRG.overrideLogicalId("resource_group_name");
-    cdktfTerraformOutputLAName.overrideLogicalId("loganalytics_workspace_name");
-    cdktfTerraformOutputLASku.overrideLogicalId("loganalytics_workspace_sku");
-    cdktfTerraformOutputLARetention.overrideLogicalId(
-      "loganalytics_workspace_retention",
-    );
-  }
-}
+  afterEach(() => {
+    try {
+      TerraformDestroy(fullSynthResult, streamOutput);
+    } catch (error) {
+      console.error("Error during Terraform destroy:", error);
+    }
+  });
 
-new exampleAzureLogAnalytics(app, "testAzureLogAnalytics");
-
-app.synth();
+  it("check if stack can be deployed", () => {
+    TerraformApplyAndCheckIdempotency(fullSynthResult, streamOutput); // Set to true to stream output
+  });
+});

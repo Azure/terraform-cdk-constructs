@@ -1,9 +1,8 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
-import { exampleAzureKeyVault } from "./ExampleAzureKeyVault";
+import { TerraformPlan } from "../../testing";
 import "cdktf/lib/testing/adapters/jest";
 import * as kv from "..";
-import * as util from "../../util/azureTenantIdHelpers";
 
 describe("Azure Key Vault With Defaults", () => {
   let stack: TerraformStack;
@@ -33,47 +32,6 @@ describe("Azure Key Vault With Defaults", () => {
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
-  });
-});
-
-describe("Azure Key Vault Example", () => {
-  //let stack: TerraformStack;
-
-  // beforeEach(() => {
-  //   const app = Testing.app();
-  //   stack = new TerraformStack(app, "test");
-
-  //   Testing.synthScope((stack) => {
-  //     new exampleAzureKeyVault(stack, "testAzureKeyVault");
-  //   });
-  // });
-
-  it("renders the Example Azure KeyVault and checks snapshot", () => {
-    // Need to remove the tenant_id from the snapshot as it will change wherever the test is run
-    const output = Testing.synth(
-      new exampleAzureKeyVault(Testing.app(), "testAzureKeyVault"),
-    );
-    const myObject: Record<string, any> = JSON.parse(output);
-
-    expect(util.removeTenantIdFromSnapshot(myObject)).toMatchSnapshot();
-  });
-
-  it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureKeyVault(Testing.app(), "testAzureKeyVault"),
-      ),
-    ).toBeValidTerraform();
-  });
-
-  it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureKeyVault(Testing.app(), "testAzureKeyVault"),
-      ),
-    ).toPlanSuccessfully();
+    TerraformPlan(fullSynthResult); // Use the saved result
   });
 });

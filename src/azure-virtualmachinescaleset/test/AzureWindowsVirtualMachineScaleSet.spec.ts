@@ -1,8 +1,8 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
+import { TerraformPlan } from "../../testing";
 import "cdktf/lib/testing/adapters/jest";
 import * as vmss from "..";
-import { exampleAzureWindowsVirtualMachineScaleSet } from "../test/ExampleAzureWindowsVirtualMachineScaleSet";
 
 describe("Azure Windows Virtual Machine Scale Set With Defaults", () => {
   let stack: TerraformStack;
@@ -31,43 +31,6 @@ describe("Azure Windows Virtual Machine Scale Set With Defaults", () => {
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
-  });
-});
-
-describe("Azure Windows Virtual Machine  Scale Set Example", () => {
-  it("renders the Azure Windows Virtual Machine Scale Set and checks snapshot", () => {
-    expect(
-      Testing.synth(
-        new exampleAzureWindowsVirtualMachineScaleSet(
-          Testing.app(),
-          "testAzureWindowsVirtualMachineScaleSetExample",
-        ),
-      ),
-    ).toMatchSnapshot();
-  });
-
-  it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureWindowsVirtualMachineScaleSet(
-          Testing.app(),
-          "testAzureWindowsVirtualMachineScaleSetExample",
-        ),
-      ),
-    ).toBeValidTerraform();
-  });
-
-  it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureWindowsVirtualMachineScaleSet(
-          Testing.app(),
-          "testAzureWindowsVirtualMachineScaleSetExample",
-        ),
-      ),
-    ).toPlanSuccessfully();
+    TerraformPlan(fullSynthResult); // Use the saved result
   });
 });

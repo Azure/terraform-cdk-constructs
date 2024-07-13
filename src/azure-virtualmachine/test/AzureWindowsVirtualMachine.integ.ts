@@ -4,49 +4,56 @@ import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { StorageAccount } from "@cdktf/provider-azurerm/lib/storage-account";
 import { Subnet } from "@cdktf/provider-azurerm/lib/subnet";
 import { VirtualNetwork } from "@cdktf/provider-azurerm/lib/virtual-network";
-import * as cdktf from "cdktf";
-import { App } from "cdktf";
-import { Construct } from "constructs";
+import { Testing, TerraformStack } from "cdktf";
 import * as vm from "..";
-import { BaseTestStack } from "../../testing";
 
-const app = new App();
+import {
+  TerraformApplyAndCheckIdempotency,
+  TerraformDestroy,
+} from "../../testing";
+import { generateRandomName } from "../../util/randomName";
+import "cdktf/lib/testing/adapters/jest";
 
-export class exampleAzureWindowsVirtualMachine extends BaseTestStack {
-  constructor(scope: Construct, id: string) {
-    super(scope, id);
+describe("Resource Group With Defaults", () => {
+  let stack: TerraformStack;
+  let fullSynthResult: any;
+  const streamOutput = process.env.STREAM_OUTPUT !== "false";
+
+  beforeEach(() => {
+    const app = Testing.app();
+    stack = new TerraformStack(app, "test");
+    const randomName = generateRandomName(12);
 
     const clientConfig = new DataAzurermClientConfig(
-      this,
+      stack,
       "CurrentClientConfig",
       {},
     );
 
-    new AzurermProvider(this, "azureFeature", {
-      features: {},
+    new AzurermProvider(stack, "azureFeature", { features: {} });
+
+    // Create a resource group
+    const resourceGroup = new ResourceGroup(stack, "rg", {
+      name: `rg-${randomName}`,
+      location: "southcentralus",
     });
 
-    const resourceGroup = new ResourceGroup(this, "rg", {
-      location: "eastus",
-      name: `rg-${this.name}`,
-    });
-
-    const vnet = new VirtualNetwork(this, "vnet", {
-      name: `vnet-${this.name}`,
+    const vnet = new VirtualNetwork(stack, "vnet", {
+      name: `vnet-${randomName}`,
       location: resourceGroup.location,
       resourceGroupName: resourceGroup.name,
       addressSpace: ["10.0.0.0/16"],
     });
 
-    const subnet = new Subnet(this, "subnet1", {
+    const subnet = new Subnet(stack, "subnet1", {
       name: "subnet1",
       resourceGroupName: resourceGroup.name,
       virtualNetworkName: vnet.name,
       addressPrefixes: ["10.0.1.0/24"],
     });
 
-    const storage = new StorageAccount(this, "storage", {
-      name: `sta${this.name}87u98`,
+    const storage = new StorageAccount(stack, "storage", {
+      name: `sta${randomName}87u98`,
       resourceGroupName: resourceGroup.name,
       location: resourceGroup.location,
       accountReplicationType: "LRS",
@@ -59,11 +66,11 @@ export class exampleAzureWindowsVirtualMachine extends BaseTestStack {
       },
     });
 
-    const winVm = new vm.WindowsVM(this, "vm", {
-      name: this.name,
-      location: "eastus",
+    const winVm = new vm.WindowsVM(stack, "vm", {
+      name: randomName,
+      location: "southcentralus",
       resourceGroup: resourceGroup,
-      size: "Standard_B1s",
+      size: "Standard_D2as_v4",
       adminUsername: "testadmin",
       adminPassword: "Password1234!",
       osDisk: {
@@ -81,60 +88,37 @@ export class exampleAzureWindowsVirtualMachine extends BaseTestStack {
       boostrapCustomData:
         "Install-WindowsFeature -Name Web-Server; $website = '<h1>Hello World!</h1>'; Set-Content \"C:\\inetpub\\wwwroot\\iisstart.htm\" $website",
       bootDiagnosticsStorageURI: storage.primaryBlobEndpoint,
+      lifecycle: {
+        ignoreChanges: ["tags", "identity"],
+      },
     });
 
     // Diag Settings
     winVm.addDiagSettings({
       name: "diagsettings",
       storageAccountId: storage.id,
+      metric: [
+        {
+          category: "AllMetrics",
+        },
+      ],
     });
 
     // RBAC
     winVm.addAccess(clientConfig.objectId, "Contributor");
 
-    // Outputs to use for End to End Test
-    const cdktfTerraformOutputRGName = new cdktf.TerraformOutput(
-      this,
-      "resource_group_name",
-      {
-        value: resourceGroup.name,
-      },
-    );
+    fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
+  });
 
-    const cdktfTerraformOutputNsgName = new cdktf.TerraformOutput(
-      this,
-      "vm_name",
-      {
-        value: winVm.name,
-      },
-    );
+  afterEach(() => {
+    try {
+      TerraformDestroy(fullSynthResult, streamOutput);
+    } catch (error) {
+      console.error("Error during Terraform destroy:", error);
+    }
+  });
 
-    const cdktfTerraformOutputVmsize = new cdktf.TerraformOutput(
-      this,
-      "vm_size",
-      {
-        value: "Standard_B1s",
-      },
-    );
-
-    const cdktfTerraformOutputVmEndpoint = new cdktf.TerraformOutput(
-      this,
-      "vm_endpoint",
-      {
-        value: winVm.publicIp,
-      },
-    );
-
-    cdktfTerraformOutputRGName.overrideLogicalId("resource_group_name");
-    cdktfTerraformOutputNsgName.overrideLogicalId("vm_name");
-    cdktfTerraformOutputVmsize.overrideLogicalId("vm_size");
-    cdktfTerraformOutputVmEndpoint.overrideLogicalId("vm_endpoint");
-  }
-}
-
-new exampleAzureWindowsVirtualMachine(
-  app,
-  "testAzureWindowsVirtualMachineExample",
-);
-
-app.synth();
+  it("check if stack can be deployed", () => {
+    TerraformApplyAndCheckIdempotency(fullSynthResult, streamOutput); // Set to true to stream output
+  });
+});

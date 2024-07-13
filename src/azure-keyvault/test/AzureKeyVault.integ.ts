@@ -1,41 +1,42 @@
-import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
-import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
-import * as cdktf from "cdktf";
-import { App } from "cdktf";
-import { Construct } from "constructs";
+import { Testing, TerraformStack } from "cdktf";
+import {
+  TerraformApplyAndCheckIdempotency,
+  TerraformDestroy,
+} from "../../testing";
+import { generateRandomName } from "../../util/randomName";
+import "cdktf/lib/testing/adapters/jest";
+import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
+import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import * as kv from "..";
-import { BaseTestStack } from "../../testing";
-
 import * as util from "../../util/azureTenantIdHelpers";
 
-const app = new App();
+describe("Resource Group With Defaults", () => {
+  let stack: TerraformStack;
+  let fullSynthResult: any;
+  const streamOutput = process.env.STREAM_OUTPUT !== "false";
 
-export class exampleAzureKeyVault extends BaseTestStack {
-  constructor(scope: Construct, id: string) {
-    super(scope, id);
+  beforeEach(() => {
+    const app = Testing.app();
+    stack = new TerraformStack(app, "test");
+    const randomName = generateRandomName(12);
 
     const clientConfig = new DataAzurermClientConfig(
-      this,
+      stack,
       "CurrentClientConfig",
       {},
     );
 
-    new AzurermProvider(this, "azureFeature", {
-      features: {},
-    });
+    new AzurermProvider(stack, "azureFeature", { features: {} });
 
-    const resourceGroup = new ResourceGroup(this, "rg", {
+    const resourceGroup = new ResourceGroup(stack, "rg", {
+      name: `rg-${randomName}`,
       location: "eastus",
-      name: `rg-${this.name}`,
-      lifecycle: {
-        ignoreChanges: ["tags"],
-      },
     });
 
-    const azureKeyVault = new kv.Vault(this, "kv", {
-      name: `kv-${this.name}`,
+    const azureKeyVault = new kv.Vault(stack, "kv", {
+      name: `kv-${randomName}`,
       location: "eastus",
       sku: "standard",
       resourceGroup: resourceGroup,
@@ -49,11 +50,11 @@ export class exampleAzureKeyVault extends BaseTestStack {
     });
 
     const logAnalyticsWorkspace = new LogAnalyticsWorkspace(
-      this,
+      stack,
       "log_analytics",
       {
         location: "eastus",
-        name: `la-${this.name}`,
+        name: `la-${randomName}`,
         resourceGroupName: resourceGroup.name,
       },
     );
@@ -62,7 +63,11 @@ export class exampleAzureKeyVault extends BaseTestStack {
     azureKeyVault.addDiagSettings({
       name: "diagsettings",
       logAnalyticsWorkspaceId: logAnalyticsWorkspace.id,
-      metricCategories: ["AllMetrics"],
+      metric: [
+        {
+          category: "AllMetrics",
+        },
+      ],
     });
 
     //RBAC
@@ -138,19 +143,18 @@ export class exampleAzureKeyVault extends BaseTestStack {
     ]);
     azureKeyVault.addCertIssuer("issuer1", "SslAdminV2");
 
-    // Outputs to use for End to End Test
-    const cdktfTerraformOutputRG = new cdktf.TerraformOutput(
-      this,
-      "resource_group_name",
-      {
-        value: resourceGroup.name,
-      },
-    );
+    fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
+  });
 
-    cdktfTerraformOutputRG.overrideLogicalId("resource_group_name");
-  }
-}
+  afterEach(() => {
+    try {
+      TerraformDestroy(fullSynthResult, streamOutput);
+    } catch (error) {
+      console.error("Error during Terraform destroy:", error);
+    }
+  });
 
-new exampleAzureKeyVault(app, "testAzureKeyVault");
-
-app.synth();
+  it("check if stack can be deployed", () => {
+    TerraformApplyAndCheckIdempotency(fullSynthResult, streamOutput); // Set to true to stream output
+  });
+});
