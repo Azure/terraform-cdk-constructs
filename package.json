@@ -25,13 +25,15 @@
     "post-upgrade": "npx projen post-upgrade",
     "pre-compile": "npx projen pre-compile",
     "release": "npx projen release",
-    "test": "npx projen test",
+    "test": "jest --testMatch '**/*.spec.ts'",
     "test:update": "npx projen test:update",
     "test:watch": "npx projen test:watch",
     "unbump": "npx projen unbump",
     "upgrade": "npx projen upgrade",
     "watch": "npx projen watch",
     "projen": "npx projen",
+    "integration": "STREAM_OUTPUT=true jest --testMatch '**/*.integ.ts'",
+    "integration:nostream": "STREAM_OUTPUT=false jest --maxWorkers=12 --testMatch '**/*.integ.ts'",
     "generate-index": "node ./scripts/generate-index.js"
   },
   "author": {
@@ -105,7 +107,7 @@
   "jest": {
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-      "<rootDir>/@(|src)/**/*(*.)@(spec|test).ts?(x)"
+      "<rootDir>/@(|src)/**/*(*.)@(spec|test|integ).ts?(x)"
     ],
     "clearMocks": true,
     "collectCoverage": true,

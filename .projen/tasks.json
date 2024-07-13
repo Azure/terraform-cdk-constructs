@@ -259,7 +259,7 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "jest --passWithNoTests --coverageProvider=v8 --ci",
+          "exec": "jest --passWithNoTests --coverageProvider=v8 --ci --testMatch '**/*.spec.ts'",
           "receiveArgs": true
         },
         {
