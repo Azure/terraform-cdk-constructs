@@ -1,10 +1,10 @@
+import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
-import { Testing, TerraformStack } from "cdktf";
-import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import { StorageAccount } from "@cdktf/provider-azurerm/lib/storage-account";
 import { Subnet } from "@cdktf/provider-azurerm/lib/subnet";
 import { VirtualNetwork } from "@cdktf/provider-azurerm/lib/virtual-network";
+import { Testing, TerraformStack } from "cdktf";
 import * as vmss from "..";
 
 import {
@@ -14,7 +14,7 @@ import {
 import { generateRandomName } from "../../util/randomName";
 import "cdktf/lib/testing/adapters/jest";
 
-describe("Resource Group With Defaults", () => {
+describe("Example of deploying a Windows VMSS Cluster", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
   const streamOutput = process.env.STREAM_OUTPUT !== "false";

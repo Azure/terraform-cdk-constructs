@@ -3,15 +3,15 @@ import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
+import * as acr from "..";
 import {
   TerraformApplyAndCheckIdempotency,
   TerraformDestroy,
 } from "../../testing";
 import { generateRandomName } from "../../util/randomName";
 import "cdktf/lib/testing/adapters/jest";
-import * as acr from "..";
 
-describe("Resource Group With Defaults", () => {
+describe("Example of deploying a Container Registry", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
   const streamOutput = process.env.STREAM_OUTPUT !== "false";

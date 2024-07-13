@@ -1,8 +1,8 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
+import * as vm from "..";
 import { TerraformPlan } from "../../testing";
 import "cdktf/lib/testing/adapters/jest";
-import * as vm from "..";
 
 describe("Azure Windows Virtual Machine With Defaults", () => {
   let stack: TerraformStack;

@@ -1,17 +1,17 @@
+import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
+import * as func from "..";
 import {
   TerraformApplyAndCheckIdempotency,
   TerraformDestroy,
 } from "../../testing";
 import { generateRandomName } from "../../util/randomName";
 import "cdktf/lib/testing/adapters/jest";
-import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
-import * as func from "..";
 import { ServicePlanSkus } from "../serviceplanskus";
 
-describe("Resource Group With Defaults", () => {
+describe("Example of deploying a Linux Function App", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
   const streamOutput = process.env.STREAM_OUTPUT !== "false";

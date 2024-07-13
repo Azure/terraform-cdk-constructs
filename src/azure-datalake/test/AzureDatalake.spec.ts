@@ -1,11 +1,10 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
-import { TerraformPlan } from "../../testing";
-
-import "cdktf/lib/testing/adapters/jest";
 import * as storage from "..";
+import { TerraformPlan } from "../../testing";
+import "cdktf/lib/testing/adapters/jest";
 
-describe("Azure Storage Account With Defaults", () => {
+describe("Azure Datalake With Defaults", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
 

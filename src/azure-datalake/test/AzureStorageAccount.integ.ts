@@ -10,7 +10,7 @@ import {
 import { generateRandomName } from "../../util/randomName";
 import "cdktf/lib/testing/adapters/jest";
 
-describe("Resource Group With Defaults", () => {
+describe("Example of deploying Datalake", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
   const streamOutput = process.env.STREAM_OUTPUT !== "false";

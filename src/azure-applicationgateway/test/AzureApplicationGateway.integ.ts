@@ -1,8 +1,3 @@
-import { Testing, TerraformStack } from "cdktf";
-import {
-  TerraformApplyAndCheckIdempotency,
-  TerraformDestroy,
-} from "../../testing";
 import "cdktf/lib/testing/adapters/jest";
 import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
@@ -11,12 +6,17 @@ import { PublicIp } from "@cdktf/provider-azurerm/lib/public-ip";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Subnet } from "@cdktf/provider-azurerm/lib/subnet";
 import { VirtualNetwork } from "@cdktf/provider-azurerm/lib/virtual-network";
+import { Testing, TerraformStack } from "cdktf";
 import * as kv from "../../azure-keyvault";
+import {
+  TerraformApplyAndCheckIdempotency,
+  TerraformDestroy,
+} from "../../testing";
 import * as util from "../../util/azureTenantIdHelpers";
 import { generateRandomName } from "../../util/randomName";
 import * as apgw from "../lib";
 
-describe("Resource Group With Defaults", () => {
+describe("Example of deploying Application Gateway", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
   const streamOutput = process.env.STREAM_OUTPUT !== "false";

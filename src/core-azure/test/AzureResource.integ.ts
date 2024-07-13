@@ -14,7 +14,7 @@ import { generateRandomName } from "../../util/randomName";
 import { AzureResource } from "../lib";
 import "cdktf/lib/testing/adapters/jest";
 
-describe("Resource Group With Defaults", () => {
+describe("Example of deploying an Azure Resource", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
   const streamOutput = process.env.STREAM_OUTPUT !== "false";

@@ -1,8 +1,8 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
+import * as acr from "..";
 import { TerraformPlan } from "../../testing";
 import "cdktf/lib/testing/adapters/jest";
-import * as acr from "..";
 
 describe("Azure Container Registry With Defaults", () => {
   let stack: TerraformStack;

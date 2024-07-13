@@ -1,8 +1,8 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
+import * as network from "..";
 import { TerraformPlan } from "../../testing";
 import "cdktf/lib/testing/adapters/jest";
-import * as network from "..";
 
 describe("Azure Network Security Group With Defaults", () => {
   let stack: TerraformStack;

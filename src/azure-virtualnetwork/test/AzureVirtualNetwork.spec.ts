@@ -1,8 +1,8 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
+import * as vnet from "..";
 import { TerraformPlan } from "../../testing";
 import "cdktf/lib/testing/adapters/jest";
-import * as vnet from "..";
 
 describe("Azure Virtual Network With Defaults", () => {
   let stack: TerraformStack;

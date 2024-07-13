@@ -1,8 +1,8 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
+import * as vmss from "..";
 import { TerraformPlan } from "../../testing";
 import "cdktf/lib/testing/adapters/jest";
-import * as vmss from "..";
 
 describe("Azure Linux Virtual Machine Scale Set With Defaults", () => {
   let stack: TerraformStack;

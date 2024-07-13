@@ -1,3 +1,4 @@
+import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
@@ -7,10 +8,9 @@ import {
 } from "../../testing";
 import { generateRandomName } from "../../util/randomName";
 import "cdktf/lib/testing/adapters/jest";
-import { DataAzurermClientConfig } from "@cdktf/provider-azurerm/lib/data-azurerm-client-config";
 import * as eh from "../lib";
 
-describe("Resource Group With Defaults", () => {
+describe("Example of deploying an Event Hub", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
   const streamOutput = process.env.STREAM_OUTPUT !== "false";

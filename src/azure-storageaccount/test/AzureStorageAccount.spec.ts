@@ -1,9 +1,9 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
+import * as storage from "..";
 import { TerraformPlan } from "../../testing";
 
 import "cdktf/lib/testing/adapters/jest";
-import * as storage from "..";
 
 describe("Azure Storage Account With Defaults", () => {
   let stack: TerraformStack;

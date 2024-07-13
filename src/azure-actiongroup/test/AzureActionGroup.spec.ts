@@ -1,8 +1,9 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
+import { ActionGroup } from "..";
 import { TerraformPlan } from "../../testing";
 import "cdktf/lib/testing/adapters/jest";
-import { ActionGroup } from "..";
+
 import * as model from "../model";
 
 describe("Action Group With Defaults", () => {

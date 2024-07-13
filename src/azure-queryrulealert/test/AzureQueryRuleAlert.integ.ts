@@ -1,11 +1,8 @@
-import { Testing, TerraformStack } from "cdktf";
 import { LogAnalyticsWorkspace } from "@cdktf/provider-azurerm/lib/log-analytics-workspace";
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
+import { Testing, TerraformStack } from "cdktf";
 import * as queryalert from "../../azure-queryrulealert";
-
-
-
 
 import {
   TerraformApplyAndCheckIdempotency,
@@ -14,7 +11,7 @@ import {
 import { generateRandomName } from "../../util/randomName";
 import "cdktf/lib/testing/adapters/jest";
 
-describe("Resource Group With Defaults", () => {
+describe("Example of deploying a Query Alert", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
   const streamOutput = process.env.STREAM_OUTPUT !== "false";
@@ -61,7 +58,6 @@ AppExceptions
       criteriaFailMinimumFailingPeriodsToTriggerAlert: 1,
       criteriaFailNumberOfEvaluationPeriods: 1,
     });
-
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
   });

@@ -1,9 +1,9 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
+import * as la from "..";
 import { TerraformPlan } from "../../testing";
 
 import "cdktf/lib/testing/adapters/jest";
-import * as la from "..";
 
 describe("Log Analytics Workspace With Defaults", () => {
   let stack: TerraformStack;
