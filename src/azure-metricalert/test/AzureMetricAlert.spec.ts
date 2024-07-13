@@ -2,10 +2,8 @@ import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
 import { TerraformPlan } from "../../testing";
-
 import "cdktf/lib/testing/adapters/jest";
 import * as metricalert from "../../azure-metricalert";
-import * as util from "../../util/azureTenantIdHelpers";
 
 describe("Azure Metric Alert With Defaults", () => {
   let stack: TerraformStack;

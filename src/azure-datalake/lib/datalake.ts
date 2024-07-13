@@ -8,6 +8,7 @@ import { AzureResource } from "../../core-azure";
 export class DataLake extends AzureResource {
   readonly props: any;
   public resourceGroupName: string;
+  public id: string;
   public resourceGroup: ResourceGroup;
   public readonly filesystems: Map<string, DataLakeFilesystem>;
 
@@ -60,6 +61,8 @@ export class DataLake extends AzureResource {
       isHnsEnabled: true,
       resourceGroup: this.resourceGroup,
     });
+
+    this.id = this.storageAccount.id;
   }
   /**
    * Creates a new Data Lake Gen2 filesystem within the specified storage account.
