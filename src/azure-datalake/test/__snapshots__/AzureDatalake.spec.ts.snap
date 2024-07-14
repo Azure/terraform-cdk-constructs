@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Azure Storage Account With Defaults renders an Azure Storage Account with defaults and checks snapshot 1`] = `
+exports[`Azure Datalake With Defaults renders an Azure Storage Account with defaults and checks snapshot 1`] = `
 "{
   "provider": {
     "azurerm": [

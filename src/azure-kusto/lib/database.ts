@@ -57,7 +57,7 @@ export interface TableSchemaProps {
 }
 
 export class Database extends Construct {
-  public readonly database: KustoDatabase;
+  public readonly kustoDatabase: KustoDatabase;
   public readonly databaseName: string;
 
   /**
@@ -110,14 +110,14 @@ export class Database extends Construct {
     }
 
     // Outputs
-    this.database = kustoDatabase;
+    this.kustoDatabase = kustoDatabase;
     this.databaseName = props.name;
 
     const cdktfTerraformOutputKustoDbId = new cdktf.TerraformOutput(
       this,
       "id",
       {
-        value: this.database.id,
+        value: this.kustoDatabase.id,
       },
     );
     cdktfTerraformOutputKustoDbId.overrideLogicalId("id");
@@ -158,9 +158,9 @@ export class Database extends Construct {
       `kusto-db-${kustoDatabaseAccessProps.name}-access`,
       {
         name: kustoDatabaseAccessProps.name,
-        resourceGroupName: this.database.resourceGroupName,
-        clusterName: this.database.clusterName,
-        databaseName: this.database.name,
+        resourceGroupName: this.kustoDatabase.resourceGroupName,
+        clusterName: this.kustoDatabase.clusterName,
+        databaseName: this.kustoDatabase.name,
         tenantId: kustoDatabaseAccessProps.tenantId,
         principalId: kustoDatabaseAccessProps.principalId,
         principalType: kustoDatabaseAccessProps.principalType,
@@ -200,7 +200,7 @@ export class Database extends Construct {
 
     new KustoScript(this, `kusto-db-${this.databaseName}-table-${tableName}`, {
       name: tableName,
-      databaseId: this.database.id,
+      databaseId: this.kustoDatabase.id,
       scriptContent: scriptContent,
       continueOnErrorsEnabled: false,
       forceAnUpdateWhenValueChanged: Md5.hashStr(scriptContent),
@@ -234,7 +234,7 @@ export class Database extends Construct {
       `kusto-db-${this.databaseName}-script-${scriptName}`,
       {
         name: `script-${scriptName}`,
-        databaseId: this.database.id,
+        databaseId: this.kustoDatabase.id,
         scriptContent: scriptContent,
         continueOnErrorsEnabled: false,
         forceAnUpdateWhenValueChanged: Md5.hashStr(scriptContent),

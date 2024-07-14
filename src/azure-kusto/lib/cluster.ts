@@ -80,7 +80,7 @@ export interface ClusterProps {
 
 export class Cluster extends AzureResource {
   readonly props: ClusterProps;
-  public cluster: KustoCluster;
+  public kustoCluster: KustoCluster;
   public id: string;
   public resourceGroup: ResourceGroup;
   public name: string;
@@ -169,7 +169,7 @@ export class Cluster extends AzureResource {
     this.id = azurermKustoCluster.id;
     this.name = azurermKustoCluster.name;
     this.uri = azurermKustoCluster.uri;
-    this.cluster = azurermKustoCluster;
+    this.kustoCluster = azurermKustoCluster;
 
     // Outputs
     // const cdktfTerraformOutputKustoId = new cdktf.TerraformOutput(
@@ -242,7 +242,7 @@ export class Cluster extends AzureResource {
    */
   public addDatabase(databaseProps: DatabaseProps) {
     return new Database(this, databaseProps.name, {
-      kustoCluster: this.cluster,
+      kustoCluster: this.kustoCluster,
       name: databaseProps.name,
       hotCachePeriod: databaseProps.hotCachePeriod,
       softDeletePeriod: databaseProps.softDeletePeriod,

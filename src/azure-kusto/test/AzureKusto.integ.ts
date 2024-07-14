@@ -50,7 +50,7 @@ describe("Example of deploying a Kusto Cluster", () => {
 
     // Create Database
     const testDB1 = kustoCluster.addDatabase({
-      kustoCluster: kustoCluster.cluster,
+      kustoCluster: kustoCluster.kustoCluster,
       name: "testDB1",
       hotCachePeriod: "P7D",
       softDeletePeriod: "P31D",

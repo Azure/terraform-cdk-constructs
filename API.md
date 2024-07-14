@@ -2483,6 +2483,8 @@ Any object.
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.uri">uri</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.kustoCluster">kustoCluster</a></code> | <code>@cdktf/provider-azurerm.kustoCluster.KustoCluster</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.name">name</a></code> | <code>string</code> | *No description.* |
 
 ---
 
@@ -2532,6 +2534,26 @@ public readonly props: ClusterProps;
 
 ```typescript
 public readonly uri: string;
+```
+
+- *Type:* string
+
+---
+
+##### `kustoCluster`<sup>Required</sup> <a name="kustoCluster" id="@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.kustoCluster"></a>
+
+```typescript
+public readonly kustoCluster: KustoCluster;
+```
+
+- *Type:* @cdktf/provider-azurerm.kustoCluster.KustoCluster
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_kusto.Cluster.property.name"></a>
+
+```typescript
+public readonly name: string;
 ```
 
 - *Type:* string
@@ -2902,14 +2924,14 @@ public readonly name: string;
 ```typescript
 import { azure_kusto } from '@microsoft/terraform-cdk-constructs'
 
-new azure_kusto.Database(scope: Construct, id: string, kustoDbProps: DatabaseProps)
+new azure_kusto.Database(scope: Construct, id: string, props: DatabaseProps)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct, typically representing the Cloud Development Kit (CDK) stack. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance of the Kusto database. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.kustoDbProps">kustoDbProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps</code> | - The properties required to configure the Kusto database. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps</code> | - The properties required to configure the Kusto database. |
 
 ---
 
@@ -2929,19 +2951,19 @@ The unique identifier for this instance of the Kusto database.
 
 ---
 
-##### `kustoDbProps`<sup>Required</sup> <a name="kustoDbProps" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.kustoDbProps"></a>
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.Initializer.parameter.props"></a>
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps
 
 The properties required to configure the Kusto database.
 
 These include:
-  - `kusto`: Reference to the Kusto cluster to which the database will belong.
-  - `name`: The name of the database to be created within the Kusto cluster.
-  - `hotCachePeriod`: Optional. Specifies the duration that data should be kept in cache for faster query performance.
-                      Expressed in ISO 8601 duration format.
-  - `softDeletePeriod`: Optional. Specifies the duration that data should be retained before it stops being accessible.
-                        Expressed in ISO 8601 duration format.
+         - `kusto`: Reference to the Kusto cluster to which the database will belong.
+         - `name`: The name of the database to be created within the Kusto cluster.
+         - `hotCachePeriod`: Optional. Specifies the duration that data should be kept in cache for faster query performance.
+                             Expressed in ISO 8601 duration format.
+         - `softDeletePeriod`: Optional. Specifies the duration that data should be retained before it stops being accessible.
+                               Expressed in ISO 8601 duration format.
 
 Example usage:
 ```typescript
@@ -3142,10 +3164,8 @@ Any object.
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.property.kustoDbProps">kustoDbProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.property.kustoProps">kustoProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.property.rg">rg</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.property.databaseName">databaseName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.Database.property.kustoDatabase">kustoDatabase</a></code> | <code>@cdktf/provider-azurerm.kustoDatabase.KustoDatabase</code> | *No description.* |
 
 ---
 
@@ -3161,43 +3181,23 @@ The tree node.
 
 ---
 
-##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.property.id"></a>
+##### `databaseName`<sup>Required</sup> <a name="databaseName" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.property.databaseName"></a>
 
 ```typescript
-public readonly id: string;
+public readonly databaseName: string;
 ```
 
 - *Type:* string
 
 ---
 
-##### `kustoDbProps`<sup>Required</sup> <a name="kustoDbProps" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.property.kustoDbProps"></a>
+##### `kustoDatabase`<sup>Required</sup> <a name="kustoDatabase" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.property.kustoDatabase"></a>
 
 ```typescript
-public readonly kustoDbProps: DatabaseProps;
+public readonly kustoDatabase: KustoDatabase;
 ```
 
-- *Type:* @microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps
-
----
-
-##### `kustoProps`<sup>Required</sup> <a name="kustoProps" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.property.kustoProps"></a>
-
-```typescript
-public readonly kustoProps: ClusterProps;
-```
-
-- *Type:* @microsoft/terraform-cdk-constructs.azure_kusto.ClusterProps
-
----
-
-##### `rg`<sup>Required</sup> <a name="rg" id="@microsoft/terraform-cdk-constructs.azure_kusto.Database.property.rg"></a>
-
-```typescript
-public readonly rg: string;
-```
-
-- *Type:* string
+- *Type:* @cdktf/provider-azurerm.kustoDatabase.KustoDatabase
 
 ---
 
@@ -4811,6 +4811,7 @@ Any object.
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.property.ehInstanceProps">ehInstanceProps</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.InstanceProps</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.property.partitionIds">partitionIds</a></code> | <code>string[]</code> | *No description.* |
 
 ---
@@ -4841,6 +4842,16 @@ public readonly ehInstanceProps: InstanceProps;
 
 ```typescript
 public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Instance.property.name"></a>
+
+```typescript
+public readonly name: string;
 ```
 
 - *Type:* string
@@ -9668,6 +9679,7 @@ Any object.
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.property.logAnalyticsWorkspace">logAnalyticsWorkspace</a></code> | <code>@cdktf/provider-azurerm.logAnalyticsWorkspace.LogAnalyticsWorkspace</code> | *No description.* |
 
 ---
 
@@ -9710,6 +9722,16 @@ public readonly props: WorkspaceProps;
 ```
 
 - *Type:* @microsoft/terraform-cdk-constructs.azure_loganalytics.WorkspaceProps
+
+---
+
+##### `logAnalyticsWorkspace`<sup>Required</sup> <a name="logAnalyticsWorkspace" id="@microsoft/terraform-cdk-constructs.azure_loganalytics.Workspace.property.logAnalyticsWorkspace"></a>
+
+```typescript
+public readonly logAnalyticsWorkspace: LogAnalyticsWorkspace;
+```
+
+- *Type:* @cdktf/provider-azurerm.logAnalyticsWorkspace.LogAnalyticsWorkspace
 
 ---
 
@@ -9866,6 +9888,7 @@ const accountProps: azure_storageaccount.AccountProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.AccountProps.property.minTlsVersion">minTlsVersion</a></code> | <code>string</code> | The minimum TLS version to be used for securing connections to the storage account. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.AccountProps.property.publicNetworkAccessEnabled">publicNetworkAccessEnabled</a></code> | <code>boolean</code> | A boolean flag indicating whether public network access to the storage account is allowed. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.AccountProps.property.resourceGroup">resourceGroup</a></code> | <code>@cdktf/provider-azurerm.resourceGroup.ResourceGroup</code> | The name of the Azure resource group in which to create the storage account. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.AccountProps.property.sharedAccessKeyEnabled">sharedAccessKeyEnabled</a></code> | <code>boolean</code> | Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.AccountProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the storage account, used for categorization and billing purposes. |
 
 ---
@@ -10025,6 +10048,21 @@ public readonly resourceGroup: ResourceGroup;
 - *Type:* @cdktf/provider-azurerm.resourceGroup.ResourceGroup
 
 The name of the Azure resource group in which to create the storage account.
+
+---
+
+##### `sharedAccessKeyEnabled`<sup>Optional</sup> <a name="sharedAccessKeyEnabled" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.AccountProps.property.sharedAccessKeyEnabled"></a>
+
+```typescript
+public readonly sharedAccessKeyEnabled: boolean;
+```
+
+- *Type:* boolean
+
+Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key.
+
+If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD).
+Terraform uses Shared Key Authorisation to provision Storage Containers, Blobs and other items - when Shared Key Access is disabled, you will need to enable the storage_use_azuread flag in the Provider block to use Azure AD for authentication, however not all Azure Storage services support Active Directory authentication.
 
 ---
 
@@ -11056,10 +11094,10 @@ const baseDiagnosticSettingsProps: core_azure.BaseDiagnosticSettingsProps = { ..
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.eventhubAuthorizationRuleId">eventhubAuthorizationRuleId</a></code> | <code>string</code> | Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.71.0/docs/resources/monitor_diagnostic_setting#eventhub_authorization_rule_id MonitorDiagnosticSetting#eventhub_authorization_rule_id}. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.eventhubName">eventhubName</a></code> | <code>string</code> | Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.71.0/docs/resources/monitor_diagnostic_setting#eventhub_name MonitorDiagnosticSetting#eventhub_name}. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.log">log</a></code> | <code>@cdktf/provider-azurerm.monitorDiagnosticSetting.MonitorDiagnosticSettingEnabledLog[]</code> | Log Diagnostic categories. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.logAnalyticsDestinationType">logAnalyticsDestinationType</a></code> | <code>string</code> | When set to 'Dedicated' logs sent to a Log Analytics workspace will go into resource specific tables, instead of the legacy AzureDiagnostics table. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.logAnalyticsWorkspaceId">logAnalyticsWorkspaceId</a></code> | <code>string</code> | Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.71.0/docs/resources/monitor_diagnostic_setting#log_analytics_workspace_id MonitorDiagnosticSetting#log_analytics_workspace_id}. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.logCategories">logCategories</a></code> | <code>string[]</code> | Log Diagnostic categories. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.metricCategories">metricCategories</a></code> | <code>string[]</code> | Diagnostic Metrics. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.metric">metric</a></code> | <code>@cdktf/provider-azurerm.monitorDiagnosticSetting.MonitorDiagnosticSettingMetric[]</code> | Diagnostic Metrics. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.name">name</a></code> | <code>string</code> | Name of the diagnostic settings resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.partnerSolutionId">partnerSolutionId</a></code> | <code>string</code> | Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.71.0/docs/resources/monitor_diagnostic_setting#partner_solution_id MonitorDiagnosticSetting#partner_solution_id}. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.storageAccountId">storageAccountId</a></code> | <code>string</code> | Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.71.0/docs/resources/monitor_diagnostic_setting#storage_account_id MonitorDiagnosticSetting#storage_account_id}. |
@@ -11090,6 +11128,19 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashi
 
 ---
 
+##### `log`<sup>Optional</sup> <a name="log" id="@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.log"></a>
+
+```typescript
+public readonly log: MonitorDiagnosticSettingEnabledLog[];
+```
+
+- *Type:* @cdktf/provider-azurerm.monitorDiagnosticSetting.MonitorDiagnosticSettingEnabledLog[]
+- *Default:* null
+
+Log Diagnostic categories.
+
+---
+
 ##### `logAnalyticsDestinationType`<sup>Optional</sup> <a name="logAnalyticsDestinationType" id="@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.logAnalyticsDestinationType"></a>
 
 ```typescript
@@ -11114,26 +11165,13 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashi
 
 ---
 
-##### `logCategories`<sup>Optional</sup> <a name="logCategories" id="@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.logCategories"></a>
+##### `metric`<sup>Optional</sup> <a name="metric" id="@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.metric"></a>
 
 ```typescript
-public readonly logCategories: string[];
+public readonly metric: MonitorDiagnosticSettingMetric[];
 ```
 
-- *Type:* string[]
-- *Default:* null
-
-Log Diagnostic categories.
-
----
-
-##### `metricCategories`<sup>Optional</sup> <a name="metricCategories" id="@microsoft/terraform-cdk-constructs.core_azure.BaseDiagnosticSettingsProps.property.metricCategories"></a>
-
-```typescript
-public readonly metricCategories: string[];
-```
-
-- *Type:* string[]
+- *Type:* @cdktf/provider-azurerm.monitorDiagnosticSetting.MonitorDiagnosticSettingMetric[]
 - *Default:* null
 
 Diagnostic Metrics.
@@ -12089,20 +12127,20 @@ const databaseProps: azure_kusto.DatabaseProps = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps.property.kusto">kusto</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_kusto.Cluster</code> | The Azure Kusto cluster to which this database belongs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps.property.kustoCluster">kustoCluster</a></code> | <code>@cdktf/provider-azurerm.kustoCluster.KustoCluster</code> | The Azure Kusto cluster to which this database belongs. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps.property.name">name</a></code> | <code>string</code> | The name of the Kusto Database to create. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps.property.hotCachePeriod">hotCachePeriod</a></code> | <code>string</code> | The time the data that should be kept in cache for fast queries as ISO 8601 timespan. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps.property.softDeletePeriod">softDeletePeriod</a></code> | <code>string</code> | The time the data should be kept before it stops being accessible to queries as ISO 8601 timespan. |
 
 ---
 
-##### `kusto`<sup>Required</sup> <a name="kusto" id="@microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps.property.kusto"></a>
+##### `kustoCluster`<sup>Required</sup> <a name="kustoCluster" id="@microsoft/terraform-cdk-constructs.azure_kusto.DatabaseProps.property.kustoCluster"></a>
 
 ```typescript
-public readonly kusto: Cluster;
+public readonly kustoCluster: KustoCluster;
 ```
 
-- *Type:* @microsoft/terraform-cdk-constructs.azure_kusto.Cluster
+- *Type:* @cdktf/provider-azurerm.kustoCluster.KustoCluster
 
 The Azure Kusto cluster to which this database belongs.
 
@@ -12235,10 +12273,10 @@ const diagnosticSettingsProps: core_azure.DiagnosticSettingsProps = { ... }
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.eventhubAuthorizationRuleId">eventhubAuthorizationRuleId</a></code> | <code>string</code> | Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.71.0/docs/resources/monitor_diagnostic_setting#eventhub_authorization_rule_id MonitorDiagnosticSetting#eventhub_authorization_rule_id}. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.eventhubName">eventhubName</a></code> | <code>string</code> | Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.71.0/docs/resources/monitor_diagnostic_setting#eventhub_name MonitorDiagnosticSetting#eventhub_name}. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.log">log</a></code> | <code>@cdktf/provider-azurerm.monitorDiagnosticSetting.MonitorDiagnosticSettingEnabledLog[]</code> | Log Diagnostic categories. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.logAnalyticsDestinationType">logAnalyticsDestinationType</a></code> | <code>string</code> | When set to 'Dedicated' logs sent to a Log Analytics workspace will go into resource specific tables, instead of the legacy AzureDiagnostics table. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.logAnalyticsWorkspaceId">logAnalyticsWorkspaceId</a></code> | <code>string</code> | Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.71.0/docs/resources/monitor_diagnostic_setting#log_analytics_workspace_id MonitorDiagnosticSetting#log_analytics_workspace_id}. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.logCategories">logCategories</a></code> | <code>string[]</code> | Log Diagnostic categories. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.metricCategories">metricCategories</a></code> | <code>string[]</code> | Diagnostic Metrics. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.metric">metric</a></code> | <code>@cdktf/provider-azurerm.monitorDiagnosticSetting.MonitorDiagnosticSettingMetric[]</code> | Diagnostic Metrics. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.name">name</a></code> | <code>string</code> | Name of the diagnostic settings resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.partnerSolutionId">partnerSolutionId</a></code> | <code>string</code> | Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.71.0/docs/resources/monitor_diagnostic_setting#partner_solution_id MonitorDiagnosticSetting#partner_solution_id}. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.storageAccountId">storageAccountId</a></code> | <code>string</code> | Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashicorp/azurerm/3.71.0/docs/resources/monitor_diagnostic_setting#storage_account_id MonitorDiagnosticSetting#storage_account_id}. |
@@ -12270,6 +12308,19 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashi
 
 ---
 
+##### `log`<sup>Optional</sup> <a name="log" id="@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.log"></a>
+
+```typescript
+public readonly log: MonitorDiagnosticSettingEnabledLog[];
+```
+
+- *Type:* @cdktf/provider-azurerm.monitorDiagnosticSetting.MonitorDiagnosticSettingEnabledLog[]
+- *Default:* null
+
+Log Diagnostic categories.
+
+---
+
 ##### `logAnalyticsDestinationType`<sup>Optional</sup> <a name="logAnalyticsDestinationType" id="@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.logAnalyticsDestinationType"></a>
 
 ```typescript
@@ -12294,26 +12345,13 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/hashi
 
 ---
 
-##### `logCategories`<sup>Optional</sup> <a name="logCategories" id="@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.logCategories"></a>
+##### `metric`<sup>Optional</sup> <a name="metric" id="@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.metric"></a>
 
 ```typescript
-public readonly logCategories: string[];
+public readonly metric: MonitorDiagnosticSettingMetric[];
 ```
 
-- *Type:* string[]
-- *Default:* null
-
-Log Diagnostic categories.
-
----
-
-##### `metricCategories`<sup>Optional</sup> <a name="metricCategories" id="@microsoft/terraform-cdk-constructs.core_azure.DiagnosticSettingsProps.property.metricCategories"></a>
-
-```typescript
-public readonly metricCategories: string[];
-```
-
-- *Type:* string[]
+- *Type:* @cdktf/provider-azurerm.monitorDiagnosticSetting.MonitorDiagnosticSettingMetric[]
 - *Default:* null
 
 Diagnostic Metrics.
@@ -13638,6 +13676,7 @@ const linuxClusterProps: azure_virtualmachinescaleset.LinuxClusterProps = { ... 
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.enableSshAzureADLogin">enableSshAzureADLogin</a></code> | <code>boolean</code> | Enable SSH Azure AD Login, required managed identity to be set. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.identity">identity</a></code> | <code>@cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineIdentity</code> | Managed identity settings for the VMs. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.instances">instances</a></code> | <code>number</code> | The number of VM instances in the scale set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.lifecycle">lifecycle</a></code> | <code>cdktf.TerraformResourceLifecycle</code> | Lifecycle settings for the Terraform resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.location">location</a></code> | <code>string</code> | The Azure location where the virtual machine scale set should be created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.name">name</a></code> | <code>string</code> | The name of the virtual machine scale set. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.osDisk">osDisk</a></code> | <code>@cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineOsDisk</code> | The OS disk configuration for the virtual machines. |
@@ -13751,6 +13790,18 @@ public readonly instances: number;
 - *Default:* 2
 
 The number of VM instances in the scale set.
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.LinuxClusterProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktf.TerraformResourceLifecycle
+
+Lifecycle settings for the Terraform resource.
 
 ---
 
@@ -13965,6 +14016,7 @@ const linuxVMProps: azure_virtualmachine.LinuxVMProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.customData">customData</a></code> | <code>string</code> | Custom data to pass to the virtual machine upon creation. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.enableSshAzureADLogin">enableSshAzureADLogin</a></code> | <code>boolean</code> | Enable SSH Azure AD Login, required managed identity to be set. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.identity">identity</a></code> | <code>@cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineIdentity</code> | Managed identity settings for the VM. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.lifecycle">lifecycle</a></code> | <code>cdktf.TerraformResourceLifecycle</code> | Lifecycle settings for the Terraform resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.location">location</a></code> | <code>string</code> | The Azure location where the virtual machine should be created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.name">name</a></code> | <code>string</code> | The name of the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.osDisk">osDisk</a></code> | <code>@cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineOsDisk</code> | The OS disk configuration for the virtual machine. |
@@ -14086,6 +14138,18 @@ public readonly identity: LinuxVirtualMachineIdentity;
 - *Type:* @cdktf/provider-azurerm.linuxVirtualMachine.LinuxVirtualMachineIdentity
 
 Managed identity settings for the VM.
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.LinuxVMProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktf.TerraformResourceLifecycle
+
+Lifecycle settings for the Terraform resource.
 
 ---
 
@@ -16417,6 +16481,7 @@ const windowsClusterProps: azure_virtualmachinescaleset.WindowsClusterProps = { 
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.bootDiagnosticsStorageURI">bootDiagnosticsStorageURI</a></code> | <code>string</code> | Bootdiagnostics settings for the VM. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.customData">customData</a></code> | <code>string</code> | Custom data to pass to the virtual machine upon creation. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.instances">instances</a></code> | <code>number</code> | The number of VM instances in the scale set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.lifecycle">lifecycle</a></code> | <code>cdktf.TerraformResourceLifecycle</code> | Lifecycle settings for the Terraform resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.location">location</a></code> | <code>string</code> | The Azure location where the virtual machine should be created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.name">name</a></code> | <code>string</code> | The name of the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.osDisk">osDisk</a></code> | <code>@cdktf/provider-azurerm.windowsVirtualMachine.WindowsVirtualMachineOsDisk</code> | The OS disk configuration for the virtual machine. |
@@ -16506,6 +16571,18 @@ public readonly instances: number;
 - *Default:* 2
 
 The number of VM instances in the scale set.
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_virtualmachinescaleset.WindowsClusterProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktf.TerraformResourceLifecycle
+
+Lifecycle settings for the Terraform resource.
 
 ---
 
@@ -16705,6 +16782,7 @@ const windowsVMProps: azure_virtualmachine.WindowsVMProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.boostrapCustomData">boostrapCustomData</a></code> | <code>string</code> | Custom data to bootstrap the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.bootDiagnosticsStorageURI">bootDiagnosticsStorageURI</a></code> | <code>string</code> | Bootdiagnostics settings for the VM. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.customData">customData</a></code> | <code>string</code> | Custom data to pass to the virtual machine upon creation. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.lifecycle">lifecycle</a></code> | <code>cdktf.TerraformResourceLifecycle</code> | Lifecycle settings for the Terraform resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.location">location</a></code> | <code>string</code> | The Azure location where the virtual machine should be created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.name">name</a></code> | <code>string</code> | The name of the virtual machine. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.osDisk">osDisk</a></code> | <code>@cdktf/provider-azurerm.windowsVirtualMachine.WindowsVirtualMachineOsDisk</code> | The OS disk configuration for the virtual machine. |
@@ -16777,6 +16855,18 @@ public readonly customData: string;
 - *Type:* string
 
 Custom data to pass to the virtual machine upon creation.
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.WindowsVMProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktf.TerraformResourceLifecycle
+
+Lifecycle settings for the Terraform resource.
 
 ---
 

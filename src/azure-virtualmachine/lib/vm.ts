@@ -116,14 +116,6 @@ export interface WindowsVMProps {
    * resource. It can include settings such as create before destroy, prevent destroy,
    * ignore changes, etc.
    *
-   * @example
-   * ```
-   * lifecycle: {
-   *   createBeforeDestroy: true,
-   *   preventDestroy: true,
-   *   ignoreChanges: ["tags"],
-   * }
-   * ```
    */
   readonly lifecycle?: cdktf.TerraformMetaArguments["lifecycle"];
 }
@@ -398,15 +390,6 @@ export interface LinuxVMProps {
    * allowing you to define specific actions to be taken during the lifecycle of the
    * resource. It can include settings such as create before destroy, prevent destroy,
    * ignore changes, etc.
-   *
-   * @example
-   * ```
-   * lifecycle: {
-   *   createBeforeDestroy: true,
-   *   preventDestroy: true,
-   *   ignoreChanges: ["tags"],
-   * }
-   * ```
    */
   readonly lifecycle?: cdktf.TerraformMetaArguments["lifecycle"];
 }

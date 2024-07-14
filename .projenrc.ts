@@ -157,6 +157,7 @@ if (buildWorkflow) {
       "paths-ignore": [".devcontainer/**", "README.md"],
     },
   });
+  buildWorkflow.patch(JsonPatch.remove("/on/pull_request"));
   buildWorkflow.patch(
     JsonPatch.add("/jobs/build/permissions/id-token", "write"),
   );
