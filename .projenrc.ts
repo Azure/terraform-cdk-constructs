@@ -115,7 +115,7 @@ if (testTask) {
     testTask.spawn(eslintTask);
   }
   testTask.exec(
-    "curl -L 'https://github.com/tfsec/tfsec/releases/download/v0.58.14/tfsec-linux-amd64' > tfsec && chmod +x tfsec && sudo mv tfsec /usr/local/bin/ && tfsec --config-file tfsec.json cdktf.out",
+    "curl -L 'https://github.com/tfsec/tfsec/releases/download/v0.58.14/tfsec-linux-amd64' > tfsec && chmod +x tfsec && sudo mv tfsec /usr/local/bin/ && tfsec --config-file tfsec.json /tmp",
   );
 }
 
