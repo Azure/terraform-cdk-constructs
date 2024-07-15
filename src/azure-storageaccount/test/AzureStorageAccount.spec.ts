@@ -1,8 +1,9 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
-import "cdktf/lib/testing/adapters/jest";
 import * as storage from "..";
-import { exampleAzureStorageAccount } from "../test/ExampleAzureStorageAccount";
+import { TerraformPlan } from "../../testing";
+
+import "cdktf/lib/testing/adapters/jest";
 
 describe("Azure Storage Account With Defaults", () => {
   let stack: TerraformStack;
@@ -32,43 +33,6 @@ describe("Azure Storage Account With Defaults", () => {
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
-  });
-});
-
-describe("Azure Storage Account Example", () => {
-  it("renders the Example Storage Account and checks snapshot", () => {
-    expect(
-      Testing.synth(
-        new exampleAzureStorageAccount(
-          Testing.app(),
-          "testNetworkSecurityGroupExample",
-        ),
-      ),
-    ).toMatchSnapshot();
-  });
-
-  it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureStorageAccount(
-          Testing.app(),
-          "testNetworkSecurityGroupExample",
-        ),
-      ),
-    ).toBeValidTerraform();
-  });
-
-  it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureStorageAccount(
-          Testing.app(),
-          "testNetworkSecurityGroupExample",
-        ),
-      ),
-    ).toPlanSuccessfully();
+    TerraformPlan(fullSynthResult); // Use the saved result
   });
 });

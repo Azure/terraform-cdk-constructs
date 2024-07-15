@@ -152,6 +152,17 @@ export interface LinuxClusterProps {
    * @default false
    */
   readonly enableSshAzureADLogin?: boolean;
+
+  /**
+   * Lifecycle settings for the Terraform resource.
+   *
+   * @remarks
+   * This property specifies the lifecycle customizations for the Terraform resource,
+   * allowing you to define specific actions to be taken during the lifecycle of the
+   * resource. It can include settings such as create before destroy, prevent destroy,
+   * ignore changes, etc.
+   */
+  readonly lifecycle?: cdktf.TerraformMetaArguments["lifecycle"];
 }
 
 export class LinuxCluster extends AzureResource {
@@ -250,6 +261,7 @@ export class LinuxCluster extends AzureResource {
         adminPassword: props.adminPassword,
         disablePasswordAuthentication: props.adminPassword ? false : true,
         tags: props.tags,
+        lifecycle: props.lifecycle,
         networkInterface: [
           {
             name: `nic-${defaults.name}`,
@@ -405,6 +417,17 @@ export interface WindowsClusterProps {
    * Specifies the scale-in policy for the VMSS.
    */
   readonly scaleInPolicy?: string;
+
+  /**
+   * Lifecycle settings for the Terraform resource.
+   *
+   * @remarks
+   * This property specifies the lifecycle customizations for the Terraform resource,
+   * allowing you to define specific actions to be taken during the lifecycle of the
+   * resource. It can include settings such as create before destroy, prevent destroy,
+   * ignore changes, etc.
+   */
+  readonly lifecycle?: cdktf.TerraformMetaArguments["lifecycle"];
 }
 
 export class WindowsCluster extends AzureResource {
@@ -509,6 +532,7 @@ export class WindowsCluster extends AzureResource {
         adminUsername: props.adminUsername,
         adminPassword: props.adminPassword,
         tags: props.tags,
+        lifecycle: props.lifecycle,
         networkInterface: [
           {
             name: `nic-${defaults.name}`,

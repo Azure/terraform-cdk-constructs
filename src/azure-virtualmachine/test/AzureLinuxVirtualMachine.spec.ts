@@ -1,8 +1,8 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
-import "cdktf/lib/testing/adapters/jest";
 import * as vm from "..";
-import { exampleAzureLinuxVirtualMachine } from "../test/ExampleAzureLinuxVirtualMachine";
+import { TerraformPlan } from "../../testing";
+import "cdktf/lib/testing/adapters/jest";
 
 describe("Azure Linux Virtual Machine With Defaults", () => {
   let stack: TerraformStack;
@@ -28,43 +28,6 @@ describe("Azure Linux Virtual Machine With Defaults", () => {
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
-  });
-});
-
-describe("Azure Linux Virtual Machine Example", () => {
-  it("renders the Azure Linux Virtual Machine and checks snapshot", () => {
-    expect(
-      Testing.synth(
-        new exampleAzureLinuxVirtualMachine(
-          Testing.app(),
-          "testAzureLinuxVirtualMachineExample",
-        ),
-      ),
-    ).toMatchSnapshot();
-  });
-
-  it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureLinuxVirtualMachine(
-          Testing.app(),
-          "testAzureLinuxVirtualMachineExample",
-        ),
-      ),
-    ).toBeValidTerraform();
-  });
-
-  it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureLinuxVirtualMachine(
-          Testing.app(),
-          "testAzureLinuxVirtualMachineExample",
-        ),
-      ),
-    ).toPlanSuccessfully();
+    TerraformPlan(fullSynthResult); // Use the saved result
   });
 });

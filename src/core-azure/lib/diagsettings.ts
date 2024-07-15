@@ -1,5 +1,9 @@
-import { DataAzurermMonitorDiagnosticCategories } from "@cdktf/provider-azurerm/lib/data-azurerm-monitor-diagnostic-categories";
-import { MonitorDiagnosticSetting } from "@cdktf/provider-azurerm/lib/monitor-diagnostic-setting";
+//import { DataAzurermMonitorDiagnosticCategories } from "@cdktf/provider-azurerm/lib/data-azurerm-monitor-diagnostic-categories";
+import {
+  MonitorDiagnosticSetting,
+  MonitorDiagnosticSettingMetric,
+  MonitorDiagnosticSettingEnabledLog,
+} from "@cdktf/provider-azurerm/lib/monitor-diagnostic-setting";
 import { Construct } from "constructs";
 
 export interface BaseDiagnosticSettingsProps {
@@ -38,13 +42,13 @@ export interface BaseDiagnosticSettingsProps {
    * Log Diagnostic categories
    * @default null
    */
-  readonly logCategories?: string[];
+  readonly log?: MonitorDiagnosticSettingEnabledLog[];
 
   /**
    * Diagnostic Metrics
    * @default null
    */
-  readonly metricCategories?: string[];
+  readonly metric?: MonitorDiagnosticSettingMetric[];
 }
 
 export interface DiagnosticSettingsProps extends BaseDiagnosticSettingsProps {
@@ -99,18 +103,18 @@ export class DiagnosticSettings extends Construct {
     this.props = props;
 
     // Get the list of available diagnostic categories
-    const categories = new DataAzurermMonitorDiagnosticCategories(
-      this,
-      "diagcategories",
-      {
-        resourceId: props.targetResourceId,
-      },
-    );
+    // const categories = new DataAzurermMonitorDiagnosticCategories(
+    //   this,
+    //   "diagcategories",
+    //   {
+    //     resourceId: props.targetResourceId,
+    //   },
+    // );
 
-    const logCategories = props.logCategories ?? categories.logCategoryTypes;
-    const metricCategories = props.metricCategories ?? categories.metrics;
+    //const logCategories = props.logCategories ?? categories.logCategoryTypes;
+    //const metricCategories = props.metricCategories ?? categories.metrics;
 
-    const diagsettings = new MonitorDiagnosticSetting(this, "diagsettings", {
+    new MonitorDiagnosticSetting(this, "diagsettings", {
       name: props.name || "diagsettings",
       targetResourceId: props.targetResourceId,
       logAnalyticsDestinationType: props.logAnalyticsDestinationType,
@@ -119,20 +123,8 @@ export class DiagnosticSettings extends Construct {
       eventhubAuthorizationRuleId: props.eventhubAuthorizationRuleId,
       eventhubName: props.eventhubName,
       partnerSolutionId: props.partnerSolutionId,
-    });
-
-    diagsettings.addOverride("dynamic.enabled_log", {
-      for_each: logCategories,
-      content: {
-        category: "${enabled_log.value}",
-      },
-    });
-
-    diagsettings.addOverride("dynamic.metric", {
-      for_each: metricCategories,
-      content: {
-        category: "${metric.value}",
-      },
+      metric: props.metric,
+      enabledLog: props.log,
     });
   }
 }

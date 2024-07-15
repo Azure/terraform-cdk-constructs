@@ -1,8 +1,8 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { Testing, TerraformStack } from "cdktf";
-import "cdktf/lib/testing/adapters/jest";
-import { exampleAzureNetworkSecurityGroup } from "./ExampleAzureNetworkSecurityGroup";
 import * as network from "..";
+import { TerraformPlan } from "../../testing";
+import "cdktf/lib/testing/adapters/jest";
 
 describe("Azure Network Security Group With Defaults", () => {
   let stack: TerraformStack;
@@ -38,43 +38,6 @@ describe("Azure Network Security Group With Defaults", () => {
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
-  });
-});
-
-describe("Azure Network Security Group Example", () => {
-  it("renders the Example Network Security Group and checks snapshot", () => {
-    expect(
-      Testing.synth(
-        new exampleAzureNetworkSecurityGroup(
-          Testing.app(),
-          "testNetworkSecurityGroupExample",
-        ),
-      ),
-    ).toMatchSnapshot();
-  });
-
-  it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureNetworkSecurityGroup(
-          Testing.app(),
-          "testNetworkSecurityGroupExample",
-        ),
-      ),
-    ).toBeValidTerraform();
-  });
-
-  it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureNetworkSecurityGroup(
-          Testing.app(),
-          "testNetworkSecurityGroupExample",
-        ),
-      ),
-    ).toPlanSuccessfully();
+    TerraformPlan(fullSynthResult); // Use the saved result
   });
 });

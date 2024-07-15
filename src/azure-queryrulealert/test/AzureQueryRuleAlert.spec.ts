@@ -1,10 +1,9 @@
 import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 import { ResourceGroup } from "@cdktf/provider-azurerm/lib/resource-group";
 import { Testing, TerraformStack } from "cdktf";
-import "cdktf/lib/testing/adapters/jest";
-import { exampleAzureQueryRuleAlert } from "./ExampleAzureQueryRuleAlert";
 import * as queryalert from "../../azure-queryrulealert";
-import * as util from "../../util/azureTenantIdHelpers";
+import { TerraformPlan } from "../../testing";
+import "cdktf/lib/testing/adapters/jest";
 
 describe("Azure Query Rule Alert With Defaults", () => {
   let stack: TerraformStack;
@@ -52,42 +51,6 @@ AppExceptions
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
-  });
-});
-
-describe("Linux Query Rule Alert Example", () => {
-  it("renders the Query Rule Alert and checks snapshot", () => {
-    // Need to remove the tenant_id from the snapshot as it will change wherever the test is run
-    const output = Testing.synth(
-      new exampleAzureQueryRuleAlert(Testing.app(), "testAzureQueryRuleAlert"),
-    );
-    const myObject: Record<string, any> = JSON.parse(output);
-
-    expect(util.removeTenantIdFromSnapshot(myObject)).toMatchSnapshot();
-  });
-
-  it("check if the produced terraform configuration is valid", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureQueryRuleAlert(
-          Testing.app(),
-          "testAzureQueryRuleAlert",
-        ),
-      ),
-    ).toBeValidTerraform();
-  });
-
-  it("check if this can be planned", () => {
-    // We need to do a full synth to plan the terraform configuration
-    expect(
-      Testing.fullSynth(
-        new exampleAzureQueryRuleAlert(
-          Testing.app(),
-          "testAzureQueryRuleAlert",
-        ),
-      ),
-    ).toPlanSuccessfully();
+    TerraformPlan(fullSynthResult); // Use the saved result
   });
 });

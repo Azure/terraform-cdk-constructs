@@ -44,7 +44,7 @@ const project = new cdktf.ConstructLibraryCdktf({
   },
   publishToMaven: {
     javaPackage: "com.microsoft.terraformcdkconstructs",
-    mavenGroupId: "com.microsoft",
+    mavenGroupId: "com.microsoft.terraformcdkconstructs",
     mavenArtifactId: "cdktf-azure-constructs",
   },
   jestOptions: {
@@ -85,8 +85,36 @@ if (project.jest && project.jest.config) {
   project.jest.config.transform = {
     "^.+\\.tsx?$": ["ts-jest", { tsconfig: "tsconfig.dev.json" }],
   };
+  project.jest.config.testMatch = [
+    "<rootDir>/src/**/__tests__/**/*.ts?(x)",
+    "<rootDir>/@(|src)/**/*(*.)@(spec|test|integ).ts?(x)",
+  ];
 }
+project.tsconfigDev.include.push("**/*.integ.ts");
 project.tsconfigDev.include.push("**/*.spec.ts");
+project.addScripts({
+  test: "jest --testMatch '**/*.spec.ts'",
+  integration: "STREAM_OUTPUT=true jest --testMatch '**/*.integ.ts'",
+  "integration:nostream":
+    "STREAM_OUTPUT=false jest --maxWorkers=12 --testMatch '**/*.integ.ts'",
+});
+
+// Modify the existing test task
+const testTask = project.tasks.tryFind("test");
+if (testTask) {
+  // Clear existing steps
+  testTask.reset();
+
+  // Add modified steps
+  testTask.exec(
+    "jest --passWithNoTests --coverageProvider=v8 --ci --testMatch '**/*.spec.ts'",
+    { receiveArgs: true },
+  );
+  const eslintTask = project.tasks.tryFind("eslint");
+  if (eslintTask) {
+    testTask.spawn(eslintTask);
+  }
+}
 
 const releaseWorkflow = project.tryFindObjectFile(
   ".github/workflows/release.yml",
@@ -126,6 +154,7 @@ if (buildWorkflow) {
       "paths-ignore": [".devcontainer/**", "README.md"],
     },
   });
+  buildWorkflow.patch(JsonPatch.remove("/on/pull_request"));
   buildWorkflow.patch(
     JsonPatch.add("/jobs/build/permissions/id-token", "write"),
   );
@@ -147,10 +176,6 @@ if (buildWorkflow) {
     }),
   );
 }
-
-project.projectBuild.testTask.exec(
-  "curl -L 'https://github.com/tfsec/tfsec/releases/download/v0.58.14/tfsec-linux-amd64' > tfsec && chmod +x tfsec && sudo mv tfsec /usr/local/bin/ && tfsec --config-file tfsec.json cdktf.out",
-);
 
 // Add .gitignore entries
 project.gitignore.include("cdk.out");

@@ -18,6 +18,29 @@ The purpose of this document is to provide guidelines for writing tests in the C
   - [Randomizing Globally Unique Resource Names](#randomizing-globally-unique-resource-names)
 - [End to End Tests](#end-to-end-tests-1)
 
+# How to run tests
+
+### How to run any single test:
+1. Must be logged in with Az Login
+2. Run the following command: 
+```
+jest ./pathtotestfile/filename.ts
+```
+
+### How to run all unit tests at same time:
+1. Must be logged in with Az Login
+2. Run the following command: 
+```
+npx projen test
+```
+
+### How to run all integration tests at same time:
+1. Must be logged in with Az Login
+2. Run the following command: 
+```
+npm run integration:nostream
+```
+
 
 ## Writing Tests
 
@@ -67,6 +90,7 @@ The tests will use AZ CLI for authentication. Make sure to set the Azure subscri
 az account set -s MySubscription
 ```
 
+
 ## How to Write Unit Tests
 Unit tests are written in Typescript using Jest. They consist of a `spec` test file within the module folder under the `test` folder:
 
@@ -83,13 +107,13 @@ Below is a spec test for the resource group construct:
 
 ```
 # index.ts
-import { Testing, TerraformStack} from 'cdktf';
-import 'cdktf/lib/testing/adapters/jest';
-import { AzureResourceGroup } from '../';
-import {AzurermProvider} from "@cdktf/provider-azurerm/lib/provider";
+import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
+import { Testing, TerraformStack } from "cdktf";
+import { TerraformPlan } from "../../testing";
+import "cdktf/lib/testing/adapters/jest";
+import * as rg from "..";
 
-
-describe('Resource Group With Defaults', () => {
+describe("Resource Group With Defaults", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
 
@@ -97,24 +121,22 @@ describe('Resource Group With Defaults', () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", {features: {}});
-    new AzureResourceGroup(stack, 'testRG');
+    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new rg.Group(stack, "testRG");
 
-    fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse
+    fullSynthResult = Testing.fullSynth(stack);
   });
 
   it("renders a Resource Group with defaults and checks snapshot", () => {
-    expect(
-      Testing.synth(stack)
-    ).toMatchSnapshot(); // Compare the already prepared stack
+    expect(Testing.synth(stack)).toMatchSnapshot(); 
   });
 
   it("check if the produced terraform configuration is valid", () => {
-    expect(fullSynthResult).toBeValidTerraform(); // Use the saved result
+    expect(fullSynthResult).toBeValidTerraform();
   });
 
   it("check if this can be planned", () => {
-    expect(fullSynthResult).toPlanSuccessfully(); // Use the saved result
+    TerraformPlan(fullSynthResult);
   });
 });
 ```
@@ -199,22 +221,21 @@ npm test src/azure-resourcegroup/test/AzureResourceGroup.spec.ts -- -u
 
 
 ## Integration Tests
-Integration tests are written in Golang using the Terratest library. The golang test ends in `_test.go`. An example file is used by the integration test to deploy an example of the construct and test that it works:
+Integration tests are written in typescript and end in `.integ.ts`:
 
 
 ```plaintext
 src
   └── azure-resourcegroup
       ├── test
-      │   ├── AzureResourceGroup_test.go 
-      │   └── ExampleAzureResourceGroup.ts
+      │   └── AzureResourceGroup.integ.ts
       │     
       └── index.ts
 ```
 
 The integration test will perform the following against the example file:
 
-1. **terraform apply**: The integration test starts by executing a terraform apply using the Example file to set up the infrastructure.
+1. **terraform apply**: The integration test starts by executing a terraform apply.
 2. **terraform plan**: After setup, a terraform plan is run to:
     - Confirm there are no additional changes needed.
     - Ensure the setup is stable and consistent (idempotent).
@@ -222,125 +243,6 @@ The integration test will perform the following against the example file:
 3. **terraform destroy**: At the end of the test, terraform destroy is executed.
     - This step removes the test environment and ensures the infrastructure can be cleanly deleted.
     - It's designed to catch common problems that occur when removing infrastructure, especially those related to resource dependencies.
-
-You may also checkout the [Terratest](https://github.com/gruntwork-io/terratest/tree/master/test/azure) library for test examples to use against the Azure resources.
-
-### Running the Integration Tests
-
-To run integration tests, use the following command in the test directory:
-```
-/workspaces/…/azure-resourcegroup/test$ go test -v .
-```
-
-This will kick off the integration test to synthesize the example file into Terraform configuration files within the `.tempstacks` folder in the module directory:
-
-```plaintext
-src
-  └── azure-resourcegroup
-      ├── test
-      │   ├── .tempstacks
-      │   │   └── stacks
-      │   │       └── testAzureResourceGroup
-      │   │           └── cdk.tf.json
-      │   ├── ExampleAzureResourceGroupStack.ts
-      │   └── AzureResourceGroup_test.go
-      └── index.ts
-```
-
-The test will then run `tfcdk deploy *` to deploy all stacks, then it will run any API checks to validate the deployed resource followed by a `tfcdk destroy` to clean up all the resources.
-
-After the test runs, the `.tempstacks` directory is automatically deleted. 
-
-#### Further Troubleshooting of Tests
-
-If there is a need to troubleshoot the stacks, you can comment out the `defer` block within the Go test and re-run the test:
-
-```
-// Comment this out to stop .tempstacks from being deleted
-	defer func() {
-		util.CdkTFDestroyAll(t, terraformOptions, example_file)
-		os.RemoveAll("./.tempstacks")
-	}()
-```
-
-
-### Randomizing Globally Unique Resource Names
-
-**Goal**: Ensure each resource has a unique name to prevent conflicts, especially useful in test environments or when deploying multiple instances of the same infrastructure.
-
-**Method**: Use a base class in TypeScript to set up a naming pattern, and then use Golang to generate a random name for each test run.
-
-**Step 1**: Create a Base Class in TypeScript
-First, you'll need a base class, BaseTestStack, which includes a variable for the resource name. This class sets up a default name, which you can later override with a random value.
-
-```typescript
-import {BaseTestStack} from "../../testing";
-
-const app = new App();
-
-export class exampleAzureResourceGroup extends BaseTestStack {
-  constructor(scope: Construct, id: string) {
-    super(scope, id);
-
-    new AzurermProvider(this, "azure", {
-      features: {},
-    });
-  
-    new AzureResourceGroup(this, 'testRG', {
-      name: `rg-${this.name}`,
-      location: 'eastus',
-      tags: {
-          name: 'test',
-          Env: "NonProd",
-      },
-      ignoreChanges: ['tags["Environment"]'],
-      
-    });
-
-  }
-}
-
-```
-**Step 2**: Extend the Base Class for Specific Resources
-When creating specific resources, extend the BaseTestStack class. Use this.name to create a unique name for each resource.
-
-
-```typescript
-import {BaseTestStack} from "../../testing";
-
-export class exampleAzureResourceGroup extends BaseTestStack {
-  constructor(scope: Construct, id: string) {
-    super(scope, id);
-
-    new AzureResourceGroup(this, 'testRG', {
-      name: `rg-${this.name}`, // Unique name for the resource
-      // ... other configurations ...
-    });
-  }
-}
-```
-
-**Step 3**: Use Golang to Generate a Random Name During Tests
-In your Golang tests, generate a random string to use as the resource name. This ensures that every test run has a different name for its resources.
-```typescript
-// Randomize System Name
-	rndName := strings.ToLower(random.UniqueId())
-
-	terraformOptions := &terraform.Options{
-		TerraformBinary: "cdktf",
-		//Terraform Variables
-		Vars: map[string]interface{}{
-			"name": rndName,
-		},
-		TerraformDir: "../../../",
-	}
-
-
-```
-
-When the test kicks off it will perform a `terraform -var=name=<RandomString>` to randomize the names of all the resources.
-
-
 
 ## End to End Tests
 

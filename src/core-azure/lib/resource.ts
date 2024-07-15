@@ -81,6 +81,8 @@ export abstract class AzureResource extends Construct {
       storageAccountId: props.storageAccountId,
       targetResourceId: this.id,
       logAnalyticsDestinationType: undefined,
+      log: props?.log,
+      metric: props?.metric,
     });
   }
 
