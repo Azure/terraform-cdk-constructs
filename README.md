@@ -61,7 +61,7 @@ npm install @cdktf/provider-azurerm
 Then, add the Microsoft Terraform CDK constructs for Azure:
 
 ```sh
-npm install @micrsoft/terraform-cdk-constructs
+npm install @microsoft/terraform-cdk-constructs
 
 ```
 
