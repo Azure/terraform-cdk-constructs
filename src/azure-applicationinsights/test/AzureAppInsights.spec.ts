@@ -12,7 +12,10 @@ describe("Application Insights With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     new appi.AppInsights(stack, "testAzureApplicationInsightsDefaults", {
       name: "appi-test",

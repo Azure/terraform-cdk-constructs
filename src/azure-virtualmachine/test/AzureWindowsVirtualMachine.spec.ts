@@ -12,7 +12,10 @@ describe("Azure Windows Virtual Machine With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "testAzureVMWithDefaults");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     new vm.WindowsVM(stack, "testVirtualMachine", {
       adminUsername: "testAdmin",

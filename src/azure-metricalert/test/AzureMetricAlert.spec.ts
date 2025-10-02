@@ -13,7 +13,10 @@ describe("Azure Metric Alert With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureQueryRuleAlert", { features: {} });
+    new AzurermProvider(stack, "azureQueryRuleAlert", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     const rg = new ResourceGroup(stack, "MyResourceGroup", {
       name: "rg-test",

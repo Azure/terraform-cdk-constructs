@@ -30,7 +30,10 @@ describe("Example of deploying Log Analytics", () => {
       {},
     );
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     // Create a resource group
     const resourceGroup = new ResourceGroup(stack, "rg", {

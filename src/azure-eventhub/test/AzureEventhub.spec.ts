@@ -12,7 +12,10 @@ describe("Azure Eventhub With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     new eh.Namespace(stack, "testAzureEventhubDefaults", {
       name: "eh-test",

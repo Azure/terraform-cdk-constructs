@@ -18,7 +18,10 @@ describe("Resource Group With Defaults", () => {
     stack = new TerraformStack(app, "test");
     const randomName = generateRandomName(12);
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
     new rg.Group(stack, "testRG", {
       name: `rg-${randomName}`,
       location: "eastus",

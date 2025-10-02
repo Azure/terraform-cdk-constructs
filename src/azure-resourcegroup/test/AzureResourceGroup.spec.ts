@@ -12,7 +12,10 @@ describe("Resource Group With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
     new rg.Group(stack, "testRG");
 
     fullSynthResult = Testing.fullSynth(stack); // Save the result for reuse

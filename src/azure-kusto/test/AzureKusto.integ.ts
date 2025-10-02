@@ -28,7 +28,10 @@ describe("Example of deploying a Kusto Cluster", () => {
       {},
     );
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     // Create a resource group
     const resourceGroup = new ResourceGroup(stack, "rg", {

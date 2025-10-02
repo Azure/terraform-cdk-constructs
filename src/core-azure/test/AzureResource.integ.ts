@@ -58,7 +58,10 @@ describe("Example of deploying an Azure Resource", () => {
       {},
     );
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     // Create a resource group
     const resourceGroup = new ResourceGroup(stack, "rg", {

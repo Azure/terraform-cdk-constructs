@@ -12,7 +12,10 @@ describe("Azure Key Vault With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     new kv.Vault(stack, "testAzureKeyVaultDefaults", {
       name: "kv-test",

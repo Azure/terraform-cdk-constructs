@@ -14,7 +14,10 @@ describe("Action Group With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     new ActionGroup(stack, "testAzureActionGroupDefaults", {
       name: "testactiongroup",
@@ -45,7 +48,10 @@ describe("Action Group With Defaults 2", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test2");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     new ActionGroup(stack, "testAzureActionGroupDefaults", {
       name: "testactiongroup",
@@ -86,7 +92,7 @@ describe("Action Group Helper Functions Unit Test for ArmRoleReceiverProps", () 
     name: "test_arm_role_receiver_2",
     roleId: "test-role-id-2",
   };
-  let armRoleReceiverProps3: model.ArmRoleReceiverProps;
+  let armRoleReceiverProps3: model.ArmRoleReceiverProps | undefined;
 
   it("arm role receiver prop with useCommonAlertSchema defined", () => {
     expect(
@@ -125,7 +131,7 @@ describe("Action Group Helper Functions Unit Test for EmailReceiversProps", () =
     name: "test_email_receiver_2",
     emailAddress: "test-email-address-2",
   };
-  let emailReceiverProps3: model.EmailReceiversProps;
+  let emailReceiverProps3: model.EmailReceiversProps | undefined;
 
   it("email receiver prop with useCommonAlertSchema defined", () => {
     expect(
@@ -160,7 +166,7 @@ describe("Action Group Helper Functions Unit Test for VoiceReceiverProps", () =>
     countryCode: "1",
     phoneNumber: "0123456789",
   };
-  let voiceReceiverProps2: model.VoiceReceiverProps;
+  let voiceReceiverProps2: model.VoiceReceiverProps | undefined;
 
   it("voice receiver prop defined", () => {
     expect(
@@ -185,7 +191,7 @@ describe("Action Group Helper Functions Unit Test for SmsReceiverProps", () => {
     countryCode: "1",
     phoneNumber: "0123456789",
   };
-  let smsReceiverProps2: model.SmsReceiverProps;
+  let smsReceiverProps2: model.SmsReceiverProps | undefined;
 
   it("sms receiver prop defined", () => {
     expect(
@@ -214,7 +220,7 @@ describe("Action Group Helper Functions Unit Test for WebhookReceiverProps", () 
     name: "test_webhook_receiver_2",
     serviceUri: "https://test-webhook-uri-2",
   };
-  let webhookReceiverProps3: model.WebhookReceiverProps;
+  let webhookReceiverProps3: model.WebhookReceiverProps | undefined;
 
   it("webhook receiver prop with useCommonAlertSchema defined", () => {
     expect(
@@ -255,7 +261,7 @@ describe("Action Group Helper Functions Unit Test for EventhubReceiverProps", ()
     eventHubName: "testeventhubname2",
     eventHubNamespace: "testnamespace2",
   };
-  let eventhubReceiverProps3: model.EventhubReceiverProps;
+  let eventhubReceiverProps3: model.EventhubReceiverProps | undefined;
 
   it("eventhub receiver prop with useCommonAlertSchema defined", () => {
     expect(
@@ -297,7 +303,7 @@ describe("Action Group Helper Functions Unit Test for AzureAppPushReceiverProps"
     name: "test_azure_app_push_receiver_1",
     emailAddress: "testemail@gtestemail.com",
   };
-  let azureAppPushReceiverProps2: model.AzureAppPushReceiverProps;
+  let azureAppPushReceiverProps2: model.AzureAppPushReceiverProps | undefined;
 
   it("azure app push receiver prop with useCommonAlertSchema defined", () => {
     expect(
@@ -331,7 +337,7 @@ describe("Action Group Helper Functions Unit Test for LogicAppReceiverProps", ()
     resourceId: "test/resource/id/2",
     callbackUrl: "https://test-logic-app-uri-2",
   };
-  let logicAppReceiverProps3: model.LogicAppReceiverProps;
+  let logicAppReceiverProps3: model.LogicAppReceiverProps | undefined;
 
   it("logic app receiver prop with useCommonAlertSchema defined", () => {
     expect(

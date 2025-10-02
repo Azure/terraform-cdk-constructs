@@ -13,7 +13,10 @@ describe("Azure Storage Account With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     // Create a Storage Account with the defined rules
     new storage.Account(stack, "storageaccount", {

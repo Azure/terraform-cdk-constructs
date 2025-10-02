@@ -13,7 +13,10 @@ describe("Azure Kubernetes Cluster With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     new aks.Cluster(stack, "testAksCluster", {
       name: "akstest",

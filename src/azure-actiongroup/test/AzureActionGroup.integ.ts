@@ -20,7 +20,10 @@ describe("Example of deploying Action Group", () => {
     stack = new TerraformStack(app, "test");
     const randomName = generateRandomName(12);
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     // Create a resource group
     const resourceGroup = new ResourceGroup(stack, "rg", {

@@ -12,7 +12,10 @@ describe("Azure Network Security Group With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     // Create a network security group with the defined rules
     new network.SecurityGroup(stack, "testAzureNetworkSecurityGroupDefaults", {

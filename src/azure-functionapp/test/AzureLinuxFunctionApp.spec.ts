@@ -12,7 +12,10 @@ describe("Azure Linux Function App With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     new func.FunctionAppLinux(stack, "testAzureLinuxFunctionApp", {
       name: "fatest",

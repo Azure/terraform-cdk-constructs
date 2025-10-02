@@ -12,7 +12,10 @@ describe("Azure Windows Virtual Machine Scale Set With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "testAzureVMSSWithDefaults");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     new vmss.WindowsCluster(stack, "testVirtualMachineScaleSet", {
       adminUsername: "testAdmin",

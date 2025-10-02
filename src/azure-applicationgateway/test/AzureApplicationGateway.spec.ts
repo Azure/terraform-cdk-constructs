@@ -12,7 +12,10 @@ describe("Application Gateway With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     new apgw.Gateway(stack, "testAzureApplicationGatewayDefaults2", {
       name: "application-gateway",

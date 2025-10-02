@@ -28,7 +28,10 @@ describe("Example of deploying a Key Vault", () => {
       {},
     );
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     const resourceGroup = new ResourceGroup(stack, "rg", {
       name: `rg-${randomName}`,

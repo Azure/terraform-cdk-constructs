@@ -12,7 +12,10 @@ describe("Azure Linux Virtual Machine With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "testAzureVMWithDefaults");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     new vm.LinuxVM(stack, "testVirtualMachine", {});
 

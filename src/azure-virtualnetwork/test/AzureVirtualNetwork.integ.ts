@@ -22,7 +22,10 @@ describe("Example of deploying a Virtual Network", () => {
     stack = new TerraformStack(app, "test");
     const randomName = generateRandomName(12);
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
+    new AzurermProvider(stack, "azureFeature", {
+      features: {},
+      skipProviderRegistration: true,
+    });
 
     const clientConfig = new DataAzurermClientConfig(
       stack,
