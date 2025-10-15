@@ -169,6 +169,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.provider.AzapiProvider.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.provider.AzapiProvider.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.provider.AzapiProvider.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.provider.AzapiProvider.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.provider.AzapiProvider.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.provider.AzapiProvider.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.provider.AzapiProvider.resetAlias">resetAlias</a></code> | *No description.* |
@@ -258,6 +259,12 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.provider.AzapiProvider.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
 
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.provider.AzapiProvider.toMetadata"></a>
 
@@ -1827,10 +1834,12 @@ new testing.BaseTestStack(scope: Construct, id: string)
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.dependsOn">dependsOn</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.ensureBackendExists">ensureBackendExists</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.getLogicalId">getLogicalId</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.hasResourceMove">hasResourceMove</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.prepareStack">prepareStack</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.registerIncomingCrossStackReference">registerIncomingCrossStackReference</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.registerOutgoingCrossStackReference">registerOutgoingCrossStackReference</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.runAllValidations">runAllValidations</a></code> | Run all validations on the stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.toTerraform">toTerraform</a></code> | *No description.* |
 
 ---
@@ -1909,6 +1918,12 @@ public getLogicalId(tfElement: Node | TerraformElement): string
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): boolean
+```
+
 ##### `prepareStack` <a name="prepareStack" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.prepareStack"></a>
 
 ```typescript
@@ -1946,6 +1961,12 @@ public runAllValidations(): void
 ```
 
 Run all validations on the stack.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): {[ key: string ]: any}
+```
 
 ##### `toTerraform` <a name="toTerraform" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.toTerraform"></a>
 
@@ -2029,6 +2050,7 @@ testing.BaseTestStack.of(construct: IConstruct)
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.property.dependencies">dependencies</a></code> | <code>cdktf.TerraformStack[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.property.moveTargets">moveTargets</a></code> | <code>cdktf.TerraformResourceTargets</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.property.synthesizer">synthesizer</a></code> | <code>cdktf.IStackSynthesizer</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.property.name">name</a></code> | <code>string</code> | *No description.* |
 
@@ -2053,6 +2075,16 @@ public readonly dependencies: TerraformStack[];
 ```
 
 - *Type:* cdktf.TerraformStack[]
+
+---
+
+##### `moveTargets`<sup>Required</sup> <a name="moveTargets" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.property.moveTargets"></a>
+
+```typescript
+public readonly moveTargets: TerraformResourceTargets;
+```
+
+- *Type:* cdktf.TerraformResourceTargets
 
 ---
 
@@ -2129,6 +2161,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.toHclTerraform">toHclTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
@@ -2195,6 +2228,14 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
+Adds this resource to the terraform JSON output.
 
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.toMetadata"></a>
 
@@ -2706,6 +2747,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiClientConfig.DataAzapiClientConfig.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiClientConfig.DataAzapiClientConfig.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiClientConfig.DataAzapiClientConfig.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiClientConfig.DataAzapiClientConfig.toHclTerraform">toHclTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiClientConfig.DataAzapiClientConfig.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiClientConfig.DataAzapiClientConfig.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiClientConfig.DataAzapiClientConfig.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
@@ -2772,6 +2814,14 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.dataAzapiClientConfig.DataAzapiClientConfig.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
+Adds this resource to the terraform JSON output.
 
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.dataAzapiClientConfig.DataAzapiClientConfig.toMetadata"></a>
 
@@ -3283,6 +3333,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.toHclTerraform">toHclTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
@@ -3358,6 +3409,14 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
+Adds this resource to the terraform JSON output.
 
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.toMetadata"></a>
 
@@ -4138,6 +4197,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResource.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResource.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResource.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResource.toHclTerraform">toHclTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResource.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResource.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResource.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
@@ -4213,6 +4273,14 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResource.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
+Adds this resource to the terraform JSON output.
 
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResource.toMetadata"></a>
 
@@ -4993,6 +5061,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceAction.DataAzapiResourceAction.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceAction.DataAzapiResourceAction.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceAction.DataAzapiResourceAction.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceAction.DataAzapiResourceAction.toHclTerraform">toHclTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceAction.DataAzapiResourceAction.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceAction.DataAzapiResourceAction.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceAction.DataAzapiResourceAction.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
@@ -5069,6 +5138,14 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceAction.DataAzapiResourceAction.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
+Adds this resource to the terraform JSON output.
 
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceAction.DataAzapiResourceAction.toMetadata"></a>
 
@@ -5844,6 +5921,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceId.DataAzapiResourceId.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceId.DataAzapiResourceId.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceId.DataAzapiResourceId.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceId.DataAzapiResourceId.toHclTerraform">toHclTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceId.DataAzapiResourceId.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceId.DataAzapiResourceId.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceId.DataAzapiResourceId.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
@@ -5913,6 +5991,14 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceId.DataAzapiResourceId.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
+Adds this resource to the terraform JSON output.
 
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceId.DataAzapiResourceId.toMetadata"></a>
 
@@ -6530,6 +6616,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceList.DataAzapiResourceList.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceList.DataAzapiResourceList.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceList.DataAzapiResourceList.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceList.DataAzapiResourceList.toHclTerraform">toHclTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceList.DataAzapiResourceList.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceList.DataAzapiResourceList.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceList.DataAzapiResourceList.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
@@ -6601,6 +6688,14 @@ public resetOverrideLogicalId(): void
 ```
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceList.DataAzapiResourceList.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
+Adds this resource to the terraform JSON output.
 
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResourceList.DataAzapiResourceList.toMetadata"></a>
 
@@ -7247,8 +7342,10 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.getBooleanAttribute">getBooleanAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.getBooleanMapAttribute">getBooleanMapAttribute</a></code> | *No description.* |
@@ -7258,7 +7355,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.hasResourceMove">hasResourceMove</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.putRetry">putRetry</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.putTimeouts">putTimeouts</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.resetBody">resetBody</a></code> | *No description.* |
@@ -7331,6 +7433,12 @@ public resetOverrideLogicalId(): void
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
 
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.toMetadata"></a>
 
 ```typescript
@@ -7344,6 +7452,22 @@ public toTerraform(): any
 ```
 
 Adds this resource to the terraform JSON output.
+
+##### `addMoveTarget` <a name="addMoveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.addMoveTarget"></a>
+
+```typescript
+public addMoveTarget(moveTarget: string): void
+```
+
+Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.addMoveTarget.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The string move target that will correspond to this resource.
+
+---
 
 ##### `getAnyMapAttribute` <a name="getAnyMapAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.getAnyMapAttribute"></a>
 
@@ -7453,6 +7577,30 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
+##### `importFrom` <a name="importFrom" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.importFrom"></a>
+
+```typescript
+public importFrom(id: string, provider?: TerraformProvider): void
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.importFrom.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.importFrom.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
 ##### `interpolationForAttribute` <a name="interpolationForAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.interpolationForAttribute"></a>
 
 ```typescript
@@ -7462,6 +7610,64 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 ###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.interpolationForAttribute.parameter.terraformAttribute"></a>
 
 - *Type:* string
+
+---
+
+##### `moveFromId` <a name="moveFromId" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
+##### `moveTo` <a name="moveTo" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.moveTo"></a>
+
+```typescript
+public moveTo(moveTarget: string, index?: string | number): void
+```
+
+Moves this resource to the target resource given by moveTarget.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.moveTo.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The previously set user defined string set by .addMoveTarget() corresponding to the resource to move to.
+
+---
+
+###### `index`<sup>Optional</sup> <a name="index" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.moveTo.parameter.index"></a>
+
+- *Type:* string | number
+
+Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.dataPlaneResource.DataPlaneResource.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 
@@ -8710,8 +8916,10 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.getBooleanAttribute">getBooleanAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.getBooleanMapAttribute">getBooleanMapAttribute</a></code> | *No description.* |
@@ -8721,7 +8929,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.hasResourceMove">hasResourceMove</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.putIdentity">putIdentity</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.putRetry">putRetry</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.putTimeouts">putTimeouts</a></code> | *No description.* |
@@ -8804,6 +9017,12 @@ public resetOverrideLogicalId(): void
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
 
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.toMetadata"></a>
 
 ```typescript
@@ -8817,6 +9036,22 @@ public toTerraform(): any
 ```
 
 Adds this resource to the terraform JSON output.
+
+##### `addMoveTarget` <a name="addMoveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.addMoveTarget"></a>
+
+```typescript
+public addMoveTarget(moveTarget: string): void
+```
+
+Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.addMoveTarget.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The string move target that will correspond to this resource.
+
+---
 
 ##### `getAnyMapAttribute` <a name="getAnyMapAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.getAnyMapAttribute"></a>
 
@@ -8926,6 +9161,30 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
+##### `importFrom` <a name="importFrom" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.importFrom"></a>
+
+```typescript
+public importFrom(id: string, provider?: TerraformProvider): void
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.importFrom.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.importFrom.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
 ##### `interpolationForAttribute` <a name="interpolationForAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.interpolationForAttribute"></a>
 
 ```typescript
@@ -8935,6 +9194,64 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 ###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.interpolationForAttribute.parameter.terraformAttribute"></a>
 
 - *Type:* string
+
+---
+
+##### `moveFromId` <a name="moveFromId" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
+##### `moveTo` <a name="moveTo" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.moveTo"></a>
+
+```typescript
+public moveTo(moveTarget: string, index?: string | number): void
+```
+
+Moves this resource to the target resource given by moveTarget.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.moveTo.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The previously set user defined string set by .addMoveTarget() corresponding to the resource to move to.
+
+---
+
+###### `index`<sup>Optional</sup> <a name="index" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.moveTo.parameter.index"></a>
+
+- *Type:* string | number
+
+Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 
@@ -10049,8 +10366,10 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.getBooleanAttribute">getBooleanAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.getBooleanMapAttribute">getBooleanMapAttribute</a></code> | *No description.* |
@@ -10060,7 +10379,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.hasResourceMove">hasResourceMove</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.putIdentity">putIdentity</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.putRetry">putRetry</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.putTimeouts">putTimeouts</a></code> | *No description.* |
@@ -10143,6 +10467,12 @@ public resetOverrideLogicalId(): void
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
 
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.toMetadata"></a>
 
 ```typescript
@@ -10156,6 +10486,22 @@ public toTerraform(): any
 ```
 
 Adds this resource to the terraform JSON output.
+
+##### `addMoveTarget` <a name="addMoveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.addMoveTarget"></a>
+
+```typescript
+public addMoveTarget(moveTarget: string): void
+```
+
+Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.addMoveTarget.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The string move target that will correspond to this resource.
+
+---
 
 ##### `getAnyMapAttribute` <a name="getAnyMapAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.getAnyMapAttribute"></a>
 
@@ -10265,6 +10611,30 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
+##### `importFrom` <a name="importFrom" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.importFrom"></a>
+
+```typescript
+public importFrom(id: string, provider?: TerraformProvider): void
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.importFrom.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.importFrom.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
 ##### `interpolationForAttribute` <a name="interpolationForAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.interpolationForAttribute"></a>
 
 ```typescript
@@ -10274,6 +10644,64 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 ###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.interpolationForAttribute.parameter.terraformAttribute"></a>
 
 - *Type:* string
+
+---
+
+##### `moveFromId` <a name="moveFromId" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
+##### `moveTo` <a name="moveTo" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.moveTo"></a>
+
+```typescript
+public moveTo(moveTarget: string, index?: string | number): void
+```
+
+Moves this resource to the target resource given by moveTarget.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.moveTo.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The previously set user defined string set by .addMoveTarget() corresponding to the resource to move to.
+
+---
+
+###### `index`<sup>Optional</sup> <a name="index" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.moveTo.parameter.index"></a>
+
+- *Type:* string | number
+
+Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.resource.Resource.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 
@@ -11388,8 +11816,10 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.getBooleanAttribute">getBooleanAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.getBooleanMapAttribute">getBooleanMapAttribute</a></code> | *No description.* |
@@ -11399,7 +11829,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.hasResourceMove">hasResourceMove</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.putRetry">putRetry</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.putTimeouts">putTimeouts</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetAction">resetAction</a></code> | *No description.* |
@@ -11466,6 +11901,12 @@ public resetOverrideLogicalId(): void
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
 
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.toMetadata"></a>
 
 ```typescript
@@ -11479,6 +11920,22 @@ public toTerraform(): any
 ```
 
 Adds this resource to the terraform JSON output.
+
+##### `addMoveTarget` <a name="addMoveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.addMoveTarget"></a>
+
+```typescript
+public addMoveTarget(moveTarget: string): void
+```
+
+Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.addMoveTarget.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The string move target that will correspond to this resource.
+
+---
 
 ##### `getAnyMapAttribute` <a name="getAnyMapAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.getAnyMapAttribute"></a>
 
@@ -11588,6 +12045,30 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
+##### `importFrom` <a name="importFrom" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.importFrom"></a>
+
+```typescript
+public importFrom(id: string, provider?: TerraformProvider): void
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.importFrom.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.importFrom.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
 ##### `interpolationForAttribute` <a name="interpolationForAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.interpolationForAttribute"></a>
 
 ```typescript
@@ -11597,6 +12078,64 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 ###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.interpolationForAttribute.parameter.terraformAttribute"></a>
 
 - *Type:* string
+
+---
+
+##### `moveFromId` <a name="moveFromId" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
+##### `moveTo` <a name="moveTo" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.moveTo"></a>
+
+```typescript
+public moveTo(moveTarget: string, index?: string | number): void
+```
+
+Moves this resource to the target resource given by moveTarget.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.moveTo.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The previously set user defined string set by .addMoveTarget() corresponding to the resource to move to.
+
+---
+
+###### `index`<sup>Optional</sup> <a name="index" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.moveTo.parameter.index"></a>
+
+- *Type:* string | number
+
+Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 
@@ -12312,8 +12851,10 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.getBooleanAttribute">getBooleanAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.getBooleanMapAttribute">getBooleanMapAttribute</a></code> | *No description.* |
@@ -12323,7 +12864,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.hasResourceMove">hasResourceMove</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.putRetry">putRetry</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.putTimeouts">putTimeouts</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.resetAction">resetAction</a></code> | *No description.* |
@@ -12390,6 +12936,12 @@ public resetOverrideLogicalId(): void
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
 
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.toMetadata"></a>
 
 ```typescript
@@ -12403,6 +12955,22 @@ public toTerraform(): any
 ```
 
 Adds this resource to the terraform JSON output.
+
+##### `addMoveTarget` <a name="addMoveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.addMoveTarget"></a>
+
+```typescript
+public addMoveTarget(moveTarget: string): void
+```
+
+Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.addMoveTarget.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The string move target that will correspond to this resource.
+
+---
 
 ##### `getAnyMapAttribute` <a name="getAnyMapAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.getAnyMapAttribute"></a>
 
@@ -12512,6 +13080,30 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
+##### `importFrom` <a name="importFrom" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.importFrom"></a>
+
+```typescript
+public importFrom(id: string, provider?: TerraformProvider): void
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.importFrom.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.importFrom.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
 ##### `interpolationForAttribute` <a name="interpolationForAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.interpolationForAttribute"></a>
 
 ```typescript
@@ -12521,6 +13113,64 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 ###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.interpolationForAttribute.parameter.terraformAttribute"></a>
 
 - *Type:* string
+
+---
+
+##### `moveFromId` <a name="moveFromId" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
+##### `moveTo` <a name="moveTo" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.moveTo"></a>
+
+```typescript
+public moveTo(moveTarget: string, index?: string | number): void
+```
+
+Moves this resource to the target resource given by moveTarget.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.moveTo.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The previously set user defined string set by .addMoveTarget() corresponding to the resource to move to.
+
+---
+
+###### `index`<sup>Optional</sup> <a name="index" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.moveTo.parameter.index"></a>
+
+- *Type:* string | number
+
+Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.resourceAction.ResourceAction.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 
@@ -13236,8 +13886,10 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.getBooleanAttribute">getBooleanAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.getBooleanMapAttribute">getBooleanMapAttribute</a></code> | *No description.* |
@@ -13247,7 +13899,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.hasResourceMove">hasResourceMove</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.putRetry">putRetry</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.putTimeouts">putTimeouts</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetBody">resetBody</a></code> | *No description.* |
@@ -13319,6 +13976,12 @@ public resetOverrideLogicalId(): void
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
 
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.toMetadata"></a>
 
 ```typescript
@@ -13332,6 +13995,22 @@ public toTerraform(): any
 ```
 
 Adds this resource to the terraform JSON output.
+
+##### `addMoveTarget` <a name="addMoveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.addMoveTarget"></a>
+
+```typescript
+public addMoveTarget(moveTarget: string): void
+```
+
+Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.addMoveTarget.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The string move target that will correspond to this resource.
+
+---
 
 ##### `getAnyMapAttribute` <a name="getAnyMapAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.getAnyMapAttribute"></a>
 
@@ -13441,6 +14120,30 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
+##### `importFrom` <a name="importFrom" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.importFrom"></a>
+
+```typescript
+public importFrom(id: string, provider?: TerraformProvider): void
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.importFrom.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.importFrom.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
 ##### `interpolationForAttribute` <a name="interpolationForAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.interpolationForAttribute"></a>
 
 ```typescript
@@ -13450,6 +14153,64 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 ###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.interpolationForAttribute.parameter.terraformAttribute"></a>
 
 - *Type:* string
+
+---
+
+##### `moveFromId` <a name="moveFromId" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
+##### `moveTo` <a name="moveTo" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveTo"></a>
+
+```typescript
+public moveTo(moveTarget: string, index?: string | number): void
+```
+
+Moves this resource to the target resource given by moveTarget.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveTo.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The previously set user defined string set by .addMoveTarget() corresponding to the resource to move to.
+
+---
+
+###### `index`<sup>Optional</sup> <a name="index" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveTo.parameter.index"></a>
+
+- *Type:* string | number
+
+Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 
@@ -14272,8 +15033,10 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.addMoveTarget">addMoveTarget</a></code> | Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.getAnyMapAttribute">getAnyMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.getBooleanAttribute">getBooleanAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.getBooleanMapAttribute">getBooleanMapAttribute</a></code> | *No description.* |
@@ -14283,7 +15046,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.getNumberMapAttribute">getNumberMapAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.getStringAttribute">getStringAttribute</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.getStringMapAttribute">getStringMapAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.hasResourceMove">hasResourceMove</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.importFrom">importFrom</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.interpolationForAttribute">interpolationForAttribute</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.putRetry">putRetry</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.putTimeouts">putTimeouts</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.resetBody">resetBody</a></code> | *No description.* |
@@ -14355,6 +15123,12 @@ public resetOverrideLogicalId(): void
 
 Resets a previously passed logical Id to use the auto-generated logical id again.
 
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): any
+```
+
 ##### `toMetadata` <a name="toMetadata" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.toMetadata"></a>
 
 ```typescript
@@ -14368,6 +15142,22 @@ public toTerraform(): any
 ```
 
 Adds this resource to the terraform JSON output.
+
+##### `addMoveTarget` <a name="addMoveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.addMoveTarget"></a>
+
+```typescript
+public addMoveTarget(moveTarget: string): void
+```
+
+Adds a user defined moveTarget string to this resource to be later used in .moveTo(moveTarget) to resolve the location of the move.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.addMoveTarget.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The string move target that will correspond to this resource.
+
+---
 
 ##### `getAnyMapAttribute` <a name="getAnyMapAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.getAnyMapAttribute"></a>
 
@@ -14477,6 +15267,30 @@ public getStringMapAttribute(terraformAttribute: string): {[ key: string ]: stri
 
 ---
 
+##### `hasResourceMove` <a name="hasResourceMove" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): TerraformResourceMoveByTarget | TerraformResourceMoveById
+```
+
+##### `importFrom` <a name="importFrom" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.importFrom"></a>
+
+```typescript
+public importFrom(id: string, provider?: TerraformProvider): void
+```
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.importFrom.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.importFrom.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
 ##### `interpolationForAttribute` <a name="interpolationForAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.interpolationForAttribute"></a>
 
 ```typescript
@@ -14486,6 +15300,64 @@ public interpolationForAttribute(terraformAttribute: string): IResolvable
 ###### `terraformAttribute`<sup>Required</sup> <a name="terraformAttribute" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.interpolationForAttribute.parameter.terraformAttribute"></a>
 
 - *Type:* string
+
+---
+
+##### `moveFromId` <a name="moveFromId" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.moveFromId"></a>
+
+```typescript
+public moveFromId(id: string): void
+```
+
+Move the resource corresponding to "id" to this resource.
+
+Note that the resource being moved from must be marked as moved using it's instance function.
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.moveFromId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource being moved from, e.g. "aws_s3_bucket.example".
+
+---
+
+##### `moveTo` <a name="moveTo" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.moveTo"></a>
+
+```typescript
+public moveTo(moveTarget: string, index?: string | number): void
+```
+
+Moves this resource to the target resource given by moveTarget.
+
+###### `moveTarget`<sup>Required</sup> <a name="moveTarget" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.moveTo.parameter.moveTarget"></a>
+
+- *Type:* string
+
+The previously set user defined string set by .addMoveTarget() corresponding to the resource to move to.
+
+---
+
+###### `index`<sup>Optional</sup> <a name="index" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.moveTo.parameter.index"></a>
+
+- *Type:* string | number
+
+Optional The index corresponding to the key the resource is to appear in the foreach of a resource to move to.
+
+---
+
+##### `moveToId` <a name="moveToId" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.moveToId"></a>
+
+```typescript
+public moveToId(id: string): void
+```
+
+Moves this resource to the resource corresponding to "id".
+
+###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.updateResource.UpdateResource.moveToId.parameter.id"></a>
+
+- *Type:* string
+
+Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 
@@ -22244,10 +23116,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResourceIdentityList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResourceIdentityList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResourceIdentityList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResourceIdentityList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResourceIdentityList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResourceIdentityList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@microsoft/terraform-cdk-constructs.core_azure.dataAzapiResource.DataAzapiResourceIdentityList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 
@@ -25799,10 +26688,27 @@ whether the list is wrapping a set (will add tolist() to be able to access an it
 
 | **Name** | **Description** |
 | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.ResourceIdentityList.allWithMapKey">allWithMapKey</a></code> | Creating an iterator for this complex list. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.ResourceIdentityList.computeFqn">computeFqn</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.ResourceIdentityList.resolve">resolve</a></code> | Produce the Token's value at resolution time. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.ResourceIdentityList.toString">toString</a></code> | Return a string representation of this resolvable object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.resource.ResourceIdentityList.get">get</a></code> | *No description.* |
+
+---
+
+##### `allWithMapKey` <a name="allWithMapKey" id="@microsoft/terraform-cdk-constructs.core_azure.resource.ResourceIdentityList.allWithMapKey"></a>
+
+```typescript
+public allWithMapKey(mapKeyAttributeName: string): DynamicListTerraformIterator
+```
+
+Creating an iterator for this complex list.
+
+The list will be converted into a map with the mapKeyAttributeName as the key.
+
+###### `mapKeyAttributeName`<sup>Required</sup> <a name="mapKeyAttributeName" id="@microsoft/terraform-cdk-constructs.core_azure.resource.ResourceIdentityList.allWithMapKey.parameter.mapKeyAttributeName"></a>
+
+- *Type:* string
 
 ---
 

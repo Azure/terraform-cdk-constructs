@@ -5,8 +5,8 @@ import { JsonPatch } from "projen/lib/json-patch";
 const project = new cdktf.ConstructLibraryCdktf({
   author: "Microsoft",
   authorAddress: "https://microsoft.com",
-  cdktfVersion: "0.17.3",
-  jsiiVersion: "~5.2.0",
+  cdktfVersion: "0.20.8",
+  jsiiVersion: "~5.9.0",
   description:
     "Azure CDK constructs using AZAPI provider for direct Azure REST API access. Version 1.0.0 - Major breaking change migration from AzureRM to AZAPI.",
   keywords: [
@@ -20,8 +20,8 @@ const project = new cdktf.ConstructLibraryCdktf({
     "azapi",
     "rest-api",
   ],
-  constructsVersion: "^10.1.106",
-  typescriptVersion: "~5.2.0", // should always be the same major/minor as JSII
+  constructsVersion: "^10.3.0",
+  typescriptVersion: "~5.6.2", // should always be the same major/minor as JSII
   minNodeVersion: "20.10.0",
   defaultReleaseBranch: "main",
   name: "@microsoft/terraform-cdk-constructs",
@@ -54,18 +54,17 @@ const project = new cdktf.ConstructLibraryCdktf({
   },
   // Dependencies for AZAPI-only implementation (removed AzureRM dependencies)
   // AZAPI provider classes are built into this package in src/core-azure/lib/providers-azapi/
-  deps: ["nanoid@^4.0.2", "ts-md5@^1.3.1", "cdktf@0.17.3", "moment@^2.30.1"],
-  peerDeps: ["cdktf@0.17.3", "constructs@^10.1.106"], // Only core CDK dependencies
-  bundledDeps: ["moment@^2.30.1", "ts-md5@^1.3.1", "nanoid@^4.0.2"],
+  deps: ["cdktf@0.20.8"],
+  peerDeps: ["cdktf@0.20.8", "constructs@^10.3.0"], // Only core CDK dependencies
+  bundledDeps: [],
   devDeps: [
-    "cdktf@0.17.3",
-    "@types/jest@^29.5.8",
-    "@types/node@^18.7.18",
-    "jest@^29.6.1",
-    "ts-jest@^29.1.1",
-    "ts-node@^10.9.1",
-    "typescript@^4.9.5",
-    "@types/moment@^2.13.0",
+    "cdktf@0.20.8",
+    "@types/jest@^29.5.13",
+    "@types/node@^22",
+    "jest@^29.7.0",
+    "ts-jest@^29.2.5",
+    "ts-node@^10.9.2",
+    "typescript@~5.6.2",
   ],
   releaseToNpm: true,
 });

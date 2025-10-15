@@ -1,7 +1,7 @@
 import { Testing } from "cdktf";
-import { Group } from "../resource-group";
-import { GroupProps } from "../props";
 import * as cdktf from "cdktf";
+import { GroupProps } from "../props";
+import { Group } from "../resource-group";
 
 describe("Group", () => {
   let app: cdktf.App;
@@ -76,7 +76,9 @@ describe("Group", () => {
       const resourceGroup = new Group(stack, "TestResourceGroup", props);
 
       expect(resourceGroup.idOutput).toBeInstanceOf(cdktf.TerraformOutput);
-      expect(resourceGroup.locationOutput).toBeInstanceOf(cdktf.TerraformOutput);
+      expect(resourceGroup.locationOutput).toBeInstanceOf(
+        cdktf.TerraformOutput,
+      );
       expect(resourceGroup.nameOutput).toBeInstanceOf(cdktf.TerraformOutput);
       expect(resourceGroup.tagsOutput).toBeInstanceOf(cdktf.TerraformOutput);
     });
@@ -107,9 +109,9 @@ describe("Group", () => {
     it("should throw error for invalid subscription ID extraction", () => {
       // Mock the id to be invalid format
       (resourceGroup as any).id = "invalid-id-format";
-      
+
       expect(() => resourceGroup.subscriptionId).toThrow(
-        "Unable to extract subscription ID from Resource Group ID"
+        "Unable to extract subscription ID from Resource Group ID",
       );
     });
   });
@@ -131,8 +133,8 @@ describe("Group", () => {
     it("should add a tag", () => {
       resourceGroup.addTag("newTag", "newValue");
 
-      expect(resourceGroup.props.tags!["newTag"]).toBe("newValue");
-      expect(resourceGroup.props.tags!["environment"]).toBe("test");
+      expect(resourceGroup.props.tags!.newTag).toBe("newValue");
+      expect(resourceGroup.props.tags!.environment).toBe("test");
     });
 
     it("should add a tag when no tags exist", () => {
@@ -144,19 +146,19 @@ describe("Group", () => {
 
       rgNoTags.addTag("firstTag", "firstValue");
 
-      expect(rgNoTags.props.tags!["firstTag"]).toBe("firstValue");
+      expect(rgNoTags.props.tags!.firstTag).toBe("firstValue");
     });
 
     it("should remove an existing tag", () => {
       resourceGroup.removeTag("environment");
 
-      expect(resourceGroup.props.tags!["environment"]).toBeUndefined();
+      expect(resourceGroup.props.tags!.environment).toBeUndefined();
     });
 
     it("should handle removing non-existent tag", () => {
       resourceGroup.removeTag("nonExistentTag");
 
-      expect(resourceGroup.props.tags!["environment"]).toBe("test");
+      expect(resourceGroup.props.tags!.environment).toBe("test");
     });
 
     it("should handle removing tag when no tags exist", () => {
@@ -265,7 +267,9 @@ describe("Group", () => {
       const resourceGroup = new Group(stack, "TestResourceGroup", props);
 
       // Verify AZAPI-specific properties
-      expect((resourceGroup as any).resourceType).toBe("Microsoft.Resources/resourceGroups");
+      expect((resourceGroup as any).resourceType).toBe(
+        "Microsoft.Resources/resourceGroups",
+      );
       expect((resourceGroup as any).apiVersion).toBe("2024-11-01");
     });
 
@@ -308,7 +312,7 @@ describe("Group", () => {
 
       const synthesized = Testing.synth(stack);
       expect(synthesized).toBeDefined();
-      
+
       // Check that the synthesized configuration contains AZAPI resource
       const stackConfig = JSON.parse(synthesized);
       expect(stackConfig.resource).toBeDefined();

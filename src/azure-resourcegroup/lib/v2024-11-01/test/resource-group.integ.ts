@@ -1,6 +1,6 @@
-import { AzapiProvider } from "../../../../core-azure/lib/providers-azapi/provider";
 import { Testing, TerraformStack } from "cdktf";
 import * as rg from "..";
+import { AzapiProvider } from "../../../../core-azure/lib/providers-azapi/provider";
 import {
   TerraformApplyAndCheckIdempotency,
   TerraformDestroy,
