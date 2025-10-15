@@ -177,17 +177,119 @@ export class MyStorageAccount extends AzapiResource {
 2. **Plan/Apply**: Test Terraform plan and apply in a development environment
 3. **Functionality**: Verify Resource Groups work as expected
 
-## Version-Specific API Usage
+## Multi-Version API Support
 
-v1.0.0 supports version-specific Azure API implementations:
+v1.0.0 introduces comprehensive multi-version support for Azure Resource Groups, allowing you to use specific Azure REST API versions while maintaining backward compatibility.
+
+### Available API Versions
+
+The following Azure Resource Group API versions are currently supported:
+
+- `v2024-11-01` - Stable version with core functionality
+- `v2025-01-01` - Enhanced version with additional features
+- `v2025-03-01` - Latest version (default)
+- `latest` - Always points to the newest version (currently `v2025-03-01`)
+
+### Version-Specific Usage
+
+#### Latest Version (Recommended)
+```typescript
+// Uses the latest version (currently v2025-03-01)
+import { Group } from "@microsoft/terraform-cdk-constructs/azure-resourcegroup";
+// or explicitly
+import { Group } from "@microsoft/terraform-cdk-constructs/azure-resourcegroup/latest";
+```
+
+#### Specific API Versions
+```typescript
+// Use specific API version for fine control
+import { Group } from "@microsoft/terraform-cdk-constructs/azure-resourcegroup/v2024-11-01";
+import { Group } from "@microsoft/terraform-cdk-constructs/azure-resourcegroup/v2025-01-01";
+import { Group } from "@microsoft/terraform-cdk-constructs/azure-resourcegroup/v2025-03-01";
+```
+
+### Version Architecture
+
+Each API version maintains completely independent implementations:
+
+- **Separate Props Interfaces**: Each version may have different property requirements
+- **Isolated Class Implementations**: Version-specific logic and API calls
+- **Independent Test Suites**: Unit tests for all versions, integration tests for latest only
+- **Consistent Naming**: All versions export the same construct names (`Group`, `GroupProps`)
+
+### Version Directory Structure
+
+```
+src/azure-resourcegroup/lib/
+├── versions.ts                    # Version management utilities
+├── latest/                        # Always points to newest version
+│   └── index.ts                   # Export from v2025-03-01
+├── v2024-11-01/                   # Stable version implementation
+├── v2025-01-01/                   # Enhanced version implementation
+└── v2025-03-01/                   # Latest version implementation
+```
+
+### Handling Version Differences
+
+Different API versions may have interface incompatibilities. Always use version-specific imports to ensure type safety:
 
 ```typescript
-// Use latest version (recommended)
-import { Group } from "@microsoft/terraform-cdk-constructs/azure-resourcegroup";
+// Type-safe import for specific version
+import { Group, GroupProps } from "@microsoft/terraform-cdk-constructs/azure-resourcegroup/v2024-11-01";
 
-// Use specific API version for fine control
-import { Group } from "@microsoft/terraform-cdk-constructs/azure-resourcegroup/v2024_11_01";
+const rg = new Group(scope, "rg", {
+  location: "eastus",
+  name: "my-rg",
+  // Properties specific to v2024-11-01
+});
 ```
+
+### Migration Between Versions
+
+When migrating between API versions:
+
+1. **Update import path** to the new version
+2. **Review property changes** - interfaces may differ between versions
+3. **Test thoroughly** with the new version
+4. **Update any version-specific logic**
+
+Example migration from v2024-11-01 to latest:
+
+```typescript
+// Before
+import { Group } from "@microsoft/terraform-cdk-constructs/azure-resourcegroup/v2024-11-01";
+
+// After
+import { Group } from "@microsoft/terraform-cdk-constructs/azure-resourcegroup/latest";
+```
+
+### Version Utilities
+
+Use version management utilities for dynamic version handling:
+
+```typescript
+import {
+  ResourceGroupVersion,
+  getLatestResourceGroupVersion,
+  getSupportedResourceGroupVersions,
+  isResourceGroupVersionSupported
+} from "@microsoft/terraform-cdk-constructs/azure-resourcegroup/lib/versions";
+
+// Get latest version programmatically
+const latestVersion = getLatestResourceGroupVersion(); // "2025-03-01"
+
+// Check supported versions
+const allVersions = getSupportedResourceGroupVersions();
+// ["2024-11-01", "2025-01-01", "2025-03-01"]
+```
+
+### Best Practices for Versioning
+
+1. **Use explicit version imports** for production code to ensure stability
+2. **Start with latest version** for new projects unless specific version required
+3. **Test migration thoroughly** when upgrading between versions
+4. **Pin to specific versions** in production to avoid unexpected breaking changes
+5. **Review API changelog** before upgrading to newer versions
 
 ## Language Support
 

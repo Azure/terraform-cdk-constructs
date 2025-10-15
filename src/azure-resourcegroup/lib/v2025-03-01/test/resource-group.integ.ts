@@ -8,8 +8,7 @@ import {
 import { generateRandomName } from "../../../../util/randomName";
 import "cdktf/lib/testing/adapters/jest";
 
-// Skip integration tests for v2024-11-01 - only run for latest version (2025-03-01)
-describe.skip("Resource Group With Defaults - v2024-11-01", () => {
+describe("Resource Group With Defaults - v2025-03-01 (Latest)", () => {
   let stack: TerraformStack;
   let fullSynthResult: any;
   const streamOutput = process.env.STREAM_OUTPUT !== "false";

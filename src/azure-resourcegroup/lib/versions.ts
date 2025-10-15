@@ -3,6 +3,8 @@
  */
 export enum ResourceGroupVersion {
   V2024_11_01 = "2024-11-01",
+  V2025_01_01 = "2025-01-01",
+  V2025_03_01 = "2025-03-01",
   LATEST = "latest",
 }
 
@@ -10,14 +12,18 @@ export enum ResourceGroupVersion {
  * Get the latest supported API version for Azure Resource Groups
  */
 export function getLatestResourceGroupVersion(): string {
-  return ResourceGroupVersion.V2024_11_01;
+  return ResourceGroupVersion.V2025_03_01;
 }
 
 /**
  * Get all supported API versions for Azure Resource Groups
  */
 export function getSupportedResourceGroupVersions(): string[] {
-  return [ResourceGroupVersion.V2024_11_01];
+  return [
+    ResourceGroupVersion.V2024_11_01,
+    ResourceGroupVersion.V2025_01_01,
+    ResourceGroupVersion.V2025_03_01,
+  ];
 }
 
 /**

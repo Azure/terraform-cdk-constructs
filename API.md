@@ -8512,7 +8512,7 @@ public readonly tfResourceType: string;
 
 ### Group <a name="Group" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.Group"></a>
 
-Azure Resource Group using AZAPI provider with API version 2024-11-01.
+Azure Resource Group using AZAPI provider with API version 2025-03-01.
 
 This class provides direct access to the Azure REST API for Resource Groups,
 offering more control and faster access to new Azure features compared to the AzureRM provider.
@@ -19363,7 +19363,7 @@ public readonly retentionPolicy: RetentionPolicyConfig;
 
 ### GroupBody <a name="GroupBody" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.GroupBody"></a>
 
-The body/properties schema for Resource Group API version 2024-11-01 This matches the Azure REST API schema for resource groups.
+The body/properties schema for Resource Group API version 2025-03-01 This matches the Azure REST API schema for resource groups.
 
 #### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.GroupBody.Initializer"></a>
 
@@ -19436,7 +19436,7 @@ The tags attached to the resource group.
 
 ### GroupProps <a name="GroupProps" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.GroupProps"></a>
 
-Properties for Azure Resource Group using AZAPI provider with API version 2024-11-01.
+Properties for Azure Resource Group using AZAPI provider with API version 2025-03-01.
 
 #### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.GroupProps.Initializer"></a>
 
@@ -28777,11 +28777,23 @@ Supported API versions for Azure Resource Groups.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupVersion.V2024_11_01">V2024_11_01</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupVersion.V2025_01_01">V2025_01_01</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupVersion.V2025_03_01">V2025_03_01</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupVersion.LATEST">LATEST</a></code> | *No description.* |
 
 ---
 
 ##### `V2024_11_01` <a name="V2024_11_01" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupVersion.V2024_11_01"></a>
+
+---
+
+
+##### `V2025_01_01` <a name="V2025_01_01" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupVersion.V2025_01_01"></a>
+
+---
+
+
+##### `V2025_03_01` <a name="V2025_03_01" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupVersion.V2025_03_01"></a>
 
 ---
 
