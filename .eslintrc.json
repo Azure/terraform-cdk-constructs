@@ -130,6 +130,14 @@
   "overrides": [
     {
       "files": [
+        "src/core-azure/lib/providers-azapi/**/*.ts"
+      ],
+      "rules": {
+        "@typescript-eslint/member-ordering": "off"
+      }
+    },
+    {
+      "files": [
         ".projenrc.ts"
       ],
       "rules": {

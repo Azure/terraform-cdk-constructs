@@ -1,128 +1,164 @@
 # Azure Terraform CDK Constructs
-Welcome to the Azure Terraform CDK Constructs project! This library offers a comprehensive suite of L2 Constructs designed to simplify and enhance the experience of building and managing Azure infrastructure with the Cloud Development Kit for Terraform (CDKTF).
 
-## Benefits of Using L2 Constructs
+Welcome to the Azure Terraform CDK Constructs project! This library offers Azure L2 Constructs using the AZAPI provider for direct Azure REST API access, providing immediate access to new Azure features and API versions.
 
-With L2 Constructs, you get the following benefits:
+## 🚀 Version 1.0.0 - AZAPI Provider Migration
 
-- **Abstraction**: Higher-level abstractions over Azure resources make your infrastructure code more declarative and easier to understand.
-- **Reusability**: Encapsulate common patterns and best practices in your infrastructure code, promoting reusability across different projects and teams.
-- **Rapid Development**: Accelerate your cloud development process with pre-built constructs that have been tested for common use cases, allowing you to focus on your unique application logic.
-- **Direct IDE Integration**: Access detailed documentation directly within your Integrated Development Environment (IDE), streamlining your development workflow: ![alt text](https://raw.githubusercontent.com/Azure/terraform-cdk-constructs/main/docs/images/ide-documentation.png)
+**Breaking Change Notice:** Version 1.0.0 represents a major architectural shift from AzureRM provider to AZAPI provider. This migration provides:
 
+- **Direct Azure REST API Access**: No dependency on AzureRM provider
+- **Immediate Feature Access**: Get new Azure features as soon as they're available in Azure APIs
+- **Version-Specific Implementations**: Multiple API versions supported for each service
+- **Enhanced Type Safety**: Improved IDE support and compile-time validation
+- **Included Provider Bindings**: AZAPI provider classes are included - no need to generate bindings
+
+## Benefits of Using AZAPI L2 Constructs
+
+With AZAPI L2 Constructs, you get the following benefits:
+
+- **Direct API Access**: Bypass provider limitations and access Azure REST APIs directly
+- **Version Flexibility**: Choose specific API versions for your resources
+- **Rapid Feature Adoption**: Access new Azure features immediately without waiting for provider updates
+- **Enhanced Abstraction**: Higher-level abstractions over Azure resources with type safety
+- **Reusability**: Encapsulate common patterns and best practices in your infrastructure code
+- **Direct IDE Integration**: Access detailed documentation directly within your IDE
+- **Zero Provider Setup**: AZAPI provider bindings included in the package
+
+## Currently Supported Services
+
+| Service | API Versions | Status |
+|---------|-------------|--------|
+| Resource Groups | 2024-11-01 | ✅ Available |
+
+*More services will be added in future releases using the same AZAPI architecture.*
 
 ## Quick Example
 
-This is a quick example that showcases the simplicity and power of L2 Constructs. We'll create a storage account, add a container to it, and then upload a blob—all with a few lines of intuitive, object-oriented code:
+Create an Azure Resource Group using AZAPI provider:
 
 ```typescript
+import * as azcdk from "@microsoft/terraform-cdk-constructs";
+import { Construct } from 'constructs';
+import { App, TerraformStack } from 'cdktf';
 
-// Create a new instance of a storage account as an object
-const sa = new azcdk.azure_storageaccount.Account(stack, "storageaccount", {
-  name: "testStorageAccount",
-  location: "eastus",
-});
+class AzureAppInfra extends TerraformStack {
+  constructor(scope: Construct, name: string) {
+    super(scope, name);
 
-// Add a container to the storage account by calling a method on the storage account object
-const container = sa.addContainer("testcontainer");
+    // Create a new Azure Resource Group using AZAPI
+    new azcdk.azure_resourcegroup.Group(this, "resourcegroup", {
+      name: "rg-myapp-prod",
+      location: "eastus",
+      tags: {
+        environment: "production",
+        project: "myapp"
+      }
+    });
+  }
+}
 
-// Add a blob to the container by calling a method on the container object
-// The path "../../../test.txt" points to the source file to be uploaded as a blob
-container.addBlob("testblob.txt", "../../../test.txt");
+const app = new App();
+new AzureAppInfra(app, 'cdk');
+app.synth();
 ```
-
-
 
 ## Getting Started
 
-This guide will walk you through the process of using the Azure L2 Constructs to define and provision infrastructure on Azure. 
-
 ### Prerequisites
-Make sure you have Node.js and npm installed on your machine. These will be used to install the CDK for Terraform and Azure provider packages.
+- Node.js and npm installed (for TypeScript/JavaScript)
+- Azure CLI configured with appropriate permissions
 
 ### Installation
 
-First, install the CDK for Terraform CLI globally using npm:
+Install the CDK for Terraform CLI globally:
 
 ```sh
 npm install -g cdktf-cli
 ```
 
-Next, initialize a new CDK for Terraform project with TypeScript template:
+Initialize a new CDK for Terraform project:
 ```sh
 cdktf init --template="TypeScript" --local
 ```
-Install the AzureRM provider for CDKTF:
+
+Install the Microsoft Terraform CDK constructs (includes AZAPI provider bindings):
 
 ```sh
-npm install @cdktf/provider-azurerm
+npm install @microsoft/terraform-cdk-constructs
 ```
 
-Then, add the Microsoft Terraform CDK constructs for Azure:
+That's it! The AZAPI provider classes are included in the package, so you don't need to configure additional providers or generate bindings.
 
-```sh
-npm install @micrsoft/terraform-cdk-constructs
-
-```
-
-
-### Example 1: Creating a Storage Account
-Now let's create a simple Azure storage account. The following TypeScript snippet defines a storage account resource using the CDKTF:
+### Basic Usage Example
 
 ```typescript
-// Import necessary modules and classes
 import * as azcdk from "@microsoft/terraform-cdk-constructs";
 import { Construct } from 'constructs';
 import { App, TerraformStack } from 'cdktf';
-import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
 
-// Define a new Terraform stack
-class AzureAppInfra extends TerraformStack {
- constructor(scope: Construct, name: string) {
-   super(scope, name);
+class MyAzureInfra extends TerraformStack {
+  constructor(scope: Construct, name: string) {
+    super(scope, name);
 
-   // Initialize Azure provider
-   new AzurermProvider(this, "azureFeature", { features: {} });
-
-   // Create a new Azure storage account with the specified name and location
-   new azcdk.azure_storageaccount.Account(this, "storageaccount", {
-     name: "test42348808",
-     location: "eastus",
-   });
- }
+    // Create a resource group
+    const rg = new azcdk.azure_resourcegroup.Group(this, "main-rg", {
+      name: "rg-myproject-prod",
+      location: "eastus",
+      tags: {
+        environment: "production",
+        project: "myproject"
+      }
+    });
+  }
 }
 
-// Initialize the CDK app and synthesize Terraform configurations
 const app = new App();
-new AzureAppInfra(app, 'cdk');
+new MyAzureInfra(app, 'azure-infra');
 app.synth();
 ```
-After defining your infrastructure, generate the Terraform configuration files:
+
+## Version-Specific Usage
+
+You can use specific API versions for fine-grained control:
+
+```typescript
+// Use latest version (recommended)
+import { Group } from "@microsoft/terraform-cdk-constructs/azure-resourcegroup";
+
+// Use specific API version
+import { Group } from "@microsoft/terraform-cdk-constructs/azure-resourcegroup/v2024_11_01";
+```
+
+## Migration from v0.x
+
+If you're migrating from version 0.x (AzureRM-based), please see our [Migration Guide](./docs/azapi-migration-guide.md) for detailed instructions.
+
+## Deployment
+
+Generate Terraform configuration:
 ```sh
 cdktf synth
 ```
-Finally, deploy your infrastructure to Azure:
 
+Deploy your infrastructure:
 ```sh
 cdktf deploy
 ```
+
 ## Supported Languages
 
-Currently, our CDK L2 constructs are available in the following languages:
+Thanks to JSII, this library is available in multiple programming languages:
 
-| Language   | Status       |
-|------------|--------------|
-| TypeScript | [Available](https://www.npmjs.com/package/@microsoft/terraform-cdk-constructs)    |
-| Python     | [Available](https://pypi.org/project/microsoft-cdktfconstructs/)  |
-| Java       | Coming soon  |
-| C#         | [Available](https://www.nuget.org/packages/Microsoft.Cdktf.Azure.TFConstructs)  |
-
-Stay tuned for updates as we work to expand support to other popular programming languages!
-
+| Language   | Package | Status |
+|------------|---------|--------|
+| TypeScript/JavaScript | [`@microsoft/terraform-cdk-constructs`](https://www.npmjs.com/package/@microsoft/terraform-cdk-constructs) | ✅ Available |
+| Python     | [`microsoft-cdktfconstructs`](https://pypi.org/project/microsoft-cdktfconstructs/) | ✅ Available |
+| Java       | [`com.microsoft.terraformcdkconstructs`](https://search.maven.org/artifact/com.microsoft.terraformcdkconstructs/cdktf-azure-constructs) | ✅ Available |
+| C#/.NET    | [`Microsoft.Cdktf.Azure.TFConstructs`](https://www.nuget.org/packages/Microsoft.Cdktf.Azure.TFConstructs) | ✅ Available |
 
 ## Contributing
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
+This project welcomes contributions and suggestions. Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
 the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
 
@@ -134,13 +170,17 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-We welcome contributions to this project! See our documentation on [how to get started contributing](./docs/CONTRIBUTING.md). 
+We welcome contributions to this project! See our documentation on [how to get started contributing](./CONTRIBUTING.md).
+
+## Documentation
+
+- [AZAPI Provider Implementation Guide](./docs/azapi-provider-implementation.md)
+- [Migration Guide from AzureRM](./docs/azapi-migration-guide.md)
+- [API Documentation](./API.md)
 
 ## Code Spaces
 
-To open this repository in a Code Space, click the button below:
-
-[![Open in Code Spaces](https://img.shields.io/badge/Open%20in%20Code%20Spaces-Terraform%20Azure%20CDK%20Modules%20Project-blue?logo=github)](https://github.com/microsoft/terraform-azure-cdk-modules/codespaces)
+[![Open in GitHub Codespaces](https://img.shields.io/badge/Open%20in%20GitHub%20Codespaces-blue?logo=github)](https://github.com/Azure/terraform-cdk-constructs/codespaces)
 
 ## Trademarks
 

@@ -8,7 +8,7 @@ const project = new cdktf.ConstructLibraryCdktf({
   cdktfVersion: "0.17.3",
   jsiiVersion: "~5.2.0",
   description:
-    "A collection of CDK modules for provisioning and managing Terraform resources efficiently.",
+    "Azure CDK constructs using AZAPI provider for direct Azure REST API access. Version 1.0.0 - Major breaking change migration from AzureRM to AZAPI.",
   keywords: [
     "cdk",
     "cdktf",
@@ -17,14 +17,16 @@ const project = new cdktf.ConstructLibraryCdktf({
     "cloud",
     "devops",
     "azure",
+    "azapi",
+    "rest-api",
   ],
   constructsVersion: "^10.1.106",
   typescriptVersion: "~5.2.0", // should always be the same major/minor as JSII
   minNodeVersion: "20.10.0",
   defaultReleaseBranch: "main",
   name: "@microsoft/terraform-cdk-constructs",
+  majorVersion: 1, // Set to version 1.0.0 for AZAPI migration
   projenrcTs: true,
-  prerelease: "pre",
   jest: true,
   testdir: "",
   prettier: true,
@@ -50,18 +52,12 @@ const project = new cdktf.ConstructLibraryCdktf({
   jestOptions: {
     updateSnapshot: UpdateSnapshot.NEVER,
   },
-  deps: [
-    "@cdktf/provider-azurerm@9.0.8",
-    "nanoid@^4.0.2",
-    "ts-md5@^1.3.1",
-    "cdktf@0.17.3",
-    //"constructs@^10.1.106",
-    "moment@^2.30.1",
-  ],
-  peerDeps: ["@cdktf/provider-azurerm@9.0.8"],
+  // Dependencies for AZAPI-only implementation (removed AzureRM dependencies)
+  // AZAPI provider classes are built into this package in src/core-azure/lib/providers-azapi/
+  deps: ["nanoid@^4.0.2", "ts-md5@^1.3.1", "cdktf@0.17.3", "moment@^2.30.1"],
+  peerDeps: ["cdktf@0.17.3", "constructs@^10.1.106"], // Only core CDK dependencies
   bundledDeps: ["moment@^2.30.1", "ts-md5@^1.3.1", "nanoid@^4.0.2"],
   devDeps: [
-    "@cdktf/provider-azurerm@9.0.8",
     "cdktf@0.17.3",
     "@types/jest@^29.5.8",
     "@types/node@^18.7.18",
@@ -69,7 +65,6 @@ const project = new cdktf.ConstructLibraryCdktf({
     "ts-jest@^29.1.1",
     "ts-node@^10.9.1",
     "typescript@^4.9.5",
-    //"constructs@10.1.106",
     "@types/moment@^2.13.0",
   ],
   releaseToNpm: true,
@@ -92,6 +87,8 @@ if (project.jest && project.jest.config) {
 }
 project.tsconfigDev.include.push("**/*.integ.ts");
 project.tsconfigDev.include.push("**/*.spec.ts");
+project.tsconfigDev.include.push("src/**/v*/**/*.ts");
+project.tsconfigDev.include.push("src/utils/**/*.ts");
 project.addScripts({
   test: "jest --testMatch '**/*.spec.ts'",
   integration: "STREAM_OUTPUT=true jest --testMatch '**/*.integ.ts'",
@@ -185,6 +182,14 @@ project.gitignore.exclude("*terraform.*.tfstate*");
 
 project.prettier?.addIgnorePattern(".github");
 project.eslint?.addIgnorePattern(".github");
+
+// Disable member ordering for generated AZAPI provider files
+project.eslint?.addOverride({
+  files: ["src/core-azure/lib/providers-azapi/**/*.ts"],
+  rules: {
+    "@typescript-eslint/member-ordering": "off",
+  },
+});
 
 // Add generate index script
 project.addScripts({

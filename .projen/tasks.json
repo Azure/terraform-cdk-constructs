@@ -234,7 +234,7 @@
       "description": "Prepare a release from \"main\" branch",
       "env": {
         "RELEASE": "true",
-        "PRERELEASE": "pre"
+        "MAJOR": "1"
       },
       "steps": [
         {
@@ -316,7 +316,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @cdktf/provider-azurerm @types/jest @types/moment @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser cdktf constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii prettier projen standard-version ts-jest ts-node typescript moment nanoid ts-md5"
+          "exec": "yarn upgrade @types/jest @types/moment @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser cdktf constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii prettier projen standard-version ts-jest ts-node typescript moment nanoid ts-md5"
         },
         {
           "exec": "npx projen"

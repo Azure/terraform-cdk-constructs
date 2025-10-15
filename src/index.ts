@@ -1,18 +1,23 @@
-export * as azure_applicationinsights from "./azure-applicationinsights";
-export * as azure_applicationgateway from "./azure-applicationgateway";
-export * as azure_containerregistry from "./azure-containerregistry";
-export * as azure_eventhub from "./azure-eventhub";
-export * as azure_functionapp from "./azure-functionapp";
-export * as azure_keyvault from "./azure-keyvault";
-export * as azure_kubernetes from "./azure-kubernetes";
-export * as azure_kusto from "./azure-kusto";
-export * as azure_loganalytics from "./azure-loganalytics";
-export * as azure_networksecuritygroup from "./azure-networksecuritygroup";
-export * as azure_resourcegroup from "./azure-resourcegroup";
-export * as azure_storageaccount from "./azure-storageaccount";
-export * as azure_virtualmachine from "./azure-virtualmachine";
-export * as azure_virtualmachinescaleset from "./azure-virtualmachinescaleset";
-export * as azure_virtualnetwork from "./azure-virtualnetwork";
+/**
+ * @microsoft/terraform-cdk-constructs
+ *
+ * Azure CDK constructs using AZAPI provider for direct Azure REST API access.
+ *
+ * Version 1.0.0 - Major breaking change migration from AzureRM to AZAPI
+ *
+ * Available modules:
+ * - azure_resourcegroup: Resource Group constructs with version-specific AZAPI implementations
+ * - core_azure: Core AZAPI functionality and base classes
+ *
+ * For migration guide and documentation, see:
+ * https://github.com/azure/terraform-cdk-constructs
+ */
+
+// Core AZAPI functionality
 export * as core_azure from "./core-azure";
-export * as azure_queryrulealert from "./azure-queryrulealert";
-export * as azure_metricalert from "./azure-metricalert";
+
+// AZAPI-based Azure services
+export * as azure_resourcegroup from "./azure-resourcegroup";
+
+// Utility modules
+export * as testing from "./testing";

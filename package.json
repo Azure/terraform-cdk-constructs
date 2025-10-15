@@ -1,6 +1,6 @@
 {
   "name": "@microsoft/terraform-cdk-constructs",
-  "description": "A collection of CDK modules for provisioning and managing Terraform resources efficiently.",
+  "description": "Azure CDK constructs using AZAPI provider for direct Azure REST API access. Version 1.0.0 - Major breaking change migration from AzureRM to AZAPI.",
   "repository": {
     "type": "git",
     "url": "https://github.com/azure/terraform-cdk-constructs.git"
@@ -42,7 +42,6 @@
     "organization": false
   },
   "devDependencies": {
-    "@cdktf/provider-azurerm": "9.0.8",
     "@types/jest": "^29.5.12",
     "@types/moment": "^2.13.0",
     "@types/node": "^20",
@@ -70,12 +69,10 @@
     "typescript": "~5.2.0"
   },
   "peerDependencies": {
-    "@cdktf/provider-azurerm": "9.0.8",
     "cdktf": "0.17.3",
     "constructs": "^10.1.106"
   },
   "dependencies": {
-    "@cdktf/provider-azurerm": "9.0.8",
     "cdktf": "0.17.3",
     "moment": "^2.30.1",
     "nanoid": "^4.0.2",
@@ -87,12 +84,14 @@
     "ts-md5"
   ],
   "keywords": [
+    "azapi",
     "azure",
     "cdk",
     "cdktf",
     "cloud",
     "devops",
     "infrastructure",
+    "rest-api",
     "terraform"
   ],
   "engines": {
