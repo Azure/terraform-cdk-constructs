@@ -1,5 +1,9 @@
-export * from "./account";
-export * from "./container";
-export * from "./fileshare";
-export * from "./queue";
-export * from "./table";
+/**
+ * Azure Storage Account module exports
+ *
+ * This module provides unified, version-aware Azure Storage Account constructs
+ * using the VersionedAzapiResource framework.
+ */
+
+export * from "./storage-account";
+export * from "./storage-account-schemas";
