@@ -273,7 +273,7 @@ export function TerraformApplyAndCheckIdempotency(
 export function TerraformApplyCheckAndDestroy(stack: any): void {
   try {
     const applyAndCheckResult = TerraformApplyAndCheckIdempotency(stack);
-    if (!applyAndCheckResult.pass) {
+    if (!applyAndCheckResult.success) {
       throw new Error(applyAndCheckResult.message);
     }
   } catch (error) {
@@ -282,7 +282,7 @@ export function TerraformApplyCheckAndDestroy(stack: any): void {
   } finally {
     try {
       const destroyResult = TerraformDestroy(stack);
-      if (!destroyResult.pass) {
+      if (!destroyResult.success) {
         console.error("Error during Terraform destroy:", destroyResult.message);
       }
     } catch (destroyError) {
@@ -326,13 +326,13 @@ export class AssertionReturn {
   /**
    * Create an AssertionReturn
    * @param message - String message containing information about the result of the assertion
-   * @param pass - Boolean pass denoting the success of the assertion
+   * @param success - Boolean success denoting the success of the assertion
    */
   constructor(
     public readonly message: string,
-    public readonly pass: boolean,
+    public readonly success: boolean,
   ) {
-    if (!pass) {
+    if (!success) {
       throw new Error(message);
     }
   }
@@ -342,9 +342,6 @@ export class AssertionReturn {
 export function cleanupCdkTfOutDirs() {
   try {
     execSync('find /tmp -name "cdktf.outdir.*" -type d -exec rm -rf {} +');
-    // console.log(
-    //   "Cleanup of cdktf.outdir.* directories in /tmp was successful.",
-    // );
   } catch (error) {
     console.error("Error during cleanup:", error);
   }

@@ -53,4 +53,5 @@ tsconfig.json
 cdktf.out
 /test
 *terraform.*.tfstate*
+.gen
 !/.projenrc.ts

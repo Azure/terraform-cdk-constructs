@@ -53,6 +53,7 @@ jobs:
           name: .repo.patch
           path: .repo.patch
           overwrite: true
+          include-hidden-files: true
       - name: Fail build on mutation
         if: steps.self_mutation.outputs.self_mutation_happened
         run: |-
@@ -68,6 +69,7 @@ jobs:
           name: build-artifact
           path: dist
           overwrite: true
+          include-hidden-files: true
     environment: Build
   package-js:
     needs: build
@@ -83,6 +85,7 @@ jobs:
         with:
           name: build-artifact
           path: dist
+          include-hidden-files: true
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
@@ -112,6 +115,7 @@ jobs:
         with:
           name: build-artifact
           path: dist
+          include-hidden-files: true
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
@@ -140,6 +144,7 @@ jobs:
         with:
           name: build-artifact
           path: dist
+          include-hidden-files: true
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true
@@ -168,6 +173,7 @@ jobs:
         with:
           name: build-artifact
           path: dist
+          include-hidden-files: true
       - name: Restore build artifact permissions
         run: cd dist && setfacl --restore=permissions-backup.acl
         continue-on-error: true

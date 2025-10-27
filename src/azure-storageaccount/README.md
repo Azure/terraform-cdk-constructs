@@ -1,102 +1,192 @@
-# Azure Storage Account Construct
-This documentation covers the Azure Storage Account Construct, a comprehensive class for managing various storage solutions within Azure. It provides a convenient and efficient way to deploy and manage Azure Storage resources, including Containers, File Shares, Tables, Queues, and Network Rules.
+# Azure Storage Account Module
 
-## What is Azure Storage Account?
-Azure Storage Account offers a scalable and secure place for storing data in the cloud. It supports a variety of data objects such as blobs, files, queues, and tables, making it ideal for a wide range of storage scenarios.
+This module provides unified, version-aware Azure Storage Account constructs using the VersionedAzapiResource framework.
 
-Learn more about Azure Storage Account in the official Azure documentation.
+## Features
 
-## Best Practices for Azure Storage Account
-Use different storage accounts for different types of data to optimize performance.
-Enable secure transfer to ensure data is encrypted during transit.
-Implement access policies and use Azure Active Directory (AAD) for authentication.
-Regularly monitor and audit your storage account activity.
-Azure Storage Account Class Properties
-The class has several properties to customize the behavior of the Storage Account:
+- **Automatic Version Management**: Defaults to the latest stable API version (2024-01-01)
+- **Version Pinning**: Explicitly specify API versions for stability
+- **Schema Validation**: Automatic validation of properties against API schemas
+- **Multi-Language Support**: Full JSII compliance for TypeScript, Python, Java, and .NET
+- **Type Safety**: Complete TypeScript type definitions
 
-- **name**: Unique name of the Storage Account.
-- **location**: Azure Region for the Storage Account deployment.
-- **resourceGroup**: Azure Resource Group to which the Storage Account belongs.
-- **tags**: Key-value pairs for resource categorization.
-- **accountReplicationType**: Type of data replication (e.g., LRS, GRS).
-- **accountTier**: Performance tier (Standard, Premium).
+## Supported API Versions
 
-Additional properties like enableHttpsTrafficOnly, accessTier, isHnsEnabled, etc.
+- `2023-01-01` - Stable release
+- `2023-05-01` - Enhanced security features
+- `2024-01-01` - Latest (default)
 
-## Deploying the Azure Storage Account
-```typescript
-const storageAccount = new AzureStorageAccount(this, 'storageaccount', {
-  name: 'myStorageAccount',
-  location: 'East US',
-  resourceGroup: myResourceGroup,
-  accountReplicationType: 'LRS',
-  accountTier: 'Standard',
-  // Other properties
-});
-```
-This code snippet creates a new Storage Account with specified properties.
-
-### Creating a Storage Container
-Containers in Azure Blob Storage are used to store blobs. Here's how to deploy a Container:
+## Basic Usage
 
 ```typescript
-const storageAccount = new AzureStorageAccount(this, 'storageaccount', {
-  name: 'myStorageAccount',
-  location: 'East US',
+import { StorageAccount } from '@cdktf/tf-constructs-azure/azure-storageaccount';
+import { ResourceGroup } from '@cdktf/tf-constructs-azure/azure-resourcegroup';
+
+// Create a resource group first
+const resourceGroup = new ResourceGroup(this, 'rg', {
+  name: 'my-resource-group',
+  location: 'eastus',
 });
 
-const storageContainer = storageAccount.addContainer("myContainer");
-// Upload a local file to blob storage
-storageContainer.addBlob("testblob.txt", "../../../test.txt")
+// Create a storage account with automatic version resolution
+const storageAccount = new StorageAccount(this, 'storage', {
+  name: 'mystorageaccount',
+  location: 'eastus',
+  resourceGroupId: resourceGroup.id,
+  sku: { name: 'Standard_LRS' },
+  tags: {
+    environment: 'production',
+    project: 'myapp',
+  },
+});
 ```
-This will create a new container named myContainer in the Storage Account and upload a local file to the Container as blob storage.
 
-### Deploying a File Share
-Azure File Share provides managed file shares for cloud or on-premises deployments. To deploy a File Share:
+## Advanced Usage
+
+### Version Pinning
 
 ```typescript
-const storageAccount = new AzureStorageAccount(this, 'storageaccount', {
-  name: 'myStorageAccount',
-  location: 'East US',
+const storageAccount = new StorageAccount(this, 'storage', {
+  name: 'mystorageaccount',
+  location: 'eastus',
+  resourceGroupId: resourceGroup.id,
+  sku: { name: 'Standard_LRS' },
+  apiVersion: '2023-05-01', // Pin to specific version
 });
-
-const storageFileShare = storageAccount.addFileShare("testshare")
-// Upload a local file to the share
-storageFileShare.addFile("testfile.txt", "../../../test.txt")
 ```
 
-### Creating a Storage Table
-Azure Table Storage offers NoSQL data storage for large-scale applications. Here's how to create a Table:
+### Security Configuration
 
 ```typescript
-const storageAccount = new AzureStorageAccount(this, 'storageaccount', {
-  name: 'myStorageAccount',
-  location: 'East US',
+const storageAccount = new StorageAccount(this, 'storage', {
+  name: 'mystorageaccount',
+  location: 'eastus',
+  resourceGroupId: resourceGroup.id,
+  sku: { name: 'Standard_LRS' },
+  enableHttpsTrafficOnly: true,
+  minimumTlsVersion: 'TLS1_2',
+  allowBlobPublicAccess: false,
+  networkAcls: {
+    defaultAction: 'Deny',
+    bypass: 'AzureServices',
+    ipRules: [
+      { value: '1.2.3.4' },
+    ],
+  },
 });
-
-const storageTable = storageAccount.addTable("myTable")
 ```
 
-### Adding a Queue
-Azure Queue Storage enables storing large numbers of messages. To create a Queue:
+### With Managed Identity
 
 ```typescript
-const queue = storageAccount.addQueue("myQueue")
-
+const storageAccount = new StorageAccount(this, 'storage', {
+  name: 'mystorageaccount',
+  location: 'eastus',
+  resourceGroupId: resourceGroup.id,
+  sku: { name: 'Standard_LRS' },
+  identity: {
+    type: 'SystemAssigned',
+  },
+});
 ```
-### Configuring Network Rules
-Network rules add an additional layer of security. Here's how to set them up:
+
+### Premium Storage
 
 ```typescript
-const storageAccount = new AzureStorageAccount(this, 'storageaccount', {
-  name: 'myStorageAccount',
-  location: 'East US',
-});
-
-storageAccount.addNetworkRules({
-  bypass: ["AzureServices"],
-  defaultAction: "Deny",
-  ipRules: ["1.2.3.4/32"],
+const storageAccount = new StorageAccount(this, 'storage', {
+  name: 'mystorageaccount',
+  location: 'eastus',
+  resourceGroupId: resourceGroup.id,
+  sku: { name: 'Premium_LRS' },
+  kind: 'BlockBlobStorage',
 });
 ```
-This will configure network rules for your Storage Account according to the specified properties.
+
+## Properties
+
+### Required Properties
+
+- `name` - Storage account name (3-24 lowercase alphanumeric characters, globally unique)
+- `location` - Azure region
+- `resourceGroupId` - Resource group ID where the storage account will be created
+- `sku` - SKU configuration with `name` property
+
+### Optional Properties
+
+- `apiVersion` - API version to use (defaults to latest)
+- `kind` - Storage account kind (default: 'StorageV2')
+- `accessTier` - Access tier for blob storage (default: 'Hot')
+- `enableHttpsTrafficOnly` - Allow only HTTPS traffic (default: true)
+- `minimumTlsVersion` - Minimum TLS version (default: 'TLS1_2')
+- `allowBlobPublicAccess` - Allow public blob access (default: false)
+- `networkAcls` - Network ACL configuration
+- `identity` - Managed identity configuration
+- `encryption` - Encryption settings
+- `tags` - Resource tags
+- `ignoreChanges` - Properties to ignore during updates
+
+## SKU Names
+
+- `Standard_LRS` - Locally redundant storage
+- `Standard_GRS` - Geo-redundant storage
+- `Standard_RAGRS` - Read-access geo-redundant storage
+- `Standard_ZRS` - Zone-redundant storage
+- `Premium_LRS` - Premium locally redundant storage
+- `Premium_ZRS` - Premium zone-redundant storage
+
+## Storage Account Kinds
+
+- `StorageV2` - General-purpose v2 (recommended)
+- `Storage` - General-purpose v1
+- `BlobStorage` - Blob-only storage
+- `BlockBlobStorage` - Premium block blob storage
+- `FileStorage` - Premium file storage
+
+## Outputs
+
+The StorageAccount construct provides the following outputs:
+
+- `id` - The resource ID
+- `name` - The storage account name
+- `location` - The storage account location
+- `tags` - The storage account tags
+- `primaryBlobEndpoint` - Primary blob endpoint URL
+- `primaryFileEndpoint` - Primary file endpoint URL
+- `primaryQueueEndpoint` - Primary queue endpoint URL
+- `primaryTableEndpoint` - Primary table endpoint URL
+
+## Methods
+
+- `addTag(key, value)` - Add a tag to the storage account
+- `removeTag(key)` - Remove a tag from the storage account
+
+## Architecture
+
+This module uses the VersionedAzapiResource framework to provide:
+
+1. **Single Implementation**: One class handles all API versions
+2. **Schema-Driven**: TypeScript schemas define version-specific properties
+3. **Automatic Validation**: Properties validated against API schemas
+4. **Version Resolution**: Automatic latest version detection
+5. **JSII Compliance**: Full multi-language support
+
+## Migration from Version-Specific Classes
+
+If you're migrating from version-specific storage account classes, simply:
+
+1. Import from the unified module
+2. Optionally specify `apiVersion` if you need version pinning
+3. All other properties remain the same
+
+```typescript
+// Old approach (version-specific)
+import { Group as StorageAccount } from './v2023-01-01';
+
+// New approach (unified)
+import { StorageAccount } from '@cdktf/tf-constructs-azure/azure-storageaccount';
+
+// Optionally pin version for compatibility
+const storage = new StorageAccount(this, 'storage', {
+  apiVersion: '2023-01-01',
+  // ... rest of props
+});
