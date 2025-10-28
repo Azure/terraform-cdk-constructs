@@ -46,9 +46,17 @@ export function TerraformApply(
   streamOutput: boolean = false,
 ): { stdout: string; stderr: string; error: any } {
   try {
-    const manifest = JSON.parse(
-      fs.readFileSync(path.resolve(stack, "manifest.json"), "utf8"),
-    );
+    const manifestPath = path.resolve(stack, "manifest.json");
+
+    // Safety check: verify manifest exists before reading
+    if (!fs.existsSync(manifestPath)) {
+      throw new Error(
+        `Manifest file not found at ${manifestPath}. ` +
+          `Ensure Testing.fullSynth() completed successfully and the output directory still exists.`,
+      );
+    }
+
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
     const stacks = Object.entries(manifest.stacks);
 
     for (const [, stackDetails] of stacks) {
@@ -96,9 +104,17 @@ export function TerraformPlanExitCode(
   streamOutput: boolean = false,
 ): { stdout: string; stderr: string; exitCode: number; error: any } {
   try {
-    const manifest = JSON.parse(
-      fs.readFileSync(path.resolve(stack, "manifest.json"), "utf8"),
-    );
+    const manifestPath = path.resolve(stack, "manifest.json");
+
+    // Safety check: verify manifest exists before reading
+    if (!fs.existsSync(manifestPath)) {
+      throw new Error(
+        `Manifest file not found at ${manifestPath}. ` +
+          `Ensure Testing.fullSynth() completed successfully and the output directory still exists.`,
+      );
+    }
+
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
     const stacks = Object.entries(manifest.stacks);
 
     for (const [, stackDetails] of stacks) {
@@ -144,9 +160,17 @@ export function TerraformPlanExitCode(
 }
 export function TerraformIdempotentCheck(stack: any): AssertionReturn {
   try {
-    const manifest = JSON.parse(
-      fs.readFileSync(path.resolve(stack, "manifest.json"), "utf8"),
-    );
+    const manifestPath = path.resolve(stack, "manifest.json");
+
+    // Safety check: verify manifest exists before reading
+    if (!fs.existsSync(manifestPath)) {
+      throw new Error(
+        `Manifest file not found at ${manifestPath}. ` +
+          `Ensure Testing.fullSynth() completed successfully and the output directory still exists.`,
+      );
+    }
+
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
     const stacks = Object.entries(manifest.stacks);
 
     for (const [, stackDetails] of stacks) {
@@ -197,9 +221,17 @@ export function TerraformDestroy(
   streamOutput: boolean = false,
 ): AssertionReturn {
   try {
-    const manifest = JSON.parse(
-      fs.readFileSync(path.resolve(stack, "manifest.json"), "utf8"),
-    );
+    const manifestPath = path.resolve(stack, "manifest.json");
+
+    // Safety check: verify manifest exists before reading
+    if (!fs.existsSync(manifestPath)) {
+      throw new Error(
+        `Manifest file not found at ${manifestPath}. ` +
+          `Ensure Testing.fullSynth() completed successfully and the output directory still exists.`,
+      );
+    }
+
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
     const stacks = Object.entries(manifest.stacks);
 
     for (const [, stackDetails] of stacks) {
@@ -271,8 +303,13 @@ export function TerraformApplyAndCheckIdempotency(
 }
 
 export function TerraformApplyCheckAndDestroy(stack: any): void {
+  const streamOutput = process.env.STREAM_OUTPUT === "true";
+
   try {
-    const applyAndCheckResult = TerraformApplyAndCheckIdempotency(stack);
+    const applyAndCheckResult = TerraformApplyAndCheckIdempotency(
+      stack,
+      streamOutput,
+    );
     if (!applyAndCheckResult.success) {
       throw new Error(applyAndCheckResult.message);
     }
@@ -281,22 +318,38 @@ export function TerraformApplyCheckAndDestroy(stack: any): void {
     throw error; // Re-throw the error to ensure the test fails
   } finally {
     try {
-      const destroyResult = TerraformDestroy(stack);
+      const destroyResult = TerraformDestroy(stack, streamOutput);
       if (!destroyResult.success) {
         console.error("Error during Terraform destroy:", destroyResult.message);
       }
     } catch (destroyError) {
       console.error("Error during Terraform destroy:", destroyError);
+    } finally {
+      // Clean up this specific test's output directory
+      try {
+        if (fs.existsSync(stack)) {
+          execSync(`rm -rf "${stack}"`);
+        }
+      } catch (cleanupError) {
+        // Ignore cleanup errors - directory may already be gone
+      }
     }
   }
 }
 
 export function TerraformPlan(stack: any): AssertionReturn {
   try {
-    // Assuming the presence of a received variable pointing to the relevant directory
-    const manifest = JSON.parse(
-      fs.readFileSync(path.resolve(stack, "manifest.json"), "utf8"),
-    );
+    const manifestPath = path.resolve(stack, "manifest.json");
+
+    // Safety check: verify manifest exists before reading
+    if (!fs.existsSync(manifestPath)) {
+      throw new Error(
+        `Manifest file not found at ${manifestPath}. ` +
+          `Ensure Testing.fullSynth() completed successfully and the output directory still exists.`,
+      );
+    }
+
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
     const stacks = Object.entries(manifest.stacks);
     stacks.forEach(([, stackDetails]) => {
       const opts = {
@@ -338,7 +391,16 @@ export class AssertionReturn {
   }
 }
 
-// Define a cleanup function that can be exported and used in tests.
+/**
+ * Cleanup function for removing all CDKTF output directories in /tmp.
+ *
+ * WARNING: This function should NOT be used in afterAll() hooks when running
+ * tests in parallel, as it will delete directories that other running tests
+ * may still be using. Instead, TerraformApplyCheckAndDestroy now cleans up
+ * its own directory automatically.
+ *
+ * This function is kept for manual cleanup or single-threaded test scenarios.
+ */
 export function cleanupCdkTfOutDirs() {
   try {
     execSync('find /tmp -name "cdktf.outdir.*" -type d -exec rm -rf {} +');

@@ -12,10 +12,7 @@ import { Construct } from "constructs";
 import "cdktf/lib/testing/adapters/jest";
 import { ResourceGroup } from "../../azure-resourcegroup";
 import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
-import {
-  TerraformApplyCheckAndDestroy,
-  cleanupCdkTfOutDirs,
-} from "../../testing";
+import { TerraformApplyCheckAndDestroy } from "../../testing";
 import { StorageAccount } from "../lib/storage-account";
 
 /**
@@ -64,10 +61,6 @@ class StorageAccountExampleStack extends TerraformStack {
 }
 
 describe("Storage Account Integration Test", () => {
-  afterAll(() => {
-    cleanupCdkTfOutDirs();
-  });
-
   it("should deploy, validate idempotency, and cleanup storage account resources", () => {
     const app = Testing.app();
     const stack = new StorageAccountExampleStack(app, "test-storage-account");

@@ -2,6 +2,1164 @@
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
 
+### AksCluster <a name="AksCluster" id="@microsoft/terraform-cdk-constructs.AksCluster"></a>
+
+Unified Azure Kubernetes Service cluster implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+The class uses the VersionedAzapiResource framework to provide:
+- Automatic latest version resolution (2025-07-01 as of this implementation)
+- Support for explicit version pinning when stability is required
+- Schema-driven property validation and transformation
+- Migration analysis and deprecation warnings
+- Full JSII compliance for multi-language support
+
+*Example*
+
+```typescript
+// AKS cluster with explicit version pinning and advanced networking:
+const aksCluster = new AksCluster(this, "aks", {
+  name: "my-aks-cluster",
+  location: "eastus",
+  resourceGroupId: resourceGroup.id,
+  apiVersion: "2025-07-01",
+  dnsPrefix: "myaks",
+  kubernetesVersion: "1.28.3",
+  agentPoolProfiles: [{
+    name: "system",
+    count: 3,
+    vmSize: "Standard_D2s_v3",
+    mode: "System",
+    vnetSubnetID: subnet.id
+  }],
+  identity: {
+    type: "SystemAssigned"
+  },
+  networkProfile: {
+    networkPlugin: "azure",
+    serviceCidr: "10.0.0.0/16",
+    dnsServiceIP: "10.0.0.10"
+  },
+  enableRBAC: true
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.AksCluster.Initializer"></a>
+
+```typescript
+import { AksCluster } from '@microsoft/terraform-cdk-constructs'
+
+new AksCluster(scope: Construct, id: string, props: AksClusterProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps">AksClusterProps</a></code> | - Configuration properties for the AKS cluster. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.AksCluster.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.AksCluster.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.AksCluster.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterProps">AksClusterProps</a>
+
+Configuration properties for the AKS cluster.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.addTag">addTag</a></code> | Add a tag to the AKS Cluster Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.removeTag">removeTag</a></code> | Remove a tag from the AKS Cluster Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.AksCluster.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.AksCluster.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.AksCluster.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.AksCluster.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.AksCluster.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.AksCluster.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.AksCluster.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.AksCluster.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.AksCluster.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.AksCluster.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.AksCluster.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the AKS Cluster Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.AksCluster.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.AksCluster.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.AksCluster.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the AKS Cluster Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.AksCluster.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.AksCluster.isConstruct"></a>
+
+```typescript
+import { AksCluster } from '@microsoft/terraform-cdk-constructs'
+
+AksCluster.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.AksCluster.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.currentKubernetesVersion">currentKubernetesVersion</a></code> | <code>string</code> | Get the current Kubernetes version running on the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.fqdn">fqdn</a></code> | <code>string</code> | Get the FQDN of the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.fqdnOutput">fqdnOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.kubeConfig">kubeConfig</a></code> | <code>string</code> | Get the Kubernetes configuration for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.nodeResourceGroupName">nodeResourceGroupName</a></code> | <code>string</code> | Get the node resource group name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.privateFqdn">privateFqdn</a></code> | <code>string</code> | Get the private FQDN of the cluster (if private cluster is enabled). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps">AksClusterProps</a></code> | The input properties for this AKS Cluster instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.AksCluster.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.AksCluster.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.AksCluster.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.AksCluster.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.AksCluster.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.AksCluster.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.AksCluster.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.AksCluster.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.AksCluster.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.AksCluster.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.AksCluster.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `currentKubernetesVersion`<sup>Required</sup> <a name="currentKubernetesVersion" id="@microsoft/terraform-cdk-constructs.AksCluster.property.currentKubernetesVersion"></a>
+
+```typescript
+public readonly currentKubernetesVersion: string;
+```
+
+- *Type:* string
+
+Get the current Kubernetes version running on the cluster.
+
+---
+
+##### `fqdn`<sup>Required</sup> <a name="fqdn" id="@microsoft/terraform-cdk-constructs.AksCluster.property.fqdn"></a>
+
+```typescript
+public readonly fqdn: string;
+```
+
+- *Type:* string
+
+Get the FQDN of the cluster.
+
+---
+
+##### `fqdnOutput`<sup>Required</sup> <a name="fqdnOutput" id="@microsoft/terraform-cdk-constructs.AksCluster.property.fqdnOutput"></a>
+
+```typescript
+public readonly fqdnOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.AksCluster.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `kubeConfig`<sup>Required</sup> <a name="kubeConfig" id="@microsoft/terraform-cdk-constructs.AksCluster.property.kubeConfig"></a>
+
+```typescript
+public readonly kubeConfig: string;
+```
+
+- *Type:* string
+
+Get the Kubernetes configuration for the cluster.
+
+This retrieves the cluster admin credentials using an azapi_resource_action.
+The kubeConfig is base64 encoded and contains the full kubectl configuration.
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.AksCluster.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.AksCluster.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nodeResourceGroupName`<sup>Required</sup> <a name="nodeResourceGroupName" id="@microsoft/terraform-cdk-constructs.AksCluster.property.nodeResourceGroupName"></a>
+
+```typescript
+public readonly nodeResourceGroupName: string;
+```
+
+- *Type:* string
+
+Get the node resource group name.
+
+---
+
+##### `privateFqdn`<sup>Required</sup> <a name="privateFqdn" id="@microsoft/terraform-cdk-constructs.AksCluster.property.privateFqdn"></a>
+
+```typescript
+public readonly privateFqdn: string;
+```
+
+- *Type:* string
+
+Get the private FQDN of the cluster (if private cluster is enabled).
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.AksCluster.property.props"></a>
+
+```typescript
+public readonly props: AksClusterProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterProps">AksClusterProps</a>
+
+The input properties for this AKS Cluster instance.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.AksCluster.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.AksCluster.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+
+### AksCluster <a name="AksCluster" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster"></a>
+
+Unified Azure Kubernetes Service cluster implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+The class uses the VersionedAzapiResource framework to provide:
+- Automatic latest version resolution (2025-07-01 as of this implementation)
+- Support for explicit version pinning when stability is required
+- Schema-driven property validation and transformation
+- Migration analysis and deprecation warnings
+- Full JSII compliance for multi-language support
+
+*Example*
+
+```typescript
+// AKS cluster with explicit version pinning and advanced networking:
+const aksCluster = new AksCluster(this, "aks", {
+  name: "my-aks-cluster",
+  location: "eastus",
+  resourceGroupId: resourceGroup.id,
+  apiVersion: "2025-07-01",
+  dnsPrefix: "myaks",
+  kubernetesVersion: "1.28.3",
+  agentPoolProfiles: [{
+    name: "system",
+    count: 3,
+    vmSize: "Standard_D2s_v3",
+    mode: "System",
+    vnetSubnetID: subnet.id
+  }],
+  identity: {
+    type: "SystemAssigned"
+  },
+  networkProfile: {
+    networkPlugin: "azure",
+    serviceCidr: "10.0.0.0/16",
+    dnsServiceIP: "10.0.0.10"
+  },
+  enableRBAC: true
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+new azure_aks.AksCluster(scope: Construct, id: string, props: AksClusterProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps">AksClusterProps</a></code> | - Configuration properties for the AKS cluster. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterProps">AksClusterProps</a>
+
+Configuration properties for the AKS cluster.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addTag">addTag</a></code> | Add a tag to the AKS Cluster Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.removeTag">removeTag</a></code> | Remove a tag from the AKS Cluster Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the AKS Cluster Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the AKS Cluster Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.isConstruct"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+azure_aks.AksCluster.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.currentKubernetesVersion">currentKubernetesVersion</a></code> | <code>string</code> | Get the current Kubernetes version running on the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.fqdn">fqdn</a></code> | <code>string</code> | Get the FQDN of the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.fqdnOutput">fqdnOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.kubeConfig">kubeConfig</a></code> | <code>string</code> | Get the Kubernetes configuration for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.nodeResourceGroupName">nodeResourceGroupName</a></code> | <code>string</code> | Get the node resource group name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.privateFqdn">privateFqdn</a></code> | <code>string</code> | Get the private FQDN of the cluster (if private cluster is enabled). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps">AksClusterProps</a></code> | The input properties for this AKS Cluster instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `currentKubernetesVersion`<sup>Required</sup> <a name="currentKubernetesVersion" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.currentKubernetesVersion"></a>
+
+```typescript
+public readonly currentKubernetesVersion: string;
+```
+
+- *Type:* string
+
+Get the current Kubernetes version running on the cluster.
+
+---
+
+##### `fqdn`<sup>Required</sup> <a name="fqdn" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.fqdn"></a>
+
+```typescript
+public readonly fqdn: string;
+```
+
+- *Type:* string
+
+Get the FQDN of the cluster.
+
+---
+
+##### `fqdnOutput`<sup>Required</sup> <a name="fqdnOutput" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.fqdnOutput"></a>
+
+```typescript
+public readonly fqdnOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `kubeConfig`<sup>Required</sup> <a name="kubeConfig" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.kubeConfig"></a>
+
+```typescript
+public readonly kubeConfig: string;
+```
+
+- *Type:* string
+
+Get the Kubernetes configuration for the cluster.
+
+This retrieves the cluster admin credentials using an azapi_resource_action.
+The kubeConfig is base64 encoded and contains the full kubectl configuration.
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nodeResourceGroupName`<sup>Required</sup> <a name="nodeResourceGroupName" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.nodeResourceGroupName"></a>
+
+```typescript
+public readonly nodeResourceGroupName: string;
+```
+
+- *Type:* string
+
+Get the node resource group name.
+
+---
+
+##### `privateFqdn`<sup>Required</sup> <a name="privateFqdn" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.privateFqdn"></a>
+
+```typescript
+public readonly privateFqdn: string;
+```
+
+- *Type:* string
+
+Get the private FQDN of the cluster (if private cluster is enabled).
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.props"></a>
+
+```typescript
+public readonly props: AksClusterProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterProps">AksClusterProps</a>
+
+The input properties for this AKS Cluster instance.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+
 ### AzapiDiagnosticSettings <a name="AzapiDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings"></a>
 
 AZAPI-based diagnostic settings construct.
@@ -13778,6 +14936,7380 @@ public readonly tfResourceType: string;
 ---
 
 ## Structs <a name="Structs" id="Structs"></a>
+
+### AksClusterAadProfile <a name="AksClusterAadProfile" id="@microsoft/terraform-cdk-constructs.AksClusterAadProfile"></a>
+
+AAD (Azure Active Directory) profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterAadProfile.Initializer"></a>
+
+```typescript
+import { AksClusterAadProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterAadProfile: AksClusterAadProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.adminGroupObjectIDs">adminGroupObjectIDs</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.clientAppID">clientAppID</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.enableAzureRBAC">enableAzureRBAC</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.managed">managed</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.serverAppID">serverAppID</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.serverAppSecret">serverAppSecret</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.tenantID">tenantID</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `adminGroupObjectIDs`<sup>Optional</sup> <a name="adminGroupObjectIDs" id="@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.adminGroupObjectIDs"></a>
+
+```typescript
+public readonly adminGroupObjectIDs: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `clientAppID`<sup>Optional</sup> <a name="clientAppID" id="@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.clientAppID"></a>
+
+```typescript
+public readonly clientAppID: string;
+```
+
+- *Type:* string
+
+---
+
+##### `enableAzureRBAC`<sup>Optional</sup> <a name="enableAzureRBAC" id="@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.enableAzureRBAC"></a>
+
+```typescript
+public readonly enableAzureRBAC: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `managed`<sup>Optional</sup> <a name="managed" id="@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.managed"></a>
+
+```typescript
+public readonly managed: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `serverAppID`<sup>Optional</sup> <a name="serverAppID" id="@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.serverAppID"></a>
+
+```typescript
+public readonly serverAppID: string;
+```
+
+- *Type:* string
+
+---
+
+##### `serverAppSecret`<sup>Optional</sup> <a name="serverAppSecret" id="@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.serverAppSecret"></a>
+
+```typescript
+public readonly serverAppSecret: string;
+```
+
+- *Type:* string
+
+---
+
+##### `tenantID`<sup>Optional</sup> <a name="tenantID" id="@microsoft/terraform-cdk-constructs.AksClusterAadProfile.property.tenantID"></a>
+
+```typescript
+public readonly tenantID: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterAadProfile <a name="AksClusterAadProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile"></a>
+
+AAD (Azure Active Directory) profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterAadProfile: azure_aks.AksClusterAadProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.adminGroupObjectIDs">adminGroupObjectIDs</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.clientAppID">clientAppID</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.enableAzureRBAC">enableAzureRBAC</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.managed">managed</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.serverAppID">serverAppID</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.serverAppSecret">serverAppSecret</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.tenantID">tenantID</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `adminGroupObjectIDs`<sup>Optional</sup> <a name="adminGroupObjectIDs" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.adminGroupObjectIDs"></a>
+
+```typescript
+public readonly adminGroupObjectIDs: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `clientAppID`<sup>Optional</sup> <a name="clientAppID" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.clientAppID"></a>
+
+```typescript
+public readonly clientAppID: string;
+```
+
+- *Type:* string
+
+---
+
+##### `enableAzureRBAC`<sup>Optional</sup> <a name="enableAzureRBAC" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.enableAzureRBAC"></a>
+
+```typescript
+public readonly enableAzureRBAC: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `managed`<sup>Optional</sup> <a name="managed" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.managed"></a>
+
+```typescript
+public readonly managed: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `serverAppID`<sup>Optional</sup> <a name="serverAppID" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.serverAppID"></a>
+
+```typescript
+public readonly serverAppID: string;
+```
+
+- *Type:* string
+
+---
+
+##### `serverAppSecret`<sup>Optional</sup> <a name="serverAppSecret" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.serverAppSecret"></a>
+
+```typescript
+public readonly serverAppSecret: string;
+```
+
+- *Type:* string
+
+---
+
+##### `tenantID`<sup>Optional</sup> <a name="tenantID" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAadProfile.property.tenantID"></a>
+
+```typescript
+public readonly tenantID: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterAddonProfile <a name="AksClusterAddonProfile" id="@microsoft/terraform-cdk-constructs.AksClusterAddonProfile"></a>
+
+Individual addon profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterAddonProfile.Initializer"></a>
+
+```typescript
+import { AksClusterAddonProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterAddonProfile: AksClusterAddonProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAddonProfile.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAddonProfile.property.config">config</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Required</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AksClusterAddonProfile.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `config`<sup>Optional</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.AksClusterAddonProfile.property.config"></a>
+
+```typescript
+public readonly config: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### AksClusterAddonProfile <a name="AksClusterAddonProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAddonProfile"></a>
+
+Individual addon profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAddonProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterAddonProfile: azure_aks.AksClusterAddonProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAddonProfile.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAddonProfile.property.config">config</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Required</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAddonProfile.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `config`<sup>Optional</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAddonProfile.property.config"></a>
+
+```typescript
+public readonly config: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### AksClusterAgentPoolProfile <a name="AksClusterAgentPoolProfile" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile"></a>
+
+Agent pool profile for AKS node pools.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.Initializer"></a>
+
+```typescript
+import { AksClusterAgentPoolProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterAgentPoolProfile: AksClusterAgentPoolProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.vmSize">vmSize</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.availabilityZones">availabilityZones</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.count">count</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.enableAutoScaling">enableAutoScaling</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.enableEncryptionAtHost">enableEncryptionAtHost</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.enableFIPS">enableFIPS</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.enableNodePublicIP">enableNodePublicIP</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.enableUltraSSD">enableUltraSSD</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.kubeletConfig">kubeletConfig</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig">AksClusterKubeletConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.linuxOSConfig">linuxOSConfig</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig">AksClusterLinuxOSConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.maxCount">maxCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.maxPods">maxPods</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.minCount">minCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.mode">mode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.nodeLabels">nodeLabels</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.nodePublicIPPrefixID">nodePublicIPPrefixID</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.nodeTaints">nodeTaints</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.osDiskSizeGB">osDiskSizeGB</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.osDiskType">osDiskType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.osType">osType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.podSubnetID">podSubnetID</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.scaleSetEvictionPolicy">scaleSetEvictionPolicy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.scaleSetPriority">scaleSetPriority</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.spotMaxPrice">spotMaxPrice</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.vnetSubnetID">vnetSubnetID</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `vmSize`<sup>Required</sup> <a name="vmSize" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.vmSize"></a>
+
+```typescript
+public readonly vmSize: string;
+```
+
+- *Type:* string
+
+---
+
+##### `availabilityZones`<sup>Optional</sup> <a name="availabilityZones" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.availabilityZones"></a>
+
+```typescript
+public readonly availabilityZones: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.count"></a>
+
+```typescript
+public readonly count: number;
+```
+
+- *Type:* number
+
+---
+
+##### `enableAutoScaling`<sup>Optional</sup> <a name="enableAutoScaling" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.enableAutoScaling"></a>
+
+```typescript
+public readonly enableAutoScaling: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableEncryptionAtHost`<sup>Optional</sup> <a name="enableEncryptionAtHost" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.enableEncryptionAtHost"></a>
+
+```typescript
+public readonly enableEncryptionAtHost: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableFIPS`<sup>Optional</sup> <a name="enableFIPS" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.enableFIPS"></a>
+
+```typescript
+public readonly enableFIPS: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableNodePublicIP`<sup>Optional</sup> <a name="enableNodePublicIP" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.enableNodePublicIP"></a>
+
+```typescript
+public readonly enableNodePublicIP: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableUltraSSD`<sup>Optional</sup> <a name="enableUltraSSD" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.enableUltraSSD"></a>
+
+```typescript
+public readonly enableUltraSSD: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `kubeletConfig`<sup>Optional</sup> <a name="kubeletConfig" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.kubeletConfig"></a>
+
+```typescript
+public readonly kubeletConfig: AksClusterKubeletConfig;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig">AksClusterKubeletConfig</a>
+
+---
+
+##### `linuxOSConfig`<sup>Optional</sup> <a name="linuxOSConfig" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.linuxOSConfig"></a>
+
+```typescript
+public readonly linuxOSConfig: AksClusterLinuxOSConfig;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig">AksClusterLinuxOSConfig</a>
+
+---
+
+##### `maxCount`<sup>Optional</sup> <a name="maxCount" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.maxCount"></a>
+
+```typescript
+public readonly maxCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `maxPods`<sup>Optional</sup> <a name="maxPods" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.maxPods"></a>
+
+```typescript
+public readonly maxPods: number;
+```
+
+- *Type:* number
+
+---
+
+##### `minCount`<sup>Optional</sup> <a name="minCount" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.minCount"></a>
+
+```typescript
+public readonly minCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `mode`<sup>Optional</sup> <a name="mode" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.mode"></a>
+
+```typescript
+public readonly mode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `nodeLabels`<sup>Optional</sup> <a name="nodeLabels" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.nodeLabels"></a>
+
+```typescript
+public readonly nodeLabels: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `nodePublicIPPrefixID`<sup>Optional</sup> <a name="nodePublicIPPrefixID" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.nodePublicIPPrefixID"></a>
+
+```typescript
+public readonly nodePublicIPPrefixID: string;
+```
+
+- *Type:* string
+
+---
+
+##### `nodeTaints`<sup>Optional</sup> <a name="nodeTaints" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.nodeTaints"></a>
+
+```typescript
+public readonly nodeTaints: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `osDiskSizeGB`<sup>Optional</sup> <a name="osDiskSizeGB" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.osDiskSizeGB"></a>
+
+```typescript
+public readonly osDiskSizeGB: number;
+```
+
+- *Type:* number
+
+---
+
+##### `osDiskType`<sup>Optional</sup> <a name="osDiskType" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.osDiskType"></a>
+
+```typescript
+public readonly osDiskType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `osType`<sup>Optional</sup> <a name="osType" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.osType"></a>
+
+```typescript
+public readonly osType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `podSubnetID`<sup>Optional</sup> <a name="podSubnetID" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.podSubnetID"></a>
+
+```typescript
+public readonly podSubnetID: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleSetEvictionPolicy`<sup>Optional</sup> <a name="scaleSetEvictionPolicy" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.scaleSetEvictionPolicy"></a>
+
+```typescript
+public readonly scaleSetEvictionPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleSetPriority`<sup>Optional</sup> <a name="scaleSetPriority" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.scaleSetPriority"></a>
+
+```typescript
+public readonly scaleSetPriority: string;
+```
+
+- *Type:* string
+
+---
+
+##### `spotMaxPrice`<sup>Optional</sup> <a name="spotMaxPrice" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.spotMaxPrice"></a>
+
+```typescript
+public readonly spotMaxPrice: number;
+```
+
+- *Type:* number
+
+---
+
+##### `type`<sup>Optional</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `vnetSubnetID`<sup>Optional</sup> <a name="vnetSubnetID" id="@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile.property.vnetSubnetID"></a>
+
+```typescript
+public readonly vnetSubnetID: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterAgentPoolProfile <a name="AksClusterAgentPoolProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile"></a>
+
+Agent pool profile for AKS node pools.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterAgentPoolProfile: azure_aks.AksClusterAgentPoolProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.vmSize">vmSize</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.availabilityZones">availabilityZones</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.count">count</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.enableAutoScaling">enableAutoScaling</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.enableEncryptionAtHost">enableEncryptionAtHost</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.enableFIPS">enableFIPS</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.enableNodePublicIP">enableNodePublicIP</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.enableUltraSSD">enableUltraSSD</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.kubeletConfig">kubeletConfig</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig">AksClusterKubeletConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.linuxOSConfig">linuxOSConfig</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig">AksClusterLinuxOSConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.maxCount">maxCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.maxPods">maxPods</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.minCount">minCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.mode">mode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.nodeLabels">nodeLabels</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.nodePublicIPPrefixID">nodePublicIPPrefixID</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.nodeTaints">nodeTaints</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.osDiskSizeGB">osDiskSizeGB</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.osDiskType">osDiskType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.osType">osType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.podSubnetID">podSubnetID</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.scaleSetEvictionPolicy">scaleSetEvictionPolicy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.scaleSetPriority">scaleSetPriority</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.spotMaxPrice">spotMaxPrice</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.vnetSubnetID">vnetSubnetID</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `vmSize`<sup>Required</sup> <a name="vmSize" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.vmSize"></a>
+
+```typescript
+public readonly vmSize: string;
+```
+
+- *Type:* string
+
+---
+
+##### `availabilityZones`<sup>Optional</sup> <a name="availabilityZones" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.availabilityZones"></a>
+
+```typescript
+public readonly availabilityZones: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.count"></a>
+
+```typescript
+public readonly count: number;
+```
+
+- *Type:* number
+
+---
+
+##### `enableAutoScaling`<sup>Optional</sup> <a name="enableAutoScaling" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.enableAutoScaling"></a>
+
+```typescript
+public readonly enableAutoScaling: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableEncryptionAtHost`<sup>Optional</sup> <a name="enableEncryptionAtHost" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.enableEncryptionAtHost"></a>
+
+```typescript
+public readonly enableEncryptionAtHost: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableFIPS`<sup>Optional</sup> <a name="enableFIPS" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.enableFIPS"></a>
+
+```typescript
+public readonly enableFIPS: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableNodePublicIP`<sup>Optional</sup> <a name="enableNodePublicIP" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.enableNodePublicIP"></a>
+
+```typescript
+public readonly enableNodePublicIP: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableUltraSSD`<sup>Optional</sup> <a name="enableUltraSSD" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.enableUltraSSD"></a>
+
+```typescript
+public readonly enableUltraSSD: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `kubeletConfig`<sup>Optional</sup> <a name="kubeletConfig" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.kubeletConfig"></a>
+
+```typescript
+public readonly kubeletConfig: AksClusterKubeletConfig;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig">AksClusterKubeletConfig</a>
+
+---
+
+##### `linuxOSConfig`<sup>Optional</sup> <a name="linuxOSConfig" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.linuxOSConfig"></a>
+
+```typescript
+public readonly linuxOSConfig: AksClusterLinuxOSConfig;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig">AksClusterLinuxOSConfig</a>
+
+---
+
+##### `maxCount`<sup>Optional</sup> <a name="maxCount" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.maxCount"></a>
+
+```typescript
+public readonly maxCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `maxPods`<sup>Optional</sup> <a name="maxPods" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.maxPods"></a>
+
+```typescript
+public readonly maxPods: number;
+```
+
+- *Type:* number
+
+---
+
+##### `minCount`<sup>Optional</sup> <a name="minCount" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.minCount"></a>
+
+```typescript
+public readonly minCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `mode`<sup>Optional</sup> <a name="mode" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.mode"></a>
+
+```typescript
+public readonly mode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `nodeLabels`<sup>Optional</sup> <a name="nodeLabels" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.nodeLabels"></a>
+
+```typescript
+public readonly nodeLabels: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `nodePublicIPPrefixID`<sup>Optional</sup> <a name="nodePublicIPPrefixID" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.nodePublicIPPrefixID"></a>
+
+```typescript
+public readonly nodePublicIPPrefixID: string;
+```
+
+- *Type:* string
+
+---
+
+##### `nodeTaints`<sup>Optional</sup> <a name="nodeTaints" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.nodeTaints"></a>
+
+```typescript
+public readonly nodeTaints: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `osDiskSizeGB`<sup>Optional</sup> <a name="osDiskSizeGB" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.osDiskSizeGB"></a>
+
+```typescript
+public readonly osDiskSizeGB: number;
+```
+
+- *Type:* number
+
+---
+
+##### `osDiskType`<sup>Optional</sup> <a name="osDiskType" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.osDiskType"></a>
+
+```typescript
+public readonly osDiskType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `osType`<sup>Optional</sup> <a name="osType" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.osType"></a>
+
+```typescript
+public readonly osType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `podSubnetID`<sup>Optional</sup> <a name="podSubnetID" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.podSubnetID"></a>
+
+```typescript
+public readonly podSubnetID: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleSetEvictionPolicy`<sup>Optional</sup> <a name="scaleSetEvictionPolicy" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.scaleSetEvictionPolicy"></a>
+
+```typescript
+public readonly scaleSetEvictionPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleSetPriority`<sup>Optional</sup> <a name="scaleSetPriority" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.scaleSetPriority"></a>
+
+```typescript
+public readonly scaleSetPriority: string;
+```
+
+- *Type:* string
+
+---
+
+##### `spotMaxPrice`<sup>Optional</sup> <a name="spotMaxPrice" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.spotMaxPrice"></a>
+
+```typescript
+public readonly spotMaxPrice: number;
+```
+
+- *Type:* number
+
+---
+
+##### `type`<sup>Optional</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `vnetSubnetID`<sup>Optional</sup> <a name="vnetSubnetID" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAgentPoolProfile.property.vnetSubnetID"></a>
+
+```typescript
+public readonly vnetSubnetID: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterApiServerAccessProfile <a name="AksClusterApiServerAccessProfile" id="@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile"></a>
+
+API server access profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.Initializer"></a>
+
+```typescript
+import { AksClusterApiServerAccessProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterApiServerAccessProfile: AksClusterApiServerAccessProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.authorizedIPRanges">authorizedIPRanges</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.disableRunCommand">disableRunCommand</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.enablePrivateCluster">enablePrivateCluster</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.enablePrivateClusterPublicFQDN">enablePrivateClusterPublicFQDN</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.enableVnetIntegration">enableVnetIntegration</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.privateDNSZone">privateDNSZone</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.subnetId">subnetId</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `authorizedIPRanges`<sup>Optional</sup> <a name="authorizedIPRanges" id="@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.authorizedIPRanges"></a>
+
+```typescript
+public readonly authorizedIPRanges: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `disableRunCommand`<sup>Optional</sup> <a name="disableRunCommand" id="@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.disableRunCommand"></a>
+
+```typescript
+public readonly disableRunCommand: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enablePrivateCluster`<sup>Optional</sup> <a name="enablePrivateCluster" id="@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.enablePrivateCluster"></a>
+
+```typescript
+public readonly enablePrivateCluster: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enablePrivateClusterPublicFQDN`<sup>Optional</sup> <a name="enablePrivateClusterPublicFQDN" id="@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.enablePrivateClusterPublicFQDN"></a>
+
+```typescript
+public readonly enablePrivateClusterPublicFQDN: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableVnetIntegration`<sup>Optional</sup> <a name="enableVnetIntegration" id="@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.enableVnetIntegration"></a>
+
+```typescript
+public readonly enableVnetIntegration: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `privateDNSZone`<sup>Optional</sup> <a name="privateDNSZone" id="@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.privateDNSZone"></a>
+
+```typescript
+public readonly privateDNSZone: string;
+```
+
+- *Type:* string
+
+---
+
+##### `subnetId`<sup>Optional</sup> <a name="subnetId" id="@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile.property.subnetId"></a>
+
+```typescript
+public readonly subnetId: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterApiServerAccessProfile <a name="AksClusterApiServerAccessProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile"></a>
+
+API server access profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterApiServerAccessProfile: azure_aks.AksClusterApiServerAccessProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.authorizedIPRanges">authorizedIPRanges</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.disableRunCommand">disableRunCommand</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.enablePrivateCluster">enablePrivateCluster</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.enablePrivateClusterPublicFQDN">enablePrivateClusterPublicFQDN</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.enableVnetIntegration">enableVnetIntegration</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.privateDNSZone">privateDNSZone</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.subnetId">subnetId</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `authorizedIPRanges`<sup>Optional</sup> <a name="authorizedIPRanges" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.authorizedIPRanges"></a>
+
+```typescript
+public readonly authorizedIPRanges: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `disableRunCommand`<sup>Optional</sup> <a name="disableRunCommand" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.disableRunCommand"></a>
+
+```typescript
+public readonly disableRunCommand: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enablePrivateCluster`<sup>Optional</sup> <a name="enablePrivateCluster" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.enablePrivateCluster"></a>
+
+```typescript
+public readonly enablePrivateCluster: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enablePrivateClusterPublicFQDN`<sup>Optional</sup> <a name="enablePrivateClusterPublicFQDN" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.enablePrivateClusterPublicFQDN"></a>
+
+```typescript
+public readonly enablePrivateClusterPublicFQDN: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableVnetIntegration`<sup>Optional</sup> <a name="enableVnetIntegration" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.enableVnetIntegration"></a>
+
+```typescript
+public readonly enableVnetIntegration: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `privateDNSZone`<sup>Optional</sup> <a name="privateDNSZone" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.privateDNSZone"></a>
+
+```typescript
+public readonly privateDNSZone: string;
+```
+
+- *Type:* string
+
+---
+
+##### `subnetId`<sup>Optional</sup> <a name="subnetId" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterApiServerAccessProfile.property.subnetId"></a>
+
+```typescript
+public readonly subnetId: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterAutoScalerProfile <a name="AksClusterAutoScalerProfile" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile"></a>
+
+Auto-scaler profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.Initializer"></a>
+
+```typescript
+import { AksClusterAutoScalerProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterAutoScalerProfile: AksClusterAutoScalerProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.balanceSimilarNodeGroups">balanceSimilarNodeGroups</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.expander">expander</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.maxEmptyBulkDelete">maxEmptyBulkDelete</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.maxGracefulTerminationSec">maxGracefulTerminationSec</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.maxNodeProvisionTime">maxNodeProvisionTime</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.maxTotalUnreadyPercentage">maxTotalUnreadyPercentage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.newPodScaleUpDelay">newPodScaleUpDelay</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.okTotalUnreadyCount">okTotalUnreadyCount</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scaleDownDelayAfterAdd">scaleDownDelayAfterAdd</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scaleDownDelayAfterDelete">scaleDownDelayAfterDelete</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scaleDownDelayAfterFailure">scaleDownDelayAfterFailure</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scaleDownUnneededTime">scaleDownUnneededTime</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scaleDownUnreadyTime">scaleDownUnreadyTime</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scaleDownUtilizationThreshold">scaleDownUtilizationThreshold</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scanInterval">scanInterval</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.skipNodesWithLocalStorage">skipNodesWithLocalStorage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.skipNodesWithSystemPods">skipNodesWithSystemPods</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `balanceSimilarNodeGroups`<sup>Optional</sup> <a name="balanceSimilarNodeGroups" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.balanceSimilarNodeGroups"></a>
+
+```typescript
+public readonly balanceSimilarNodeGroups: string;
+```
+
+- *Type:* string
+
+---
+
+##### `expander`<sup>Optional</sup> <a name="expander" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.expander"></a>
+
+```typescript
+public readonly expander: string;
+```
+
+- *Type:* string
+
+---
+
+##### `maxEmptyBulkDelete`<sup>Optional</sup> <a name="maxEmptyBulkDelete" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.maxEmptyBulkDelete"></a>
+
+```typescript
+public readonly maxEmptyBulkDelete: string;
+```
+
+- *Type:* string
+
+---
+
+##### `maxGracefulTerminationSec`<sup>Optional</sup> <a name="maxGracefulTerminationSec" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.maxGracefulTerminationSec"></a>
+
+```typescript
+public readonly maxGracefulTerminationSec: string;
+```
+
+- *Type:* string
+
+---
+
+##### `maxNodeProvisionTime`<sup>Optional</sup> <a name="maxNodeProvisionTime" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.maxNodeProvisionTime"></a>
+
+```typescript
+public readonly maxNodeProvisionTime: string;
+```
+
+- *Type:* string
+
+---
+
+##### `maxTotalUnreadyPercentage`<sup>Optional</sup> <a name="maxTotalUnreadyPercentage" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.maxTotalUnreadyPercentage"></a>
+
+```typescript
+public readonly maxTotalUnreadyPercentage: string;
+```
+
+- *Type:* string
+
+---
+
+##### `newPodScaleUpDelay`<sup>Optional</sup> <a name="newPodScaleUpDelay" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.newPodScaleUpDelay"></a>
+
+```typescript
+public readonly newPodScaleUpDelay: string;
+```
+
+- *Type:* string
+
+---
+
+##### `okTotalUnreadyCount`<sup>Optional</sup> <a name="okTotalUnreadyCount" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.okTotalUnreadyCount"></a>
+
+```typescript
+public readonly okTotalUnreadyCount: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleDownDelayAfterAdd`<sup>Optional</sup> <a name="scaleDownDelayAfterAdd" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scaleDownDelayAfterAdd"></a>
+
+```typescript
+public readonly scaleDownDelayAfterAdd: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleDownDelayAfterDelete`<sup>Optional</sup> <a name="scaleDownDelayAfterDelete" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scaleDownDelayAfterDelete"></a>
+
+```typescript
+public readonly scaleDownDelayAfterDelete: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleDownDelayAfterFailure`<sup>Optional</sup> <a name="scaleDownDelayAfterFailure" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scaleDownDelayAfterFailure"></a>
+
+```typescript
+public readonly scaleDownDelayAfterFailure: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleDownUnneededTime`<sup>Optional</sup> <a name="scaleDownUnneededTime" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scaleDownUnneededTime"></a>
+
+```typescript
+public readonly scaleDownUnneededTime: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleDownUnreadyTime`<sup>Optional</sup> <a name="scaleDownUnreadyTime" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scaleDownUnreadyTime"></a>
+
+```typescript
+public readonly scaleDownUnreadyTime: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleDownUtilizationThreshold`<sup>Optional</sup> <a name="scaleDownUtilizationThreshold" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scaleDownUtilizationThreshold"></a>
+
+```typescript
+public readonly scaleDownUtilizationThreshold: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scanInterval`<sup>Optional</sup> <a name="scanInterval" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.scanInterval"></a>
+
+```typescript
+public readonly scanInterval: string;
+```
+
+- *Type:* string
+
+---
+
+##### `skipNodesWithLocalStorage`<sup>Optional</sup> <a name="skipNodesWithLocalStorage" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.skipNodesWithLocalStorage"></a>
+
+```typescript
+public readonly skipNodesWithLocalStorage: string;
+```
+
+- *Type:* string
+
+---
+
+##### `skipNodesWithSystemPods`<sup>Optional</sup> <a name="skipNodesWithSystemPods" id="@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile.property.skipNodesWithSystemPods"></a>
+
+```typescript
+public readonly skipNodesWithSystemPods: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterAutoScalerProfile <a name="AksClusterAutoScalerProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile"></a>
+
+Auto-scaler profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterAutoScalerProfile: azure_aks.AksClusterAutoScalerProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.balanceSimilarNodeGroups">balanceSimilarNodeGroups</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.expander">expander</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.maxEmptyBulkDelete">maxEmptyBulkDelete</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.maxGracefulTerminationSec">maxGracefulTerminationSec</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.maxNodeProvisionTime">maxNodeProvisionTime</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.maxTotalUnreadyPercentage">maxTotalUnreadyPercentage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.newPodScaleUpDelay">newPodScaleUpDelay</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.okTotalUnreadyCount">okTotalUnreadyCount</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scaleDownDelayAfterAdd">scaleDownDelayAfterAdd</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scaleDownDelayAfterDelete">scaleDownDelayAfterDelete</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scaleDownDelayAfterFailure">scaleDownDelayAfterFailure</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scaleDownUnneededTime">scaleDownUnneededTime</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scaleDownUnreadyTime">scaleDownUnreadyTime</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scaleDownUtilizationThreshold">scaleDownUtilizationThreshold</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scanInterval">scanInterval</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.skipNodesWithLocalStorage">skipNodesWithLocalStorage</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.skipNodesWithSystemPods">skipNodesWithSystemPods</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `balanceSimilarNodeGroups`<sup>Optional</sup> <a name="balanceSimilarNodeGroups" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.balanceSimilarNodeGroups"></a>
+
+```typescript
+public readonly balanceSimilarNodeGroups: string;
+```
+
+- *Type:* string
+
+---
+
+##### `expander`<sup>Optional</sup> <a name="expander" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.expander"></a>
+
+```typescript
+public readonly expander: string;
+```
+
+- *Type:* string
+
+---
+
+##### `maxEmptyBulkDelete`<sup>Optional</sup> <a name="maxEmptyBulkDelete" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.maxEmptyBulkDelete"></a>
+
+```typescript
+public readonly maxEmptyBulkDelete: string;
+```
+
+- *Type:* string
+
+---
+
+##### `maxGracefulTerminationSec`<sup>Optional</sup> <a name="maxGracefulTerminationSec" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.maxGracefulTerminationSec"></a>
+
+```typescript
+public readonly maxGracefulTerminationSec: string;
+```
+
+- *Type:* string
+
+---
+
+##### `maxNodeProvisionTime`<sup>Optional</sup> <a name="maxNodeProvisionTime" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.maxNodeProvisionTime"></a>
+
+```typescript
+public readonly maxNodeProvisionTime: string;
+```
+
+- *Type:* string
+
+---
+
+##### `maxTotalUnreadyPercentage`<sup>Optional</sup> <a name="maxTotalUnreadyPercentage" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.maxTotalUnreadyPercentage"></a>
+
+```typescript
+public readonly maxTotalUnreadyPercentage: string;
+```
+
+- *Type:* string
+
+---
+
+##### `newPodScaleUpDelay`<sup>Optional</sup> <a name="newPodScaleUpDelay" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.newPodScaleUpDelay"></a>
+
+```typescript
+public readonly newPodScaleUpDelay: string;
+```
+
+- *Type:* string
+
+---
+
+##### `okTotalUnreadyCount`<sup>Optional</sup> <a name="okTotalUnreadyCount" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.okTotalUnreadyCount"></a>
+
+```typescript
+public readonly okTotalUnreadyCount: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleDownDelayAfterAdd`<sup>Optional</sup> <a name="scaleDownDelayAfterAdd" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scaleDownDelayAfterAdd"></a>
+
+```typescript
+public readonly scaleDownDelayAfterAdd: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleDownDelayAfterDelete`<sup>Optional</sup> <a name="scaleDownDelayAfterDelete" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scaleDownDelayAfterDelete"></a>
+
+```typescript
+public readonly scaleDownDelayAfterDelete: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleDownDelayAfterFailure`<sup>Optional</sup> <a name="scaleDownDelayAfterFailure" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scaleDownDelayAfterFailure"></a>
+
+```typescript
+public readonly scaleDownDelayAfterFailure: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleDownUnneededTime`<sup>Optional</sup> <a name="scaleDownUnneededTime" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scaleDownUnneededTime"></a>
+
+```typescript
+public readonly scaleDownUnneededTime: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleDownUnreadyTime`<sup>Optional</sup> <a name="scaleDownUnreadyTime" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scaleDownUnreadyTime"></a>
+
+```typescript
+public readonly scaleDownUnreadyTime: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleDownUtilizationThreshold`<sup>Optional</sup> <a name="scaleDownUtilizationThreshold" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scaleDownUtilizationThreshold"></a>
+
+```typescript
+public readonly scaleDownUtilizationThreshold: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scanInterval`<sup>Optional</sup> <a name="scanInterval" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.scanInterval"></a>
+
+```typescript
+public readonly scanInterval: string;
+```
+
+- *Type:* string
+
+---
+
+##### `skipNodesWithLocalStorage`<sup>Optional</sup> <a name="skipNodesWithLocalStorage" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.skipNodesWithLocalStorage"></a>
+
+```typescript
+public readonly skipNodesWithLocalStorage: string;
+```
+
+- *Type:* string
+
+---
+
+##### `skipNodesWithSystemPods`<sup>Optional</sup> <a name="skipNodesWithSystemPods" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAutoScalerProfile.property.skipNodesWithSystemPods"></a>
+
+```typescript
+public readonly skipNodesWithSystemPods: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterAzureKeyVaultKms <a name="AksClusterAzureKeyVaultKms" id="@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms"></a>
+
+Azure Key Vault KMS configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms.Initializer"></a>
+
+```typescript
+import { AksClusterAzureKeyVaultKms } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterAzureKeyVaultKms: AksClusterAzureKeyVaultKms = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms.property.keyId">keyId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms.property.keyVaultNetworkAccess">keyVaultNetworkAccess</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms.property.keyVaultResourceId">keyVaultResourceId</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `keyId`<sup>Optional</sup> <a name="keyId" id="@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms.property.keyId"></a>
+
+```typescript
+public readonly keyId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `keyVaultNetworkAccess`<sup>Optional</sup> <a name="keyVaultNetworkAccess" id="@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms.property.keyVaultNetworkAccess"></a>
+
+```typescript
+public readonly keyVaultNetworkAccess: string;
+```
+
+- *Type:* string
+
+---
+
+##### `keyVaultResourceId`<sup>Optional</sup> <a name="keyVaultResourceId" id="@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms.property.keyVaultResourceId"></a>
+
+```typescript
+public readonly keyVaultResourceId: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterAzureKeyVaultKms <a name="AksClusterAzureKeyVaultKms" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAzureKeyVaultKms"></a>
+
+Azure Key Vault KMS configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAzureKeyVaultKms.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterAzureKeyVaultKms: azure_aks.AksClusterAzureKeyVaultKms = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAzureKeyVaultKms.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAzureKeyVaultKms.property.keyId">keyId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAzureKeyVaultKms.property.keyVaultNetworkAccess">keyVaultNetworkAccess</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAzureKeyVaultKms.property.keyVaultResourceId">keyVaultResourceId</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAzureKeyVaultKms.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `keyId`<sup>Optional</sup> <a name="keyId" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAzureKeyVaultKms.property.keyId"></a>
+
+```typescript
+public readonly keyId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `keyVaultNetworkAccess`<sup>Optional</sup> <a name="keyVaultNetworkAccess" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAzureKeyVaultKms.property.keyVaultNetworkAccess"></a>
+
+```typescript
+public readonly keyVaultNetworkAccess: string;
+```
+
+- *Type:* string
+
+---
+
+##### `keyVaultResourceId`<sup>Optional</sup> <a name="keyVaultResourceId" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterAzureKeyVaultKms.property.keyVaultResourceId"></a>
+
+```typescript
+public readonly keyVaultResourceId: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterBlobCSIDriver <a name="AksClusterBlobCSIDriver" id="@microsoft/terraform-cdk-constructs.AksClusterBlobCSIDriver"></a>
+
+Blob CSI driver.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterBlobCSIDriver.Initializer"></a>
+
+```typescript
+import { AksClusterBlobCSIDriver } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterBlobCSIDriver: AksClusterBlobCSIDriver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBlobCSIDriver.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AksClusterBlobCSIDriver.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AksClusterBlobCSIDriver <a name="AksClusterBlobCSIDriver" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBlobCSIDriver"></a>
+
+Blob CSI driver.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBlobCSIDriver.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterBlobCSIDriver: azure_aks.AksClusterBlobCSIDriver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBlobCSIDriver.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBlobCSIDriver.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AksClusterBody <a name="AksClusterBody" id="@microsoft/terraform-cdk-constructs.AksClusterBody"></a>
+
+The resource body interface for Azure AKS API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterBody.Initializer"></a>
+
+```typescript
+import { AksClusterBody } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterBody: AksClusterBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBody.property.properties">properties</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties">AksClusterBodyProperties</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBody.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterIdentity">AksClusterIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBody.property.sku">sku</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSku">AksClusterSku</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.AksClusterBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.AksClusterBody.property.properties"></a>
+
+```typescript
+public readonly properties: AksClusterBodyProperties;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties">AksClusterBodyProperties</a>
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.AksClusterBody.property.identity"></a>
+
+```typescript
+public readonly identity: AksClusterIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterIdentity">AksClusterIdentity</a>
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.AksClusterBody.property.sku"></a>
+
+```typescript
+public readonly sku: AksClusterSku;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSku">AksClusterSku</a>
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.AksClusterBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### AksClusterBody <a name="AksClusterBody" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBody"></a>
+
+The resource body interface for Azure AKS API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBody.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterBody: azure_aks.AksClusterBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBody.property.properties">properties</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties">AksClusterBodyProperties</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBody.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterIdentity">AksClusterIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBody.property.sku">sku</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSku">AksClusterSku</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBody.property.properties"></a>
+
+```typescript
+public readonly properties: AksClusterBodyProperties;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties">AksClusterBodyProperties</a>
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBody.property.identity"></a>
+
+```typescript
+public readonly identity: AksClusterIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterIdentity">AksClusterIdentity</a>
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBody.property.sku"></a>
+
+```typescript
+public readonly sku: AksClusterSku;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSku">AksClusterSku</a>
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### AksClusterBodyProperties <a name="AksClusterBodyProperties" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties"></a>
+
+AKS Cluster properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.Initializer"></a>
+
+```typescript
+import { AksClusterBodyProperties } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterBodyProperties: AksClusterBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.agentPoolProfiles">agentPoolProfiles</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile">AksClusterAgentPoolProfile</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.dnsPrefix">dnsPrefix</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.aadProfile">aadProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile">AksClusterAadProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.addonProfiles">addonProfiles</a></code> | <code>{[ key: string ]: <a href="#@microsoft/terraform-cdk-constructs.AksClusterAddonProfile">AksClusterAddonProfile</a>}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.apiServerAccessProfile">apiServerAccessProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile">AksClusterApiServerAccessProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.autoScalerProfile">autoScalerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile">AksClusterAutoScalerProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.disableLocalAccounts">disableLocalAccounts</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.diskEncryptionSetID">diskEncryptionSetID</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.enableRBAC">enableRBAC</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.fqdn">fqdn</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.httpProxyConfig">httpProxyConfig</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig">AksClusterHttpProxyConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.kubernetesVersion">kubernetesVersion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.linuxProfile">linuxProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile">AksClusterLinuxProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.networkProfile">networkProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile">AksClusterNetworkProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.nodeResourceGroup">nodeResourceGroup</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.oidcIssuerProfile">oidcIssuerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile">AksClusterOidcIssuerProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.privateFQDN">privateFQDN</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.publicNetworkAccess">publicNetworkAccess</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.securityProfile">securityProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile">AksClusterSecurityProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.servicePrincipalProfile">servicePrincipalProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile">AksClusterServicePrincipalProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.storageProfile">storageProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterStorageProfile">AksClusterStorageProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.supportPlan">supportPlan</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.windowsProfile">windowsProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile">AksClusterWindowsProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.workloadAutoScalerProfile">workloadAutoScalerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile">AksClusterWorkloadAutoScalerProfile</a></code> | *No description.* |
+
+---
+
+##### `agentPoolProfiles`<sup>Required</sup> <a name="agentPoolProfiles" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.agentPoolProfiles"></a>
+
+```typescript
+public readonly agentPoolProfiles: AksClusterAgentPoolProfile[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile">AksClusterAgentPoolProfile</a>[]
+
+---
+
+##### `dnsPrefix`<sup>Required</sup> <a name="dnsPrefix" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.dnsPrefix"></a>
+
+```typescript
+public readonly dnsPrefix: string;
+```
+
+- *Type:* string
+
+---
+
+##### `aadProfile`<sup>Optional</sup> <a name="aadProfile" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.aadProfile"></a>
+
+```typescript
+public readonly aadProfile: AksClusterAadProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile">AksClusterAadProfile</a>
+
+---
+
+##### `addonProfiles`<sup>Optional</sup> <a name="addonProfiles" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.addonProfiles"></a>
+
+```typescript
+public readonly addonProfiles: {[ key: string ]: AksClusterAddonProfile};
+```
+
+- *Type:* {[ key: string ]: <a href="#@microsoft/terraform-cdk-constructs.AksClusterAddonProfile">AksClusterAddonProfile</a>}
+
+---
+
+##### `apiServerAccessProfile`<sup>Optional</sup> <a name="apiServerAccessProfile" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.apiServerAccessProfile"></a>
+
+```typescript
+public readonly apiServerAccessProfile: AksClusterApiServerAccessProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile">AksClusterApiServerAccessProfile</a>
+
+---
+
+##### `autoScalerProfile`<sup>Optional</sup> <a name="autoScalerProfile" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.autoScalerProfile"></a>
+
+```typescript
+public readonly autoScalerProfile: AksClusterAutoScalerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile">AksClusterAutoScalerProfile</a>
+
+---
+
+##### `disableLocalAccounts`<sup>Optional</sup> <a name="disableLocalAccounts" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.disableLocalAccounts"></a>
+
+```typescript
+public readonly disableLocalAccounts: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `diskEncryptionSetID`<sup>Optional</sup> <a name="diskEncryptionSetID" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.diskEncryptionSetID"></a>
+
+```typescript
+public readonly diskEncryptionSetID: string;
+```
+
+- *Type:* string
+
+---
+
+##### `enableRBAC`<sup>Optional</sup> <a name="enableRBAC" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.enableRBAC"></a>
+
+```typescript
+public readonly enableRBAC: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `fqdn`<sup>Optional</sup> <a name="fqdn" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.fqdn"></a>
+
+```typescript
+public readonly fqdn: string;
+```
+
+- *Type:* string
+
+---
+
+##### `httpProxyConfig`<sup>Optional</sup> <a name="httpProxyConfig" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.httpProxyConfig"></a>
+
+```typescript
+public readonly httpProxyConfig: AksClusterHttpProxyConfig;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig">AksClusterHttpProxyConfig</a>
+
+---
+
+##### `kubernetesVersion`<sup>Optional</sup> <a name="kubernetesVersion" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.kubernetesVersion"></a>
+
+```typescript
+public readonly kubernetesVersion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `linuxProfile`<sup>Optional</sup> <a name="linuxProfile" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.linuxProfile"></a>
+
+```typescript
+public readonly linuxProfile: AksClusterLinuxProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile">AksClusterLinuxProfile</a>
+
+---
+
+##### `networkProfile`<sup>Optional</sup> <a name="networkProfile" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.networkProfile"></a>
+
+```typescript
+public readonly networkProfile: AksClusterNetworkProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile">AksClusterNetworkProfile</a>
+
+---
+
+##### `nodeResourceGroup`<sup>Optional</sup> <a name="nodeResourceGroup" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.nodeResourceGroup"></a>
+
+```typescript
+public readonly nodeResourceGroup: string;
+```
+
+- *Type:* string
+
+---
+
+##### `oidcIssuerProfile`<sup>Optional</sup> <a name="oidcIssuerProfile" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.oidcIssuerProfile"></a>
+
+```typescript
+public readonly oidcIssuerProfile: AksClusterOidcIssuerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile">AksClusterOidcIssuerProfile</a>
+
+---
+
+##### `privateFQDN`<sup>Optional</sup> <a name="privateFQDN" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.privateFQDN"></a>
+
+```typescript
+public readonly privateFQDN: string;
+```
+
+- *Type:* string
+
+---
+
+##### `publicNetworkAccess`<sup>Optional</sup> <a name="publicNetworkAccess" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.publicNetworkAccess"></a>
+
+```typescript
+public readonly publicNetworkAccess: string;
+```
+
+- *Type:* string
+
+---
+
+##### `securityProfile`<sup>Optional</sup> <a name="securityProfile" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.securityProfile"></a>
+
+```typescript
+public readonly securityProfile: AksClusterSecurityProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile">AksClusterSecurityProfile</a>
+
+---
+
+##### `servicePrincipalProfile`<sup>Optional</sup> <a name="servicePrincipalProfile" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.servicePrincipalProfile"></a>
+
+```typescript
+public readonly servicePrincipalProfile: AksClusterServicePrincipalProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile">AksClusterServicePrincipalProfile</a>
+
+---
+
+##### `storageProfile`<sup>Optional</sup> <a name="storageProfile" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.storageProfile"></a>
+
+```typescript
+public readonly storageProfile: AksClusterStorageProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterStorageProfile">AksClusterStorageProfile</a>
+
+---
+
+##### `supportPlan`<sup>Optional</sup> <a name="supportPlan" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.supportPlan"></a>
+
+```typescript
+public readonly supportPlan: string;
+```
+
+- *Type:* string
+
+---
+
+##### `windowsProfile`<sup>Optional</sup> <a name="windowsProfile" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.windowsProfile"></a>
+
+```typescript
+public readonly windowsProfile: AksClusterWindowsProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile">AksClusterWindowsProfile</a>
+
+---
+
+##### `workloadAutoScalerProfile`<sup>Optional</sup> <a name="workloadAutoScalerProfile" id="@microsoft/terraform-cdk-constructs.AksClusterBodyProperties.property.workloadAutoScalerProfile"></a>
+
+```typescript
+public readonly workloadAutoScalerProfile: AksClusterWorkloadAutoScalerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile">AksClusterWorkloadAutoScalerProfile</a>
+
+---
+
+### AksClusterBodyProperties <a name="AksClusterBodyProperties" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties"></a>
+
+AKS Cluster properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterBodyProperties: azure_aks.AksClusterBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.agentPoolProfiles">agentPoolProfiles</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile">AksClusterAgentPoolProfile</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.dnsPrefix">dnsPrefix</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.aadProfile">aadProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile">AksClusterAadProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.addonProfiles">addonProfiles</a></code> | <code>{[ key: string ]: <a href="#@microsoft/terraform-cdk-constructs.AksClusterAddonProfile">AksClusterAddonProfile</a>}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.apiServerAccessProfile">apiServerAccessProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile">AksClusterApiServerAccessProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.autoScalerProfile">autoScalerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile">AksClusterAutoScalerProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.disableLocalAccounts">disableLocalAccounts</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.diskEncryptionSetID">diskEncryptionSetID</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.enableRBAC">enableRBAC</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.fqdn">fqdn</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.httpProxyConfig">httpProxyConfig</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig">AksClusterHttpProxyConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.kubernetesVersion">kubernetesVersion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.linuxProfile">linuxProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile">AksClusterLinuxProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.networkProfile">networkProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile">AksClusterNetworkProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.nodeResourceGroup">nodeResourceGroup</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.oidcIssuerProfile">oidcIssuerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile">AksClusterOidcIssuerProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.privateFQDN">privateFQDN</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.publicNetworkAccess">publicNetworkAccess</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.securityProfile">securityProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile">AksClusterSecurityProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.servicePrincipalProfile">servicePrincipalProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile">AksClusterServicePrincipalProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.storageProfile">storageProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterStorageProfile">AksClusterStorageProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.supportPlan">supportPlan</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.windowsProfile">windowsProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile">AksClusterWindowsProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.workloadAutoScalerProfile">workloadAutoScalerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile">AksClusterWorkloadAutoScalerProfile</a></code> | *No description.* |
+
+---
+
+##### `agentPoolProfiles`<sup>Required</sup> <a name="agentPoolProfiles" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.agentPoolProfiles"></a>
+
+```typescript
+public readonly agentPoolProfiles: AksClusterAgentPoolProfile[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile">AksClusterAgentPoolProfile</a>[]
+
+---
+
+##### `dnsPrefix`<sup>Required</sup> <a name="dnsPrefix" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.dnsPrefix"></a>
+
+```typescript
+public readonly dnsPrefix: string;
+```
+
+- *Type:* string
+
+---
+
+##### `aadProfile`<sup>Optional</sup> <a name="aadProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.aadProfile"></a>
+
+```typescript
+public readonly aadProfile: AksClusterAadProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile">AksClusterAadProfile</a>
+
+---
+
+##### `addonProfiles`<sup>Optional</sup> <a name="addonProfiles" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.addonProfiles"></a>
+
+```typescript
+public readonly addonProfiles: {[ key: string ]: AksClusterAddonProfile};
+```
+
+- *Type:* {[ key: string ]: <a href="#@microsoft/terraform-cdk-constructs.AksClusterAddonProfile">AksClusterAddonProfile</a>}
+
+---
+
+##### `apiServerAccessProfile`<sup>Optional</sup> <a name="apiServerAccessProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.apiServerAccessProfile"></a>
+
+```typescript
+public readonly apiServerAccessProfile: AksClusterApiServerAccessProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile">AksClusterApiServerAccessProfile</a>
+
+---
+
+##### `autoScalerProfile`<sup>Optional</sup> <a name="autoScalerProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.autoScalerProfile"></a>
+
+```typescript
+public readonly autoScalerProfile: AksClusterAutoScalerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile">AksClusterAutoScalerProfile</a>
+
+---
+
+##### `disableLocalAccounts`<sup>Optional</sup> <a name="disableLocalAccounts" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.disableLocalAccounts"></a>
+
+```typescript
+public readonly disableLocalAccounts: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `diskEncryptionSetID`<sup>Optional</sup> <a name="diskEncryptionSetID" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.diskEncryptionSetID"></a>
+
+```typescript
+public readonly diskEncryptionSetID: string;
+```
+
+- *Type:* string
+
+---
+
+##### `enableRBAC`<sup>Optional</sup> <a name="enableRBAC" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.enableRBAC"></a>
+
+```typescript
+public readonly enableRBAC: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `fqdn`<sup>Optional</sup> <a name="fqdn" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.fqdn"></a>
+
+```typescript
+public readonly fqdn: string;
+```
+
+- *Type:* string
+
+---
+
+##### `httpProxyConfig`<sup>Optional</sup> <a name="httpProxyConfig" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.httpProxyConfig"></a>
+
+```typescript
+public readonly httpProxyConfig: AksClusterHttpProxyConfig;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig">AksClusterHttpProxyConfig</a>
+
+---
+
+##### `kubernetesVersion`<sup>Optional</sup> <a name="kubernetesVersion" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.kubernetesVersion"></a>
+
+```typescript
+public readonly kubernetesVersion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `linuxProfile`<sup>Optional</sup> <a name="linuxProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.linuxProfile"></a>
+
+```typescript
+public readonly linuxProfile: AksClusterLinuxProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile">AksClusterLinuxProfile</a>
+
+---
+
+##### `networkProfile`<sup>Optional</sup> <a name="networkProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.networkProfile"></a>
+
+```typescript
+public readonly networkProfile: AksClusterNetworkProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile">AksClusterNetworkProfile</a>
+
+---
+
+##### `nodeResourceGroup`<sup>Optional</sup> <a name="nodeResourceGroup" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.nodeResourceGroup"></a>
+
+```typescript
+public readonly nodeResourceGroup: string;
+```
+
+- *Type:* string
+
+---
+
+##### `oidcIssuerProfile`<sup>Optional</sup> <a name="oidcIssuerProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.oidcIssuerProfile"></a>
+
+```typescript
+public readonly oidcIssuerProfile: AksClusterOidcIssuerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile">AksClusterOidcIssuerProfile</a>
+
+---
+
+##### `privateFQDN`<sup>Optional</sup> <a name="privateFQDN" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.privateFQDN"></a>
+
+```typescript
+public readonly privateFQDN: string;
+```
+
+- *Type:* string
+
+---
+
+##### `publicNetworkAccess`<sup>Optional</sup> <a name="publicNetworkAccess" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.publicNetworkAccess"></a>
+
+```typescript
+public readonly publicNetworkAccess: string;
+```
+
+- *Type:* string
+
+---
+
+##### `securityProfile`<sup>Optional</sup> <a name="securityProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.securityProfile"></a>
+
+```typescript
+public readonly securityProfile: AksClusterSecurityProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile">AksClusterSecurityProfile</a>
+
+---
+
+##### `servicePrincipalProfile`<sup>Optional</sup> <a name="servicePrincipalProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.servicePrincipalProfile"></a>
+
+```typescript
+public readonly servicePrincipalProfile: AksClusterServicePrincipalProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile">AksClusterServicePrincipalProfile</a>
+
+---
+
+##### `storageProfile`<sup>Optional</sup> <a name="storageProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.storageProfile"></a>
+
+```typescript
+public readonly storageProfile: AksClusterStorageProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterStorageProfile">AksClusterStorageProfile</a>
+
+---
+
+##### `supportPlan`<sup>Optional</sup> <a name="supportPlan" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.supportPlan"></a>
+
+```typescript
+public readonly supportPlan: string;
+```
+
+- *Type:* string
+
+---
+
+##### `windowsProfile`<sup>Optional</sup> <a name="windowsProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.windowsProfile"></a>
+
+```typescript
+public readonly windowsProfile: AksClusterWindowsProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile">AksClusterWindowsProfile</a>
+
+---
+
+##### `workloadAutoScalerProfile`<sup>Optional</sup> <a name="workloadAutoScalerProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterBodyProperties.property.workloadAutoScalerProfile"></a>
+
+```typescript
+public readonly workloadAutoScalerProfile: AksClusterWorkloadAutoScalerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile">AksClusterWorkloadAutoScalerProfile</a>
+
+---
+
+### AksClusterDefenderSecurityMonitoring <a name="AksClusterDefenderSecurityMonitoring" id="@microsoft/terraform-cdk-constructs.AksClusterDefenderSecurityMonitoring"></a>
+
+Defender security monitoring.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterDefenderSecurityMonitoring.Initializer"></a>
+
+```typescript
+import { AksClusterDefenderSecurityMonitoring } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterDefenderSecurityMonitoring: AksClusterDefenderSecurityMonitoring = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterDefenderSecurityMonitoring.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterDefenderSecurityMonitoring.property.logAnalyticsWorkspaceResourceId">logAnalyticsWorkspaceResourceId</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AksClusterDefenderSecurityMonitoring.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `logAnalyticsWorkspaceResourceId`<sup>Optional</sup> <a name="logAnalyticsWorkspaceResourceId" id="@microsoft/terraform-cdk-constructs.AksClusterDefenderSecurityMonitoring.property.logAnalyticsWorkspaceResourceId"></a>
+
+```typescript
+public readonly logAnalyticsWorkspaceResourceId: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterDefenderSecurityMonitoring <a name="AksClusterDefenderSecurityMonitoring" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterDefenderSecurityMonitoring"></a>
+
+Defender security monitoring.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterDefenderSecurityMonitoring.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterDefenderSecurityMonitoring: azure_aks.AksClusterDefenderSecurityMonitoring = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterDefenderSecurityMonitoring.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterDefenderSecurityMonitoring.property.logAnalyticsWorkspaceResourceId">logAnalyticsWorkspaceResourceId</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterDefenderSecurityMonitoring.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `logAnalyticsWorkspaceResourceId`<sup>Optional</sup> <a name="logAnalyticsWorkspaceResourceId" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterDefenderSecurityMonitoring.property.logAnalyticsWorkspaceResourceId"></a>
+
+```typescript
+public readonly logAnalyticsWorkspaceResourceId: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterDiskCSIDriver <a name="AksClusterDiskCSIDriver" id="@microsoft/terraform-cdk-constructs.AksClusterDiskCSIDriver"></a>
+
+Disk CSI driver.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterDiskCSIDriver.Initializer"></a>
+
+```typescript
+import { AksClusterDiskCSIDriver } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterDiskCSIDriver: AksClusterDiskCSIDriver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterDiskCSIDriver.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterDiskCSIDriver.property.version">version</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AksClusterDiskCSIDriver.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `version`<sup>Optional</sup> <a name="version" id="@microsoft/terraform-cdk-constructs.AksClusterDiskCSIDriver.property.version"></a>
+
+```typescript
+public readonly version: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterDiskCSIDriver <a name="AksClusterDiskCSIDriver" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterDiskCSIDriver"></a>
+
+Disk CSI driver.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterDiskCSIDriver.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterDiskCSIDriver: azure_aks.AksClusterDiskCSIDriver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterDiskCSIDriver.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterDiskCSIDriver.property.version">version</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterDiskCSIDriver.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `version`<sup>Optional</sup> <a name="version" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterDiskCSIDriver.property.version"></a>
+
+```typescript
+public readonly version: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterEffectiveOutboundIP <a name="AksClusterEffectiveOutboundIP" id="@microsoft/terraform-cdk-constructs.AksClusterEffectiveOutboundIP"></a>
+
+Effective outbound IP.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterEffectiveOutboundIP.Initializer"></a>
+
+```typescript
+import { AksClusterEffectiveOutboundIP } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterEffectiveOutboundIP: AksClusterEffectiveOutboundIP = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterEffectiveOutboundIP.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.AksClusterEffectiveOutboundIP.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterEffectiveOutboundIP <a name="AksClusterEffectiveOutboundIP" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterEffectiveOutboundIP"></a>
+
+Effective outbound IP.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterEffectiveOutboundIP.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterEffectiveOutboundIP: azure_aks.AksClusterEffectiveOutboundIP = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterEffectiveOutboundIP.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterEffectiveOutboundIP.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterFileCSIDriver <a name="AksClusterFileCSIDriver" id="@microsoft/terraform-cdk-constructs.AksClusterFileCSIDriver"></a>
+
+File CSI driver.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterFileCSIDriver.Initializer"></a>
+
+```typescript
+import { AksClusterFileCSIDriver } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterFileCSIDriver: AksClusterFileCSIDriver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterFileCSIDriver.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AksClusterFileCSIDriver.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AksClusterFileCSIDriver <a name="AksClusterFileCSIDriver" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterFileCSIDriver"></a>
+
+File CSI driver.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterFileCSIDriver.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterFileCSIDriver: azure_aks.AksClusterFileCSIDriver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterFileCSIDriver.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterFileCSIDriver.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AksClusterGmsaProfile <a name="AksClusterGmsaProfile" id="@microsoft/terraform-cdk-constructs.AksClusterGmsaProfile"></a>
+
+GMSA profile for Windows.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterGmsaProfile.Initializer"></a>
+
+```typescript
+import { AksClusterGmsaProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterGmsaProfile: AksClusterGmsaProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterGmsaProfile.property.dnsServer">dnsServer</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterGmsaProfile.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterGmsaProfile.property.rootDomainName">rootDomainName</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `dnsServer`<sup>Optional</sup> <a name="dnsServer" id="@microsoft/terraform-cdk-constructs.AksClusterGmsaProfile.property.dnsServer"></a>
+
+```typescript
+public readonly dnsServer: string;
+```
+
+- *Type:* string
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AksClusterGmsaProfile.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `rootDomainName`<sup>Optional</sup> <a name="rootDomainName" id="@microsoft/terraform-cdk-constructs.AksClusterGmsaProfile.property.rootDomainName"></a>
+
+```typescript
+public readonly rootDomainName: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterGmsaProfile <a name="AksClusterGmsaProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterGmsaProfile"></a>
+
+GMSA profile for Windows.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterGmsaProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterGmsaProfile: azure_aks.AksClusterGmsaProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterGmsaProfile.property.dnsServer">dnsServer</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterGmsaProfile.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterGmsaProfile.property.rootDomainName">rootDomainName</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `dnsServer`<sup>Optional</sup> <a name="dnsServer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterGmsaProfile.property.dnsServer"></a>
+
+```typescript
+public readonly dnsServer: string;
+```
+
+- *Type:* string
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterGmsaProfile.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `rootDomainName`<sup>Optional</sup> <a name="rootDomainName" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterGmsaProfile.property.rootDomainName"></a>
+
+```typescript
+public readonly rootDomainName: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterHttpProxyConfig <a name="AksClusterHttpProxyConfig" id="@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig"></a>
+
+HTTP proxy configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig.Initializer"></a>
+
+```typescript
+import { AksClusterHttpProxyConfig } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterHttpProxyConfig: AksClusterHttpProxyConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig.property.httpProxy">httpProxy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig.property.httpsProxy">httpsProxy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig.property.noProxy">noProxy</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig.property.trustedCa">trustedCa</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `httpProxy`<sup>Optional</sup> <a name="httpProxy" id="@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig.property.httpProxy"></a>
+
+```typescript
+public readonly httpProxy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `httpsProxy`<sup>Optional</sup> <a name="httpsProxy" id="@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig.property.httpsProxy"></a>
+
+```typescript
+public readonly httpsProxy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `noProxy`<sup>Optional</sup> <a name="noProxy" id="@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig.property.noProxy"></a>
+
+```typescript
+public readonly noProxy: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `trustedCa`<sup>Optional</sup> <a name="trustedCa" id="@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig.property.trustedCa"></a>
+
+```typescript
+public readonly trustedCa: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterHttpProxyConfig <a name="AksClusterHttpProxyConfig" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterHttpProxyConfig"></a>
+
+HTTP proxy configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterHttpProxyConfig.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterHttpProxyConfig: azure_aks.AksClusterHttpProxyConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterHttpProxyConfig.property.httpProxy">httpProxy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterHttpProxyConfig.property.httpsProxy">httpsProxy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterHttpProxyConfig.property.noProxy">noProxy</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterHttpProxyConfig.property.trustedCa">trustedCa</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `httpProxy`<sup>Optional</sup> <a name="httpProxy" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterHttpProxyConfig.property.httpProxy"></a>
+
+```typescript
+public readonly httpProxy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `httpsProxy`<sup>Optional</sup> <a name="httpsProxy" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterHttpProxyConfig.property.httpsProxy"></a>
+
+```typescript
+public readonly httpsProxy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `noProxy`<sup>Optional</sup> <a name="noProxy" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterHttpProxyConfig.property.noProxy"></a>
+
+```typescript
+public readonly noProxy: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `trustedCa`<sup>Optional</sup> <a name="trustedCa" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterHttpProxyConfig.property.trustedCa"></a>
+
+```typescript
+public readonly trustedCa: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterIdentity <a name="AksClusterIdentity" id="@microsoft/terraform-cdk-constructs.AksClusterIdentity"></a>
+
+Identity configuration for AKS Cluster.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterIdentity.Initializer"></a>
+
+```typescript
+import { AksClusterIdentity } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterIdentity: AksClusterIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterIdentity.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.AksClusterIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.AksClusterIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+### AksClusterIdentity <a name="AksClusterIdentity" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterIdentity"></a>
+
+Identity configuration for AKS Cluster.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterIdentity.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterIdentity: azure_aks.AksClusterIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterIdentity.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+### AksClusterImageCleaner <a name="AksClusterImageCleaner" id="@microsoft/terraform-cdk-constructs.AksClusterImageCleaner"></a>
+
+Image cleaner configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterImageCleaner.Initializer"></a>
+
+```typescript
+import { AksClusterImageCleaner } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterImageCleaner: AksClusterImageCleaner = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterImageCleaner.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterImageCleaner.property.intervalHours">intervalHours</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AksClusterImageCleaner.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `intervalHours`<sup>Optional</sup> <a name="intervalHours" id="@microsoft/terraform-cdk-constructs.AksClusterImageCleaner.property.intervalHours"></a>
+
+```typescript
+public readonly intervalHours: number;
+```
+
+- *Type:* number
+
+---
+
+### AksClusterImageCleaner <a name="AksClusterImageCleaner" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterImageCleaner"></a>
+
+Image cleaner configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterImageCleaner.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterImageCleaner: azure_aks.AksClusterImageCleaner = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterImageCleaner.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterImageCleaner.property.intervalHours">intervalHours</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterImageCleaner.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `intervalHours`<sup>Optional</sup> <a name="intervalHours" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterImageCleaner.property.intervalHours"></a>
+
+```typescript
+public readonly intervalHours: number;
+```
+
+- *Type:* number
+
+---
+
+### AksClusterKeda <a name="AksClusterKeda" id="@microsoft/terraform-cdk-constructs.AksClusterKeda"></a>
+
+KEDA configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterKeda.Initializer"></a>
+
+```typescript
+import { AksClusterKeda } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterKeda: AksClusterKeda = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKeda.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AksClusterKeda.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AksClusterKeda <a name="AksClusterKeda" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKeda"></a>
+
+KEDA configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKeda.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterKeda: azure_aks.AksClusterKeda = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKeda.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKeda.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AksClusterKubeletConfig <a name="AksClusterKubeletConfig" id="@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig"></a>
+
+Kubelet configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.Initializer"></a>
+
+```typescript
+import { AksClusterKubeletConfig } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterKubeletConfig: AksClusterKubeletConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.allowedUnsafeSysctls">allowedUnsafeSysctls</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.containerLogMaxFiles">containerLogMaxFiles</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.containerLogMaxSizeMB">containerLogMaxSizeMB</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.cpuCfsQuota">cpuCfsQuota</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.cpuCfsQuotaPeriod">cpuCfsQuotaPeriod</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.cpuManagerPolicy">cpuManagerPolicy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.failSwapOn">failSwapOn</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.imageGcHighThreshold">imageGcHighThreshold</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.imageGcLowThreshold">imageGcLowThreshold</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.podMaxPids">podMaxPids</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.topologyManagerPolicy">topologyManagerPolicy</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `allowedUnsafeSysctls`<sup>Optional</sup> <a name="allowedUnsafeSysctls" id="@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.allowedUnsafeSysctls"></a>
+
+```typescript
+public readonly allowedUnsafeSysctls: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `containerLogMaxFiles`<sup>Optional</sup> <a name="containerLogMaxFiles" id="@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.containerLogMaxFiles"></a>
+
+```typescript
+public readonly containerLogMaxFiles: number;
+```
+
+- *Type:* number
+
+---
+
+##### `containerLogMaxSizeMB`<sup>Optional</sup> <a name="containerLogMaxSizeMB" id="@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.containerLogMaxSizeMB"></a>
+
+```typescript
+public readonly containerLogMaxSizeMB: number;
+```
+
+- *Type:* number
+
+---
+
+##### `cpuCfsQuota`<sup>Optional</sup> <a name="cpuCfsQuota" id="@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.cpuCfsQuota"></a>
+
+```typescript
+public readonly cpuCfsQuota: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `cpuCfsQuotaPeriod`<sup>Optional</sup> <a name="cpuCfsQuotaPeriod" id="@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.cpuCfsQuotaPeriod"></a>
+
+```typescript
+public readonly cpuCfsQuotaPeriod: string;
+```
+
+- *Type:* string
+
+---
+
+##### `cpuManagerPolicy`<sup>Optional</sup> <a name="cpuManagerPolicy" id="@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.cpuManagerPolicy"></a>
+
+```typescript
+public readonly cpuManagerPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `failSwapOn`<sup>Optional</sup> <a name="failSwapOn" id="@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.failSwapOn"></a>
+
+```typescript
+public readonly failSwapOn: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `imageGcHighThreshold`<sup>Optional</sup> <a name="imageGcHighThreshold" id="@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.imageGcHighThreshold"></a>
+
+```typescript
+public readonly imageGcHighThreshold: number;
+```
+
+- *Type:* number
+
+---
+
+##### `imageGcLowThreshold`<sup>Optional</sup> <a name="imageGcLowThreshold" id="@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.imageGcLowThreshold"></a>
+
+```typescript
+public readonly imageGcLowThreshold: number;
+```
+
+- *Type:* number
+
+---
+
+##### `podMaxPids`<sup>Optional</sup> <a name="podMaxPids" id="@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.podMaxPids"></a>
+
+```typescript
+public readonly podMaxPids: number;
+```
+
+- *Type:* number
+
+---
+
+##### `topologyManagerPolicy`<sup>Optional</sup> <a name="topologyManagerPolicy" id="@microsoft/terraform-cdk-constructs.AksClusterKubeletConfig.property.topologyManagerPolicy"></a>
+
+```typescript
+public readonly topologyManagerPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterKubeletConfig <a name="AksClusterKubeletConfig" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig"></a>
+
+Kubelet configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterKubeletConfig: azure_aks.AksClusterKubeletConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.allowedUnsafeSysctls">allowedUnsafeSysctls</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.containerLogMaxFiles">containerLogMaxFiles</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.containerLogMaxSizeMB">containerLogMaxSizeMB</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.cpuCfsQuota">cpuCfsQuota</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.cpuCfsQuotaPeriod">cpuCfsQuotaPeriod</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.cpuManagerPolicy">cpuManagerPolicy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.failSwapOn">failSwapOn</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.imageGcHighThreshold">imageGcHighThreshold</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.imageGcLowThreshold">imageGcLowThreshold</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.podMaxPids">podMaxPids</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.topologyManagerPolicy">topologyManagerPolicy</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `allowedUnsafeSysctls`<sup>Optional</sup> <a name="allowedUnsafeSysctls" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.allowedUnsafeSysctls"></a>
+
+```typescript
+public readonly allowedUnsafeSysctls: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `containerLogMaxFiles`<sup>Optional</sup> <a name="containerLogMaxFiles" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.containerLogMaxFiles"></a>
+
+```typescript
+public readonly containerLogMaxFiles: number;
+```
+
+- *Type:* number
+
+---
+
+##### `containerLogMaxSizeMB`<sup>Optional</sup> <a name="containerLogMaxSizeMB" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.containerLogMaxSizeMB"></a>
+
+```typescript
+public readonly containerLogMaxSizeMB: number;
+```
+
+- *Type:* number
+
+---
+
+##### `cpuCfsQuota`<sup>Optional</sup> <a name="cpuCfsQuota" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.cpuCfsQuota"></a>
+
+```typescript
+public readonly cpuCfsQuota: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `cpuCfsQuotaPeriod`<sup>Optional</sup> <a name="cpuCfsQuotaPeriod" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.cpuCfsQuotaPeriod"></a>
+
+```typescript
+public readonly cpuCfsQuotaPeriod: string;
+```
+
+- *Type:* string
+
+---
+
+##### `cpuManagerPolicy`<sup>Optional</sup> <a name="cpuManagerPolicy" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.cpuManagerPolicy"></a>
+
+```typescript
+public readonly cpuManagerPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `failSwapOn`<sup>Optional</sup> <a name="failSwapOn" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.failSwapOn"></a>
+
+```typescript
+public readonly failSwapOn: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `imageGcHighThreshold`<sup>Optional</sup> <a name="imageGcHighThreshold" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.imageGcHighThreshold"></a>
+
+```typescript
+public readonly imageGcHighThreshold: number;
+```
+
+- *Type:* number
+
+---
+
+##### `imageGcLowThreshold`<sup>Optional</sup> <a name="imageGcLowThreshold" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.imageGcLowThreshold"></a>
+
+```typescript
+public readonly imageGcLowThreshold: number;
+```
+
+- *Type:* number
+
+---
+
+##### `podMaxPids`<sup>Optional</sup> <a name="podMaxPids" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.podMaxPids"></a>
+
+```typescript
+public readonly podMaxPids: number;
+```
+
+- *Type:* number
+
+---
+
+##### `topologyManagerPolicy`<sup>Optional</sup> <a name="topologyManagerPolicy" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterKubeletConfig.property.topologyManagerPolicy"></a>
+
+```typescript
+public readonly topologyManagerPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterLinuxOSConfig <a name="AksClusterLinuxOSConfig" id="@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig"></a>
+
+Linux OS configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig.Initializer"></a>
+
+```typescript
+import { AksClusterLinuxOSConfig } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterLinuxOSConfig: AksClusterLinuxOSConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig.property.swapFileSizeMB">swapFileSizeMB</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig.property.sysctls">sysctls</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig">AksClusterSysctlConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig.property.transparentHugePageDefrag">transparentHugePageDefrag</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig.property.transparentHugePageEnabled">transparentHugePageEnabled</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `swapFileSizeMB`<sup>Optional</sup> <a name="swapFileSizeMB" id="@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig.property.swapFileSizeMB"></a>
+
+```typescript
+public readonly swapFileSizeMB: number;
+```
+
+- *Type:* number
+
+---
+
+##### `sysctls`<sup>Optional</sup> <a name="sysctls" id="@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig.property.sysctls"></a>
+
+```typescript
+public readonly sysctls: AksClusterSysctlConfig;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig">AksClusterSysctlConfig</a>
+
+---
+
+##### `transparentHugePageDefrag`<sup>Optional</sup> <a name="transparentHugePageDefrag" id="@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig.property.transparentHugePageDefrag"></a>
+
+```typescript
+public readonly transparentHugePageDefrag: string;
+```
+
+- *Type:* string
+
+---
+
+##### `transparentHugePageEnabled`<sup>Optional</sup> <a name="transparentHugePageEnabled" id="@microsoft/terraform-cdk-constructs.AksClusterLinuxOSConfig.property.transparentHugePageEnabled"></a>
+
+```typescript
+public readonly transparentHugePageEnabled: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterLinuxOSConfig <a name="AksClusterLinuxOSConfig" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxOSConfig"></a>
+
+Linux OS configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxOSConfig.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterLinuxOSConfig: azure_aks.AksClusterLinuxOSConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxOSConfig.property.swapFileSizeMB">swapFileSizeMB</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxOSConfig.property.sysctls">sysctls</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig">AksClusterSysctlConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxOSConfig.property.transparentHugePageDefrag">transparentHugePageDefrag</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxOSConfig.property.transparentHugePageEnabled">transparentHugePageEnabled</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `swapFileSizeMB`<sup>Optional</sup> <a name="swapFileSizeMB" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxOSConfig.property.swapFileSizeMB"></a>
+
+```typescript
+public readonly swapFileSizeMB: number;
+```
+
+- *Type:* number
+
+---
+
+##### `sysctls`<sup>Optional</sup> <a name="sysctls" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxOSConfig.property.sysctls"></a>
+
+```typescript
+public readonly sysctls: AksClusterSysctlConfig;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig">AksClusterSysctlConfig</a>
+
+---
+
+##### `transparentHugePageDefrag`<sup>Optional</sup> <a name="transparentHugePageDefrag" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxOSConfig.property.transparentHugePageDefrag"></a>
+
+```typescript
+public readonly transparentHugePageDefrag: string;
+```
+
+- *Type:* string
+
+---
+
+##### `transparentHugePageEnabled`<sup>Optional</sup> <a name="transparentHugePageEnabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxOSConfig.property.transparentHugePageEnabled"></a>
+
+```typescript
+public readonly transparentHugePageEnabled: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterLinuxProfile <a name="AksClusterLinuxProfile" id="@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile"></a>
+
+Linux profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile.Initializer"></a>
+
+```typescript
+import { AksClusterLinuxProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterLinuxProfile: AksClusterLinuxProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile.property.adminUsername">adminUsername</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile.property.ssh">ssh</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSshConfiguration">AksClusterSshConfiguration</a></code> | *No description.* |
+
+---
+
+##### `adminUsername`<sup>Required</sup> <a name="adminUsername" id="@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile.property.adminUsername"></a>
+
+```typescript
+public readonly adminUsername: string;
+```
+
+- *Type:* string
+
+---
+
+##### `ssh`<sup>Required</sup> <a name="ssh" id="@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile.property.ssh"></a>
+
+```typescript
+public readonly ssh: AksClusterSshConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSshConfiguration">AksClusterSshConfiguration</a>
+
+---
+
+### AksClusterLinuxProfile <a name="AksClusterLinuxProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxProfile"></a>
+
+Linux profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterLinuxProfile: azure_aks.AksClusterLinuxProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxProfile.property.adminUsername">adminUsername</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxProfile.property.ssh">ssh</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSshConfiguration">AksClusterSshConfiguration</a></code> | *No description.* |
+
+---
+
+##### `adminUsername`<sup>Required</sup> <a name="adminUsername" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxProfile.property.adminUsername"></a>
+
+```typescript
+public readonly adminUsername: string;
+```
+
+- *Type:* string
+
+---
+
+##### `ssh`<sup>Required</sup> <a name="ssh" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLinuxProfile.property.ssh"></a>
+
+```typescript
+public readonly ssh: AksClusterSshConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSshConfiguration">AksClusterSshConfiguration</a>
+
+---
+
+### AksClusterLoadBalancerProfile <a name="AksClusterLoadBalancerProfile" id="@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile"></a>
+
+Load balancer profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.Initializer"></a>
+
+```typescript
+import { AksClusterLoadBalancerProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterLoadBalancerProfile: AksClusterLoadBalancerProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.allocatedOutboundPorts">allocatedOutboundPorts</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.effectiveOutboundIPs">effectiveOutboundIPs</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterEffectiveOutboundIP">AksClusterEffectiveOutboundIP</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.enableMultipleStandardLoadBalancers">enableMultipleStandardLoadBalancers</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.idleTimeoutInMinutes">idleTimeoutInMinutes</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.managedOutboundIPs">managedOutboundIPs</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPs">AksClusterManagedOutboundIPs</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.outboundIPPrefixes">outboundIPPrefixes</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterOutboundIPPrefixes">AksClusterOutboundIPPrefixes</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.outboundIPs">outboundIPs</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterOutboundIPs">AksClusterOutboundIPs</a></code> | *No description.* |
+
+---
+
+##### `allocatedOutboundPorts`<sup>Optional</sup> <a name="allocatedOutboundPorts" id="@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.allocatedOutboundPorts"></a>
+
+```typescript
+public readonly allocatedOutboundPorts: number;
+```
+
+- *Type:* number
+
+---
+
+##### `effectiveOutboundIPs`<sup>Optional</sup> <a name="effectiveOutboundIPs" id="@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.effectiveOutboundIPs"></a>
+
+```typescript
+public readonly effectiveOutboundIPs: AksClusterEffectiveOutboundIP[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterEffectiveOutboundIP">AksClusterEffectiveOutboundIP</a>[]
+
+---
+
+##### `enableMultipleStandardLoadBalancers`<sup>Optional</sup> <a name="enableMultipleStandardLoadBalancers" id="@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.enableMultipleStandardLoadBalancers"></a>
+
+```typescript
+public readonly enableMultipleStandardLoadBalancers: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `idleTimeoutInMinutes`<sup>Optional</sup> <a name="idleTimeoutInMinutes" id="@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.idleTimeoutInMinutes"></a>
+
+```typescript
+public readonly idleTimeoutInMinutes: number;
+```
+
+- *Type:* number
+
+---
+
+##### `managedOutboundIPs`<sup>Optional</sup> <a name="managedOutboundIPs" id="@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.managedOutboundIPs"></a>
+
+```typescript
+public readonly managedOutboundIPs: AksClusterManagedOutboundIPs;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPs">AksClusterManagedOutboundIPs</a>
+
+---
+
+##### `outboundIPPrefixes`<sup>Optional</sup> <a name="outboundIPPrefixes" id="@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.outboundIPPrefixes"></a>
+
+```typescript
+public readonly outboundIPPrefixes: AksClusterOutboundIPPrefixes;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterOutboundIPPrefixes">AksClusterOutboundIPPrefixes</a>
+
+---
+
+##### `outboundIPs`<sup>Optional</sup> <a name="outboundIPs" id="@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile.property.outboundIPs"></a>
+
+```typescript
+public readonly outboundIPs: AksClusterOutboundIPs;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterOutboundIPs">AksClusterOutboundIPs</a>
+
+---
+
+### AksClusterLoadBalancerProfile <a name="AksClusterLoadBalancerProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile"></a>
+
+Load balancer profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterLoadBalancerProfile: azure_aks.AksClusterLoadBalancerProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.allocatedOutboundPorts">allocatedOutboundPorts</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.effectiveOutboundIPs">effectiveOutboundIPs</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterEffectiveOutboundIP">AksClusterEffectiveOutboundIP</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.enableMultipleStandardLoadBalancers">enableMultipleStandardLoadBalancers</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.idleTimeoutInMinutes">idleTimeoutInMinutes</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.managedOutboundIPs">managedOutboundIPs</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPs">AksClusterManagedOutboundIPs</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.outboundIPPrefixes">outboundIPPrefixes</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterOutboundIPPrefixes">AksClusterOutboundIPPrefixes</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.outboundIPs">outboundIPs</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterOutboundIPs">AksClusterOutboundIPs</a></code> | *No description.* |
+
+---
+
+##### `allocatedOutboundPorts`<sup>Optional</sup> <a name="allocatedOutboundPorts" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.allocatedOutboundPorts"></a>
+
+```typescript
+public readonly allocatedOutboundPorts: number;
+```
+
+- *Type:* number
+
+---
+
+##### `effectiveOutboundIPs`<sup>Optional</sup> <a name="effectiveOutboundIPs" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.effectiveOutboundIPs"></a>
+
+```typescript
+public readonly effectiveOutboundIPs: AksClusterEffectiveOutboundIP[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterEffectiveOutboundIP">AksClusterEffectiveOutboundIP</a>[]
+
+---
+
+##### `enableMultipleStandardLoadBalancers`<sup>Optional</sup> <a name="enableMultipleStandardLoadBalancers" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.enableMultipleStandardLoadBalancers"></a>
+
+```typescript
+public readonly enableMultipleStandardLoadBalancers: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `idleTimeoutInMinutes`<sup>Optional</sup> <a name="idleTimeoutInMinutes" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.idleTimeoutInMinutes"></a>
+
+```typescript
+public readonly idleTimeoutInMinutes: number;
+```
+
+- *Type:* number
+
+---
+
+##### `managedOutboundIPs`<sup>Optional</sup> <a name="managedOutboundIPs" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.managedOutboundIPs"></a>
+
+```typescript
+public readonly managedOutboundIPs: AksClusterManagedOutboundIPs;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPs">AksClusterManagedOutboundIPs</a>
+
+---
+
+##### `outboundIPPrefixes`<sup>Optional</sup> <a name="outboundIPPrefixes" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.outboundIPPrefixes"></a>
+
+```typescript
+public readonly outboundIPPrefixes: AksClusterOutboundIPPrefixes;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterOutboundIPPrefixes">AksClusterOutboundIPPrefixes</a>
+
+---
+
+##### `outboundIPs`<sup>Optional</sup> <a name="outboundIPs" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterLoadBalancerProfile.property.outboundIPs"></a>
+
+```typescript
+public readonly outboundIPs: AksClusterOutboundIPs;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterOutboundIPs">AksClusterOutboundIPs</a>
+
+---
+
+### AksClusterManagedOutboundIPProfile <a name="AksClusterManagedOutboundIPProfile" id="@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPProfile"></a>
+
+Managed outbound IP profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPProfile.Initializer"></a>
+
+```typescript
+import { AksClusterManagedOutboundIPProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterManagedOutboundIPProfile: AksClusterManagedOutboundIPProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPProfile.property.count">count</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPProfile.property.count"></a>
+
+```typescript
+public readonly count: number;
+```
+
+- *Type:* number
+
+---
+
+### AksClusterManagedOutboundIPProfile <a name="AksClusterManagedOutboundIPProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterManagedOutboundIPProfile"></a>
+
+Managed outbound IP profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterManagedOutboundIPProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterManagedOutboundIPProfile: azure_aks.AksClusterManagedOutboundIPProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterManagedOutboundIPProfile.property.count">count</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterManagedOutboundIPProfile.property.count"></a>
+
+```typescript
+public readonly count: number;
+```
+
+- *Type:* number
+
+---
+
+### AksClusterManagedOutboundIPs <a name="AksClusterManagedOutboundIPs" id="@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPs"></a>
+
+Managed outbound IPs.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPs.Initializer"></a>
+
+```typescript
+import { AksClusterManagedOutboundIPs } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterManagedOutboundIPs: AksClusterManagedOutboundIPs = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPs.property.count">count</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPs.property.countIPv6">countIPv6</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPs.property.count"></a>
+
+```typescript
+public readonly count: number;
+```
+
+- *Type:* number
+
+---
+
+##### `countIPv6`<sup>Optional</sup> <a name="countIPv6" id="@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPs.property.countIPv6"></a>
+
+```typescript
+public readonly countIPv6: number;
+```
+
+- *Type:* number
+
+---
+
+### AksClusterManagedOutboundIPs <a name="AksClusterManagedOutboundIPs" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterManagedOutboundIPs"></a>
+
+Managed outbound IPs.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterManagedOutboundIPs.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterManagedOutboundIPs: azure_aks.AksClusterManagedOutboundIPs = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterManagedOutboundIPs.property.count">count</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterManagedOutboundIPs.property.countIPv6">countIPv6</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterManagedOutboundIPs.property.count"></a>
+
+```typescript
+public readonly count: number;
+```
+
+- *Type:* number
+
+---
+
+##### `countIPv6`<sup>Optional</sup> <a name="countIPv6" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterManagedOutboundIPs.property.countIPv6"></a>
+
+```typescript
+public readonly countIPv6: number;
+```
+
+- *Type:* number
+
+---
+
+### AksClusterNatGatewayProfile <a name="AksClusterNatGatewayProfile" id="@microsoft/terraform-cdk-constructs.AksClusterNatGatewayProfile"></a>
+
+NAT Gateway profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterNatGatewayProfile.Initializer"></a>
+
+```typescript
+import { AksClusterNatGatewayProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterNatGatewayProfile: AksClusterNatGatewayProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNatGatewayProfile.property.effectiveOutboundIPs">effectiveOutboundIPs</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterEffectiveOutboundIP">AksClusterEffectiveOutboundIP</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNatGatewayProfile.property.idleTimeoutInMinutes">idleTimeoutInMinutes</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNatGatewayProfile.property.managedOutboundIPProfile">managedOutboundIPProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPProfile">AksClusterManagedOutboundIPProfile</a></code> | *No description.* |
+
+---
+
+##### `effectiveOutboundIPs`<sup>Optional</sup> <a name="effectiveOutboundIPs" id="@microsoft/terraform-cdk-constructs.AksClusterNatGatewayProfile.property.effectiveOutboundIPs"></a>
+
+```typescript
+public readonly effectiveOutboundIPs: AksClusterEffectiveOutboundIP[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterEffectiveOutboundIP">AksClusterEffectiveOutboundIP</a>[]
+
+---
+
+##### `idleTimeoutInMinutes`<sup>Optional</sup> <a name="idleTimeoutInMinutes" id="@microsoft/terraform-cdk-constructs.AksClusterNatGatewayProfile.property.idleTimeoutInMinutes"></a>
+
+```typescript
+public readonly idleTimeoutInMinutes: number;
+```
+
+- *Type:* number
+
+---
+
+##### `managedOutboundIPProfile`<sup>Optional</sup> <a name="managedOutboundIPProfile" id="@microsoft/terraform-cdk-constructs.AksClusterNatGatewayProfile.property.managedOutboundIPProfile"></a>
+
+```typescript
+public readonly managedOutboundIPProfile: AksClusterManagedOutboundIPProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPProfile">AksClusterManagedOutboundIPProfile</a>
+
+---
+
+### AksClusterNatGatewayProfile <a name="AksClusterNatGatewayProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNatGatewayProfile"></a>
+
+NAT Gateway profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNatGatewayProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterNatGatewayProfile: azure_aks.AksClusterNatGatewayProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNatGatewayProfile.property.effectiveOutboundIPs">effectiveOutboundIPs</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterEffectiveOutboundIP">AksClusterEffectiveOutboundIP</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNatGatewayProfile.property.idleTimeoutInMinutes">idleTimeoutInMinutes</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNatGatewayProfile.property.managedOutboundIPProfile">managedOutboundIPProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPProfile">AksClusterManagedOutboundIPProfile</a></code> | *No description.* |
+
+---
+
+##### `effectiveOutboundIPs`<sup>Optional</sup> <a name="effectiveOutboundIPs" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNatGatewayProfile.property.effectiveOutboundIPs"></a>
+
+```typescript
+public readonly effectiveOutboundIPs: AksClusterEffectiveOutboundIP[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterEffectiveOutboundIP">AksClusterEffectiveOutboundIP</a>[]
+
+---
+
+##### `idleTimeoutInMinutes`<sup>Optional</sup> <a name="idleTimeoutInMinutes" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNatGatewayProfile.property.idleTimeoutInMinutes"></a>
+
+```typescript
+public readonly idleTimeoutInMinutes: number;
+```
+
+- *Type:* number
+
+---
+
+##### `managedOutboundIPProfile`<sup>Optional</sup> <a name="managedOutboundIPProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNatGatewayProfile.property.managedOutboundIPProfile"></a>
+
+```typescript
+public readonly managedOutboundIPProfile: AksClusterManagedOutboundIPProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterManagedOutboundIPProfile">AksClusterManagedOutboundIPProfile</a>
+
+---
+
+### AksClusterNetworkProfile <a name="AksClusterNetworkProfile" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile"></a>
+
+Network profile for AKS cluster.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.Initializer"></a>
+
+```typescript
+import { AksClusterNetworkProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterNetworkProfile: AksClusterNetworkProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.dnsServiceIP">dnsServiceIP</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.dockerBridgeCidr">dockerBridgeCidr</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.ipFamilies">ipFamilies</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.loadBalancerProfile">loadBalancerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile">AksClusterLoadBalancerProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.loadBalancerSku">loadBalancerSku</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.natGatewayProfile">natGatewayProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNatGatewayProfile">AksClusterNatGatewayProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.networkMode">networkMode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.networkPlugin">networkPlugin</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.networkPolicy">networkPolicy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.outboundType">outboundType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.podCidr">podCidr</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.podCidrs">podCidrs</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.serviceCidr">serviceCidr</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.serviceCidrs">serviceCidrs</a></code> | <code>string[]</code> | *No description.* |
+
+---
+
+##### `dnsServiceIP`<sup>Optional</sup> <a name="dnsServiceIP" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.dnsServiceIP"></a>
+
+```typescript
+public readonly dnsServiceIP: string;
+```
+
+- *Type:* string
+
+---
+
+##### `dockerBridgeCidr`<sup>Optional</sup> <a name="dockerBridgeCidr" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.dockerBridgeCidr"></a>
+
+```typescript
+public readonly dockerBridgeCidr: string;
+```
+
+- *Type:* string
+
+---
+
+##### `ipFamilies`<sup>Optional</sup> <a name="ipFamilies" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.ipFamilies"></a>
+
+```typescript
+public readonly ipFamilies: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `loadBalancerProfile`<sup>Optional</sup> <a name="loadBalancerProfile" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.loadBalancerProfile"></a>
+
+```typescript
+public readonly loadBalancerProfile: AksClusterLoadBalancerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile">AksClusterLoadBalancerProfile</a>
+
+---
+
+##### `loadBalancerSku`<sup>Optional</sup> <a name="loadBalancerSku" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.loadBalancerSku"></a>
+
+```typescript
+public readonly loadBalancerSku: string;
+```
+
+- *Type:* string
+
+---
+
+##### `natGatewayProfile`<sup>Optional</sup> <a name="natGatewayProfile" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.natGatewayProfile"></a>
+
+```typescript
+public readonly natGatewayProfile: AksClusterNatGatewayProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterNatGatewayProfile">AksClusterNatGatewayProfile</a>
+
+---
+
+##### `networkMode`<sup>Optional</sup> <a name="networkMode" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.networkMode"></a>
+
+```typescript
+public readonly networkMode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `networkPlugin`<sup>Optional</sup> <a name="networkPlugin" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.networkPlugin"></a>
+
+```typescript
+public readonly networkPlugin: string;
+```
+
+- *Type:* string
+
+---
+
+##### `networkPolicy`<sup>Optional</sup> <a name="networkPolicy" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.networkPolicy"></a>
+
+```typescript
+public readonly networkPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `outboundType`<sup>Optional</sup> <a name="outboundType" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.outboundType"></a>
+
+```typescript
+public readonly outboundType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `podCidr`<sup>Optional</sup> <a name="podCidr" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.podCidr"></a>
+
+```typescript
+public readonly podCidr: string;
+```
+
+- *Type:* string
+
+---
+
+##### `podCidrs`<sup>Optional</sup> <a name="podCidrs" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.podCidrs"></a>
+
+```typescript
+public readonly podCidrs: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `serviceCidr`<sup>Optional</sup> <a name="serviceCidr" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.serviceCidr"></a>
+
+```typescript
+public readonly serviceCidr: string;
+```
+
+- *Type:* string
+
+---
+
+##### `serviceCidrs`<sup>Optional</sup> <a name="serviceCidrs" id="@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile.property.serviceCidrs"></a>
+
+```typescript
+public readonly serviceCidrs: string[];
+```
+
+- *Type:* string[]
+
+---
+
+### AksClusterNetworkProfile <a name="AksClusterNetworkProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile"></a>
+
+Network profile for AKS cluster.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterNetworkProfile: azure_aks.AksClusterNetworkProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.dnsServiceIP">dnsServiceIP</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.dockerBridgeCidr">dockerBridgeCidr</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.ipFamilies">ipFamilies</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.loadBalancerProfile">loadBalancerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile">AksClusterLoadBalancerProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.loadBalancerSku">loadBalancerSku</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.natGatewayProfile">natGatewayProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNatGatewayProfile">AksClusterNatGatewayProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.networkMode">networkMode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.networkPlugin">networkPlugin</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.networkPolicy">networkPolicy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.outboundType">outboundType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.podCidr">podCidr</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.podCidrs">podCidrs</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.serviceCidr">serviceCidr</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.serviceCidrs">serviceCidrs</a></code> | <code>string[]</code> | *No description.* |
+
+---
+
+##### `dnsServiceIP`<sup>Optional</sup> <a name="dnsServiceIP" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.dnsServiceIP"></a>
+
+```typescript
+public readonly dnsServiceIP: string;
+```
+
+- *Type:* string
+
+---
+
+##### `dockerBridgeCidr`<sup>Optional</sup> <a name="dockerBridgeCidr" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.dockerBridgeCidr"></a>
+
+```typescript
+public readonly dockerBridgeCidr: string;
+```
+
+- *Type:* string
+
+---
+
+##### `ipFamilies`<sup>Optional</sup> <a name="ipFamilies" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.ipFamilies"></a>
+
+```typescript
+public readonly ipFamilies: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `loadBalancerProfile`<sup>Optional</sup> <a name="loadBalancerProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.loadBalancerProfile"></a>
+
+```typescript
+public readonly loadBalancerProfile: AksClusterLoadBalancerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterLoadBalancerProfile">AksClusterLoadBalancerProfile</a>
+
+---
+
+##### `loadBalancerSku`<sup>Optional</sup> <a name="loadBalancerSku" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.loadBalancerSku"></a>
+
+```typescript
+public readonly loadBalancerSku: string;
+```
+
+- *Type:* string
+
+---
+
+##### `natGatewayProfile`<sup>Optional</sup> <a name="natGatewayProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.natGatewayProfile"></a>
+
+```typescript
+public readonly natGatewayProfile: AksClusterNatGatewayProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterNatGatewayProfile">AksClusterNatGatewayProfile</a>
+
+---
+
+##### `networkMode`<sup>Optional</sup> <a name="networkMode" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.networkMode"></a>
+
+```typescript
+public readonly networkMode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `networkPlugin`<sup>Optional</sup> <a name="networkPlugin" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.networkPlugin"></a>
+
+```typescript
+public readonly networkPlugin: string;
+```
+
+- *Type:* string
+
+---
+
+##### `networkPolicy`<sup>Optional</sup> <a name="networkPolicy" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.networkPolicy"></a>
+
+```typescript
+public readonly networkPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `outboundType`<sup>Optional</sup> <a name="outboundType" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.outboundType"></a>
+
+```typescript
+public readonly outboundType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `podCidr`<sup>Optional</sup> <a name="podCidr" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.podCidr"></a>
+
+```typescript
+public readonly podCidr: string;
+```
+
+- *Type:* string
+
+---
+
+##### `podCidrs`<sup>Optional</sup> <a name="podCidrs" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.podCidrs"></a>
+
+```typescript
+public readonly podCidrs: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `serviceCidr`<sup>Optional</sup> <a name="serviceCidr" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.serviceCidr"></a>
+
+```typescript
+public readonly serviceCidr: string;
+```
+
+- *Type:* string
+
+---
+
+##### `serviceCidrs`<sup>Optional</sup> <a name="serviceCidrs" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterNetworkProfile.property.serviceCidrs"></a>
+
+```typescript
+public readonly serviceCidrs: string[];
+```
+
+- *Type:* string[]
+
+---
+
+### AksClusterOidcIssuerProfile <a name="AksClusterOidcIssuerProfile" id="@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile"></a>
+
+OIDC issuer profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile.Initializer"></a>
+
+```typescript
+import { AksClusterOidcIssuerProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterOidcIssuerProfile: AksClusterOidcIssuerProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile.property.issuerURL">issuerURL</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `issuerURL`<sup>Optional</sup> <a name="issuerURL" id="@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile.property.issuerURL"></a>
+
+```typescript
+public readonly issuerURL: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterOidcIssuerProfile <a name="AksClusterOidcIssuerProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOidcIssuerProfile"></a>
+
+OIDC issuer profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOidcIssuerProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterOidcIssuerProfile: azure_aks.AksClusterOidcIssuerProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOidcIssuerProfile.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOidcIssuerProfile.property.issuerURL">issuerURL</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOidcIssuerProfile.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `issuerURL`<sup>Optional</sup> <a name="issuerURL" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOidcIssuerProfile.property.issuerURL"></a>
+
+```typescript
+public readonly issuerURL: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterOutboundIPPrefixes <a name="AksClusterOutboundIPPrefixes" id="@microsoft/terraform-cdk-constructs.AksClusterOutboundIPPrefixes"></a>
+
+Outbound IP prefixes.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterOutboundIPPrefixes.Initializer"></a>
+
+```typescript
+import { AksClusterOutboundIPPrefixes } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterOutboundIPPrefixes: AksClusterOutboundIPPrefixes = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterOutboundIPPrefixes.property.publicIPPrefixes">publicIPPrefixes</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterResourceReference">AksClusterResourceReference</a>[]</code> | *No description.* |
+
+---
+
+##### `publicIPPrefixes`<sup>Optional</sup> <a name="publicIPPrefixes" id="@microsoft/terraform-cdk-constructs.AksClusterOutboundIPPrefixes.property.publicIPPrefixes"></a>
+
+```typescript
+public readonly publicIPPrefixes: AksClusterResourceReference[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterResourceReference">AksClusterResourceReference</a>[]
+
+---
+
+### AksClusterOutboundIPPrefixes <a name="AksClusterOutboundIPPrefixes" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOutboundIPPrefixes"></a>
+
+Outbound IP prefixes.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOutboundIPPrefixes.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterOutboundIPPrefixes: azure_aks.AksClusterOutboundIPPrefixes = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOutboundIPPrefixes.property.publicIPPrefixes">publicIPPrefixes</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterResourceReference">AksClusterResourceReference</a>[]</code> | *No description.* |
+
+---
+
+##### `publicIPPrefixes`<sup>Optional</sup> <a name="publicIPPrefixes" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOutboundIPPrefixes.property.publicIPPrefixes"></a>
+
+```typescript
+public readonly publicIPPrefixes: AksClusterResourceReference[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterResourceReference">AksClusterResourceReference</a>[]
+
+---
+
+### AksClusterOutboundIPs <a name="AksClusterOutboundIPs" id="@microsoft/terraform-cdk-constructs.AksClusterOutboundIPs"></a>
+
+Outbound IPs.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterOutboundIPs.Initializer"></a>
+
+```typescript
+import { AksClusterOutboundIPs } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterOutboundIPs: AksClusterOutboundIPs = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterOutboundIPs.property.publicIPs">publicIPs</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterResourceReference">AksClusterResourceReference</a>[]</code> | *No description.* |
+
+---
+
+##### `publicIPs`<sup>Optional</sup> <a name="publicIPs" id="@microsoft/terraform-cdk-constructs.AksClusterOutboundIPs.property.publicIPs"></a>
+
+```typescript
+public readonly publicIPs: AksClusterResourceReference[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterResourceReference">AksClusterResourceReference</a>[]
+
+---
+
+### AksClusterOutboundIPs <a name="AksClusterOutboundIPs" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOutboundIPs"></a>
+
+Outbound IPs.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOutboundIPs.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterOutboundIPs: azure_aks.AksClusterOutboundIPs = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOutboundIPs.property.publicIPs">publicIPs</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterResourceReference">AksClusterResourceReference</a>[]</code> | *No description.* |
+
+---
+
+##### `publicIPs`<sup>Optional</sup> <a name="publicIPs" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterOutboundIPs.property.publicIPs"></a>
+
+```typescript
+public readonly publicIPs: AksClusterResourceReference[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterResourceReference">AksClusterResourceReference</a>[]
+
+---
+
+### AksClusterProps <a name="AksClusterProps" id="@microsoft/terraform-cdk-constructs.AksClusterProps"></a>
+
+Properties for the unified Azure Kubernetes Service cluster.
+
+Extends AzapiResourceProps with AKS-specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterProps.Initializer"></a>
+
+```typescript
+import { AksClusterProps } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterProps: AksClusterProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.agentPoolProfiles">agentPoolProfiles</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile">AksClusterAgentPoolProfile</a>[]</code> | The agent pool profiles for the cluster node pools At least one agent pool is required. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.dnsPrefix">dnsPrefix</a></code> | <code>string</code> | DNS prefix for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.aadProfile">aadProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile">AksClusterAadProfile</a></code> | The Azure Active Directory integration configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.addonProfiles">addonProfiles</a></code> | <code>{[ key: string ]: <a href="#@microsoft/terraform-cdk-constructs.AksClusterAddonProfile">AksClusterAddonProfile</a>}</code> | The addon profiles for cluster addons. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.apiServerAccessProfile">apiServerAccessProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile">AksClusterApiServerAccessProfile</a></code> | The API server access configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.autoScalerProfile">autoScalerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile">AksClusterAutoScalerProfile</a></code> | The auto-scaler configuration for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.disableLocalAccounts">disableLocalAccounts</a></code> | <code>boolean</code> | Whether to disable local accounts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.diskEncryptionSetID">diskEncryptionSetID</a></code> | <code>string</code> | The resource ID of the disk encryption set for encrypting disks. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.enableRBAC">enableRBAC</a></code> | <code>boolean</code> | Whether to enable Kubernetes Role-Based Access Control. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.fqdn">fqdn</a></code> | <code>string</code> | The FQDN for the cluster (read-only). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.httpProxyConfig">httpProxyConfig</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig">AksClusterHttpProxyConfig</a></code> | The HTTP proxy configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterIdentity">AksClusterIdentity</a></code> | The identity configuration for the AKS cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes Useful for properties that are externally managed or should not trigger updates. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.kubernetesVersion">kubernetesVersion</a></code> | <code>string</code> | The Kubernetes version for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.linuxProfile">linuxProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile">AksClusterLinuxProfile</a></code> | The Linux profile for SSH access. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.networkProfile">networkProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile">AksClusterNetworkProfile</a></code> | The network configuration for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.nodeResourceGroup">nodeResourceGroup</a></code> | <code>string</code> | The name of the resource group for cluster nodes If not specified, Azure will auto-generate the name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.oidcIssuerProfile">oidcIssuerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile">AksClusterOidcIssuerProfile</a></code> | The OIDC issuer profile for workload identity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.privateFQDN">privateFQDN</a></code> | <code>string</code> | The private FQDN for the cluster (read-only). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.publicNetworkAccess">publicNetworkAccess</a></code> | <code>string</code> | Whether the cluster is accessible from the public internet. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the AKS cluster will be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.securityProfile">securityProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile">AksClusterSecurityProfile</a></code> | The security profile for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.servicePrincipalProfile">servicePrincipalProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile">AksClusterServicePrincipalProfile</a></code> | The service principal profile for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.sku">sku</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSku">AksClusterSku</a></code> | The SKU (pricing tier) for the AKS cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.storageProfile">storageProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterStorageProfile">AksClusterStorageProfile</a></code> | The storage profile for CSI drivers. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.supportPlan">supportPlan</a></code> | <code>string</code> | The support plan for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.windowsProfile">windowsProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile">AksClusterWindowsProfile</a></code> | The Windows profile for Windows node pools. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.workloadAutoScalerProfile">workloadAutoScalerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile">AksClusterWorkloadAutoScalerProfile</a></code> | The workload auto-scaler profile. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `agentPoolProfiles`<sup>Required</sup> <a name="agentPoolProfiles" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.agentPoolProfiles"></a>
+
+```typescript
+public readonly agentPoolProfiles: AksClusterAgentPoolProfile[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile">AksClusterAgentPoolProfile</a>[]
+
+The agent pool profiles for the cluster node pools At least one agent pool is required.
+
+---
+
+*Example*
+
+```typescript
+[{ name: "default", count: 3, vmSize: "Standard_D2s_v3", mode: "System" }]
+```
+
+
+##### `dnsPrefix`<sup>Required</sup> <a name="dnsPrefix" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.dnsPrefix"></a>
+
+```typescript
+public readonly dnsPrefix: string;
+```
+
+- *Type:* string
+
+DNS prefix for the cluster.
+
+---
+
+*Example*
+
+```typescript
+"myakscluster"
+```
+
+
+##### `aadProfile`<sup>Optional</sup> <a name="aadProfile" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.aadProfile"></a>
+
+```typescript
+public readonly aadProfile: AksClusterAadProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile">AksClusterAadProfile</a>
+
+The Azure Active Directory integration configuration.
+
+---
+
+##### `addonProfiles`<sup>Optional</sup> <a name="addonProfiles" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.addonProfiles"></a>
+
+```typescript
+public readonly addonProfiles: {[ key: string ]: AksClusterAddonProfile};
+```
+
+- *Type:* {[ key: string ]: <a href="#@microsoft/terraform-cdk-constructs.AksClusterAddonProfile">AksClusterAddonProfile</a>}
+
+The addon profiles for cluster addons.
+
+---
+
+##### `apiServerAccessProfile`<sup>Optional</sup> <a name="apiServerAccessProfile" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.apiServerAccessProfile"></a>
+
+```typescript
+public readonly apiServerAccessProfile: AksClusterApiServerAccessProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile">AksClusterApiServerAccessProfile</a>
+
+The API server access configuration.
+
+---
+
+##### `autoScalerProfile`<sup>Optional</sup> <a name="autoScalerProfile" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.autoScalerProfile"></a>
+
+```typescript
+public readonly autoScalerProfile: AksClusterAutoScalerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile">AksClusterAutoScalerProfile</a>
+
+The auto-scaler configuration for the cluster.
+
+---
+
+##### `disableLocalAccounts`<sup>Optional</sup> <a name="disableLocalAccounts" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.disableLocalAccounts"></a>
+
+```typescript
+public readonly disableLocalAccounts: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether to disable local accounts.
+
+---
+
+##### `diskEncryptionSetID`<sup>Optional</sup> <a name="diskEncryptionSetID" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.diskEncryptionSetID"></a>
+
+```typescript
+public readonly diskEncryptionSetID: string;
+```
+
+- *Type:* string
+
+The resource ID of the disk encryption set for encrypting disks.
+
+---
+
+##### `enableRBAC`<sup>Optional</sup> <a name="enableRBAC" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.enableRBAC"></a>
+
+```typescript
+public readonly enableRBAC: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable Kubernetes Role-Based Access Control.
+
+---
+
+##### `fqdn`<sup>Optional</sup> <a name="fqdn" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.fqdn"></a>
+
+```typescript
+public readonly fqdn: string;
+```
+
+- *Type:* string
+
+The FQDN for the cluster (read-only).
+
+---
+
+##### `httpProxyConfig`<sup>Optional</sup> <a name="httpProxyConfig" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.httpProxyConfig"></a>
+
+```typescript
+public readonly httpProxyConfig: AksClusterHttpProxyConfig;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig">AksClusterHttpProxyConfig</a>
+
+The HTTP proxy configuration.
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.identity"></a>
+
+```typescript
+public readonly identity: AksClusterIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterIdentity">AksClusterIdentity</a>
+
+The identity configuration for the AKS cluster.
+
+---
+
+*Example*
+
+```typescript
+{ type: "UserAssigned", userAssignedIdentities: { "/subscriptions/.../resourceGroups/.../providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity": {} } }
+```
+
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes Useful for properties that are externally managed or should not trigger updates.
+
+---
+
+*Example*
+
+```typescript
+["kubernetesVersion", "agentPoolProfiles"]
+```
+
+
+##### `kubernetesVersion`<sup>Optional</sup> <a name="kubernetesVersion" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.kubernetesVersion"></a>
+
+```typescript
+public readonly kubernetesVersion: string;
+```
+
+- *Type:* string
+
+The Kubernetes version for the cluster.
+
+---
+
+*Example*
+
+```typescript
+"1.29.0"
+```
+
+
+##### `linuxProfile`<sup>Optional</sup> <a name="linuxProfile" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.linuxProfile"></a>
+
+```typescript
+public readonly linuxProfile: AksClusterLinuxProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile">AksClusterLinuxProfile</a>
+
+The Linux profile for SSH access.
+
+---
+
+##### `networkProfile`<sup>Optional</sup> <a name="networkProfile" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.networkProfile"></a>
+
+```typescript
+public readonly networkProfile: AksClusterNetworkProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile">AksClusterNetworkProfile</a>
+
+The network configuration for the cluster.
+
+---
+
+##### `nodeResourceGroup`<sup>Optional</sup> <a name="nodeResourceGroup" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.nodeResourceGroup"></a>
+
+```typescript
+public readonly nodeResourceGroup: string;
+```
+
+- *Type:* string
+
+The name of the resource group for cluster nodes If not specified, Azure will auto-generate the name.
+
+---
+
+##### `oidcIssuerProfile`<sup>Optional</sup> <a name="oidcIssuerProfile" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.oidcIssuerProfile"></a>
+
+```typescript
+public readonly oidcIssuerProfile: AksClusterOidcIssuerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile">AksClusterOidcIssuerProfile</a>
+
+The OIDC issuer profile for workload identity.
+
+---
+
+##### `privateFQDN`<sup>Optional</sup> <a name="privateFQDN" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.privateFQDN"></a>
+
+```typescript
+public readonly privateFQDN: string;
+```
+
+- *Type:* string
+
+The private FQDN for the cluster (read-only).
+
+---
+
+##### `publicNetworkAccess`<sup>Optional</sup> <a name="publicNetworkAccess" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.publicNetworkAccess"></a>
+
+```typescript
+public readonly publicNetworkAccess: string;
+```
+
+- *Type:* string
+
+Whether the cluster is accessible from the public internet.
+
+---
+
+*Example*
+
+```typescript
+"Disabled"
+```
+
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the AKS cluster will be created.
+
+---
+
+##### `securityProfile`<sup>Optional</sup> <a name="securityProfile" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.securityProfile"></a>
+
+```typescript
+public readonly securityProfile: AksClusterSecurityProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile">AksClusterSecurityProfile</a>
+
+The security profile for the cluster.
+
+---
+
+##### `servicePrincipalProfile`<sup>Optional</sup> <a name="servicePrincipalProfile" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.servicePrincipalProfile"></a>
+
+```typescript
+public readonly servicePrincipalProfile: AksClusterServicePrincipalProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile">AksClusterServicePrincipalProfile</a>
+
+The service principal profile for the cluster.
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.sku"></a>
+
+```typescript
+public readonly sku: AksClusterSku;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSku">AksClusterSku</a>
+
+The SKU (pricing tier) for the AKS cluster.
+
+---
+
+*Example*
+
+```typescript
+{ name: "Standard", tier: "Standard" }
+```
+
+
+##### `storageProfile`<sup>Optional</sup> <a name="storageProfile" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.storageProfile"></a>
+
+```typescript
+public readonly storageProfile: AksClusterStorageProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterStorageProfile">AksClusterStorageProfile</a>
+
+The storage profile for CSI drivers.
+
+---
+
+##### `supportPlan`<sup>Optional</sup> <a name="supportPlan" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.supportPlan"></a>
+
+```typescript
+public readonly supportPlan: string;
+```
+
+- *Type:* string
+
+The support plan for the cluster.
+
+---
+
+*Example*
+
+```typescript
+"AKSLongTermSupport"
+```
+
+
+##### `windowsProfile`<sup>Optional</sup> <a name="windowsProfile" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.windowsProfile"></a>
+
+```typescript
+public readonly windowsProfile: AksClusterWindowsProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile">AksClusterWindowsProfile</a>
+
+The Windows profile for Windows node pools.
+
+---
+
+##### `workloadAutoScalerProfile`<sup>Optional</sup> <a name="workloadAutoScalerProfile" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.workloadAutoScalerProfile"></a>
+
+```typescript
+public readonly workloadAutoScalerProfile: AksClusterWorkloadAutoScalerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile">AksClusterWorkloadAutoScalerProfile</a>
+
+The workload auto-scaler profile.
+
+---
+
+### AksClusterProps <a name="AksClusterProps" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps"></a>
+
+Properties for the unified Azure Kubernetes Service cluster.
+
+Extends AzapiResourceProps with AKS-specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterProps: azure_aks.AksClusterProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.agentPoolProfiles">agentPoolProfiles</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile">AksClusterAgentPoolProfile</a>[]</code> | The agent pool profiles for the cluster node pools At least one agent pool is required. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.dnsPrefix">dnsPrefix</a></code> | <code>string</code> | DNS prefix for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.aadProfile">aadProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile">AksClusterAadProfile</a></code> | The Azure Active Directory integration configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.addonProfiles">addonProfiles</a></code> | <code>{[ key: string ]: <a href="#@microsoft/terraform-cdk-constructs.AksClusterAddonProfile">AksClusterAddonProfile</a>}</code> | The addon profiles for cluster addons. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.apiServerAccessProfile">apiServerAccessProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile">AksClusterApiServerAccessProfile</a></code> | The API server access configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.autoScalerProfile">autoScalerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile">AksClusterAutoScalerProfile</a></code> | The auto-scaler configuration for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.disableLocalAccounts">disableLocalAccounts</a></code> | <code>boolean</code> | Whether to disable local accounts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.diskEncryptionSetID">diskEncryptionSetID</a></code> | <code>string</code> | The resource ID of the disk encryption set for encrypting disks. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.enableRBAC">enableRBAC</a></code> | <code>boolean</code> | Whether to enable Kubernetes Role-Based Access Control. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.fqdn">fqdn</a></code> | <code>string</code> | The FQDN for the cluster (read-only). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.httpProxyConfig">httpProxyConfig</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig">AksClusterHttpProxyConfig</a></code> | The HTTP proxy configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterIdentity">AksClusterIdentity</a></code> | The identity configuration for the AKS cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes Useful for properties that are externally managed or should not trigger updates. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.kubernetesVersion">kubernetesVersion</a></code> | <code>string</code> | The Kubernetes version for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.linuxProfile">linuxProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile">AksClusterLinuxProfile</a></code> | The Linux profile for SSH access. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.networkProfile">networkProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile">AksClusterNetworkProfile</a></code> | The network configuration for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.nodeResourceGroup">nodeResourceGroup</a></code> | <code>string</code> | The name of the resource group for cluster nodes If not specified, Azure will auto-generate the name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.oidcIssuerProfile">oidcIssuerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile">AksClusterOidcIssuerProfile</a></code> | The OIDC issuer profile for workload identity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.privateFQDN">privateFQDN</a></code> | <code>string</code> | The private FQDN for the cluster (read-only). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.publicNetworkAccess">publicNetworkAccess</a></code> | <code>string</code> | Whether the cluster is accessible from the public internet. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the AKS cluster will be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.securityProfile">securityProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile">AksClusterSecurityProfile</a></code> | The security profile for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.servicePrincipalProfile">servicePrincipalProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile">AksClusterServicePrincipalProfile</a></code> | The service principal profile for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.sku">sku</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSku">AksClusterSku</a></code> | The SKU (pricing tier) for the AKS cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.storageProfile">storageProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterStorageProfile">AksClusterStorageProfile</a></code> | The storage profile for CSI drivers. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.supportPlan">supportPlan</a></code> | <code>string</code> | The support plan for the cluster. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.windowsProfile">windowsProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile">AksClusterWindowsProfile</a></code> | The Windows profile for Windows node pools. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.workloadAutoScalerProfile">workloadAutoScalerProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile">AksClusterWorkloadAutoScalerProfile</a></code> | The workload auto-scaler profile. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `agentPoolProfiles`<sup>Required</sup> <a name="agentPoolProfiles" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.agentPoolProfiles"></a>
+
+```typescript
+public readonly agentPoolProfiles: AksClusterAgentPoolProfile[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile">AksClusterAgentPoolProfile</a>[]
+
+The agent pool profiles for the cluster node pools At least one agent pool is required.
+
+---
+
+*Example*
+
+```typescript
+[{ name: "default", count: 3, vmSize: "Standard_D2s_v3", mode: "System" }]
+```
+
+
+##### `dnsPrefix`<sup>Required</sup> <a name="dnsPrefix" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.dnsPrefix"></a>
+
+```typescript
+public readonly dnsPrefix: string;
+```
+
+- *Type:* string
+
+DNS prefix for the cluster.
+
+---
+
+*Example*
+
+```typescript
+"myakscluster"
+```
+
+
+##### `aadProfile`<sup>Optional</sup> <a name="aadProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.aadProfile"></a>
+
+```typescript
+public readonly aadProfile: AksClusterAadProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAadProfile">AksClusterAadProfile</a>
+
+The Azure Active Directory integration configuration.
+
+---
+
+##### `addonProfiles`<sup>Optional</sup> <a name="addonProfiles" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.addonProfiles"></a>
+
+```typescript
+public readonly addonProfiles: {[ key: string ]: AksClusterAddonProfile};
+```
+
+- *Type:* {[ key: string ]: <a href="#@microsoft/terraform-cdk-constructs.AksClusterAddonProfile">AksClusterAddonProfile</a>}
+
+The addon profiles for cluster addons.
+
+---
+
+##### `apiServerAccessProfile`<sup>Optional</sup> <a name="apiServerAccessProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.apiServerAccessProfile"></a>
+
+```typescript
+public readonly apiServerAccessProfile: AksClusterApiServerAccessProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterApiServerAccessProfile">AksClusterApiServerAccessProfile</a>
+
+The API server access configuration.
+
+---
+
+##### `autoScalerProfile`<sup>Optional</sup> <a name="autoScalerProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.autoScalerProfile"></a>
+
+```typescript
+public readonly autoScalerProfile: AksClusterAutoScalerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAutoScalerProfile">AksClusterAutoScalerProfile</a>
+
+The auto-scaler configuration for the cluster.
+
+---
+
+##### `disableLocalAccounts`<sup>Optional</sup> <a name="disableLocalAccounts" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.disableLocalAccounts"></a>
+
+```typescript
+public readonly disableLocalAccounts: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether to disable local accounts.
+
+---
+
+##### `diskEncryptionSetID`<sup>Optional</sup> <a name="diskEncryptionSetID" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.diskEncryptionSetID"></a>
+
+```typescript
+public readonly diskEncryptionSetID: string;
+```
+
+- *Type:* string
+
+The resource ID of the disk encryption set for encrypting disks.
+
+---
+
+##### `enableRBAC`<sup>Optional</sup> <a name="enableRBAC" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.enableRBAC"></a>
+
+```typescript
+public readonly enableRBAC: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable Kubernetes Role-Based Access Control.
+
+---
+
+##### `fqdn`<sup>Optional</sup> <a name="fqdn" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.fqdn"></a>
+
+```typescript
+public readonly fqdn: string;
+```
+
+- *Type:* string
+
+The FQDN for the cluster (read-only).
+
+---
+
+##### `httpProxyConfig`<sup>Optional</sup> <a name="httpProxyConfig" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.httpProxyConfig"></a>
+
+```typescript
+public readonly httpProxyConfig: AksClusterHttpProxyConfig;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterHttpProxyConfig">AksClusterHttpProxyConfig</a>
+
+The HTTP proxy configuration.
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.identity"></a>
+
+```typescript
+public readonly identity: AksClusterIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterIdentity">AksClusterIdentity</a>
+
+The identity configuration for the AKS cluster.
+
+---
+
+*Example*
+
+```typescript
+{ type: "UserAssigned", userAssignedIdentities: { "/subscriptions/.../resourceGroups/.../providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity": {} } }
+```
+
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes Useful for properties that are externally managed or should not trigger updates.
+
+---
+
+*Example*
+
+```typescript
+["kubernetesVersion", "agentPoolProfiles"]
+```
+
+
+##### `kubernetesVersion`<sup>Optional</sup> <a name="kubernetesVersion" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.kubernetesVersion"></a>
+
+```typescript
+public readonly kubernetesVersion: string;
+```
+
+- *Type:* string
+
+The Kubernetes version for the cluster.
+
+---
+
+*Example*
+
+```typescript
+"1.29.0"
+```
+
+
+##### `linuxProfile`<sup>Optional</sup> <a name="linuxProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.linuxProfile"></a>
+
+```typescript
+public readonly linuxProfile: AksClusterLinuxProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterLinuxProfile">AksClusterLinuxProfile</a>
+
+The Linux profile for SSH access.
+
+---
+
+##### `networkProfile`<sup>Optional</sup> <a name="networkProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.networkProfile"></a>
+
+```typescript
+public readonly networkProfile: AksClusterNetworkProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterNetworkProfile">AksClusterNetworkProfile</a>
+
+The network configuration for the cluster.
+
+---
+
+##### `nodeResourceGroup`<sup>Optional</sup> <a name="nodeResourceGroup" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.nodeResourceGroup"></a>
+
+```typescript
+public readonly nodeResourceGroup: string;
+```
+
+- *Type:* string
+
+The name of the resource group for cluster nodes If not specified, Azure will auto-generate the name.
+
+---
+
+##### `oidcIssuerProfile`<sup>Optional</sup> <a name="oidcIssuerProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.oidcIssuerProfile"></a>
+
+```typescript
+public readonly oidcIssuerProfile: AksClusterOidcIssuerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterOidcIssuerProfile">AksClusterOidcIssuerProfile</a>
+
+The OIDC issuer profile for workload identity.
+
+---
+
+##### `privateFQDN`<sup>Optional</sup> <a name="privateFQDN" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.privateFQDN"></a>
+
+```typescript
+public readonly privateFQDN: string;
+```
+
+- *Type:* string
+
+The private FQDN for the cluster (read-only).
+
+---
+
+##### `publicNetworkAccess`<sup>Optional</sup> <a name="publicNetworkAccess" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.publicNetworkAccess"></a>
+
+```typescript
+public readonly publicNetworkAccess: string;
+```
+
+- *Type:* string
+
+Whether the cluster is accessible from the public internet.
+
+---
+
+*Example*
+
+```typescript
+"Disabled"
+```
+
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the AKS cluster will be created.
+
+---
+
+##### `securityProfile`<sup>Optional</sup> <a name="securityProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.securityProfile"></a>
+
+```typescript
+public readonly securityProfile: AksClusterSecurityProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile">AksClusterSecurityProfile</a>
+
+The security profile for the cluster.
+
+---
+
+##### `servicePrincipalProfile`<sup>Optional</sup> <a name="servicePrincipalProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.servicePrincipalProfile"></a>
+
+```typescript
+public readonly servicePrincipalProfile: AksClusterServicePrincipalProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile">AksClusterServicePrincipalProfile</a>
+
+The service principal profile for the cluster.
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.sku"></a>
+
+```typescript
+public readonly sku: AksClusterSku;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSku">AksClusterSku</a>
+
+The SKU (pricing tier) for the AKS cluster.
+
+---
+
+*Example*
+
+```typescript
+{ name: "Standard", tier: "Standard" }
+```
+
+
+##### `storageProfile`<sup>Optional</sup> <a name="storageProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.storageProfile"></a>
+
+```typescript
+public readonly storageProfile: AksClusterStorageProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterStorageProfile">AksClusterStorageProfile</a>
+
+The storage profile for CSI drivers.
+
+---
+
+##### `supportPlan`<sup>Optional</sup> <a name="supportPlan" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.supportPlan"></a>
+
+```typescript
+public readonly supportPlan: string;
+```
+
+- *Type:* string
+
+The support plan for the cluster.
+
+---
+
+*Example*
+
+```typescript
+"AKSLongTermSupport"
+```
+
+
+##### `windowsProfile`<sup>Optional</sup> <a name="windowsProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.windowsProfile"></a>
+
+```typescript
+public readonly windowsProfile: AksClusterWindowsProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile">AksClusterWindowsProfile</a>
+
+The Windows profile for Windows node pools.
+
+---
+
+##### `workloadAutoScalerProfile`<sup>Optional</sup> <a name="workloadAutoScalerProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.workloadAutoScalerProfile"></a>
+
+```typescript
+public readonly workloadAutoScalerProfile: AksClusterWorkloadAutoScalerProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile">AksClusterWorkloadAutoScalerProfile</a>
+
+The workload auto-scaler profile.
+
+---
+
+### AksClusterResourceReference <a name="AksClusterResourceReference" id="@microsoft/terraform-cdk-constructs.AksClusterResourceReference"></a>
+
+Resource reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterResourceReference.Initializer"></a>
+
+```typescript
+import { AksClusterResourceReference } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterResourceReference: AksClusterResourceReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterResourceReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.AksClusterResourceReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterResourceReference <a name="AksClusterResourceReference" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterResourceReference"></a>
+
+Resource reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterResourceReference.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterResourceReference: azure_aks.AksClusterResourceReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterResourceReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterResourceReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterSecurityProfile <a name="AksClusterSecurityProfile" id="@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile"></a>
+
+Security profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile.Initializer"></a>
+
+```typescript
+import { AksClusterSecurityProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterSecurityProfile: AksClusterSecurityProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile.property.azureKeyVaultKms">azureKeyVaultKms</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms">AksClusterAzureKeyVaultKms</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile.property.defender">defender</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterDefenderSecurityMonitoring">AksClusterDefenderSecurityMonitoring</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile.property.imageCleaner">imageCleaner</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterImageCleaner">AksClusterImageCleaner</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile.property.workloadIdentity">workloadIdentity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadIdentity">AksClusterWorkloadIdentity</a></code> | *No description.* |
+
+---
+
+##### `azureKeyVaultKms`<sup>Optional</sup> <a name="azureKeyVaultKms" id="@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile.property.azureKeyVaultKms"></a>
+
+```typescript
+public readonly azureKeyVaultKms: AksClusterAzureKeyVaultKms;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms">AksClusterAzureKeyVaultKms</a>
+
+---
+
+##### `defender`<sup>Optional</sup> <a name="defender" id="@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile.property.defender"></a>
+
+```typescript
+public readonly defender: AksClusterDefenderSecurityMonitoring;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterDefenderSecurityMonitoring">AksClusterDefenderSecurityMonitoring</a>
+
+---
+
+##### `imageCleaner`<sup>Optional</sup> <a name="imageCleaner" id="@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile.property.imageCleaner"></a>
+
+```typescript
+public readonly imageCleaner: AksClusterImageCleaner;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterImageCleaner">AksClusterImageCleaner</a>
+
+---
+
+##### `workloadIdentity`<sup>Optional</sup> <a name="workloadIdentity" id="@microsoft/terraform-cdk-constructs.AksClusterSecurityProfile.property.workloadIdentity"></a>
+
+```typescript
+public readonly workloadIdentity: AksClusterWorkloadIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadIdentity">AksClusterWorkloadIdentity</a>
+
+---
+
+### AksClusterSecurityProfile <a name="AksClusterSecurityProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSecurityProfile"></a>
+
+Security profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSecurityProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterSecurityProfile: azure_aks.AksClusterSecurityProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSecurityProfile.property.azureKeyVaultKms">azureKeyVaultKms</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms">AksClusterAzureKeyVaultKms</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSecurityProfile.property.defender">defender</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterDefenderSecurityMonitoring">AksClusterDefenderSecurityMonitoring</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSecurityProfile.property.imageCleaner">imageCleaner</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterImageCleaner">AksClusterImageCleaner</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSecurityProfile.property.workloadIdentity">workloadIdentity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadIdentity">AksClusterWorkloadIdentity</a></code> | *No description.* |
+
+---
+
+##### `azureKeyVaultKms`<sup>Optional</sup> <a name="azureKeyVaultKms" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSecurityProfile.property.azureKeyVaultKms"></a>
+
+```typescript
+public readonly azureKeyVaultKms: AksClusterAzureKeyVaultKms;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterAzureKeyVaultKms">AksClusterAzureKeyVaultKms</a>
+
+---
+
+##### `defender`<sup>Optional</sup> <a name="defender" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSecurityProfile.property.defender"></a>
+
+```typescript
+public readonly defender: AksClusterDefenderSecurityMonitoring;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterDefenderSecurityMonitoring">AksClusterDefenderSecurityMonitoring</a>
+
+---
+
+##### `imageCleaner`<sup>Optional</sup> <a name="imageCleaner" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSecurityProfile.property.imageCleaner"></a>
+
+```typescript
+public readonly imageCleaner: AksClusterImageCleaner;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterImageCleaner">AksClusterImageCleaner</a>
+
+---
+
+##### `workloadIdentity`<sup>Optional</sup> <a name="workloadIdentity" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSecurityProfile.property.workloadIdentity"></a>
+
+```typescript
+public readonly workloadIdentity: AksClusterWorkloadIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadIdentity">AksClusterWorkloadIdentity</a>
+
+---
+
+### AksClusterServicePrincipalProfile <a name="AksClusterServicePrincipalProfile" id="@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile"></a>
+
+Service principal profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile.Initializer"></a>
+
+```typescript
+import { AksClusterServicePrincipalProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterServicePrincipalProfile: AksClusterServicePrincipalProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile.property.clientId">clientId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile.property.secret">secret</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `clientId`<sup>Required</sup> <a name="clientId" id="@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile.property.clientId"></a>
+
+```typescript
+public readonly clientId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `secret`<sup>Optional</sup> <a name="secret" id="@microsoft/terraform-cdk-constructs.AksClusterServicePrincipalProfile.property.secret"></a>
+
+```typescript
+public readonly secret: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterServicePrincipalProfile <a name="AksClusterServicePrincipalProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterServicePrincipalProfile"></a>
+
+Service principal profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterServicePrincipalProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterServicePrincipalProfile: azure_aks.AksClusterServicePrincipalProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterServicePrincipalProfile.property.clientId">clientId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterServicePrincipalProfile.property.secret">secret</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `clientId`<sup>Required</sup> <a name="clientId" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterServicePrincipalProfile.property.clientId"></a>
+
+```typescript
+public readonly clientId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `secret`<sup>Optional</sup> <a name="secret" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterServicePrincipalProfile.property.secret"></a>
+
+```typescript
+public readonly secret: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterSku <a name="AksClusterSku" id="@microsoft/terraform-cdk-constructs.AksClusterSku"></a>
+
+SKU for Azure Kubernetes Service.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterSku.Initializer"></a>
+
+```typescript
+import { AksClusterSku } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterSku: AksClusterSku = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSku.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSku.property.tier">tier</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.AksClusterSku.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `tier`<sup>Optional</sup> <a name="tier" id="@microsoft/terraform-cdk-constructs.AksClusterSku.property.tier"></a>
+
+```typescript
+public readonly tier: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterSku <a name="AksClusterSku" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSku"></a>
+
+SKU for Azure Kubernetes Service.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSku.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterSku: azure_aks.AksClusterSku = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSku.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSku.property.tier">tier</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSku.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `tier`<sup>Optional</sup> <a name="tier" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSku.property.tier"></a>
+
+```typescript
+public readonly tier: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterSnapshotController <a name="AksClusterSnapshotController" id="@microsoft/terraform-cdk-constructs.AksClusterSnapshotController"></a>
+
+Snapshot controller.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterSnapshotController.Initializer"></a>
+
+```typescript
+import { AksClusterSnapshotController } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterSnapshotController: AksClusterSnapshotController = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSnapshotController.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AksClusterSnapshotController.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AksClusterSnapshotController <a name="AksClusterSnapshotController" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSnapshotController"></a>
+
+Snapshot controller.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSnapshotController.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterSnapshotController: azure_aks.AksClusterSnapshotController = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSnapshotController.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSnapshotController.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AksClusterSshConfiguration <a name="AksClusterSshConfiguration" id="@microsoft/terraform-cdk-constructs.AksClusterSshConfiguration"></a>
+
+SSH configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterSshConfiguration.Initializer"></a>
+
+```typescript
+import { AksClusterSshConfiguration } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterSshConfiguration: AksClusterSshConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSshConfiguration.property.publicKeys">publicKeys</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSshPublicKey">AksClusterSshPublicKey</a>[]</code> | *No description.* |
+
+---
+
+##### `publicKeys`<sup>Required</sup> <a name="publicKeys" id="@microsoft/terraform-cdk-constructs.AksClusterSshConfiguration.property.publicKeys"></a>
+
+```typescript
+public readonly publicKeys: AksClusterSshPublicKey[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSshPublicKey">AksClusterSshPublicKey</a>[]
+
+---
+
+### AksClusterSshConfiguration <a name="AksClusterSshConfiguration" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSshConfiguration"></a>
+
+SSH configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSshConfiguration.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterSshConfiguration: azure_aks.AksClusterSshConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSshConfiguration.property.publicKeys">publicKeys</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSshPublicKey">AksClusterSshPublicKey</a>[]</code> | *No description.* |
+
+---
+
+##### `publicKeys`<sup>Required</sup> <a name="publicKeys" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSshConfiguration.property.publicKeys"></a>
+
+```typescript
+public readonly publicKeys: AksClusterSshPublicKey[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSshPublicKey">AksClusterSshPublicKey</a>[]
+
+---
+
+### AksClusterSshPublicKey <a name="AksClusterSshPublicKey" id="@microsoft/terraform-cdk-constructs.AksClusterSshPublicKey"></a>
+
+SSH public key.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterSshPublicKey.Initializer"></a>
+
+```typescript
+import { AksClusterSshPublicKey } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterSshPublicKey: AksClusterSshPublicKey = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSshPublicKey.property.keyData">keyData</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `keyData`<sup>Required</sup> <a name="keyData" id="@microsoft/terraform-cdk-constructs.AksClusterSshPublicKey.property.keyData"></a>
+
+```typescript
+public readonly keyData: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterSshPublicKey <a name="AksClusterSshPublicKey" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSshPublicKey"></a>
+
+SSH public key.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSshPublicKey.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterSshPublicKey: azure_aks.AksClusterSshPublicKey = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSshPublicKey.property.keyData">keyData</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `keyData`<sup>Required</sup> <a name="keyData" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSshPublicKey.property.keyData"></a>
+
+```typescript
+public readonly keyData: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterStorageProfile <a name="AksClusterStorageProfile" id="@microsoft/terraform-cdk-constructs.AksClusterStorageProfile"></a>
+
+Storage profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterStorageProfile.Initializer"></a>
+
+```typescript
+import { AksClusterStorageProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterStorageProfile: AksClusterStorageProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterStorageProfile.property.blobCSIDriver">blobCSIDriver</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBlobCSIDriver">AksClusterBlobCSIDriver</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterStorageProfile.property.diskCSIDriver">diskCSIDriver</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterDiskCSIDriver">AksClusterDiskCSIDriver</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterStorageProfile.property.fileCSIDriver">fileCSIDriver</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterFileCSIDriver">AksClusterFileCSIDriver</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterStorageProfile.property.snapshotController">snapshotController</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSnapshotController">AksClusterSnapshotController</a></code> | *No description.* |
+
+---
+
+##### `blobCSIDriver`<sup>Optional</sup> <a name="blobCSIDriver" id="@microsoft/terraform-cdk-constructs.AksClusterStorageProfile.property.blobCSIDriver"></a>
+
+```typescript
+public readonly blobCSIDriver: AksClusterBlobCSIDriver;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterBlobCSIDriver">AksClusterBlobCSIDriver</a>
+
+---
+
+##### `diskCSIDriver`<sup>Optional</sup> <a name="diskCSIDriver" id="@microsoft/terraform-cdk-constructs.AksClusterStorageProfile.property.diskCSIDriver"></a>
+
+```typescript
+public readonly diskCSIDriver: AksClusterDiskCSIDriver;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterDiskCSIDriver">AksClusterDiskCSIDriver</a>
+
+---
+
+##### `fileCSIDriver`<sup>Optional</sup> <a name="fileCSIDriver" id="@microsoft/terraform-cdk-constructs.AksClusterStorageProfile.property.fileCSIDriver"></a>
+
+```typescript
+public readonly fileCSIDriver: AksClusterFileCSIDriver;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterFileCSIDriver">AksClusterFileCSIDriver</a>
+
+---
+
+##### `snapshotController`<sup>Optional</sup> <a name="snapshotController" id="@microsoft/terraform-cdk-constructs.AksClusterStorageProfile.property.snapshotController"></a>
+
+```typescript
+public readonly snapshotController: AksClusterSnapshotController;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSnapshotController">AksClusterSnapshotController</a>
+
+---
+
+### AksClusterStorageProfile <a name="AksClusterStorageProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterStorageProfile"></a>
+
+Storage profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterStorageProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterStorageProfile: azure_aks.AksClusterStorageProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterStorageProfile.property.blobCSIDriver">blobCSIDriver</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterBlobCSIDriver">AksClusterBlobCSIDriver</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterStorageProfile.property.diskCSIDriver">diskCSIDriver</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterDiskCSIDriver">AksClusterDiskCSIDriver</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterStorageProfile.property.fileCSIDriver">fileCSIDriver</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterFileCSIDriver">AksClusterFileCSIDriver</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterStorageProfile.property.snapshotController">snapshotController</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSnapshotController">AksClusterSnapshotController</a></code> | *No description.* |
+
+---
+
+##### `blobCSIDriver`<sup>Optional</sup> <a name="blobCSIDriver" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterStorageProfile.property.blobCSIDriver"></a>
+
+```typescript
+public readonly blobCSIDriver: AksClusterBlobCSIDriver;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterBlobCSIDriver">AksClusterBlobCSIDriver</a>
+
+---
+
+##### `diskCSIDriver`<sup>Optional</sup> <a name="diskCSIDriver" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterStorageProfile.property.diskCSIDriver"></a>
+
+```typescript
+public readonly diskCSIDriver: AksClusterDiskCSIDriver;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterDiskCSIDriver">AksClusterDiskCSIDriver</a>
+
+---
+
+##### `fileCSIDriver`<sup>Optional</sup> <a name="fileCSIDriver" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterStorageProfile.property.fileCSIDriver"></a>
+
+```typescript
+public readonly fileCSIDriver: AksClusterFileCSIDriver;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterFileCSIDriver">AksClusterFileCSIDriver</a>
+
+---
+
+##### `snapshotController`<sup>Optional</sup> <a name="snapshotController" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterStorageProfile.property.snapshotController"></a>
+
+```typescript
+public readonly snapshotController: AksClusterSnapshotController;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterSnapshotController">AksClusterSnapshotController</a>
+
+---
+
+### AksClusterSysctlConfig <a name="AksClusterSysctlConfig" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig"></a>
+
+Sysctl configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.Initializer"></a>
+
+```typescript
+import { AksClusterSysctlConfig } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterSysctlConfig: AksClusterSysctlConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.fsAioMaxNr">fsAioMaxNr</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.fsFileMax">fsFileMax</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.fsInotifyMaxUserWatches">fsInotifyMaxUserWatches</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.fsNrOpen">fsNrOpen</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.kernelThreadsMax">kernelThreadsMax</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreNetdevMaxBacklog">netCoreNetdevMaxBacklog</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreOptmemMax">netCoreOptmemMax</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreRmemDefault">netCoreRmemDefault</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreRmemMax">netCoreRmemMax</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreSomaxconn">netCoreSomaxconn</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreWmemDefault">netCoreWmemDefault</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreWmemMax">netCoreWmemMax</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4IpLocalPortRange">netIpv4IpLocalPortRange</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4NeighDefaultGcThresh1">netIpv4NeighDefaultGcThresh1</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4NeighDefaultGcThresh2">netIpv4NeighDefaultGcThresh2</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4NeighDefaultGcThresh3">netIpv4NeighDefaultGcThresh3</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4TcpFinTimeout">netIpv4TcpFinTimeout</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4TcpkeepaliveIntvl">netIpv4TcpkeepaliveIntvl</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4TcpKeepaliveProbes">netIpv4TcpKeepaliveProbes</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4TcpKeepaliveTime">netIpv4TcpKeepaliveTime</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4TcpMaxSynBacklog">netIpv4TcpMaxSynBacklog</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4TcpTwReuse">netIpv4TcpTwReuse</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netNetfilterNfConntrackBuckets">netNetfilterNfConntrackBuckets</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netNetfilterNfConntrackMax">netNetfilterNfConntrackMax</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.vmMaxMapCount">vmMaxMapCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.vmSwappiness">vmSwappiness</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.vmVfsCachePressure">vmVfsCachePressure</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `fsAioMaxNr`<sup>Optional</sup> <a name="fsAioMaxNr" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.fsAioMaxNr"></a>
+
+```typescript
+public readonly fsAioMaxNr: number;
+```
+
+- *Type:* number
+
+---
+
+##### `fsFileMax`<sup>Optional</sup> <a name="fsFileMax" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.fsFileMax"></a>
+
+```typescript
+public readonly fsFileMax: number;
+```
+
+- *Type:* number
+
+---
+
+##### `fsInotifyMaxUserWatches`<sup>Optional</sup> <a name="fsInotifyMaxUserWatches" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.fsInotifyMaxUserWatches"></a>
+
+```typescript
+public readonly fsInotifyMaxUserWatches: number;
+```
+
+- *Type:* number
+
+---
+
+##### `fsNrOpen`<sup>Optional</sup> <a name="fsNrOpen" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.fsNrOpen"></a>
+
+```typescript
+public readonly fsNrOpen: number;
+```
+
+- *Type:* number
+
+---
+
+##### `kernelThreadsMax`<sup>Optional</sup> <a name="kernelThreadsMax" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.kernelThreadsMax"></a>
+
+```typescript
+public readonly kernelThreadsMax: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreNetdevMaxBacklog`<sup>Optional</sup> <a name="netCoreNetdevMaxBacklog" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreNetdevMaxBacklog"></a>
+
+```typescript
+public readonly netCoreNetdevMaxBacklog: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreOptmemMax`<sup>Optional</sup> <a name="netCoreOptmemMax" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreOptmemMax"></a>
+
+```typescript
+public readonly netCoreOptmemMax: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreRmemDefault`<sup>Optional</sup> <a name="netCoreRmemDefault" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreRmemDefault"></a>
+
+```typescript
+public readonly netCoreRmemDefault: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreRmemMax`<sup>Optional</sup> <a name="netCoreRmemMax" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreRmemMax"></a>
+
+```typescript
+public readonly netCoreRmemMax: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreSomaxconn`<sup>Optional</sup> <a name="netCoreSomaxconn" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreSomaxconn"></a>
+
+```typescript
+public readonly netCoreSomaxconn: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreWmemDefault`<sup>Optional</sup> <a name="netCoreWmemDefault" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreWmemDefault"></a>
+
+```typescript
+public readonly netCoreWmemDefault: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreWmemMax`<sup>Optional</sup> <a name="netCoreWmemMax" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netCoreWmemMax"></a>
+
+```typescript
+public readonly netCoreWmemMax: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4IpLocalPortRange`<sup>Optional</sup> <a name="netIpv4IpLocalPortRange" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4IpLocalPortRange"></a>
+
+```typescript
+public readonly netIpv4IpLocalPortRange: string;
+```
+
+- *Type:* string
+
+---
+
+##### `netIpv4NeighDefaultGcThresh1`<sup>Optional</sup> <a name="netIpv4NeighDefaultGcThresh1" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4NeighDefaultGcThresh1"></a>
+
+```typescript
+public readonly netIpv4NeighDefaultGcThresh1: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4NeighDefaultGcThresh2`<sup>Optional</sup> <a name="netIpv4NeighDefaultGcThresh2" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4NeighDefaultGcThresh2"></a>
+
+```typescript
+public readonly netIpv4NeighDefaultGcThresh2: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4NeighDefaultGcThresh3`<sup>Optional</sup> <a name="netIpv4NeighDefaultGcThresh3" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4NeighDefaultGcThresh3"></a>
+
+```typescript
+public readonly netIpv4NeighDefaultGcThresh3: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4TcpFinTimeout`<sup>Optional</sup> <a name="netIpv4TcpFinTimeout" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4TcpFinTimeout"></a>
+
+```typescript
+public readonly netIpv4TcpFinTimeout: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4TcpkeepaliveIntvl`<sup>Optional</sup> <a name="netIpv4TcpkeepaliveIntvl" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4TcpkeepaliveIntvl"></a>
+
+```typescript
+public readonly netIpv4TcpkeepaliveIntvl: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4TcpKeepaliveProbes`<sup>Optional</sup> <a name="netIpv4TcpKeepaliveProbes" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4TcpKeepaliveProbes"></a>
+
+```typescript
+public readonly netIpv4TcpKeepaliveProbes: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4TcpKeepaliveTime`<sup>Optional</sup> <a name="netIpv4TcpKeepaliveTime" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4TcpKeepaliveTime"></a>
+
+```typescript
+public readonly netIpv4TcpKeepaliveTime: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4TcpMaxSynBacklog`<sup>Optional</sup> <a name="netIpv4TcpMaxSynBacklog" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4TcpMaxSynBacklog"></a>
+
+```typescript
+public readonly netIpv4TcpMaxSynBacklog: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4TcpTwReuse`<sup>Optional</sup> <a name="netIpv4TcpTwReuse" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netIpv4TcpTwReuse"></a>
+
+```typescript
+public readonly netIpv4TcpTwReuse: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `netNetfilterNfConntrackBuckets`<sup>Optional</sup> <a name="netNetfilterNfConntrackBuckets" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netNetfilterNfConntrackBuckets"></a>
+
+```typescript
+public readonly netNetfilterNfConntrackBuckets: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netNetfilterNfConntrackMax`<sup>Optional</sup> <a name="netNetfilterNfConntrackMax" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.netNetfilterNfConntrackMax"></a>
+
+```typescript
+public readonly netNetfilterNfConntrackMax: number;
+```
+
+- *Type:* number
+
+---
+
+##### `vmMaxMapCount`<sup>Optional</sup> <a name="vmMaxMapCount" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.vmMaxMapCount"></a>
+
+```typescript
+public readonly vmMaxMapCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `vmSwappiness`<sup>Optional</sup> <a name="vmSwappiness" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.vmSwappiness"></a>
+
+```typescript
+public readonly vmSwappiness: number;
+```
+
+- *Type:* number
+
+---
+
+##### `vmVfsCachePressure`<sup>Optional</sup> <a name="vmVfsCachePressure" id="@microsoft/terraform-cdk-constructs.AksClusterSysctlConfig.property.vmVfsCachePressure"></a>
+
+```typescript
+public readonly vmVfsCachePressure: number;
+```
+
+- *Type:* number
+
+---
+
+### AksClusterSysctlConfig <a name="AksClusterSysctlConfig" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig"></a>
+
+Sysctl configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterSysctlConfig: azure_aks.AksClusterSysctlConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.fsAioMaxNr">fsAioMaxNr</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.fsFileMax">fsFileMax</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.fsInotifyMaxUserWatches">fsInotifyMaxUserWatches</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.fsNrOpen">fsNrOpen</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.kernelThreadsMax">kernelThreadsMax</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreNetdevMaxBacklog">netCoreNetdevMaxBacklog</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreOptmemMax">netCoreOptmemMax</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreRmemDefault">netCoreRmemDefault</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreRmemMax">netCoreRmemMax</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreSomaxconn">netCoreSomaxconn</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreWmemDefault">netCoreWmemDefault</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreWmemMax">netCoreWmemMax</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4IpLocalPortRange">netIpv4IpLocalPortRange</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4NeighDefaultGcThresh1">netIpv4NeighDefaultGcThresh1</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4NeighDefaultGcThresh2">netIpv4NeighDefaultGcThresh2</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4NeighDefaultGcThresh3">netIpv4NeighDefaultGcThresh3</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4TcpFinTimeout">netIpv4TcpFinTimeout</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4TcpkeepaliveIntvl">netIpv4TcpkeepaliveIntvl</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4TcpKeepaliveProbes">netIpv4TcpKeepaliveProbes</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4TcpKeepaliveTime">netIpv4TcpKeepaliveTime</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4TcpMaxSynBacklog">netIpv4TcpMaxSynBacklog</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4TcpTwReuse">netIpv4TcpTwReuse</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netNetfilterNfConntrackBuckets">netNetfilterNfConntrackBuckets</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netNetfilterNfConntrackMax">netNetfilterNfConntrackMax</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.vmMaxMapCount">vmMaxMapCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.vmSwappiness">vmSwappiness</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.vmVfsCachePressure">vmVfsCachePressure</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `fsAioMaxNr`<sup>Optional</sup> <a name="fsAioMaxNr" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.fsAioMaxNr"></a>
+
+```typescript
+public readonly fsAioMaxNr: number;
+```
+
+- *Type:* number
+
+---
+
+##### `fsFileMax`<sup>Optional</sup> <a name="fsFileMax" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.fsFileMax"></a>
+
+```typescript
+public readonly fsFileMax: number;
+```
+
+- *Type:* number
+
+---
+
+##### `fsInotifyMaxUserWatches`<sup>Optional</sup> <a name="fsInotifyMaxUserWatches" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.fsInotifyMaxUserWatches"></a>
+
+```typescript
+public readonly fsInotifyMaxUserWatches: number;
+```
+
+- *Type:* number
+
+---
+
+##### `fsNrOpen`<sup>Optional</sup> <a name="fsNrOpen" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.fsNrOpen"></a>
+
+```typescript
+public readonly fsNrOpen: number;
+```
+
+- *Type:* number
+
+---
+
+##### `kernelThreadsMax`<sup>Optional</sup> <a name="kernelThreadsMax" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.kernelThreadsMax"></a>
+
+```typescript
+public readonly kernelThreadsMax: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreNetdevMaxBacklog`<sup>Optional</sup> <a name="netCoreNetdevMaxBacklog" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreNetdevMaxBacklog"></a>
+
+```typescript
+public readonly netCoreNetdevMaxBacklog: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreOptmemMax`<sup>Optional</sup> <a name="netCoreOptmemMax" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreOptmemMax"></a>
+
+```typescript
+public readonly netCoreOptmemMax: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreRmemDefault`<sup>Optional</sup> <a name="netCoreRmemDefault" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreRmemDefault"></a>
+
+```typescript
+public readonly netCoreRmemDefault: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreRmemMax`<sup>Optional</sup> <a name="netCoreRmemMax" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreRmemMax"></a>
+
+```typescript
+public readonly netCoreRmemMax: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreSomaxconn`<sup>Optional</sup> <a name="netCoreSomaxconn" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreSomaxconn"></a>
+
+```typescript
+public readonly netCoreSomaxconn: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreWmemDefault`<sup>Optional</sup> <a name="netCoreWmemDefault" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreWmemDefault"></a>
+
+```typescript
+public readonly netCoreWmemDefault: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netCoreWmemMax`<sup>Optional</sup> <a name="netCoreWmemMax" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netCoreWmemMax"></a>
+
+```typescript
+public readonly netCoreWmemMax: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4IpLocalPortRange`<sup>Optional</sup> <a name="netIpv4IpLocalPortRange" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4IpLocalPortRange"></a>
+
+```typescript
+public readonly netIpv4IpLocalPortRange: string;
+```
+
+- *Type:* string
+
+---
+
+##### `netIpv4NeighDefaultGcThresh1`<sup>Optional</sup> <a name="netIpv4NeighDefaultGcThresh1" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4NeighDefaultGcThresh1"></a>
+
+```typescript
+public readonly netIpv4NeighDefaultGcThresh1: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4NeighDefaultGcThresh2`<sup>Optional</sup> <a name="netIpv4NeighDefaultGcThresh2" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4NeighDefaultGcThresh2"></a>
+
+```typescript
+public readonly netIpv4NeighDefaultGcThresh2: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4NeighDefaultGcThresh3`<sup>Optional</sup> <a name="netIpv4NeighDefaultGcThresh3" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4NeighDefaultGcThresh3"></a>
+
+```typescript
+public readonly netIpv4NeighDefaultGcThresh3: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4TcpFinTimeout`<sup>Optional</sup> <a name="netIpv4TcpFinTimeout" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4TcpFinTimeout"></a>
+
+```typescript
+public readonly netIpv4TcpFinTimeout: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4TcpkeepaliveIntvl`<sup>Optional</sup> <a name="netIpv4TcpkeepaliveIntvl" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4TcpkeepaliveIntvl"></a>
+
+```typescript
+public readonly netIpv4TcpkeepaliveIntvl: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4TcpKeepaliveProbes`<sup>Optional</sup> <a name="netIpv4TcpKeepaliveProbes" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4TcpKeepaliveProbes"></a>
+
+```typescript
+public readonly netIpv4TcpKeepaliveProbes: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4TcpKeepaliveTime`<sup>Optional</sup> <a name="netIpv4TcpKeepaliveTime" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4TcpKeepaliveTime"></a>
+
+```typescript
+public readonly netIpv4TcpKeepaliveTime: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4TcpMaxSynBacklog`<sup>Optional</sup> <a name="netIpv4TcpMaxSynBacklog" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4TcpMaxSynBacklog"></a>
+
+```typescript
+public readonly netIpv4TcpMaxSynBacklog: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netIpv4TcpTwReuse`<sup>Optional</sup> <a name="netIpv4TcpTwReuse" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netIpv4TcpTwReuse"></a>
+
+```typescript
+public readonly netIpv4TcpTwReuse: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `netNetfilterNfConntrackBuckets`<sup>Optional</sup> <a name="netNetfilterNfConntrackBuckets" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netNetfilterNfConntrackBuckets"></a>
+
+```typescript
+public readonly netNetfilterNfConntrackBuckets: number;
+```
+
+- *Type:* number
+
+---
+
+##### `netNetfilterNfConntrackMax`<sup>Optional</sup> <a name="netNetfilterNfConntrackMax" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.netNetfilterNfConntrackMax"></a>
+
+```typescript
+public readonly netNetfilterNfConntrackMax: number;
+```
+
+- *Type:* number
+
+---
+
+##### `vmMaxMapCount`<sup>Optional</sup> <a name="vmMaxMapCount" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.vmMaxMapCount"></a>
+
+```typescript
+public readonly vmMaxMapCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `vmSwappiness`<sup>Optional</sup> <a name="vmSwappiness" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.vmSwappiness"></a>
+
+```typescript
+public readonly vmSwappiness: number;
+```
+
+- *Type:* number
+
+---
+
+##### `vmVfsCachePressure`<sup>Optional</sup> <a name="vmVfsCachePressure" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterSysctlConfig.property.vmVfsCachePressure"></a>
+
+```typescript
+public readonly vmVfsCachePressure: number;
+```
+
+- *Type:* number
+
+---
+
+### AksClusterVerticalPodAutoscaler <a name="AksClusterVerticalPodAutoscaler" id="@microsoft/terraform-cdk-constructs.AksClusterVerticalPodAutoscaler"></a>
+
+Vertical pod autoscaler.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterVerticalPodAutoscaler.Initializer"></a>
+
+```typescript
+import { AksClusterVerticalPodAutoscaler } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterVerticalPodAutoscaler: AksClusterVerticalPodAutoscaler = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterVerticalPodAutoscaler.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AksClusterVerticalPodAutoscaler.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AksClusterVerticalPodAutoscaler <a name="AksClusterVerticalPodAutoscaler" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterVerticalPodAutoscaler"></a>
+
+Vertical pod autoscaler.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterVerticalPodAutoscaler.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterVerticalPodAutoscaler: azure_aks.AksClusterVerticalPodAutoscaler = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterVerticalPodAutoscaler.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterVerticalPodAutoscaler.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AksClusterWindowsProfile <a name="AksClusterWindowsProfile" id="@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile"></a>
+
+Windows profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile.Initializer"></a>
+
+```typescript
+import { AksClusterWindowsProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterWindowsProfile: AksClusterWindowsProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile.property.adminUsername">adminUsername</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile.property.adminPassword">adminPassword</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile.property.enableCSIProxy">enableCSIProxy</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile.property.gmsaProfile">gmsaProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterGmsaProfile">AksClusterGmsaProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile.property.licenseType">licenseType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `adminUsername`<sup>Required</sup> <a name="adminUsername" id="@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile.property.adminUsername"></a>
+
+```typescript
+public readonly adminUsername: string;
+```
+
+- *Type:* string
+
+---
+
+##### `adminPassword`<sup>Optional</sup> <a name="adminPassword" id="@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile.property.adminPassword"></a>
+
+```typescript
+public readonly adminPassword: string;
+```
+
+- *Type:* string
+
+---
+
+##### `enableCSIProxy`<sup>Optional</sup> <a name="enableCSIProxy" id="@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile.property.enableCSIProxy"></a>
+
+```typescript
+public readonly enableCSIProxy: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `gmsaProfile`<sup>Optional</sup> <a name="gmsaProfile" id="@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile.property.gmsaProfile"></a>
+
+```typescript
+public readonly gmsaProfile: AksClusterGmsaProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterGmsaProfile">AksClusterGmsaProfile</a>
+
+---
+
+##### `licenseType`<sup>Optional</sup> <a name="licenseType" id="@microsoft/terraform-cdk-constructs.AksClusterWindowsProfile.property.licenseType"></a>
+
+```typescript
+public readonly licenseType: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterWindowsProfile <a name="AksClusterWindowsProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWindowsProfile"></a>
+
+Windows profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWindowsProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterWindowsProfile: azure_aks.AksClusterWindowsProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWindowsProfile.property.adminUsername">adminUsername</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWindowsProfile.property.adminPassword">adminPassword</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWindowsProfile.property.enableCSIProxy">enableCSIProxy</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWindowsProfile.property.gmsaProfile">gmsaProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterGmsaProfile">AksClusterGmsaProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWindowsProfile.property.licenseType">licenseType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `adminUsername`<sup>Required</sup> <a name="adminUsername" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWindowsProfile.property.adminUsername"></a>
+
+```typescript
+public readonly adminUsername: string;
+```
+
+- *Type:* string
+
+---
+
+##### `adminPassword`<sup>Optional</sup> <a name="adminPassword" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWindowsProfile.property.adminPassword"></a>
+
+```typescript
+public readonly adminPassword: string;
+```
+
+- *Type:* string
+
+---
+
+##### `enableCSIProxy`<sup>Optional</sup> <a name="enableCSIProxy" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWindowsProfile.property.enableCSIProxy"></a>
+
+```typescript
+public readonly enableCSIProxy: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `gmsaProfile`<sup>Optional</sup> <a name="gmsaProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWindowsProfile.property.gmsaProfile"></a>
+
+```typescript
+public readonly gmsaProfile: AksClusterGmsaProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterGmsaProfile">AksClusterGmsaProfile</a>
+
+---
+
+##### `licenseType`<sup>Optional</sup> <a name="licenseType" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWindowsProfile.property.licenseType"></a>
+
+```typescript
+public readonly licenseType: string;
+```
+
+- *Type:* string
+
+---
+
+### AksClusterWorkloadAutoScalerProfile <a name="AksClusterWorkloadAutoScalerProfile" id="@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile"></a>
+
+Workload auto-scaler profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile.Initializer"></a>
+
+```typescript
+import { AksClusterWorkloadAutoScalerProfile } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterWorkloadAutoScalerProfile: AksClusterWorkloadAutoScalerProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile.property.keda">keda</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKeda">AksClusterKeda</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile.property.verticalPodAutoscaler">verticalPodAutoscaler</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterVerticalPodAutoscaler">AksClusterVerticalPodAutoscaler</a></code> | *No description.* |
+
+---
+
+##### `keda`<sup>Optional</sup> <a name="keda" id="@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile.property.keda"></a>
+
+```typescript
+public readonly keda: AksClusterKeda;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterKeda">AksClusterKeda</a>
+
+---
+
+##### `verticalPodAutoscaler`<sup>Optional</sup> <a name="verticalPodAutoscaler" id="@microsoft/terraform-cdk-constructs.AksClusterWorkloadAutoScalerProfile.property.verticalPodAutoscaler"></a>
+
+```typescript
+public readonly verticalPodAutoscaler: AksClusterVerticalPodAutoscaler;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterVerticalPodAutoscaler">AksClusterVerticalPodAutoscaler</a>
+
+---
+
+### AksClusterWorkloadAutoScalerProfile <a name="AksClusterWorkloadAutoScalerProfile" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWorkloadAutoScalerProfile"></a>
+
+Workload auto-scaler profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWorkloadAutoScalerProfile.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterWorkloadAutoScalerProfile: azure_aks.AksClusterWorkloadAutoScalerProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWorkloadAutoScalerProfile.property.keda">keda</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterKeda">AksClusterKeda</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWorkloadAutoScalerProfile.property.verticalPodAutoscaler">verticalPodAutoscaler</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterVerticalPodAutoscaler">AksClusterVerticalPodAutoscaler</a></code> | *No description.* |
+
+---
+
+##### `keda`<sup>Optional</sup> <a name="keda" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWorkloadAutoScalerProfile.property.keda"></a>
+
+```typescript
+public readonly keda: AksClusterKeda;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterKeda">AksClusterKeda</a>
+
+---
+
+##### `verticalPodAutoscaler`<sup>Optional</sup> <a name="verticalPodAutoscaler" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWorkloadAutoScalerProfile.property.verticalPodAutoscaler"></a>
+
+```typescript
+public readonly verticalPodAutoscaler: AksClusterVerticalPodAutoscaler;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AksClusterVerticalPodAutoscaler">AksClusterVerticalPodAutoscaler</a>
+
+---
+
+### AksClusterWorkloadIdentity <a name="AksClusterWorkloadIdentity" id="@microsoft/terraform-cdk-constructs.AksClusterWorkloadIdentity"></a>
+
+Workload identity configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterWorkloadIdentity.Initializer"></a>
+
+```typescript
+import { AksClusterWorkloadIdentity } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterWorkloadIdentity: AksClusterWorkloadIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterWorkloadIdentity.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AksClusterWorkloadIdentity.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AksClusterWorkloadIdentity <a name="AksClusterWorkloadIdentity" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWorkloadIdentity"></a>
+
+Workload identity configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWorkloadIdentity.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterWorkloadIdentity: azure_aks.AksClusterWorkloadIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWorkloadIdentity.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterWorkloadIdentity.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
 
 ### ApiSchema <a name="ApiSchema" id="@microsoft/terraform-cdk-constructs.ApiSchema"></a>
 
