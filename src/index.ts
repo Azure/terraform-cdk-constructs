@@ -6,6 +6,7 @@
  * Version 1.0.0 - Major breaking change migration from AzureRM to AZAPI
  *
  * Available modules:
+ * - azure_aks: Azure Kubernetes Service constructs with version-aware AZAPI implementation
  * - azure_resourcegroup: Resource Group constructs with version-aware AZAPI implementation
  * - azure_storageaccount: Storage Account constructs with version-aware AZAPI implementation
  * - core_azure: Core AZAPI functionality and base classes
@@ -21,10 +22,12 @@ export * as core_azure from "./core-azure";
 export * from "./core-azure";
 
 // AZAPI-based Azure services
+export * as azure_aks from "./azure-aks";
 export * as azure_resourcegroup from "./azure-resourcegroup";
 export * as azure_storageaccount from "./azure-storageaccount";
 
 // Export types at top level for JSII compatibility
+export * from "./azure-aks";
 export * from "./azure-resourcegroup";
 export * from "./azure-storageaccount";
 

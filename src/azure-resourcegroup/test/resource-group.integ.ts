@@ -11,10 +11,7 @@ import { Testing, TerraformStack } from "cdktf";
 import { Construct } from "constructs";
 import "cdktf/lib/testing/adapters/jest";
 import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
-import {
-  TerraformApplyCheckAndDestroy,
-  cleanupCdkTfOutDirs,
-} from "../../testing";
+import { TerraformApplyCheckAndDestroy } from "../../testing";
 import { ResourceGroup } from "../lib/resource-group";
 
 /**
@@ -51,10 +48,6 @@ class ResourceGroupExampleStack extends TerraformStack {
 }
 
 describe("Resource Group Integration Test", () => {
-  afterAll(() => {
-    cleanupCdkTfOutDirs();
-  });
-
   it("should deploy, validate idempotency, and cleanup resource group resources", () => {
     const app = Testing.app();
     const stack = new ResourceGroupExampleStack(app, "test-resource-group");
