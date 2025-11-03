@@ -533,8 +533,8 @@ export abstract class AzapiResource extends Construct {
     // Create the resource body using the subclass implementation
     const resourceBody = this.createResourceBody(props);
 
-    // Determine the parent ID (this would be resource-type specific)
-    const parentId = this._determineParentId(props);
+    // Determine the parent ID using the overrideable method
+    const parentId = this.resolveParentId(props);
 
     // Create the AZAPI resource using the base class method
     this.terraformResource = this.createAzapiResource(
@@ -546,7 +546,24 @@ export abstract class AzapiResource extends Construct {
   }
 
   /**
-   * Determines the parent ID for the resource
+   * Resolves the parent resource ID for this resource.
+   *
+   * Override this method in child resource classes (like Subnet) that need
+   * custom parent ID resolution logic. By default, this delegates to the
+   * private _determineParentId method which handles standard resource types.
+   *
+   * @param props - The resource properties
+   * @returns The parent resource ID
+   */
+  protected resolveParentId(props: any): string {
+    return this._determineParentId(props);
+  }
+
+  /**
+   * Determines the parent ID for the resource (internal implementation)
+   *
+   * This method provides the default parent ID resolution logic for most resources.
+   * Child resources should override resolveParentId() instead of this method.
    */
   private _determineParentId(props: any): string {
     // This is a simplified implementation - real implementation would be

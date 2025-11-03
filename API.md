@@ -2986,6 +2986,7 @@ public resetTimeouts(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.isTerraformDataSource">isTerraformDataSource</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a DataAzapiClientConfig resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -3046,6 +3047,50 @@ DataAzapiClientConfig.isTerraformDataSource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.isTerraformDataSource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.generateConfigForImport"></a>
+
+```typescript
+import { DataAzapiClientConfig } from '@microsoft/terraform-cdk-constructs'
+
+DataAzapiClientConfig.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a DataAzapiClientConfig resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the DataAzapiClientConfig to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing DataAzapiClientConfig that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/client_config#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the DataAzapiClientConfig to import is found.
 
 ---
 
@@ -3572,6 +3617,7 @@ public resetTimeouts(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.isTerraformDataSource">isTerraformDataSource</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a DataAzapiClientConfig resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -3632,6 +3678,50 @@ core_azure.DataAzapiClientConfig.isTerraformDataSource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.isTerraformDataSource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.generateConfigForImport"></a>
+
+```typescript
+import { core_azure } from '@microsoft/terraform-cdk-constructs'
+
+core_azure.DataAzapiClientConfig.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a DataAzapiClientConfig resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the DataAzapiClientConfig to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing DataAzapiClientConfig that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/client_config#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the DataAzapiClientConfig to import is found.
 
 ---
 
@@ -4227,6 +4317,7 @@ public resetTimeouts(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.isTerraformDataSource">isTerraformDataSource</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a DataAzapiResource resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -4287,6 +4378,50 @@ DataAzapiResource.isTerraformDataSource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.DataAzapiResource.isTerraformDataSource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@microsoft/terraform-cdk-constructs.DataAzapiResource.generateConfigForImport"></a>
+
+```typescript
+import { DataAzapiResource } from '@microsoft/terraform-cdk-constructs'
+
+DataAzapiResource.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a DataAzapiResource resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.DataAzapiResource.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@microsoft/terraform-cdk-constructs.DataAzapiResource.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the DataAzapiResource to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@microsoft/terraform-cdk-constructs.DataAzapiResource.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing DataAzapiResource that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.DataAzapiResource.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the DataAzapiResource to import is found.
 
 ---
 
@@ -5091,6 +5226,7 @@ public resetTimeouts(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.isTerraformDataSource">isTerraformDataSource</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a DataAzapiResource resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -5151,6 +5287,50 @@ core_azure.DataAzapiResource.isTerraformDataSource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.isTerraformDataSource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.generateConfigForImport"></a>
+
+```typescript
+import { core_azure } from '@microsoft/terraform-cdk-constructs'
+
+core_azure.DataAzapiResource.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a DataAzapiResource resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the DataAzapiResource to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing DataAzapiResource that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the DataAzapiResource to import is found.
 
 ---
 
@@ -5598,6 +5778,3034 @@ public readonly tfResourceType: string;
 - *Type:* string
 
 ---
+
+### NetworkInterface <a name="NetworkInterface" id="@microsoft/terraform-cdk-constructs.NetworkInterface"></a>
+
+Unified Azure Network Interface implementation.
+
+This class provides a single, version-aware implementation that replaces all
+version-specific Network Interface classes. It automatically handles version
+resolution, schema validation, and property transformation while maintaining
+full backward compatibility.
+
+*Example*
+
+```typescript
+// Usage with explicit version pinning:
+const nic = new NetworkInterface(this, "nic", {
+  name: "mynic",
+  location: "eastus",
+  resourceGroupId: resourceGroup.id,
+  ipConfigurations: [{
+    name: "ipconfig1",
+    subnet: { id: subnet.id },
+    privateIPAllocationMethod: "Dynamic",
+    primary: true
+  }],
+  apiVersion: "2024-07-01",
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.NetworkInterface.Initializer"></a>
+
+```typescript
+import { NetworkInterface } from '@microsoft/terraform-cdk-constructs'
+
+new NetworkInterface(scope: Construct, id: string, props: NetworkInterfaceProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps">NetworkInterfaceProps</a></code> | - Configuration properties for the Network Interface. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.NetworkInterface.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.NetworkInterface.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.NetworkInterface.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps">NetworkInterfaceProps</a>
+
+Configuration properties for the Network Interface.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.addTag">addTag</a></code> | Add a tag to the Network Interface. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.removeTag">removeTag</a></code> | Remove a tag from the Network Interface. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.NetworkInterface.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.NetworkInterface.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.NetworkInterface.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.NetworkInterface.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.NetworkInterface.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.NetworkInterface.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.NetworkInterface.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.NetworkInterface.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.NetworkInterface.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.NetworkInterface.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.NetworkInterface.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Network Interface.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.NetworkInterface.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.NetworkInterface.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.NetworkInterface.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Network Interface.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.NetworkInterface.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.NetworkInterface.isConstruct"></a>
+
+```typescript
+import { NetworkInterface } from '@microsoft/terraform-cdk-constructs'
+
+NetworkInterface.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.NetworkInterface.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.privateIPAddress">privateIPAddress</a></code> | <code>string</code> | Get the private IP address of the primary IP configuration Note: This may not be available until after the resource is created The actual IP address location in Azure API response varies by API version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps">NetworkInterfaceProps</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `privateIPAddress`<sup>Required</sup> <a name="privateIPAddress" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.privateIPAddress"></a>
+
+```typescript
+public readonly privateIPAddress: string;
+```
+
+- *Type:* string
+
+Get the private IP address of the primary IP configuration Note: This may not be available until after the resource is created The actual IP address location in Azure API response varies by API version.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.props"></a>
+
+```typescript
+public readonly props: NetworkInterfaceProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps">NetworkInterfaceProps</a>
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.NetworkInterface.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+
+### NetworkInterface <a name="NetworkInterface" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface"></a>
+
+Unified Azure Network Interface implementation.
+
+This class provides a single, version-aware implementation that replaces all
+version-specific Network Interface classes. It automatically handles version
+resolution, schema validation, and property transformation while maintaining
+full backward compatibility.
+
+*Example*
+
+```typescript
+// Usage with explicit version pinning:
+const nic = new NetworkInterface(this, "nic", {
+  name: "mynic",
+  location: "eastus",
+  resourceGroupId: resourceGroup.id,
+  ipConfigurations: [{
+    name: "ipconfig1",
+    subnet: { id: subnet.id },
+    privateIPAllocationMethod: "Dynamic",
+    primary: true
+  }],
+  apiVersion: "2024-07-01",
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.Initializer"></a>
+
+```typescript
+import { azure_networkinterface } from '@microsoft/terraform-cdk-constructs'
+
+new azure_networkinterface.NetworkInterface(scope: Construct, id: string, props: NetworkInterfaceProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps">NetworkInterfaceProps</a></code> | - Configuration properties for the Network Interface. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps">NetworkInterfaceProps</a>
+
+Configuration properties for the Network Interface.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addTag">addTag</a></code> | Add a tag to the Network Interface. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.removeTag">removeTag</a></code> | Remove a tag from the Network Interface. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Network Interface.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Network Interface.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.isConstruct"></a>
+
+```typescript
+import { azure_networkinterface } from '@microsoft/terraform-cdk-constructs'
+
+azure_networkinterface.NetworkInterface.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.privateIPAddress">privateIPAddress</a></code> | <code>string</code> | Get the private IP address of the primary IP configuration Note: This may not be available until after the resource is created The actual IP address location in Azure API response varies by API version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps">NetworkInterfaceProps</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `privateIPAddress`<sup>Required</sup> <a name="privateIPAddress" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.privateIPAddress"></a>
+
+```typescript
+public readonly privateIPAddress: string;
+```
+
+- *Type:* string
+
+Get the private IP address of the primary IP configuration Note: This may not be available until after the resource is created The actual IP address location in Azure API response varies by API version.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.props"></a>
+
+```typescript
+public readonly props: NetworkInterfaceProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps">NetworkInterfaceProps</a>
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+
+### NetworkSecurityGroup <a name="NetworkSecurityGroup" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup"></a>
+
+Azure Network Security Group implementation.
+
+This class provides a single, version-aware implementation that replaces
+version-specific Network Security Group classes. It automatically handles version
+resolution, schema validation, and property transformation while maintaining
+full backward compatibility.
+
+*Example*
+
+```typescript
+// Usage with explicit version pinning:
+const nsg = new NetworkSecurityGroup(this, "nsg", {
+  name: "my-nsg",
+  location: "eastus",
+  apiVersion: "2024-07-01",
+  securityRules: [...]
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.Initializer"></a>
+
+```typescript
+import { NetworkSecurityGroup } from '@microsoft/terraform-cdk-constructs'
+
+new NetworkSecurityGroup(scope: Construct, id: string, props: NetworkSecurityGroupProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps">NetworkSecurityGroupProps</a></code> | - Configuration properties for the Network Security Group. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps">NetworkSecurityGroupProps</a>
+
+Configuration properties for the Network Security Group.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addTag">addTag</a></code> | Add a tag to the Network Security Group Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.removeTag">removeTag</a></code> | Remove a tag from the Network Security Group Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Network Security Group Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Network Security Group Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.isConstruct"></a>
+
+```typescript
+import { NetworkSecurityGroup } from '@microsoft/terraform-cdk-constructs'
+
+NetworkSecurityGroup.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.resourceId">resourceId</a></code> | <code>string</code> | Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps">NetworkSecurityGroupProps</a></code> | The input properties for this Network Security Group instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.securityRules">securityRules</a></code> | <code>string</code> | Get the security rules output value Returns the Terraform interpolation string for the security rules. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.securityRulesOutput">securityRulesOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.subscriptionId">subscriptionId</a></code> | <code>string</code> | Get the subscription ID from the Network Security Group ID Extracts the subscription ID from the Azure resource ID format. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.props"></a>
+
+```typescript
+public readonly props: NetworkSecurityGroupProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps">NetworkSecurityGroupProps</a>
+
+The input properties for this Network Security Group instance.
+
+---
+
+##### `securityRules`<sup>Required</sup> <a name="securityRules" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.securityRules"></a>
+
+```typescript
+public readonly securityRules: string;
+```
+
+- *Type:* string
+
+Get the security rules output value Returns the Terraform interpolation string for the security rules.
+
+---
+
+##### `securityRulesOutput`<sup>Required</sup> <a name="securityRulesOutput" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.securityRulesOutput"></a>
+
+```typescript
+public readonly securityRulesOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `subscriptionId`<sup>Required</sup> <a name="subscriptionId" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.subscriptionId"></a>
+
+```typescript
+public readonly subscriptionId: string;
+```
+
+- *Type:* string
+
+Get the subscription ID from the Network Security Group ID Extracts the subscription ID from the Azure resource ID format.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+
+### NetworkSecurityGroup <a name="NetworkSecurityGroup" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup"></a>
+
+Azure Network Security Group implementation.
+
+This class provides a single, version-aware implementation that replaces
+version-specific Network Security Group classes. It automatically handles version
+resolution, schema validation, and property transformation while maintaining
+full backward compatibility.
+
+*Example*
+
+```typescript
+// Usage with explicit version pinning:
+const nsg = new NetworkSecurityGroup(this, "nsg", {
+  name: "my-nsg",
+  location: "eastus",
+  apiVersion: "2024-07-01",
+  securityRules: [...]
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.Initializer"></a>
+
+```typescript
+import { azure_networksecuritygroup } from '@microsoft/terraform-cdk-constructs'
+
+new azure_networksecuritygroup.NetworkSecurityGroup(scope: Construct, id: string, props: NetworkSecurityGroupProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps">NetworkSecurityGroupProps</a></code> | - Configuration properties for the Network Security Group. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps">NetworkSecurityGroupProps</a>
+
+Configuration properties for the Network Security Group.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addTag">addTag</a></code> | Add a tag to the Network Security Group Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.removeTag">removeTag</a></code> | Remove a tag from the Network Security Group Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Network Security Group Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Network Security Group Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.isConstruct"></a>
+
+```typescript
+import { azure_networksecuritygroup } from '@microsoft/terraform-cdk-constructs'
+
+azure_networksecuritygroup.NetworkSecurityGroup.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.resourceId">resourceId</a></code> | <code>string</code> | Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps">NetworkSecurityGroupProps</a></code> | The input properties for this Network Security Group instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.securityRules">securityRules</a></code> | <code>string</code> | Get the security rules output value Returns the Terraform interpolation string for the security rules. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.securityRulesOutput">securityRulesOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.subscriptionId">subscriptionId</a></code> | <code>string</code> | Get the subscription ID from the Network Security Group ID Extracts the subscription ID from the Azure resource ID format. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.props"></a>
+
+```typescript
+public readonly props: NetworkSecurityGroupProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps">NetworkSecurityGroupProps</a>
+
+The input properties for this Network Security Group instance.
+
+---
+
+##### `securityRules`<sup>Required</sup> <a name="securityRules" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.securityRules"></a>
+
+```typescript
+public readonly securityRules: string;
+```
+
+- *Type:* string
+
+Get the security rules output value Returns the Terraform interpolation string for the security rules.
+
+---
+
+##### `securityRulesOutput`<sup>Required</sup> <a name="securityRulesOutput" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.securityRulesOutput"></a>
+
+```typescript
+public readonly securityRulesOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `subscriptionId`<sup>Required</sup> <a name="subscriptionId" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.subscriptionId"></a>
+
+```typescript
+public readonly subscriptionId: string;
+```
+
+- *Type:* string
+
+Get the subscription ID from the Network Security Group ID Extracts the subscription ID from the Azure resource ID format.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+
+### PublicIPAddress <a name="PublicIPAddress" id="@microsoft/terraform-cdk-constructs.PublicIPAddress"></a>
+
+Azure Public IP Address implementation.
+
+This class provides a single, version-aware implementation that replaces
+version-specific Public IP Address classes. It automatically handles version
+resolution, schema validation, and property transformation while maintaining
+full backward compatibility.
+
+*Example*
+
+```typescript
+// Zonal Public IP:
+const publicIp = new PublicIPAddress(this, "publicIp", {
+  name: "my-public-ip",
+  location: "eastus",
+  sku: {
+    name: "Standard"
+  },
+  publicIPAllocationMethod: "Static",
+  zones: ["1"]
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.Initializer"></a>
+
+```typescript
+import { PublicIPAddress } from '@microsoft/terraform-cdk-constructs'
+
+new PublicIPAddress(scope: Construct, id: string, props: PublicIPAddressProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps">PublicIPAddressProps</a></code> | - Configuration properties for the Public IP Address. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps">PublicIPAddressProps</a>
+
+Configuration properties for the Public IP Address.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.addTag">addTag</a></code> | Add a tag to the Public IP Address Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.removeTag">removeTag</a></code> | Remove a tag from the Public IP Address Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Public IP Address Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Public IP Address Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.isConstruct"></a>
+
+```typescript
+import { PublicIPAddress } from '@microsoft/terraform-cdk-constructs'
+
+PublicIPAddress.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.resourceId">resourceId</a></code> | <code>string</code> | Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.ipAddress">ipAddress</a></code> | <code>string</code> | Get the IP address output value Returns the Terraform interpolation string for the IP address. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps">PublicIPAddressProps</a></code> | The input properties for this Public IP Address instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.subscriptionId">subscriptionId</a></code> | <code>string</code> | Get the subscription ID from the Public IP Address ID Extracts the subscription ID from the Azure resource ID format. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `ipAddress`<sup>Required</sup> <a name="ipAddress" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.ipAddress"></a>
+
+```typescript
+public readonly ipAddress: string;
+```
+
+- *Type:* string
+
+Get the IP address output value Returns the Terraform interpolation string for the IP address.
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.props"></a>
+
+```typescript
+public readonly props: PublicIPAddressProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps">PublicIPAddressProps</a>
+
+The input properties for this Public IP Address instance.
+
+---
+
+##### `subscriptionId`<sup>Required</sup> <a name="subscriptionId" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.subscriptionId"></a>
+
+```typescript
+public readonly subscriptionId: string;
+```
+
+- *Type:* string
+
+Get the subscription ID from the Public IP Address ID Extracts the subscription ID from the Azure resource ID format.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+
+### PublicIPAddress <a name="PublicIPAddress" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress"></a>
+
+Azure Public IP Address implementation.
+
+This class provides a single, version-aware implementation that replaces
+version-specific Public IP Address classes. It automatically handles version
+resolution, schema validation, and property transformation while maintaining
+full backward compatibility.
+
+*Example*
+
+```typescript
+// Zonal Public IP:
+const publicIp = new PublicIPAddress(this, "publicIp", {
+  name: "my-public-ip",
+  location: "eastus",
+  sku: {
+    name: "Standard"
+  },
+  publicIPAllocationMethod: "Static",
+  zones: ["1"]
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.Initializer"></a>
+
+```typescript
+import { azure_publicipaddress } from '@microsoft/terraform-cdk-constructs'
+
+new azure_publicipaddress.PublicIPAddress(scope: Construct, id: string, props: PublicIPAddressProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps">PublicIPAddressProps</a></code> | - Configuration properties for the Public IP Address. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps">PublicIPAddressProps</a>
+
+Configuration properties for the Public IP Address.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addTag">addTag</a></code> | Add a tag to the Public IP Address Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.removeTag">removeTag</a></code> | Remove a tag from the Public IP Address Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Public IP Address Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Public IP Address Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.isConstruct"></a>
+
+```typescript
+import { azure_publicipaddress } from '@microsoft/terraform-cdk-constructs'
+
+azure_publicipaddress.PublicIPAddress.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.resourceId">resourceId</a></code> | <code>string</code> | Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.ipAddress">ipAddress</a></code> | <code>string</code> | Get the IP address output value Returns the Terraform interpolation string for the IP address. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps">PublicIPAddressProps</a></code> | The input properties for this Public IP Address instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.subscriptionId">subscriptionId</a></code> | <code>string</code> | Get the subscription ID from the Public IP Address ID Extracts the subscription ID from the Azure resource ID format. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `ipAddress`<sup>Required</sup> <a name="ipAddress" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.ipAddress"></a>
+
+```typescript
+public readonly ipAddress: string;
+```
+
+- *Type:* string
+
+Get the IP address output value Returns the Terraform interpolation string for the IP address.
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.props"></a>
+
+```typescript
+public readonly props: PublicIPAddressProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps">PublicIPAddressProps</a>
+
+The input properties for this Public IP Address instance.
+
+---
+
+##### `subscriptionId`<sup>Required</sup> <a name="subscriptionId" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.subscriptionId"></a>
+
+```typescript
+public readonly subscriptionId: string;
+```
+
+- *Type:* string
+
+Get the subscription ID from the Public IP Address ID Extracts the subscription ID from the Azure resource ID format.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
 
 ### Resource <a name="Resource" id="@microsoft/terraform-cdk-constructs.Resource"></a>
 
@@ -6189,6 +9397,7 @@ public resetUpdateQueryParameters(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.isTerraformResource">isTerraformResource</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a Resource resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -6249,6 +9458,50 @@ Resource.isTerraformResource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.Resource.isTerraformResource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@microsoft/terraform-cdk-constructs.Resource.generateConfigForImport"></a>
+
+```typescript
+import { Resource } from '@microsoft/terraform-cdk-constructs'
+
+Resource.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a Resource resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.Resource.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@microsoft/terraform-cdk-constructs.Resource.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the Resource to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@microsoft/terraform-cdk-constructs.Resource.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing Resource that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.Resource.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the Resource to import is found.
 
 ---
 
@@ -7639,6 +10892,7 @@ public resetUpdateQueryParameters(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.isTerraformResource">isTerraformResource</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a Resource resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -7699,6 +10953,50 @@ core_azure.Resource.isTerraformResource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.isTerraformResource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.generateConfigForImport"></a>
+
+```typescript
+import { core_azure } from '@microsoft/terraform-cdk-constructs'
+
+core_azure.Resource.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a Resource resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the Resource to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing Resource that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the Resource to import is found.
 
 ---
 
@@ -8971,6 +12269,7 @@ public resetWhen(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.isTerraformResource">isTerraformResource</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a ResourceAction resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -9031,6 +12330,50 @@ ResourceAction.isTerraformResource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.ResourceAction.isTerraformResource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@microsoft/terraform-cdk-constructs.ResourceAction.generateConfigForImport"></a>
+
+```typescript
+import { ResourceAction } from '@microsoft/terraform-cdk-constructs'
+
+ResourceAction.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a ResourceAction resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.ResourceAction.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@microsoft/terraform-cdk-constructs.ResourceAction.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the ResourceAction to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@microsoft/terraform-cdk-constructs.ResourceAction.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing ResourceAction that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.ResourceAction.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the ResourceAction to import is found.
 
 ---
 
@@ -10006,6 +13349,7 @@ public resetWhen(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.isTerraformResource">isTerraformResource</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a ResourceAction resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -10066,6 +13410,50 @@ core_azure.ResourceAction.isTerraformResource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.isTerraformResource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.generateConfigForImport"></a>
+
+```typescript
+import { core_azure } from '@microsoft/terraform-cdk-constructs'
+
+core_azure.ResourceAction.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a ResourceAction resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the ResourceAction to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing ResourceAction that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the ResourceAction to import is found.
 
 ---
 
@@ -12641,6 +16029,908 @@ public readonly tagsOutput: TerraformOutput;
 ---
 
 
+### Subnet <a name="Subnet" id="@microsoft/terraform-cdk-constructs.Subnet"></a>
+
+Azure Subnet implementation.
+
+This class provides a single, version-aware implementation that replaces
+version-specific Subnet classes. It automatically handles version
+resolution, schema validation, and property transformation while maintaining
+full backward compatibility.
+
+**Child Resource Pattern**: Subnets are child resources of Virtual Networks.
+This implementation overrides the `resolveParentId()` method to properly
+construct the Virtual Network ID as the parent, following the enhanced base
+class pattern for child resources.
+
+*Example*
+
+```typescript
+// Usage with network security group:
+const subnet = new Subnet(this, "subnet", {
+  name: "my-subnet",
+  virtualNetworkName: "my-vnet",
+  resourceGroupId: resourceGroup.id,
+  addressPrefix: "10.0.1.0/24",
+  networkSecurityGroup: { id: nsg.id }
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.Subnet.Initializer"></a>
+
+```typescript
+import { Subnet } from '@microsoft/terraform-cdk-constructs'
+
+new Subnet(scope: Construct, id: string, props: SubnetProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps</code> | - Configuration properties for the Subnet. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.Subnet.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.Subnet.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.Subnet.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps
+
+Configuration properties for the Subnet.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.Subnet.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.Subnet.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.Subnet.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.Subnet.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.Subnet.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.Subnet.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.Subnet.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.Subnet.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.Subnet.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.Subnet.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.Subnet.isConstruct"></a>
+
+```typescript
+import { Subnet } from '@microsoft/terraform-cdk-constructs'
+
+Subnet.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.Subnet.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.resourceId">resourceId</a></code> | <code>string</code> | Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.addressPrefix">addressPrefix</a></code> | <code>string</code> | Get the address prefix value Returns the address prefix from the input props since Azure API doesn't return it in output. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.addressPrefixOutput">addressPrefixOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps</code> | The input properties for this Subnet instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.property.virtualNetworkId">virtualNetworkId</a></code> | <code>string</code> | Get the parent Virtual Network ID Constructs the VNet resource ID from the subnet's parent reference. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.Subnet.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.Subnet.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.Subnet.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.Subnet.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.Subnet.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.Subnet.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.Subnet.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.Subnet.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.Subnet.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.Subnet.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.Subnet.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `addressPrefix`<sup>Required</sup> <a name="addressPrefix" id="@microsoft/terraform-cdk-constructs.Subnet.property.addressPrefix"></a>
+
+```typescript
+public readonly addressPrefix: string;
+```
+
+- *Type:* string
+
+Get the address prefix value Returns the address prefix from the input props since Azure API doesn't return it in output.
+
+---
+
+##### `addressPrefixOutput`<sup>Required</sup> <a name="addressPrefixOutput" id="@microsoft/terraform-cdk-constructs.Subnet.property.addressPrefixOutput"></a>
+
+```typescript
+public readonly addressPrefixOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.Subnet.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.Subnet.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.Subnet.property.props"></a>
+
+```typescript
+public readonly props: SubnetProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps
+
+The input properties for this Subnet instance.
+
+---
+
+##### `virtualNetworkId`<sup>Required</sup> <a name="virtualNetworkId" id="@microsoft/terraform-cdk-constructs.Subnet.property.virtualNetworkId"></a>
+
+```typescript
+public readonly virtualNetworkId: string;
+```
+
+- *Type:* string
+
+Get the parent Virtual Network ID Constructs the VNet resource ID from the subnet's parent reference.
+
+---
+
+
+### Subnet <a name="Subnet" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet"></a>
+
+Azure Subnet implementation.
+
+This class provides a single, version-aware implementation that replaces
+version-specific Subnet classes. It automatically handles version
+resolution, schema validation, and property transformation while maintaining
+full backward compatibility.
+
+**Child Resource Pattern**: Subnets are child resources of Virtual Networks.
+This implementation overrides the `resolveParentId()` method to properly
+construct the Virtual Network ID as the parent, following the enhanced base
+class pattern for child resources.
+
+*Example*
+
+```typescript
+// Usage with network security group:
+const subnet = new Subnet(this, "subnet", {
+  name: "my-subnet",
+  virtualNetworkName: "my-vnet",
+  resourceGroupId: resourceGroup.id,
+  addressPrefix: "10.0.1.0/24",
+  networkSecurityGroup: { id: nsg.id }
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.Initializer"></a>
+
+```typescript
+import { azure_subnet } from '@microsoft/terraform-cdk-constructs'
+
+new azure_subnet.Subnet(scope: Construct, id: string, props: SubnetProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps</code> | - Configuration properties for the Subnet. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps
+
+Configuration properties for the Subnet.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.isConstruct"></a>
+
+```typescript
+import { azure_subnet } from '@microsoft/terraform-cdk-constructs'
+
+azure_subnet.Subnet.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.resourceId">resourceId</a></code> | <code>string</code> | Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.addressPrefix">addressPrefix</a></code> | <code>string</code> | Get the address prefix value Returns the address prefix from the input props since Azure API doesn't return it in output. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.addressPrefixOutput">addressPrefixOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps</code> | The input properties for this Subnet instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.virtualNetworkId">virtualNetworkId</a></code> | <code>string</code> | Get the parent Virtual Network ID Constructs the VNet resource ID from the subnet's parent reference. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `addressPrefix`<sup>Required</sup> <a name="addressPrefix" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.addressPrefix"></a>
+
+```typescript
+public readonly addressPrefix: string;
+```
+
+- *Type:* string
+
+Get the address prefix value Returns the address prefix from the input props since Azure API doesn't return it in output.
+
+---
+
+##### `addressPrefixOutput`<sup>Required</sup> <a name="addressPrefixOutput" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.addressPrefixOutput"></a>
+
+```typescript
+public readonly addressPrefixOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.props"></a>
+
+```typescript
+public readonly props: SubnetProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps
+
+The input properties for this Subnet instance.
+
+---
+
+##### `virtualNetworkId`<sup>Required</sup> <a name="virtualNetworkId" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.property.virtualNetworkId"></a>
+
+```typescript
+public readonly virtualNetworkId: string;
+```
+
+- *Type:* string
+
+Get the parent Virtual Network ID Constructs the VNet resource ID from the subnet's parent reference.
+
+---
+
+
 ### UpdateResource <a name="UpdateResource" id="@microsoft/terraform-cdk-constructs.UpdateResource"></a>
 
 Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource azapi_update_resource}.
@@ -13148,6 +17438,7 @@ public resetUpdateQueryParameters(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.isTerraformResource">isTerraformResource</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a UpdateResource resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -13208,6 +17499,50 @@ UpdateResource.isTerraformResource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.UpdateResource.isTerraformResource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@microsoft/terraform-cdk-constructs.UpdateResource.generateConfigForImport"></a>
+
+```typescript
+import { UpdateResource } from '@microsoft/terraform-cdk-constructs'
+
+UpdateResource.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a UpdateResource resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.UpdateResource.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@microsoft/terraform-cdk-constructs.UpdateResource.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the UpdateResource to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@microsoft/terraform-cdk-constructs.UpdateResource.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing UpdateResource that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.UpdateResource.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the UpdateResource to import is found.
 
 ---
 
@@ -14295,6 +18630,7 @@ public resetUpdateQueryParameters(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.isTerraformElement">isTerraformElement</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.isTerraformResource">isTerraformResource</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.generateConfigForImport">generateConfigForImport</a></code> | Generates CDKTF code for importing a UpdateResource resource upon running "cdktf plan <stack-name>". |
 
 ---
 
@@ -14355,6 +18691,50 @@ core_azure.UpdateResource.isTerraformResource(x: any)
 ###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.isTerraformResource.parameter.x"></a>
 
 - *Type:* any
+
+---
+
+##### `generateConfigForImport` <a name="generateConfigForImport" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.generateConfigForImport"></a>
+
+```typescript
+import { core_azure } from '@microsoft/terraform-cdk-constructs'
+
+core_azure.UpdateResource.generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: TerraformProvider)
+```
+
+Generates CDKTF code for importing a UpdateResource resource upon running "cdktf plan <stack-name>".
+
+###### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.generateConfigForImport.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+###### `importToId`<sup>Required</sup> <a name="importToId" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.generateConfigForImport.parameter.importToId"></a>
+
+- *Type:* string
+
+The construct id used in the generated config for the UpdateResource to import.
+
+---
+
+###### `importFromId`<sup>Required</sup> <a name="importFromId" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.generateConfigForImport.parameter.importFromId"></a>
+
+- *Type:* string
+
+The id of the existing UpdateResource that should be imported.
+
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#import import section} in the documentation of this resource for the id to use
+
+---
+
+###### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.generateConfigForImport.parameter.provider"></a>
+
+- *Type:* cdktf.TerraformProvider
+
+? Optional instance of the provider where the UpdateResource to import is found.
 
 ---
 
@@ -14935,7 +19315,3401 @@ public readonly tfResourceType: string;
 
 ---
 
+### VirtualMachine <a name="VirtualMachine" id="@microsoft/terraform-cdk-constructs.VirtualMachine"></a>
+
+Unified Azure Virtual Machine implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+The class uses the VersionedAzapiResource framework to provide:
+- Automatic latest version resolution (2025-04-01 as of this implementation)
+- Support for explicit version pinning when stability is required
+- Schema-driven property validation and transformation
+- Migration analysis and deprecation warnings
+- Full JSII compliance for multi-language support
+
+*Example*
+
+```typescript
+// Windows VM with password authentication:
+const windowsVm = new VirtualMachine(this, "windows-vm", {
+  name: "my-windows-vm",
+  location: "eastus",
+  resourceGroupId: resourceGroup.id,
+  hardwareProfile: {
+    vmSize: "Standard_D2s_v3"
+  },
+  storageProfile: {
+    imageReference: {
+      publisher: "MicrosoftWindowsServer",
+      offer: "WindowsServer",
+      sku: "2022-datacenter-azure-edition",
+      version: "latest"
+    },
+    osDisk: {
+      createOption: "FromImage",
+      managedDisk: {
+        storageAccountType: "Premium_LRS"
+      }
+    }
+  },
+  osProfile: {
+    computerName: "mywinvm",
+    adminUsername: "azureuser",
+    adminPassword: "P@ssw0rd1234!",
+    windowsConfiguration: {
+      provisionVMAgent: true,
+      enableAutomaticUpdates: true
+    }
+  },
+  networkProfile: {
+    networkInterfaces: [{
+      id: networkInterface.id
+    }]
+  },
+  licenseType: "Windows_Server"
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.VirtualMachine.Initializer"></a>
+
+```typescript
+import { VirtualMachine } from '@microsoft/terraform-cdk-constructs'
+
+new VirtualMachine(scope: Construct, id: string, props: VirtualMachineProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps">VirtualMachineProps</a></code> | - Configuration properties for the Virtual Machine. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.VirtualMachine.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualMachine.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.VirtualMachine.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps">VirtualMachineProps</a>
+
+Configuration properties for the Virtual Machine.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.addTag">addTag</a></code> | Add a tag to the Virtual Machine Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.removeTag">removeTag</a></code> | Remove a tag from the Virtual Machine Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.VirtualMachine.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.VirtualMachine.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.VirtualMachine.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.VirtualMachine.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.VirtualMachine.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.VirtualMachine.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.VirtualMachine.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.VirtualMachine.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.VirtualMachine.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.VirtualMachine.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.VirtualMachine.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Virtual Machine Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.VirtualMachine.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.VirtualMachine.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.VirtualMachine.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Virtual Machine Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.VirtualMachine.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.VirtualMachine.isConstruct"></a>
+
+```typescript
+import { VirtualMachine } from '@microsoft/terraform-cdk-constructs'
+
+VirtualMachine.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.VirtualMachine.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps">VirtualMachineProps</a></code> | The input properties for this Virtual Machine instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.provisioningState">provisioningState</a></code> | <code>string</code> | Get the provisioning state of the Virtual Machine. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.vmId">vmId</a></code> | <code>string</code> | Get the VM ID (unique identifier assigned by Azure). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.vmIdOutput">vmIdOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.vmSize">vmSize</a></code> | <code>string</code> | Get the VM size. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.property.computerName">computerName</a></code> | <code>string</code> | Get the OS profile computer name. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.props"></a>
+
+```typescript
+public readonly props: VirtualMachineProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps">VirtualMachineProps</a>
+
+The input properties for this Virtual Machine instance.
+
+---
+
+##### `provisioningState`<sup>Required</sup> <a name="provisioningState" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.provisioningState"></a>
+
+```typescript
+public readonly provisioningState: string;
+```
+
+- *Type:* string
+
+Get the provisioning state of the Virtual Machine.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `vmId`<sup>Required</sup> <a name="vmId" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.vmId"></a>
+
+```typescript
+public readonly vmId: string;
+```
+
+- *Type:* string
+
+Get the VM ID (unique identifier assigned by Azure).
+
+---
+
+##### `vmIdOutput`<sup>Required</sup> <a name="vmIdOutput" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.vmIdOutput"></a>
+
+```typescript
+public readonly vmIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `vmSize`<sup>Required</sup> <a name="vmSize" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.vmSize"></a>
+
+```typescript
+public readonly vmSize: string;
+```
+
+- *Type:* string
+
+Get the VM size.
+
+---
+
+##### `computerName`<sup>Optional</sup> <a name="computerName" id="@microsoft/terraform-cdk-constructs.VirtualMachine.property.computerName"></a>
+
+```typescript
+public readonly computerName: string;
+```
+
+- *Type:* string
+
+Get the OS profile computer name.
+
+---
+
+
+### VirtualMachine <a name="VirtualMachine" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine"></a>
+
+Unified Azure Virtual Machine implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+The class uses the VersionedAzapiResource framework to provide:
+- Automatic latest version resolution (2025-04-01 as of this implementation)
+- Support for explicit version pinning when stability is required
+- Schema-driven property validation and transformation
+- Migration analysis and deprecation warnings
+- Full JSII compliance for multi-language support
+
+*Example*
+
+```typescript
+// Windows VM with password authentication:
+const windowsVm = new VirtualMachine(this, "windows-vm", {
+  name: "my-windows-vm",
+  location: "eastus",
+  resourceGroupId: resourceGroup.id,
+  hardwareProfile: {
+    vmSize: "Standard_D2s_v3"
+  },
+  storageProfile: {
+    imageReference: {
+      publisher: "MicrosoftWindowsServer",
+      offer: "WindowsServer",
+      sku: "2022-datacenter-azure-edition",
+      version: "latest"
+    },
+    osDisk: {
+      createOption: "FromImage",
+      managedDisk: {
+        storageAccountType: "Premium_LRS"
+      }
+    }
+  },
+  osProfile: {
+    computerName: "mywinvm",
+    adminUsername: "azureuser",
+    adminPassword: "P@ssw0rd1234!",
+    windowsConfiguration: {
+      provisionVMAgent: true,
+      enableAutomaticUpdates: true
+    }
+  },
+  networkProfile: {
+    networkInterfaces: [{
+      id: networkInterface.id
+    }]
+  },
+  licenseType: "Windows_Server"
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+new azure_virtualmachine.VirtualMachine(scope: Construct, id: string, props: VirtualMachineProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps">VirtualMachineProps</a></code> | - Configuration properties for the Virtual Machine. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps">VirtualMachineProps</a>
+
+Configuration properties for the Virtual Machine.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addTag">addTag</a></code> | Add a tag to the Virtual Machine Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.removeTag">removeTag</a></code> | Remove a tag from the Virtual Machine Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Virtual Machine Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Virtual Machine Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.isConstruct"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+azure_virtualmachine.VirtualMachine.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps">VirtualMachineProps</a></code> | The input properties for this Virtual Machine instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.provisioningState">provisioningState</a></code> | <code>string</code> | Get the provisioning state of the Virtual Machine. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.vmId">vmId</a></code> | <code>string</code> | Get the VM ID (unique identifier assigned by Azure). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.vmIdOutput">vmIdOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.vmSize">vmSize</a></code> | <code>string</code> | Get the VM size. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.computerName">computerName</a></code> | <code>string</code> | Get the OS profile computer name. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.props"></a>
+
+```typescript
+public readonly props: VirtualMachineProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps">VirtualMachineProps</a>
+
+The input properties for this Virtual Machine instance.
+
+---
+
+##### `provisioningState`<sup>Required</sup> <a name="provisioningState" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.provisioningState"></a>
+
+```typescript
+public readonly provisioningState: string;
+```
+
+- *Type:* string
+
+Get the provisioning state of the Virtual Machine.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `vmId`<sup>Required</sup> <a name="vmId" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.vmId"></a>
+
+```typescript
+public readonly vmId: string;
+```
+
+- *Type:* string
+
+Get the VM ID (unique identifier assigned by Azure).
+
+---
+
+##### `vmIdOutput`<sup>Required</sup> <a name="vmIdOutput" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.vmIdOutput"></a>
+
+```typescript
+public readonly vmIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `vmSize`<sup>Required</sup> <a name="vmSize" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.vmSize"></a>
+
+```typescript
+public readonly vmSize: string;
+```
+
+- *Type:* string
+
+Get the VM size.
+
+---
+
+##### `computerName`<sup>Optional</sup> <a name="computerName" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.property.computerName"></a>
+
+```typescript
+public readonly computerName: string;
+```
+
+- *Type:* string
+
+Get the OS profile computer name.
+
+---
+
+
+### VirtualMachineScaleSet <a name="VirtualMachineScaleSet" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet"></a>
+
+Unified Azure Virtual Machine Scale Set implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+The class uses the AzapiResource framework to provide:
+- Automatic latest version resolution (2025-04-01 as of this implementation)
+- Support for explicit version pinning when stability is required
+- Schema-driven property validation and transformation
+- Migration analysis and deprecation warnings
+- Full JSII compliance for multi-language support
+
+*Example*
+
+```typescript
+// Flexible orchestration mode with rolling upgrades:
+const flexibleVmss = new VirtualMachineScaleSet(this, "flexible-vmss", {
+  name: "my-flexible-vmss",
+  location: "eastus",
+  resourceGroupId: resourceGroup.id,
+  sku: {
+    name: "Standard_D2s_v3",
+    capacity: 5
+  },
+  orchestrationMode: "Flexible",
+  upgradePolicy: {
+    mode: "Rolling",
+    rollingUpgradePolicy: {
+      maxBatchInstancePercent: 20,
+      maxUnhealthyInstancePercent: 20,
+      maxUnhealthyUpgradedInstancePercent: 20,
+      pauseTimeBetweenBatches: "PT5S"
+    }
+  },
+  automaticRepairsPolicy: {
+    enabled: true,
+    gracePeriod: "PT30M"
+  }
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.Initializer"></a>
+
+```typescript
+import { VirtualMachineScaleSet } from '@microsoft/terraform-cdk-constructs'
+
+new VirtualMachineScaleSet(scope: Construct, id: string, props: VirtualMachineScaleSetProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps">VirtualMachineScaleSetProps</a></code> | - Configuration properties for the Virtual Machine Scale Set. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps">VirtualMachineScaleSetProps</a>
+
+Configuration properties for the Virtual Machine Scale Set.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addTag">addTag</a></code> | Add a tag to the Virtual Machine Scale Set Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.removeTag">removeTag</a></code> | Remove a tag from the Virtual Machine Scale Set Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Virtual Machine Scale Set Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Virtual Machine Scale Set Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.isConstruct"></a>
+
+```typescript
+import { VirtualMachineScaleSet } from '@microsoft/terraform-cdk-constructs'
+
+VirtualMachineScaleSet.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps">VirtualMachineScaleSetProps</a></code> | The input properties for this VMSS instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.provisioningState">provisioningState</a></code> | <code>string</code> | Get the provisioning state of the Virtual Machine Scale Set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.sku">sku</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku">VirtualMachineScaleSetSku</a></code> | Get the SKU configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.uniqueId">uniqueId</a></code> | <code>string</code> | Get the unique ID (unique identifier assigned by Azure). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.uniqueIdOutput">uniqueIdOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.capacity">capacity</a></code> | <code>number</code> | Get the capacity (number of VMs). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.orchestrationMode">orchestrationMode</a></code> | <code>string</code> | Get the orchestration mode. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.props"></a>
+
+```typescript
+public readonly props: VirtualMachineScaleSetProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps">VirtualMachineScaleSetProps</a>
+
+The input properties for this VMSS instance.
+
+---
+
+##### `provisioningState`<sup>Required</sup> <a name="provisioningState" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.provisioningState"></a>
+
+```typescript
+public readonly provisioningState: string;
+```
+
+- *Type:* string
+
+Get the provisioning state of the Virtual Machine Scale Set.
+
+---
+
+##### `sku`<sup>Required</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.sku"></a>
+
+```typescript
+public readonly sku: VirtualMachineScaleSetSku;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku">VirtualMachineScaleSetSku</a>
+
+Get the SKU configuration.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `uniqueId`<sup>Required</sup> <a name="uniqueId" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.uniqueId"></a>
+
+```typescript
+public readonly uniqueId: string;
+```
+
+- *Type:* string
+
+Get the unique ID (unique identifier assigned by Azure).
+
+---
+
+##### `uniqueIdOutput`<sup>Required</sup> <a name="uniqueIdOutput" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.uniqueIdOutput"></a>
+
+```typescript
+public readonly uniqueIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `capacity`<sup>Optional</sup> <a name="capacity" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.capacity"></a>
+
+```typescript
+public readonly capacity: number;
+```
+
+- *Type:* number
+
+Get the capacity (number of VMs).
+
+---
+
+##### `orchestrationMode`<sup>Optional</sup> <a name="orchestrationMode" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.property.orchestrationMode"></a>
+
+```typescript
+public readonly orchestrationMode: string;
+```
+
+- *Type:* string
+
+Get the orchestration mode.
+
+---
+
+
+### VirtualMachineScaleSet <a name="VirtualMachineScaleSet" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet"></a>
+
+Unified Azure Virtual Machine Scale Set implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+The class uses the AzapiResource framework to provide:
+- Automatic latest version resolution (2025-04-01 as of this implementation)
+- Support for explicit version pinning when stability is required
+- Schema-driven property validation and transformation
+- Migration analysis and deprecation warnings
+- Full JSII compliance for multi-language support
+
+*Example*
+
+```typescript
+// Flexible orchestration mode with rolling upgrades:
+const flexibleVmss = new VirtualMachineScaleSet(this, "flexible-vmss", {
+  name: "my-flexible-vmss",
+  location: "eastus",
+  resourceGroupId: resourceGroup.id,
+  sku: {
+    name: "Standard_D2s_v3",
+    capacity: 5
+  },
+  orchestrationMode: "Flexible",
+  upgradePolicy: {
+    mode: "Rolling",
+    rollingUpgradePolicy: {
+      maxBatchInstancePercent: 20,
+      maxUnhealthyInstancePercent: 20,
+      maxUnhealthyUpgradedInstancePercent: 20,
+      pauseTimeBetweenBatches: "PT5S"
+    }
+  },
+  automaticRepairsPolicy: {
+    enabled: true,
+    gracePeriod: "PT30M"
+  }
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+new azure_vmss.VirtualMachineScaleSet(scope: Construct, id: string, props: VirtualMachineScaleSetProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps">VirtualMachineScaleSetProps</a></code> | - Configuration properties for the Virtual Machine Scale Set. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps">VirtualMachineScaleSetProps</a>
+
+Configuration properties for the Virtual Machine Scale Set.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addTag">addTag</a></code> | Add a tag to the Virtual Machine Scale Set Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.removeTag">removeTag</a></code> | Remove a tag from the Virtual Machine Scale Set Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Virtual Machine Scale Set Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Virtual Machine Scale Set Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.isConstruct"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+azure_vmss.VirtualMachineScaleSet.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps">VirtualMachineScaleSetProps</a></code> | The input properties for this VMSS instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.provisioningState">provisioningState</a></code> | <code>string</code> | Get the provisioning state of the Virtual Machine Scale Set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.sku">sku</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku">VirtualMachineScaleSetSku</a></code> | Get the SKU configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.uniqueId">uniqueId</a></code> | <code>string</code> | Get the unique ID (unique identifier assigned by Azure). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.uniqueIdOutput">uniqueIdOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.capacity">capacity</a></code> | <code>number</code> | Get the capacity (number of VMs). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.orchestrationMode">orchestrationMode</a></code> | <code>string</code> | Get the orchestration mode. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.props"></a>
+
+```typescript
+public readonly props: VirtualMachineScaleSetProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps">VirtualMachineScaleSetProps</a>
+
+The input properties for this VMSS instance.
+
+---
+
+##### `provisioningState`<sup>Required</sup> <a name="provisioningState" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.provisioningState"></a>
+
+```typescript
+public readonly provisioningState: string;
+```
+
+- *Type:* string
+
+Get the provisioning state of the Virtual Machine Scale Set.
+
+---
+
+##### `sku`<sup>Required</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.sku"></a>
+
+```typescript
+public readonly sku: VirtualMachineScaleSetSku;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku">VirtualMachineScaleSetSku</a>
+
+Get the SKU configuration.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `uniqueId`<sup>Required</sup> <a name="uniqueId" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.uniqueId"></a>
+
+```typescript
+public readonly uniqueId: string;
+```
+
+- *Type:* string
+
+Get the unique ID (unique identifier assigned by Azure).
+
+---
+
+##### `uniqueIdOutput`<sup>Required</sup> <a name="uniqueIdOutput" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.uniqueIdOutput"></a>
+
+```typescript
+public readonly uniqueIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `capacity`<sup>Optional</sup> <a name="capacity" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.capacity"></a>
+
+```typescript
+public readonly capacity: number;
+```
+
+- *Type:* number
+
+Get the capacity (number of VMs).
+
+---
+
+##### `orchestrationMode`<sup>Optional</sup> <a name="orchestrationMode" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.property.orchestrationMode"></a>
+
+```typescript
+public readonly orchestrationMode: string;
+```
+
+- *Type:* string
+
+Get the orchestration mode.
+
+---
+
+
+### VirtualNetwork <a name="VirtualNetwork" id="@microsoft/terraform-cdk-constructs.VirtualNetwork"></a>
+
+Azure Virtual Network implementation.
+
+This class provides a single, version-aware implementation that replaces
+version-specific Virtual Network classes. It automatically handles version
+resolution, schema validation, and property transformation while maintaining
+full backward compatibility.
+
+*Example*
+
+```typescript
+// Usage with explicit version pinning:
+const vnet = new VirtualNetwork(this, "vnet", {
+  name: "my-vnet",
+  location: "eastus",
+  apiVersion: "2024-07-01",
+  addressSpace: {
+    addressPrefixes: ["10.0.0.0/16"]
+  }
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.Initializer"></a>
+
+```typescript
+import { VirtualNetwork } from '@microsoft/terraform-cdk-constructs'
+
+new VirtualNetwork(scope: Construct, id: string, props: VirtualNetworkProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps">VirtualNetworkProps</a></code> | - Configuration properties for the Virtual Network. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps">VirtualNetworkProps</a>
+
+Configuration properties for the Virtual Network.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.addTag">addTag</a></code> | Add a tag to the Virtual Network Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.removeTag">removeTag</a></code> | Remove a tag from the Virtual Network Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Virtual Network Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Virtual Network Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.isConstruct"></a>
+
+```typescript
+import { VirtualNetwork } from '@microsoft/terraform-cdk-constructs'
+
+VirtualNetwork.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.resourceId">resourceId</a></code> | <code>string</code> | Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.addressSpace">addressSpace</a></code> | <code>string</code> | Get the address space output value Returns the Terraform interpolation string for the address space. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.addressSpaceOutput">addressSpaceOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps">VirtualNetworkProps</a></code> | The input properties for this Virtual Network instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.subscriptionId">subscriptionId</a></code> | <code>string</code> | Get the subscription ID from the Virtual Network ID Extracts the subscription ID from the Azure resource ID format. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `addressSpace`<sup>Required</sup> <a name="addressSpace" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.addressSpace"></a>
+
+```typescript
+public readonly addressSpace: string;
+```
+
+- *Type:* string
+
+Get the address space output value Returns the Terraform interpolation string for the address space.
+
+---
+
+##### `addressSpaceOutput`<sup>Required</sup> <a name="addressSpaceOutput" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.addressSpaceOutput"></a>
+
+```typescript
+public readonly addressSpaceOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.props"></a>
+
+```typescript
+public readonly props: VirtualNetworkProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps">VirtualNetworkProps</a>
+
+The input properties for this Virtual Network instance.
+
+---
+
+##### `subscriptionId`<sup>Required</sup> <a name="subscriptionId" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.subscriptionId"></a>
+
+```typescript
+public readonly subscriptionId: string;
+```
+
+- *Type:* string
+
+Get the subscription ID from the Virtual Network ID Extracts the subscription ID from the Azure resource ID format.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+
+### VirtualNetwork <a name="VirtualNetwork" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork"></a>
+
+Azure Virtual Network implementation.
+
+This class provides a single, version-aware implementation that replaces
+version-specific Virtual Network classes. It automatically handles version
+resolution, schema validation, and property transformation while maintaining
+full backward compatibility.
+
+*Example*
+
+```typescript
+// Usage with explicit version pinning:
+const vnet = new VirtualNetwork(this, "vnet", {
+  name: "my-vnet",
+  location: "eastus",
+  apiVersion: "2024-07-01",
+  addressSpace: {
+    addressPrefixes: ["10.0.0.0/16"]
+  }
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.Initializer"></a>
+
+```typescript
+import { azure_virtualnetwork } from '@microsoft/terraform-cdk-constructs'
+
+new azure_virtualnetwork.VirtualNetwork(scope: Construct, id: string, props: VirtualNetworkProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.Initializer.parameter.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps">VirtualNetworkProps</a></code> | - Configuration properties for the Virtual Network. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.Initializer.parameter.props"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps">VirtualNetworkProps</a>
+
+Configuration properties for the Virtual Network.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addTag">addTag</a></code> | Add a tag to the Virtual Network Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.removeTag">removeTag</a></code> | Remove a tag from the Virtual Network Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addDiagnosticSettings"></a>
+
+```typescript
+public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
+```
+
+Adds diagnostic settings to this resource using AZAPI.
+
+###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addDiagnosticSettings.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
+
+The diagnostic settings configuration.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Virtual Network Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Virtual Network Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.isConstruct"></a>
+
+```typescript
+import { azure_virtualnetwork } from '@microsoft/terraform-cdk-constructs'
+
+azure_virtualnetwork.VirtualNetwork.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.resourceId">resourceId</a></code> | <code>string</code> | Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.addressSpace">addressSpace</a></code> | <code>string</code> | Get the address space output value Returns the Terraform interpolation string for the address space. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.addressSpaceOutput">addressSpaceOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.props">props</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps">VirtualNetworkProps</a></code> | The input properties for this Virtual Network instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.subscriptionId">subscriptionId</a></code> | <code>string</code> | Get the subscription ID from the Virtual Network ID Extracts the subscription ID from the Azure resource ID format. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.tagsOutput">tagsOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Get the full resource identifier for use in other Azure resources Alias for the id property to match original interface.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `addressSpace`<sup>Required</sup> <a name="addressSpace" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.addressSpace"></a>
+
+```typescript
+public readonly addressSpace: string;
+```
+
+- *Type:* string
+
+Get the address space output value Returns the Terraform interpolation string for the address space.
+
+---
+
+##### `addressSpaceOutput`<sup>Required</sup> <a name="addressSpaceOutput" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.addressSpaceOutput"></a>
+
+```typescript
+public readonly addressSpaceOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.props"></a>
+
+```typescript
+public readonly props: VirtualNetworkProps;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps">VirtualNetworkProps</a>
+
+The input properties for this Virtual Network instance.
+
+---
+
+##### `subscriptionId`<sup>Required</sup> <a name="subscriptionId" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.subscriptionId"></a>
+
+```typescript
+public readonly subscriptionId: string;
+```
+
+- *Type:* string
+
+Get the subscription ID from the Virtual Network ID Extracts the subscription ID from the Azure resource ID format.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+
 ## Structs <a name="Structs" id="Structs"></a>
+
+### AdditionalCapabilities <a name="AdditionalCapabilities" id="@microsoft/terraform-cdk-constructs.AdditionalCapabilities"></a>
+
+Additional capabilities.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AdditionalCapabilities.Initializer"></a>
+
+```typescript
+import { AdditionalCapabilities } from '@microsoft/terraform-cdk-constructs'
+
+const additionalCapabilities: AdditionalCapabilities = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AdditionalCapabilities.property.ultraSSDEnabled">ultraSSDEnabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `ultraSSDEnabled`<sup>Optional</sup> <a name="ultraSSDEnabled" id="@microsoft/terraform-cdk-constructs.AdditionalCapabilities.property.ultraSSDEnabled"></a>
+
+```typescript
+public readonly ultraSSDEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AdditionalCapabilities <a name="AdditionalCapabilities" id="@microsoft/terraform-cdk-constructs.azure_vmss.AdditionalCapabilities"></a>
+
+Additional capabilities.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.AdditionalCapabilities.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const additionalCapabilities: azure_vmss.AdditionalCapabilities = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.AdditionalCapabilities.property.ultraSSDEnabled">ultraSSDEnabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `ultraSSDEnabled`<sup>Optional</sup> <a name="ultraSSDEnabled" id="@microsoft/terraform-cdk-constructs.azure_vmss.AdditionalCapabilities.property.ultraSSDEnabled"></a>
+
+```typescript
+public readonly ultraSSDEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
 
 ### AksClusterAadProfile <a name="AksClusterAadProfile" id="@microsoft/terraform-cdk-constructs.AksClusterAadProfile"></a>
 
@@ -22621,6 +30395,214 @@ Property-specific validation rules Applied in addition to individual property va
 
 ---
 
+### AutomaticOSUpgradePolicy <a name="AutomaticOSUpgradePolicy" id="@microsoft/terraform-cdk-constructs.AutomaticOSUpgradePolicy"></a>
+
+Automatic OS upgrade policy.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AutomaticOSUpgradePolicy.Initializer"></a>
+
+```typescript
+import { AutomaticOSUpgradePolicy } from '@microsoft/terraform-cdk-constructs'
+
+const automaticOSUpgradePolicy: AutomaticOSUpgradePolicy = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AutomaticOSUpgradePolicy.property.disableAutomaticRollback">disableAutomaticRollback</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AutomaticOSUpgradePolicy.property.enableAutomaticOSUpgrade">enableAutomaticOSUpgrade</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AutomaticOSUpgradePolicy.property.useRollingUpgradePolicy">useRollingUpgradePolicy</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `disableAutomaticRollback`<sup>Optional</sup> <a name="disableAutomaticRollback" id="@microsoft/terraform-cdk-constructs.AutomaticOSUpgradePolicy.property.disableAutomaticRollback"></a>
+
+```typescript
+public readonly disableAutomaticRollback: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableAutomaticOSUpgrade`<sup>Optional</sup> <a name="enableAutomaticOSUpgrade" id="@microsoft/terraform-cdk-constructs.AutomaticOSUpgradePolicy.property.enableAutomaticOSUpgrade"></a>
+
+```typescript
+public readonly enableAutomaticOSUpgrade: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `useRollingUpgradePolicy`<sup>Optional</sup> <a name="useRollingUpgradePolicy" id="@microsoft/terraform-cdk-constructs.AutomaticOSUpgradePolicy.property.useRollingUpgradePolicy"></a>
+
+```typescript
+public readonly useRollingUpgradePolicy: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AutomaticOSUpgradePolicy <a name="AutomaticOSUpgradePolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticOSUpgradePolicy"></a>
+
+Automatic OS upgrade policy.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticOSUpgradePolicy.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const automaticOSUpgradePolicy: azure_vmss.AutomaticOSUpgradePolicy = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticOSUpgradePolicy.property.disableAutomaticRollback">disableAutomaticRollback</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticOSUpgradePolicy.property.enableAutomaticOSUpgrade">enableAutomaticOSUpgrade</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticOSUpgradePolicy.property.useRollingUpgradePolicy">useRollingUpgradePolicy</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `disableAutomaticRollback`<sup>Optional</sup> <a name="disableAutomaticRollback" id="@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticOSUpgradePolicy.property.disableAutomaticRollback"></a>
+
+```typescript
+public readonly disableAutomaticRollback: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableAutomaticOSUpgrade`<sup>Optional</sup> <a name="enableAutomaticOSUpgrade" id="@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticOSUpgradePolicy.property.enableAutomaticOSUpgrade"></a>
+
+```typescript
+public readonly enableAutomaticOSUpgrade: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `useRollingUpgradePolicy`<sup>Optional</sup> <a name="useRollingUpgradePolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticOSUpgradePolicy.property.useRollingUpgradePolicy"></a>
+
+```typescript
+public readonly useRollingUpgradePolicy: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### AutomaticRepairsPolicy <a name="AutomaticRepairsPolicy" id="@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy"></a>
+
+Automatic repairs policy.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy.Initializer"></a>
+
+```typescript
+import { AutomaticRepairsPolicy } from '@microsoft/terraform-cdk-constructs'
+
+const automaticRepairsPolicy: AutomaticRepairsPolicy = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy.property.gracePeriod">gracePeriod</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy.property.repairAction">repairAction</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `gracePeriod`<sup>Optional</sup> <a name="gracePeriod" id="@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy.property.gracePeriod"></a>
+
+```typescript
+public readonly gracePeriod: string;
+```
+
+- *Type:* string
+
+---
+
+##### `repairAction`<sup>Optional</sup> <a name="repairAction" id="@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy.property.repairAction"></a>
+
+```typescript
+public readonly repairAction: string;
+```
+
+- *Type:* string
+
+---
+
+### AutomaticRepairsPolicy <a name="AutomaticRepairsPolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticRepairsPolicy"></a>
+
+Automatic repairs policy.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticRepairsPolicy.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const automaticRepairsPolicy: azure_vmss.AutomaticRepairsPolicy = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticRepairsPolicy.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticRepairsPolicy.property.gracePeriod">gracePeriod</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticRepairsPolicy.property.repairAction">repairAction</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticRepairsPolicy.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `gracePeriod`<sup>Optional</sup> <a name="gracePeriod" id="@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticRepairsPolicy.property.gracePeriod"></a>
+
+```typescript
+public readonly gracePeriod: string;
+```
+
+- *Type:* string
+
+---
+
+##### `repairAction`<sup>Optional</sup> <a name="repairAction" id="@microsoft/terraform-cdk-constructs.azure_vmss.AutomaticRepairsPolicy.property.repairAction"></a>
+
+```typescript
+public readonly repairAction: string;
+```
+
+- *Type:* string
+
+---
+
 ### AzapiDiagnosticSettingsProps <a name="AzapiDiagnosticSettingsProps" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps"></a>
 
 Properties for AZAPI diagnostic settings.
@@ -23871,15 +31853,15 @@ The ID of the azure resource in which this resource is created.
 
 It supports different kinds of deployment scope for **top level** resources:
 
-- resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
-- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
-- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
-- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
-- tenant scope: `parent_id` should be /
+  - resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
+	- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
+	- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
+	- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
+	- tenant scope: `parent_id` should be /
 
-For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
+  For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
 
-For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
+  For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
 
 Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#parent_id DataAzapiResource#parent_id}
 
@@ -23927,27 +31909,27 @@ The attribute can accept either a list or a map.
 
 **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
 
-```text
-{
-properties = {
-loginServer = "registry1.azurecr.io"
-policies = {
-quarantinePolicy = {
-	status = "disabled"
-}
-}
-}
-}
-```
+	```text
+	{
+		properties = {
+			loginServer = "registry1.azurecr.io"
+			policies = {
+				quarantinePolicy = {
+					status = "disabled"
+				}
+			}
+		}
+	}
+	```
 
 - **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
 
-```text
-{
-"login_server" = "registry1.azurecr.io"
-"quarantine_status" = "disabled"
-}
-```
+	```text
+	{
+		"login_server" = "registry1.azurecr.io"
+		"quarantine_status" = "disabled"
+	}
+	```
 
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
@@ -24162,15 +32144,15 @@ The ID of the azure resource in which this resource is created.
 
 It supports different kinds of deployment scope for **top level** resources:
 
-- resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
-- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
-- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
-- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
-- tenant scope: `parent_id` should be /
+  - resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
+	- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
+	- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
+	- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
+	- tenant scope: `parent_id` should be /
 
-For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
+  For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
 
-For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
+  For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
 
 Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#parent_id DataAzapiResource#parent_id}
 
@@ -24218,27 +32200,27 @@ The attribute can accept either a list or a map.
 
 **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
 
-```text
-{
-properties = {
-loginServer = "registry1.azurecr.io"
-policies = {
-quarantinePolicy = {
-	status = "disabled"
-}
-}
-}
-}
-```
+	```text
+	{
+		properties = {
+			loginServer = "registry1.azurecr.io"
+			policies = {
+				quarantinePolicy = {
+					status = "disabled"
+				}
+			}
+		}
+	}
+	```
 
 - **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
 
-```text
-{
-"login_server" = "registry1.azurecr.io"
-"quarantine_status" = "disabled"
-}
-```
+	```text
+	{
+		"login_server" = "registry1.azurecr.io"
+		"quarantine_status" = "disabled"
+	}
+	```
 
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
@@ -24783,6 +32765,186 @@ public readonly retentionPolicy: RetentionPolicyConfig;
 
 ---
 
+### ExtensionProfile <a name="ExtensionProfile" id="@microsoft/terraform-cdk-constructs.ExtensionProfile"></a>
+
+Extension profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ExtensionProfile.Initializer"></a>
+
+```typescript
+import { ExtensionProfile } from '@microsoft/terraform-cdk-constructs'
+
+const extensionProfile: ExtensionProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ExtensionProfile.property.extensions">extensions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.VMExtension[]</code> | *No description.* |
+
+---
+
+##### `extensions`<sup>Optional</sup> <a name="extensions" id="@microsoft/terraform-cdk-constructs.ExtensionProfile.property.extensions"></a>
+
+```typescript
+public readonly extensions: VMExtension[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.VMExtension[]
+
+---
+
+### ExtensionProfile <a name="ExtensionProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.ExtensionProfile"></a>
+
+Extension profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.ExtensionProfile.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const extensionProfile: azure_vmss.ExtensionProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.ExtensionProfile.property.extensions">extensions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.VMExtension[]</code> | *No description.* |
+
+---
+
+##### `extensions`<sup>Optional</sup> <a name="extensions" id="@microsoft/terraform-cdk-constructs.azure_vmss.ExtensionProfile.property.extensions"></a>
+
+```typescript
+public readonly extensions: VMExtension[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.VMExtension[]
+
+---
+
+### HealthProbeReference <a name="HealthProbeReference" id="@microsoft/terraform-cdk-constructs.HealthProbeReference"></a>
+
+Health probe reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.HealthProbeReference.Initializer"></a>
+
+```typescript
+import { HealthProbeReference } from '@microsoft/terraform-cdk-constructs'
+
+const healthProbeReference: HealthProbeReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.HealthProbeReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.HealthProbeReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### HealthProbeReference <a name="HealthProbeReference" id="@microsoft/terraform-cdk-constructs.azure_vmss.HealthProbeReference"></a>
+
+Health probe reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.HealthProbeReference.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const healthProbeReference: azure_vmss.HealthProbeReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.HealthProbeReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_vmss.HealthProbeReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### HostGroupReference <a name="HostGroupReference" id="@microsoft/terraform-cdk-constructs.HostGroupReference"></a>
+
+Host group reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.HostGroupReference.Initializer"></a>
+
+```typescript
+import { HostGroupReference } from '@microsoft/terraform-cdk-constructs'
+
+const hostGroupReference: HostGroupReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.HostGroupReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.HostGroupReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### HostGroupReference <a name="HostGroupReference" id="@microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference"></a>
+
+Host group reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const hostGroupReference: azure_vmss.HostGroupReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
 ### MigrationAnalysis <a name="MigrationAnalysis" id="@microsoft/terraform-cdk-constructs.MigrationAnalysis"></a>
 
 Migration analysis result.
@@ -25036,6 +33198,2022 @@ public readonly warnings: string[];
 - *Type:* string[]
 
 Array of non-breaking warnings about the migration May include deprecation notices or recommendations.
+
+---
+
+### NetworkInterfaceBody <a name="NetworkInterfaceBody" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceBody"></a>
+
+The resource body interface for Azure Network Interface API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceBody.Initializer"></a>
+
+```typescript
+import { NetworkInterfaceBody } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceBody: NetworkInterfaceBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceBody.property.properties">properties</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties">NetworkInterfaceBodyProperties</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceBody.property.properties"></a>
+
+```typescript
+public readonly properties: NetworkInterfaceBodyProperties;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties">NetworkInterfaceBodyProperties</a>
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### NetworkInterfaceBody <a name="NetworkInterfaceBody" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBody"></a>
+
+The resource body interface for Azure Network Interface API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBody.Initializer"></a>
+
+```typescript
+import { azure_networkinterface } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceBody: azure_networkinterface.NetworkInterfaceBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBody.property.properties">properties</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties">NetworkInterfaceBodyProperties</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBody.property.properties"></a>
+
+```typescript
+public readonly properties: NetworkInterfaceBodyProperties;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties">NetworkInterfaceBodyProperties</a>
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### NetworkInterfaceBodyProperties <a name="NetworkInterfaceBodyProperties" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties"></a>
+
+Network Interface properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties.Initializer"></a>
+
+```typescript
+import { NetworkInterfaceBodyProperties } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceBodyProperties: NetworkInterfaceBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties.property.ipConfigurations">ipConfigurations</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration">NetworkInterfaceIPConfiguration</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties.property.dnsSettings">dnsSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings">NetworkInterfaceDnsSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties.property.enableAcceleratedNetworking">enableAcceleratedNetworking</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties.property.enableIPForwarding">enableIPForwarding</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties.property.networkSecurityGroup">networkSecurityGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceNSGReference</code> | *No description.* |
+
+---
+
+##### `ipConfigurations`<sup>Required</sup> <a name="ipConfigurations" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties.property.ipConfigurations"></a>
+
+```typescript
+public readonly ipConfigurations: NetworkInterfaceIPConfiguration[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration">NetworkInterfaceIPConfiguration</a>[]
+
+---
+
+##### `dnsSettings`<sup>Optional</sup> <a name="dnsSettings" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties.property.dnsSettings"></a>
+
+```typescript
+public readonly dnsSettings: NetworkInterfaceDnsSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings">NetworkInterfaceDnsSettings</a>
+
+---
+
+##### `enableAcceleratedNetworking`<sup>Optional</sup> <a name="enableAcceleratedNetworking" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties.property.enableAcceleratedNetworking"></a>
+
+```typescript
+public readonly enableAcceleratedNetworking: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableIPForwarding`<sup>Optional</sup> <a name="enableIPForwarding" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties.property.enableIPForwarding"></a>
+
+```typescript
+public readonly enableIPForwarding: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `networkSecurityGroup`<sup>Optional</sup> <a name="networkSecurityGroup" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceBodyProperties.property.networkSecurityGroup"></a>
+
+```typescript
+public readonly networkSecurityGroup: NetworkInterfaceNSGReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceNSGReference
+
+---
+
+### NetworkInterfaceBodyProperties <a name="NetworkInterfaceBodyProperties" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBodyProperties"></a>
+
+Network Interface properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBodyProperties.Initializer"></a>
+
+```typescript
+import { azure_networkinterface } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceBodyProperties: azure_networkinterface.NetworkInterfaceBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBodyProperties.property.ipConfigurations">ipConfigurations</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration">NetworkInterfaceIPConfiguration</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBodyProperties.property.dnsSettings">dnsSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings">NetworkInterfaceDnsSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBodyProperties.property.enableAcceleratedNetworking">enableAcceleratedNetworking</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBodyProperties.property.enableIPForwarding">enableIPForwarding</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBodyProperties.property.networkSecurityGroup">networkSecurityGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceNSGReference</code> | *No description.* |
+
+---
+
+##### `ipConfigurations`<sup>Required</sup> <a name="ipConfigurations" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBodyProperties.property.ipConfigurations"></a>
+
+```typescript
+public readonly ipConfigurations: NetworkInterfaceIPConfiguration[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration">NetworkInterfaceIPConfiguration</a>[]
+
+---
+
+##### `dnsSettings`<sup>Optional</sup> <a name="dnsSettings" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBodyProperties.property.dnsSettings"></a>
+
+```typescript
+public readonly dnsSettings: NetworkInterfaceDnsSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings">NetworkInterfaceDnsSettings</a>
+
+---
+
+##### `enableAcceleratedNetworking`<sup>Optional</sup> <a name="enableAcceleratedNetworking" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBodyProperties.property.enableAcceleratedNetworking"></a>
+
+```typescript
+public readonly enableAcceleratedNetworking: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableIPForwarding`<sup>Optional</sup> <a name="enableIPForwarding" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBodyProperties.property.enableIPForwarding"></a>
+
+```typescript
+public readonly enableIPForwarding: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `networkSecurityGroup`<sup>Optional</sup> <a name="networkSecurityGroup" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceBodyProperties.property.networkSecurityGroup"></a>
+
+```typescript
+public readonly networkSecurityGroup: NetworkInterfaceNSGReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceNSGReference
+
+---
+
+### NetworkInterfaceConfiguration <a name="NetworkInterfaceConfiguration" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceConfiguration"></a>
+
+Network interface configuration for VMSS.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceConfiguration.Initializer"></a>
+
+```typescript
+import { NetworkInterfaceConfiguration } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceConfiguration: NetworkInterfaceConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceConfiguration.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceConfiguration.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceConfiguration.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceConfiguration.property.properties"></a>
+
+```typescript
+public readonly properties: NetworkInterfaceConfigurationProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties
+
+---
+
+### NetworkInterfaceConfiguration <a name="NetworkInterfaceConfiguration" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfiguration"></a>
+
+Network interface configuration for VMSS.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfiguration.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceConfiguration: azure_vmss.NetworkInterfaceConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfiguration.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfiguration.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfiguration.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfiguration.property.properties"></a>
+
+```typescript
+public readonly properties: NetworkInterfaceConfigurationProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties
+
+---
+
+### NetworkInterfaceConfigurationProperties <a name="NetworkInterfaceConfigurationProperties" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties"></a>
+
+Network interface configuration properties Uses NetworkInterfaceDnsSettings from azure-networkinterface for consistency.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties.Initializer"></a>
+
+```typescript
+import { NetworkInterfaceConfigurationProperties } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceConfigurationProperties: NetworkInterfaceConfigurationProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties.property.ipConfigurations">ipConfigurations</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.IPConfiguration">IPConfiguration</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties.property.dnsSettings">dnsSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings">NetworkInterfaceDnsSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties.property.enableAcceleratedNetworking">enableAcceleratedNetworking</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties.property.enableIPForwarding">enableIPForwarding</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties.property.networkSecurityGroup">networkSecurityGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.NetworkSecurityGroupReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties.property.primary">primary</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `ipConfigurations`<sup>Required</sup> <a name="ipConfigurations" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties.property.ipConfigurations"></a>
+
+```typescript
+public readonly ipConfigurations: IPConfiguration[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.IPConfiguration">IPConfiguration</a>[]
+
+---
+
+##### `dnsSettings`<sup>Optional</sup> <a name="dnsSettings" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties.property.dnsSettings"></a>
+
+```typescript
+public readonly dnsSettings: NetworkInterfaceDnsSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings">NetworkInterfaceDnsSettings</a>
+
+---
+
+##### `enableAcceleratedNetworking`<sup>Optional</sup> <a name="enableAcceleratedNetworking" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties.property.enableAcceleratedNetworking"></a>
+
+```typescript
+public readonly enableAcceleratedNetworking: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableIPForwarding`<sup>Optional</sup> <a name="enableIPForwarding" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties.property.enableIPForwarding"></a>
+
+```typescript
+public readonly enableIPForwarding: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `networkSecurityGroup`<sup>Optional</sup> <a name="networkSecurityGroup" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties.property.networkSecurityGroup"></a>
+
+```typescript
+public readonly networkSecurityGroup: NetworkSecurityGroupReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.NetworkSecurityGroupReference
+
+---
+
+##### `primary`<sup>Optional</sup> <a name="primary" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceConfigurationProperties.property.primary"></a>
+
+```typescript
+public readonly primary: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### NetworkInterfaceConfigurationProperties <a name="NetworkInterfaceConfigurationProperties" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties"></a>
+
+Network interface configuration properties Uses NetworkInterfaceDnsSettings from azure-networkinterface for consistency.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceConfigurationProperties: azure_vmss.NetworkInterfaceConfigurationProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties.property.ipConfigurations">ipConfigurations</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.IPConfiguration">IPConfiguration</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties.property.dnsSettings">dnsSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings">NetworkInterfaceDnsSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties.property.enableAcceleratedNetworking">enableAcceleratedNetworking</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties.property.enableIPForwarding">enableIPForwarding</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties.property.networkSecurityGroup">networkSecurityGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.NetworkSecurityGroupReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties.property.primary">primary</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `ipConfigurations`<sup>Required</sup> <a name="ipConfigurations" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties.property.ipConfigurations"></a>
+
+```typescript
+public readonly ipConfigurations: IPConfiguration[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.IPConfiguration">IPConfiguration</a>[]
+
+---
+
+##### `dnsSettings`<sup>Optional</sup> <a name="dnsSettings" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties.property.dnsSettings"></a>
+
+```typescript
+public readonly dnsSettings: NetworkInterfaceDnsSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings">NetworkInterfaceDnsSettings</a>
+
+---
+
+##### `enableAcceleratedNetworking`<sup>Optional</sup> <a name="enableAcceleratedNetworking" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties.property.enableAcceleratedNetworking"></a>
+
+```typescript
+public readonly enableAcceleratedNetworking: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableIPForwarding`<sup>Optional</sup> <a name="enableIPForwarding" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties.property.enableIPForwarding"></a>
+
+```typescript
+public readonly enableIPForwarding: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `networkSecurityGroup`<sup>Optional</sup> <a name="networkSecurityGroup" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties.property.networkSecurityGroup"></a>
+
+```typescript
+public readonly networkSecurityGroup: NetworkSecurityGroupReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.NetworkSecurityGroupReference
+
+---
+
+##### `primary`<sup>Optional</sup> <a name="primary" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkInterfaceConfigurationProperties.property.primary"></a>
+
+```typescript
+public readonly primary: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### NetworkInterfaceDnsSettings <a name="NetworkInterfaceDnsSettings" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings"></a>
+
+DNS settings configuration for Network Interface.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings.Initializer"></a>
+
+```typescript
+import { NetworkInterfaceDnsSettings } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceDnsSettings: NetworkInterfaceDnsSettings = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings.property.dnsServers">dnsServers</a></code> | <code>string[]</code> | Array of DNS server IP addresses. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings.property.internalDnsNameLabel">internalDnsNameLabel</a></code> | <code>string</code> | Internal DNS name label for the NIC. |
+
+---
+
+##### `dnsServers`<sup>Optional</sup> <a name="dnsServers" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings.property.dnsServers"></a>
+
+```typescript
+public readonly dnsServers: string[];
+```
+
+- *Type:* string[]
+
+Array of DNS server IP addresses.
+
+---
+
+*Example*
+
+```typescript
+["10.0.0.4", "10.0.0.5"]
+```
+
+
+##### `internalDnsNameLabel`<sup>Optional</sup> <a name="internalDnsNameLabel" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings.property.internalDnsNameLabel"></a>
+
+```typescript
+public readonly internalDnsNameLabel: string;
+```
+
+- *Type:* string
+
+Internal DNS name label for the NIC.
+
+---
+
+*Example*
+
+```typescript
+"myvm"
+```
+
+
+### NetworkInterfaceDnsSettings <a name="NetworkInterfaceDnsSettings" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceDnsSettings"></a>
+
+DNS settings configuration for Network Interface.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceDnsSettings.Initializer"></a>
+
+```typescript
+import { azure_networkinterface } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceDnsSettings: azure_networkinterface.NetworkInterfaceDnsSettings = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceDnsSettings.property.dnsServers">dnsServers</a></code> | <code>string[]</code> | Array of DNS server IP addresses. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceDnsSettings.property.internalDnsNameLabel">internalDnsNameLabel</a></code> | <code>string</code> | Internal DNS name label for the NIC. |
+
+---
+
+##### `dnsServers`<sup>Optional</sup> <a name="dnsServers" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceDnsSettings.property.dnsServers"></a>
+
+```typescript
+public readonly dnsServers: string[];
+```
+
+- *Type:* string[]
+
+Array of DNS server IP addresses.
+
+---
+
+*Example*
+
+```typescript
+["10.0.0.4", "10.0.0.5"]
+```
+
+
+##### `internalDnsNameLabel`<sup>Optional</sup> <a name="internalDnsNameLabel" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceDnsSettings.property.internalDnsNameLabel"></a>
+
+```typescript
+public readonly internalDnsNameLabel: string;
+```
+
+- *Type:* string
+
+Internal DNS name label for the NIC.
+
+---
+
+*Example*
+
+```typescript
+"myvm"
+```
+
+
+### NetworkInterfaceIPConfiguration <a name="NetworkInterfaceIPConfiguration" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration"></a>
+
+IP Configuration for Network Interface.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration.Initializer"></a>
+
+```typescript
+import { NetworkInterfaceIPConfiguration } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceIPConfiguration: NetworkInterfaceIPConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration.property.name">name</a></code> | <code>string</code> | Name of the IP configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration.property.subnet">subnet</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceSubnetReference</code> | Subnet reference with id property. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration.property.primary">primary</a></code> | <code>boolean</code> | Whether this is the primary IP configuration At least one IP configuration must be primary. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration.property.privateIPAddress">privateIPAddress</a></code> | <code>string</code> | Private IP address (required if privateIPAllocationMethod is Static). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration.property.privateIPAllocationMethod">privateIPAllocationMethod</a></code> | <code>string</code> | Private IP allocation method. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration.property.publicIPAddress">publicIPAddress</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfacePublicIPReference</code> | Public IP address reference with id property Optional - for NICs that need public IPs. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+Name of the IP configuration.
+
+---
+
+*Example*
+
+```typescript
+"ipconfig1"
+```
+
+
+##### `subnet`<sup>Required</sup> <a name="subnet" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration.property.subnet"></a>
+
+```typescript
+public readonly subnet: NetworkInterfaceSubnetReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceSubnetReference
+
+Subnet reference with id property.
+
+---
+
+*Example*
+
+```typescript
+{ id: "/subscriptions/.../subnets/mySubnet" }
+```
+
+
+##### `primary`<sup>Optional</sup> <a name="primary" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration.property.primary"></a>
+
+```typescript
+public readonly primary: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether this is the primary IP configuration At least one IP configuration must be primary.
+
+---
+
+##### `privateIPAddress`<sup>Optional</sup> <a name="privateIPAddress" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration.property.privateIPAddress"></a>
+
+```typescript
+public readonly privateIPAddress: string;
+```
+
+- *Type:* string
+
+Private IP address (required if privateIPAllocationMethod is Static).
+
+---
+
+*Example*
+
+```typescript
+"10.0.1.4"
+```
+
+
+##### `privateIPAllocationMethod`<sup>Optional</sup> <a name="privateIPAllocationMethod" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration.property.privateIPAllocationMethod"></a>
+
+```typescript
+public readonly privateIPAllocationMethod: string;
+```
+
+- *Type:* string
+- *Default:* "Dynamic"
+
+Private IP allocation method.
+
+---
+
+*Example*
+
+```typescript
+"Dynamic" or "Static"
+```
+
+
+##### `publicIPAddress`<sup>Optional</sup> <a name="publicIPAddress" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration.property.publicIPAddress"></a>
+
+```typescript
+public readonly publicIPAddress: NetworkInterfacePublicIPReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfacePublicIPReference
+
+Public IP address reference with id property Optional - for NICs that need public IPs.
+
+---
+
+*Example*
+
+```typescript
+{ id: "/subscriptions/.../publicIPAddresses/myPublicIP" }
+```
+
+
+### NetworkInterfaceIPConfiguration <a name="NetworkInterfaceIPConfiguration" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration"></a>
+
+IP Configuration for Network Interface.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration.Initializer"></a>
+
+```typescript
+import { azure_networkinterface } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceIPConfiguration: azure_networkinterface.NetworkInterfaceIPConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration.property.name">name</a></code> | <code>string</code> | Name of the IP configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration.property.subnet">subnet</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceSubnetReference</code> | Subnet reference with id property. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration.property.primary">primary</a></code> | <code>boolean</code> | Whether this is the primary IP configuration At least one IP configuration must be primary. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration.property.privateIPAddress">privateIPAddress</a></code> | <code>string</code> | Private IP address (required if privateIPAllocationMethod is Static). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration.property.privateIPAllocationMethod">privateIPAllocationMethod</a></code> | <code>string</code> | Private IP allocation method. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration.property.publicIPAddress">publicIPAddress</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfacePublicIPReference</code> | Public IP address reference with id property Optional - for NICs that need public IPs. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+Name of the IP configuration.
+
+---
+
+*Example*
+
+```typescript
+"ipconfig1"
+```
+
+
+##### `subnet`<sup>Required</sup> <a name="subnet" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration.property.subnet"></a>
+
+```typescript
+public readonly subnet: NetworkInterfaceSubnetReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceSubnetReference
+
+Subnet reference with id property.
+
+---
+
+*Example*
+
+```typescript
+{ id: "/subscriptions/.../subnets/mySubnet" }
+```
+
+
+##### `primary`<sup>Optional</sup> <a name="primary" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration.property.primary"></a>
+
+```typescript
+public readonly primary: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether this is the primary IP configuration At least one IP configuration must be primary.
+
+---
+
+##### `privateIPAddress`<sup>Optional</sup> <a name="privateIPAddress" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration.property.privateIPAddress"></a>
+
+```typescript
+public readonly privateIPAddress: string;
+```
+
+- *Type:* string
+
+Private IP address (required if privateIPAllocationMethod is Static).
+
+---
+
+*Example*
+
+```typescript
+"10.0.1.4"
+```
+
+
+##### `privateIPAllocationMethod`<sup>Optional</sup> <a name="privateIPAllocationMethod" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration.property.privateIPAllocationMethod"></a>
+
+```typescript
+public readonly privateIPAllocationMethod: string;
+```
+
+- *Type:* string
+- *Default:* "Dynamic"
+
+Private IP allocation method.
+
+---
+
+*Example*
+
+```typescript
+"Dynamic" or "Static"
+```
+
+
+##### `publicIPAddress`<sup>Optional</sup> <a name="publicIPAddress" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceIPConfiguration.property.publicIPAddress"></a>
+
+```typescript
+public readonly publicIPAddress: NetworkInterfacePublicIPReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfacePublicIPReference
+
+Public IP address reference with id property Optional - for NICs that need public IPs.
+
+---
+
+*Example*
+
+```typescript
+{ id: "/subscriptions/.../publicIPAddresses/myPublicIP" }
+```
+
+
+### NetworkInterfaceNSGReference <a name="NetworkInterfaceNSGReference" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceNSGReference"></a>
+
+Network Security Group reference for Network Interface.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceNSGReference.Initializer"></a>
+
+```typescript
+import { NetworkInterfaceNSGReference } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceNSGReference: NetworkInterfaceNSGReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceNSGReference.property.id">id</a></code> | <code>string</code> | Network Security Group resource ID. |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceNSGReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Network Security Group resource ID.
+
+---
+
+### NetworkInterfaceNSGReference <a name="NetworkInterfaceNSGReference" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceNSGReference"></a>
+
+Network Security Group reference for Network Interface.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceNSGReference.Initializer"></a>
+
+```typescript
+import { azure_networkinterface } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceNSGReference: azure_networkinterface.NetworkInterfaceNSGReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceNSGReference.property.id">id</a></code> | <code>string</code> | Network Security Group resource ID. |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceNSGReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Network Security Group resource ID.
+
+---
+
+### NetworkInterfaceProps <a name="NetworkInterfaceProps" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps"></a>
+
+Properties for the unified Azure Network Interface.
+
+Extends VersionedAzapiResourceProps with Network Interface specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.Initializer"></a>
+
+```typescript
+import { NetworkInterfaceProps } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceProps: NetworkInterfaceProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.ipConfigurations">ipConfigurations</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration">NetworkInterfaceIPConfiguration</a>[]</code> | IP configurations for the network interface At least one IP configuration is required One IP configuration must be marked as primary. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.dnsSettings">dnsSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings">NetworkInterfaceDnsSettings</a></code> | DNS settings configuration Optional - configures DNS servers for the NIC. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.enableAcceleratedNetworking">enableAcceleratedNetworking</a></code> | <code>boolean</code> | Enable accelerated networking for high-performance scenarios Requires supported VM size. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.enableIPForwarding">enableIPForwarding</a></code> | <code>boolean</code> | Enable IP forwarding for network virtual appliances Allows NIC to forward traffic not destined for its IP. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.networkSecurityGroup">networkSecurityGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceNSGReference</code> | Network Security Group reference with id property Optional - associates an NSG with this NIC. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the network interface will be created. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `ipConfigurations`<sup>Required</sup> <a name="ipConfigurations" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.ipConfigurations"></a>
+
+```typescript
+public readonly ipConfigurations: NetworkInterfaceIPConfiguration[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration">NetworkInterfaceIPConfiguration</a>[]
+
+IP configurations for the network interface At least one IP configuration is required One IP configuration must be marked as primary.
+
+---
+
+##### `dnsSettings`<sup>Optional</sup> <a name="dnsSettings" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.dnsSettings"></a>
+
+```typescript
+public readonly dnsSettings: NetworkInterfaceDnsSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings">NetworkInterfaceDnsSettings</a>
+
+DNS settings configuration Optional - configures DNS servers for the NIC.
+
+---
+
+##### `enableAcceleratedNetworking`<sup>Optional</sup> <a name="enableAcceleratedNetworking" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.enableAcceleratedNetworking"></a>
+
+```typescript
+public readonly enableAcceleratedNetworking: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable accelerated networking for high-performance scenarios Requires supported VM size.
+
+---
+
+##### `enableIPForwarding`<sup>Optional</sup> <a name="enableIPForwarding" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.enableIPForwarding"></a>
+
+```typescript
+public readonly enableIPForwarding: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable IP forwarding for network virtual appliances Allows NIC to forward traffic not destined for its IP.
+
+---
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes.
+
+---
+
+*Example*
+
+```typescript
+["tags"]
+```
+
+
+##### `networkSecurityGroup`<sup>Optional</sup> <a name="networkSecurityGroup" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.networkSecurityGroup"></a>
+
+```typescript
+public readonly networkSecurityGroup: NetworkInterfaceNSGReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceNSGReference
+
+Network Security Group reference with id property Optional - associates an NSG with this NIC.
+
+---
+
+*Example*
+
+```typescript
+{ id: "/subscriptions/.../networkSecurityGroups/myNSG" }
+```
+
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the network interface will be created.
+
+---
+
+### NetworkInterfaceProps <a name="NetworkInterfaceProps" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps"></a>
+
+Properties for the unified Azure Network Interface.
+
+Extends VersionedAzapiResourceProps with Network Interface specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.Initializer"></a>
+
+```typescript
+import { azure_networkinterface } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceProps: azure_networkinterface.NetworkInterfaceProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.ipConfigurations">ipConfigurations</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration">NetworkInterfaceIPConfiguration</a>[]</code> | IP configurations for the network interface At least one IP configuration is required One IP configuration must be marked as primary. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.dnsSettings">dnsSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings">NetworkInterfaceDnsSettings</a></code> | DNS settings configuration Optional - configures DNS servers for the NIC. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.enableAcceleratedNetworking">enableAcceleratedNetworking</a></code> | <code>boolean</code> | Enable accelerated networking for high-performance scenarios Requires supported VM size. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.enableIPForwarding">enableIPForwarding</a></code> | <code>boolean</code> | Enable IP forwarding for network virtual appliances Allows NIC to forward traffic not destined for its IP. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.networkSecurityGroup">networkSecurityGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceNSGReference</code> | Network Security Group reference with id property Optional - associates an NSG with this NIC. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the network interface will be created. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `ipConfigurations`<sup>Required</sup> <a name="ipConfigurations" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.ipConfigurations"></a>
+
+```typescript
+public readonly ipConfigurations: NetworkInterfaceIPConfiguration[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration">NetworkInterfaceIPConfiguration</a>[]
+
+IP configurations for the network interface At least one IP configuration is required One IP configuration must be marked as primary.
+
+---
+
+##### `dnsSettings`<sup>Optional</sup> <a name="dnsSettings" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.dnsSettings"></a>
+
+```typescript
+public readonly dnsSettings: NetworkInterfaceDnsSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceDnsSettings">NetworkInterfaceDnsSettings</a>
+
+DNS settings configuration Optional - configures DNS servers for the NIC.
+
+---
+
+##### `enableAcceleratedNetworking`<sup>Optional</sup> <a name="enableAcceleratedNetworking" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.enableAcceleratedNetworking"></a>
+
+```typescript
+public readonly enableAcceleratedNetworking: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable accelerated networking for high-performance scenarios Requires supported VM size.
+
+---
+
+##### `enableIPForwarding`<sup>Optional</sup> <a name="enableIPForwarding" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.enableIPForwarding"></a>
+
+```typescript
+public readonly enableIPForwarding: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable IP forwarding for network virtual appliances Allows NIC to forward traffic not destined for its IP.
+
+---
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes.
+
+---
+
+*Example*
+
+```typescript
+["tags"]
+```
+
+
+##### `networkSecurityGroup`<sup>Optional</sup> <a name="networkSecurityGroup" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.networkSecurityGroup"></a>
+
+```typescript
+public readonly networkSecurityGroup: NetworkInterfaceNSGReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceNSGReference
+
+Network Security Group reference with id property Optional - associates an NSG with this NIC.
+
+---
+
+*Example*
+
+```typescript
+{ id: "/subscriptions/.../networkSecurityGroups/myNSG" }
+```
+
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the network interface will be created.
+
+---
+
+### NetworkInterfacePublicIPReference <a name="NetworkInterfacePublicIPReference" id="@microsoft/terraform-cdk-constructs.NetworkInterfacePublicIPReference"></a>
+
+Public IP address reference for Network Interface.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkInterfacePublicIPReference.Initializer"></a>
+
+```typescript
+import { NetworkInterfacePublicIPReference } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfacePublicIPReference: NetworkInterfacePublicIPReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfacePublicIPReference.property.id">id</a></code> | <code>string</code> | Public IP address resource ID. |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.NetworkInterfacePublicIPReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Public IP address resource ID.
+
+---
+
+### NetworkInterfacePublicIPReference <a name="NetworkInterfacePublicIPReference" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfacePublicIPReference"></a>
+
+Public IP address reference for Network Interface.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfacePublicIPReference.Initializer"></a>
+
+```typescript
+import { azure_networkinterface } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfacePublicIPReference: azure_networkinterface.NetworkInterfacePublicIPReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfacePublicIPReference.property.id">id</a></code> | <code>string</code> | Public IP address resource ID. |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfacePublicIPReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Public IP address resource ID.
+
+---
+
+### NetworkInterfaceSubnetReference <a name="NetworkInterfaceSubnetReference" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceSubnetReference"></a>
+
+Subnet reference for Network Interface.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceSubnetReference.Initializer"></a>
+
+```typescript
+import { NetworkInterfaceSubnetReference } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceSubnetReference: NetworkInterfaceSubnetReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceSubnetReference.property.id">id</a></code> | <code>string</code> | Subnet resource ID. |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceSubnetReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Subnet resource ID.
+
+---
+
+### NetworkInterfaceSubnetReference <a name="NetworkInterfaceSubnetReference" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceSubnetReference"></a>
+
+Subnet reference for Network Interface.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceSubnetReference.Initializer"></a>
+
+```typescript
+import { azure_networkinterface } from '@microsoft/terraform-cdk-constructs'
+
+const networkInterfaceSubnetReference: azure_networkinterface.NetworkInterfaceSubnetReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceSubnetReference.property.id">id</a></code> | <code>string</code> | Subnet resource ID. |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceSubnetReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Subnet resource ID.
+
+---
+
+### NetworkSecurityGroupProps <a name="NetworkSecurityGroupProps" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps"></a>
+
+Properties for the Azure Network Security Group.
+
+Extends AzapiResourceProps with Network Security Group specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.Initializer"></a>
+
+```typescript
+import { NetworkSecurityGroupProps } from '@microsoft/terraform-cdk-constructs'
+
+const networkSecurityGroupProps: NetworkSecurityGroupProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.flushConnection">flushConnection</a></code> | <code>boolean</code> | When enabled, flows created from NSG connections will be re-evaluated when rules are updated. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes Useful for properties that are externally managed. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the NSG will be created Optional - will use the subscription scope if not provided. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.securityRules">securityRules</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRule">SecurityRule</a>[]</code> | Security rules for the network security group Optional - rules can also be added after creation. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `flushConnection`<sup>Optional</sup> <a name="flushConnection" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.flushConnection"></a>
+
+```typescript
+public readonly flushConnection: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+When enabled, flows created from NSG connections will be re-evaluated when rules are updated.
+
+---
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes Useful for properties that are externally managed.
+
+---
+
+*Example*
+
+```typescript
+["tags", "securityRules"]
+```
+
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the NSG will be created Optional - will use the subscription scope if not provided.
+
+---
+
+##### `securityRules`<sup>Optional</sup> <a name="securityRules" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.securityRules"></a>
+
+```typescript
+public readonly securityRules: SecurityRule[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.SecurityRule">SecurityRule</a>[]
+
+Security rules for the network security group Optional - rules can also be added after creation.
+
+---
+
+### NetworkSecurityGroupProps <a name="NetworkSecurityGroupProps" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps"></a>
+
+Properties for the Azure Network Security Group.
+
+Extends AzapiResourceProps with Network Security Group specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.Initializer"></a>
+
+```typescript
+import { azure_networksecuritygroup } from '@microsoft/terraform-cdk-constructs'
+
+const networkSecurityGroupProps: azure_networksecuritygroup.NetworkSecurityGroupProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.flushConnection">flushConnection</a></code> | <code>boolean</code> | When enabled, flows created from NSG connections will be re-evaluated when rules are updated. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes Useful for properties that are externally managed. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the NSG will be created Optional - will use the subscription scope if not provided. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.securityRules">securityRules</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRule">SecurityRule</a>[]</code> | Security rules for the network security group Optional - rules can also be added after creation. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `flushConnection`<sup>Optional</sup> <a name="flushConnection" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.flushConnection"></a>
+
+```typescript
+public readonly flushConnection: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+When enabled, flows created from NSG connections will be re-evaluated when rules are updated.
+
+---
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes Useful for properties that are externally managed.
+
+---
+
+*Example*
+
+```typescript
+["tags", "securityRules"]
+```
+
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the NSG will be created Optional - will use the subscription scope if not provided.
+
+---
+
+##### `securityRules`<sup>Optional</sup> <a name="securityRules" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.securityRules"></a>
+
+```typescript
+public readonly securityRules: SecurityRule[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.SecurityRule">SecurityRule</a>[]
+
+Security rules for the network security group Optional - rules can also be added after creation.
+
+---
+
+### NetworkSecurityGroupReference <a name="NetworkSecurityGroupReference" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupReference"></a>
+
+Network security group reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupReference.Initializer"></a>
+
+```typescript
+import { NetworkSecurityGroupReference } from '@microsoft/terraform-cdk-constructs'
+
+const networkSecurityGroupReference: NetworkSecurityGroupReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### NetworkSecurityGroupReference <a name="NetworkSecurityGroupReference" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkSecurityGroupReference"></a>
+
+Network security group reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkSecurityGroupReference.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const networkSecurityGroupReference: azure_vmss.NetworkSecurityGroupReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.NetworkSecurityGroupReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_vmss.NetworkSecurityGroupReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -25693,6 +35871,1036 @@ Array of validation rules to apply to this property Rules are evaluated in order
 
 ---
 
+### ProximityPlacementGroupReference <a name="ProximityPlacementGroupReference" id="@microsoft/terraform-cdk-constructs.ProximityPlacementGroupReference"></a>
+
+Proximity placement group reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ProximityPlacementGroupReference.Initializer"></a>
+
+```typescript
+import { ProximityPlacementGroupReference } from '@microsoft/terraform-cdk-constructs'
+
+const proximityPlacementGroupReference: ProximityPlacementGroupReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ProximityPlacementGroupReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.ProximityPlacementGroupReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### ProximityPlacementGroupReference <a name="ProximityPlacementGroupReference" id="@microsoft/terraform-cdk-constructs.azure_vmss.ProximityPlacementGroupReference"></a>
+
+Proximity placement group reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.ProximityPlacementGroupReference.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const proximityPlacementGroupReference: azure_vmss.ProximityPlacementGroupReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.ProximityPlacementGroupReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_vmss.ProximityPlacementGroupReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### PublicIPAddressConfiguration <a name="PublicIPAddressConfiguration" id="@microsoft/terraform-cdk-constructs.PublicIPAddressConfiguration"></a>
+
+Public IP address configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PublicIPAddressConfiguration.Initializer"></a>
+
+```typescript
+import { PublicIPAddressConfiguration } from '@microsoft/terraform-cdk-constructs'
+
+const publicIPAddressConfiguration: PublicIPAddressConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressConfiguration.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressConfiguration.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfigurationProperties</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.PublicIPAddressConfiguration.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.PublicIPAddressConfiguration.property.properties"></a>
+
+```typescript
+public readonly properties: PublicIPAddressConfigurationProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfigurationProperties
+
+---
+
+### PublicIPAddressConfiguration <a name="PublicIPAddressConfiguration" id="@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfiguration"></a>
+
+Public IP address configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfiguration.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const publicIPAddressConfiguration: azure_vmss.PublicIPAddressConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfiguration.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfiguration.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfigurationProperties</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfiguration.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfiguration.property.properties"></a>
+
+```typescript
+public readonly properties: PublicIPAddressConfigurationProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfigurationProperties
+
+---
+
+### PublicIPAddressConfigurationProperties <a name="PublicIPAddressConfigurationProperties" id="@microsoft/terraform-cdk-constructs.PublicIPAddressConfigurationProperties"></a>
+
+Public IP address configuration properties.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PublicIPAddressConfigurationProperties.Initializer"></a>
+
+```typescript
+import { PublicIPAddressConfigurationProperties } from '@microsoft/terraform-cdk-constructs'
+
+const publicIPAddressConfigurationProperties: PublicIPAddressConfigurationProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressConfigurationProperties.property.dnsSettings">dnsSettings</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPDnsSettings</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressConfigurationProperties.property.idleTimeoutInMinutes">idleTimeoutInMinutes</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `dnsSettings`<sup>Optional</sup> <a name="dnsSettings" id="@microsoft/terraform-cdk-constructs.PublicIPAddressConfigurationProperties.property.dnsSettings"></a>
+
+```typescript
+public readonly dnsSettings: PublicIPDnsSettings;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.PublicIPDnsSettings
+
+---
+
+##### `idleTimeoutInMinutes`<sup>Optional</sup> <a name="idleTimeoutInMinutes" id="@microsoft/terraform-cdk-constructs.PublicIPAddressConfigurationProperties.property.idleTimeoutInMinutes"></a>
+
+```typescript
+public readonly idleTimeoutInMinutes: number;
+```
+
+- *Type:* number
+
+---
+
+### PublicIPAddressConfigurationProperties <a name="PublicIPAddressConfigurationProperties" id="@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfigurationProperties"></a>
+
+Public IP address configuration properties.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfigurationProperties.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const publicIPAddressConfigurationProperties: azure_vmss.PublicIPAddressConfigurationProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfigurationProperties.property.dnsSettings">dnsSettings</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPDnsSettings</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfigurationProperties.property.idleTimeoutInMinutes">idleTimeoutInMinutes</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `dnsSettings`<sup>Optional</sup> <a name="dnsSettings" id="@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfigurationProperties.property.dnsSettings"></a>
+
+```typescript
+public readonly dnsSettings: PublicIPDnsSettings;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.PublicIPDnsSettings
+
+---
+
+##### `idleTimeoutInMinutes`<sup>Optional</sup> <a name="idleTimeoutInMinutes" id="@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfigurationProperties.property.idleTimeoutInMinutes"></a>
+
+```typescript
+public readonly idleTimeoutInMinutes: number;
+```
+
+- *Type:* number
+
+---
+
+### PublicIPAddressDnsSettings <a name="PublicIPAddressDnsSettings" id="@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings"></a>
+
+DNS settings configuration for Public IP Address.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings.Initializer"></a>
+
+```typescript
+import { PublicIPAddressDnsSettings } from '@microsoft/terraform-cdk-constructs'
+
+const publicIPAddressDnsSettings: PublicIPAddressDnsSettings = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings.property.domainNameLabel">domainNameLabel</a></code> | <code>string</code> | The domain name label The concatenation of the domain name label and regionalized DNS zone make up the fully qualified domain name (FQDN) associated with the public IP. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings.property.fqdn">fqdn</a></code> | <code>string</code> | The Fully Qualified Domain Name This is the concatenation of the domainNameLabel and the regionalized DNS zone. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings.property.reverseFqdn">reverseFqdn</a></code> | <code>string</code> | The reverse FQDN A user-visible, fully qualified domain name that resolves to this public IP address. |
+
+---
+
+##### `domainNameLabel`<sup>Optional</sup> <a name="domainNameLabel" id="@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings.property.domainNameLabel"></a>
+
+```typescript
+public readonly domainNameLabel: string;
+```
+
+- *Type:* string
+
+The domain name label The concatenation of the domain name label and regionalized DNS zone make up the fully qualified domain name (FQDN) associated with the public IP.
+
+---
+
+##### `fqdn`<sup>Optional</sup> <a name="fqdn" id="@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings.property.fqdn"></a>
+
+```typescript
+public readonly fqdn: string;
+```
+
+- *Type:* string
+
+The Fully Qualified Domain Name This is the concatenation of the domainNameLabel and the regionalized DNS zone.
+
+---
+
+##### `reverseFqdn`<sup>Optional</sup> <a name="reverseFqdn" id="@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings.property.reverseFqdn"></a>
+
+```typescript
+public readonly reverseFqdn: string;
+```
+
+- *Type:* string
+
+The reverse FQDN A user-visible, fully qualified domain name that resolves to this public IP address.
+
+---
+
+### PublicIPAddressDnsSettings <a name="PublicIPAddressDnsSettings" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressDnsSettings"></a>
+
+DNS settings configuration for Public IP Address.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressDnsSettings.Initializer"></a>
+
+```typescript
+import { azure_publicipaddress } from '@microsoft/terraform-cdk-constructs'
+
+const publicIPAddressDnsSettings: azure_publicipaddress.PublicIPAddressDnsSettings = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressDnsSettings.property.domainNameLabel">domainNameLabel</a></code> | <code>string</code> | The domain name label The concatenation of the domain name label and regionalized DNS zone make up the fully qualified domain name (FQDN) associated with the public IP. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressDnsSettings.property.fqdn">fqdn</a></code> | <code>string</code> | The Fully Qualified Domain Name This is the concatenation of the domainNameLabel and the regionalized DNS zone. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressDnsSettings.property.reverseFqdn">reverseFqdn</a></code> | <code>string</code> | The reverse FQDN A user-visible, fully qualified domain name that resolves to this public IP address. |
+
+---
+
+##### `domainNameLabel`<sup>Optional</sup> <a name="domainNameLabel" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressDnsSettings.property.domainNameLabel"></a>
+
+```typescript
+public readonly domainNameLabel: string;
+```
+
+- *Type:* string
+
+The domain name label The concatenation of the domain name label and regionalized DNS zone make up the fully qualified domain name (FQDN) associated with the public IP.
+
+---
+
+##### `fqdn`<sup>Optional</sup> <a name="fqdn" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressDnsSettings.property.fqdn"></a>
+
+```typescript
+public readonly fqdn: string;
+```
+
+- *Type:* string
+
+The Fully Qualified Domain Name This is the concatenation of the domainNameLabel and the regionalized DNS zone.
+
+---
+
+##### `reverseFqdn`<sup>Optional</sup> <a name="reverseFqdn" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressDnsSettings.property.reverseFqdn"></a>
+
+```typescript
+public readonly reverseFqdn: string;
+```
+
+- *Type:* string
+
+The reverse FQDN A user-visible, fully qualified domain name that resolves to this public IP address.
+
+---
+
+### PublicIPAddressProps <a name="PublicIPAddressProps" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps"></a>
+
+Properties for the Azure Public IP Address.
+
+Extends AzapiResourceProps with Public IP Address specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.Initializer"></a>
+
+```typescript
+import { PublicIPAddressProps } from '@microsoft/terraform-cdk-constructs'
+
+const publicIPAddressProps: PublicIPAddressProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.dnsSettings">dnsSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings">PublicIPAddressDnsSettings</a></code> | DNS settings for the public IP address Optional - configures DNS label for the public IP. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.idleTimeoutInMinutes">idleTimeoutInMinutes</a></code> | <code>number</code> | Idle timeout in minutes Valid range: 4-30 minutes. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes Useful for properties that are externally managed. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.publicIPAddressVersion">publicIPAddressVersion</a></code> | <code>string</code> | Public IP address version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.publicIPAllocationMethod">publicIPAllocationMethod</a></code> | <code>string</code> | Public IP allocation method - Static: IP address is allocated immediately and doesn't change - Dynamic: IP address is allocated when associated with a resource Note: Standard SKU requires Static allocation. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the Public IP will be created Optional - will use the subscription scope if not provided. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.sku">sku</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressSku">PublicIPAddressSku</a></code> | SKU of the public IP address Standard SKU supports zones and has SLA guarantees Basic SKU does not support zones. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.zones">zones</a></code> | <code>string[]</code> | Availability zones for the public IP address Only supported with Standard SKU. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `dnsSettings`<sup>Optional</sup> <a name="dnsSettings" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.dnsSettings"></a>
+
+```typescript
+public readonly dnsSettings: PublicIPAddressDnsSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings">PublicIPAddressDnsSettings</a>
+
+DNS settings for the public IP address Optional - configures DNS label for the public IP.
+
+---
+
+##### `idleTimeoutInMinutes`<sup>Optional</sup> <a name="idleTimeoutInMinutes" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.idleTimeoutInMinutes"></a>
+
+```typescript
+public readonly idleTimeoutInMinutes: number;
+```
+
+- *Type:* number
+- *Default:* 4
+
+Idle timeout in minutes Valid range: 4-30 minutes.
+
+---
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes Useful for properties that are externally managed.
+
+---
+
+*Example*
+
+```typescript
+["tags"]
+```
+
+
+##### `publicIPAddressVersion`<sup>Optional</sup> <a name="publicIPAddressVersion" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.publicIPAddressVersion"></a>
+
+```typescript
+public readonly publicIPAddressVersion: string;
+```
+
+- *Type:* string
+- *Default:* "IPv4"
+
+Public IP address version.
+
+---
+
+##### `publicIPAllocationMethod`<sup>Optional</sup> <a name="publicIPAllocationMethod" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.publicIPAllocationMethod"></a>
+
+```typescript
+public readonly publicIPAllocationMethod: string;
+```
+
+- *Type:* string
+- *Default:* "Dynamic"
+
+Public IP allocation method - Static: IP address is allocated immediately and doesn't change - Dynamic: IP address is allocated when associated with a resource Note: Standard SKU requires Static allocation.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the Public IP will be created Optional - will use the subscription scope if not provided.
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.sku"></a>
+
+```typescript
+public readonly sku: PublicIPAddressSku;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressSku">PublicIPAddressSku</a>
+
+SKU of the public IP address Standard SKU supports zones and has SLA guarantees Basic SKU does not support zones.
+
+---
+
+##### `zones`<sup>Optional</sup> <a name="zones" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.zones"></a>
+
+```typescript
+public readonly zones: string[];
+```
+
+- *Type:* string[]
+
+Availability zones for the public IP address Only supported with Standard SKU.
+
+---
+
+*Example*
+
+```typescript
+["1"], ["2"], ["3"], ["1", "2", "3"]
+```
+
+
+### PublicIPAddressProps <a name="PublicIPAddressProps" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps"></a>
+
+Properties for the Azure Public IP Address.
+
+Extends AzapiResourceProps with Public IP Address specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.Initializer"></a>
+
+```typescript
+import { azure_publicipaddress } from '@microsoft/terraform-cdk-constructs'
+
+const publicIPAddressProps: azure_publicipaddress.PublicIPAddressProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.dnsSettings">dnsSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings">PublicIPAddressDnsSettings</a></code> | DNS settings for the public IP address Optional - configures DNS label for the public IP. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.idleTimeoutInMinutes">idleTimeoutInMinutes</a></code> | <code>number</code> | Idle timeout in minutes Valid range: 4-30 minutes. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes Useful for properties that are externally managed. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.publicIPAddressVersion">publicIPAddressVersion</a></code> | <code>string</code> | Public IP address version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.publicIPAllocationMethod">publicIPAllocationMethod</a></code> | <code>string</code> | Public IP allocation method - Static: IP address is allocated immediately and doesn't change - Dynamic: IP address is allocated when associated with a resource Note: Standard SKU requires Static allocation. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the Public IP will be created Optional - will use the subscription scope if not provided. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.sku">sku</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressSku">PublicIPAddressSku</a></code> | SKU of the public IP address Standard SKU supports zones and has SLA guarantees Basic SKU does not support zones. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.zones">zones</a></code> | <code>string[]</code> | Availability zones for the public IP address Only supported with Standard SKU. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `dnsSettings`<sup>Optional</sup> <a name="dnsSettings" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.dnsSettings"></a>
+
+```typescript
+public readonly dnsSettings: PublicIPAddressDnsSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings">PublicIPAddressDnsSettings</a>
+
+DNS settings for the public IP address Optional - configures DNS label for the public IP.
+
+---
+
+##### `idleTimeoutInMinutes`<sup>Optional</sup> <a name="idleTimeoutInMinutes" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.idleTimeoutInMinutes"></a>
+
+```typescript
+public readonly idleTimeoutInMinutes: number;
+```
+
+- *Type:* number
+- *Default:* 4
+
+Idle timeout in minutes Valid range: 4-30 minutes.
+
+---
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes Useful for properties that are externally managed.
+
+---
+
+*Example*
+
+```typescript
+["tags"]
+```
+
+
+##### `publicIPAddressVersion`<sup>Optional</sup> <a name="publicIPAddressVersion" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.publicIPAddressVersion"></a>
+
+```typescript
+public readonly publicIPAddressVersion: string;
+```
+
+- *Type:* string
+- *Default:* "IPv4"
+
+Public IP address version.
+
+---
+
+##### `publicIPAllocationMethod`<sup>Optional</sup> <a name="publicIPAllocationMethod" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.publicIPAllocationMethod"></a>
+
+```typescript
+public readonly publicIPAllocationMethod: string;
+```
+
+- *Type:* string
+- *Default:* "Dynamic"
+
+Public IP allocation method - Static: IP address is allocated immediately and doesn't change - Dynamic: IP address is allocated when associated with a resource Note: Standard SKU requires Static allocation.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the Public IP will be created Optional - will use the subscription scope if not provided.
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.sku"></a>
+
+```typescript
+public readonly sku: PublicIPAddressSku;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressSku">PublicIPAddressSku</a>
+
+SKU of the public IP address Standard SKU supports zones and has SLA guarantees Basic SKU does not support zones.
+
+---
+
+##### `zones`<sup>Optional</sup> <a name="zones" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.zones"></a>
+
+```typescript
+public readonly zones: string[];
+```
+
+- *Type:* string[]
+
+Availability zones for the public IP address Only supported with Standard SKU.
+
+---
+
+*Example*
+
+```typescript
+["1"], ["2"], ["3"], ["1", "2", "3"]
+```
+
+
+### PublicIPAddressSku <a name="PublicIPAddressSku" id="@microsoft/terraform-cdk-constructs.PublicIPAddressSku"></a>
+
+SKU configuration for Public IP Address.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PublicIPAddressSku.Initializer"></a>
+
+```typescript
+import { PublicIPAddressSku } from '@microsoft/terraform-cdk-constructs'
+
+const publicIPAddressSku: PublicIPAddressSku = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressSku.property.name">name</a></code> | <code>string</code> | Name of the SKU. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressSku.property.tier">tier</a></code> | <code>string</code> | Tier of the SKU. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.PublicIPAddressSku.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+Name of the SKU.
+
+---
+
+*Example*
+
+```typescript
+"Basic", "Standard"
+```
+
+
+##### `tier`<sup>Optional</sup> <a name="tier" id="@microsoft/terraform-cdk-constructs.PublicIPAddressSku.property.tier"></a>
+
+```typescript
+public readonly tier: string;
+```
+
+- *Type:* string
+
+Tier of the SKU.
+
+---
+
+*Example*
+
+```typescript
+"Regional", "Global"
+```
+
+
+### PublicIPAddressSku <a name="PublicIPAddressSku" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressSku"></a>
+
+SKU configuration for Public IP Address.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressSku.Initializer"></a>
+
+```typescript
+import { azure_publicipaddress } from '@microsoft/terraform-cdk-constructs'
+
+const publicIPAddressSku: azure_publicipaddress.PublicIPAddressSku = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressSku.property.name">name</a></code> | <code>string</code> | Name of the SKU. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressSku.property.tier">tier</a></code> | <code>string</code> | Tier of the SKU. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressSku.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+Name of the SKU.
+
+---
+
+*Example*
+
+```typescript
+"Basic", "Standard"
+```
+
+
+##### `tier`<sup>Optional</sup> <a name="tier" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressSku.property.tier"></a>
+
+```typescript
+public readonly tier: string;
+```
+
+- *Type:* string
+
+Tier of the SKU.
+
+---
+
+*Example*
+
+```typescript
+"Regional", "Global"
+```
+
+
+### PublicIPDnsSettings <a name="PublicIPDnsSettings" id="@microsoft/terraform-cdk-constructs.PublicIPDnsSettings"></a>
+
+DNS settings for public IP.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PublicIPDnsSettings.Initializer"></a>
+
+```typescript
+import { PublicIPDnsSettings } from '@microsoft/terraform-cdk-constructs'
+
+const publicIPDnsSettings: PublicIPDnsSettings = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPDnsSettings.property.domainNameLabel">domainNameLabel</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `domainNameLabel`<sup>Required</sup> <a name="domainNameLabel" id="@microsoft/terraform-cdk-constructs.PublicIPDnsSettings.property.domainNameLabel"></a>
+
+```typescript
+public readonly domainNameLabel: string;
+```
+
+- *Type:* string
+
+---
+
+### PublicIPDnsSettings <a name="PublicIPDnsSettings" id="@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPDnsSettings"></a>
+
+DNS settings for public IP.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPDnsSettings.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const publicIPDnsSettings: azure_vmss.PublicIPDnsSettings = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPDnsSettings.property.domainNameLabel">domainNameLabel</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `domainNameLabel`<sup>Required</sup> <a name="domainNameLabel" id="@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPDnsSettings.property.domainNameLabel"></a>
+
+```typescript
+public readonly domainNameLabel: string;
+```
+
+- *Type:* string
+
+---
+
 ### ResourceActionConfig <a name="ResourceActionConfig" id="@microsoft/terraform-cdk-constructs.ResourceActionConfig"></a>
 
 #### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ResourceActionConfig.Initializer"></a>
@@ -25930,27 +37138,27 @@ The attribute can accept either a list or a map.
 
 **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
 
-```text
-{
-properties = {
-loginServer = "registry1.azurecr.io"
-policies = {
-quarantinePolicy = {
-	status = "disabled"
-}
-}
-}
-}
-```
+	```text
+	{
+		properties = {
+			loginServer = "registry1.azurecr.io"
+			policies = {
+				quarantinePolicy = {
+					status = "disabled"
+				}
+			}
+		}
+	}
+	```
 
 - **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
 
-```text
-{
-"login_server" = "registry1.azurecr.io"
-"quarantine_status" = "disabled"
-}
-```
+	```text
+	{
+		"login_server" = "registry1.azurecr.io"
+		"quarantine_status" = "disabled"
+	}
+	```
 
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
@@ -25985,27 +37193,27 @@ The attribute can accept either a list or a map.
 
 **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
 
-```text
-{
-properties = {
-loginServer = "registry1.azurecr.io"
-policies = {
-quarantinePolicy = {
-	status = "disabled"
-}
-}
-}
-}
-```
+	```text
+	{
+		properties = {
+			loginServer = "registry1.azurecr.io"
+			policies = {
+				quarantinePolicy = {
+					status = "disabled"
+				}
+			}
+		}
+	}
+	```
 
 - **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
 
-```text
-{
-"login_server" = "registry1.azurecr.io"
-"quarantine_status" = "disabled"
-}
-```
+	```text
+	{
+		"login_server" = "registry1.azurecr.io"
+		"quarantine_status" = "disabled"
+	}
+	```
 
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
@@ -26279,27 +37487,27 @@ The attribute can accept either a list or a map.
 
 **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
 
-```text
-{
-properties = {
-loginServer = "registry1.azurecr.io"
-policies = {
-quarantinePolicy = {
-	status = "disabled"
-}
-}
-}
-}
-```
+	```text
+	{
+		properties = {
+			loginServer = "registry1.azurecr.io"
+			policies = {
+				quarantinePolicy = {
+					status = "disabled"
+				}
+			}
+		}
+	}
+	```
 
 - **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
 
-```text
-{
-"login_server" = "registry1.azurecr.io"
-"quarantine_status" = "disabled"
-}
-```
+	```text
+	{
+		"login_server" = "registry1.azurecr.io"
+		"quarantine_status" = "disabled"
+	}
+	```
 
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
@@ -26334,27 +37542,27 @@ The attribute can accept either a list or a map.
 
 **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
 
-```text
-{
-properties = {
-loginServer = "registry1.azurecr.io"
-policies = {
-quarantinePolicy = {
-	status = "disabled"
-}
-}
-}
-}
-```
+	```text
+	{
+		properties = {
+			loginServer = "registry1.azurecr.io"
+			policies = {
+				quarantinePolicy = {
+					status = "disabled"
+				}
+			}
+		}
+	}
+	```
 
 - **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
 
-```text
-{
-"login_server" = "registry1.azurecr.io"
-"quarantine_status" = "disabled"
-}
-```
+	```text
+	{
+		"login_server" = "registry1.azurecr.io"
+		"quarantine_status" = "disabled"
+	}
+	```
 
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
@@ -27058,15 +38266,15 @@ The ID of the azure resource in which this resource is created.
 
 It supports different kinds of deployment scope for **top level** resources:
 
-- resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
-- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
-- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
-- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
-- tenant scope: `parent_id` should be /
+  - resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
+	- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
+	- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
+	- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
+	- tenant scope: `parent_id` should be /
 
-For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
+  For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
 
-For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
+  For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
 
 Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#parent_id Resource#parent_id}
 
@@ -27110,28 +38318,28 @@ public readonly replaceTriggersExternalValues: {[ key: string ]: any};
 
 Will trigger a replace of the resource when the value changes and is not `null`.
 
-This can be used by practitioners to force a replace of the resource when certain values change, e.g. changing the SKU of a virtual machine based on the value of variables or locals. The value is a `dynamic`, so practitioners can compose the input however they wish. For a "break glass" set the value to `null` to prevent the plan modifier taking effect.
-If you have `null` values that you do want to be tracked as affecting the resource replacement, include these inside an object.
+This can be used by practitioners to force a replace of the resource when certain values change, e.g. changing the SKU of a virtual machine based on the value of variables or locals. The value is a `dynamic`, so practitioners can compose the input however they wish. For a "break glass" set the value to `null` to prevent the plan modifier taking effect. 
+If you have `null` values that you do want to be tracked as affecting the resource replacement, include these inside an object. 
 Advanced use cases are possible and resource replacement can be triggered by values external to the resource, for example when a dependent resource changes.
 
 e.g. to replace a resource when either the SKU or os_type attributes change:
 
 ```hcl
 resource "azapi_resource" "example" {
-name      = var.name
-type      = "Microsoft.Network/publicIPAddresses@2023-11-01"
-parent_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example"
-body = {
-properties = {
-  sku   = var.sku
-  zones = var.zones
-}
-}
+  name      = var.name
+  type      = "Microsoft.Network/publicIPAddresses@2023-11-01"
+  parent_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example"
+  body = {
+    properties = {
+      sku   = var.sku
+      zones = var.zones
+    }
+  }
 
-replace_triggers_external_values = [
-var.sku,
-var.zones,
-]
+  replace_triggers_external_values = [
+    var.sku,
+    var.zones,
+  ]
 }
 ```
 
@@ -27168,27 +38376,27 @@ The attribute can accept either a list or a map.
 
 **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
 
-```text
-{
-properties = {
-loginServer = "registry1.azurecr.io"
-policies = {
-quarantinePolicy = {
-	status = "disabled"
-}
-}
-}
-}
-```
+	```text
+	{
+		properties = {
+			loginServer = "registry1.azurecr.io"
+			policies = {
+				quarantinePolicy = {
+					status = "disabled"
+				}
+			}
+		}
+	}
+	```
 
 - **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
 
-```text
-{
-"login_server" = "registry1.azurecr.io"
-"quarantine_status" = "disabled"
-}
-```
+	```text
+	{
+		"login_server" = "registry1.azurecr.io"
+		"quarantine_status" = "disabled"
+	}
+	```
 
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
@@ -27251,7 +38459,7 @@ public readonly sensitiveBodyVersion: {[ key: string ]: string};
 
 A map where the key is the path to the property in `sensitive_body` and the value is the version of the property.
 
-The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body.
+The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body. 
 
 Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#sensitive_body_version Resource#sensitive_body_version}
 
@@ -27634,15 +38842,15 @@ The ID of the azure resource in which this resource is created.
 
 It supports different kinds of deployment scope for **top level** resources:
 
-- resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
-- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
-- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
-- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
-- tenant scope: `parent_id` should be /
+  - resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
+	- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
+	- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
+	- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
+	- tenant scope: `parent_id` should be /
 
-For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
+  For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
 
-For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
+  For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
 
 Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#parent_id Resource#parent_id}
 
@@ -27686,28 +38894,28 @@ public readonly replaceTriggersExternalValues: {[ key: string ]: any};
 
 Will trigger a replace of the resource when the value changes and is not `null`.
 
-This can be used by practitioners to force a replace of the resource when certain values change, e.g. changing the SKU of a virtual machine based on the value of variables or locals. The value is a `dynamic`, so practitioners can compose the input however they wish. For a "break glass" set the value to `null` to prevent the plan modifier taking effect.
-If you have `null` values that you do want to be tracked as affecting the resource replacement, include these inside an object.
+This can be used by practitioners to force a replace of the resource when certain values change, e.g. changing the SKU of a virtual machine based on the value of variables or locals. The value is a `dynamic`, so practitioners can compose the input however they wish. For a "break glass" set the value to `null` to prevent the plan modifier taking effect. 
+If you have `null` values that you do want to be tracked as affecting the resource replacement, include these inside an object. 
 Advanced use cases are possible and resource replacement can be triggered by values external to the resource, for example when a dependent resource changes.
 
 e.g. to replace a resource when either the SKU or os_type attributes change:
 
 ```hcl
 resource "azapi_resource" "example" {
-name      = var.name
-type      = "Microsoft.Network/publicIPAddresses@2023-11-01"
-parent_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example"
-body = {
-properties = {
-  sku   = var.sku
-  zones = var.zones
-}
-}
+  name      = var.name
+  type      = "Microsoft.Network/publicIPAddresses@2023-11-01"
+  parent_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example"
+  body = {
+    properties = {
+      sku   = var.sku
+      zones = var.zones
+    }
+  }
 
-replace_triggers_external_values = [
-var.sku,
-var.zones,
-]
+  replace_triggers_external_values = [
+    var.sku,
+    var.zones,
+  ]
 }
 ```
 
@@ -27744,27 +38952,27 @@ The attribute can accept either a list or a map.
 
 **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
 
-```text
-{
-properties = {
-loginServer = "registry1.azurecr.io"
-policies = {
-quarantinePolicy = {
-	status = "disabled"
-}
-}
-}
-}
-```
+	```text
+	{
+		properties = {
+			loginServer = "registry1.azurecr.io"
+			policies = {
+				quarantinePolicy = {
+					status = "disabled"
+				}
+			}
+		}
+	}
+	```
 
 - **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
 
-```text
-{
-"login_server" = "registry1.azurecr.io"
-"quarantine_status" = "disabled"
-}
-```
+	```text
+	{
+		"login_server" = "registry1.azurecr.io"
+		"quarantine_status" = "disabled"
+	}
+	```
 
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
@@ -27827,7 +39035,7 @@ public readonly sensitiveBodyVersion: {[ key: string ]: string};
 
 A map where the key is the path to the property in `sensitive_body` and the value is the version of the property.
 
-The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body.
+The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body. 
 
 Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#sensitive_body_version Resource#sensitive_body_version}
 
@@ -28449,6 +39657,66 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 
 ---
 
+### ResourceReference <a name="ResourceReference" id="@microsoft/terraform-cdk-constructs.ResourceReference"></a>
+
+Resource reference with ID.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ResourceReference.Initializer"></a>
+
+```typescript
+import { ResourceReference } from '@microsoft/terraform-cdk-constructs'
+
+const resourceReference: ResourceReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.ResourceReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### ResourceReference <a name="ResourceReference" id="@microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference"></a>
+
+Resource reference with ID.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const resourceReference: azure_vmss.ResourceReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
 ### ResourceRetry <a name="ResourceRetry" id="@microsoft/terraform-cdk-constructs.ResourceRetry"></a>
 
 #### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ResourceRetry.Initializer"></a>
@@ -28876,6 +40144,880 @@ public readonly enabled: boolean;
 - *Type:* boolean
 
 ---
+
+### RollingUpgradePolicy <a name="RollingUpgradePolicy" id="@microsoft/terraform-cdk-constructs.RollingUpgradePolicy"></a>
+
+Rolling upgrade policy.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.RollingUpgradePolicy.Initializer"></a>
+
+```typescript
+import { RollingUpgradePolicy } from '@microsoft/terraform-cdk-constructs'
+
+const rollingUpgradePolicy: RollingUpgradePolicy = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.RollingUpgradePolicy.property.enableCrossZoneUpgrade">enableCrossZoneUpgrade</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.RollingUpgradePolicy.property.maxBatchInstancePercent">maxBatchInstancePercent</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.RollingUpgradePolicy.property.maxUnhealthyInstancePercent">maxUnhealthyInstancePercent</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.RollingUpgradePolicy.property.maxUnhealthyUpgradedInstancePercent">maxUnhealthyUpgradedInstancePercent</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.RollingUpgradePolicy.property.pauseTimeBetweenBatches">pauseTimeBetweenBatches</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.RollingUpgradePolicy.property.prioritizeUnhealthyInstances">prioritizeUnhealthyInstances</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enableCrossZoneUpgrade`<sup>Optional</sup> <a name="enableCrossZoneUpgrade" id="@microsoft/terraform-cdk-constructs.RollingUpgradePolicy.property.enableCrossZoneUpgrade"></a>
+
+```typescript
+public readonly enableCrossZoneUpgrade: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `maxBatchInstancePercent`<sup>Optional</sup> <a name="maxBatchInstancePercent" id="@microsoft/terraform-cdk-constructs.RollingUpgradePolicy.property.maxBatchInstancePercent"></a>
+
+```typescript
+public readonly maxBatchInstancePercent: number;
+```
+
+- *Type:* number
+
+---
+
+##### `maxUnhealthyInstancePercent`<sup>Optional</sup> <a name="maxUnhealthyInstancePercent" id="@microsoft/terraform-cdk-constructs.RollingUpgradePolicy.property.maxUnhealthyInstancePercent"></a>
+
+```typescript
+public readonly maxUnhealthyInstancePercent: number;
+```
+
+- *Type:* number
+
+---
+
+##### `maxUnhealthyUpgradedInstancePercent`<sup>Optional</sup> <a name="maxUnhealthyUpgradedInstancePercent" id="@microsoft/terraform-cdk-constructs.RollingUpgradePolicy.property.maxUnhealthyUpgradedInstancePercent"></a>
+
+```typescript
+public readonly maxUnhealthyUpgradedInstancePercent: number;
+```
+
+- *Type:* number
+
+---
+
+##### `pauseTimeBetweenBatches`<sup>Optional</sup> <a name="pauseTimeBetweenBatches" id="@microsoft/terraform-cdk-constructs.RollingUpgradePolicy.property.pauseTimeBetweenBatches"></a>
+
+```typescript
+public readonly pauseTimeBetweenBatches: string;
+```
+
+- *Type:* string
+
+---
+
+##### `prioritizeUnhealthyInstances`<sup>Optional</sup> <a name="prioritizeUnhealthyInstances" id="@microsoft/terraform-cdk-constructs.RollingUpgradePolicy.property.prioritizeUnhealthyInstances"></a>
+
+```typescript
+public readonly prioritizeUnhealthyInstances: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### RollingUpgradePolicy <a name="RollingUpgradePolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy"></a>
+
+Rolling upgrade policy.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const rollingUpgradePolicy: azure_vmss.RollingUpgradePolicy = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy.property.enableCrossZoneUpgrade">enableCrossZoneUpgrade</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy.property.maxBatchInstancePercent">maxBatchInstancePercent</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy.property.maxUnhealthyInstancePercent">maxUnhealthyInstancePercent</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy.property.maxUnhealthyUpgradedInstancePercent">maxUnhealthyUpgradedInstancePercent</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy.property.pauseTimeBetweenBatches">pauseTimeBetweenBatches</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy.property.prioritizeUnhealthyInstances">prioritizeUnhealthyInstances</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enableCrossZoneUpgrade`<sup>Optional</sup> <a name="enableCrossZoneUpgrade" id="@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy.property.enableCrossZoneUpgrade"></a>
+
+```typescript
+public readonly enableCrossZoneUpgrade: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `maxBatchInstancePercent`<sup>Optional</sup> <a name="maxBatchInstancePercent" id="@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy.property.maxBatchInstancePercent"></a>
+
+```typescript
+public readonly maxBatchInstancePercent: number;
+```
+
+- *Type:* number
+
+---
+
+##### `maxUnhealthyInstancePercent`<sup>Optional</sup> <a name="maxUnhealthyInstancePercent" id="@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy.property.maxUnhealthyInstancePercent"></a>
+
+```typescript
+public readonly maxUnhealthyInstancePercent: number;
+```
+
+- *Type:* number
+
+---
+
+##### `maxUnhealthyUpgradedInstancePercent`<sup>Optional</sup> <a name="maxUnhealthyUpgradedInstancePercent" id="@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy.property.maxUnhealthyUpgradedInstancePercent"></a>
+
+```typescript
+public readonly maxUnhealthyUpgradedInstancePercent: number;
+```
+
+- *Type:* number
+
+---
+
+##### `pauseTimeBetweenBatches`<sup>Optional</sup> <a name="pauseTimeBetweenBatches" id="@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy.property.pauseTimeBetweenBatches"></a>
+
+```typescript
+public readonly pauseTimeBetweenBatches: string;
+```
+
+- *Type:* string
+
+---
+
+##### `prioritizeUnhealthyInstances`<sup>Optional</sup> <a name="prioritizeUnhealthyInstances" id="@microsoft/terraform-cdk-constructs.azure_vmss.RollingUpgradePolicy.property.prioritizeUnhealthyInstances"></a>
+
+```typescript
+public readonly prioritizeUnhealthyInstances: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### ScheduledEventsProfile <a name="ScheduledEventsProfile" id="@microsoft/terraform-cdk-constructs.ScheduledEventsProfile"></a>
+
+Scheduled events profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ScheduledEventsProfile.Initializer"></a>
+
+```typescript
+import { ScheduledEventsProfile } from '@microsoft/terraform-cdk-constructs'
+
+const scheduledEventsProfile: ScheduledEventsProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ScheduledEventsProfile.property.terminateNotificationProfile">terminateNotificationProfile</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.TerminateNotificationProfile</code> | *No description.* |
+
+---
+
+##### `terminateNotificationProfile`<sup>Optional</sup> <a name="terminateNotificationProfile" id="@microsoft/terraform-cdk-constructs.ScheduledEventsProfile.property.terminateNotificationProfile"></a>
+
+```typescript
+public readonly terminateNotificationProfile: TerminateNotificationProfile;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.TerminateNotificationProfile
+
+---
+
+### ScheduledEventsProfile <a name="ScheduledEventsProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.ScheduledEventsProfile"></a>
+
+Scheduled events profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.ScheduledEventsProfile.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const scheduledEventsProfile: azure_vmss.ScheduledEventsProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.ScheduledEventsProfile.property.terminateNotificationProfile">terminateNotificationProfile</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.TerminateNotificationProfile</code> | *No description.* |
+
+---
+
+##### `terminateNotificationProfile`<sup>Optional</sup> <a name="terminateNotificationProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.ScheduledEventsProfile.property.terminateNotificationProfile"></a>
+
+```typescript
+public readonly terminateNotificationProfile: TerminateNotificationProfile;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.TerminateNotificationProfile
+
+---
+
+### SecurityRule <a name="SecurityRule" id="@microsoft/terraform-cdk-constructs.SecurityRule"></a>
+
+Security rule configuration for Network Security Group.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.SecurityRule.Initializer"></a>
+
+```typescript
+import { SecurityRule } from '@microsoft/terraform-cdk-constructs'
+
+const securityRule: SecurityRule = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRule.property.name">name</a></code> | <code>string</code> | The name of the security rule Must be unique within the NSG. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRule.property.properties">properties</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties">SecurityRuleProperties</a></code> | Properties of the security rule. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.SecurityRule.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the security rule Must be unique within the NSG.
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.SecurityRule.property.properties"></a>
+
+```typescript
+public readonly properties: SecurityRuleProperties;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties">SecurityRuleProperties</a>
+
+Properties of the security rule.
+
+---
+
+### SecurityRule <a name="SecurityRule" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRule"></a>
+
+Security rule configuration for Network Security Group.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRule.Initializer"></a>
+
+```typescript
+import { azure_networksecuritygroup } from '@microsoft/terraform-cdk-constructs'
+
+const securityRule: azure_networksecuritygroup.SecurityRule = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRule.property.name">name</a></code> | <code>string</code> | The name of the security rule Must be unique within the NSG. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRule.property.properties">properties</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties">SecurityRuleProperties</a></code> | Properties of the security rule. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRule.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the security rule Must be unique within the NSG.
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRule.property.properties"></a>
+
+```typescript
+public readonly properties: SecurityRuleProperties;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties">SecurityRuleProperties</a>
+
+Properties of the security rule.
+
+---
+
+### SecurityRuleProperties <a name="SecurityRuleProperties" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties"></a>
+
+Properties for a security rule.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.Initializer"></a>
+
+```typescript
+import { SecurityRuleProperties } from '@microsoft/terraform-cdk-constructs'
+
+const securityRuleProperties: SecurityRuleProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.access">access</a></code> | <code>string</code> | The network traffic is allowed or denied Must be "Allow" or "Deny". |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.direction">direction</a></code> | <code>string</code> | The direction of the rule Must be "Inbound" or "Outbound". |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.priority">priority</a></code> | <code>number</code> | The priority of the rule Value must be between 100 and 4096 Lower values have higher priority. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.protocol">protocol</a></code> | <code>string</code> | Network protocol this rule applies to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.description">description</a></code> | <code>string</code> | A description for this rule Restricted to 140 characters. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.destinationAddressPrefix">destinationAddressPrefix</a></code> | <code>string</code> | The destination address prefix. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.destinationAddressPrefixes">destinationAddressPrefixes</a></code> | <code>string[]</code> | The destination address prefixes (for multiple destinations). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.destinationApplicationSecurityGroups">destinationApplicationSecurityGroups</a></code> | <code>any[]</code> | Destination application security groups. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.destinationPortRange">destinationPortRange</a></code> | <code>string</code> | The destination port or range. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.destinationPortRanges">destinationPortRanges</a></code> | <code>string[]</code> | The destination port ranges (for multiple ranges). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.sourceAddressPrefix">sourceAddressPrefix</a></code> | <code>string</code> | The source address prefix. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.sourceAddressPrefixes">sourceAddressPrefixes</a></code> | <code>string[]</code> | The source address prefixes (for multiple sources). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.sourceApplicationSecurityGroups">sourceApplicationSecurityGroups</a></code> | <code>any[]</code> | Source application security groups. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.sourcePortRange">sourcePortRange</a></code> | <code>string</code> | The source port or range. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.sourcePortRanges">sourcePortRanges</a></code> | <code>string[]</code> | The source port ranges (for multiple ranges). |
+
+---
+
+##### `access`<sup>Required</sup> <a name="access" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.access"></a>
+
+```typescript
+public readonly access: string;
+```
+
+- *Type:* string
+
+The network traffic is allowed or denied Must be "Allow" or "Deny".
+
+---
+
+##### `direction`<sup>Required</sup> <a name="direction" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.direction"></a>
+
+```typescript
+public readonly direction: string;
+```
+
+- *Type:* string
+
+The direction of the rule Must be "Inbound" or "Outbound".
+
+---
+
+##### `priority`<sup>Required</sup> <a name="priority" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.priority"></a>
+
+```typescript
+public readonly priority: number;
+```
+
+- *Type:* number
+
+The priority of the rule Value must be between 100 and 4096 Lower values have higher priority.
+
+---
+
+##### `protocol`<sup>Required</sup> <a name="protocol" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.protocol"></a>
+
+```typescript
+public readonly protocol: string;
+```
+
+- *Type:* string
+
+Network protocol this rule applies to.
+
+---
+
+*Example*
+
+```typescript
+"Tcp", "Udp", "Icmp", "Esp", "Ah", "*"
+```
+
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+A description for this rule Restricted to 140 characters.
+
+---
+
+##### `destinationAddressPrefix`<sup>Optional</sup> <a name="destinationAddressPrefix" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.destinationAddressPrefix"></a>
+
+```typescript
+public readonly destinationAddressPrefix: string;
+```
+
+- *Type:* string
+
+The destination address prefix.
+
+---
+
+*Example*
+
+```typescript
+"10.0.1.0/24", "VirtualNetwork", "*"
+```
+
+
+##### `destinationAddressPrefixes`<sup>Optional</sup> <a name="destinationAddressPrefixes" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.destinationAddressPrefixes"></a>
+
+```typescript
+public readonly destinationAddressPrefixes: string[];
+```
+
+- *Type:* string[]
+
+The destination address prefixes (for multiple destinations).
+
+---
+
+*Example*
+
+```typescript
+["10.0.1.0/24", "10.0.2.0/24"]
+```
+
+
+##### `destinationApplicationSecurityGroups`<sup>Optional</sup> <a name="destinationApplicationSecurityGroups" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.destinationApplicationSecurityGroups"></a>
+
+```typescript
+public readonly destinationApplicationSecurityGroups: any[];
+```
+
+- *Type:* any[]
+
+Destination application security groups.
+
+---
+
+##### `destinationPortRange`<sup>Optional</sup> <a name="destinationPortRange" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.destinationPortRange"></a>
+
+```typescript
+public readonly destinationPortRange: string;
+```
+
+- *Type:* string
+
+The destination port or range.
+
+---
+
+*Example*
+
+```typescript
+"443", "3389", "*"
+```
+
+
+##### `destinationPortRanges`<sup>Optional</sup> <a name="destinationPortRanges" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.destinationPortRanges"></a>
+
+```typescript
+public readonly destinationPortRanges: string[];
+```
+
+- *Type:* string[]
+
+The destination port ranges (for multiple ranges).
+
+---
+
+*Example*
+
+```typescript
+["80", "443"]
+```
+
+
+##### `sourceAddressPrefix`<sup>Optional</sup> <a name="sourceAddressPrefix" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.sourceAddressPrefix"></a>
+
+```typescript
+public readonly sourceAddressPrefix: string;
+```
+
+- *Type:* string
+
+The source address prefix.
+
+---
+
+*Example*
+
+```typescript
+"10.0.0.0/16", "VirtualNetwork", "Internet", "*"
+```
+
+
+##### `sourceAddressPrefixes`<sup>Optional</sup> <a name="sourceAddressPrefixes" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.sourceAddressPrefixes"></a>
+
+```typescript
+public readonly sourceAddressPrefixes: string[];
+```
+
+- *Type:* string[]
+
+The source address prefixes (for multiple sources).
+
+---
+
+*Example*
+
+```typescript
+["10.0.0.0/16", "10.1.0.0/16"]
+```
+
+
+##### `sourceApplicationSecurityGroups`<sup>Optional</sup> <a name="sourceApplicationSecurityGroups" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.sourceApplicationSecurityGroups"></a>
+
+```typescript
+public readonly sourceApplicationSecurityGroups: any[];
+```
+
+- *Type:* any[]
+
+Source application security groups.
+
+---
+
+##### `sourcePortRange`<sup>Optional</sup> <a name="sourcePortRange" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.sourcePortRange"></a>
+
+```typescript
+public readonly sourcePortRange: string;
+```
+
+- *Type:* string
+
+The source port or range.
+
+---
+
+*Example*
+
+```typescript
+"80", "8000-8999", "*"
+```
+
+
+##### `sourcePortRanges`<sup>Optional</sup> <a name="sourcePortRanges" id="@microsoft/terraform-cdk-constructs.SecurityRuleProperties.property.sourcePortRanges"></a>
+
+```typescript
+public readonly sourcePortRanges: string[];
+```
+
+- *Type:* string[]
+
+The source port ranges (for multiple ranges).
+
+---
+
+*Example*
+
+```typescript
+["80", "443", "8080-8090"]
+```
+
+
+### SecurityRuleProperties <a name="SecurityRuleProperties" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties"></a>
+
+Properties for a security rule.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.Initializer"></a>
+
+```typescript
+import { azure_networksecuritygroup } from '@microsoft/terraform-cdk-constructs'
+
+const securityRuleProperties: azure_networksecuritygroup.SecurityRuleProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.access">access</a></code> | <code>string</code> | The network traffic is allowed or denied Must be "Allow" or "Deny". |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.direction">direction</a></code> | <code>string</code> | The direction of the rule Must be "Inbound" or "Outbound". |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.priority">priority</a></code> | <code>number</code> | The priority of the rule Value must be between 100 and 4096 Lower values have higher priority. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.protocol">protocol</a></code> | <code>string</code> | Network protocol this rule applies to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.description">description</a></code> | <code>string</code> | A description for this rule Restricted to 140 characters. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.destinationAddressPrefix">destinationAddressPrefix</a></code> | <code>string</code> | The destination address prefix. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.destinationAddressPrefixes">destinationAddressPrefixes</a></code> | <code>string[]</code> | The destination address prefixes (for multiple destinations). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.destinationApplicationSecurityGroups">destinationApplicationSecurityGroups</a></code> | <code>any[]</code> | Destination application security groups. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.destinationPortRange">destinationPortRange</a></code> | <code>string</code> | The destination port or range. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.destinationPortRanges">destinationPortRanges</a></code> | <code>string[]</code> | The destination port ranges (for multiple ranges). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.sourceAddressPrefix">sourceAddressPrefix</a></code> | <code>string</code> | The source address prefix. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.sourceAddressPrefixes">sourceAddressPrefixes</a></code> | <code>string[]</code> | The source address prefixes (for multiple sources). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.sourceApplicationSecurityGroups">sourceApplicationSecurityGroups</a></code> | <code>any[]</code> | Source application security groups. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.sourcePortRange">sourcePortRange</a></code> | <code>string</code> | The source port or range. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.sourcePortRanges">sourcePortRanges</a></code> | <code>string[]</code> | The source port ranges (for multiple ranges). |
+
+---
+
+##### `access`<sup>Required</sup> <a name="access" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.access"></a>
+
+```typescript
+public readonly access: string;
+```
+
+- *Type:* string
+
+The network traffic is allowed or denied Must be "Allow" or "Deny".
+
+---
+
+##### `direction`<sup>Required</sup> <a name="direction" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.direction"></a>
+
+```typescript
+public readonly direction: string;
+```
+
+- *Type:* string
+
+The direction of the rule Must be "Inbound" or "Outbound".
+
+---
+
+##### `priority`<sup>Required</sup> <a name="priority" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.priority"></a>
+
+```typescript
+public readonly priority: number;
+```
+
+- *Type:* number
+
+The priority of the rule Value must be between 100 and 4096 Lower values have higher priority.
+
+---
+
+##### `protocol`<sup>Required</sup> <a name="protocol" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.protocol"></a>
+
+```typescript
+public readonly protocol: string;
+```
+
+- *Type:* string
+
+Network protocol this rule applies to.
+
+---
+
+*Example*
+
+```typescript
+"Tcp", "Udp", "Icmp", "Esp", "Ah", "*"
+```
+
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+A description for this rule Restricted to 140 characters.
+
+---
+
+##### `destinationAddressPrefix`<sup>Optional</sup> <a name="destinationAddressPrefix" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.destinationAddressPrefix"></a>
+
+```typescript
+public readonly destinationAddressPrefix: string;
+```
+
+- *Type:* string
+
+The destination address prefix.
+
+---
+
+*Example*
+
+```typescript
+"10.0.1.0/24", "VirtualNetwork", "*"
+```
+
+
+##### `destinationAddressPrefixes`<sup>Optional</sup> <a name="destinationAddressPrefixes" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.destinationAddressPrefixes"></a>
+
+```typescript
+public readonly destinationAddressPrefixes: string[];
+```
+
+- *Type:* string[]
+
+The destination address prefixes (for multiple destinations).
+
+---
+
+*Example*
+
+```typescript
+["10.0.1.0/24", "10.0.2.0/24"]
+```
+
+
+##### `destinationApplicationSecurityGroups`<sup>Optional</sup> <a name="destinationApplicationSecurityGroups" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.destinationApplicationSecurityGroups"></a>
+
+```typescript
+public readonly destinationApplicationSecurityGroups: any[];
+```
+
+- *Type:* any[]
+
+Destination application security groups.
+
+---
+
+##### `destinationPortRange`<sup>Optional</sup> <a name="destinationPortRange" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.destinationPortRange"></a>
+
+```typescript
+public readonly destinationPortRange: string;
+```
+
+- *Type:* string
+
+The destination port or range.
+
+---
+
+*Example*
+
+```typescript
+"443", "3389", "*"
+```
+
+
+##### `destinationPortRanges`<sup>Optional</sup> <a name="destinationPortRanges" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.destinationPortRanges"></a>
+
+```typescript
+public readonly destinationPortRanges: string[];
+```
+
+- *Type:* string[]
+
+The destination port ranges (for multiple ranges).
+
+---
+
+*Example*
+
+```typescript
+["80", "443"]
+```
+
+
+##### `sourceAddressPrefix`<sup>Optional</sup> <a name="sourceAddressPrefix" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.sourceAddressPrefix"></a>
+
+```typescript
+public readonly sourceAddressPrefix: string;
+```
+
+- *Type:* string
+
+The source address prefix.
+
+---
+
+*Example*
+
+```typescript
+"10.0.0.0/16", "VirtualNetwork", "Internet", "*"
+```
+
+
+##### `sourceAddressPrefixes`<sup>Optional</sup> <a name="sourceAddressPrefixes" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.sourceAddressPrefixes"></a>
+
+```typescript
+public readonly sourceAddressPrefixes: string[];
+```
+
+- *Type:* string[]
+
+The source address prefixes (for multiple sources).
+
+---
+
+*Example*
+
+```typescript
+["10.0.0.0/16", "10.1.0.0/16"]
+```
+
+
+##### `sourceApplicationSecurityGroups`<sup>Optional</sup> <a name="sourceApplicationSecurityGroups" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.sourceApplicationSecurityGroups"></a>
+
+```typescript
+public readonly sourceApplicationSecurityGroups: any[];
+```
+
+- *Type:* any[]
+
+Source application security groups.
+
+---
+
+##### `sourcePortRange`<sup>Optional</sup> <a name="sourcePortRange" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.sourcePortRange"></a>
+
+```typescript
+public readonly sourcePortRange: string;
+```
+
+- *Type:* string
+
+The source port or range.
+
+---
+
+*Example*
+
+```typescript
+"80", "8000-8999", "*"
+```
+
+
+##### `sourcePortRanges`<sup>Optional</sup> <a name="sourcePortRanges" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.SecurityRuleProperties.property.sourcePortRanges"></a>
+
+```typescript
+public readonly sourcePortRanges: string[];
+```
+
+- *Type:* string[]
+
+The source port ranges (for multiple ranges).
+
+---
+
+*Example*
+
+```typescript
+["80", "443", "8080-8090"]
+```
+
 
 ### StorageAccountBody <a name="StorageAccountBody" id="@microsoft/terraform-cdk-constructs.StorageAccountBody"></a>
 
@@ -30559,6 +42701,1168 @@ Virtual network resource ID.
 
 ---
 
+### SubnetDelegation <a name="SubnetDelegation" id="@microsoft/terraform-cdk-constructs.SubnetDelegation"></a>
+
+Delegation configuration for Subnet.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.SubnetDelegation.Initializer"></a>
+
+```typescript
+import { SubnetDelegation } from '@microsoft/terraform-cdk-constructs'
+
+const subnetDelegation: SubnetDelegation = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetDelegation.property.name">name</a></code> | <code>string</code> | Name of the delegation. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetDelegation.property.serviceName">serviceName</a></code> | <code>string</code> | The service name to delegate to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetDelegation.property.actions">actions</a></code> | <code>string[]</code> | Optional actions allowed for the delegation. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.SubnetDelegation.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+Name of the delegation.
+
+---
+
+##### `serviceName`<sup>Required</sup> <a name="serviceName" id="@microsoft/terraform-cdk-constructs.SubnetDelegation.property.serviceName"></a>
+
+```typescript
+public readonly serviceName: string;
+```
+
+- *Type:* string
+
+The service name to delegate to.
+
+---
+
+*Example*
+
+```typescript
+"Microsoft.Sql/managedInstances"
+```
+
+
+##### `actions`<sup>Optional</sup> <a name="actions" id="@microsoft/terraform-cdk-constructs.SubnetDelegation.property.actions"></a>
+
+```typescript
+public readonly actions: string[];
+```
+
+- *Type:* string[]
+
+Optional actions allowed for the delegation.
+
+---
+
+### SubnetDelegation <a name="SubnetDelegation" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetDelegation"></a>
+
+Delegation configuration for Subnet.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetDelegation.Initializer"></a>
+
+```typescript
+import { azure_subnet } from '@microsoft/terraform-cdk-constructs'
+
+const subnetDelegation: azure_subnet.SubnetDelegation = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetDelegation.property.name">name</a></code> | <code>string</code> | Name of the delegation. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetDelegation.property.serviceName">serviceName</a></code> | <code>string</code> | The service name to delegate to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetDelegation.property.actions">actions</a></code> | <code>string[]</code> | Optional actions allowed for the delegation. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetDelegation.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+Name of the delegation.
+
+---
+
+##### `serviceName`<sup>Required</sup> <a name="serviceName" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetDelegation.property.serviceName"></a>
+
+```typescript
+public readonly serviceName: string;
+```
+
+- *Type:* string
+
+The service name to delegate to.
+
+---
+
+*Example*
+
+```typescript
+"Microsoft.Sql/managedInstances"
+```
+
+
+##### `actions`<sup>Optional</sup> <a name="actions" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetDelegation.property.actions"></a>
+
+```typescript
+public readonly actions: string[];
+```
+
+- *Type:* string[]
+
+Optional actions allowed for the delegation.
+
+---
+
+### SubnetNATGatewayReference <a name="SubnetNATGatewayReference" id="@microsoft/terraform-cdk-constructs.SubnetNATGatewayReference"></a>
+
+NAT Gateway reference for Subnet.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.SubnetNATGatewayReference.Initializer"></a>
+
+```typescript
+import { SubnetNATGatewayReference } from '@microsoft/terraform-cdk-constructs'
+
+const subnetNATGatewayReference: SubnetNATGatewayReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetNATGatewayReference.property.id">id</a></code> | <code>string</code> | NAT Gateway resource ID. |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.SubnetNATGatewayReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+NAT Gateway resource ID.
+
+---
+
+### SubnetNATGatewayReference <a name="SubnetNATGatewayReference" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetNATGatewayReference"></a>
+
+NAT Gateway reference for Subnet.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetNATGatewayReference.Initializer"></a>
+
+```typescript
+import { azure_subnet } from '@microsoft/terraform-cdk-constructs'
+
+const subnetNATGatewayReference: azure_subnet.SubnetNATGatewayReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetNATGatewayReference.property.id">id</a></code> | <code>string</code> | NAT Gateway resource ID. |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetNATGatewayReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+NAT Gateway resource ID.
+
+---
+
+### SubnetNSGReference <a name="SubnetNSGReference" id="@microsoft/terraform-cdk-constructs.SubnetNSGReference"></a>
+
+Network Security Group reference for Subnet.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.SubnetNSGReference.Initializer"></a>
+
+```typescript
+import { SubnetNSGReference } from '@microsoft/terraform-cdk-constructs'
+
+const subnetNSGReference: SubnetNSGReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetNSGReference.property.id">id</a></code> | <code>string</code> | Network Security Group resource ID. |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.SubnetNSGReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Network Security Group resource ID.
+
+---
+
+### SubnetNSGReference <a name="SubnetNSGReference" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetNSGReference"></a>
+
+Network Security Group reference for Subnet.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetNSGReference.Initializer"></a>
+
+```typescript
+import { azure_subnet } from '@microsoft/terraform-cdk-constructs'
+
+const subnetNSGReference: azure_subnet.SubnetNSGReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetNSGReference.property.id">id</a></code> | <code>string</code> | Network Security Group resource ID. |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetNSGReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Network Security Group resource ID.
+
+---
+
+### SubnetProps <a name="SubnetProps" id="@microsoft/terraform-cdk-constructs.SubnetProps"></a>
+
+Properties for the Azure Subnet.
+
+Extends AzapiResourceProps with Subnet specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.SubnetProps.Initializer"></a>
+
+```typescript
+import { SubnetProps } from '@microsoft/terraform-cdk-constructs'
+
+const subnetProps: SubnetProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.addressPrefix">addressPrefix</a></code> | <code>string</code> | Address prefix for the subnet in CIDR notation Must be within the parent VNet's address space. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the parent VNet exists Required for constructing the parent ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.virtualNetworkName">virtualNetworkName</a></code> | <code>string</code> | Name of the parent virtual network Required for constructing the parent ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.delegations">delegations</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetDelegation[]</code> | Subnet delegations Delegates subnet to specific Azure services. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes Useful for properties that are externally managed. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.ipAllocations">ipAllocations</a></code> | <code>any[]</code> | IP allocations for the subnet Optional - for custom IP allocation. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.natGateway">natGateway</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetNATGatewayReference</code> | NAT gateway reference Optional - for outbound internet connectivity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.networkSecurityGroup">networkSecurityGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetNSGReference</code> | Network security group reference Optional - can be attached later. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.privateEndpointNetworkPolicies">privateEndpointNetworkPolicies</a></code> | <code>string</code> | Private endpoint network policies Controls whether network policies apply to private endpoints. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.privateLinkServiceNetworkPolicies">privateLinkServiceNetworkPolicies</a></code> | <code>string</code> | Private link service network policies Controls whether network policies apply to private link services. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.routeTable">routeTable</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetRouteTableReference</code> | Route table reference Optional - can be attached later. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.serviceEndpoints">serviceEndpoints</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetServiceEndpoint[]</code> | Service endpoints for the subnet Enables private access to Azure services. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.virtualNetworkId">virtualNetworkId</a></code> | <code>string</code> | Optional: Full resource ID of the parent Virtual Network When provided, creates a proper Terraform dependency on the VNet If not provided, the parent ID will be constructed from resourceGroupId and virtualNetworkName. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `addressPrefix`<sup>Required</sup> <a name="addressPrefix" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.addressPrefix"></a>
+
+```typescript
+public readonly addressPrefix: string;
+```
+
+- *Type:* string
+
+Address prefix for the subnet in CIDR notation Must be within the parent VNet's address space.
+
+---
+
+*Example*
+
+```typescript
+"10.0.1.0/24"
+```
+
+
+##### `resourceGroupId`<sup>Required</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the parent VNet exists Required for constructing the parent ID.
+
+---
+
+##### `virtualNetworkName`<sup>Required</sup> <a name="virtualNetworkName" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.virtualNetworkName"></a>
+
+```typescript
+public readonly virtualNetworkName: string;
+```
+
+- *Type:* string
+
+Name of the parent virtual network Required for constructing the parent ID.
+
+---
+
+##### `delegations`<sup>Optional</sup> <a name="delegations" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.delegations"></a>
+
+```typescript
+public readonly delegations: SubnetDelegation[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetDelegation[]
+
+Subnet delegations Delegates subnet to specific Azure services.
+
+---
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes Useful for properties that are externally managed.
+
+---
+
+*Example*
+
+```typescript
+["networkSecurityGroup", "routeTable"]
+```
+
+
+##### `ipAllocations`<sup>Optional</sup> <a name="ipAllocations" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.ipAllocations"></a>
+
+```typescript
+public readonly ipAllocations: any[];
+```
+
+- *Type:* any[]
+
+IP allocations for the subnet Optional - for custom IP allocation.
+
+---
+
+##### `natGateway`<sup>Optional</sup> <a name="natGateway" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.natGateway"></a>
+
+```typescript
+public readonly natGateway: SubnetNATGatewayReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetNATGatewayReference
+
+NAT gateway reference Optional - for outbound internet connectivity.
+
+---
+
+##### `networkSecurityGroup`<sup>Optional</sup> <a name="networkSecurityGroup" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.networkSecurityGroup"></a>
+
+```typescript
+public readonly networkSecurityGroup: SubnetNSGReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetNSGReference
+
+Network security group reference Optional - can be attached later.
+
+---
+
+##### `privateEndpointNetworkPolicies`<sup>Optional</sup> <a name="privateEndpointNetworkPolicies" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.privateEndpointNetworkPolicies"></a>
+
+```typescript
+public readonly privateEndpointNetworkPolicies: string;
+```
+
+- *Type:* string
+- *Default:* "Disabled"
+
+Private endpoint network policies Controls whether network policies apply to private endpoints.
+
+---
+
+##### `privateLinkServiceNetworkPolicies`<sup>Optional</sup> <a name="privateLinkServiceNetworkPolicies" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.privateLinkServiceNetworkPolicies"></a>
+
+```typescript
+public readonly privateLinkServiceNetworkPolicies: string;
+```
+
+- *Type:* string
+- *Default:* "Enabled"
+
+Private link service network policies Controls whether network policies apply to private link services.
+
+---
+
+##### `routeTable`<sup>Optional</sup> <a name="routeTable" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.routeTable"></a>
+
+```typescript
+public readonly routeTable: SubnetRouteTableReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetRouteTableReference
+
+Route table reference Optional - can be attached later.
+
+---
+
+##### `serviceEndpoints`<sup>Optional</sup> <a name="serviceEndpoints" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.serviceEndpoints"></a>
+
+```typescript
+public readonly serviceEndpoints: SubnetServiceEndpoint[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetServiceEndpoint[]
+
+Service endpoints for the subnet Enables private access to Azure services.
+
+---
+
+##### `virtualNetworkId`<sup>Optional</sup> <a name="virtualNetworkId" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.virtualNetworkId"></a>
+
+```typescript
+public readonly virtualNetworkId: string;
+```
+
+- *Type:* string
+
+Optional: Full resource ID of the parent Virtual Network When provided, creates a proper Terraform dependency on the VNet If not provided, the parent ID will be constructed from resourceGroupId and virtualNetworkName.
+
+---
+
+### SubnetProps <a name="SubnetProps" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps"></a>
+
+Properties for the Azure Subnet.
+
+Extends AzapiResourceProps with Subnet specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.Initializer"></a>
+
+```typescript
+import { azure_subnet } from '@microsoft/terraform-cdk-constructs'
+
+const subnetProps: azure_subnet.SubnetProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.addressPrefix">addressPrefix</a></code> | <code>string</code> | Address prefix for the subnet in CIDR notation Must be within the parent VNet's address space. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the parent VNet exists Required for constructing the parent ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.virtualNetworkName">virtualNetworkName</a></code> | <code>string</code> | Name of the parent virtual network Required for constructing the parent ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.delegations">delegations</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetDelegation[]</code> | Subnet delegations Delegates subnet to specific Azure services. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes Useful for properties that are externally managed. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.ipAllocations">ipAllocations</a></code> | <code>any[]</code> | IP allocations for the subnet Optional - for custom IP allocation. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.natGateway">natGateway</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetNATGatewayReference</code> | NAT gateway reference Optional - for outbound internet connectivity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.networkSecurityGroup">networkSecurityGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetNSGReference</code> | Network security group reference Optional - can be attached later. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.privateEndpointNetworkPolicies">privateEndpointNetworkPolicies</a></code> | <code>string</code> | Private endpoint network policies Controls whether network policies apply to private endpoints. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.privateLinkServiceNetworkPolicies">privateLinkServiceNetworkPolicies</a></code> | <code>string</code> | Private link service network policies Controls whether network policies apply to private link services. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.routeTable">routeTable</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetRouteTableReference</code> | Route table reference Optional - can be attached later. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.serviceEndpoints">serviceEndpoints</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_subnet.SubnetServiceEndpoint[]</code> | Service endpoints for the subnet Enables private access to Azure services. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.virtualNetworkId">virtualNetworkId</a></code> | <code>string</code> | Optional: Full resource ID of the parent Virtual Network When provided, creates a proper Terraform dependency on the VNet If not provided, the parent ID will be constructed from resourceGroupId and virtualNetworkName. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `addressPrefix`<sup>Required</sup> <a name="addressPrefix" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.addressPrefix"></a>
+
+```typescript
+public readonly addressPrefix: string;
+```
+
+- *Type:* string
+
+Address prefix for the subnet in CIDR notation Must be within the parent VNet's address space.
+
+---
+
+*Example*
+
+```typescript
+"10.0.1.0/24"
+```
+
+
+##### `resourceGroupId`<sup>Required</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the parent VNet exists Required for constructing the parent ID.
+
+---
+
+##### `virtualNetworkName`<sup>Required</sup> <a name="virtualNetworkName" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.virtualNetworkName"></a>
+
+```typescript
+public readonly virtualNetworkName: string;
+```
+
+- *Type:* string
+
+Name of the parent virtual network Required for constructing the parent ID.
+
+---
+
+##### `delegations`<sup>Optional</sup> <a name="delegations" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.delegations"></a>
+
+```typescript
+public readonly delegations: SubnetDelegation[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetDelegation[]
+
+Subnet delegations Delegates subnet to specific Azure services.
+
+---
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes Useful for properties that are externally managed.
+
+---
+
+*Example*
+
+```typescript
+["networkSecurityGroup", "routeTable"]
+```
+
+
+##### `ipAllocations`<sup>Optional</sup> <a name="ipAllocations" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.ipAllocations"></a>
+
+```typescript
+public readonly ipAllocations: any[];
+```
+
+- *Type:* any[]
+
+IP allocations for the subnet Optional - for custom IP allocation.
+
+---
+
+##### `natGateway`<sup>Optional</sup> <a name="natGateway" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.natGateway"></a>
+
+```typescript
+public readonly natGateway: SubnetNATGatewayReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetNATGatewayReference
+
+NAT gateway reference Optional - for outbound internet connectivity.
+
+---
+
+##### `networkSecurityGroup`<sup>Optional</sup> <a name="networkSecurityGroup" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.networkSecurityGroup"></a>
+
+```typescript
+public readonly networkSecurityGroup: SubnetNSGReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetNSGReference
+
+Network security group reference Optional - can be attached later.
+
+---
+
+##### `privateEndpointNetworkPolicies`<sup>Optional</sup> <a name="privateEndpointNetworkPolicies" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.privateEndpointNetworkPolicies"></a>
+
+```typescript
+public readonly privateEndpointNetworkPolicies: string;
+```
+
+- *Type:* string
+- *Default:* "Disabled"
+
+Private endpoint network policies Controls whether network policies apply to private endpoints.
+
+---
+
+##### `privateLinkServiceNetworkPolicies`<sup>Optional</sup> <a name="privateLinkServiceNetworkPolicies" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.privateLinkServiceNetworkPolicies"></a>
+
+```typescript
+public readonly privateLinkServiceNetworkPolicies: string;
+```
+
+- *Type:* string
+- *Default:* "Enabled"
+
+Private link service network policies Controls whether network policies apply to private link services.
+
+---
+
+##### `routeTable`<sup>Optional</sup> <a name="routeTable" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.routeTable"></a>
+
+```typescript
+public readonly routeTable: SubnetRouteTableReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetRouteTableReference
+
+Route table reference Optional - can be attached later.
+
+---
+
+##### `serviceEndpoints`<sup>Optional</sup> <a name="serviceEndpoints" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.serviceEndpoints"></a>
+
+```typescript
+public readonly serviceEndpoints: SubnetServiceEndpoint[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_subnet.SubnetServiceEndpoint[]
+
+Service endpoints for the subnet Enables private access to Azure services.
+
+---
+
+##### `virtualNetworkId`<sup>Optional</sup> <a name="virtualNetworkId" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.virtualNetworkId"></a>
+
+```typescript
+public readonly virtualNetworkId: string;
+```
+
+- *Type:* string
+
+Optional: Full resource ID of the parent Virtual Network When provided, creates a proper Terraform dependency on the VNet If not provided, the parent ID will be constructed from resourceGroupId and virtualNetworkName.
+
+---
+
+### SubnetRouteTableReference <a name="SubnetRouteTableReference" id="@microsoft/terraform-cdk-constructs.SubnetRouteTableReference"></a>
+
+Route Table reference for Subnet.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.SubnetRouteTableReference.Initializer"></a>
+
+```typescript
+import { SubnetRouteTableReference } from '@microsoft/terraform-cdk-constructs'
+
+const subnetRouteTableReference: SubnetRouteTableReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetRouteTableReference.property.id">id</a></code> | <code>string</code> | Route Table resource ID. |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.SubnetRouteTableReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Route Table resource ID.
+
+---
+
+### SubnetRouteTableReference <a name="SubnetRouteTableReference" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetRouteTableReference"></a>
+
+Route Table reference for Subnet.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetRouteTableReference.Initializer"></a>
+
+```typescript
+import { azure_subnet } from '@microsoft/terraform-cdk-constructs'
+
+const subnetRouteTableReference: azure_subnet.SubnetRouteTableReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetRouteTableReference.property.id">id</a></code> | <code>string</code> | Route Table resource ID. |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetRouteTableReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+Route Table resource ID.
+
+---
+
+### SubnetServiceEndpoint <a name="SubnetServiceEndpoint" id="@microsoft/terraform-cdk-constructs.SubnetServiceEndpoint"></a>
+
+Service endpoint configuration for Subnet.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.SubnetServiceEndpoint.Initializer"></a>
+
+```typescript
+import { SubnetServiceEndpoint } from '@microsoft/terraform-cdk-constructs'
+
+const subnetServiceEndpoint: SubnetServiceEndpoint = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetServiceEndpoint.property.service">service</a></code> | <code>string</code> | The service endpoint identifier. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetServiceEndpoint.property.locations">locations</a></code> | <code>string[]</code> | Optional locations where the service endpoint is available. |
+
+---
+
+##### `service`<sup>Required</sup> <a name="service" id="@microsoft/terraform-cdk-constructs.SubnetServiceEndpoint.property.service"></a>
+
+```typescript
+public readonly service: string;
+```
+
+- *Type:* string
+
+The service endpoint identifier.
+
+---
+
+*Example*
+
+```typescript
+"Microsoft.Storage"
+```
+
+
+##### `locations`<sup>Optional</sup> <a name="locations" id="@microsoft/terraform-cdk-constructs.SubnetServiceEndpoint.property.locations"></a>
+
+```typescript
+public readonly locations: string[];
+```
+
+- *Type:* string[]
+
+Optional locations where the service endpoint is available.
+
+---
+
+*Example*
+
+```typescript
+["eastus", "westus"]
+```
+
+
+### SubnetServiceEndpoint <a name="SubnetServiceEndpoint" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetServiceEndpoint"></a>
+
+Service endpoint configuration for Subnet.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetServiceEndpoint.Initializer"></a>
+
+```typescript
+import { azure_subnet } from '@microsoft/terraform-cdk-constructs'
+
+const subnetServiceEndpoint: azure_subnet.SubnetServiceEndpoint = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetServiceEndpoint.property.service">service</a></code> | <code>string</code> | The service endpoint identifier. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetServiceEndpoint.property.locations">locations</a></code> | <code>string[]</code> | Optional locations where the service endpoint is available. |
+
+---
+
+##### `service`<sup>Required</sup> <a name="service" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetServiceEndpoint.property.service"></a>
+
+```typescript
+public readonly service: string;
+```
+
+- *Type:* string
+
+The service endpoint identifier.
+
+---
+
+*Example*
+
+```typescript
+"Microsoft.Storage"
+```
+
+
+##### `locations`<sup>Optional</sup> <a name="locations" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetServiceEndpoint.property.locations"></a>
+
+```typescript
+public readonly locations: string[];
+```
+
+- *Type:* string[]
+
+Optional locations where the service endpoint is available.
+
+---
+
+*Example*
+
+```typescript
+["eastus", "westus"]
+```
+
+
+### TerminateNotificationProfile <a name="TerminateNotificationProfile" id="@microsoft/terraform-cdk-constructs.TerminateNotificationProfile"></a>
+
+Terminate notification profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.TerminateNotificationProfile.Initializer"></a>
+
+```typescript
+import { TerminateNotificationProfile } from '@microsoft/terraform-cdk-constructs'
+
+const terminateNotificationProfile: TerminateNotificationProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TerminateNotificationProfile.property.enable">enable</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TerminateNotificationProfile.property.notBeforeTimeout">notBeforeTimeout</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enable`<sup>Optional</sup> <a name="enable" id="@microsoft/terraform-cdk-constructs.TerminateNotificationProfile.property.enable"></a>
+
+```typescript
+public readonly enable: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `notBeforeTimeout`<sup>Optional</sup> <a name="notBeforeTimeout" id="@microsoft/terraform-cdk-constructs.TerminateNotificationProfile.property.notBeforeTimeout"></a>
+
+```typescript
+public readonly notBeforeTimeout: string;
+```
+
+- *Type:* string
+
+---
+
+### TerminateNotificationProfile <a name="TerminateNotificationProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.TerminateNotificationProfile"></a>
+
+Terminate notification profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.TerminateNotificationProfile.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const terminateNotificationProfile: azure_vmss.TerminateNotificationProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.TerminateNotificationProfile.property.enable">enable</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.TerminateNotificationProfile.property.notBeforeTimeout">notBeforeTimeout</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enable`<sup>Optional</sup> <a name="enable" id="@microsoft/terraform-cdk-constructs.azure_vmss.TerminateNotificationProfile.property.enable"></a>
+
+```typescript
+public readonly enable: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `notBeforeTimeout`<sup>Optional</sup> <a name="notBeforeTimeout" id="@microsoft/terraform-cdk-constructs.azure_vmss.TerminateNotificationProfile.property.notBeforeTimeout"></a>
+
+```typescript
+public readonly notBeforeTimeout: string;
+```
+
+- *Type:* string
+
+---
+
 ### UpdateResourceConfig <a name="UpdateResourceConfig" id="@microsoft/terraform-cdk-constructs.UpdateResourceConfig"></a>
 
 #### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.UpdateResourceConfig.Initializer"></a>
@@ -30770,15 +44074,15 @@ The ID of the azure resource in which this resource is created.
 
 It supports different kinds of deployment scope for **top level** resources:
 
-- resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
-- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
-- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
-- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
-- tenant scope: `parent_id` should be /
+  - resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
+	- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
+	- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
+	- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
+	- tenant scope: `parent_id` should be /
 
-For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
+  For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
 
-For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
+  For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
 
 Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#parent_id UpdateResource#parent_id}
 
@@ -30838,27 +44142,27 @@ The attribute can accept either a list or a map.
 
 **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
 
-```text
-{
-properties = {
-loginServer = "registry1.azurecr.io"
-policies = {
-quarantinePolicy = {
-	status = "disabled"
-}
-}
-}
-}
-```
+	```text
+	{
+		properties = {
+			loginServer = "registry1.azurecr.io"
+			policies = {
+				quarantinePolicy = {
+					status = "disabled"
+				}
+			}
+		}
+	}
+	```
 
 - **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
 
-```text
-{
-"login_server" = "registry1.azurecr.io"
-"quarantine_status" = "disabled"
-}
-```
+	```text
+	{
+		"login_server" = "registry1.azurecr.io"
+		"quarantine_status" = "disabled"
+	}
+	```
 
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
@@ -30907,7 +44211,7 @@ public readonly sensitiveBodyVersion: {[ key: string ]: string};
 
 A map where the key is the path to the property in `sensitive_body` and the value is the version of the property.
 
-The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body.
+The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body. 
 
 Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#sensitive_body_version UpdateResource#sensitive_body_version}
 
@@ -31166,15 +44470,15 @@ The ID of the azure resource in which this resource is created.
 
 It supports different kinds of deployment scope for **top level** resources:
 
-- resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
-- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
-- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
-- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
-- tenant scope: `parent_id` should be /
+  - resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
+	- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
+	- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
+	- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
+	- tenant scope: `parent_id` should be /
 
-For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
+  For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
 
-For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
+  For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
 
 Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#parent_id UpdateResource#parent_id}
 
@@ -31234,27 +44538,27 @@ The attribute can accept either a list or a map.
 
 **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
 
-```text
-{
-properties = {
-loginServer = "registry1.azurecr.io"
-policies = {
-quarantinePolicy = {
-	status = "disabled"
-}
-}
-}
-}
-```
+	```text
+	{
+		properties = {
+			loginServer = "registry1.azurecr.io"
+			policies = {
+				quarantinePolicy = {
+					status = "disabled"
+				}
+			}
+		}
+	}
+	```
 
 - **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
 
-```text
-{
-"login_server" = "registry1.azurecr.io"
-"quarantine_status" = "disabled"
-}
-```
+	```text
+	{
+		"login_server" = "registry1.azurecr.io"
+		"quarantine_status" = "disabled"
+	}
+	```
 
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
@@ -31303,7 +44607,7 @@ public readonly sensitiveBodyVersion: {[ key: string ]: string};
 
 A map where the key is the path to the property in `sensitive_body` and the value is the version of the property.
 
-The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body.
+The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body. 
 
 Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#sensitive_body_version UpdateResource#sensitive_body_version}
 
@@ -32834,6 +46138,8668 @@ Date when the current phase was entered.
 "2024-11-01"
 ```
 
+
+### VirtualMachineAdditionalCapabilities <a name="VirtualMachineAdditionalCapabilities" id="@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities"></a>
+
+Additional capabilities.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities.Initializer"></a>
+
+```typescript
+import { VirtualMachineAdditionalCapabilities } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineAdditionalCapabilities: VirtualMachineAdditionalCapabilities = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities.property.hibernationEnabled">hibernationEnabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities.property.ultraSSDEnabled">ultraSSDEnabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `hibernationEnabled`<sup>Optional</sup> <a name="hibernationEnabled" id="@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities.property.hibernationEnabled"></a>
+
+```typescript
+public readonly hibernationEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `ultraSSDEnabled`<sup>Optional</sup> <a name="ultraSSDEnabled" id="@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities.property.ultraSSDEnabled"></a>
+
+```typescript
+public readonly ultraSSDEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### VirtualMachineAdditionalCapabilities <a name="VirtualMachineAdditionalCapabilities" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineAdditionalCapabilities"></a>
+
+Additional capabilities.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineAdditionalCapabilities.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineAdditionalCapabilities: azure_virtualmachine.VirtualMachineAdditionalCapabilities = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineAdditionalCapabilities.property.hibernationEnabled">hibernationEnabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineAdditionalCapabilities.property.ultraSSDEnabled">ultraSSDEnabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `hibernationEnabled`<sup>Optional</sup> <a name="hibernationEnabled" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineAdditionalCapabilities.property.hibernationEnabled"></a>
+
+```typescript
+public readonly hibernationEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `ultraSSDEnabled`<sup>Optional</sup> <a name="ultraSSDEnabled" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineAdditionalCapabilities.property.ultraSSDEnabled"></a>
+
+```typescript
+public readonly ultraSSDEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### VirtualMachineAvailabilitySetReference <a name="VirtualMachineAvailabilitySetReference" id="@microsoft/terraform-cdk-constructs.VirtualMachineAvailabilitySetReference"></a>
+
+Availability set reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineAvailabilitySetReference.Initializer"></a>
+
+```typescript
+import { VirtualMachineAvailabilitySetReference } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineAvailabilitySetReference: VirtualMachineAvailabilitySetReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAvailabilitySetReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualMachineAvailabilitySetReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineAvailabilitySetReference <a name="VirtualMachineAvailabilitySetReference" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineAvailabilitySetReference"></a>
+
+Availability set reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineAvailabilitySetReference.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineAvailabilitySetReference: azure_virtualmachine.VirtualMachineAvailabilitySetReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineAvailabilitySetReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineAvailabilitySetReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineBillingProfile <a name="VirtualMachineBillingProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile"></a>
+
+Billing profile for spot VMs.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile.Initializer"></a>
+
+```typescript
+import { VirtualMachineBillingProfile } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineBillingProfile: VirtualMachineBillingProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile.property.maxPrice">maxPrice</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `maxPrice`<sup>Optional</sup> <a name="maxPrice" id="@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile.property.maxPrice"></a>
+
+```typescript
+public readonly maxPrice: number;
+```
+
+- *Type:* number
+
+---
+
+### VirtualMachineBillingProfile <a name="VirtualMachineBillingProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBillingProfile"></a>
+
+Billing profile for spot VMs.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBillingProfile.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineBillingProfile: azure_virtualmachine.VirtualMachineBillingProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBillingProfile.property.maxPrice">maxPrice</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `maxPrice`<sup>Optional</sup> <a name="maxPrice" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBillingProfile.property.maxPrice"></a>
+
+```typescript
+public readonly maxPrice: number;
+```
+
+- *Type:* number
+
+---
+
+### VirtualMachineBillingProfile <a name="VirtualMachineBillingProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineBillingProfile"></a>
+
+Billing profile for spot VMs.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineBillingProfile.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineBillingProfile: azure_vmss.VirtualMachineBillingProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineBillingProfile.property.maxPrice">maxPrice</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `maxPrice`<sup>Optional</sup> <a name="maxPrice" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineBillingProfile.property.maxPrice"></a>
+
+```typescript
+public readonly maxPrice: number;
+```
+
+- *Type:* number
+
+---
+
+### VirtualMachineBody <a name="VirtualMachineBody" id="@microsoft/terraform-cdk-constructs.VirtualMachineBody"></a>
+
+The resource body interface for Azure Virtual Machine API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineBody.Initializer"></a>
+
+```typescript
+import { VirtualMachineBody } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineBody: VirtualMachineBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBody.property.properties">properties</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties">VirtualMachineBodyProperties</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBody.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBody.property.plan">plan</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBody.property.zones">zones</a></code> | <code>string[]</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.VirtualMachineBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.VirtualMachineBody.property.properties"></a>
+
+```typescript
+public readonly properties: VirtualMachineBodyProperties;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties">VirtualMachineBodyProperties</a>
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.VirtualMachineBody.property.identity"></a>
+
+```typescript
+public readonly identity: VirtualMachineIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a>
+
+---
+
+##### `plan`<sup>Optional</sup> <a name="plan" id="@microsoft/terraform-cdk-constructs.VirtualMachineBody.property.plan"></a>
+
+```typescript
+public readonly plan: VirtualMachinePlan;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a>
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.VirtualMachineBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `zones`<sup>Optional</sup> <a name="zones" id="@microsoft/terraform-cdk-constructs.VirtualMachineBody.property.zones"></a>
+
+```typescript
+public readonly zones: string[];
+```
+
+- *Type:* string[]
+
+---
+
+### VirtualMachineBody <a name="VirtualMachineBody" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody"></a>
+
+The resource body interface for Azure Virtual Machine API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineBody: azure_virtualmachine.VirtualMachineBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody.property.properties">properties</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties">VirtualMachineBodyProperties</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody.property.plan">plan</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody.property.zones">zones</a></code> | <code>string[]</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody.property.properties"></a>
+
+```typescript
+public readonly properties: VirtualMachineBodyProperties;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties">VirtualMachineBodyProperties</a>
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody.property.identity"></a>
+
+```typescript
+public readonly identity: VirtualMachineIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a>
+
+---
+
+##### `plan`<sup>Optional</sup> <a name="plan" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody.property.plan"></a>
+
+```typescript
+public readonly plan: VirtualMachinePlan;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a>
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `zones`<sup>Optional</sup> <a name="zones" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBody.property.zones"></a>
+
+```typescript
+public readonly zones: string[];
+```
+
+- *Type:* string[]
+
+---
+
+### VirtualMachineBodyProperties <a name="VirtualMachineBodyProperties" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties"></a>
+
+Virtual Machine properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.Initializer"></a>
+
+```typescript
+import { VirtualMachineBodyProperties } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineBodyProperties: VirtualMachineBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.hardwareProfile">hardwareProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile">VirtualMachineHardwareProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.networkProfile">networkProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkProfile">VirtualMachineNetworkProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.storageProfile">storageProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile">VirtualMachineStorageProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.additionalCapabilities">additionalCapabilities</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities">VirtualMachineAdditionalCapabilities</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.availabilitySet">availabilitySet</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAvailabilitySetReference">VirtualMachineAvailabilitySetReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.billingProfile">billingProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.diagnosticsProfile">diagnosticsProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile">VirtualMachineDiagnosticsProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.evictionPolicy">evictionPolicy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.host">host</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHostReference">VirtualMachineHostReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.licenseType">licenseType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.osProfile">osProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile">VirtualMachineOSProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.priority">priority</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.proximityPlacementGroup">proximityPlacementGroup</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProximityPlacementGroupReference">VirtualMachineProximityPlacementGroupReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.securityProfile">securityProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile">VirtualMachineSecurityProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.virtualMachineScaleSet">virtualMachineScaleSet</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetReference">VirtualMachineScaleSetReference</a></code> | *No description.* |
+
+---
+
+##### `hardwareProfile`<sup>Required</sup> <a name="hardwareProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.hardwareProfile"></a>
+
+```typescript
+public readonly hardwareProfile: VirtualMachineHardwareProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile">VirtualMachineHardwareProfile</a>
+
+---
+
+##### `networkProfile`<sup>Required</sup> <a name="networkProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.networkProfile"></a>
+
+```typescript
+public readonly networkProfile: VirtualMachineNetworkProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkProfile">VirtualMachineNetworkProfile</a>
+
+---
+
+##### `storageProfile`<sup>Required</sup> <a name="storageProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.storageProfile"></a>
+
+```typescript
+public readonly storageProfile: VirtualMachineStorageProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile">VirtualMachineStorageProfile</a>
+
+---
+
+##### `additionalCapabilities`<sup>Optional</sup> <a name="additionalCapabilities" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.additionalCapabilities"></a>
+
+```typescript
+public readonly additionalCapabilities: VirtualMachineAdditionalCapabilities;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities">VirtualMachineAdditionalCapabilities</a>
+
+---
+
+##### `availabilitySet`<sup>Optional</sup> <a name="availabilitySet" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.availabilitySet"></a>
+
+```typescript
+public readonly availabilitySet: VirtualMachineAvailabilitySetReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAvailabilitySetReference">VirtualMachineAvailabilitySetReference</a>
+
+---
+
+##### `billingProfile`<sup>Optional</sup> <a name="billingProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.billingProfile"></a>
+
+```typescript
+public readonly billingProfile: VirtualMachineBillingProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a>
+
+---
+
+##### `diagnosticsProfile`<sup>Optional</sup> <a name="diagnosticsProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.diagnosticsProfile"></a>
+
+```typescript
+public readonly diagnosticsProfile: VirtualMachineDiagnosticsProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile">VirtualMachineDiagnosticsProfile</a>
+
+---
+
+##### `evictionPolicy`<sup>Optional</sup> <a name="evictionPolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.evictionPolicy"></a>
+
+```typescript
+public readonly evictionPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `host`<sup>Optional</sup> <a name="host" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.host"></a>
+
+```typescript
+public readonly host: VirtualMachineHostReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHostReference">VirtualMachineHostReference</a>
+
+---
+
+##### `licenseType`<sup>Optional</sup> <a name="licenseType" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.licenseType"></a>
+
+```typescript
+public readonly licenseType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `osProfile`<sup>Optional</sup> <a name="osProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.osProfile"></a>
+
+```typescript
+public readonly osProfile: VirtualMachineOSProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile">VirtualMachineOSProfile</a>
+
+---
+
+##### `priority`<sup>Optional</sup> <a name="priority" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.priority"></a>
+
+```typescript
+public readonly priority: string;
+```
+
+- *Type:* string
+
+---
+
+##### `proximityPlacementGroup`<sup>Optional</sup> <a name="proximityPlacementGroup" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.proximityPlacementGroup"></a>
+
+```typescript
+public readonly proximityPlacementGroup: VirtualMachineProximityPlacementGroupReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProximityPlacementGroupReference">VirtualMachineProximityPlacementGroupReference</a>
+
+---
+
+##### `securityProfile`<sup>Optional</sup> <a name="securityProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.securityProfile"></a>
+
+```typescript
+public readonly securityProfile: VirtualMachineSecurityProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile">VirtualMachineSecurityProfile</a>
+
+---
+
+##### `virtualMachineScaleSet`<sup>Optional</sup> <a name="virtualMachineScaleSet" id="@microsoft/terraform-cdk-constructs.VirtualMachineBodyProperties.property.virtualMachineScaleSet"></a>
+
+```typescript
+public readonly virtualMachineScaleSet: VirtualMachineScaleSetReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetReference">VirtualMachineScaleSetReference</a>
+
+---
+
+### VirtualMachineBodyProperties <a name="VirtualMachineBodyProperties" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties"></a>
+
+Virtual Machine properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineBodyProperties: azure_virtualmachine.VirtualMachineBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.hardwareProfile">hardwareProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile">VirtualMachineHardwareProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.networkProfile">networkProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkProfile">VirtualMachineNetworkProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.storageProfile">storageProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile">VirtualMachineStorageProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.additionalCapabilities">additionalCapabilities</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities">VirtualMachineAdditionalCapabilities</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.availabilitySet">availabilitySet</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAvailabilitySetReference">VirtualMachineAvailabilitySetReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.billingProfile">billingProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.diagnosticsProfile">diagnosticsProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile">VirtualMachineDiagnosticsProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.evictionPolicy">evictionPolicy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.host">host</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHostReference">VirtualMachineHostReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.licenseType">licenseType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.osProfile">osProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile">VirtualMachineOSProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.priority">priority</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.proximityPlacementGroup">proximityPlacementGroup</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProximityPlacementGroupReference">VirtualMachineProximityPlacementGroupReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.securityProfile">securityProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile">VirtualMachineSecurityProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.virtualMachineScaleSet">virtualMachineScaleSet</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetReference">VirtualMachineScaleSetReference</a></code> | *No description.* |
+
+---
+
+##### `hardwareProfile`<sup>Required</sup> <a name="hardwareProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.hardwareProfile"></a>
+
+```typescript
+public readonly hardwareProfile: VirtualMachineHardwareProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile">VirtualMachineHardwareProfile</a>
+
+---
+
+##### `networkProfile`<sup>Required</sup> <a name="networkProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.networkProfile"></a>
+
+```typescript
+public readonly networkProfile: VirtualMachineNetworkProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkProfile">VirtualMachineNetworkProfile</a>
+
+---
+
+##### `storageProfile`<sup>Required</sup> <a name="storageProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.storageProfile"></a>
+
+```typescript
+public readonly storageProfile: VirtualMachineStorageProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile">VirtualMachineStorageProfile</a>
+
+---
+
+##### `additionalCapabilities`<sup>Optional</sup> <a name="additionalCapabilities" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.additionalCapabilities"></a>
+
+```typescript
+public readonly additionalCapabilities: VirtualMachineAdditionalCapabilities;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities">VirtualMachineAdditionalCapabilities</a>
+
+---
+
+##### `availabilitySet`<sup>Optional</sup> <a name="availabilitySet" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.availabilitySet"></a>
+
+```typescript
+public readonly availabilitySet: VirtualMachineAvailabilitySetReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAvailabilitySetReference">VirtualMachineAvailabilitySetReference</a>
+
+---
+
+##### `billingProfile`<sup>Optional</sup> <a name="billingProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.billingProfile"></a>
+
+```typescript
+public readonly billingProfile: VirtualMachineBillingProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a>
+
+---
+
+##### `diagnosticsProfile`<sup>Optional</sup> <a name="diagnosticsProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.diagnosticsProfile"></a>
+
+```typescript
+public readonly diagnosticsProfile: VirtualMachineDiagnosticsProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile">VirtualMachineDiagnosticsProfile</a>
+
+---
+
+##### `evictionPolicy`<sup>Optional</sup> <a name="evictionPolicy" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.evictionPolicy"></a>
+
+```typescript
+public readonly evictionPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `host`<sup>Optional</sup> <a name="host" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.host"></a>
+
+```typescript
+public readonly host: VirtualMachineHostReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHostReference">VirtualMachineHostReference</a>
+
+---
+
+##### `licenseType`<sup>Optional</sup> <a name="licenseType" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.licenseType"></a>
+
+```typescript
+public readonly licenseType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `osProfile`<sup>Optional</sup> <a name="osProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.osProfile"></a>
+
+```typescript
+public readonly osProfile: VirtualMachineOSProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile">VirtualMachineOSProfile</a>
+
+---
+
+##### `priority`<sup>Optional</sup> <a name="priority" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.priority"></a>
+
+```typescript
+public readonly priority: string;
+```
+
+- *Type:* string
+
+---
+
+##### `proximityPlacementGroup`<sup>Optional</sup> <a name="proximityPlacementGroup" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.proximityPlacementGroup"></a>
+
+```typescript
+public readonly proximityPlacementGroup: VirtualMachineProximityPlacementGroupReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProximityPlacementGroupReference">VirtualMachineProximityPlacementGroupReference</a>
+
+---
+
+##### `securityProfile`<sup>Optional</sup> <a name="securityProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.securityProfile"></a>
+
+```typescript
+public readonly securityProfile: VirtualMachineSecurityProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile">VirtualMachineSecurityProfile</a>
+
+---
+
+##### `virtualMachineScaleSet`<sup>Optional</sup> <a name="virtualMachineScaleSet" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBodyProperties.property.virtualMachineScaleSet"></a>
+
+```typescript
+public readonly virtualMachineScaleSet: VirtualMachineScaleSetReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetReference">VirtualMachineScaleSetReference</a>
+
+---
+
+### VirtualMachineBootDiagnostics <a name="VirtualMachineBootDiagnostics" id="@microsoft/terraform-cdk-constructs.VirtualMachineBootDiagnostics"></a>
+
+Boot diagnostics configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineBootDiagnostics.Initializer"></a>
+
+```typescript
+import { VirtualMachineBootDiagnostics } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineBootDiagnostics: VirtualMachineBootDiagnostics = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBootDiagnostics.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBootDiagnostics.property.storageUri">storageUri</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.VirtualMachineBootDiagnostics.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `storageUri`<sup>Optional</sup> <a name="storageUri" id="@microsoft/terraform-cdk-constructs.VirtualMachineBootDiagnostics.property.storageUri"></a>
+
+```typescript
+public readonly storageUri: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineBootDiagnostics <a name="VirtualMachineBootDiagnostics" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBootDiagnostics"></a>
+
+Boot diagnostics configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBootDiagnostics.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineBootDiagnostics: azure_virtualmachine.VirtualMachineBootDiagnostics = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBootDiagnostics.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBootDiagnostics.property.storageUri">storageUri</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBootDiagnostics.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `storageUri`<sup>Optional</sup> <a name="storageUri" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineBootDiagnostics.property.storageUri"></a>
+
+```typescript
+public readonly storageUri: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineBootDiagnostics <a name="VirtualMachineBootDiagnostics" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineBootDiagnostics"></a>
+
+Boot diagnostics configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineBootDiagnostics.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineBootDiagnostics: azure_vmss.VirtualMachineBootDiagnostics = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineBootDiagnostics.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineBootDiagnostics.property.storageUri">storageUri</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineBootDiagnostics.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `storageUri`<sup>Optional</sup> <a name="storageUri" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineBootDiagnostics.property.storageUri"></a>
+
+```typescript
+public readonly storageUri: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineDataDisk <a name="VirtualMachineDataDisk" id="@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk"></a>
+
+Data disk configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk.Initializer"></a>
+
+```typescript
+import { VirtualMachineDataDisk } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineDataDisk: VirtualMachineDataDisk = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk.property.createOption">createOption</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk.property.lun">lun</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk.property.caching">caching</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk.property.diskSizeGB">diskSizeGB</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk.property.managedDisk">managedDisk</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters">VirtualMachineManagedDiskParameters</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk.property.name">name</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `createOption`<sup>Required</sup> <a name="createOption" id="@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk.property.createOption"></a>
+
+```typescript
+public readonly createOption: string;
+```
+
+- *Type:* string
+
+---
+
+##### `lun`<sup>Required</sup> <a name="lun" id="@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk.property.lun"></a>
+
+```typescript
+public readonly lun: number;
+```
+
+- *Type:* number
+
+---
+
+##### `caching`<sup>Optional</sup> <a name="caching" id="@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk.property.caching"></a>
+
+```typescript
+public readonly caching: string;
+```
+
+- *Type:* string
+
+---
+
+##### `diskSizeGB`<sup>Optional</sup> <a name="diskSizeGB" id="@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk.property.diskSizeGB"></a>
+
+```typescript
+public readonly diskSizeGB: number;
+```
+
+- *Type:* number
+
+---
+
+##### `managedDisk`<sup>Optional</sup> <a name="managedDisk" id="@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk.property.managedDisk"></a>
+
+```typescript
+public readonly managedDisk: VirtualMachineManagedDiskParameters;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters">VirtualMachineManagedDiskParameters</a>
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineDataDisk <a name="VirtualMachineDataDisk" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk"></a>
+
+Data disk configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineDataDisk: azure_virtualmachine.VirtualMachineDataDisk = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk.property.createOption">createOption</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk.property.lun">lun</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk.property.caching">caching</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk.property.diskSizeGB">diskSizeGB</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk.property.managedDisk">managedDisk</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters">VirtualMachineManagedDiskParameters</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk.property.name">name</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `createOption`<sup>Required</sup> <a name="createOption" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk.property.createOption"></a>
+
+```typescript
+public readonly createOption: string;
+```
+
+- *Type:* string
+
+---
+
+##### `lun`<sup>Required</sup> <a name="lun" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk.property.lun"></a>
+
+```typescript
+public readonly lun: number;
+```
+
+- *Type:* number
+
+---
+
+##### `caching`<sup>Optional</sup> <a name="caching" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk.property.caching"></a>
+
+```typescript
+public readonly caching: string;
+```
+
+- *Type:* string
+
+---
+
+##### `diskSizeGB`<sup>Optional</sup> <a name="diskSizeGB" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk.property.diskSizeGB"></a>
+
+```typescript
+public readonly diskSizeGB: number;
+```
+
+- *Type:* number
+
+---
+
+##### `managedDisk`<sup>Optional</sup> <a name="managedDisk" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk.property.managedDisk"></a>
+
+```typescript
+public readonly managedDisk: VirtualMachineManagedDiskParameters;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters">VirtualMachineManagedDiskParameters</a>
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDataDisk.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineDataDisk <a name="VirtualMachineDataDisk" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk"></a>
+
+Data disk configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineDataDisk: azure_vmss.VirtualMachineDataDisk = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk.property.createOption">createOption</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk.property.lun">lun</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk.property.caching">caching</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk.property.diskSizeGB">diskSizeGB</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk.property.managedDisk">managedDisk</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters">VirtualMachineManagedDiskParameters</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk.property.name">name</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `createOption`<sup>Required</sup> <a name="createOption" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk.property.createOption"></a>
+
+```typescript
+public readonly createOption: string;
+```
+
+- *Type:* string
+
+---
+
+##### `lun`<sup>Required</sup> <a name="lun" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk.property.lun"></a>
+
+```typescript
+public readonly lun: number;
+```
+
+- *Type:* number
+
+---
+
+##### `caching`<sup>Optional</sup> <a name="caching" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk.property.caching"></a>
+
+```typescript
+public readonly caching: string;
+```
+
+- *Type:* string
+
+---
+
+##### `diskSizeGB`<sup>Optional</sup> <a name="diskSizeGB" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk.property.diskSizeGB"></a>
+
+```typescript
+public readonly diskSizeGB: number;
+```
+
+- *Type:* number
+
+---
+
+##### `managedDisk`<sup>Optional</sup> <a name="managedDisk" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk.property.managedDisk"></a>
+
+```typescript
+public readonly managedDisk: VirtualMachineManagedDiskParameters;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters">VirtualMachineManagedDiskParameters</a>
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDataDisk.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineDiagnosticsProfile <a name="VirtualMachineDiagnosticsProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile"></a>
+
+Diagnostics profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile.Initializer"></a>
+
+```typescript
+import { VirtualMachineDiagnosticsProfile } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineDiagnosticsProfile: VirtualMachineDiagnosticsProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile.property.bootDiagnostics">bootDiagnostics</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBootDiagnostics">VirtualMachineBootDiagnostics</a></code> | *No description.* |
+
+---
+
+##### `bootDiagnostics`<sup>Optional</sup> <a name="bootDiagnostics" id="@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile.property.bootDiagnostics"></a>
+
+```typescript
+public readonly bootDiagnostics: VirtualMachineBootDiagnostics;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBootDiagnostics">VirtualMachineBootDiagnostics</a>
+
+---
+
+### VirtualMachineDiagnosticsProfile <a name="VirtualMachineDiagnosticsProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDiagnosticsProfile"></a>
+
+Diagnostics profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDiagnosticsProfile.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineDiagnosticsProfile: azure_virtualmachine.VirtualMachineDiagnosticsProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDiagnosticsProfile.property.bootDiagnostics">bootDiagnostics</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBootDiagnostics">VirtualMachineBootDiagnostics</a></code> | *No description.* |
+
+---
+
+##### `bootDiagnostics`<sup>Optional</sup> <a name="bootDiagnostics" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDiagnosticsProfile.property.bootDiagnostics"></a>
+
+```typescript
+public readonly bootDiagnostics: VirtualMachineBootDiagnostics;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBootDiagnostics">VirtualMachineBootDiagnostics</a>
+
+---
+
+### VirtualMachineDiagnosticsProfile <a name="VirtualMachineDiagnosticsProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDiagnosticsProfile"></a>
+
+Diagnostics profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDiagnosticsProfile.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineDiagnosticsProfile: azure_vmss.VirtualMachineDiagnosticsProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDiagnosticsProfile.property.bootDiagnostics">bootDiagnostics</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBootDiagnostics">VirtualMachineBootDiagnostics</a></code> | *No description.* |
+
+---
+
+##### `bootDiagnostics`<sup>Optional</sup> <a name="bootDiagnostics" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineDiagnosticsProfile.property.bootDiagnostics"></a>
+
+```typescript
+public readonly bootDiagnostics: VirtualMachineBootDiagnostics;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBootDiagnostics">VirtualMachineBootDiagnostics</a>
+
+---
+
+### VirtualMachineDiskEncryptionSetParameters <a name="VirtualMachineDiskEncryptionSetParameters" id="@microsoft/terraform-cdk-constructs.VirtualMachineDiskEncryptionSetParameters"></a>
+
+Disk encryption set parameters.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineDiskEncryptionSetParameters.Initializer"></a>
+
+```typescript
+import { VirtualMachineDiskEncryptionSetParameters } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineDiskEncryptionSetParameters: VirtualMachineDiskEncryptionSetParameters = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiskEncryptionSetParameters.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualMachineDiskEncryptionSetParameters.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineDiskEncryptionSetParameters <a name="VirtualMachineDiskEncryptionSetParameters" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDiskEncryptionSetParameters"></a>
+
+Disk encryption set parameters.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDiskEncryptionSetParameters.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineDiskEncryptionSetParameters: azure_virtualmachine.VirtualMachineDiskEncryptionSetParameters = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDiskEncryptionSetParameters.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineDiskEncryptionSetParameters.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineHardwareProfile <a name="VirtualMachineHardwareProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile"></a>
+
+Hardware profile for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile.Initializer"></a>
+
+```typescript
+import { VirtualMachineHardwareProfile } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineHardwareProfile: VirtualMachineHardwareProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile.property.vmSize">vmSize</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `vmSize`<sup>Required</sup> <a name="vmSize" id="@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile.property.vmSize"></a>
+
+```typescript
+public readonly vmSize: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineHardwareProfile <a name="VirtualMachineHardwareProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineHardwareProfile"></a>
+
+Hardware profile for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineHardwareProfile.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineHardwareProfile: azure_virtualmachine.VirtualMachineHardwareProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineHardwareProfile.property.vmSize">vmSize</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `vmSize`<sup>Required</sup> <a name="vmSize" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineHardwareProfile.property.vmSize"></a>
+
+```typescript
+public readonly vmSize: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineHardwareProfile <a name="VirtualMachineHardwareProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineHardwareProfile"></a>
+
+Hardware profile for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineHardwareProfile.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineHardwareProfile: azure_vmss.VirtualMachineHardwareProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineHardwareProfile.property.vmSize">vmSize</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `vmSize`<sup>Required</sup> <a name="vmSize" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineHardwareProfile.property.vmSize"></a>
+
+```typescript
+public readonly vmSize: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineHostReference <a name="VirtualMachineHostReference" id="@microsoft/terraform-cdk-constructs.VirtualMachineHostReference"></a>
+
+Host reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineHostReference.Initializer"></a>
+
+```typescript
+import { VirtualMachineHostReference } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineHostReference: VirtualMachineHostReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHostReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualMachineHostReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineHostReference <a name="VirtualMachineHostReference" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineHostReference"></a>
+
+Host reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineHostReference.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineHostReference: azure_virtualmachine.VirtualMachineHostReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineHostReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineHostReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineIdentity <a name="VirtualMachineIdentity" id="@microsoft/terraform-cdk-constructs.VirtualMachineIdentity"></a>
+
+Identity configuration for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineIdentity.Initializer"></a>
+
+```typescript
+import { VirtualMachineIdentity } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineIdentity: VirtualMachineIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.VirtualMachineIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.VirtualMachineIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+### VirtualMachineIdentity <a name="VirtualMachineIdentity" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineIdentity"></a>
+
+Identity configuration for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineIdentity.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineIdentity: azure_virtualmachine.VirtualMachineIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineIdentity.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+### VirtualMachineIdentity <a name="VirtualMachineIdentity" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineIdentity"></a>
+
+Identity configuration for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineIdentity.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineIdentity: azure_vmss.VirtualMachineIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineIdentity.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+### VirtualMachineImageReference <a name="VirtualMachineImageReference" id="@microsoft/terraform-cdk-constructs.VirtualMachineImageReference"></a>
+
+Image reference for OS disk.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineImageReference.Initializer"></a>
+
+```typescript
+import { VirtualMachineImageReference } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineImageReference: VirtualMachineImageReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineImageReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineImageReference.property.offer">offer</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineImageReference.property.publisher">publisher</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineImageReference.property.sku">sku</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineImageReference.property.version">version</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualMachineImageReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+##### `offer`<sup>Optional</sup> <a name="offer" id="@microsoft/terraform-cdk-constructs.VirtualMachineImageReference.property.offer"></a>
+
+```typescript
+public readonly offer: string;
+```
+
+- *Type:* string
+
+---
+
+##### `publisher`<sup>Optional</sup> <a name="publisher" id="@microsoft/terraform-cdk-constructs.VirtualMachineImageReference.property.publisher"></a>
+
+```typescript
+public readonly publisher: string;
+```
+
+- *Type:* string
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.VirtualMachineImageReference.property.sku"></a>
+
+```typescript
+public readonly sku: string;
+```
+
+- *Type:* string
+
+---
+
+##### `version`<sup>Optional</sup> <a name="version" id="@microsoft/terraform-cdk-constructs.VirtualMachineImageReference.property.version"></a>
+
+```typescript
+public readonly version: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineImageReference <a name="VirtualMachineImageReference" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineImageReference"></a>
+
+Image reference for OS disk.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineImageReference.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineImageReference: azure_virtualmachine.VirtualMachineImageReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineImageReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineImageReference.property.offer">offer</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineImageReference.property.publisher">publisher</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineImageReference.property.sku">sku</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineImageReference.property.version">version</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineImageReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+##### `offer`<sup>Optional</sup> <a name="offer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineImageReference.property.offer"></a>
+
+```typescript
+public readonly offer: string;
+```
+
+- *Type:* string
+
+---
+
+##### `publisher`<sup>Optional</sup> <a name="publisher" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineImageReference.property.publisher"></a>
+
+```typescript
+public readonly publisher: string;
+```
+
+- *Type:* string
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineImageReference.property.sku"></a>
+
+```typescript
+public readonly sku: string;
+```
+
+- *Type:* string
+
+---
+
+##### `version`<sup>Optional</sup> <a name="version" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineImageReference.property.version"></a>
+
+```typescript
+public readonly version: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineImageReference <a name="VirtualMachineImageReference" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineImageReference"></a>
+
+Image reference for OS disk.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineImageReference.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineImageReference: azure_vmss.VirtualMachineImageReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineImageReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineImageReference.property.offer">offer</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineImageReference.property.publisher">publisher</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineImageReference.property.sku">sku</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineImageReference.property.version">version</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineImageReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+##### `offer`<sup>Optional</sup> <a name="offer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineImageReference.property.offer"></a>
+
+```typescript
+public readonly offer: string;
+```
+
+- *Type:* string
+
+---
+
+##### `publisher`<sup>Optional</sup> <a name="publisher" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineImageReference.property.publisher"></a>
+
+```typescript
+public readonly publisher: string;
+```
+
+- *Type:* string
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineImageReference.property.sku"></a>
+
+```typescript
+public readonly sku: string;
+```
+
+- *Type:* string
+
+---
+
+##### `version`<sup>Optional</sup> <a name="version" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineImageReference.property.version"></a>
+
+```typescript
+public readonly version: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineLinuxConfiguration <a name="VirtualMachineLinuxConfiguration" id="@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration"></a>
+
+Linux configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration.Initializer"></a>
+
+```typescript
+import { VirtualMachineLinuxConfiguration } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineLinuxConfiguration: VirtualMachineLinuxConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration.property.disablePasswordAuthentication">disablePasswordAuthentication</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration.property.patchSettings">patchSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxPatchSettings">VirtualMachineLinuxPatchSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration.property.provisionVMAgent">provisionVMAgent</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration.property.ssh">ssh</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSshConfiguration">VirtualMachineSshConfiguration</a></code> | *No description.* |
+
+---
+
+##### `disablePasswordAuthentication`<sup>Optional</sup> <a name="disablePasswordAuthentication" id="@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration.property.disablePasswordAuthentication"></a>
+
+```typescript
+public readonly disablePasswordAuthentication: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `patchSettings`<sup>Optional</sup> <a name="patchSettings" id="@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration.property.patchSettings"></a>
+
+```typescript
+public readonly patchSettings: VirtualMachineLinuxPatchSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxPatchSettings">VirtualMachineLinuxPatchSettings</a>
+
+---
+
+##### `provisionVMAgent`<sup>Optional</sup> <a name="provisionVMAgent" id="@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration.property.provisionVMAgent"></a>
+
+```typescript
+public readonly provisionVMAgent: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `ssh`<sup>Optional</sup> <a name="ssh" id="@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration.property.ssh"></a>
+
+```typescript
+public readonly ssh: VirtualMachineSshConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSshConfiguration">VirtualMachineSshConfiguration</a>
+
+---
+
+### VirtualMachineLinuxConfiguration <a name="VirtualMachineLinuxConfiguration" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxConfiguration"></a>
+
+Linux configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxConfiguration.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineLinuxConfiguration: azure_virtualmachine.VirtualMachineLinuxConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxConfiguration.property.disablePasswordAuthentication">disablePasswordAuthentication</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxConfiguration.property.patchSettings">patchSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxPatchSettings">VirtualMachineLinuxPatchSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxConfiguration.property.provisionVMAgent">provisionVMAgent</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxConfiguration.property.ssh">ssh</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSshConfiguration">VirtualMachineSshConfiguration</a></code> | *No description.* |
+
+---
+
+##### `disablePasswordAuthentication`<sup>Optional</sup> <a name="disablePasswordAuthentication" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxConfiguration.property.disablePasswordAuthentication"></a>
+
+```typescript
+public readonly disablePasswordAuthentication: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `patchSettings`<sup>Optional</sup> <a name="patchSettings" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxConfiguration.property.patchSettings"></a>
+
+```typescript
+public readonly patchSettings: VirtualMachineLinuxPatchSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxPatchSettings">VirtualMachineLinuxPatchSettings</a>
+
+---
+
+##### `provisionVMAgent`<sup>Optional</sup> <a name="provisionVMAgent" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxConfiguration.property.provisionVMAgent"></a>
+
+```typescript
+public readonly provisionVMAgent: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `ssh`<sup>Optional</sup> <a name="ssh" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxConfiguration.property.ssh"></a>
+
+```typescript
+public readonly ssh: VirtualMachineSshConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSshConfiguration">VirtualMachineSshConfiguration</a>
+
+---
+
+### VirtualMachineLinuxConfiguration <a name="VirtualMachineLinuxConfiguration" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineLinuxConfiguration"></a>
+
+Linux configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineLinuxConfiguration.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineLinuxConfiguration: azure_vmss.VirtualMachineLinuxConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineLinuxConfiguration.property.disablePasswordAuthentication">disablePasswordAuthentication</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineLinuxConfiguration.property.patchSettings">patchSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxPatchSettings">VirtualMachineLinuxPatchSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineLinuxConfiguration.property.provisionVMAgent">provisionVMAgent</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineLinuxConfiguration.property.ssh">ssh</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSshConfiguration">VirtualMachineSshConfiguration</a></code> | *No description.* |
+
+---
+
+##### `disablePasswordAuthentication`<sup>Optional</sup> <a name="disablePasswordAuthentication" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineLinuxConfiguration.property.disablePasswordAuthentication"></a>
+
+```typescript
+public readonly disablePasswordAuthentication: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `patchSettings`<sup>Optional</sup> <a name="patchSettings" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineLinuxConfiguration.property.patchSettings"></a>
+
+```typescript
+public readonly patchSettings: VirtualMachineLinuxPatchSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxPatchSettings">VirtualMachineLinuxPatchSettings</a>
+
+---
+
+##### `provisionVMAgent`<sup>Optional</sup> <a name="provisionVMAgent" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineLinuxConfiguration.property.provisionVMAgent"></a>
+
+```typescript
+public readonly provisionVMAgent: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `ssh`<sup>Optional</sup> <a name="ssh" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineLinuxConfiguration.property.ssh"></a>
+
+```typescript
+public readonly ssh: VirtualMachineSshConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSshConfiguration">VirtualMachineSshConfiguration</a>
+
+---
+
+### VirtualMachineLinuxPatchSettings <a name="VirtualMachineLinuxPatchSettings" id="@microsoft/terraform-cdk-constructs.VirtualMachineLinuxPatchSettings"></a>
+
+Linux patch settings.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineLinuxPatchSettings.Initializer"></a>
+
+```typescript
+import { VirtualMachineLinuxPatchSettings } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineLinuxPatchSettings: VirtualMachineLinuxPatchSettings = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxPatchSettings.property.assessmentMode">assessmentMode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxPatchSettings.property.patchMode">patchMode</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `assessmentMode`<sup>Optional</sup> <a name="assessmentMode" id="@microsoft/terraform-cdk-constructs.VirtualMachineLinuxPatchSettings.property.assessmentMode"></a>
+
+```typescript
+public readonly assessmentMode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `patchMode`<sup>Optional</sup> <a name="patchMode" id="@microsoft/terraform-cdk-constructs.VirtualMachineLinuxPatchSettings.property.patchMode"></a>
+
+```typescript
+public readonly patchMode: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineLinuxPatchSettings <a name="VirtualMachineLinuxPatchSettings" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxPatchSettings"></a>
+
+Linux patch settings.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxPatchSettings.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineLinuxPatchSettings: azure_virtualmachine.VirtualMachineLinuxPatchSettings = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxPatchSettings.property.assessmentMode">assessmentMode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxPatchSettings.property.patchMode">patchMode</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `assessmentMode`<sup>Optional</sup> <a name="assessmentMode" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxPatchSettings.property.assessmentMode"></a>
+
+```typescript
+public readonly assessmentMode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `patchMode`<sup>Optional</sup> <a name="patchMode" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineLinuxPatchSettings.property.patchMode"></a>
+
+```typescript
+public readonly patchMode: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineManagedDiskParameters <a name="VirtualMachineManagedDiskParameters" id="@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters"></a>
+
+Managed disk parameters.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters.Initializer"></a>
+
+```typescript
+import { VirtualMachineManagedDiskParameters } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineManagedDiskParameters: VirtualMachineManagedDiskParameters = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters.property.diskEncryptionSet">diskEncryptionSet</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiskEncryptionSetParameters">VirtualMachineDiskEncryptionSetParameters</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters.property.storageAccountType">storageAccountType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `diskEncryptionSet`<sup>Optional</sup> <a name="diskEncryptionSet" id="@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters.property.diskEncryptionSet"></a>
+
+```typescript
+public readonly diskEncryptionSet: VirtualMachineDiskEncryptionSetParameters;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiskEncryptionSetParameters">VirtualMachineDiskEncryptionSetParameters</a>
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+##### `storageAccountType`<sup>Optional</sup> <a name="storageAccountType" id="@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters.property.storageAccountType"></a>
+
+```typescript
+public readonly storageAccountType: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineManagedDiskParameters <a name="VirtualMachineManagedDiskParameters" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineManagedDiskParameters"></a>
+
+Managed disk parameters.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineManagedDiskParameters.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineManagedDiskParameters: azure_virtualmachine.VirtualMachineManagedDiskParameters = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineManagedDiskParameters.property.diskEncryptionSet">diskEncryptionSet</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiskEncryptionSetParameters">VirtualMachineDiskEncryptionSetParameters</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineManagedDiskParameters.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineManagedDiskParameters.property.storageAccountType">storageAccountType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `diskEncryptionSet`<sup>Optional</sup> <a name="diskEncryptionSet" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineManagedDiskParameters.property.diskEncryptionSet"></a>
+
+```typescript
+public readonly diskEncryptionSet: VirtualMachineDiskEncryptionSetParameters;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiskEncryptionSetParameters">VirtualMachineDiskEncryptionSetParameters</a>
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineManagedDiskParameters.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+##### `storageAccountType`<sup>Optional</sup> <a name="storageAccountType" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineManagedDiskParameters.property.storageAccountType"></a>
+
+```typescript
+public readonly storageAccountType: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineNetworkInterfaceProperties <a name="VirtualMachineNetworkInterfaceProperties" id="@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceProperties"></a>
+
+Network interface properties.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceProperties.Initializer"></a>
+
+```typescript
+import { VirtualMachineNetworkInterfaceProperties } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineNetworkInterfaceProperties: VirtualMachineNetworkInterfaceProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceProperties.property.primary">primary</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `primary`<sup>Optional</sup> <a name="primary" id="@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceProperties.property.primary"></a>
+
+```typescript
+public readonly primary: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### VirtualMachineNetworkInterfaceProperties <a name="VirtualMachineNetworkInterfaceProperties" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceProperties"></a>
+
+Network interface properties.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceProperties.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineNetworkInterfaceProperties: azure_virtualmachine.VirtualMachineNetworkInterfaceProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceProperties.property.primary">primary</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `primary`<sup>Optional</sup> <a name="primary" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceProperties.property.primary"></a>
+
+```typescript
+public readonly primary: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### VirtualMachineNetworkInterfaceReference <a name="VirtualMachineNetworkInterfaceReference" id="@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceReference"></a>
+
+Network interface reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceReference.Initializer"></a>
+
+```typescript
+import { VirtualMachineNetworkInterfaceReference } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineNetworkInterfaceReference: VirtualMachineNetworkInterfaceReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceReference.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceProperties</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceReference.property.properties"></a>
+
+```typescript
+public readonly properties: VirtualMachineNetworkInterfaceProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceProperties
+
+---
+
+### VirtualMachineNetworkInterfaceReference <a name="VirtualMachineNetworkInterfaceReference" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceReference"></a>
+
+Network interface reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceReference.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineNetworkInterfaceReference: azure_virtualmachine.VirtualMachineNetworkInterfaceReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceReference.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceProperties</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceReference.property.properties"></a>
+
+```typescript
+public readonly properties: VirtualMachineNetworkInterfaceProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkInterfaceProperties
+
+---
+
+### VirtualMachineNetworkProfile <a name="VirtualMachineNetworkProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineNetworkProfile"></a>
+
+Network profile for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineNetworkProfile.Initializer"></a>
+
+```typescript
+import { VirtualMachineNetworkProfile } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineNetworkProfile: VirtualMachineNetworkProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkProfile.property.networkInterfaces">networkInterfaces</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceReference">VirtualMachineNetworkInterfaceReference</a>[]</code> | *No description.* |
+
+---
+
+##### `networkInterfaces`<sup>Required</sup> <a name="networkInterfaces" id="@microsoft/terraform-cdk-constructs.VirtualMachineNetworkProfile.property.networkInterfaces"></a>
+
+```typescript
+public readonly networkInterfaces: VirtualMachineNetworkInterfaceReference[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceReference">VirtualMachineNetworkInterfaceReference</a>[]
+
+---
+
+### VirtualMachineNetworkProfile <a name="VirtualMachineNetworkProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkProfile"></a>
+
+Network profile for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkProfile.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineNetworkProfile: azure_virtualmachine.VirtualMachineNetworkProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkProfile.property.networkInterfaces">networkInterfaces</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceReference">VirtualMachineNetworkInterfaceReference</a>[]</code> | *No description.* |
+
+---
+
+##### `networkInterfaces`<sup>Required</sup> <a name="networkInterfaces" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineNetworkProfile.property.networkInterfaces"></a>
+
+```typescript
+public readonly networkInterfaces: VirtualMachineNetworkInterfaceReference[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceReference">VirtualMachineNetworkInterfaceReference</a>[]
+
+---
+
+### VirtualMachineOSDisk <a name="VirtualMachineOSDisk" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk"></a>
+
+OS disk configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk.Initializer"></a>
+
+```typescript
+import { VirtualMachineOSDisk } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineOSDisk: VirtualMachineOSDisk = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk.property.createOption">createOption</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk.property.caching">caching</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk.property.diskSizeGB">diskSizeGB</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk.property.managedDisk">managedDisk</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters">VirtualMachineManagedDiskParameters</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk.property.osType">osType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `createOption`<sup>Required</sup> <a name="createOption" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk.property.createOption"></a>
+
+```typescript
+public readonly createOption: string;
+```
+
+- *Type:* string
+
+---
+
+##### `caching`<sup>Optional</sup> <a name="caching" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk.property.caching"></a>
+
+```typescript
+public readonly caching: string;
+```
+
+- *Type:* string
+
+---
+
+##### `diskSizeGB`<sup>Optional</sup> <a name="diskSizeGB" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk.property.diskSizeGB"></a>
+
+```typescript
+public readonly diskSizeGB: number;
+```
+
+- *Type:* number
+
+---
+
+##### `managedDisk`<sup>Optional</sup> <a name="managedDisk" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk.property.managedDisk"></a>
+
+```typescript
+public readonly managedDisk: VirtualMachineManagedDiskParameters;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters">VirtualMachineManagedDiskParameters</a>
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `osType`<sup>Optional</sup> <a name="osType" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk.property.osType"></a>
+
+```typescript
+public readonly osType: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineOSDisk <a name="VirtualMachineOSDisk" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk"></a>
+
+OS disk configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineOSDisk: azure_virtualmachine.VirtualMachineOSDisk = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk.property.createOption">createOption</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk.property.caching">caching</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk.property.diskSizeGB">diskSizeGB</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk.property.managedDisk">managedDisk</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters">VirtualMachineManagedDiskParameters</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk.property.osType">osType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `createOption`<sup>Required</sup> <a name="createOption" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk.property.createOption"></a>
+
+```typescript
+public readonly createOption: string;
+```
+
+- *Type:* string
+
+---
+
+##### `caching`<sup>Optional</sup> <a name="caching" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk.property.caching"></a>
+
+```typescript
+public readonly caching: string;
+```
+
+- *Type:* string
+
+---
+
+##### `diskSizeGB`<sup>Optional</sup> <a name="diskSizeGB" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk.property.diskSizeGB"></a>
+
+```typescript
+public readonly diskSizeGB: number;
+```
+
+- *Type:* number
+
+---
+
+##### `managedDisk`<sup>Optional</sup> <a name="managedDisk" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk.property.managedDisk"></a>
+
+```typescript
+public readonly managedDisk: VirtualMachineManagedDiskParameters;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters">VirtualMachineManagedDiskParameters</a>
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `osType`<sup>Optional</sup> <a name="osType" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSDisk.property.osType"></a>
+
+```typescript
+public readonly osType: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineOSDisk <a name="VirtualMachineOSDisk" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk"></a>
+
+OS disk configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineOSDisk: azure_vmss.VirtualMachineOSDisk = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk.property.createOption">createOption</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk.property.caching">caching</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk.property.diskSizeGB">diskSizeGB</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk.property.managedDisk">managedDisk</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters">VirtualMachineManagedDiskParameters</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk.property.osType">osType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `createOption`<sup>Required</sup> <a name="createOption" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk.property.createOption"></a>
+
+```typescript
+public readonly createOption: string;
+```
+
+- *Type:* string
+
+---
+
+##### `caching`<sup>Optional</sup> <a name="caching" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk.property.caching"></a>
+
+```typescript
+public readonly caching: string;
+```
+
+- *Type:* string
+
+---
+
+##### `diskSizeGB`<sup>Optional</sup> <a name="diskSizeGB" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk.property.diskSizeGB"></a>
+
+```typescript
+public readonly diskSizeGB: number;
+```
+
+- *Type:* number
+
+---
+
+##### `managedDisk`<sup>Optional</sup> <a name="managedDisk" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk.property.managedDisk"></a>
+
+```typescript
+public readonly managedDisk: VirtualMachineManagedDiskParameters;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineManagedDiskParameters">VirtualMachineManagedDiskParameters</a>
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `osType`<sup>Optional</sup> <a name="osType" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSDisk.property.osType"></a>
+
+```typescript
+public readonly osType: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineOSProfile <a name="VirtualMachineOSProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile"></a>
+
+OS profile for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.Initializer"></a>
+
+```typescript
+import { VirtualMachineOSProfile } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineOSProfile: VirtualMachineOSProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.adminUsername">adminUsername</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.computerName">computerName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.adminPassword">adminPassword</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.allowExtensionOperations">allowExtensionOperations</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.customData">customData</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.linuxConfiguration">linuxConfiguration</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration">VirtualMachineLinuxConfiguration</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.secrets">secrets</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecret">VirtualMachineSecret</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.windowsConfiguration">windowsConfiguration</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration">VirtualMachineWindowsConfiguration</a></code> | *No description.* |
+
+---
+
+##### `adminUsername`<sup>Required</sup> <a name="adminUsername" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.adminUsername"></a>
+
+```typescript
+public readonly adminUsername: string;
+```
+
+- *Type:* string
+
+---
+
+##### `computerName`<sup>Required</sup> <a name="computerName" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.computerName"></a>
+
+```typescript
+public readonly computerName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `adminPassword`<sup>Optional</sup> <a name="adminPassword" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.adminPassword"></a>
+
+```typescript
+public readonly adminPassword: string;
+```
+
+- *Type:* string
+
+---
+
+##### `allowExtensionOperations`<sup>Optional</sup> <a name="allowExtensionOperations" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.allowExtensionOperations"></a>
+
+```typescript
+public readonly allowExtensionOperations: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `customData`<sup>Optional</sup> <a name="customData" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.customData"></a>
+
+```typescript
+public readonly customData: string;
+```
+
+- *Type:* string
+
+---
+
+##### `linuxConfiguration`<sup>Optional</sup> <a name="linuxConfiguration" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.linuxConfiguration"></a>
+
+```typescript
+public readonly linuxConfiguration: VirtualMachineLinuxConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration">VirtualMachineLinuxConfiguration</a>
+
+---
+
+##### `secrets`<sup>Optional</sup> <a name="secrets" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.secrets"></a>
+
+```typescript
+public readonly secrets: VirtualMachineSecret[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecret">VirtualMachineSecret</a>[]
+
+---
+
+##### `windowsConfiguration`<sup>Optional</sup> <a name="windowsConfiguration" id="@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile.property.windowsConfiguration"></a>
+
+```typescript
+public readonly windowsConfiguration: VirtualMachineWindowsConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration">VirtualMachineWindowsConfiguration</a>
+
+---
+
+### VirtualMachineOSProfile <a name="VirtualMachineOSProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile"></a>
+
+OS profile for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineOSProfile: azure_virtualmachine.VirtualMachineOSProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.adminUsername">adminUsername</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.computerName">computerName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.adminPassword">adminPassword</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.allowExtensionOperations">allowExtensionOperations</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.customData">customData</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.linuxConfiguration">linuxConfiguration</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration">VirtualMachineLinuxConfiguration</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.secrets">secrets</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecret">VirtualMachineSecret</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.windowsConfiguration">windowsConfiguration</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration">VirtualMachineWindowsConfiguration</a></code> | *No description.* |
+
+---
+
+##### `adminUsername`<sup>Required</sup> <a name="adminUsername" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.adminUsername"></a>
+
+```typescript
+public readonly adminUsername: string;
+```
+
+- *Type:* string
+
+---
+
+##### `computerName`<sup>Required</sup> <a name="computerName" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.computerName"></a>
+
+```typescript
+public readonly computerName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `adminPassword`<sup>Optional</sup> <a name="adminPassword" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.adminPassword"></a>
+
+```typescript
+public readonly adminPassword: string;
+```
+
+- *Type:* string
+
+---
+
+##### `allowExtensionOperations`<sup>Optional</sup> <a name="allowExtensionOperations" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.allowExtensionOperations"></a>
+
+```typescript
+public readonly allowExtensionOperations: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `customData`<sup>Optional</sup> <a name="customData" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.customData"></a>
+
+```typescript
+public readonly customData: string;
+```
+
+- *Type:* string
+
+---
+
+##### `linuxConfiguration`<sup>Optional</sup> <a name="linuxConfiguration" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.linuxConfiguration"></a>
+
+```typescript
+public readonly linuxConfiguration: VirtualMachineLinuxConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration">VirtualMachineLinuxConfiguration</a>
+
+---
+
+##### `secrets`<sup>Optional</sup> <a name="secrets" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.secrets"></a>
+
+```typescript
+public readonly secrets: VirtualMachineSecret[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecret">VirtualMachineSecret</a>[]
+
+---
+
+##### `windowsConfiguration`<sup>Optional</sup> <a name="windowsConfiguration" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineOSProfile.property.windowsConfiguration"></a>
+
+```typescript
+public readonly windowsConfiguration: VirtualMachineWindowsConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration">VirtualMachineWindowsConfiguration</a>
+
+---
+
+### VirtualMachineOSProfile <a name="VirtualMachineOSProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile"></a>
+
+OS profile for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineOSProfile: azure_vmss.VirtualMachineOSProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.adminUsername">adminUsername</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.computerName">computerName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.adminPassword">adminPassword</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.allowExtensionOperations">allowExtensionOperations</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.customData">customData</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.linuxConfiguration">linuxConfiguration</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration">VirtualMachineLinuxConfiguration</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.secrets">secrets</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecret">VirtualMachineSecret</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.windowsConfiguration">windowsConfiguration</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration">VirtualMachineWindowsConfiguration</a></code> | *No description.* |
+
+---
+
+##### `adminUsername`<sup>Required</sup> <a name="adminUsername" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.adminUsername"></a>
+
+```typescript
+public readonly adminUsername: string;
+```
+
+- *Type:* string
+
+---
+
+##### `computerName`<sup>Required</sup> <a name="computerName" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.computerName"></a>
+
+```typescript
+public readonly computerName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `adminPassword`<sup>Optional</sup> <a name="adminPassword" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.adminPassword"></a>
+
+```typescript
+public readonly adminPassword: string;
+```
+
+- *Type:* string
+
+---
+
+##### `allowExtensionOperations`<sup>Optional</sup> <a name="allowExtensionOperations" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.allowExtensionOperations"></a>
+
+```typescript
+public readonly allowExtensionOperations: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `customData`<sup>Optional</sup> <a name="customData" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.customData"></a>
+
+```typescript
+public readonly customData: string;
+```
+
+- *Type:* string
+
+---
+
+##### `linuxConfiguration`<sup>Optional</sup> <a name="linuxConfiguration" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.linuxConfiguration"></a>
+
+```typescript
+public readonly linuxConfiguration: VirtualMachineLinuxConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration">VirtualMachineLinuxConfiguration</a>
+
+---
+
+##### `secrets`<sup>Optional</sup> <a name="secrets" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.secrets"></a>
+
+```typescript
+public readonly secrets: VirtualMachineSecret[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecret">VirtualMachineSecret</a>[]
+
+---
+
+##### `windowsConfiguration`<sup>Optional</sup> <a name="windowsConfiguration" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineOSProfile.property.windowsConfiguration"></a>
+
+```typescript
+public readonly windowsConfiguration: VirtualMachineWindowsConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration">VirtualMachineWindowsConfiguration</a>
+
+---
+
+### VirtualMachinePlan <a name="VirtualMachinePlan" id="@microsoft/terraform-cdk-constructs.VirtualMachinePlan"></a>
+
+Plan information for marketplace images.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachinePlan.Initializer"></a>
+
+```typescript
+import { VirtualMachinePlan } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachinePlan: VirtualMachinePlan = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan.property.product">product</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan.property.promotionCode">promotionCode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan.property.publisher">publisher</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VirtualMachinePlan.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `product`<sup>Optional</sup> <a name="product" id="@microsoft/terraform-cdk-constructs.VirtualMachinePlan.property.product"></a>
+
+```typescript
+public readonly product: string;
+```
+
+- *Type:* string
+
+---
+
+##### `promotionCode`<sup>Optional</sup> <a name="promotionCode" id="@microsoft/terraform-cdk-constructs.VirtualMachinePlan.property.promotionCode"></a>
+
+```typescript
+public readonly promotionCode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `publisher`<sup>Optional</sup> <a name="publisher" id="@microsoft/terraform-cdk-constructs.VirtualMachinePlan.property.publisher"></a>
+
+```typescript
+public readonly publisher: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachinePlan <a name="VirtualMachinePlan" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePlan"></a>
+
+Plan information for marketplace images.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePlan.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachinePlan: azure_virtualmachine.VirtualMachinePlan = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePlan.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePlan.property.product">product</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePlan.property.promotionCode">promotionCode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePlan.property.publisher">publisher</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePlan.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `product`<sup>Optional</sup> <a name="product" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePlan.property.product"></a>
+
+```typescript
+public readonly product: string;
+```
+
+- *Type:* string
+
+---
+
+##### `promotionCode`<sup>Optional</sup> <a name="promotionCode" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePlan.property.promotionCode"></a>
+
+```typescript
+public readonly promotionCode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `publisher`<sup>Optional</sup> <a name="publisher" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePlan.property.publisher"></a>
+
+```typescript
+public readonly publisher: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachinePlan <a name="VirtualMachinePlan" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachinePlan"></a>
+
+Plan information for marketplace images.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachinePlan.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachinePlan: azure_vmss.VirtualMachinePlan = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachinePlan.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachinePlan.property.product">product</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachinePlan.property.promotionCode">promotionCode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachinePlan.property.publisher">publisher</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachinePlan.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `product`<sup>Optional</sup> <a name="product" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachinePlan.property.product"></a>
+
+```typescript
+public readonly product: string;
+```
+
+- *Type:* string
+
+---
+
+##### `promotionCode`<sup>Optional</sup> <a name="promotionCode" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachinePlan.property.promotionCode"></a>
+
+```typescript
+public readonly promotionCode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `publisher`<sup>Optional</sup> <a name="publisher" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachinePlan.property.publisher"></a>
+
+```typescript
+public readonly publisher: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachinePriorityProfile <a name="VirtualMachinePriorityProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachinePriorityProfile"></a>
+
+Priority and eviction policy for spot VMs.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachinePriorityProfile.Initializer"></a>
+
+```typescript
+import { VirtualMachinePriorityProfile } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachinePriorityProfile: VirtualMachinePriorityProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePriorityProfile.property.billingProfile">billingProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePriorityProfile.property.evictionPolicy">evictionPolicy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePriorityProfile.property.priority">priority</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `billingProfile`<sup>Optional</sup> <a name="billingProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachinePriorityProfile.property.billingProfile"></a>
+
+```typescript
+public readonly billingProfile: VirtualMachineBillingProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a>
+
+---
+
+##### `evictionPolicy`<sup>Optional</sup> <a name="evictionPolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachinePriorityProfile.property.evictionPolicy"></a>
+
+```typescript
+public readonly evictionPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `priority`<sup>Optional</sup> <a name="priority" id="@microsoft/terraform-cdk-constructs.VirtualMachinePriorityProfile.property.priority"></a>
+
+```typescript
+public readonly priority: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachinePriorityProfile <a name="VirtualMachinePriorityProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePriorityProfile"></a>
+
+Priority and eviction policy for spot VMs.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePriorityProfile.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachinePriorityProfile: azure_virtualmachine.VirtualMachinePriorityProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePriorityProfile.property.billingProfile">billingProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePriorityProfile.property.evictionPolicy">evictionPolicy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePriorityProfile.property.priority">priority</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `billingProfile`<sup>Optional</sup> <a name="billingProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePriorityProfile.property.billingProfile"></a>
+
+```typescript
+public readonly billingProfile: VirtualMachineBillingProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a>
+
+---
+
+##### `evictionPolicy`<sup>Optional</sup> <a name="evictionPolicy" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePriorityProfile.property.evictionPolicy"></a>
+
+```typescript
+public readonly evictionPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `priority`<sup>Optional</sup> <a name="priority" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachinePriorityProfile.property.priority"></a>
+
+```typescript
+public readonly priority: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineProps <a name="VirtualMachineProps" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps"></a>
+
+Properties for the unified Azure Virtual Machine.
+
+Extends AzapiResourceProps with Virtual Machine specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.Initializer"></a>
+
+```typescript
+import { VirtualMachineProps } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineProps: VirtualMachineProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.hardwareProfile">hardwareProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile">VirtualMachineHardwareProfile</a></code> | The hardware profile for the Virtual Machine (VM size). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.networkProfile">networkProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkProfile">VirtualMachineNetworkProfile</a></code> | The network profile for the Virtual Machine Defines network interfaces attached to the VM. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.storageProfile">storageProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile">VirtualMachineStorageProfile</a></code> | The storage profile for the Virtual Machine Defines the OS disk, data disks, and image reference. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.additionalCapabilities">additionalCapabilities</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities">VirtualMachineAdditionalCapabilities</a></code> | Additional capabilities like Ultra SSD. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.availabilitySet">availabilitySet</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAvailabilitySetReference">VirtualMachineAvailabilitySetReference</a></code> | Reference to an availability set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.billingProfile">billingProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a></code> | The billing profile for Spot VMs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.diagnosticsProfile">diagnosticsProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile">VirtualMachineDiagnosticsProfile</a></code> | The diagnostics profile for boot diagnostics. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.evictionPolicy">evictionPolicy</a></code> | <code>string</code> | The eviction policy for Spot VMs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.host">host</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHostReference">VirtualMachineHostReference</a></code> | Reference to a dedicated host. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a></code> | The identity configuration for the Virtual Machine. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes Useful for properties that are externally managed or should not trigger updates. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.licenseType">licenseType</a></code> | <code>string</code> | License type for Windows VMs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.osProfile">osProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile">VirtualMachineOSProfile</a></code> | The OS profile for the Virtual Machine Defines computer name, admin credentials, and OS-specific configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.plan">plan</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a></code> | Plan information for marketplace images. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.priority">priority</a></code> | <code>string</code> | The priority of the Virtual Machine. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.proximityPlacementGroup">proximityPlacementGroup</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProximityPlacementGroupReference">VirtualMachineProximityPlacementGroupReference</a></code> | Reference to a proximity placement group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the Virtual Machine will be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.securityProfile">securityProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile">VirtualMachineSecurityProfile</a></code> | Security settings for the Virtual Machine. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.virtualMachineScaleSet">virtualMachineScaleSet</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetReference">VirtualMachineScaleSetReference</a></code> | Reference to a virtual machine scale set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.zones">zones</a></code> | <code>string[]</code> | Availability zones for the Virtual Machine. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `hardwareProfile`<sup>Required</sup> <a name="hardwareProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.hardwareProfile"></a>
+
+```typescript
+public readonly hardwareProfile: VirtualMachineHardwareProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile">VirtualMachineHardwareProfile</a>
+
+The hardware profile for the Virtual Machine (VM size).
+
+---
+
+*Example*
+
+```typescript
+{ vmSize: "Standard_D2s_v3" }
+```
+
+
+##### `networkProfile`<sup>Required</sup> <a name="networkProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.networkProfile"></a>
+
+```typescript
+public readonly networkProfile: VirtualMachineNetworkProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkProfile">VirtualMachineNetworkProfile</a>
+
+The network profile for the Virtual Machine Defines network interfaces attached to the VM.
+
+---
+
+##### `storageProfile`<sup>Required</sup> <a name="storageProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.storageProfile"></a>
+
+```typescript
+public readonly storageProfile: VirtualMachineStorageProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile">VirtualMachineStorageProfile</a>
+
+The storage profile for the Virtual Machine Defines the OS disk, data disks, and image reference.
+
+---
+
+##### `additionalCapabilities`<sup>Optional</sup> <a name="additionalCapabilities" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.additionalCapabilities"></a>
+
+```typescript
+public readonly additionalCapabilities: VirtualMachineAdditionalCapabilities;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities">VirtualMachineAdditionalCapabilities</a>
+
+Additional capabilities like Ultra SSD.
+
+---
+
+##### `availabilitySet`<sup>Optional</sup> <a name="availabilitySet" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.availabilitySet"></a>
+
+```typescript
+public readonly availabilitySet: VirtualMachineAvailabilitySetReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAvailabilitySetReference">VirtualMachineAvailabilitySetReference</a>
+
+Reference to an availability set.
+
+---
+
+##### `billingProfile`<sup>Optional</sup> <a name="billingProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.billingProfile"></a>
+
+```typescript
+public readonly billingProfile: VirtualMachineBillingProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a>
+
+The billing profile for Spot VMs.
+
+---
+
+##### `diagnosticsProfile`<sup>Optional</sup> <a name="diagnosticsProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.diagnosticsProfile"></a>
+
+```typescript
+public readonly diagnosticsProfile: VirtualMachineDiagnosticsProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile">VirtualMachineDiagnosticsProfile</a>
+
+The diagnostics profile for boot diagnostics.
+
+---
+
+##### `evictionPolicy`<sup>Optional</sup> <a name="evictionPolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.evictionPolicy"></a>
+
+```typescript
+public readonly evictionPolicy: string;
+```
+
+- *Type:* string
+
+The eviction policy for Spot VMs.
+
+---
+
+*Example*
+
+```typescript
+"Deallocate", "Delete"
+```
+
+
+##### `host`<sup>Optional</sup> <a name="host" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.host"></a>
+
+```typescript
+public readonly host: VirtualMachineHostReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHostReference">VirtualMachineHostReference</a>
+
+Reference to a dedicated host.
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.identity"></a>
+
+```typescript
+public readonly identity: VirtualMachineIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a>
+
+The identity configuration for the Virtual Machine.
+
+---
+
+*Example*
+
+```typescript
+{ type: "UserAssigned", userAssignedIdentities: { "/subscriptions/.../resourceGroups/.../providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity": {} } }
+```
+
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes Useful for properties that are externally managed or should not trigger updates.
+
+---
+
+*Example*
+
+```typescript
+["osProfile.adminPassword"]
+```
+
+
+##### `licenseType`<sup>Optional</sup> <a name="licenseType" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.licenseType"></a>
+
+```typescript
+public readonly licenseType: string;
+```
+
+- *Type:* string
+
+License type for Windows VMs.
+
+---
+
+*Example*
+
+```typescript
+"Windows_Client"
+```
+
+
+##### `osProfile`<sup>Optional</sup> <a name="osProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.osProfile"></a>
+
+```typescript
+public readonly osProfile: VirtualMachineOSProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile">VirtualMachineOSProfile</a>
+
+The OS profile for the Virtual Machine Defines computer name, admin credentials, and OS-specific configuration.
+
+---
+
+##### `plan`<sup>Optional</sup> <a name="plan" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.plan"></a>
+
+```typescript
+public readonly plan: VirtualMachinePlan;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a>
+
+Plan information for marketplace images.
+
+---
+
+##### `priority`<sup>Optional</sup> <a name="priority" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.priority"></a>
+
+```typescript
+public readonly priority: string;
+```
+
+- *Type:* string
+- *Default:* "Regular"
+
+The priority of the Virtual Machine.
+
+---
+
+*Example*
+
+```typescript
+"Regular", "Low", "Spot"
+```
+
+
+##### `proximityPlacementGroup`<sup>Optional</sup> <a name="proximityPlacementGroup" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.proximityPlacementGroup"></a>
+
+```typescript
+public readonly proximityPlacementGroup: VirtualMachineProximityPlacementGroupReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProximityPlacementGroupReference">VirtualMachineProximityPlacementGroupReference</a>
+
+Reference to a proximity placement group.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the Virtual Machine will be created.
+
+---
+
+##### `securityProfile`<sup>Optional</sup> <a name="securityProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.securityProfile"></a>
+
+```typescript
+public readonly securityProfile: VirtualMachineSecurityProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile">VirtualMachineSecurityProfile</a>
+
+Security settings for the Virtual Machine.
+
+---
+
+##### `virtualMachineScaleSet`<sup>Optional</sup> <a name="virtualMachineScaleSet" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.virtualMachineScaleSet"></a>
+
+```typescript
+public readonly virtualMachineScaleSet: VirtualMachineScaleSetReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetReference">VirtualMachineScaleSetReference</a>
+
+Reference to a virtual machine scale set.
+
+---
+
+##### `zones`<sup>Optional</sup> <a name="zones" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.zones"></a>
+
+```typescript
+public readonly zones: string[];
+```
+
+- *Type:* string[]
+
+Availability zones for the Virtual Machine.
+
+---
+
+*Example*
+
+```typescript
+["1", "2"]
+```
+
+
+### VirtualMachineProps <a name="VirtualMachineProps" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps"></a>
+
+Properties for the unified Azure Virtual Machine.
+
+Extends AzapiResourceProps with Virtual Machine specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineProps: azure_virtualmachine.VirtualMachineProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.hardwareProfile">hardwareProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile">VirtualMachineHardwareProfile</a></code> | The hardware profile for the Virtual Machine (VM size). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.networkProfile">networkProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkProfile">VirtualMachineNetworkProfile</a></code> | The network profile for the Virtual Machine Defines network interfaces attached to the VM. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.storageProfile">storageProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile">VirtualMachineStorageProfile</a></code> | The storage profile for the Virtual Machine Defines the OS disk, data disks, and image reference. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.additionalCapabilities">additionalCapabilities</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities">VirtualMachineAdditionalCapabilities</a></code> | Additional capabilities like Ultra SSD. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.availabilitySet">availabilitySet</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAvailabilitySetReference">VirtualMachineAvailabilitySetReference</a></code> | Reference to an availability set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.billingProfile">billingProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a></code> | The billing profile for Spot VMs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.diagnosticsProfile">diagnosticsProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile">VirtualMachineDiagnosticsProfile</a></code> | The diagnostics profile for boot diagnostics. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.evictionPolicy">evictionPolicy</a></code> | <code>string</code> | The eviction policy for Spot VMs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.host">host</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHostReference">VirtualMachineHostReference</a></code> | Reference to a dedicated host. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a></code> | The identity configuration for the Virtual Machine. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes Useful for properties that are externally managed or should not trigger updates. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.licenseType">licenseType</a></code> | <code>string</code> | License type for Windows VMs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.osProfile">osProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile">VirtualMachineOSProfile</a></code> | The OS profile for the Virtual Machine Defines computer name, admin credentials, and OS-specific configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.plan">plan</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a></code> | Plan information for marketplace images. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.priority">priority</a></code> | <code>string</code> | The priority of the Virtual Machine. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.proximityPlacementGroup">proximityPlacementGroup</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProximityPlacementGroupReference">VirtualMachineProximityPlacementGroupReference</a></code> | Reference to a proximity placement group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the Virtual Machine will be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.securityProfile">securityProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile">VirtualMachineSecurityProfile</a></code> | Security settings for the Virtual Machine. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.virtualMachineScaleSet">virtualMachineScaleSet</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetReference">VirtualMachineScaleSetReference</a></code> | Reference to a virtual machine scale set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.zones">zones</a></code> | <code>string[]</code> | Availability zones for the Virtual Machine. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `hardwareProfile`<sup>Required</sup> <a name="hardwareProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.hardwareProfile"></a>
+
+```typescript
+public readonly hardwareProfile: VirtualMachineHardwareProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile">VirtualMachineHardwareProfile</a>
+
+The hardware profile for the Virtual Machine (VM size).
+
+---
+
+*Example*
+
+```typescript
+{ vmSize: "Standard_D2s_v3" }
+```
+
+
+##### `networkProfile`<sup>Required</sup> <a name="networkProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.networkProfile"></a>
+
+```typescript
+public readonly networkProfile: VirtualMachineNetworkProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineNetworkProfile">VirtualMachineNetworkProfile</a>
+
+The network profile for the Virtual Machine Defines network interfaces attached to the VM.
+
+---
+
+##### `storageProfile`<sup>Required</sup> <a name="storageProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.storageProfile"></a>
+
+```typescript
+public readonly storageProfile: VirtualMachineStorageProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile">VirtualMachineStorageProfile</a>
+
+The storage profile for the Virtual Machine Defines the OS disk, data disks, and image reference.
+
+---
+
+##### `additionalCapabilities`<sup>Optional</sup> <a name="additionalCapabilities" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.additionalCapabilities"></a>
+
+```typescript
+public readonly additionalCapabilities: VirtualMachineAdditionalCapabilities;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAdditionalCapabilities">VirtualMachineAdditionalCapabilities</a>
+
+Additional capabilities like Ultra SSD.
+
+---
+
+##### `availabilitySet`<sup>Optional</sup> <a name="availabilitySet" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.availabilitySet"></a>
+
+```typescript
+public readonly availabilitySet: VirtualMachineAvailabilitySetReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineAvailabilitySetReference">VirtualMachineAvailabilitySetReference</a>
+
+Reference to an availability set.
+
+---
+
+##### `billingProfile`<sup>Optional</sup> <a name="billingProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.billingProfile"></a>
+
+```typescript
+public readonly billingProfile: VirtualMachineBillingProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a>
+
+The billing profile for Spot VMs.
+
+---
+
+##### `diagnosticsProfile`<sup>Optional</sup> <a name="diagnosticsProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.diagnosticsProfile"></a>
+
+```typescript
+public readonly diagnosticsProfile: VirtualMachineDiagnosticsProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile">VirtualMachineDiagnosticsProfile</a>
+
+The diagnostics profile for boot diagnostics.
+
+---
+
+##### `evictionPolicy`<sup>Optional</sup> <a name="evictionPolicy" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.evictionPolicy"></a>
+
+```typescript
+public readonly evictionPolicy: string;
+```
+
+- *Type:* string
+
+The eviction policy for Spot VMs.
+
+---
+
+*Example*
+
+```typescript
+"Deallocate", "Delete"
+```
+
+
+##### `host`<sup>Optional</sup> <a name="host" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.host"></a>
+
+```typescript
+public readonly host: VirtualMachineHostReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHostReference">VirtualMachineHostReference</a>
+
+Reference to a dedicated host.
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.identity"></a>
+
+```typescript
+public readonly identity: VirtualMachineIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a>
+
+The identity configuration for the Virtual Machine.
+
+---
+
+*Example*
+
+```typescript
+{ type: "UserAssigned", userAssignedIdentities: { "/subscriptions/.../resourceGroups/.../providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity": {} } }
+```
+
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes Useful for properties that are externally managed or should not trigger updates.
+
+---
+
+*Example*
+
+```typescript
+["osProfile.adminPassword"]
+```
+
+
+##### `licenseType`<sup>Optional</sup> <a name="licenseType" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.licenseType"></a>
+
+```typescript
+public readonly licenseType: string;
+```
+
+- *Type:* string
+
+License type for Windows VMs.
+
+---
+
+*Example*
+
+```typescript
+"Windows_Client"
+```
+
+
+##### `osProfile`<sup>Optional</sup> <a name="osProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.osProfile"></a>
+
+```typescript
+public readonly osProfile: VirtualMachineOSProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSProfile">VirtualMachineOSProfile</a>
+
+The OS profile for the Virtual Machine Defines computer name, admin credentials, and OS-specific configuration.
+
+---
+
+##### `plan`<sup>Optional</sup> <a name="plan" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.plan"></a>
+
+```typescript
+public readonly plan: VirtualMachinePlan;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a>
+
+Plan information for marketplace images.
+
+---
+
+##### `priority`<sup>Optional</sup> <a name="priority" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.priority"></a>
+
+```typescript
+public readonly priority: string;
+```
+
+- *Type:* string
+- *Default:* "Regular"
+
+The priority of the Virtual Machine.
+
+---
+
+*Example*
+
+```typescript
+"Regular", "Low", "Spot"
+```
+
+
+##### `proximityPlacementGroup`<sup>Optional</sup> <a name="proximityPlacementGroup" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.proximityPlacementGroup"></a>
+
+```typescript
+public readonly proximityPlacementGroup: VirtualMachineProximityPlacementGroupReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProximityPlacementGroupReference">VirtualMachineProximityPlacementGroupReference</a>
+
+Reference to a proximity placement group.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the Virtual Machine will be created.
+
+---
+
+##### `securityProfile`<sup>Optional</sup> <a name="securityProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.securityProfile"></a>
+
+```typescript
+public readonly securityProfile: VirtualMachineSecurityProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile">VirtualMachineSecurityProfile</a>
+
+Security settings for the Virtual Machine.
+
+---
+
+##### `virtualMachineScaleSet`<sup>Optional</sup> <a name="virtualMachineScaleSet" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.virtualMachineScaleSet"></a>
+
+```typescript
+public readonly virtualMachineScaleSet: VirtualMachineScaleSetReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetReference">VirtualMachineScaleSetReference</a>
+
+Reference to a virtual machine scale set.
+
+---
+
+##### `zones`<sup>Optional</sup> <a name="zones" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.zones"></a>
+
+```typescript
+public readonly zones: string[];
+```
+
+- *Type:* string[]
+
+Availability zones for the Virtual Machine.
+
+---
+
+*Example*
+
+```typescript
+["1", "2"]
+```
+
+
+### VirtualMachineProximityPlacementGroupReference <a name="VirtualMachineProximityPlacementGroupReference" id="@microsoft/terraform-cdk-constructs.VirtualMachineProximityPlacementGroupReference"></a>
+
+Proximity placement group reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineProximityPlacementGroupReference.Initializer"></a>
+
+```typescript
+import { VirtualMachineProximityPlacementGroupReference } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineProximityPlacementGroupReference: VirtualMachineProximityPlacementGroupReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProximityPlacementGroupReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualMachineProximityPlacementGroupReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineProximityPlacementGroupReference <a name="VirtualMachineProximityPlacementGroupReference" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProximityPlacementGroupReference"></a>
+
+Proximity placement group reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProximityPlacementGroupReference.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineProximityPlacementGroupReference: azure_virtualmachine.VirtualMachineProximityPlacementGroupReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProximityPlacementGroupReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProximityPlacementGroupReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineScaleSetBody <a name="VirtualMachineScaleSetBody" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody"></a>
+
+The resource body interface for Azure VMSS API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.Initializer"></a>
+
+```typescript
+import { VirtualMachineScaleSetBody } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetBody: VirtualMachineScaleSetBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.properties">properties</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties">VirtualMachineScaleSetBodyProperties</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.sku">sku</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku">VirtualMachineScaleSetSku</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.plan">plan</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.zones">zones</a></code> | <code>string[]</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.properties"></a>
+
+```typescript
+public readonly properties: VirtualMachineScaleSetBodyProperties;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties">VirtualMachineScaleSetBodyProperties</a>
+
+---
+
+##### `sku`<sup>Required</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.sku"></a>
+
+```typescript
+public readonly sku: VirtualMachineScaleSetSku;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku">VirtualMachineScaleSetSku</a>
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.identity"></a>
+
+```typescript
+public readonly identity: VirtualMachineIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a>
+
+---
+
+##### `plan`<sup>Optional</sup> <a name="plan" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.plan"></a>
+
+```typescript
+public readonly plan: VirtualMachinePlan;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a>
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `zones`<sup>Optional</sup> <a name="zones" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBody.property.zones"></a>
+
+```typescript
+public readonly zones: string[];
+```
+
+- *Type:* string[]
+
+---
+
+### VirtualMachineScaleSetBody <a name="VirtualMachineScaleSetBody" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody"></a>
+
+The resource body interface for Azure VMSS API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetBody: azure_vmss.VirtualMachineScaleSetBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.properties">properties</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties">VirtualMachineScaleSetBodyProperties</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.sku">sku</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku">VirtualMachineScaleSetSku</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.plan">plan</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.zones">zones</a></code> | <code>string[]</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.properties"></a>
+
+```typescript
+public readonly properties: VirtualMachineScaleSetBodyProperties;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties">VirtualMachineScaleSetBodyProperties</a>
+
+---
+
+##### `sku`<sup>Required</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.sku"></a>
+
+```typescript
+public readonly sku: VirtualMachineScaleSetSku;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku">VirtualMachineScaleSetSku</a>
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.identity"></a>
+
+```typescript
+public readonly identity: VirtualMachineIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a>
+
+---
+
+##### `plan`<sup>Optional</sup> <a name="plan" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.plan"></a>
+
+```typescript
+public readonly plan: VirtualMachinePlan;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a>
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `zones`<sup>Optional</sup> <a name="zones" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBody.property.zones"></a>
+
+```typescript
+public readonly zones: string[];
+```
+
+- *Type:* string[]
+
+---
+
+### VirtualMachineScaleSetBodyProperties <a name="VirtualMachineScaleSetBodyProperties" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties"></a>
+
+Body properties for VMSS.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.Initializer"></a>
+
+```typescript
+import { VirtualMachineScaleSetBodyProperties } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetBodyProperties: VirtualMachineScaleSetBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.additionalCapabilities">additionalCapabilities</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.AdditionalCapabilities</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.automaticRepairsPolicy">automaticRepairsPolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy">AutomaticRepairsPolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.doNotRunExtensionsOnOverprovisionedVMs">doNotRunExtensionsOnOverprovisionedVMs</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.hostGroup">hostGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.orchestrationMode">orchestrationMode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.overprovision">overprovision</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.platformFaultDomainCount">platformFaultDomainCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.proximityPlacementGroup">proximityPlacementGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ProximityPlacementGroupReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.scaleInPolicy">scaleInPolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy">VirtualMachineScaleSetScaleInPolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.singlePlacementGroup">singlePlacementGroup</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.upgradePolicy">upgradePolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy">VirtualMachineScaleSetUpgradePolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.virtualMachineProfile">virtualMachineProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile">VirtualMachineScaleSetVMProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.zoneBalance">zoneBalance</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `additionalCapabilities`<sup>Optional</sup> <a name="additionalCapabilities" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.additionalCapabilities"></a>
+
+```typescript
+public readonly additionalCapabilities: AdditionalCapabilities;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.AdditionalCapabilities
+
+---
+
+##### `automaticRepairsPolicy`<sup>Optional</sup> <a name="automaticRepairsPolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.automaticRepairsPolicy"></a>
+
+```typescript
+public readonly automaticRepairsPolicy: AutomaticRepairsPolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy">AutomaticRepairsPolicy</a>
+
+---
+
+##### `doNotRunExtensionsOnOverprovisionedVMs`<sup>Optional</sup> <a name="doNotRunExtensionsOnOverprovisionedVMs" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.doNotRunExtensionsOnOverprovisionedVMs"></a>
+
+```typescript
+public readonly doNotRunExtensionsOnOverprovisionedVMs: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `hostGroup`<sup>Optional</sup> <a name="hostGroup" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.hostGroup"></a>
+
+```typescript
+public readonly hostGroup: HostGroupReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference
+
+---
+
+##### `orchestrationMode`<sup>Optional</sup> <a name="orchestrationMode" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.orchestrationMode"></a>
+
+```typescript
+public readonly orchestrationMode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `overprovision`<sup>Optional</sup> <a name="overprovision" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.overprovision"></a>
+
+```typescript
+public readonly overprovision: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `platformFaultDomainCount`<sup>Optional</sup> <a name="platformFaultDomainCount" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.platformFaultDomainCount"></a>
+
+```typescript
+public readonly platformFaultDomainCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `proximityPlacementGroup`<sup>Optional</sup> <a name="proximityPlacementGroup" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.proximityPlacementGroup"></a>
+
+```typescript
+public readonly proximityPlacementGroup: ProximityPlacementGroupReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ProximityPlacementGroupReference
+
+---
+
+##### `scaleInPolicy`<sup>Optional</sup> <a name="scaleInPolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.scaleInPolicy"></a>
+
+```typescript
+public readonly scaleInPolicy: VirtualMachineScaleSetScaleInPolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy">VirtualMachineScaleSetScaleInPolicy</a>
+
+---
+
+##### `singlePlacementGroup`<sup>Optional</sup> <a name="singlePlacementGroup" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.singlePlacementGroup"></a>
+
+```typescript
+public readonly singlePlacementGroup: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `upgradePolicy`<sup>Optional</sup> <a name="upgradePolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.upgradePolicy"></a>
+
+```typescript
+public readonly upgradePolicy: VirtualMachineScaleSetUpgradePolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy">VirtualMachineScaleSetUpgradePolicy</a>
+
+---
+
+##### `virtualMachineProfile`<sup>Optional</sup> <a name="virtualMachineProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.virtualMachineProfile"></a>
+
+```typescript
+public readonly virtualMachineProfile: VirtualMachineScaleSetVMProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile">VirtualMachineScaleSetVMProfile</a>
+
+---
+
+##### `zoneBalance`<sup>Optional</sup> <a name="zoneBalance" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetBodyProperties.property.zoneBalance"></a>
+
+```typescript
+public readonly zoneBalance: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### VirtualMachineScaleSetBodyProperties <a name="VirtualMachineScaleSetBodyProperties" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties"></a>
+
+Body properties for VMSS.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetBodyProperties: azure_vmss.VirtualMachineScaleSetBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.additionalCapabilities">additionalCapabilities</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.AdditionalCapabilities</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.automaticRepairsPolicy">automaticRepairsPolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy">AutomaticRepairsPolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.doNotRunExtensionsOnOverprovisionedVMs">doNotRunExtensionsOnOverprovisionedVMs</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.hostGroup">hostGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.orchestrationMode">orchestrationMode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.overprovision">overprovision</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.platformFaultDomainCount">platformFaultDomainCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.proximityPlacementGroup">proximityPlacementGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ProximityPlacementGroupReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.scaleInPolicy">scaleInPolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy">VirtualMachineScaleSetScaleInPolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.singlePlacementGroup">singlePlacementGroup</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.upgradePolicy">upgradePolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy">VirtualMachineScaleSetUpgradePolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.virtualMachineProfile">virtualMachineProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile">VirtualMachineScaleSetVMProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.zoneBalance">zoneBalance</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `additionalCapabilities`<sup>Optional</sup> <a name="additionalCapabilities" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.additionalCapabilities"></a>
+
+```typescript
+public readonly additionalCapabilities: AdditionalCapabilities;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.AdditionalCapabilities
+
+---
+
+##### `automaticRepairsPolicy`<sup>Optional</sup> <a name="automaticRepairsPolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.automaticRepairsPolicy"></a>
+
+```typescript
+public readonly automaticRepairsPolicy: AutomaticRepairsPolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy">AutomaticRepairsPolicy</a>
+
+---
+
+##### `doNotRunExtensionsOnOverprovisionedVMs`<sup>Optional</sup> <a name="doNotRunExtensionsOnOverprovisionedVMs" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.doNotRunExtensionsOnOverprovisionedVMs"></a>
+
+```typescript
+public readonly doNotRunExtensionsOnOverprovisionedVMs: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `hostGroup`<sup>Optional</sup> <a name="hostGroup" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.hostGroup"></a>
+
+```typescript
+public readonly hostGroup: HostGroupReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference
+
+---
+
+##### `orchestrationMode`<sup>Optional</sup> <a name="orchestrationMode" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.orchestrationMode"></a>
+
+```typescript
+public readonly orchestrationMode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `overprovision`<sup>Optional</sup> <a name="overprovision" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.overprovision"></a>
+
+```typescript
+public readonly overprovision: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `platformFaultDomainCount`<sup>Optional</sup> <a name="platformFaultDomainCount" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.platformFaultDomainCount"></a>
+
+```typescript
+public readonly platformFaultDomainCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `proximityPlacementGroup`<sup>Optional</sup> <a name="proximityPlacementGroup" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.proximityPlacementGroup"></a>
+
+```typescript
+public readonly proximityPlacementGroup: ProximityPlacementGroupReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ProximityPlacementGroupReference
+
+---
+
+##### `scaleInPolicy`<sup>Optional</sup> <a name="scaleInPolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.scaleInPolicy"></a>
+
+```typescript
+public readonly scaleInPolicy: VirtualMachineScaleSetScaleInPolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy">VirtualMachineScaleSetScaleInPolicy</a>
+
+---
+
+##### `singlePlacementGroup`<sup>Optional</sup> <a name="singlePlacementGroup" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.singlePlacementGroup"></a>
+
+```typescript
+public readonly singlePlacementGroup: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `upgradePolicy`<sup>Optional</sup> <a name="upgradePolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.upgradePolicy"></a>
+
+```typescript
+public readonly upgradePolicy: VirtualMachineScaleSetUpgradePolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy">VirtualMachineScaleSetUpgradePolicy</a>
+
+---
+
+##### `virtualMachineProfile`<sup>Optional</sup> <a name="virtualMachineProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.virtualMachineProfile"></a>
+
+```typescript
+public readonly virtualMachineProfile: VirtualMachineScaleSetVMProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile">VirtualMachineScaleSetVMProfile</a>
+
+---
+
+##### `zoneBalance`<sup>Optional</sup> <a name="zoneBalance" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetBodyProperties.property.zoneBalance"></a>
+
+```typescript
+public readonly zoneBalance: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### VirtualMachineScaleSetNetworkProfile <a name="VirtualMachineScaleSetNetworkProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetNetworkProfile"></a>
+
+Network profile for VMSS (different from VM).
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetNetworkProfile.Initializer"></a>
+
+```typescript
+import { VirtualMachineScaleSetNetworkProfile } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetNetworkProfile: VirtualMachineScaleSetNetworkProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetNetworkProfile.property.healthProbe">healthProbe</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.HealthProbeReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetNetworkProfile.property.networkApiVersion">networkApiVersion</a></code> | <code>string</code> | The API version to use for network interface configurations. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetNetworkProfile.property.networkInterfaceConfigurations">networkInterfaceConfigurations</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceConfiguration">NetworkInterfaceConfiguration</a>[]</code> | *No description.* |
+
+---
+
+##### `healthProbe`<sup>Optional</sup> <a name="healthProbe" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetNetworkProfile.property.healthProbe"></a>
+
+```typescript
+public readonly healthProbe: HealthProbeReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.HealthProbeReference
+
+---
+
+##### `networkApiVersion`<sup>Optional</sup> <a name="networkApiVersion" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetNetworkProfile.property.networkApiVersion"></a>
+
+```typescript
+public readonly networkApiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest Network Interface API version (auto-resolved)
+
+The API version to use for network interface configurations.
+
+This property is automatically set to the latest Network Interface API version
+when orchestrationMode is "Flexible" and networkInterfaceConfigurations are specified.
+
+You can explicitly provide a version if you need to pin to a specific API version.
+
+---
+
+*Example*
+
+```typescript
+"2024-10-01"
+```
+
+
+##### `networkInterfaceConfigurations`<sup>Optional</sup> <a name="networkInterfaceConfigurations" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetNetworkProfile.property.networkInterfaceConfigurations"></a>
+
+```typescript
+public readonly networkInterfaceConfigurations: NetworkInterfaceConfiguration[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceConfiguration">NetworkInterfaceConfiguration</a>[]
+
+---
+
+### VirtualMachineScaleSetNetworkProfile <a name="VirtualMachineScaleSetNetworkProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetNetworkProfile"></a>
+
+Network profile for VMSS (different from VM).
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetNetworkProfile.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetNetworkProfile: azure_vmss.VirtualMachineScaleSetNetworkProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetNetworkProfile.property.healthProbe">healthProbe</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.HealthProbeReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetNetworkProfile.property.networkApiVersion">networkApiVersion</a></code> | <code>string</code> | The API version to use for network interface configurations. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetNetworkProfile.property.networkInterfaceConfigurations">networkInterfaceConfigurations</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceConfiguration">NetworkInterfaceConfiguration</a>[]</code> | *No description.* |
+
+---
+
+##### `healthProbe`<sup>Optional</sup> <a name="healthProbe" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetNetworkProfile.property.healthProbe"></a>
+
+```typescript
+public readonly healthProbe: HealthProbeReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.HealthProbeReference
+
+---
+
+##### `networkApiVersion`<sup>Optional</sup> <a name="networkApiVersion" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetNetworkProfile.property.networkApiVersion"></a>
+
+```typescript
+public readonly networkApiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest Network Interface API version (auto-resolved)
+
+The API version to use for network interface configurations.
+
+This property is automatically set to the latest Network Interface API version
+when orchestrationMode is "Flexible" and networkInterfaceConfigurations are specified.
+
+You can explicitly provide a version if you need to pin to a specific API version.
+
+---
+
+*Example*
+
+```typescript
+"2024-10-01"
+```
+
+
+##### `networkInterfaceConfigurations`<sup>Optional</sup> <a name="networkInterfaceConfigurations" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetNetworkProfile.property.networkInterfaceConfigurations"></a>
+
+```typescript
+public readonly networkInterfaceConfigurations: NetworkInterfaceConfiguration[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceConfiguration">NetworkInterfaceConfiguration</a>[]
+
+---
+
+### VirtualMachineScaleSetOSProfile <a name="VirtualMachineScaleSetOSProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile"></a>
+
+OS Profile for Virtual Machine Scale Set VMSS uses computerNamePrefix instead of computerName.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.Initializer"></a>
+
+```typescript
+import { VirtualMachineScaleSetOSProfile } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetOSProfile: VirtualMachineScaleSetOSProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.adminPassword">adminPassword</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.adminUsername">adminUsername</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.allowExtensionOperations">allowExtensionOperations</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.computerNamePrefix">computerNamePrefix</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.customData">customData</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.linuxConfiguration">linuxConfiguration</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration">VirtualMachineLinuxConfiguration</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.requireGuestProvisionSignal">requireGuestProvisionSignal</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.secrets">secrets</a></code> | <code>any[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.windowsConfiguration">windowsConfiguration</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration">VirtualMachineWindowsConfiguration</a></code> | *No description.* |
+
+---
+
+##### `adminPassword`<sup>Optional</sup> <a name="adminPassword" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.adminPassword"></a>
+
+```typescript
+public readonly adminPassword: string;
+```
+
+- *Type:* string
+
+---
+
+##### `adminUsername`<sup>Optional</sup> <a name="adminUsername" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.adminUsername"></a>
+
+```typescript
+public readonly adminUsername: string;
+```
+
+- *Type:* string
+
+---
+
+##### `allowExtensionOperations`<sup>Optional</sup> <a name="allowExtensionOperations" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.allowExtensionOperations"></a>
+
+```typescript
+public readonly allowExtensionOperations: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `computerNamePrefix`<sup>Optional</sup> <a name="computerNamePrefix" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.computerNamePrefix"></a>
+
+```typescript
+public readonly computerNamePrefix: string;
+```
+
+- *Type:* string
+
+---
+
+##### `customData`<sup>Optional</sup> <a name="customData" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.customData"></a>
+
+```typescript
+public readonly customData: string;
+```
+
+- *Type:* string
+
+---
+
+##### `linuxConfiguration`<sup>Optional</sup> <a name="linuxConfiguration" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.linuxConfiguration"></a>
+
+```typescript
+public readonly linuxConfiguration: VirtualMachineLinuxConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration">VirtualMachineLinuxConfiguration</a>
+
+---
+
+##### `requireGuestProvisionSignal`<sup>Optional</sup> <a name="requireGuestProvisionSignal" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.requireGuestProvisionSignal"></a>
+
+```typescript
+public readonly requireGuestProvisionSignal: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `secrets`<sup>Optional</sup> <a name="secrets" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.secrets"></a>
+
+```typescript
+public readonly secrets: any[];
+```
+
+- *Type:* any[]
+
+---
+
+##### `windowsConfiguration`<sup>Optional</sup> <a name="windowsConfiguration" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetOSProfile.property.windowsConfiguration"></a>
+
+```typescript
+public readonly windowsConfiguration: VirtualMachineWindowsConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration">VirtualMachineWindowsConfiguration</a>
+
+---
+
+### VirtualMachineScaleSetOSProfile <a name="VirtualMachineScaleSetOSProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile"></a>
+
+OS Profile for Virtual Machine Scale Set VMSS uses computerNamePrefix instead of computerName.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetOSProfile: azure_vmss.VirtualMachineScaleSetOSProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.adminPassword">adminPassword</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.adminUsername">adminUsername</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.allowExtensionOperations">allowExtensionOperations</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.computerNamePrefix">computerNamePrefix</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.customData">customData</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.linuxConfiguration">linuxConfiguration</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration">VirtualMachineLinuxConfiguration</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.requireGuestProvisionSignal">requireGuestProvisionSignal</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.secrets">secrets</a></code> | <code>any[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.windowsConfiguration">windowsConfiguration</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration">VirtualMachineWindowsConfiguration</a></code> | *No description.* |
+
+---
+
+##### `adminPassword`<sup>Optional</sup> <a name="adminPassword" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.adminPassword"></a>
+
+```typescript
+public readonly adminPassword: string;
+```
+
+- *Type:* string
+
+---
+
+##### `adminUsername`<sup>Optional</sup> <a name="adminUsername" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.adminUsername"></a>
+
+```typescript
+public readonly adminUsername: string;
+```
+
+- *Type:* string
+
+---
+
+##### `allowExtensionOperations`<sup>Optional</sup> <a name="allowExtensionOperations" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.allowExtensionOperations"></a>
+
+```typescript
+public readonly allowExtensionOperations: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `computerNamePrefix`<sup>Optional</sup> <a name="computerNamePrefix" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.computerNamePrefix"></a>
+
+```typescript
+public readonly computerNamePrefix: string;
+```
+
+- *Type:* string
+
+---
+
+##### `customData`<sup>Optional</sup> <a name="customData" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.customData"></a>
+
+```typescript
+public readonly customData: string;
+```
+
+- *Type:* string
+
+---
+
+##### `linuxConfiguration`<sup>Optional</sup> <a name="linuxConfiguration" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.linuxConfiguration"></a>
+
+```typescript
+public readonly linuxConfiguration: VirtualMachineLinuxConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineLinuxConfiguration">VirtualMachineLinuxConfiguration</a>
+
+---
+
+##### `requireGuestProvisionSignal`<sup>Optional</sup> <a name="requireGuestProvisionSignal" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.requireGuestProvisionSignal"></a>
+
+```typescript
+public readonly requireGuestProvisionSignal: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `secrets`<sup>Optional</sup> <a name="secrets" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.secrets"></a>
+
+```typescript
+public readonly secrets: any[];
+```
+
+- *Type:* any[]
+
+---
+
+##### `windowsConfiguration`<sup>Optional</sup> <a name="windowsConfiguration" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile.property.windowsConfiguration"></a>
+
+```typescript
+public readonly windowsConfiguration: VirtualMachineWindowsConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration">VirtualMachineWindowsConfiguration</a>
+
+---
+
+### VirtualMachineScaleSetProps <a name="VirtualMachineScaleSetProps" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps"></a>
+
+Properties for the Virtual Machine Scale Set.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.Initializer"></a>
+
+```typescript
+import { VirtualMachineScaleSetProps } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetProps: VirtualMachineScaleSetProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.sku">sku</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku">VirtualMachineScaleSetSku</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.additionalCapabilities">additionalCapabilities</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.AdditionalCapabilities</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.automaticRepairsPolicy">automaticRepairsPolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy">AutomaticRepairsPolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.doNotRunExtensionsOnOverprovisionedVMs">doNotRunExtensionsOnOverprovisionedVMs</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.hostGroup">hostGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.orchestrationMode">orchestrationMode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.overprovision">overprovision</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.plan">plan</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.platformFaultDomainCount">platformFaultDomainCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.proximityPlacementGroup">proximityPlacementGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ProximityPlacementGroupReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.scaleInPolicy">scaleInPolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy">VirtualMachineScaleSetScaleInPolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.singlePlacementGroup">singlePlacementGroup</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.upgradePolicy">upgradePolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy">VirtualMachineScaleSetUpgradePolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.virtualMachineProfile">virtualMachineProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile">VirtualMachineScaleSetVMProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.zoneBalance">zoneBalance</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.zones">zones</a></code> | <code>string[]</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `sku`<sup>Required</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.sku"></a>
+
+```typescript
+public readonly sku: VirtualMachineScaleSetSku;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku">VirtualMachineScaleSetSku</a>
+
+---
+
+##### `additionalCapabilities`<sup>Optional</sup> <a name="additionalCapabilities" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.additionalCapabilities"></a>
+
+```typescript
+public readonly additionalCapabilities: AdditionalCapabilities;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.AdditionalCapabilities
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `automaticRepairsPolicy`<sup>Optional</sup> <a name="automaticRepairsPolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.automaticRepairsPolicy"></a>
+
+```typescript
+public readonly automaticRepairsPolicy: AutomaticRepairsPolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy">AutomaticRepairsPolicy</a>
+
+---
+
+##### `doNotRunExtensionsOnOverprovisionedVMs`<sup>Optional</sup> <a name="doNotRunExtensionsOnOverprovisionedVMs" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.doNotRunExtensionsOnOverprovisionedVMs"></a>
+
+```typescript
+public readonly doNotRunExtensionsOnOverprovisionedVMs: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `hostGroup`<sup>Optional</sup> <a name="hostGroup" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.hostGroup"></a>
+
+```typescript
+public readonly hostGroup: HostGroupReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.identity"></a>
+
+```typescript
+public readonly identity: VirtualMachineIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a>
+
+---
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `orchestrationMode`<sup>Optional</sup> <a name="orchestrationMode" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.orchestrationMode"></a>
+
+```typescript
+public readonly orchestrationMode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `overprovision`<sup>Optional</sup> <a name="overprovision" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.overprovision"></a>
+
+```typescript
+public readonly overprovision: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `plan`<sup>Optional</sup> <a name="plan" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.plan"></a>
+
+```typescript
+public readonly plan: VirtualMachinePlan;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a>
+
+---
+
+##### `platformFaultDomainCount`<sup>Optional</sup> <a name="platformFaultDomainCount" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.platformFaultDomainCount"></a>
+
+```typescript
+public readonly platformFaultDomainCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `proximityPlacementGroup`<sup>Optional</sup> <a name="proximityPlacementGroup" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.proximityPlacementGroup"></a>
+
+```typescript
+public readonly proximityPlacementGroup: ProximityPlacementGroupReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ProximityPlacementGroupReference
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleInPolicy`<sup>Optional</sup> <a name="scaleInPolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.scaleInPolicy"></a>
+
+```typescript
+public readonly scaleInPolicy: VirtualMachineScaleSetScaleInPolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy">VirtualMachineScaleSetScaleInPolicy</a>
+
+---
+
+##### `singlePlacementGroup`<sup>Optional</sup> <a name="singlePlacementGroup" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.singlePlacementGroup"></a>
+
+```typescript
+public readonly singlePlacementGroup: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `upgradePolicy`<sup>Optional</sup> <a name="upgradePolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.upgradePolicy"></a>
+
+```typescript
+public readonly upgradePolicy: VirtualMachineScaleSetUpgradePolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy">VirtualMachineScaleSetUpgradePolicy</a>
+
+---
+
+##### `virtualMachineProfile`<sup>Optional</sup> <a name="virtualMachineProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.virtualMachineProfile"></a>
+
+```typescript
+public readonly virtualMachineProfile: VirtualMachineScaleSetVMProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile">VirtualMachineScaleSetVMProfile</a>
+
+---
+
+##### `zoneBalance`<sup>Optional</sup> <a name="zoneBalance" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.zoneBalance"></a>
+
+```typescript
+public readonly zoneBalance: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `zones`<sup>Optional</sup> <a name="zones" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.zones"></a>
+
+```typescript
+public readonly zones: string[];
+```
+
+- *Type:* string[]
+
+---
+
+### VirtualMachineScaleSetProps <a name="VirtualMachineScaleSetProps" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps"></a>
+
+Properties for the Virtual Machine Scale Set.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetProps: azure_vmss.VirtualMachineScaleSetProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.sku">sku</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku">VirtualMachineScaleSetSku</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.additionalCapabilities">additionalCapabilities</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.AdditionalCapabilities</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.automaticRepairsPolicy">automaticRepairsPolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy">AutomaticRepairsPolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.doNotRunExtensionsOnOverprovisionedVMs">doNotRunExtensionsOnOverprovisionedVMs</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.hostGroup">hostGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.orchestrationMode">orchestrationMode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.overprovision">overprovision</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.plan">plan</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.platformFaultDomainCount">platformFaultDomainCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.proximityPlacementGroup">proximityPlacementGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ProximityPlacementGroupReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.scaleInPolicy">scaleInPolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy">VirtualMachineScaleSetScaleInPolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.singlePlacementGroup">singlePlacementGroup</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.upgradePolicy">upgradePolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy">VirtualMachineScaleSetUpgradePolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.virtualMachineProfile">virtualMachineProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile">VirtualMachineScaleSetVMProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.zoneBalance">zoneBalance</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.zones">zones</a></code> | <code>string[]</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `sku`<sup>Required</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.sku"></a>
+
+```typescript
+public readonly sku: VirtualMachineScaleSetSku;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku">VirtualMachineScaleSetSku</a>
+
+---
+
+##### `additionalCapabilities`<sup>Optional</sup> <a name="additionalCapabilities" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.additionalCapabilities"></a>
+
+```typescript
+public readonly additionalCapabilities: AdditionalCapabilities;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.AdditionalCapabilities
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `automaticRepairsPolicy`<sup>Optional</sup> <a name="automaticRepairsPolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.automaticRepairsPolicy"></a>
+
+```typescript
+public readonly automaticRepairsPolicy: AutomaticRepairsPolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AutomaticRepairsPolicy">AutomaticRepairsPolicy</a>
+
+---
+
+##### `doNotRunExtensionsOnOverprovisionedVMs`<sup>Optional</sup> <a name="doNotRunExtensionsOnOverprovisionedVMs" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.doNotRunExtensionsOnOverprovisionedVMs"></a>
+
+```typescript
+public readonly doNotRunExtensionsOnOverprovisionedVMs: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `hostGroup`<sup>Optional</sup> <a name="hostGroup" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.hostGroup"></a>
+
+```typescript
+public readonly hostGroup: HostGroupReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.identity"></a>
+
+```typescript
+public readonly identity: VirtualMachineIdentity;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a>
+
+---
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `orchestrationMode`<sup>Optional</sup> <a name="orchestrationMode" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.orchestrationMode"></a>
+
+```typescript
+public readonly orchestrationMode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `overprovision`<sup>Optional</sup> <a name="overprovision" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.overprovision"></a>
+
+```typescript
+public readonly overprovision: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `plan`<sup>Optional</sup> <a name="plan" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.plan"></a>
+
+```typescript
+public readonly plan: VirtualMachinePlan;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a>
+
+---
+
+##### `platformFaultDomainCount`<sup>Optional</sup> <a name="platformFaultDomainCount" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.platformFaultDomainCount"></a>
+
+```typescript
+public readonly platformFaultDomainCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `proximityPlacementGroup`<sup>Optional</sup> <a name="proximityPlacementGroup" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.proximityPlacementGroup"></a>
+
+```typescript
+public readonly proximityPlacementGroup: ProximityPlacementGroupReference;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ProximityPlacementGroupReference
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scaleInPolicy`<sup>Optional</sup> <a name="scaleInPolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.scaleInPolicy"></a>
+
+```typescript
+public readonly scaleInPolicy: VirtualMachineScaleSetScaleInPolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy">VirtualMachineScaleSetScaleInPolicy</a>
+
+---
+
+##### `singlePlacementGroup`<sup>Optional</sup> <a name="singlePlacementGroup" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.singlePlacementGroup"></a>
+
+```typescript
+public readonly singlePlacementGroup: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+##### `upgradePolicy`<sup>Optional</sup> <a name="upgradePolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.upgradePolicy"></a>
+
+```typescript
+public readonly upgradePolicy: VirtualMachineScaleSetUpgradePolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy">VirtualMachineScaleSetUpgradePolicy</a>
+
+---
+
+##### `virtualMachineProfile`<sup>Optional</sup> <a name="virtualMachineProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.virtualMachineProfile"></a>
+
+```typescript
+public readonly virtualMachineProfile: VirtualMachineScaleSetVMProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile">VirtualMachineScaleSetVMProfile</a>
+
+---
+
+##### `zoneBalance`<sup>Optional</sup> <a name="zoneBalance" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.zoneBalance"></a>
+
+```typescript
+public readonly zoneBalance: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `zones`<sup>Optional</sup> <a name="zones" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.zones"></a>
+
+```typescript
+public readonly zones: string[];
+```
+
+- *Type:* string[]
+
+---
+
+### VirtualMachineScaleSetReference <a name="VirtualMachineScaleSetReference" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetReference"></a>
+
+Virtual machine scale set reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetReference.Initializer"></a>
+
+```typescript
+import { VirtualMachineScaleSetReference } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetReference: VirtualMachineScaleSetReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineScaleSetReference <a name="VirtualMachineScaleSetReference" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineScaleSetReference"></a>
+
+Virtual machine scale set reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineScaleSetReference.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetReference: azure_virtualmachine.VirtualMachineScaleSetReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineScaleSetReference.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineScaleSetReference.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineScaleSetScaleInPolicy <a name="VirtualMachineScaleSetScaleInPolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy"></a>
+
+Scale-in policy.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy.Initializer"></a>
+
+```typescript
+import { VirtualMachineScaleSetScaleInPolicy } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetScaleInPolicy: VirtualMachineScaleSetScaleInPolicy = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy.property.forceDeletion">forceDeletion</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy.property.rules">rules</a></code> | <code>string[]</code> | *No description.* |
+
+---
+
+##### `forceDeletion`<sup>Optional</sup> <a name="forceDeletion" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy.property.forceDeletion"></a>
+
+```typescript
+public readonly forceDeletion: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `rules`<sup>Optional</sup> <a name="rules" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScaleInPolicy.property.rules"></a>
+
+```typescript
+public readonly rules: string[];
+```
+
+- *Type:* string[]
+
+---
+
+### VirtualMachineScaleSetScaleInPolicy <a name="VirtualMachineScaleSetScaleInPolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScaleInPolicy"></a>
+
+Scale-in policy.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScaleInPolicy.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetScaleInPolicy: azure_vmss.VirtualMachineScaleSetScaleInPolicy = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScaleInPolicy.property.forceDeletion">forceDeletion</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScaleInPolicy.property.rules">rules</a></code> | <code>string[]</code> | *No description.* |
+
+---
+
+##### `forceDeletion`<sup>Optional</sup> <a name="forceDeletion" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScaleInPolicy.property.forceDeletion"></a>
+
+```typescript
+public readonly forceDeletion: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `rules`<sup>Optional</sup> <a name="rules" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScaleInPolicy.property.rules"></a>
+
+```typescript
+public readonly rules: string[];
+```
+
+- *Type:* string[]
+
+---
+
+### VirtualMachineScaleSetScalingConfiguration <a name="VirtualMachineScaleSetScalingConfiguration" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScalingConfiguration"></a>
+
+Scaling configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScalingConfiguration.Initializer"></a>
+
+```typescript
+import { VirtualMachineScaleSetScalingConfiguration } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetScalingConfiguration: VirtualMachineScaleSetScalingConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScalingConfiguration.property.doNotRunExtensionsOnOverprovisionedVMs">doNotRunExtensionsOnOverprovisionedVMs</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScalingConfiguration.property.overprovision">overprovision</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScalingConfiguration.property.platformFaultDomainCount">platformFaultDomainCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScalingConfiguration.property.singlePlacementGroup">singlePlacementGroup</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScalingConfiguration.property.zoneBalance">zoneBalance</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `doNotRunExtensionsOnOverprovisionedVMs`<sup>Optional</sup> <a name="doNotRunExtensionsOnOverprovisionedVMs" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScalingConfiguration.property.doNotRunExtensionsOnOverprovisionedVMs"></a>
+
+```typescript
+public readonly doNotRunExtensionsOnOverprovisionedVMs: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `overprovision`<sup>Optional</sup> <a name="overprovision" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScalingConfiguration.property.overprovision"></a>
+
+```typescript
+public readonly overprovision: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `platformFaultDomainCount`<sup>Optional</sup> <a name="platformFaultDomainCount" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScalingConfiguration.property.platformFaultDomainCount"></a>
+
+```typescript
+public readonly platformFaultDomainCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `singlePlacementGroup`<sup>Optional</sup> <a name="singlePlacementGroup" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScalingConfiguration.property.singlePlacementGroup"></a>
+
+```typescript
+public readonly singlePlacementGroup: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `zoneBalance`<sup>Optional</sup> <a name="zoneBalance" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetScalingConfiguration.property.zoneBalance"></a>
+
+```typescript
+public readonly zoneBalance: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### VirtualMachineScaleSetScalingConfiguration <a name="VirtualMachineScaleSetScalingConfiguration" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScalingConfiguration"></a>
+
+Scaling configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScalingConfiguration.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetScalingConfiguration: azure_vmss.VirtualMachineScaleSetScalingConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScalingConfiguration.property.doNotRunExtensionsOnOverprovisionedVMs">doNotRunExtensionsOnOverprovisionedVMs</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScalingConfiguration.property.overprovision">overprovision</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScalingConfiguration.property.platformFaultDomainCount">platformFaultDomainCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScalingConfiguration.property.singlePlacementGroup">singlePlacementGroup</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScalingConfiguration.property.zoneBalance">zoneBalance</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `doNotRunExtensionsOnOverprovisionedVMs`<sup>Optional</sup> <a name="doNotRunExtensionsOnOverprovisionedVMs" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScalingConfiguration.property.doNotRunExtensionsOnOverprovisionedVMs"></a>
+
+```typescript
+public readonly doNotRunExtensionsOnOverprovisionedVMs: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `overprovision`<sup>Optional</sup> <a name="overprovision" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScalingConfiguration.property.overprovision"></a>
+
+```typescript
+public readonly overprovision: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `platformFaultDomainCount`<sup>Optional</sup> <a name="platformFaultDomainCount" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScalingConfiguration.property.platformFaultDomainCount"></a>
+
+```typescript
+public readonly platformFaultDomainCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `singlePlacementGroup`<sup>Optional</sup> <a name="singlePlacementGroup" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScalingConfiguration.property.singlePlacementGroup"></a>
+
+```typescript
+public readonly singlePlacementGroup: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `zoneBalance`<sup>Optional</sup> <a name="zoneBalance" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetScalingConfiguration.property.zoneBalance"></a>
+
+```typescript
+public readonly zoneBalance: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### VirtualMachineScaleSetSku <a name="VirtualMachineScaleSetSku" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku"></a>
+
+SKU for the Virtual Machine Scale Set.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku.Initializer"></a>
+
+```typescript
+import { VirtualMachineScaleSetSku } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetSku: VirtualMachineScaleSetSku = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku.property.capacity">capacity</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku.property.tier">tier</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `capacity`<sup>Optional</sup> <a name="capacity" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku.property.capacity"></a>
+
+```typescript
+public readonly capacity: number;
+```
+
+- *Type:* number
+
+---
+
+##### `tier`<sup>Optional</sup> <a name="tier" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetSku.property.tier"></a>
+
+```typescript
+public readonly tier: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineScaleSetSku <a name="VirtualMachineScaleSetSku" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetSku"></a>
+
+SKU for the Virtual Machine Scale Set.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetSku.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetSku: azure_vmss.VirtualMachineScaleSetSku = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetSku.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetSku.property.capacity">capacity</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetSku.property.tier">tier</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetSku.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `capacity`<sup>Optional</sup> <a name="capacity" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetSku.property.capacity"></a>
+
+```typescript
+public readonly capacity: number;
+```
+
+- *Type:* number
+
+---
+
+##### `tier`<sup>Optional</sup> <a name="tier" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetSku.property.tier"></a>
+
+```typescript
+public readonly tier: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineScaleSetUpgradePolicy <a name="VirtualMachineScaleSetUpgradePolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy"></a>
+
+Upgrade policy for the Virtual Machine Scale Set.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy.Initializer"></a>
+
+```typescript
+import { VirtualMachineScaleSetUpgradePolicy } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetUpgradePolicy: VirtualMachineScaleSetUpgradePolicy = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy.property.automaticOSUpgradePolicy">automaticOSUpgradePolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AutomaticOSUpgradePolicy">AutomaticOSUpgradePolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy.property.mode">mode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy.property.rollingUpgradePolicy">rollingUpgradePolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.RollingUpgradePolicy">RollingUpgradePolicy</a></code> | *No description.* |
+
+---
+
+##### `automaticOSUpgradePolicy`<sup>Optional</sup> <a name="automaticOSUpgradePolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy.property.automaticOSUpgradePolicy"></a>
+
+```typescript
+public readonly automaticOSUpgradePolicy: AutomaticOSUpgradePolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AutomaticOSUpgradePolicy">AutomaticOSUpgradePolicy</a>
+
+---
+
+##### `mode`<sup>Optional</sup> <a name="mode" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy.property.mode"></a>
+
+```typescript
+public readonly mode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `rollingUpgradePolicy`<sup>Optional</sup> <a name="rollingUpgradePolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetUpgradePolicy.property.rollingUpgradePolicy"></a>
+
+```typescript
+public readonly rollingUpgradePolicy: RollingUpgradePolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.RollingUpgradePolicy">RollingUpgradePolicy</a>
+
+---
+
+### VirtualMachineScaleSetUpgradePolicy <a name="VirtualMachineScaleSetUpgradePolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetUpgradePolicy"></a>
+
+Upgrade policy for the Virtual Machine Scale Set.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetUpgradePolicy.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetUpgradePolicy: azure_vmss.VirtualMachineScaleSetUpgradePolicy = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetUpgradePolicy.property.automaticOSUpgradePolicy">automaticOSUpgradePolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AutomaticOSUpgradePolicy">AutomaticOSUpgradePolicy</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetUpgradePolicy.property.mode">mode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetUpgradePolicy.property.rollingUpgradePolicy">rollingUpgradePolicy</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.RollingUpgradePolicy">RollingUpgradePolicy</a></code> | *No description.* |
+
+---
+
+##### `automaticOSUpgradePolicy`<sup>Optional</sup> <a name="automaticOSUpgradePolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetUpgradePolicy.property.automaticOSUpgradePolicy"></a>
+
+```typescript
+public readonly automaticOSUpgradePolicy: AutomaticOSUpgradePolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AutomaticOSUpgradePolicy">AutomaticOSUpgradePolicy</a>
+
+---
+
+##### `mode`<sup>Optional</sup> <a name="mode" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetUpgradePolicy.property.mode"></a>
+
+```typescript
+public readonly mode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `rollingUpgradePolicy`<sup>Optional</sup> <a name="rollingUpgradePolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetUpgradePolicy.property.rollingUpgradePolicy"></a>
+
+```typescript
+public readonly rollingUpgradePolicy: RollingUpgradePolicy;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.RollingUpgradePolicy">RollingUpgradePolicy</a>
+
+---
+
+### VirtualMachineScaleSetVMProfile <a name="VirtualMachineScaleSetVMProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile"></a>
+
+VM profile for the Virtual Machine Scale Set Wraps VM configuration and reuses VM interfaces.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.Initializer"></a>
+
+```typescript
+import { VirtualMachineScaleSetVMProfile } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetVMProfile: VirtualMachineScaleSetVMProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.billingProfile">billingProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.diagnosticsProfile">diagnosticsProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile">VirtualMachineDiagnosticsProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.evictionPolicy">evictionPolicy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.extensionProfile">extensionProfile</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ExtensionProfile</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.licenseType">licenseType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.networkProfile">networkProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetNetworkProfile">VirtualMachineScaleSetNetworkProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.osProfile">osProfile</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.priority">priority</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.scheduledEventsProfile">scheduledEventsProfile</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ScheduledEventsProfile</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.securityProfile">securityProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile">VirtualMachineSecurityProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.storageProfile">storageProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile">VirtualMachineStorageProfile</a></code> | *No description.* |
+
+---
+
+##### `billingProfile`<sup>Optional</sup> <a name="billingProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.billingProfile"></a>
+
+```typescript
+public readonly billingProfile: VirtualMachineBillingProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a>
+
+---
+
+##### `diagnosticsProfile`<sup>Optional</sup> <a name="diagnosticsProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.diagnosticsProfile"></a>
+
+```typescript
+public readonly diagnosticsProfile: VirtualMachineDiagnosticsProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile">VirtualMachineDiagnosticsProfile</a>
+
+---
+
+##### `evictionPolicy`<sup>Optional</sup> <a name="evictionPolicy" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.evictionPolicy"></a>
+
+```typescript
+public readonly evictionPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `extensionProfile`<sup>Optional</sup> <a name="extensionProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.extensionProfile"></a>
+
+```typescript
+public readonly extensionProfile: ExtensionProfile;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ExtensionProfile
+
+---
+
+##### `licenseType`<sup>Optional</sup> <a name="licenseType" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.licenseType"></a>
+
+```typescript
+public readonly licenseType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `networkProfile`<sup>Optional</sup> <a name="networkProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.networkProfile"></a>
+
+```typescript
+public readonly networkProfile: VirtualMachineScaleSetNetworkProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetNetworkProfile">VirtualMachineScaleSetNetworkProfile</a>
+
+---
+
+##### `osProfile`<sup>Optional</sup> <a name="osProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.osProfile"></a>
+
+```typescript
+public readonly osProfile: VirtualMachineScaleSetOSProfile;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile
+
+---
+
+##### `priority`<sup>Optional</sup> <a name="priority" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.priority"></a>
+
+```typescript
+public readonly priority: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scheduledEventsProfile`<sup>Optional</sup> <a name="scheduledEventsProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.scheduledEventsProfile"></a>
+
+```typescript
+public readonly scheduledEventsProfile: ScheduledEventsProfile;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ScheduledEventsProfile
+
+---
+
+##### `securityProfile`<sup>Optional</sup> <a name="securityProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.securityProfile"></a>
+
+```typescript
+public readonly securityProfile: VirtualMachineSecurityProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile">VirtualMachineSecurityProfile</a>
+
+---
+
+##### `storageProfile`<sup>Optional</sup> <a name="storageProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetVMProfile.property.storageProfile"></a>
+
+```typescript
+public readonly storageProfile: VirtualMachineStorageProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile">VirtualMachineStorageProfile</a>
+
+---
+
+### VirtualMachineScaleSetVMProfile <a name="VirtualMachineScaleSetVMProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile"></a>
+
+VM profile for the Virtual Machine Scale Set Wraps VM configuration and reuses VM interfaces.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineScaleSetVMProfile: azure_vmss.VirtualMachineScaleSetVMProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.billingProfile">billingProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.diagnosticsProfile">diagnosticsProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile">VirtualMachineDiagnosticsProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.evictionPolicy">evictionPolicy</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.extensionProfile">extensionProfile</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ExtensionProfile</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.licenseType">licenseType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.networkProfile">networkProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetNetworkProfile">VirtualMachineScaleSetNetworkProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.osProfile">osProfile</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.priority">priority</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.scheduledEventsProfile">scheduledEventsProfile</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ScheduledEventsProfile</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.securityProfile">securityProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile">VirtualMachineSecurityProfile</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.storageProfile">storageProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile">VirtualMachineStorageProfile</a></code> | *No description.* |
+
+---
+
+##### `billingProfile`<sup>Optional</sup> <a name="billingProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.billingProfile"></a>
+
+```typescript
+public readonly billingProfile: VirtualMachineBillingProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineBillingProfile">VirtualMachineBillingProfile</a>
+
+---
+
+##### `diagnosticsProfile`<sup>Optional</sup> <a name="diagnosticsProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.diagnosticsProfile"></a>
+
+```typescript
+public readonly diagnosticsProfile: VirtualMachineDiagnosticsProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDiagnosticsProfile">VirtualMachineDiagnosticsProfile</a>
+
+---
+
+##### `evictionPolicy`<sup>Optional</sup> <a name="evictionPolicy" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.evictionPolicy"></a>
+
+```typescript
+public readonly evictionPolicy: string;
+```
+
+- *Type:* string
+
+---
+
+##### `extensionProfile`<sup>Optional</sup> <a name="extensionProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.extensionProfile"></a>
+
+```typescript
+public readonly extensionProfile: ExtensionProfile;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ExtensionProfile
+
+---
+
+##### `licenseType`<sup>Optional</sup> <a name="licenseType" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.licenseType"></a>
+
+```typescript
+public readonly licenseType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `networkProfile`<sup>Optional</sup> <a name="networkProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.networkProfile"></a>
+
+```typescript
+public readonly networkProfile: VirtualMachineScaleSetNetworkProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetNetworkProfile">VirtualMachineScaleSetNetworkProfile</a>
+
+---
+
+##### `osProfile`<sup>Optional</sup> <a name="osProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.osProfile"></a>
+
+```typescript
+public readonly osProfile: VirtualMachineScaleSetOSProfile;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetOSProfile
+
+---
+
+##### `priority`<sup>Optional</sup> <a name="priority" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.priority"></a>
+
+```typescript
+public readonly priority: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scheduledEventsProfile`<sup>Optional</sup> <a name="scheduledEventsProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.scheduledEventsProfile"></a>
+
+```typescript
+public readonly scheduledEventsProfile: ScheduledEventsProfile;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ScheduledEventsProfile
+
+---
+
+##### `securityProfile`<sup>Optional</sup> <a name="securityProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.securityProfile"></a>
+
+```typescript
+public readonly securityProfile: VirtualMachineSecurityProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile">VirtualMachineSecurityProfile</a>
+
+---
+
+##### `storageProfile`<sup>Optional</sup> <a name="storageProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetVMProfile.property.storageProfile"></a>
+
+```typescript
+public readonly storageProfile: VirtualMachineStorageProfile;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile">VirtualMachineStorageProfile</a>
+
+---
+
+### VirtualMachineSecret <a name="VirtualMachineSecret" id="@microsoft/terraform-cdk-constructs.VirtualMachineSecret"></a>
+
+Secret for OS profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineSecret.Initializer"></a>
+
+```typescript
+import { VirtualMachineSecret } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineSecret: VirtualMachineSecret = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecret.property.sourceVault">sourceVault</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSubResource">VirtualMachineSubResource</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecret.property.vaultCertificates">vaultCertificates</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineVaultCertificate">VirtualMachineVaultCertificate</a>[]</code> | *No description.* |
+
+---
+
+##### `sourceVault`<sup>Optional</sup> <a name="sourceVault" id="@microsoft/terraform-cdk-constructs.VirtualMachineSecret.property.sourceVault"></a>
+
+```typescript
+public readonly sourceVault: VirtualMachineSubResource;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSubResource">VirtualMachineSubResource</a>
+
+---
+
+##### `vaultCertificates`<sup>Optional</sup> <a name="vaultCertificates" id="@microsoft/terraform-cdk-constructs.VirtualMachineSecret.property.vaultCertificates"></a>
+
+```typescript
+public readonly vaultCertificates: VirtualMachineVaultCertificate[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineVaultCertificate">VirtualMachineVaultCertificate</a>[]
+
+---
+
+### VirtualMachineSecret <a name="VirtualMachineSecret" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecret"></a>
+
+Secret for OS profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecret.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineSecret: azure_virtualmachine.VirtualMachineSecret = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecret.property.sourceVault">sourceVault</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSubResource">VirtualMachineSubResource</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecret.property.vaultCertificates">vaultCertificates</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineVaultCertificate">VirtualMachineVaultCertificate</a>[]</code> | *No description.* |
+
+---
+
+##### `sourceVault`<sup>Optional</sup> <a name="sourceVault" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecret.property.sourceVault"></a>
+
+```typescript
+public readonly sourceVault: VirtualMachineSubResource;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSubResource">VirtualMachineSubResource</a>
+
+---
+
+##### `vaultCertificates`<sup>Optional</sup> <a name="vaultCertificates" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecret.property.vaultCertificates"></a>
+
+```typescript
+public readonly vaultCertificates: VirtualMachineVaultCertificate[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineVaultCertificate">VirtualMachineVaultCertificate</a>[]
+
+---
+
+### VirtualMachineSecurityProfile <a name="VirtualMachineSecurityProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile"></a>
+
+Security profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile.Initializer"></a>
+
+```typescript
+import { VirtualMachineSecurityProfile } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineSecurityProfile: VirtualMachineSecurityProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile.property.encryptionAtHost">encryptionAtHost</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile.property.securityType">securityType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile.property.uefiSettings">uefiSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineUefiSettings">VirtualMachineUefiSettings</a></code> | *No description.* |
+
+---
+
+##### `encryptionAtHost`<sup>Optional</sup> <a name="encryptionAtHost" id="@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile.property.encryptionAtHost"></a>
+
+```typescript
+public readonly encryptionAtHost: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `securityType`<sup>Optional</sup> <a name="securityType" id="@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile.property.securityType"></a>
+
+```typescript
+public readonly securityType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `uefiSettings`<sup>Optional</sup> <a name="uefiSettings" id="@microsoft/terraform-cdk-constructs.VirtualMachineSecurityProfile.property.uefiSettings"></a>
+
+```typescript
+public readonly uefiSettings: VirtualMachineUefiSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineUefiSettings">VirtualMachineUefiSettings</a>
+
+---
+
+### VirtualMachineSecurityProfile <a name="VirtualMachineSecurityProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecurityProfile"></a>
+
+Security profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecurityProfile.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineSecurityProfile: azure_virtualmachine.VirtualMachineSecurityProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecurityProfile.property.encryptionAtHost">encryptionAtHost</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecurityProfile.property.securityType">securityType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecurityProfile.property.uefiSettings">uefiSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineUefiSettings">VirtualMachineUefiSettings</a></code> | *No description.* |
+
+---
+
+##### `encryptionAtHost`<sup>Optional</sup> <a name="encryptionAtHost" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecurityProfile.property.encryptionAtHost"></a>
+
+```typescript
+public readonly encryptionAtHost: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `securityType`<sup>Optional</sup> <a name="securityType" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecurityProfile.property.securityType"></a>
+
+```typescript
+public readonly securityType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `uefiSettings`<sup>Optional</sup> <a name="uefiSettings" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSecurityProfile.property.uefiSettings"></a>
+
+```typescript
+public readonly uefiSettings: VirtualMachineUefiSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineUefiSettings">VirtualMachineUefiSettings</a>
+
+---
+
+### VirtualMachineSecurityProfile <a name="VirtualMachineSecurityProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineSecurityProfile"></a>
+
+Security profile.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineSecurityProfile.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineSecurityProfile: azure_vmss.VirtualMachineSecurityProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineSecurityProfile.property.encryptionAtHost">encryptionAtHost</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineSecurityProfile.property.securityType">securityType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineSecurityProfile.property.uefiSettings">uefiSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineUefiSettings">VirtualMachineUefiSettings</a></code> | *No description.* |
+
+---
+
+##### `encryptionAtHost`<sup>Optional</sup> <a name="encryptionAtHost" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineSecurityProfile.property.encryptionAtHost"></a>
+
+```typescript
+public readonly encryptionAtHost: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `securityType`<sup>Optional</sup> <a name="securityType" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineSecurityProfile.property.securityType"></a>
+
+```typescript
+public readonly securityType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `uefiSettings`<sup>Optional</sup> <a name="uefiSettings" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineSecurityProfile.property.uefiSettings"></a>
+
+```typescript
+public readonly uefiSettings: VirtualMachineUefiSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineUefiSettings">VirtualMachineUefiSettings</a>
+
+---
+
+### VirtualMachineSshConfiguration <a name="VirtualMachineSshConfiguration" id="@microsoft/terraform-cdk-constructs.VirtualMachineSshConfiguration"></a>
+
+SSH configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineSshConfiguration.Initializer"></a>
+
+```typescript
+import { VirtualMachineSshConfiguration } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineSshConfiguration: VirtualMachineSshConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSshConfiguration.property.publicKeys">publicKeys</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSshPublicKey">VirtualMachineSshPublicKey</a>[]</code> | *No description.* |
+
+---
+
+##### `publicKeys`<sup>Optional</sup> <a name="publicKeys" id="@microsoft/terraform-cdk-constructs.VirtualMachineSshConfiguration.property.publicKeys"></a>
+
+```typescript
+public readonly publicKeys: VirtualMachineSshPublicKey[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSshPublicKey">VirtualMachineSshPublicKey</a>[]
+
+---
+
+### VirtualMachineSshConfiguration <a name="VirtualMachineSshConfiguration" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSshConfiguration"></a>
+
+SSH configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSshConfiguration.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineSshConfiguration: azure_virtualmachine.VirtualMachineSshConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSshConfiguration.property.publicKeys">publicKeys</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSshPublicKey">VirtualMachineSshPublicKey</a>[]</code> | *No description.* |
+
+---
+
+##### `publicKeys`<sup>Optional</sup> <a name="publicKeys" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSshConfiguration.property.publicKeys"></a>
+
+```typescript
+public readonly publicKeys: VirtualMachineSshPublicKey[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSshPublicKey">VirtualMachineSshPublicKey</a>[]
+
+---
+
+### VirtualMachineSshPublicKey <a name="VirtualMachineSshPublicKey" id="@microsoft/terraform-cdk-constructs.VirtualMachineSshPublicKey"></a>
+
+SSH public key.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineSshPublicKey.Initializer"></a>
+
+```typescript
+import { VirtualMachineSshPublicKey } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineSshPublicKey: VirtualMachineSshPublicKey = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSshPublicKey.property.keyData">keyData</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSshPublicKey.property.path">path</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `keyData`<sup>Required</sup> <a name="keyData" id="@microsoft/terraform-cdk-constructs.VirtualMachineSshPublicKey.property.keyData"></a>
+
+```typescript
+public readonly keyData: string;
+```
+
+- *Type:* string
+
+---
+
+##### `path`<sup>Required</sup> <a name="path" id="@microsoft/terraform-cdk-constructs.VirtualMachineSshPublicKey.property.path"></a>
+
+```typescript
+public readonly path: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineSshPublicKey <a name="VirtualMachineSshPublicKey" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSshPublicKey"></a>
+
+SSH public key.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSshPublicKey.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineSshPublicKey: azure_virtualmachine.VirtualMachineSshPublicKey = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSshPublicKey.property.keyData">keyData</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSshPublicKey.property.path">path</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `keyData`<sup>Required</sup> <a name="keyData" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSshPublicKey.property.keyData"></a>
+
+```typescript
+public readonly keyData: string;
+```
+
+- *Type:* string
+
+---
+
+##### `path`<sup>Required</sup> <a name="path" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSshPublicKey.property.path"></a>
+
+```typescript
+public readonly path: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineStorageProfile <a name="VirtualMachineStorageProfile" id="@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile"></a>
+
+Storage profile for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile.Initializer"></a>
+
+```typescript
+import { VirtualMachineStorageProfile } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineStorageProfile: VirtualMachineStorageProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile.property.osDisk">osDisk</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk">VirtualMachineOSDisk</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile.property.dataDisks">dataDisks</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk">VirtualMachineDataDisk</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile.property.imageReference">imageReference</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineImageReference">VirtualMachineImageReference</a></code> | *No description.* |
+
+---
+
+##### `osDisk`<sup>Required</sup> <a name="osDisk" id="@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile.property.osDisk"></a>
+
+```typescript
+public readonly osDisk: VirtualMachineOSDisk;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk">VirtualMachineOSDisk</a>
+
+---
+
+##### `dataDisks`<sup>Optional</sup> <a name="dataDisks" id="@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile.property.dataDisks"></a>
+
+```typescript
+public readonly dataDisks: VirtualMachineDataDisk[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk">VirtualMachineDataDisk</a>[]
+
+---
+
+##### `imageReference`<sup>Optional</sup> <a name="imageReference" id="@microsoft/terraform-cdk-constructs.VirtualMachineStorageProfile.property.imageReference"></a>
+
+```typescript
+public readonly imageReference: VirtualMachineImageReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineImageReference">VirtualMachineImageReference</a>
+
+---
+
+### VirtualMachineStorageProfile <a name="VirtualMachineStorageProfile" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineStorageProfile"></a>
+
+Storage profile for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineStorageProfile.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineStorageProfile: azure_virtualmachine.VirtualMachineStorageProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineStorageProfile.property.osDisk">osDisk</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk">VirtualMachineOSDisk</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineStorageProfile.property.dataDisks">dataDisks</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk">VirtualMachineDataDisk</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineStorageProfile.property.imageReference">imageReference</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineImageReference">VirtualMachineImageReference</a></code> | *No description.* |
+
+---
+
+##### `osDisk`<sup>Required</sup> <a name="osDisk" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineStorageProfile.property.osDisk"></a>
+
+```typescript
+public readonly osDisk: VirtualMachineOSDisk;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk">VirtualMachineOSDisk</a>
+
+---
+
+##### `dataDisks`<sup>Optional</sup> <a name="dataDisks" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineStorageProfile.property.dataDisks"></a>
+
+```typescript
+public readonly dataDisks: VirtualMachineDataDisk[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk">VirtualMachineDataDisk</a>[]
+
+---
+
+##### `imageReference`<sup>Optional</sup> <a name="imageReference" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineStorageProfile.property.imageReference"></a>
+
+```typescript
+public readonly imageReference: VirtualMachineImageReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineImageReference">VirtualMachineImageReference</a>
+
+---
+
+### VirtualMachineStorageProfile <a name="VirtualMachineStorageProfile" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineStorageProfile"></a>
+
+Storage profile for the virtual machine.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineStorageProfile.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineStorageProfile: azure_vmss.VirtualMachineStorageProfile = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineStorageProfile.property.osDisk">osDisk</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk">VirtualMachineOSDisk</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineStorageProfile.property.dataDisks">dataDisks</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk">VirtualMachineDataDisk</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineStorageProfile.property.imageReference">imageReference</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineImageReference">VirtualMachineImageReference</a></code> | *No description.* |
+
+---
+
+##### `osDisk`<sup>Required</sup> <a name="osDisk" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineStorageProfile.property.osDisk"></a>
+
+```typescript
+public readonly osDisk: VirtualMachineOSDisk;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineOSDisk">VirtualMachineOSDisk</a>
+
+---
+
+##### `dataDisks`<sup>Optional</sup> <a name="dataDisks" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineStorageProfile.property.dataDisks"></a>
+
+```typescript
+public readonly dataDisks: VirtualMachineDataDisk[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineDataDisk">VirtualMachineDataDisk</a>[]
+
+---
+
+##### `imageReference`<sup>Optional</sup> <a name="imageReference" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineStorageProfile.property.imageReference"></a>
+
+```typescript
+public readonly imageReference: VirtualMachineImageReference;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineImageReference">VirtualMachineImageReference</a>
+
+---
+
+### VirtualMachineSubResource <a name="VirtualMachineSubResource" id="@microsoft/terraform-cdk-constructs.VirtualMachineSubResource"></a>
+
+Sub-resource reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineSubResource.Initializer"></a>
+
+```typescript
+import { VirtualMachineSubResource } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineSubResource: VirtualMachineSubResource = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineSubResource.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.VirtualMachineSubResource.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineSubResource <a name="VirtualMachineSubResource" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSubResource"></a>
+
+Sub-resource reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSubResource.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineSubResource: azure_virtualmachine.VirtualMachineSubResource = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSubResource.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Optional</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineSubResource.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineUefiSettings <a name="VirtualMachineUefiSettings" id="@microsoft/terraform-cdk-constructs.VirtualMachineUefiSettings"></a>
+
+UEFI settings.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineUefiSettings.Initializer"></a>
+
+```typescript
+import { VirtualMachineUefiSettings } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineUefiSettings: VirtualMachineUefiSettings = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineUefiSettings.property.secureBootEnabled">secureBootEnabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineUefiSettings.property.vTpmEnabled">vTpmEnabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `secureBootEnabled`<sup>Optional</sup> <a name="secureBootEnabled" id="@microsoft/terraform-cdk-constructs.VirtualMachineUefiSettings.property.secureBootEnabled"></a>
+
+```typescript
+public readonly secureBootEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `vTpmEnabled`<sup>Optional</sup> <a name="vTpmEnabled" id="@microsoft/terraform-cdk-constructs.VirtualMachineUefiSettings.property.vTpmEnabled"></a>
+
+```typescript
+public readonly vTpmEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### VirtualMachineUefiSettings <a name="VirtualMachineUefiSettings" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineUefiSettings"></a>
+
+UEFI settings.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineUefiSettings.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineUefiSettings: azure_virtualmachine.VirtualMachineUefiSettings = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineUefiSettings.property.secureBootEnabled">secureBootEnabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineUefiSettings.property.vTpmEnabled">vTpmEnabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `secureBootEnabled`<sup>Optional</sup> <a name="secureBootEnabled" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineUefiSettings.property.secureBootEnabled"></a>
+
+```typescript
+public readonly secureBootEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `vTpmEnabled`<sup>Optional</sup> <a name="vTpmEnabled" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineUefiSettings.property.vTpmEnabled"></a>
+
+```typescript
+public readonly vTpmEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### VirtualMachineUefiSettings <a name="VirtualMachineUefiSettings" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineUefiSettings"></a>
+
+UEFI settings.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineUefiSettings.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineUefiSettings: azure_vmss.VirtualMachineUefiSettings = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineUefiSettings.property.secureBootEnabled">secureBootEnabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineUefiSettings.property.vTpmEnabled">vTpmEnabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `secureBootEnabled`<sup>Optional</sup> <a name="secureBootEnabled" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineUefiSettings.property.secureBootEnabled"></a>
+
+```typescript
+public readonly secureBootEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `vTpmEnabled`<sup>Optional</sup> <a name="vTpmEnabled" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineUefiSettings.property.vTpmEnabled"></a>
+
+```typescript
+public readonly vTpmEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### VirtualMachineVaultCertificate <a name="VirtualMachineVaultCertificate" id="@microsoft/terraform-cdk-constructs.VirtualMachineVaultCertificate"></a>
+
+Vault certificate.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineVaultCertificate.Initializer"></a>
+
+```typescript
+import { VirtualMachineVaultCertificate } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineVaultCertificate: VirtualMachineVaultCertificate = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineVaultCertificate.property.certificateStore">certificateStore</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineVaultCertificate.property.certificateUrl">certificateUrl</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `certificateStore`<sup>Optional</sup> <a name="certificateStore" id="@microsoft/terraform-cdk-constructs.VirtualMachineVaultCertificate.property.certificateStore"></a>
+
+```typescript
+public readonly certificateStore: string;
+```
+
+- *Type:* string
+
+---
+
+##### `certificateUrl`<sup>Optional</sup> <a name="certificateUrl" id="@microsoft/terraform-cdk-constructs.VirtualMachineVaultCertificate.property.certificateUrl"></a>
+
+```typescript
+public readonly certificateUrl: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineVaultCertificate <a name="VirtualMachineVaultCertificate" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineVaultCertificate"></a>
+
+Vault certificate.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineVaultCertificate.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineVaultCertificate: azure_virtualmachine.VirtualMachineVaultCertificate = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineVaultCertificate.property.certificateStore">certificateStore</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineVaultCertificate.property.certificateUrl">certificateUrl</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `certificateStore`<sup>Optional</sup> <a name="certificateStore" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineVaultCertificate.property.certificateStore"></a>
+
+```typescript
+public readonly certificateStore: string;
+```
+
+- *Type:* string
+
+---
+
+##### `certificateUrl`<sup>Optional</sup> <a name="certificateUrl" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineVaultCertificate.property.certificateUrl"></a>
+
+```typescript
+public readonly certificateUrl: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineWindowsConfiguration <a name="VirtualMachineWindowsConfiguration" id="@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration"></a>
+
+Windows configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration.Initializer"></a>
+
+```typescript
+import { VirtualMachineWindowsConfiguration } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineWindowsConfiguration: VirtualMachineWindowsConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration.property.enableAutomaticUpdates">enableAutomaticUpdates</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration.property.patchSettings">patchSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings">VirtualMachineWindowsPatchSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration.property.provisionVMAgent">provisionVMAgent</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration.property.timeZone">timeZone</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration.property.winRM">winRM</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWinRMConfiguration">VirtualMachineWinRMConfiguration</a></code> | *No description.* |
+
+---
+
+##### `enableAutomaticUpdates`<sup>Optional</sup> <a name="enableAutomaticUpdates" id="@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration.property.enableAutomaticUpdates"></a>
+
+```typescript
+public readonly enableAutomaticUpdates: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `patchSettings`<sup>Optional</sup> <a name="patchSettings" id="@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration.property.patchSettings"></a>
+
+```typescript
+public readonly patchSettings: VirtualMachineWindowsPatchSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings">VirtualMachineWindowsPatchSettings</a>
+
+---
+
+##### `provisionVMAgent`<sup>Optional</sup> <a name="provisionVMAgent" id="@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration.property.provisionVMAgent"></a>
+
+```typescript
+public readonly provisionVMAgent: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `timeZone`<sup>Optional</sup> <a name="timeZone" id="@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration.property.timeZone"></a>
+
+```typescript
+public readonly timeZone: string;
+```
+
+- *Type:* string
+
+---
+
+##### `winRM`<sup>Optional</sup> <a name="winRM" id="@microsoft/terraform-cdk-constructs.VirtualMachineWindowsConfiguration.property.winRM"></a>
+
+```typescript
+public readonly winRM: VirtualMachineWinRMConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWinRMConfiguration">VirtualMachineWinRMConfiguration</a>
+
+---
+
+### VirtualMachineWindowsConfiguration <a name="VirtualMachineWindowsConfiguration" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsConfiguration"></a>
+
+Windows configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsConfiguration.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineWindowsConfiguration: azure_virtualmachine.VirtualMachineWindowsConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsConfiguration.property.enableAutomaticUpdates">enableAutomaticUpdates</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsConfiguration.property.patchSettings">patchSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings">VirtualMachineWindowsPatchSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsConfiguration.property.provisionVMAgent">provisionVMAgent</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsConfiguration.property.timeZone">timeZone</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsConfiguration.property.winRM">winRM</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWinRMConfiguration">VirtualMachineWinRMConfiguration</a></code> | *No description.* |
+
+---
+
+##### `enableAutomaticUpdates`<sup>Optional</sup> <a name="enableAutomaticUpdates" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsConfiguration.property.enableAutomaticUpdates"></a>
+
+```typescript
+public readonly enableAutomaticUpdates: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `patchSettings`<sup>Optional</sup> <a name="patchSettings" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsConfiguration.property.patchSettings"></a>
+
+```typescript
+public readonly patchSettings: VirtualMachineWindowsPatchSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings">VirtualMachineWindowsPatchSettings</a>
+
+---
+
+##### `provisionVMAgent`<sup>Optional</sup> <a name="provisionVMAgent" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsConfiguration.property.provisionVMAgent"></a>
+
+```typescript
+public readonly provisionVMAgent: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `timeZone`<sup>Optional</sup> <a name="timeZone" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsConfiguration.property.timeZone"></a>
+
+```typescript
+public readonly timeZone: string;
+```
+
+- *Type:* string
+
+---
+
+##### `winRM`<sup>Optional</sup> <a name="winRM" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsConfiguration.property.winRM"></a>
+
+```typescript
+public readonly winRM: VirtualMachineWinRMConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWinRMConfiguration">VirtualMachineWinRMConfiguration</a>
+
+---
+
+### VirtualMachineWindowsConfiguration <a name="VirtualMachineWindowsConfiguration" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineWindowsConfiguration"></a>
+
+Windows configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineWindowsConfiguration.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineWindowsConfiguration: azure_vmss.VirtualMachineWindowsConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineWindowsConfiguration.property.enableAutomaticUpdates">enableAutomaticUpdates</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineWindowsConfiguration.property.patchSettings">patchSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings">VirtualMachineWindowsPatchSettings</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineWindowsConfiguration.property.provisionVMAgent">provisionVMAgent</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineWindowsConfiguration.property.timeZone">timeZone</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineWindowsConfiguration.property.winRM">winRM</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWinRMConfiguration">VirtualMachineWinRMConfiguration</a></code> | *No description.* |
+
+---
+
+##### `enableAutomaticUpdates`<sup>Optional</sup> <a name="enableAutomaticUpdates" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineWindowsConfiguration.property.enableAutomaticUpdates"></a>
+
+```typescript
+public readonly enableAutomaticUpdates: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `patchSettings`<sup>Optional</sup> <a name="patchSettings" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineWindowsConfiguration.property.patchSettings"></a>
+
+```typescript
+public readonly patchSettings: VirtualMachineWindowsPatchSettings;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings">VirtualMachineWindowsPatchSettings</a>
+
+---
+
+##### `provisionVMAgent`<sup>Optional</sup> <a name="provisionVMAgent" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineWindowsConfiguration.property.provisionVMAgent"></a>
+
+```typescript
+public readonly provisionVMAgent: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `timeZone`<sup>Optional</sup> <a name="timeZone" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineWindowsConfiguration.property.timeZone"></a>
+
+```typescript
+public readonly timeZone: string;
+```
+
+- *Type:* string
+
+---
+
+##### `winRM`<sup>Optional</sup> <a name="winRM" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineWindowsConfiguration.property.winRM"></a>
+
+```typescript
+public readonly winRM: VirtualMachineWinRMConfiguration;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWinRMConfiguration">VirtualMachineWinRMConfiguration</a>
+
+---
+
+### VirtualMachineWindowsPatchSettings <a name="VirtualMachineWindowsPatchSettings" id="@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings"></a>
+
+Windows patch settings.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings.Initializer"></a>
+
+```typescript
+import { VirtualMachineWindowsPatchSettings } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineWindowsPatchSettings: VirtualMachineWindowsPatchSettings = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings.property.assessmentMode">assessmentMode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings.property.enableHotpatching">enableHotpatching</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings.property.patchMode">patchMode</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `assessmentMode`<sup>Optional</sup> <a name="assessmentMode" id="@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings.property.assessmentMode"></a>
+
+```typescript
+public readonly assessmentMode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `enableHotpatching`<sup>Optional</sup> <a name="enableHotpatching" id="@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings.property.enableHotpatching"></a>
+
+```typescript
+public readonly enableHotpatching: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `patchMode`<sup>Optional</sup> <a name="patchMode" id="@microsoft/terraform-cdk-constructs.VirtualMachineWindowsPatchSettings.property.patchMode"></a>
+
+```typescript
+public readonly patchMode: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineWindowsPatchSettings <a name="VirtualMachineWindowsPatchSettings" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsPatchSettings"></a>
+
+Windows patch settings.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsPatchSettings.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineWindowsPatchSettings: azure_virtualmachine.VirtualMachineWindowsPatchSettings = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsPatchSettings.property.assessmentMode">assessmentMode</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsPatchSettings.property.enableHotpatching">enableHotpatching</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsPatchSettings.property.patchMode">patchMode</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `assessmentMode`<sup>Optional</sup> <a name="assessmentMode" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsPatchSettings.property.assessmentMode"></a>
+
+```typescript
+public readonly assessmentMode: string;
+```
+
+- *Type:* string
+
+---
+
+##### `enableHotpatching`<sup>Optional</sup> <a name="enableHotpatching" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsPatchSettings.property.enableHotpatching"></a>
+
+```typescript
+public readonly enableHotpatching: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `patchMode`<sup>Optional</sup> <a name="patchMode" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWindowsPatchSettings.property.patchMode"></a>
+
+```typescript
+public readonly patchMode: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineWinRMConfiguration <a name="VirtualMachineWinRMConfiguration" id="@microsoft/terraform-cdk-constructs.VirtualMachineWinRMConfiguration"></a>
+
+WinRM configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineWinRMConfiguration.Initializer"></a>
+
+```typescript
+import { VirtualMachineWinRMConfiguration } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineWinRMConfiguration: VirtualMachineWinRMConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWinRMConfiguration.property.listeners">listeners</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWinRMListener">VirtualMachineWinRMListener</a>[]</code> | *No description.* |
+
+---
+
+##### `listeners`<sup>Optional</sup> <a name="listeners" id="@microsoft/terraform-cdk-constructs.VirtualMachineWinRMConfiguration.property.listeners"></a>
+
+```typescript
+public readonly listeners: VirtualMachineWinRMListener[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWinRMListener">VirtualMachineWinRMListener</a>[]
+
+---
+
+### VirtualMachineWinRMConfiguration <a name="VirtualMachineWinRMConfiguration" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWinRMConfiguration"></a>
+
+WinRM configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWinRMConfiguration.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineWinRMConfiguration: azure_virtualmachine.VirtualMachineWinRMConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWinRMConfiguration.property.listeners">listeners</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWinRMListener">VirtualMachineWinRMListener</a>[]</code> | *No description.* |
+
+---
+
+##### `listeners`<sup>Optional</sup> <a name="listeners" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWinRMConfiguration.property.listeners"></a>
+
+```typescript
+public readonly listeners: VirtualMachineWinRMListener[];
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWinRMListener">VirtualMachineWinRMListener</a>[]
+
+---
+
+### VirtualMachineWinRMListener <a name="VirtualMachineWinRMListener" id="@microsoft/terraform-cdk-constructs.VirtualMachineWinRMListener"></a>
+
+WinRM listener.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineWinRMListener.Initializer"></a>
+
+```typescript
+import { VirtualMachineWinRMListener } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineWinRMListener: VirtualMachineWinRMListener = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWinRMListener.property.protocol">protocol</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineWinRMListener.property.certificateUrl">certificateUrl</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `protocol`<sup>Required</sup> <a name="protocol" id="@microsoft/terraform-cdk-constructs.VirtualMachineWinRMListener.property.protocol"></a>
+
+```typescript
+public readonly protocol: string;
+```
+
+- *Type:* string
+
+---
+
+##### `certificateUrl`<sup>Optional</sup> <a name="certificateUrl" id="@microsoft/terraform-cdk-constructs.VirtualMachineWinRMListener.property.certificateUrl"></a>
+
+```typescript
+public readonly certificateUrl: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualMachineWinRMListener <a name="VirtualMachineWinRMListener" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWinRMListener"></a>
+
+WinRM listener.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWinRMListener.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineWinRMListener: azure_virtualmachine.VirtualMachineWinRMListener = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWinRMListener.property.protocol">protocol</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWinRMListener.property.certificateUrl">certificateUrl</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `protocol`<sup>Required</sup> <a name="protocol" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWinRMListener.property.protocol"></a>
+
+```typescript
+public readonly protocol: string;
+```
+
+- *Type:* string
+
+---
+
+##### `certificateUrl`<sup>Optional</sup> <a name="certificateUrl" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineWinRMListener.property.certificateUrl"></a>
+
+```typescript
+public readonly certificateUrl: string;
+```
+
+- *Type:* string
+
+---
+
+### VirtualNetworkAddressSpace <a name="VirtualNetworkAddressSpace" id="@microsoft/terraform-cdk-constructs.VirtualNetworkAddressSpace"></a>
+
+Address space configuration for Virtual Network.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualNetworkAddressSpace.Initializer"></a>
+
+```typescript
+import { VirtualNetworkAddressSpace } from '@microsoft/terraform-cdk-constructs'
+
+const virtualNetworkAddressSpace: VirtualNetworkAddressSpace = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkAddressSpace.property.addressPrefixes">addressPrefixes</a></code> | <code>string[]</code> | Array of address prefixes in CIDR notation. |
+
+---
+
+##### `addressPrefixes`<sup>Required</sup> <a name="addressPrefixes" id="@microsoft/terraform-cdk-constructs.VirtualNetworkAddressSpace.property.addressPrefixes"></a>
+
+```typescript
+public readonly addressPrefixes: string[];
+```
+
+- *Type:* string[]
+
+Array of address prefixes in CIDR notation.
+
+---
+
+*Example*
+
+```typescript
+["10.0.0.0/16", "10.1.0.0/16"]
+```
+
+
+### VirtualNetworkAddressSpace <a name="VirtualNetworkAddressSpace" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkAddressSpace"></a>
+
+Address space configuration for Virtual Network.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkAddressSpace.Initializer"></a>
+
+```typescript
+import { azure_virtualnetwork } from '@microsoft/terraform-cdk-constructs'
+
+const virtualNetworkAddressSpace: azure_virtualnetwork.VirtualNetworkAddressSpace = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkAddressSpace.property.addressPrefixes">addressPrefixes</a></code> | <code>string[]</code> | Array of address prefixes in CIDR notation. |
+
+---
+
+##### `addressPrefixes`<sup>Required</sup> <a name="addressPrefixes" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkAddressSpace.property.addressPrefixes"></a>
+
+```typescript
+public readonly addressPrefixes: string[];
+```
+
+- *Type:* string[]
+
+Array of address prefixes in CIDR notation.
+
+---
+
+*Example*
+
+```typescript
+["10.0.0.0/16", "10.1.0.0/16"]
+```
+
+
+### VirtualNetworkDhcpOptions <a name="VirtualNetworkDhcpOptions" id="@microsoft/terraform-cdk-constructs.VirtualNetworkDhcpOptions"></a>
+
+DHCP options configuration for Virtual Network.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualNetworkDhcpOptions.Initializer"></a>
+
+```typescript
+import { VirtualNetworkDhcpOptions } from '@microsoft/terraform-cdk-constructs'
+
+const virtualNetworkDhcpOptions: VirtualNetworkDhcpOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkDhcpOptions.property.dnsServers">dnsServers</a></code> | <code>string[]</code> | Array of DNS server IP addresses. |
+
+---
+
+##### `dnsServers`<sup>Optional</sup> <a name="dnsServers" id="@microsoft/terraform-cdk-constructs.VirtualNetworkDhcpOptions.property.dnsServers"></a>
+
+```typescript
+public readonly dnsServers: string[];
+```
+
+- *Type:* string[]
+
+Array of DNS server IP addresses.
+
+---
+
+*Example*
+
+```typescript
+["10.0.0.4", "10.0.0.5"]
+```
+
+
+### VirtualNetworkDhcpOptions <a name="VirtualNetworkDhcpOptions" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkDhcpOptions"></a>
+
+DHCP options configuration for Virtual Network.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkDhcpOptions.Initializer"></a>
+
+```typescript
+import { azure_virtualnetwork } from '@microsoft/terraform-cdk-constructs'
+
+const virtualNetworkDhcpOptions: azure_virtualnetwork.VirtualNetworkDhcpOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkDhcpOptions.property.dnsServers">dnsServers</a></code> | <code>string[]</code> | Array of DNS server IP addresses. |
+
+---
+
+##### `dnsServers`<sup>Optional</sup> <a name="dnsServers" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkDhcpOptions.property.dnsServers"></a>
+
+```typescript
+public readonly dnsServers: string[];
+```
+
+- *Type:* string[]
+
+Array of DNS server IP addresses.
+
+---
+
+*Example*
+
+```typescript
+["10.0.0.4", "10.0.0.5"]
+```
+
+
+### VirtualNetworkProps <a name="VirtualNetworkProps" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps"></a>
+
+Properties for the Azure Virtual Network.
+
+Extends AzapiResourceProps with Virtual Network specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.Initializer"></a>
+
+```typescript
+import { VirtualNetworkProps } from '@microsoft/terraform-cdk-constructs'
+
+const virtualNetworkProps: VirtualNetworkProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.addressSpace">addressSpace</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkAddressSpace">VirtualNetworkAddressSpace</a></code> | Address space for the virtual network Must contain at least one address prefix. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.dhcpOptions">dhcpOptions</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkDhcpOptions">VirtualNetworkDhcpOptions</a></code> | DHCP options configuration Optional - configures DNS servers for the VNet. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.enableDdosProtection">enableDdosProtection</a></code> | <code>boolean</code> | Enable DDoS protection for the virtual network Requires a DDoS protection plan. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.enableVmProtection">enableVmProtection</a></code> | <code>boolean</code> | Enable VM protection for the virtual network. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.encryption">encryption</a></code> | <code>any</code> | Encryption settings for the virtual network Optional - configures encryption for the VNet. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.flowTimeoutInMinutes">flowTimeoutInMinutes</a></code> | <code>number</code> | Flow timeout in minutes for the virtual network Valid range: 4-30 minutes. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes Useful for properties that are externally managed. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the VNet will be created Optional - will use the subscription scope if not provided. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.subnets">subnets</a></code> | <code>any[]</code> | Subnets to create within the virtual network Optional - subnets can also be created separately. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `addressSpace`<sup>Required</sup> <a name="addressSpace" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.addressSpace"></a>
+
+```typescript
+public readonly addressSpace: VirtualNetworkAddressSpace;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkAddressSpace">VirtualNetworkAddressSpace</a>
+
+Address space for the virtual network Must contain at least one address prefix.
+
+---
+
+##### `dhcpOptions`<sup>Optional</sup> <a name="dhcpOptions" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.dhcpOptions"></a>
+
+```typescript
+public readonly dhcpOptions: VirtualNetworkDhcpOptions;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkDhcpOptions">VirtualNetworkDhcpOptions</a>
+
+DHCP options configuration Optional - configures DNS servers for the VNet.
+
+---
+
+##### `enableDdosProtection`<sup>Optional</sup> <a name="enableDdosProtection" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.enableDdosProtection"></a>
+
+```typescript
+public readonly enableDdosProtection: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable DDoS protection for the virtual network Requires a DDoS protection plan.
+
+---
+
+##### `enableVmProtection`<sup>Optional</sup> <a name="enableVmProtection" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.enableVmProtection"></a>
+
+```typescript
+public readonly enableVmProtection: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable VM protection for the virtual network.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: any;
+```
+
+- *Type:* any
+
+Encryption settings for the virtual network Optional - configures encryption for the VNet.
+
+---
+
+##### `flowTimeoutInMinutes`<sup>Optional</sup> <a name="flowTimeoutInMinutes" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.flowTimeoutInMinutes"></a>
+
+```typescript
+public readonly flowTimeoutInMinutes: number;
+```
+
+- *Type:* number
+
+Flow timeout in minutes for the virtual network Valid range: 4-30 minutes.
+
+---
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes Useful for properties that are externally managed.
+
+---
+
+*Example*
+
+```typescript
+["tags", "subnets"]
+```
+
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the VNet will be created Optional - will use the subscription scope if not provided.
+
+---
+
+##### `subnets`<sup>Optional</sup> <a name="subnets" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.subnets"></a>
+
+```typescript
+public readonly subnets: any[];
+```
+
+- *Type:* any[]
+
+Subnets to create within the virtual network Optional - subnets can also be created separately.
+
+---
+
+### VirtualNetworkProps <a name="VirtualNetworkProps" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps"></a>
+
+Properties for the Azure Virtual Network.
+
+Extends AzapiResourceProps with Virtual Network specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.Initializer"></a>
+
+```typescript
+import { azure_virtualnetwork } from '@microsoft/terraform-cdk-constructs'
+
+const virtualNetworkProps: azure_virtualnetwork.VirtualNetworkProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.addressSpace">addressSpace</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkAddressSpace">VirtualNetworkAddressSpace</a></code> | Address space for the virtual network Must contain at least one address prefix. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.dhcpOptions">dhcpOptions</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkDhcpOptions">VirtualNetworkDhcpOptions</a></code> | DHCP options configuration Optional - configures DNS servers for the VNet. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.enableDdosProtection">enableDdosProtection</a></code> | <code>boolean</code> | Enable DDoS protection for the virtual network Requires a DDoS protection plan. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.enableVmProtection">enableVmProtection</a></code> | <code>boolean</code> | Enable VM protection for the virtual network. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.encryption">encryption</a></code> | <code>any</code> | Encryption settings for the virtual network Optional - configures encryption for the VNet. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.flowTimeoutInMinutes">flowTimeoutInMinutes</a></code> | <code>number</code> | Flow timeout in minutes for the virtual network Valid range: 4-30 minutes. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes Useful for properties that are externally managed. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the VNet will be created Optional - will use the subscription scope if not provided. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.subnets">subnets</a></code> | <code>any[]</code> | Subnets to create within the virtual network Optional - subnets can also be created separately. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `addressSpace`<sup>Required</sup> <a name="addressSpace" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.addressSpace"></a>
+
+```typescript
+public readonly addressSpace: VirtualNetworkAddressSpace;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkAddressSpace">VirtualNetworkAddressSpace</a>
+
+Address space for the virtual network Must contain at least one address prefix.
+
+---
+
+##### `dhcpOptions`<sup>Optional</sup> <a name="dhcpOptions" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.dhcpOptions"></a>
+
+```typescript
+public readonly dhcpOptions: VirtualNetworkDhcpOptions;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkDhcpOptions">VirtualNetworkDhcpOptions</a>
+
+DHCP options configuration Optional - configures DNS servers for the VNet.
+
+---
+
+##### `enableDdosProtection`<sup>Optional</sup> <a name="enableDdosProtection" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.enableDdosProtection"></a>
+
+```typescript
+public readonly enableDdosProtection: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable DDoS protection for the virtual network Requires a DDoS protection plan.
+
+---
+
+##### `enableVmProtection`<sup>Optional</sup> <a name="enableVmProtection" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.enableVmProtection"></a>
+
+```typescript
+public readonly enableVmProtection: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Enable VM protection for the virtual network.
+
+---
+
+##### `encryption`<sup>Optional</sup> <a name="encryption" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.encryption"></a>
+
+```typescript
+public readonly encryption: any;
+```
+
+- *Type:* any
+
+Encryption settings for the virtual network Optional - configures encryption for the VNet.
+
+---
+
+##### `flowTimeoutInMinutes`<sup>Optional</sup> <a name="flowTimeoutInMinutes" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.flowTimeoutInMinutes"></a>
+
+```typescript
+public readonly flowTimeoutInMinutes: number;
+```
+
+- *Type:* number
+
+Flow timeout in minutes for the virtual network Valid range: 4-30 minutes.
+
+---
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes Useful for properties that are externally managed.
+
+---
+
+*Example*
+
+```typescript
+["tags", "subnets"]
+```
+
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the VNet will be created Optional - will use the subscription scope if not provided.
+
+---
+
+##### `subnets`<sup>Optional</sup> <a name="subnets" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.subnets"></a>
+
+```typescript
+public readonly subnets: any[];
+```
+
+- *Type:* any[]
+
+Subnets to create within the virtual network Optional - subnets can also be created separately.
+
+---
+
+### VMExtension <a name="VMExtension" id="@microsoft/terraform-cdk-constructs.VMExtension"></a>
+
+VM extension.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VMExtension.Initializer"></a>
+
+```typescript
+import { VMExtension } from '@microsoft/terraform-cdk-constructs'
+
+const vMExtension: VMExtension = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VMExtension.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VMExtension.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VMExtension.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.VMExtension.property.properties"></a>
+
+```typescript
+public readonly properties: VMExtensionProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties
+
+---
+
+### VMExtension <a name="VMExtension" id="@microsoft/terraform-cdk-constructs.azure_vmss.VMExtension"></a>
+
+VM extension.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VMExtension.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const vMExtension: azure_vmss.VMExtension = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VMExtension.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VMExtension.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_vmss.VMExtension.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_vmss.VMExtension.property.properties"></a>
+
+```typescript
+public readonly properties: VMExtensionProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties
+
+---
+
+### VMExtensionProperties <a name="VMExtensionProperties" id="@microsoft/terraform-cdk-constructs.VMExtensionProperties"></a>
+
+Extension properties.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VMExtensionProperties.Initializer"></a>
+
+```typescript
+import { VMExtensionProperties } from '@microsoft/terraform-cdk-constructs'
+
+const vMExtensionProperties: VMExtensionProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VMExtensionProperties.property.publisher">publisher</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VMExtensionProperties.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VMExtensionProperties.property.typeHandlerVersion">typeHandlerVersion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VMExtensionProperties.property.autoUpgradeMinorVersion">autoUpgradeMinorVersion</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VMExtensionProperties.property.protectedSettings">protectedSettings</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VMExtensionProperties.property.settings">settings</a></code> | <code>any</code> | *No description.* |
+
+---
+
+##### `publisher`<sup>Required</sup> <a name="publisher" id="@microsoft/terraform-cdk-constructs.VMExtensionProperties.property.publisher"></a>
+
+```typescript
+public readonly publisher: string;
+```
+
+- *Type:* string
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.VMExtensionProperties.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `typeHandlerVersion`<sup>Required</sup> <a name="typeHandlerVersion" id="@microsoft/terraform-cdk-constructs.VMExtensionProperties.property.typeHandlerVersion"></a>
+
+```typescript
+public readonly typeHandlerVersion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `autoUpgradeMinorVersion`<sup>Optional</sup> <a name="autoUpgradeMinorVersion" id="@microsoft/terraform-cdk-constructs.VMExtensionProperties.property.autoUpgradeMinorVersion"></a>
+
+```typescript
+public readonly autoUpgradeMinorVersion: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `protectedSettings`<sup>Optional</sup> <a name="protectedSettings" id="@microsoft/terraform-cdk-constructs.VMExtensionProperties.property.protectedSettings"></a>
+
+```typescript
+public readonly protectedSettings: any;
+```
+
+- *Type:* any
+
+---
+
+##### `settings`<sup>Optional</sup> <a name="settings" id="@microsoft/terraform-cdk-constructs.VMExtensionProperties.property.settings"></a>
+
+```typescript
+public readonly settings: any;
+```
+
+- *Type:* any
+
+---
+
+### VMExtensionProperties <a name="VMExtensionProperties" id="@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties"></a>
+
+Extension properties.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const vMExtensionProperties: azure_vmss.VMExtensionProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties.property.publisher">publisher</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties.property.typeHandlerVersion">typeHandlerVersion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties.property.autoUpgradeMinorVersion">autoUpgradeMinorVersion</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties.property.protectedSettings">protectedSettings</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties.property.settings">settings</a></code> | <code>any</code> | *No description.* |
+
+---
+
+##### `publisher`<sup>Required</sup> <a name="publisher" id="@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties.property.publisher"></a>
+
+```typescript
+public readonly publisher: string;
+```
+
+- *Type:* string
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `typeHandlerVersion`<sup>Required</sup> <a name="typeHandlerVersion" id="@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties.property.typeHandlerVersion"></a>
+
+```typescript
+public readonly typeHandlerVersion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `autoUpgradeMinorVersion`<sup>Optional</sup> <a name="autoUpgradeMinorVersion" id="@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties.property.autoUpgradeMinorVersion"></a>
+
+```typescript
+public readonly autoUpgradeMinorVersion: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `protectedSettings`<sup>Optional</sup> <a name="protectedSettings" id="@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties.property.protectedSettings"></a>
+
+```typescript
+public readonly protectedSettings: any;
+```
+
+- *Type:* any
+
+---
+
+##### `settings`<sup>Optional</sup> <a name="settings" id="@microsoft/terraform-cdk-constructs.azure_vmss.VMExtensionProperties.property.settings"></a>
+
+```typescript
+public readonly settings: any;
+```
+
+- *Type:* any
+
+---
 
 ## Classes <a name="Classes" id="Classes"></a>
 
@@ -43678,4 +65644,309 @@ Sunset - no longer supported, immediate migration required May be removed in fut
 
 ---
 
+## Protocols <a name="Protocols" id="Protocols"></a>
+
+### IPConfiguration <a name="IPConfiguration" id="@microsoft/terraform-cdk-constructs.IPConfiguration"></a>
+
+- *Implemented By:* <a href="#@microsoft/terraform-cdk-constructs.IPConfiguration">IPConfiguration</a>
+
+Network interface IP configuration.
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.IPConfiguration.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.IPConfiguration.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.IPConfiguration.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.IPConfiguration.property.properties"></a>
+
+```typescript
+public readonly properties: IPConfigurationProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties
+
+---
+
+### IPConfiguration <a name="IPConfiguration" id="@microsoft/terraform-cdk-constructs.azure_vmss.IPConfiguration"></a>
+
+- *Implemented By:* @microsoft/terraform-cdk-constructs.azure_vmss.IPConfiguration
+
+Network interface IP configuration.
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.IPConfiguration.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.IPConfiguration.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_vmss.IPConfiguration.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_vmss.IPConfiguration.property.properties"></a>
+
+```typescript
+public readonly properties: IPConfigurationProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties
+
+---
+
+### IPConfigurationProperties <a name="IPConfigurationProperties" id="@microsoft/terraform-cdk-constructs.IPConfigurationProperties"></a>
+
+- *Implemented By:* <a href="#@microsoft/terraform-cdk-constructs.IPConfigurationProperties">IPConfigurationProperties</a>
+
+IP configuration properties.
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.applicationGatewayBackendAddressPools">applicationGatewayBackendAddressPools</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.loadBalancerBackendAddressPools">loadBalancerBackendAddressPools</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.loadBalancerInboundNatPools">loadBalancerInboundNatPools</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.primary">primary</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.privateIPAddressVersion">privateIPAddressVersion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.publicIPAddressConfiguration">publicIPAddressConfiguration</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfiguration</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.subnet">subnet</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationSubnet</code> | *No description.* |
+
+---
+
+##### `applicationGatewayBackendAddressPools`<sup>Optional</sup> <a name="applicationGatewayBackendAddressPools" id="@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.applicationGatewayBackendAddressPools"></a>
+
+```typescript
+public readonly applicationGatewayBackendAddressPools: ResourceReference[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference[]
+
+---
+
+##### `loadBalancerBackendAddressPools`<sup>Optional</sup> <a name="loadBalancerBackendAddressPools" id="@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.loadBalancerBackendAddressPools"></a>
+
+```typescript
+public readonly loadBalancerBackendAddressPools: ResourceReference[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference[]
+
+---
+
+##### `loadBalancerInboundNatPools`<sup>Optional</sup> <a name="loadBalancerInboundNatPools" id="@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.loadBalancerInboundNatPools"></a>
+
+```typescript
+public readonly loadBalancerInboundNatPools: ResourceReference[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference[]
+
+---
+
+##### `primary`<sup>Optional</sup> <a name="primary" id="@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.primary"></a>
+
+```typescript
+public readonly primary: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `privateIPAddressVersion`<sup>Optional</sup> <a name="privateIPAddressVersion" id="@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.privateIPAddressVersion"></a>
+
+```typescript
+public readonly privateIPAddressVersion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `publicIPAddressConfiguration`<sup>Optional</sup> <a name="publicIPAddressConfiguration" id="@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.publicIPAddressConfiguration"></a>
+
+```typescript
+public readonly publicIPAddressConfiguration: PublicIPAddressConfiguration;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfiguration
+
+---
+
+##### `subnet`<sup>Optional</sup> <a name="subnet" id="@microsoft/terraform-cdk-constructs.IPConfigurationProperties.property.subnet"></a>
+
+```typescript
+public readonly subnet: IPConfigurationSubnet;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationSubnet
+
+---
+
+### IPConfigurationProperties <a name="IPConfigurationProperties" id="@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties"></a>
+
+- *Implemented By:* @microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties
+
+IP configuration properties.
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.applicationGatewayBackendAddressPools">applicationGatewayBackendAddressPools</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.loadBalancerBackendAddressPools">loadBalancerBackendAddressPools</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.loadBalancerInboundNatPools">loadBalancerInboundNatPools</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.primary">primary</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.privateIPAddressVersion">privateIPAddressVersion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.publicIPAddressConfiguration">publicIPAddressConfiguration</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfiguration</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.subnet">subnet</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationSubnet</code> | *No description.* |
+
+---
+
+##### `applicationGatewayBackendAddressPools`<sup>Optional</sup> <a name="applicationGatewayBackendAddressPools" id="@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.applicationGatewayBackendAddressPools"></a>
+
+```typescript
+public readonly applicationGatewayBackendAddressPools: ResourceReference[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference[]
+
+---
+
+##### `loadBalancerBackendAddressPools`<sup>Optional</sup> <a name="loadBalancerBackendAddressPools" id="@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.loadBalancerBackendAddressPools"></a>
+
+```typescript
+public readonly loadBalancerBackendAddressPools: ResourceReference[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference[]
+
+---
+
+##### `loadBalancerInboundNatPools`<sup>Optional</sup> <a name="loadBalancerInboundNatPools" id="@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.loadBalancerInboundNatPools"></a>
+
+```typescript
+public readonly loadBalancerInboundNatPools: ResourceReference[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.ResourceReference[]
+
+---
+
+##### `primary`<sup>Optional</sup> <a name="primary" id="@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.primary"></a>
+
+```typescript
+public readonly primary: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `privateIPAddressVersion`<sup>Optional</sup> <a name="privateIPAddressVersion" id="@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.privateIPAddressVersion"></a>
+
+```typescript
+public readonly privateIPAddressVersion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `publicIPAddressConfiguration`<sup>Optional</sup> <a name="publicIPAddressConfiguration" id="@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.publicIPAddressConfiguration"></a>
+
+```typescript
+public readonly publicIPAddressConfiguration: PublicIPAddressConfiguration;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.PublicIPAddressConfiguration
+
+---
+
+##### `subnet`<sup>Optional</sup> <a name="subnet" id="@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationProperties.property.subnet"></a>
+
+```typescript
+public readonly subnet: IPConfigurationSubnet;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationSubnet
+
+---
+
+### IPConfigurationSubnet <a name="IPConfigurationSubnet" id="@microsoft/terraform-cdk-constructs.IPConfigurationSubnet"></a>
+
+- *Implemented By:* <a href="#@microsoft/terraform-cdk-constructs.IPConfigurationSubnet">IPConfigurationSubnet</a>
+
+IP configuration subnet reference.
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.IPConfigurationSubnet.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.IPConfigurationSubnet.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
+
+### IPConfigurationSubnet <a name="IPConfigurationSubnet" id="@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationSubnet"></a>
+
+- *Implemented By:* @microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationSubnet
+
+IP configuration subnet reference.
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationSubnet.property.id">id</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_vmss.IPConfigurationSubnet.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+---
 

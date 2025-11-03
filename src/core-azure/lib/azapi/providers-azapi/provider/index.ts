@@ -1,301 +1,332 @@
 // https://registry.terraform.io/providers/azure/azapi/2.7.0/docs
 // generated from terraform resource schema
 
-import * as cdktf from "cdktf";
-import { Construct } from "constructs";
+import { Construct } from 'constructs';
+import * as cdktf from 'cdktf';
 
 // Configuration
 
 export interface AzapiProviderConfig {
   /**
-   * List of auxiliary Tenant IDs required for multi-tenancy and cross-tenant scenarios. This can also be sourced from the `ARM_AUXILIARY_TENANT_IDS` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#auxiliary_tenant_ids AzapiProvider#auxiliary_tenant_ids}
-   */
+  * List of auxiliary Tenant IDs required for multi-tenancy and cross-tenant scenarios. This can also be sourced from the `ARM_AUXILIARY_TENANT_IDS` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#auxiliary_tenant_ids AzapiProvider#auxiliary_tenant_ids}
+  */
   readonly auxiliaryTenantIds?: string[];
   /**
-   * A base64-encoded PKCS#12 bundle to be used as the client certificate for authentication. This can also be sourced from the `ARM_CLIENT_CERTIFICATE` environment variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_certificate AzapiProvider#client_certificate}
-   */
+  * A base64-encoded PKCS#12 bundle to be used as the client certificate for authentication. This can also be sourced from the `ARM_CLIENT_CERTIFICATE` environment variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_certificate AzapiProvider#client_certificate}
+  */
   readonly clientCertificate?: string;
   /**
-   * The password associated with the Client Certificate. This can also be sourced from the `ARM_CLIENT_CERTIFICATE_PASSWORD` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_certificate_password AzapiProvider#client_certificate_password}
-   */
+  * The password associated with the Client Certificate. This can also be sourced from the `ARM_CLIENT_CERTIFICATE_PASSWORD` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_certificate_password AzapiProvider#client_certificate_password}
+  */
   readonly clientCertificatePassword?: string;
   /**
-   * The path to the Client Certificate associated with the Service Principal which should be used. This can also be sourced from the `ARM_CLIENT_CERTIFICATE_PATH` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_certificate_path AzapiProvider#client_certificate_path}
-   */
+  * The path to the Client Certificate associated with the Service Principal which should be used. This can also be sourced from the `ARM_CLIENT_CERTIFICATE_PATH` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_certificate_path AzapiProvider#client_certificate_path}
+  */
   readonly clientCertificatePath?: string;
   /**
-   * The Client ID which should be used. This can also be sourced from the `ARM_CLIENT_ID`, `AZURE_CLIENT_ID` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_id AzapiProvider#client_id}
-   */
+  * The Client ID which should be used. This can also be sourced from the `ARM_CLIENT_ID`, `AZURE_CLIENT_ID` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_id AzapiProvider#client_id}
+  */
   readonly clientId?: string;
   /**
-   * The path to a file containing the Client ID which should be used. This can also be sourced from the `ARM_CLIENT_ID_FILE_PATH` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_id_file_path AzapiProvider#client_id_file_path}
-   */
+  * The path to a file containing the Client ID which should be used. This can also be sourced from the `ARM_CLIENT_ID_FILE_PATH` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_id_file_path AzapiProvider#client_id_file_path}
+  */
   readonly clientIdFilePath?: string;
   /**
-   * The Client Secret which should be used. This can also be sourced from the `ARM_CLIENT_SECRET` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_secret AzapiProvider#client_secret}
-   */
+  * The Client Secret which should be used. This can also be sourced from the `ARM_CLIENT_SECRET` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_secret AzapiProvider#client_secret}
+  */
   readonly clientSecret?: string;
   /**
-   * The path to a file containing the Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret. This can also be sourced from the `ARM_CLIENT_SECRET_FILE_PATH` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_secret_file_path AzapiProvider#client_secret_file_path}
-   */
+  * The path to a file containing the Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret. This can also be sourced from the `ARM_CLIENT_SECRET_FILE_PATH` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_secret_file_path AzapiProvider#client_secret_file_path}
+  */
   readonly clientSecretFilePath?: string;
   /**
-   * The value of the `x-ms-correlation-request-id` header, otherwise an auto-generated UUID will be used. This can also be sourced from the `ARM_CORRELATION_REQUEST_ID` environment variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#custom_correlation_request_id AzapiProvider#custom_correlation_request_id}
-   */
+  * The value of the `x-ms-correlation-request-id` header, otherwise an auto-generated UUID will be used. This can also be sourced from the `ARM_CORRELATION_REQUEST_ID` environment variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#custom_correlation_request_id AzapiProvider#custom_correlation_request_id}
+  */
   readonly customCorrelationRequestId?: string;
   /**
-   *  The default Azure Region where the azure resource should exist. The `location` in each resource block can override the `default_location`. Changing this forces new resources to be created.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#default_location AzapiProvider#default_location}
-   */
+  *  The default Azure Region where the azure resource should exist. The `location` in each resource block can override the `default_location`. Changing this forces new resources to be created.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#default_location AzapiProvider#default_location}
+  */
   readonly defaultLocation?: string;
   /**
-   * The default name to create the azure resource. The `name` in each resource block can override the `default_name`. Changing this forces new resources to be created.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#default_name AzapiProvider#default_name}
-   */
+  * The default name to create the azure resource. The `name` in each resource block can override the `default_name`. Changing this forces new resources to be created.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#default_name AzapiProvider#default_name}
+  */
   readonly defaultName?: string;
   /**
-   * A mapping of tags which should be assigned to the azure resource as default tags. The`tags` in each resource block can override the `default_tags`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#default_tags AzapiProvider#default_tags}
-   */
+  * A mapping of tags which should be assigned to the azure resource as default tags. The`tags` in each resource block can override the `default_tags`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#default_tags AzapiProvider#default_tags}
+  */
   readonly defaultTags?: { [key: string]: string };
   /**
-   * This will disable the x-ms-correlation-request-id header.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_correlation_request_id AzapiProvider#disable_correlation_request_id}
-   */
+  * This will disable the x-ms-correlation-request-id header.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_correlation_request_id AzapiProvider#disable_correlation_request_id}
+  */
   readonly disableCorrelationRequestId?: boolean | cdktf.IResolvable;
   /**
-   * Disable default output. The default is false. When set to false, the provider will output the read-only properties if `response_export_values` is not specified in the resource block. When set to true, the provider will disable this output. This can also be sourced from the `ARM_DISABLE_DEFAULT_OUTPUT` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_default_output AzapiProvider#disable_default_output}
-   */
+  * Disable default output. The default is false. When set to false, the provider will output the read-only properties if `response_export_values` is not specified in the resource block. When set to true, the provider will disable this output. This can also be sourced from the `ARM_DISABLE_DEFAULT_OUTPUT` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_default_output AzapiProvider#disable_default_output}
+  */
   readonly disableDefaultOutput?: boolean | cdktf.IResolvable;
   /**
-   * Disables Instance Discovery, which validates that the Authority is valid and known by the Microsoft Entra instance metadata service at `https://login.microsoft.com` before authenticating. This should only be enabled when the configured authority is known to be valid and trustworthy - such as when running against Azure Stack or when `environment` is set to `custom`. This can also be specified via the `ARM_DISABLE_INSTANCE_DISCOVERY` environment variable. Defaults to `false`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_instance_discovery AzapiProvider#disable_instance_discovery}
-   */
+  * Disables Instance Discovery, which validates that the Authority is valid and known by the Microsoft Entra instance metadata service at `https://login.microsoft.com` before authenticating. This should only be enabled when the configured authority is known to be valid and trustworthy - such as when running against Azure Stack or when `environment` is set to `custom`. This can also be specified via the `ARM_DISABLE_INSTANCE_DISCOVERY` environment variable. Defaults to `false`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_instance_discovery AzapiProvider#disable_instance_discovery}
+  */
   readonly disableInstanceDiscovery?: boolean | cdktf.IResolvable;
   /**
-   * Disable sending the Terraform Partner ID if a custom `partner_id` isn't specified, which allows Microsoft to better understand the usage of Terraform. The Partner ID does not give HashiCorp any direct access to usage information. This can also be sourced from the `ARM_DISABLE_TERRAFORM_PARTNER_ID` environment variable. Defaults to `false`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_terraform_partner_id AzapiProvider#disable_terraform_partner_id}
-   */
+  * Disable sending the Terraform Partner ID if a custom `partner_id` isn't specified, which allows Microsoft to better understand the usage of Terraform. The Partner ID does not give HashiCorp any direct access to usage information. This can also be sourced from the `ARM_DISABLE_TERRAFORM_PARTNER_ID` environment variable. Defaults to `false`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_terraform_partner_id AzapiProvider#disable_terraform_partner_id}
+  */
   readonly disableTerraformPartnerId?: boolean | cdktf.IResolvable;
   /**
-   * Enable Preflight Validation. The default is false. When set to true, the provider will use Preflight to do static validation before really deploying a new resource. When set to false, the provider will disable this validation. This can also be sourced from the `ARM_ENABLE_PREFLIGHT` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#enable_preflight AzapiProvider#enable_preflight}
-   */
+  * Enable Preflight Validation. The default is false. When set to true, the provider will use Preflight to do static validation before really deploying a new resource. When set to false, the provider will disable this validation. This can also be sourced from the `ARM_ENABLE_PREFLIGHT` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#enable_preflight AzapiProvider#enable_preflight}
+  */
   readonly enablePreflight?: boolean | cdktf.IResolvable;
   /**
-   * The Azure API Endpoint Configuration.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#endpoint AzapiProvider#endpoint}
-   */
+  * The Azure API Endpoint Configuration.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#endpoint AzapiProvider#endpoint}
+  */
   readonly endpoint?: AzapiProviderEndpoint[] | cdktf.IResolvable;
   /**
-   * The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `china` and `custom`. Defaults to `public`. This can also be sourced from the `ARM_ENVIRONMENT` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#environment AzapiProvider#environment}
-   */
+  * The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `china` and `custom`. Defaults to `public`. This can also be sourced from the `ARM_ENVIRONMENT` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#environment AzapiProvider#environment}
+  */
   readonly environment?: string;
   /**
-   * Ignore no-op changes for `azapi_resource`. The default is true. When set to true, the provider will suppress changes in the `azapi_resource` if the `body` in the new API version still matches the remote state. When set to false, the provider will not suppress these changes. This can also be sourced from the `ARM_IGNORE_NO_OP_CHANGES` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#ignore_no_op_changes AzapiProvider#ignore_no_op_changes}
-   */
+  * Ignore no-op changes for `azapi_resource`. The default is true. When set to true, the provider will suppress changes in the `azapi_resource` if the `body` in the new API version still matches the remote state. When set to false, the provider will not suppress these changes. This can also be sourced from the `ARM_IGNORE_NO_OP_CHANGES` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#ignore_no_op_changes AzapiProvider#ignore_no_op_changes}
+  */
   readonly ignoreNoOpChanges?: boolean | cdktf.IResolvable;
   /**
-   * DEPRECATED - The maximum number of retries to attempt if the Azure API returns an HTTP 408, 429, 500, 502, 503, or 504 response. The default is `32767`, this allows the provider to rely on the resource timeout values rather than a maximum retry count. The resource-specific retry configuration may additionally be used to retry on other errors and conditions. This property will be removed in a future version.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#maximum_busy_retry_attempts AzapiProvider#maximum_busy_retry_attempts}
-   */
+  * DEPRECATED - The maximum number of retries to attempt if the Azure API returns an HTTP 408, 429, 500, 502, 503, or 504 response. The default is `32767`, this allows the provider to rely on the resource timeout values rather than a maximum retry count. The resource-specific retry configuration may additionally be used to retry on other errors and conditions. This property will be removed in a future version.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#maximum_busy_retry_attempts AzapiProvider#maximum_busy_retry_attempts}
+  */
   readonly maximumBusyRetryAttempts?: number;
   /**
-   * The Azure Pipelines Service Connection ID to use for authentication. This can also be sourced from the `ARM_ADO_PIPELINE_SERVICE_CONNECTION_ID`, `ARM_OIDC_AZURE_SERVICE_CONNECTION_ID`, or `AZURESUBSCRIPTION_SERVICE_CONNECTION_ID` Environment Variables.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_azure_service_connection_id AzapiProvider#oidc_azure_service_connection_id}
-   */
+  * The Azure Pipelines Service Connection ID to use for authentication. This can also be sourced from the `ARM_ADO_PIPELINE_SERVICE_CONNECTION_ID`, `ARM_OIDC_AZURE_SERVICE_CONNECTION_ID`, or `AZURESUBSCRIPTION_SERVICE_CONNECTION_ID` Environment Variables.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_azure_service_connection_id AzapiProvider#oidc_azure_service_connection_id}
+  */
   readonly oidcAzureServiceConnectionId?: string;
   /**
-   * The bearer token for the request to the OIDC provider. This can also be sourced from the `ARM_OIDC_REQUEST_TOKEN`, `ACTIONS_ID_TOKEN_REQUEST_TOKEN`, or `SYSTEM_ACCESSTOKEN` Environment Variables.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_request_token AzapiProvider#oidc_request_token}
-   */
+  * The bearer token for the request to the OIDC provider. This can also be sourced from the `ARM_OIDC_REQUEST_TOKEN`, `ACTIONS_ID_TOKEN_REQUEST_TOKEN`, or `SYSTEM_ACCESSTOKEN` Environment Variables.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_request_token AzapiProvider#oidc_request_token}
+  */
   readonly oidcRequestToken?: string;
   /**
-   * The URL for the OIDC provider from which to request an ID token. This can also be sourced from the `ARM_OIDC_REQUEST_URL`, `ACTIONS_ID_TOKEN_REQUEST_URL`, or `SYSTEM_OIDCREQUESTURI` Environment Variables.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_request_url AzapiProvider#oidc_request_url}
-   */
+  * The URL for the OIDC provider from which to request an ID token. This can also be sourced from the `ARM_OIDC_REQUEST_URL`, `ACTIONS_ID_TOKEN_REQUEST_URL`, or `SYSTEM_OIDCREQUESTURI` Environment Variables.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_request_url AzapiProvider#oidc_request_url}
+  */
   readonly oidcRequestUrl?: string;
   /**
-   * The ID token when authenticating using OpenID Connect (OIDC). This can also be sourced from the `ARM_OIDC_TOKEN` environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_token AzapiProvider#oidc_token}
-   */
+  * The ID token when authenticating using OpenID Connect (OIDC). This can also be sourced from the `ARM_OIDC_TOKEN` environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_token AzapiProvider#oidc_token}
+  */
   readonly oidcToken?: string;
   /**
-   * The path to a file containing an ID token when authenticating using OpenID Connect (OIDC). This can also be sourced from the `ARM_OIDC_TOKEN_FILE_PATH`, `AZURE_FEDERATED_TOKEN_FILE` environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_token_file_path AzapiProvider#oidc_token_file_path}
-   */
+  * The path to a file containing an ID token when authenticating using OpenID Connect (OIDC). This can also be sourced from the `ARM_OIDC_TOKEN_FILE_PATH`, `AZURE_FEDERATED_TOKEN_FILE` environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_token_file_path AzapiProvider#oidc_token_file_path}
+  */
   readonly oidcTokenFilePath?: string;
   /**
-   * A GUID/UUID that is [registered](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#register-guids-and-offers) with Microsoft to facilitate partner resource usage attribution. This can also be sourced from the `ARM_PARTNER_ID` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#partner_id AzapiProvider#partner_id}
-   */
+  * A GUID/UUID that is [registered](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#register-guids-and-offers) with Microsoft to facilitate partner resource usage attribution. This can also be sourced from the `ARM_PARTNER_ID` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#partner_id AzapiProvider#partner_id}
+  */
   readonly partnerId?: string;
   /**
-   * Should the Provider skip registering the Resource Providers it supports? This can also be sourced from the `ARM_SKIP_PROVIDER_REGISTRATION` Environment Variable. Defaults to `false`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#skip_provider_registration AzapiProvider#skip_provider_registration}
-   */
+  * Should the Provider skip registering the Resource Providers it supports? This can also be sourced from the `ARM_SKIP_PROVIDER_REGISTRATION` Environment Variable. Defaults to `false`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#skip_provider_registration AzapiProvider#skip_provider_registration}
+  */
   readonly skipProviderRegistration?: boolean | cdktf.IResolvable;
   /**
-   * The Subscription ID which should be used. This can also be sourced from the `ARM_SUBSCRIPTION_ID` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#subscription_id AzapiProvider#subscription_id}
-   */
+  * The Subscription ID which should be used. This can also be sourced from the `ARM_SUBSCRIPTION_ID` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#subscription_id AzapiProvider#subscription_id}
+  */
   readonly subscriptionId?: string;
   /**
-   * The Tenant ID should be used. This can also be sourced from the `ARM_TENANT_ID` Environment Variable.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#tenant_id AzapiProvider#tenant_id}
-   */
+  * The Tenant ID should be used. This can also be sourced from the `ARM_TENANT_ID` Environment Variable.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#tenant_id AzapiProvider#tenant_id}
+  */
   readonly tenantId?: string;
   /**
-   * Should AKS Workload Identity be used for Authentication? This can also be sourced from the `ARM_USE_AKS_WORKLOAD_IDENTITY` Environment Variable. Defaults to `false`. When set, `client_id`, `tenant_id` and `oidc_token_file_path` will be detected from the environment and do not need to be specified.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_aks_workload_identity AzapiProvider#use_aks_workload_identity}
-   */
+  * Should AKS Workload Identity be used for Authentication? This can also be sourced from the `ARM_USE_AKS_WORKLOAD_IDENTITY` Environment Variable. Defaults to `false`. When set, `client_id`, `tenant_id` and `oidc_token_file_path` will be detected from the environment and do not need to be specified.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_aks_workload_identity AzapiProvider#use_aks_workload_identity}
+  */
   readonly useAksWorkloadIdentity?: boolean | cdktf.IResolvable;
   /**
-   * Should Azure CLI be used for authentication? This can also be sourced from the `ARM_USE_CLI` environment variable. Defaults to `true`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_cli AzapiProvider#use_cli}
-   */
+  * Should Azure CLI be used for authentication? This can also be sourced from the `ARM_USE_CLI` environment variable. Defaults to `true`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_cli AzapiProvider#use_cli}
+  */
   readonly useCli?: boolean | cdktf.IResolvable;
   /**
-   * Should Managed Identity be used for Authentication? This can also be sourced from the `ARM_USE_MSI` Environment Variable. Defaults to `false`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_msi AzapiProvider#use_msi}
-   */
+  * Should Managed Identity be used for Authentication? This can also be sourced from the `ARM_USE_MSI` Environment Variable. Defaults to `false`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_msi AzapiProvider#use_msi}
+  */
   readonly useMsi?: boolean | cdktf.IResolvable;
   /**
-   * Should OIDC be used for Authentication? This can also be sourced from the `ARM_USE_OIDC` Environment Variable. Defaults to `false`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_oidc AzapiProvider#use_oidc}
-   */
+  * Should OIDC be used for Authentication? This can also be sourced from the `ARM_USE_OIDC` Environment Variable. Defaults to `false`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_oidc AzapiProvider#use_oidc}
+  */
   readonly useOidc?: boolean | cdktf.IResolvable;
   /**
-   * Alias name
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#alias AzapiProvider#alias}
-   */
+  * Alias name
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#alias AzapiProvider#alias}
+  */
   readonly alias?: string;
 }
 export interface AzapiProviderEndpoint {
   /**
-   * The Azure Active Directory login endpoint to use. This can also be sourced from the `ARM_ACTIVE_DIRECTORY_AUTHORITY_HOST` Environment Variable. Defaults to `https://login.microsoftonline.com/` for public cloud.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#active_directory_authority_host AzapiProvider#active_directory_authority_host}
-   */
+  * The Azure Active Directory login endpoint to use. This can also be sourced from the `ARM_ACTIVE_DIRECTORY_AUTHORITY_HOST` Environment Variable. Defaults to `https://login.microsoftonline.com/` for public cloud.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#active_directory_authority_host AzapiProvider#active_directory_authority_host}
+  */
   readonly activeDirectoryAuthorityHost?: string;
   /**
-   * The resource ID to obtain AD tokens for. This can also be sourced from the `ARM_RESOURCE_MANAGER_AUDIENCE` Environment Variable. Defaults to `https://management.core.windows.net/` for public cloud.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#resource_manager_audience AzapiProvider#resource_manager_audience}
-   */
+  * The resource ID to obtain AD tokens for. This can also be sourced from the `ARM_RESOURCE_MANAGER_AUDIENCE` Environment Variable. Defaults to `https://management.core.windows.net/` for public cloud.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#resource_manager_audience AzapiProvider#resource_manager_audience}
+  */
   readonly resourceManagerAudience?: string;
   /**
-   * The Azure Resource Manager endpoint to use. This can also be sourced from the `ARM_RESOURCE_MANAGER_ENDPOINT` Environment Variable. Defaults to `https://management.azure.com/` for public cloud.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#resource_manager_endpoint AzapiProvider#resource_manager_endpoint}
-   */
+  * The Azure Resource Manager endpoint to use. This can also be sourced from the `ARM_RESOURCE_MANAGER_ENDPOINT` Environment Variable. Defaults to `https://management.azure.com/` for public cloud.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#resource_manager_endpoint AzapiProvider#resource_manager_endpoint}
+  */
   readonly resourceManagerEndpoint?: string;
 }
 
-export function azapiProviderEndpointToTerraform(
-  struct?: AzapiProviderEndpoint | cdktf.IResolvable,
-): any {
-  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) {
-    return struct;
-  }
+export function azapiProviderEndpointToTerraform(struct?: AzapiProviderEndpoint | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
-    throw new Error(
-      "A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration",
-    );
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    active_directory_authority_host: cdktf.stringToTerraform(
-      struct!.activeDirectoryAuthorityHost,
-    ),
-    resource_manager_audience: cdktf.stringToTerraform(
-      struct!.resourceManagerAudience,
-    ),
-    resource_manager_endpoint: cdktf.stringToTerraform(
-      struct!.resourceManagerEndpoint,
-    ),
-  };
+    active_directory_authority_host: cdktf.stringToTerraform(struct!.activeDirectoryAuthorityHost),
+    resource_manager_audience: cdktf.stringToTerraform(struct!.resourceManagerAudience),
+    resource_manager_endpoint: cdktf.stringToTerraform(struct!.resourceManagerEndpoint),
+  }
 }
 
+
+export function azapiProviderEndpointToHclTerraform(struct?: AzapiProviderEndpoint | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    active_directory_authority_host: {
+      value: cdktf.stringToHclTerraform(struct!.activeDirectoryAuthorityHost),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    resource_manager_audience: {
+      value: cdktf.stringToHclTerraform(struct!.resourceManagerAudience),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    resource_manager_endpoint: {
+      value: cdktf.stringToHclTerraform(struct!.resourceManagerEndpoint),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+  };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
+}
+
+
 /**
- * Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs azapi}
- */
+* Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs azapi}
+*/
 export class AzapiProvider extends cdktf.TerraformProvider {
+
   // =================
   // STATIC PROPERTIES
   // =================
   public static readonly tfResourceType = "azapi";
+
+  // ==============
+  // STATIC Methods
+  // ==============
+  /**
+  * Generates CDKTF code for importing a AzapiProvider resource upon running "cdktf plan <stack-name>"
+  * @param scope The scope in which to define this construct
+  * @param importToId The construct id used in the generated config for the AzapiProvider to import
+  * @param importFromId The id of the existing AzapiProvider that should be imported. Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#import import section} in the documentation of this resource for the id to use
+  * @param provider? Optional instance of the provider where the AzapiProvider to import is found
+  */
+  public static generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: cdktf.TerraformProvider) {
+        return new cdktf.ImportableResource(scope, importToId, { terraformResourceType: "azapi", importId: importFromId, provider });
+      }
 
   // ===========
   // INITIALIZER
   // ===========
 
   /**
-   * Create a new {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs azapi} Resource
-   *
-   * @param scope The scope in which to define this construct
-   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
-   * @param options AzapiProviderConfig = {}
-   */
-  public constructor(
-    scope: Construct,
-    id: string,
-    config: AzapiProviderConfig = {},
-  ) {
+  * Create a new {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs azapi} Resource
+  *
+  * @param scope The scope in which to define this construct
+  * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
+  * @param options AzapiProviderConfig = {}
+  */
+  public constructor(scope: Construct, id: string, config: AzapiProviderConfig = {}) {
     super(scope, id, {
-      terraformResourceType: "azapi",
+      terraformResourceType: 'azapi',
       terraformGeneratorMetadata: {
-        providerName: "azapi",
-        providerVersion: "2.7.0",
-        providerVersionConstraint: "~> 2.7.0",
+        providerName: 'azapi',
+        providerVersion: '2.7.0',
+        providerVersionConstraint: '~> 2.7.0'
       },
-      terraformProviderSource: "Azure/azapi",
+      terraformProviderSource: 'Azure/azapi'
     });
     this._auxiliaryTenantIds = config.auxiliaryTenantIds;
     this._clientCertificate = config.clientCertificate;
@@ -339,7 +370,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   // ==========
 
   // auxiliary_tenant_ids - computed: false, optional: true, required: false
-  private _auxiliaryTenantIds?: string[];
+  private _auxiliaryTenantIds?: string[]; 
   public get auxiliaryTenantIds() {
     return this._auxiliaryTenantIds;
   }
@@ -355,7 +386,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // client_certificate - computed: false, optional: true, required: false
-  private _clientCertificate?: string;
+  private _clientCertificate?: string; 
   public get clientCertificate() {
     return this._clientCertificate;
   }
@@ -371,7 +402,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // client_certificate_password - computed: false, optional: true, required: false
-  private _clientCertificatePassword?: string;
+  private _clientCertificatePassword?: string; 
   public get clientCertificatePassword() {
     return this._clientCertificatePassword;
   }
@@ -387,7 +418,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // client_certificate_path - computed: false, optional: true, required: false
-  private _clientCertificatePath?: string;
+  private _clientCertificatePath?: string; 
   public get clientCertificatePath() {
     return this._clientCertificatePath;
   }
@@ -403,7 +434,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // client_id - computed: false, optional: true, required: false
-  private _clientId?: string;
+  private _clientId?: string; 
   public get clientId() {
     return this._clientId;
   }
@@ -419,7 +450,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // client_id_file_path - computed: false, optional: true, required: false
-  private _clientIdFilePath?: string;
+  private _clientIdFilePath?: string; 
   public get clientIdFilePath() {
     return this._clientIdFilePath;
   }
@@ -435,7 +466,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // client_secret - computed: false, optional: true, required: false
-  private _clientSecret?: string;
+  private _clientSecret?: string; 
   public get clientSecret() {
     return this._clientSecret;
   }
@@ -451,7 +482,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // client_secret_file_path - computed: false, optional: true, required: false
-  private _clientSecretFilePath?: string;
+  private _clientSecretFilePath?: string; 
   public get clientSecretFilePath() {
     return this._clientSecretFilePath;
   }
@@ -467,7 +498,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // custom_correlation_request_id - computed: false, optional: true, required: false
-  private _customCorrelationRequestId?: string;
+  private _customCorrelationRequestId?: string; 
   public get customCorrelationRequestId() {
     return this._customCorrelationRequestId;
   }
@@ -483,7 +514,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // default_location - computed: false, optional: true, required: false
-  private _defaultLocation?: string;
+  private _defaultLocation?: string; 
   public get defaultLocation() {
     return this._defaultLocation;
   }
@@ -499,7 +530,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // default_name - computed: false, optional: true, required: false
-  private _defaultName?: string;
+  private _defaultName?: string; 
   public get defaultName() {
     return this._defaultName;
   }
@@ -515,7 +546,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // default_tags - computed: false, optional: true, required: false
-  private _defaultTags?: { [key: string]: string };
+  private _defaultTags?: { [key: string]: string }; 
   public get defaultTags() {
     return this._defaultTags;
   }
@@ -531,13 +562,11 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // disable_correlation_request_id - computed: false, optional: true, required: false
-  private _disableCorrelationRequestId?: boolean | cdktf.IResolvable;
+  private _disableCorrelationRequestId?: boolean | cdktf.IResolvable; 
   public get disableCorrelationRequestId() {
     return this._disableCorrelationRequestId;
   }
-  public set disableCorrelationRequestId(
-    value: boolean | cdktf.IResolvable | undefined,
-  ) {
+  public set disableCorrelationRequestId(value: boolean | cdktf.IResolvable | undefined) {
     this._disableCorrelationRequestId = value;
   }
   public resetDisableCorrelationRequestId() {
@@ -549,13 +578,11 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // disable_default_output - computed: false, optional: true, required: false
-  private _disableDefaultOutput?: boolean | cdktf.IResolvable;
+  private _disableDefaultOutput?: boolean | cdktf.IResolvable; 
   public get disableDefaultOutput() {
     return this._disableDefaultOutput;
   }
-  public set disableDefaultOutput(
-    value: boolean | cdktf.IResolvable | undefined,
-  ) {
+  public set disableDefaultOutput(value: boolean | cdktf.IResolvable | undefined) {
     this._disableDefaultOutput = value;
   }
   public resetDisableDefaultOutput() {
@@ -567,13 +594,11 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // disable_instance_discovery - computed: false, optional: true, required: false
-  private _disableInstanceDiscovery?: boolean | cdktf.IResolvable;
+  private _disableInstanceDiscovery?: boolean | cdktf.IResolvable; 
   public get disableInstanceDiscovery() {
     return this._disableInstanceDiscovery;
   }
-  public set disableInstanceDiscovery(
-    value: boolean | cdktf.IResolvable | undefined,
-  ) {
+  public set disableInstanceDiscovery(value: boolean | cdktf.IResolvable | undefined) {
     this._disableInstanceDiscovery = value;
   }
   public resetDisableInstanceDiscovery() {
@@ -585,13 +610,11 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // disable_terraform_partner_id - computed: false, optional: true, required: false
-  private _disableTerraformPartnerId?: boolean | cdktf.IResolvable;
+  private _disableTerraformPartnerId?: boolean | cdktf.IResolvable; 
   public get disableTerraformPartnerId() {
     return this._disableTerraformPartnerId;
   }
-  public set disableTerraformPartnerId(
-    value: boolean | cdktf.IResolvable | undefined,
-  ) {
+  public set disableTerraformPartnerId(value: boolean | cdktf.IResolvable | undefined) {
     this._disableTerraformPartnerId = value;
   }
   public resetDisableTerraformPartnerId() {
@@ -603,7 +626,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // enable_preflight - computed: false, optional: true, required: false
-  private _enablePreflight?: boolean | cdktf.IResolvable;
+  private _enablePreflight?: boolean | cdktf.IResolvable; 
   public get enablePreflight() {
     return this._enablePreflight;
   }
@@ -619,13 +642,11 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // endpoint - computed: false, optional: true, required: false
-  private _endpoint?: AzapiProviderEndpoint[] | cdktf.IResolvable;
+  private _endpoint?: AzapiProviderEndpoint[] | cdktf.IResolvable; 
   public get endpoint() {
     return this._endpoint;
   }
-  public set endpoint(
-    value: AzapiProviderEndpoint[] | cdktf.IResolvable | undefined,
-  ) {
+  public set endpoint(value: AzapiProviderEndpoint[] | cdktf.IResolvable | undefined) {
     this._endpoint = value;
   }
   public resetEndpoint() {
@@ -637,7 +658,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // environment - computed: false, optional: true, required: false
-  private _environment?: string;
+  private _environment?: string; 
   public get environment() {
     return this._environment;
   }
@@ -653,7 +674,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // ignore_no_op_changes - computed: false, optional: true, required: false
-  private _ignoreNoOpChanges?: boolean | cdktf.IResolvable;
+  private _ignoreNoOpChanges?: boolean | cdktf.IResolvable; 
   public get ignoreNoOpChanges() {
     return this._ignoreNoOpChanges;
   }
@@ -669,7 +690,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // maximum_busy_retry_attempts - computed: false, optional: true, required: false
-  private _maximumBusyRetryAttempts?: number;
+  private _maximumBusyRetryAttempts?: number; 
   public get maximumBusyRetryAttempts() {
     return this._maximumBusyRetryAttempts;
   }
@@ -685,7 +706,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // oidc_azure_service_connection_id - computed: false, optional: true, required: false
-  private _oidcAzureServiceConnectionId?: string;
+  private _oidcAzureServiceConnectionId?: string; 
   public get oidcAzureServiceConnectionId() {
     return this._oidcAzureServiceConnectionId;
   }
@@ -701,7 +722,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // oidc_request_token - computed: false, optional: true, required: false
-  private _oidcRequestToken?: string;
+  private _oidcRequestToken?: string; 
   public get oidcRequestToken() {
     return this._oidcRequestToken;
   }
@@ -717,7 +738,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // oidc_request_url - computed: false, optional: true, required: false
-  private _oidcRequestUrl?: string;
+  private _oidcRequestUrl?: string; 
   public get oidcRequestUrl() {
     return this._oidcRequestUrl;
   }
@@ -733,7 +754,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // oidc_token - computed: false, optional: true, required: false
-  private _oidcToken?: string;
+  private _oidcToken?: string; 
   public get oidcToken() {
     return this._oidcToken;
   }
@@ -749,7 +770,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // oidc_token_file_path - computed: false, optional: true, required: false
-  private _oidcTokenFilePath?: string;
+  private _oidcTokenFilePath?: string; 
   public get oidcTokenFilePath() {
     return this._oidcTokenFilePath;
   }
@@ -765,7 +786,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // partner_id - computed: false, optional: true, required: false
-  private _partnerId?: string;
+  private _partnerId?: string; 
   public get partnerId() {
     return this._partnerId;
   }
@@ -781,13 +802,11 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // skip_provider_registration - computed: false, optional: true, required: false
-  private _skipProviderRegistration?: boolean | cdktf.IResolvable;
+  private _skipProviderRegistration?: boolean | cdktf.IResolvable; 
   public get skipProviderRegistration() {
     return this._skipProviderRegistration;
   }
-  public set skipProviderRegistration(
-    value: boolean | cdktf.IResolvable | undefined,
-  ) {
+  public set skipProviderRegistration(value: boolean | cdktf.IResolvable | undefined) {
     this._skipProviderRegistration = value;
   }
   public resetSkipProviderRegistration() {
@@ -799,7 +818,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // subscription_id - computed: false, optional: true, required: false
-  private _subscriptionId?: string;
+  private _subscriptionId?: string; 
   public get subscriptionId() {
     return this._subscriptionId;
   }
@@ -815,7 +834,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // tenant_id - computed: false, optional: true, required: false
-  private _tenantId?: string;
+  private _tenantId?: string; 
   public get tenantId() {
     return this._tenantId;
   }
@@ -831,13 +850,11 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // use_aks_workload_identity - computed: false, optional: true, required: false
-  private _useAksWorkloadIdentity?: boolean | cdktf.IResolvable;
+  private _useAksWorkloadIdentity?: boolean | cdktf.IResolvable; 
   public get useAksWorkloadIdentity() {
     return this._useAksWorkloadIdentity;
   }
-  public set useAksWorkloadIdentity(
-    value: boolean | cdktf.IResolvable | undefined,
-  ) {
+  public set useAksWorkloadIdentity(value: boolean | cdktf.IResolvable | undefined) {
     this._useAksWorkloadIdentity = value;
   }
   public resetUseAksWorkloadIdentity() {
@@ -849,7 +866,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // use_cli - computed: false, optional: true, required: false
-  private _useCli?: boolean | cdktf.IResolvable;
+  private _useCli?: boolean | cdktf.IResolvable; 
   public get useCli() {
     return this._useCli;
   }
@@ -865,7 +882,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // use_msi - computed: false, optional: true, required: false
-  private _useMsi?: boolean | cdktf.IResolvable;
+  private _useMsi?: boolean | cdktf.IResolvable; 
   public get useMsi() {
     return this._useMsi;
   }
@@ -881,7 +898,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // use_oidc - computed: false, optional: true, required: false
-  private _useOidc?: boolean | cdktf.IResolvable;
+  private _useOidc?: boolean | cdktf.IResolvable; 
   public get useOidc() {
     return this._useOidc;
   }
@@ -897,7 +914,7 @@ export class AzapiProvider extends cdktf.TerraformProvider {
   }
 
   // alias - computed: false, optional: true, required: false
-  private _alias?: string;
+  private _alias?: string; 
   public get alias() {
     return this._alias;
   }
@@ -918,73 +935,259 @@ export class AzapiProvider extends cdktf.TerraformProvider {
 
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
-      auxiliary_tenant_ids: cdktf.listMapper(
-        cdktf.stringToTerraform,
-        false,
-      )(this._auxiliaryTenantIds),
+      auxiliary_tenant_ids: cdktf.listMapper(cdktf.stringToTerraform, false)(this._auxiliaryTenantIds),
       client_certificate: cdktf.stringToTerraform(this._clientCertificate),
-      client_certificate_password: cdktf.stringToTerraform(
-        this._clientCertificatePassword,
-      ),
-      client_certificate_path: cdktf.stringToTerraform(
-        this._clientCertificatePath,
-      ),
+      client_certificate_password: cdktf.stringToTerraform(this._clientCertificatePassword),
+      client_certificate_path: cdktf.stringToTerraform(this._clientCertificatePath),
       client_id: cdktf.stringToTerraform(this._clientId),
       client_id_file_path: cdktf.stringToTerraform(this._clientIdFilePath),
       client_secret: cdktf.stringToTerraform(this._clientSecret),
-      client_secret_file_path: cdktf.stringToTerraform(
-        this._clientSecretFilePath,
-      ),
-      custom_correlation_request_id: cdktf.stringToTerraform(
-        this._customCorrelationRequestId,
-      ),
+      client_secret_file_path: cdktf.stringToTerraform(this._clientSecretFilePath),
+      custom_correlation_request_id: cdktf.stringToTerraform(this._customCorrelationRequestId),
       default_location: cdktf.stringToTerraform(this._defaultLocation),
       default_name: cdktf.stringToTerraform(this._defaultName),
-      default_tags: cdktf.hashMapper(cdktf.stringToTerraform)(
-        this._defaultTags,
-      ),
-      disable_correlation_request_id: cdktf.booleanToTerraform(
-        this._disableCorrelationRequestId,
-      ),
-      disable_default_output: cdktf.booleanToTerraform(
-        this._disableDefaultOutput,
-      ),
-      disable_instance_discovery: cdktf.booleanToTerraform(
-        this._disableInstanceDiscovery,
-      ),
-      disable_terraform_partner_id: cdktf.booleanToTerraform(
-        this._disableTerraformPartnerId,
-      ),
+      default_tags: cdktf.hashMapper(cdktf.stringToTerraform)(this._defaultTags),
+      disable_correlation_request_id: cdktf.booleanToTerraform(this._disableCorrelationRequestId),
+      disable_default_output: cdktf.booleanToTerraform(this._disableDefaultOutput),
+      disable_instance_discovery: cdktf.booleanToTerraform(this._disableInstanceDiscovery),
+      disable_terraform_partner_id: cdktf.booleanToTerraform(this._disableTerraformPartnerId),
       enable_preflight: cdktf.booleanToTerraform(this._enablePreflight),
-      endpoint: cdktf.listMapper(
-        azapiProviderEndpointToTerraform,
-        false,
-      )(this._endpoint),
+      endpoint: cdktf.listMapper(azapiProviderEndpointToTerraform, false)(this._endpoint),
       environment: cdktf.stringToTerraform(this._environment),
       ignore_no_op_changes: cdktf.booleanToTerraform(this._ignoreNoOpChanges),
-      maximum_busy_retry_attempts: cdktf.numberToTerraform(
-        this._maximumBusyRetryAttempts,
-      ),
-      oidc_azure_service_connection_id: cdktf.stringToTerraform(
-        this._oidcAzureServiceConnectionId,
-      ),
+      maximum_busy_retry_attempts: cdktf.numberToTerraform(this._maximumBusyRetryAttempts),
+      oidc_azure_service_connection_id: cdktf.stringToTerraform(this._oidcAzureServiceConnectionId),
       oidc_request_token: cdktf.stringToTerraform(this._oidcRequestToken),
       oidc_request_url: cdktf.stringToTerraform(this._oidcRequestUrl),
       oidc_token: cdktf.stringToTerraform(this._oidcToken),
       oidc_token_file_path: cdktf.stringToTerraform(this._oidcTokenFilePath),
       partner_id: cdktf.stringToTerraform(this._partnerId),
-      skip_provider_registration: cdktf.booleanToTerraform(
-        this._skipProviderRegistration,
-      ),
+      skip_provider_registration: cdktf.booleanToTerraform(this._skipProviderRegistration),
       subscription_id: cdktf.stringToTerraform(this._subscriptionId),
       tenant_id: cdktf.stringToTerraform(this._tenantId),
-      use_aks_workload_identity: cdktf.booleanToTerraform(
-        this._useAksWorkloadIdentity,
-      ),
+      use_aks_workload_identity: cdktf.booleanToTerraform(this._useAksWorkloadIdentity),
       use_cli: cdktf.booleanToTerraform(this._useCli),
       use_msi: cdktf.booleanToTerraform(this._useMsi),
       use_oidc: cdktf.booleanToTerraform(this._useOidc),
       alias: cdktf.stringToTerraform(this._alias),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      auxiliary_tenant_ids: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._auxiliaryTenantIds),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      client_certificate: {
+        value: cdktf.stringToHclTerraform(this._clientCertificate),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      client_certificate_password: {
+        value: cdktf.stringToHclTerraform(this._clientCertificatePassword),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      client_certificate_path: {
+        value: cdktf.stringToHclTerraform(this._clientCertificatePath),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      client_id: {
+        value: cdktf.stringToHclTerraform(this._clientId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      client_id_file_path: {
+        value: cdktf.stringToHclTerraform(this._clientIdFilePath),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      client_secret: {
+        value: cdktf.stringToHclTerraform(this._clientSecret),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      client_secret_file_path: {
+        value: cdktf.stringToHclTerraform(this._clientSecretFilePath),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      custom_correlation_request_id: {
+        value: cdktf.stringToHclTerraform(this._customCorrelationRequestId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      default_location: {
+        value: cdktf.stringToHclTerraform(this._defaultLocation),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      default_name: {
+        value: cdktf.stringToHclTerraform(this._defaultName),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      default_tags: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._defaultTags),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      disable_correlation_request_id: {
+        value: cdktf.booleanToHclTerraform(this._disableCorrelationRequestId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      disable_default_output: {
+        value: cdktf.booleanToHclTerraform(this._disableDefaultOutput),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      disable_instance_discovery: {
+        value: cdktf.booleanToHclTerraform(this._disableInstanceDiscovery),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      disable_terraform_partner_id: {
+        value: cdktf.booleanToHclTerraform(this._disableTerraformPartnerId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      enable_preflight: {
+        value: cdktf.booleanToHclTerraform(this._enablePreflight),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      endpoint: {
+        value: cdktf.listMapperHcl(azapiProviderEndpointToHclTerraform, false)(this._endpoint),
+        isBlock: true,
+        type: "list",
+        storageClassType: "AzapiProviderEndpointList",
+      },
+      environment: {
+        value: cdktf.stringToHclTerraform(this._environment),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      ignore_no_op_changes: {
+        value: cdktf.booleanToHclTerraform(this._ignoreNoOpChanges),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      maximum_busy_retry_attempts: {
+        value: cdktf.numberToHclTerraform(this._maximumBusyRetryAttempts),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "number",
+      },
+      oidc_azure_service_connection_id: {
+        value: cdktf.stringToHclTerraform(this._oidcAzureServiceConnectionId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      oidc_request_token: {
+        value: cdktf.stringToHclTerraform(this._oidcRequestToken),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      oidc_request_url: {
+        value: cdktf.stringToHclTerraform(this._oidcRequestUrl),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      oidc_token: {
+        value: cdktf.stringToHclTerraform(this._oidcToken),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      oidc_token_file_path: {
+        value: cdktf.stringToHclTerraform(this._oidcTokenFilePath),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      partner_id: {
+        value: cdktf.stringToHclTerraform(this._partnerId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      skip_provider_registration: {
+        value: cdktf.booleanToHclTerraform(this._skipProviderRegistration),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      subscription_id: {
+        value: cdktf.stringToHclTerraform(this._subscriptionId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      tenant_id: {
+        value: cdktf.stringToHclTerraform(this._tenantId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      use_aks_workload_identity: {
+        value: cdktf.booleanToHclTerraform(this._useAksWorkloadIdentity),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      use_cli: {
+        value: cdktf.booleanToHclTerraform(this._useCli),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      use_msi: {
+        value: cdktf.booleanToHclTerraform(this._useMsi),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      use_oidc: {
+        value: cdktf.booleanToHclTerraform(this._useOidc),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      alias: {
+        value: cdktf.stringToHclTerraform(this._alias),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }

@@ -1,245 +1,271 @@
 // https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource
 // generated from terraform resource schema
 
-import * as cdktf from "cdktf";
-import { Construct } from "constructs";
+import { Construct } from 'constructs';
+import * as cdktf from 'cdktf';
 
 // Configuration
 
 export interface DataPlaneResourceConfig extends cdktf.TerraformMetaArguments {
   /**
-   * A dynamic attribute that contains the request body.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#body DataPlaneResource#body}
-   */
+  * A dynamic attribute that contains the request body.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#body DataPlaneResource#body}
+  */
   readonly body?: { [key: string]: any };
   /**
-   * A mapping of headers to be sent with the create request.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#create_headers DataPlaneResource#create_headers}
-   */
+  * A mapping of headers to be sent with the create request.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#create_headers DataPlaneResource#create_headers}
+  */
   readonly createHeaders?: { [key: string]: string };
   /**
-   * A mapping of query parameters to be sent with the create request.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#create_query_parameters DataPlaneResource#create_query_parameters}
-   */
-  readonly createQueryParameters?:
-    | { [key: string]: string[] }
-    | cdktf.IResolvable;
+  * A mapping of query parameters to be sent with the create request.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#create_query_parameters DataPlaneResource#create_query_parameters}
+  */
+  readonly createQueryParameters?: { [key: string]: string[] } | cdktf.IResolvable;
   /**
-   * A mapping of headers to be sent with the delete request.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#delete_headers DataPlaneResource#delete_headers}
-   */
+  * A mapping of headers to be sent with the delete request.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#delete_headers DataPlaneResource#delete_headers}
+  */
   readonly deleteHeaders?: { [key: string]: string };
   /**
-   * A mapping of query parameters to be sent with the delete request.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#delete_query_parameters DataPlaneResource#delete_query_parameters}
-   */
-  readonly deleteQueryParameters?:
-    | { [key: string]: string[] }
-    | cdktf.IResolvable;
+  * A mapping of query parameters to be sent with the delete request.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#delete_query_parameters DataPlaneResource#delete_query_parameters}
+  */
+  readonly deleteQueryParameters?: { [key: string]: string[] } | cdktf.IResolvable;
   /**
-   * A dynamic attribute that contains the request body.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#ignore_casing DataPlaneResource#ignore_casing}
-   */
+  * A dynamic attribute that contains the request body.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#ignore_casing DataPlaneResource#ignore_casing}
+  */
   readonly ignoreCasing?: boolean | cdktf.IResolvable;
   /**
-   * Whether ignore not returned properties like credentials in `body` to suppress plan-diff. Defaults to `true`. It's recommend to enable this option when some sensitive properties are not returned in response body, instead of setting them in `lifecycle.ignore_changes` because it will make the sensitive fields unable to update.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#ignore_missing_property DataPlaneResource#ignore_missing_property}
-   */
+  * Whether ignore not returned properties like credentials in `body` to suppress plan-diff. Defaults to `true`. It's recommend to enable this option when some sensitive properties are not returned in response body, instead of setting them in `lifecycle.ignore_changes` because it will make the sensitive fields unable to update.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#ignore_missing_property DataPlaneResource#ignore_missing_property}
+  */
   readonly ignoreMissingProperty?: boolean | cdktf.IResolvable;
   /**
-   * A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#locks DataPlaneResource#locks}
-   */
+  * A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#locks DataPlaneResource#locks}
+  */
   readonly locks?: string[];
   /**
-   * Specifies the name of the Azure resource. Changing this forces a new resource to be created.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#name DataPlaneResource#name}
-   */
+  * Specifies the name of the Azure resource. Changing this forces a new resource to be created.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#name DataPlaneResource#name}
+  */
   readonly name: string;
   /**
-   * The ID of the azure resource in which this resource is created. Changing this forces a new resource to be created.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#parent_id DataPlaneResource#parent_id}
-   */
+  * The ID of the azure resource in which this resource is created. Changing this forces a new resource to be created.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#parent_id DataPlaneResource#parent_id}
+  */
   readonly parentId: string;
   /**
-   * A mapping of headers to be sent with the read request.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#read_headers DataPlaneResource#read_headers}
-   */
+  * A mapping of headers to be sent with the read request.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#read_headers DataPlaneResource#read_headers}
+  */
   readonly readHeaders?: { [key: string]: string };
   /**
-   * A mapping of query parameters to be sent with the read request.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#read_query_parameters DataPlaneResource#read_query_parameters}
-   */
-  readonly readQueryParameters?:
-    | { [key: string]: string[] }
-    | cdktf.IResolvable;
+  * A mapping of query parameters to be sent with the read request.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#read_query_parameters DataPlaneResource#read_query_parameters}
+  */
+  readonly readQueryParameters?: { [key: string]: string[] } | cdktf.IResolvable;
   /**
-  * Will trigger a replace of the resource when the value changes and is not `null`. This can be used by practitioners to force a replace of the resource when certain values change, e.g. changing the SKU of a virtual machine based on the value of variables or locals. The value is a `dynamic`, so practitioners can compose the input however they wish. For a "break glass" set the value to `null` to prevent the plan modifier taking effect.
-If you have `null` values that you do want to be tracked as affecting the resource replacement, include these inside an object.
-Advanced use cases are possible and resource replacement can be triggered by values external to the resource, for example when a dependent resource changes.
-
-e.g. to replace a resource when either the SKU or os_type attributes change:
-
-```hcl
-resource "azapi_data_plane_resource" "example" {
-  name = var.name
-  type = "Microsoft.AppConfiguration/configurationStores/keyValues@1.0"
-  body = {
-    properties = {
-      sku   = var.sku
-      zones = var.zones
-    }
-  }
-
-  replace_triggers_external_values = [
-    var.sku,
-    var.zones,
-  ]
-}
-```
-
+  * Will trigger a replace of the resource when the value changes and is not `null`. This can be used by practitioners to force a replace of the resource when certain values change, e.g. changing the SKU of a virtual machine based on the value of variables or locals. The value is a `dynamic`, so practitioners can compose the input however they wish. For a "break glass" set the value to `null` to prevent the plan modifier taking effect. 
+  * If you have `null` values that you do want to be tracked as affecting the resource replacement, include these inside an object. 
+  * Advanced use cases are possible and resource replacement can be triggered by values external to the resource, for example when a dependent resource changes.
+  * 
+  * e.g. to replace a resource when either the SKU or os_type attributes change:
+  * 
+  * ```hcl
+  * resource "azapi_data_plane_resource" "example" {
+  *   name = var.name
+  *   type = "Microsoft.AppConfiguration/configurationStores/keyValues@1.0"
+  *   body = {
+  *     properties = {
+  *       sku   = var.sku
+  *       zones = var.zones
+  *     }
+  *   }
+  * 
+  *   replace_triggers_external_values = [
+  *     var.sku,
+  *     var.zones,
+  *   ]
+  * }
+  * ```
+  * 
   *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#replace_triggers_external_values DataPlaneResource#replace_triggers_external_values}
   */
   readonly replaceTriggersExternalValues?: { [key: string]: any };
   /**
-   * A list of paths in the current Terraform configuration. When the values at these paths change, the resource will be replaced.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#replace_triggers_refs DataPlaneResource#replace_triggers_refs}
-   */
+  * A list of paths in the current Terraform configuration. When the values at these paths change, the resource will be replaced.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#replace_triggers_refs DataPlaneResource#replace_triggers_refs}
+  */
   readonly replaceTriggersRefs?: string[];
   /**
   * The attribute can accept either a list or a map.
-
-- **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
-
-	```text
-	{
-		properties = {
-			loginServer = "registry1.azurecr.io"
-			policies = {
-				quarantinePolicy = {
-					status = "disabled"
-				}
-			}
-		}
-	}
-	```
-
-- **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
-
-	```text
-	{
-		"login_server" = "registry1.azurecr.io"
-		"quarantine_status" = "disabled"
-	}
-	```
-
-To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
-
+  * 
+  * - **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
+  * 
+  * 	```text
+  * 	{
+  * 		properties = {
+  * 			loginServer = "registry1.azurecr.io"
+  * 			policies = {
+  * 				quarantinePolicy = {
+  * 					status = "disabled"
+  * 				}
+  * 			}
+  * 		}
+  * 	}
+  * 	```
+  * 
+  * - **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
+  * 
+  * 	```text
+  * 	{
+  * 		"login_server" = "registry1.azurecr.io"
+  * 		"quarantine_status" = "disabled"
+  * 	}
+  * 	```
+  * 
+  * To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
+  * 
   *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#response_export_values DataPlaneResource#response_export_values}
   */
   readonly responseExportValues?: { [key: string]: any };
   /**
-   * The retry object supports the following attributes:
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#retry DataPlaneResource#retry}
-   */
+  * The retry object supports the following attributes:
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#retry DataPlaneResource#retry}
+  */
   readonly retry?: DataPlaneResourceRetry;
   /**
-   * In a format like `<resource-type>@<api-version>`. `<resource-type>` is the Azure resource type, for example, `Microsoft.Storage/storageAccounts`. `<api-version>` is version of the API used to manage this azure resource.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#type DataPlaneResource#type}
-   */
+  * In a format like `<resource-type>@<api-version>`. `<resource-type>` is the Azure resource type, for example, `Microsoft.Storage/storageAccounts`. `<api-version>` is version of the API used to manage this azure resource.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#type DataPlaneResource#type}
+  */
   readonly type: string;
   /**
-   * A mapping of headers to be sent with the update request.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#update_headers DataPlaneResource#update_headers}
-   */
+  * A mapping of headers to be sent with the update request.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#update_headers DataPlaneResource#update_headers}
+  */
   readonly updateHeaders?: { [key: string]: string };
   /**
-   * A mapping of query parameters to be sent with the update request.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#update_query_parameters DataPlaneResource#update_query_parameters}
-   */
-  readonly updateQueryParameters?:
-    | { [key: string]: string[] }
-    | cdktf.IResolvable;
+  * A mapping of query parameters to be sent with the update request.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#update_query_parameters DataPlaneResource#update_query_parameters}
+  */
+  readonly updateQueryParameters?: { [key: string]: string[] } | cdktf.IResolvable;
   /**
-   * timeouts block
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#timeouts DataPlaneResource#timeouts}
-   */
+  * timeouts block
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#timeouts DataPlaneResource#timeouts}
+  */
   readonly timeouts?: DataPlaneResourceTimeouts;
 }
 export interface DataPlaneResourceRetry {
   /**
-   * A list of regular expressions to match against error messages. If any of the regular expressions match, the request will be retried.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#error_message_regex DataPlaneResource#error_message_regex}
-   */
+  * A list of regular expressions to match against error messages. If any of the regular expressions match, the request will be retried.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#error_message_regex DataPlaneResource#error_message_regex}
+  */
   readonly errorMessageRegex: string[];
   /**
-   * The base number of seconds to wait between retries. Default is `10`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#interval_seconds DataPlaneResource#interval_seconds}
-   */
+  * The base number of seconds to wait between retries. Default is `10`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#interval_seconds DataPlaneResource#interval_seconds}
+  */
   readonly intervalSeconds?: number;
   /**
-   * The maximum number of seconds to wait between retries. Default is `180`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#max_interval_seconds DataPlaneResource#max_interval_seconds}
-   */
+  * The maximum number of seconds to wait between retries. Default is `180`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#max_interval_seconds DataPlaneResource#max_interval_seconds}
+  */
   readonly maxIntervalSeconds?: number;
   /**
-   * The multiplier to apply to the interval between retries. Default is `1.5`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#multiplier DataPlaneResource#multiplier}
-   */
+  * The multiplier to apply to the interval between retries. Default is `1.5`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#multiplier DataPlaneResource#multiplier}
+  */
   readonly multiplier?: number;
   /**
-   * The randomization factor to apply to the interval between retries. The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization. Default is `0.5`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#randomization_factor DataPlaneResource#randomization_factor}
-   */
+  * The randomization factor to apply to the interval between retries. The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization. Default is `0.5`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#randomization_factor DataPlaneResource#randomization_factor}
+  */
   readonly randomizationFactor?: number;
 }
 
-export function dataPlaneResourceRetryToTerraform(
-  struct?: DataPlaneResourceRetry | cdktf.IResolvable,
-): any {
-  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) {
-    return struct;
-  }
+export function dataPlaneResourceRetryToTerraform(struct?: DataPlaneResourceRetry | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
-    throw new Error(
-      "A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration",
-    );
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    error_message_regex: cdktf.listMapper(
-      cdktf.stringToTerraform,
-      false,
-    )(struct!.errorMessageRegex),
+    error_message_regex: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.errorMessageRegex),
     interval_seconds: cdktf.numberToTerraform(struct!.intervalSeconds),
     max_interval_seconds: cdktf.numberToTerraform(struct!.maxIntervalSeconds),
     multiplier: cdktf.numberToTerraform(struct!.multiplier),
     randomization_factor: cdktf.numberToTerraform(struct!.randomizationFactor),
+  }
+}
+
+
+export function dataPlaneResourceRetryToHclTerraform(struct?: DataPlaneResourceRetry | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    error_message_regex: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.errorMessageRegex),
+      isBlock: false,
+      type: "list",
+      storageClassType: "stringList",
+    },
+    interval_seconds: {
+      value: cdktf.numberToHclTerraform(struct!.intervalSeconds),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    max_interval_seconds: {
+      value: cdktf.numberToHclTerraform(struct!.maxIntervalSeconds),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    multiplier: {
+      value: cdktf.numberToHclTerraform(struct!.multiplier),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    randomization_factor: {
+      value: cdktf.numberToHclTerraform(struct!.randomizationFactor),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
   };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DataPlaneResourceRetryOutputReference extends cdktf.ComplexObject {
@@ -247,20 +273,14 @@ export class DataPlaneResourceRetryOutputReference extends cdktf.ComplexObject {
   private resolvableValue?: cdktf.IResolvable;
 
   /**
-   * @param terraformResource The parent resource
-   * @param terraformAttribute The attribute on the parent resource this class is referencing
-   */
-  public constructor(
-    terraformResource: cdktf.IInterpolatingParent,
-    terraformAttribute: string,
-  ) {
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
     super(terraformResource, terraformAttribute, false);
   }
 
-  public get internalValue():
-    | DataPlaneResourceRetry
-    | cdktf.IResolvable
-    | undefined {
+  public get internalValue(): DataPlaneResourceRetry | cdktf.IResolvable | undefined {
     if (this.resolvableValue) {
       return this.resolvableValue;
     }
@@ -289,9 +309,7 @@ export class DataPlaneResourceRetryOutputReference extends cdktf.ComplexObject {
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(
-    value: DataPlaneResourceRetry | cdktf.IResolvable | undefined,
-  ) {
+  public set internalValue(value: DataPlaneResourceRetry | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
       this.resolvableValue = undefined;
@@ -300,10 +318,12 @@ export class DataPlaneResourceRetryOutputReference extends cdktf.ComplexObject {
       this._maxIntervalSeconds = undefined;
       this._multiplier = undefined;
       this._randomizationFactor = undefined;
-    } else if (cdktf.Tokenization.isResolvable(value)) {
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
       this.isEmptyObject = false;
       this.resolvableValue = value;
-    } else {
+    }
+    else {
       this.isEmptyObject = Object.keys(value).length === 0;
       this.resolvableValue = undefined;
       this._errorMessageRegex = value.errorMessageRegex;
@@ -315,9 +335,9 @@ export class DataPlaneResourceRetryOutputReference extends cdktf.ComplexObject {
   }
 
   // error_message_regex - computed: false, optional: false, required: true
-  private _errorMessageRegex?: string[];
+  private _errorMessageRegex?: string[]; 
   public get errorMessageRegex() {
-    return this.getListAttribute("error_message_regex");
+    return this.getListAttribute('error_message_regex');
   }
   public set errorMessageRegex(value: string[]) {
     this._errorMessageRegex = value;
@@ -328,9 +348,9 @@ export class DataPlaneResourceRetryOutputReference extends cdktf.ComplexObject {
   }
 
   // interval_seconds - computed: true, optional: true, required: false
-  private _intervalSeconds?: number;
+  private _intervalSeconds?: number; 
   public get intervalSeconds() {
-    return this.getNumberAttribute("interval_seconds");
+    return this.getNumberAttribute('interval_seconds');
   }
   public set intervalSeconds(value: number) {
     this._intervalSeconds = value;
@@ -344,9 +364,9 @@ export class DataPlaneResourceRetryOutputReference extends cdktf.ComplexObject {
   }
 
   // max_interval_seconds - computed: true, optional: true, required: false
-  private _maxIntervalSeconds?: number;
+  private _maxIntervalSeconds?: number; 
   public get maxIntervalSeconds() {
-    return this.getNumberAttribute("max_interval_seconds");
+    return this.getNumberAttribute('max_interval_seconds');
   }
   public set maxIntervalSeconds(value: number) {
     this._maxIntervalSeconds = value;
@@ -360,9 +380,9 @@ export class DataPlaneResourceRetryOutputReference extends cdktf.ComplexObject {
   }
 
   // multiplier - computed: true, optional: true, required: false
-  private _multiplier?: number;
+  private _multiplier?: number; 
   public get multiplier() {
-    return this.getNumberAttribute("multiplier");
+    return this.getNumberAttribute('multiplier');
   }
   public set multiplier(value: number) {
     this._multiplier = value;
@@ -376,9 +396,9 @@ export class DataPlaneResourceRetryOutputReference extends cdktf.ComplexObject {
   }
 
   // randomization_factor - computed: true, optional: true, required: false
-  private _randomizationFactor?: number;
+  private _randomizationFactor?: number; 
   public get randomizationFactor() {
-    return this.getNumberAttribute("randomization_factor");
+    return this.getNumberAttribute('randomization_factor');
   }
   public set randomizationFactor(value: number) {
     this._randomizationFactor = value;
@@ -393,48 +413,79 @@ export class DataPlaneResourceRetryOutputReference extends cdktf.ComplexObject {
 }
 export interface DataPlaneResourceTimeouts {
   /**
-   * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#create DataPlaneResource#create}
-   */
+  * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#create DataPlaneResource#create}
+  */
   readonly create?: string;
   /**
-   * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#delete DataPlaneResource#delete}
-   */
+  * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#delete DataPlaneResource#delete}
+  */
   readonly delete?: string;
   /**
-   * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#read DataPlaneResource#read}
-   */
+  * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#read DataPlaneResource#read}
+  */
   readonly read?: string;
   /**
-   * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#update DataPlaneResource#update}
-   */
+  * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#update DataPlaneResource#update}
+  */
   readonly update?: string;
 }
 
-export function dataPlaneResourceTimeoutsToTerraform(
-  struct?: DataPlaneResourceTimeouts | cdktf.IResolvable,
-): any {
-  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) {
-    return struct;
-  }
+export function dataPlaneResourceTimeoutsToTerraform(struct?: DataPlaneResourceTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
-    throw new Error(
-      "A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration",
-    );
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
     create: cdktf.stringToTerraform(struct!.create),
     delete: cdktf.stringToTerraform(struct!.delete),
     read: cdktf.stringToTerraform(struct!.read),
     update: cdktf.stringToTerraform(struct!.update),
+  }
+}
+
+
+export function dataPlaneResourceTimeoutsToHclTerraform(struct?: DataPlaneResourceTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    create: {
+      value: cdktf.stringToHclTerraform(struct!.create),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    delete: {
+      value: cdktf.stringToHclTerraform(struct!.delete),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    read: {
+      value: cdktf.stringToHclTerraform(struct!.read),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
+    update: {
+      value: cdktf.stringToHclTerraform(struct!.update),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
   };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DataPlaneResourceTimeoutsOutputReference extends cdktf.ComplexObject {
@@ -442,20 +493,14 @@ export class DataPlaneResourceTimeoutsOutputReference extends cdktf.ComplexObjec
   private resolvableValue?: cdktf.IResolvable;
 
   /**
-   * @param terraformResource The parent resource
-   * @param terraformAttribute The attribute on the parent resource this class is referencing
-   */
-  public constructor(
-    terraformResource: cdktf.IInterpolatingParent,
-    terraformAttribute: string,
-  ) {
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
     super(terraformResource, terraformAttribute, false);
   }
 
-  public get internalValue():
-    | DataPlaneResourceTimeouts
-    | cdktf.IResolvable
-    | undefined {
+  public get internalValue(): DataPlaneResourceTimeouts | cdktf.IResolvable | undefined {
     if (this.resolvableValue) {
       return this.resolvableValue;
     }
@@ -480,9 +525,7 @@ export class DataPlaneResourceTimeoutsOutputReference extends cdktf.ComplexObjec
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(
-    value: DataPlaneResourceTimeouts | cdktf.IResolvable | undefined,
-  ) {
+  public set internalValue(value: DataPlaneResourceTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
       this.resolvableValue = undefined;
@@ -490,10 +533,12 @@ export class DataPlaneResourceTimeoutsOutputReference extends cdktf.ComplexObjec
       this._delete = undefined;
       this._read = undefined;
       this._update = undefined;
-    } else if (cdktf.Tokenization.isResolvable(value)) {
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
       this.isEmptyObject = false;
       this.resolvableValue = value;
-    } else {
+    }
+    else {
       this.isEmptyObject = Object.keys(value).length === 0;
       this.resolvableValue = undefined;
       this._create = value.create;
@@ -504,9 +549,9 @@ export class DataPlaneResourceTimeoutsOutputReference extends cdktf.ComplexObjec
   }
 
   // create - computed: false, optional: true, required: false
-  private _create?: string;
+  private _create?: string; 
   public get create() {
-    return this.getStringAttribute("create");
+    return this.getStringAttribute('create');
   }
   public set create(value: string) {
     this._create = value;
@@ -520,9 +565,9 @@ export class DataPlaneResourceTimeoutsOutputReference extends cdktf.ComplexObjec
   }
 
   // delete - computed: false, optional: true, required: false
-  private _delete?: string;
+  private _delete?: string; 
   public get delete() {
-    return this.getStringAttribute("delete");
+    return this.getStringAttribute('delete');
   }
   public set delete(value: string) {
     this._delete = value;
@@ -536,9 +581,9 @@ export class DataPlaneResourceTimeoutsOutputReference extends cdktf.ComplexObjec
   }
 
   // read - computed: false, optional: true, required: false
-  private _read?: string;
+  private _read?: string; 
   public get read() {
-    return this.getStringAttribute("read");
+    return this.getStringAttribute('read');
   }
   public set read(value: string) {
     this._read = value;
@@ -552,9 +597,9 @@ export class DataPlaneResourceTimeoutsOutputReference extends cdktf.ComplexObjec
   }
 
   // update - computed: false, optional: true, required: false
-  private _update?: string;
+  private _update?: string; 
   public get update() {
-    return this.getStringAttribute("update");
+    return this.getStringAttribute('update');
   }
   public set update(value: string) {
     this._update = value;
@@ -569,36 +614,47 @@ export class DataPlaneResourceTimeoutsOutputReference extends cdktf.ComplexObjec
 }
 
 /**
- * Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource azapi_data_plane_resource}
- */
+* Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource azapi_data_plane_resource}
+*/
 export class DataPlaneResource extends cdktf.TerraformResource {
+
   // =================
   // STATIC PROPERTIES
   // =================
   public static readonly tfResourceType = "azapi_data_plane_resource";
+
+  // ==============
+  // STATIC Methods
+  // ==============
+  /**
+  * Generates CDKTF code for importing a DataPlaneResource resource upon running "cdktf plan <stack-name>"
+  * @param scope The scope in which to define this construct
+  * @param importToId The construct id used in the generated config for the DataPlaneResource to import
+  * @param importFromId The id of the existing DataPlaneResource that should be imported. Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource#import import section} in the documentation of this resource for the id to use
+  * @param provider? Optional instance of the provider where the DataPlaneResource to import is found
+  */
+  public static generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: cdktf.TerraformProvider) {
+        return new cdktf.ImportableResource(scope, importToId, { terraformResourceType: "azapi_data_plane_resource", importId: importFromId, provider });
+      }
 
   // ===========
   // INITIALIZER
   // ===========
 
   /**
-   * Create a new {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource azapi_data_plane_resource} Resource
-   *
-   * @param scope The scope in which to define this construct
-   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
-   * @param options DataPlaneResourceConfig
-   */
-  public constructor(
-    scope: Construct,
-    id: string,
-    config: DataPlaneResourceConfig,
-  ) {
+  * Create a new {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/data_plane_resource azapi_data_plane_resource} Resource
+  *
+  * @param scope The scope in which to define this construct
+  * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
+  * @param options DataPlaneResourceConfig
+  */
+  public constructor(scope: Construct, id: string, config: DataPlaneResourceConfig) {
     super(scope, id, {
-      terraformResourceType: "azapi_data_plane_resource",
+      terraformResourceType: 'azapi_data_plane_resource',
       terraformGeneratorMetadata: {
-        providerName: "azapi",
-        providerVersion: "2.7.0",
-        providerVersionConstraint: "~> 2.7.0",
+        providerName: 'azapi',
+        providerVersion: '2.7.0',
+        providerVersionConstraint: '~> 2.7.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -606,7 +662,7 @@ export class DataPlaneResource extends cdktf.TerraformResource {
       lifecycle: config.lifecycle,
       provisioners: config.provisioners,
       connection: config.connection,
-      forEach: config.forEach,
+      forEach: config.forEach
     });
     this._body = config.body;
     this._createHeaders = config.createHeaders;
@@ -635,9 +691,9 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   // ==========
 
   // body - computed: true, optional: true, required: false
-  private _body?: { [key: string]: any };
+  private _body?: { [key: string]: any }; 
   public get body() {
-    return this.getAnyMapAttribute("body");
+    return this.getAnyMapAttribute('body');
   }
   public set body(value: { [key: string]: any }) {
     this._body = value;
@@ -651,9 +707,9 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // create_headers - computed: false, optional: true, required: false
-  private _createHeaders?: { [key: string]: string };
+  private _createHeaders?: { [key: string]: string }; 
   public get createHeaders() {
-    return this.getStringMapAttribute("create_headers");
+    return this.getStringMapAttribute('create_headers');
   }
   public set createHeaders(value: { [key: string]: string }) {
     this._createHeaders = value;
@@ -667,15 +723,11 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // create_query_parameters - computed: false, optional: true, required: false
-  private _createQueryParameters?:
-    | { [key: string]: string[] }
-    | cdktf.IResolvable;
+  private _createQueryParameters?: { [key: string]: string[] } | cdktf.IResolvable; 
   public get createQueryParameters() {
-    return this.interpolationForAttribute("create_query_parameters");
+    return this.interpolationForAttribute('create_query_parameters');
   }
-  public set createQueryParameters(
-    value: { [key: string]: string[] } | cdktf.IResolvable,
-  ) {
+  public set createQueryParameters(value: { [key: string]: string[] } | cdktf.IResolvable) {
     this._createQueryParameters = value;
   }
   public resetCreateQueryParameters() {
@@ -687,9 +739,9 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // delete_headers - computed: false, optional: true, required: false
-  private _deleteHeaders?: { [key: string]: string };
+  private _deleteHeaders?: { [key: string]: string }; 
   public get deleteHeaders() {
-    return this.getStringMapAttribute("delete_headers");
+    return this.getStringMapAttribute('delete_headers');
   }
   public set deleteHeaders(value: { [key: string]: string }) {
     this._deleteHeaders = value;
@@ -703,15 +755,11 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // delete_query_parameters - computed: false, optional: true, required: false
-  private _deleteQueryParameters?:
-    | { [key: string]: string[] }
-    | cdktf.IResolvable;
+  private _deleteQueryParameters?: { [key: string]: string[] } | cdktf.IResolvable; 
   public get deleteQueryParameters() {
-    return this.interpolationForAttribute("delete_query_parameters");
+    return this.interpolationForAttribute('delete_query_parameters');
   }
-  public set deleteQueryParameters(
-    value: { [key: string]: string[] } | cdktf.IResolvable,
-  ) {
+  public set deleteQueryParameters(value: { [key: string]: string[] } | cdktf.IResolvable) {
     this._deleteQueryParameters = value;
   }
   public resetDeleteQueryParameters() {
@@ -724,13 +772,13 @@ export class DataPlaneResource extends cdktf.TerraformResource {
 
   // id - computed: true, optional: false, required: false
   public get id() {
-    return this.getStringAttribute("id");
+    return this.getStringAttribute('id');
   }
 
   // ignore_casing - computed: true, optional: true, required: false
-  private _ignoreCasing?: boolean | cdktf.IResolvable;
+  private _ignoreCasing?: boolean | cdktf.IResolvable; 
   public get ignoreCasing() {
-    return this.getBooleanAttribute("ignore_casing");
+    return this.getBooleanAttribute('ignore_casing');
   }
   public set ignoreCasing(value: boolean | cdktf.IResolvable) {
     this._ignoreCasing = value;
@@ -744,9 +792,9 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // ignore_missing_property - computed: true, optional: true, required: false
-  private _ignoreMissingProperty?: boolean | cdktf.IResolvable;
+  private _ignoreMissingProperty?: boolean | cdktf.IResolvable; 
   public get ignoreMissingProperty() {
-    return this.getBooleanAttribute("ignore_missing_property");
+    return this.getBooleanAttribute('ignore_missing_property');
   }
   public set ignoreMissingProperty(value: boolean | cdktf.IResolvable) {
     this._ignoreMissingProperty = value;
@@ -760,9 +808,9 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // locks - computed: false, optional: true, required: false
-  private _locks?: string[];
+  private _locks?: string[]; 
   public get locks() {
-    return this.getListAttribute("locks");
+    return this.getListAttribute('locks');
   }
   public set locks(value: string[]) {
     this._locks = value;
@@ -776,9 +824,9 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // name - computed: false, optional: false, required: true
-  private _name?: string;
+  private _name?: string; 
   public get name() {
-    return this.getStringAttribute("name");
+    return this.getStringAttribute('name');
   }
   public set name(value: string) {
     this._name = value;
@@ -795,9 +843,9 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // parent_id - computed: false, optional: false, required: true
-  private _parentId?: string;
+  private _parentId?: string; 
   public get parentId() {
-    return this.getStringAttribute("parent_id");
+    return this.getStringAttribute('parent_id');
   }
   public set parentId(value: string) {
     this._parentId = value;
@@ -808,9 +856,9 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // read_headers - computed: false, optional: true, required: false
-  private _readHeaders?: { [key: string]: string };
+  private _readHeaders?: { [key: string]: string }; 
   public get readHeaders() {
-    return this.getStringMapAttribute("read_headers");
+    return this.getStringMapAttribute('read_headers');
   }
   public set readHeaders(value: { [key: string]: string }) {
     this._readHeaders = value;
@@ -824,15 +872,11 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // read_query_parameters - computed: false, optional: true, required: false
-  private _readQueryParameters?:
-    | { [key: string]: string[] }
-    | cdktf.IResolvable;
+  private _readQueryParameters?: { [key: string]: string[] } | cdktf.IResolvable; 
   public get readQueryParameters() {
-    return this.interpolationForAttribute("read_query_parameters");
+    return this.interpolationForAttribute('read_query_parameters');
   }
-  public set readQueryParameters(
-    value: { [key: string]: string[] } | cdktf.IResolvable,
-  ) {
+  public set readQueryParameters(value: { [key: string]: string[] } | cdktf.IResolvable) {
     this._readQueryParameters = value;
   }
   public resetReadQueryParameters() {
@@ -844,9 +888,9 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // replace_triggers_external_values - computed: false, optional: true, required: false
-  private _replaceTriggersExternalValues?: { [key: string]: any };
+  private _replaceTriggersExternalValues?: { [key: string]: any }; 
   public get replaceTriggersExternalValues() {
-    return this.getAnyMapAttribute("replace_triggers_external_values");
+    return this.getAnyMapAttribute('replace_triggers_external_values');
   }
   public set replaceTriggersExternalValues(value: { [key: string]: any }) {
     this._replaceTriggersExternalValues = value;
@@ -860,9 +904,9 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // replace_triggers_refs - computed: false, optional: true, required: false
-  private _replaceTriggersRefs?: string[];
+  private _replaceTriggersRefs?: string[]; 
   public get replaceTriggersRefs() {
-    return this.getListAttribute("replace_triggers_refs");
+    return this.getListAttribute('replace_triggers_refs');
   }
   public set replaceTriggersRefs(value: string[]) {
     this._replaceTriggersRefs = value;
@@ -876,9 +920,9 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // response_export_values - computed: false, optional: true, required: false
-  private _responseExportValues?: { [key: string]: any };
+  private _responseExportValues?: { [key: string]: any }; 
   public get responseExportValues() {
-    return this.getAnyMapAttribute("response_export_values");
+    return this.getAnyMapAttribute('response_export_values');
   }
   public set responseExportValues(value: { [key: string]: any }) {
     this._responseExportValues = value;
@@ -908,9 +952,9 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // type - computed: false, optional: false, required: true
-  private _type?: string;
+  private _type?: string; 
   public get type() {
-    return this.getStringAttribute("type");
+    return this.getStringAttribute('type');
   }
   public set type(value: string) {
     this._type = value;
@@ -921,9 +965,9 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // update_headers - computed: false, optional: true, required: false
-  private _updateHeaders?: { [key: string]: string };
+  private _updateHeaders?: { [key: string]: string }; 
   public get updateHeaders() {
-    return this.getStringMapAttribute("update_headers");
+    return this.getStringMapAttribute('update_headers');
   }
   public set updateHeaders(value: { [key: string]: string }) {
     this._updateHeaders = value;
@@ -937,15 +981,11 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // update_query_parameters - computed: false, optional: true, required: false
-  private _updateQueryParameters?:
-    | { [key: string]: string[] }
-    | cdktf.IResolvable;
+  private _updateQueryParameters?: { [key: string]: string[] } | cdktf.IResolvable; 
   public get updateQueryParameters() {
-    return this.interpolationForAttribute("update_query_parameters");
+    return this.interpolationForAttribute('update_query_parameters');
   }
-  public set updateQueryParameters(
-    value: { [key: string]: string[] } | cdktf.IResolvable,
-  ) {
+  public set updateQueryParameters(value: { [key: string]: string[] } | cdktf.IResolvable) {
     this._updateQueryParameters = value;
   }
   public resetUpdateQueryParameters() {
@@ -957,10 +997,7 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new DataPlaneResourceTimeoutsOutputReference(
-    this,
-    "timeouts",
-  );
+  private _timeouts = new DataPlaneResourceTimeoutsOutputReference(this, "timeouts");
   public get timeouts() {
     return this._timeouts;
   }
@@ -982,52 +1019,153 @@ export class DataPlaneResource extends cdktf.TerraformResource {
   protected synthesizeAttributes(): { [name: string]: any } {
     return {
       body: cdktf.hashMapper(cdktf.anyToTerraform)(this._body),
-      create_headers: cdktf.hashMapper(cdktf.stringToTerraform)(
-        this._createHeaders,
-      ),
-      create_query_parameters: cdktf.hashMapper(
-        cdktf.listMapper(cdktf.stringToTerraform, false),
-      )(this._createQueryParameters),
-      delete_headers: cdktf.hashMapper(cdktf.stringToTerraform)(
-        this._deleteHeaders,
-      ),
-      delete_query_parameters: cdktf.hashMapper(
-        cdktf.listMapper(cdktf.stringToTerraform, false),
-      )(this._deleteQueryParameters),
+      create_headers: cdktf.hashMapper(cdktf.stringToTerraform)(this._createHeaders),
+      create_query_parameters: cdktf.hashMapper(cdktf.listMapper(cdktf.stringToTerraform, false))(this._createQueryParameters),
+      delete_headers: cdktf.hashMapper(cdktf.stringToTerraform)(this._deleteHeaders),
+      delete_query_parameters: cdktf.hashMapper(cdktf.listMapper(cdktf.stringToTerraform, false))(this._deleteQueryParameters),
       ignore_casing: cdktf.booleanToTerraform(this._ignoreCasing),
-      ignore_missing_property: cdktf.booleanToTerraform(
-        this._ignoreMissingProperty,
-      ),
+      ignore_missing_property: cdktf.booleanToTerraform(this._ignoreMissingProperty),
       locks: cdktf.listMapper(cdktf.stringToTerraform, false)(this._locks),
       name: cdktf.stringToTerraform(this._name),
       parent_id: cdktf.stringToTerraform(this._parentId),
-      read_headers: cdktf.hashMapper(cdktf.stringToTerraform)(
-        this._readHeaders,
-      ),
-      read_query_parameters: cdktf.hashMapper(
-        cdktf.listMapper(cdktf.stringToTerraform, false),
-      )(this._readQueryParameters),
-      replace_triggers_external_values: cdktf.hashMapper(cdktf.anyToTerraform)(
-        this._replaceTriggersExternalValues,
-      ),
-      replace_triggers_refs: cdktf.listMapper(
-        cdktf.stringToTerraform,
-        false,
-      )(this._replaceTriggersRefs),
-      response_export_values: cdktf.hashMapper(cdktf.anyToTerraform)(
-        this._responseExportValues,
-      ),
+      read_headers: cdktf.hashMapper(cdktf.stringToTerraform)(this._readHeaders),
+      read_query_parameters: cdktf.hashMapper(cdktf.listMapper(cdktf.stringToTerraform, false))(this._readQueryParameters),
+      replace_triggers_external_values: cdktf.hashMapper(cdktf.anyToTerraform)(this._replaceTriggersExternalValues),
+      replace_triggers_refs: cdktf.listMapper(cdktf.stringToTerraform, false)(this._replaceTriggersRefs),
+      response_export_values: cdktf.hashMapper(cdktf.anyToTerraform)(this._responseExportValues),
       retry: dataPlaneResourceRetryToTerraform(this._retry.internalValue),
       type: cdktf.stringToTerraform(this._type),
-      update_headers: cdktf.hashMapper(cdktf.stringToTerraform)(
-        this._updateHeaders,
-      ),
-      update_query_parameters: cdktf.hashMapper(
-        cdktf.listMapper(cdktf.stringToTerraform, false),
-      )(this._updateQueryParameters),
-      timeouts: dataPlaneResourceTimeoutsToTerraform(
-        this._timeouts.internalValue,
-      ),
+      update_headers: cdktf.hashMapper(cdktf.stringToTerraform)(this._updateHeaders),
+      update_query_parameters: cdktf.hashMapper(cdktf.listMapper(cdktf.stringToTerraform, false))(this._updateQueryParameters),
+      timeouts: dataPlaneResourceTimeoutsToTerraform(this._timeouts.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      body: {
+        value: cdktf.hashMapperHcl(cdktf.anyToHclTerraform)(this._body),
+        isBlock: false,
+        type: "map",
+        storageClassType: "anyMap",
+      },
+      create_headers: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._createHeaders),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      create_query_parameters: {
+        value: cdktf.hashMapperHcl(cdktf.listMapperHcl(cdktf.stringToHclTerraform, false))(this._createQueryParameters),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringListMap",
+      },
+      delete_headers: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._deleteHeaders),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      delete_query_parameters: {
+        value: cdktf.hashMapperHcl(cdktf.listMapperHcl(cdktf.stringToHclTerraform, false))(this._deleteQueryParameters),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringListMap",
+      },
+      ignore_casing: {
+        value: cdktf.booleanToHclTerraform(this._ignoreCasing),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      ignore_missing_property: {
+        value: cdktf.booleanToHclTerraform(this._ignoreMissingProperty),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "boolean",
+      },
+      locks: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._locks),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      name: {
+        value: cdktf.stringToHclTerraform(this._name),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      parent_id: {
+        value: cdktf.stringToHclTerraform(this._parentId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      read_headers: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._readHeaders),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      read_query_parameters: {
+        value: cdktf.hashMapperHcl(cdktf.listMapperHcl(cdktf.stringToHclTerraform, false))(this._readQueryParameters),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringListMap",
+      },
+      replace_triggers_external_values: {
+        value: cdktf.hashMapperHcl(cdktf.anyToHclTerraform)(this._replaceTriggersExternalValues),
+        isBlock: false,
+        type: "map",
+        storageClassType: "anyMap",
+      },
+      replace_triggers_refs: {
+        value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(this._replaceTriggersRefs),
+        isBlock: false,
+        type: "list",
+        storageClassType: "stringList",
+      },
+      response_export_values: {
+        value: cdktf.hashMapperHcl(cdktf.anyToHclTerraform)(this._responseExportValues),
+        isBlock: false,
+        type: "map",
+        storageClassType: "anyMap",
+      },
+      retry: {
+        value: dataPlaneResourceRetryToHclTerraform(this._retry.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "DataPlaneResourceRetry",
+      },
+      type: {
+        value: cdktf.stringToHclTerraform(this._type),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      update_headers: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._updateHeaders),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      update_query_parameters: {
+        value: cdktf.hashMapperHcl(cdktf.listMapperHcl(cdktf.stringToHclTerraform, false))(this._updateQueryParameters),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringListMap",
+      },
+      timeouts: {
+        value: dataPlaneResourceTimeoutsToHclTerraform(this._timeouts.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "DataPlaneResourceTimeouts",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }
