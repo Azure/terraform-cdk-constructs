@@ -1,186 +1,219 @@
 // https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action
 // generated from terraform resource schema
 
-import * as cdktf from "cdktf";
-import { Construct } from "constructs";
+import { Construct } from 'constructs';
+import * as cdktf from 'cdktf';
 
 // Configuration
 
-export interface DataAzapiResourceActionConfig
-  extends cdktf.TerraformMetaArguments {
+export interface DataAzapiResourceActionConfig extends cdktf.TerraformMetaArguments {
   /**
-   * The name of the resource action. It's also possible to make HTTP requests towards the resource ID if leave this field empty.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#action DataAzapiResourceAction#action}
-   */
+  * The name of the resource action. It's also possible to make HTTP requests towards the resource ID if leave this field empty.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#action DataAzapiResourceAction#action}
+  */
   readonly action?: string;
   /**
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#body DataAzapiResourceAction#body}
-   */
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#body DataAzapiResourceAction#body}
+  */
   readonly body?: { [key: string]: any };
   /**
-   * A map of headers to include in the request
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#headers DataAzapiResourceAction#headers}
-   */
+  * A map of headers to include in the request
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#headers DataAzapiResourceAction#headers}
+  */
   readonly headers?: { [key: string]: string };
   /**
-   * The HTTP method to use when performing the action. Must be one of `POST`, `GET`. Defaults to `POST`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#method DataAzapiResourceAction#method}
-   */
+  * The HTTP method to use when performing the action. Must be one of `POST`, `GET`. Defaults to `POST`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#method DataAzapiResourceAction#method}
+  */
   readonly method?: string;
   /**
-   * A map of query parameters to include in the request
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#query_parameters DataAzapiResourceAction#query_parameters}
-   */
+  * A map of query parameters to include in the request
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#query_parameters DataAzapiResourceAction#query_parameters}
+  */
   readonly queryParameters?: { [key: string]: string[] } | cdktf.IResolvable;
   /**
-   * The ID of the Azure resource to perform the action on.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#resource_id DataAzapiResourceAction#resource_id}
-   */
+  * The ID of the Azure resource to perform the action on.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#resource_id DataAzapiResourceAction#resource_id}
+  */
   readonly resourceId?: string;
   /**
   * The attribute can accept either a list or a map.
-
-- **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
-
-	```text
-	{
-		properties = {
-			loginServer = "registry1.azurecr.io"
-			policies = {
-				quarantinePolicy = {
-					status = "disabled"
-				}
-			}
-		}
-	}
-	```
-
-- **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
-
-	```text
-	{
-		"login_server" = "registry1.azurecr.io"
-		"quarantine_status" = "disabled"
-	}
-	```
-
-To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
-
+  * 
+  * - **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property output.
+  * 
+  * 	```text
+  * 	{
+  * 		properties = {
+  * 			loginServer = "registry1.azurecr.io"
+  * 			policies = {
+  * 				quarantinePolicy = {
+  * 					status = "disabled"
+  * 				}
+  * 			}
+  * 		}
+  * 	}
+  * 	```
+  * 
+  * - **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property output.
+  * 
+  * 	```text
+  * 	{
+  * 		"login_server" = "registry1.azurecr.io"
+  * 		"quarantine_status" = "disabled"
+  * 	}
+  * 	```
+  * 
+  * To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
+  * 
   *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#response_export_values DataAzapiResourceAction#response_export_values}
   */
   readonly responseExportValues?: { [key: string]: any };
   /**
-   * The retry object supports the following attributes:
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#retry DataAzapiResourceAction#retry}
-   */
+  * The retry object supports the following attributes:
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#retry DataAzapiResourceAction#retry}
+  */
   readonly retry?: DataAzapiResourceActionRetry;
   /**
   * The attribute can accept either a list or a map.
-
-- **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property sensitive_output.
-
-	```text
-	{
-		properties = {
-			loginServer = "registry1.azurecr.io"
-			policies = {
-				quarantinePolicy = {
-					status = "disabled"
-				}
-			}
-		}
-	}
-	```
-
-- **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property sensitive_output.
-
-	```text
-	{
-		"login_server" = "registry1.azurecr.io"
-		"quarantine_status" = "disabled"
-	}
-	```
-
-To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
-
+  * 
+  * - **List**: A list of paths that need to be exported from the response body. Setting it to `["*"]` will export the full response body. Here's an example. If it sets to `["properties.loginServer", "properties.policies.quarantinePolicy.status"]`, it will set the following HCL object to the computed property sensitive_output.
+  * 
+  * 	```text
+  * 	{
+  * 		properties = {
+  * 			loginServer = "registry1.azurecr.io"
+  * 			policies = {
+  * 				quarantinePolicy = {
+  * 					status = "disabled"
+  * 				}
+  * 			}
+  * 		}
+  * 	}
+  * 	```
+  * 
+  * - **Map**: A map where the key is the name for the result and the value is a JMESPath query string to filter the response. Here's an example. If it sets to `{"login_server": "properties.loginServer", "quarantine_status": "properties.policies.quarantinePolicy.status"}`, it will set the following HCL object to the computed property sensitive_output.
+  * 
+  * 	```text
+  * 	{
+  * 		"login_server" = "registry1.azurecr.io"
+  * 		"quarantine_status" = "disabled"
+  * 	}
+  * 	```
+  * 
+  * To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
+  * 
   *
   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#sensitive_response_export_values DataAzapiResourceAction#sensitive_response_export_values}
   */
   readonly sensitiveResponseExportValues?: { [key: string]: any };
   /**
-   * In a format like `<resource-type>@<api-version>`. `<resource-type>` is the Azure resource type, for example, `Microsoft.Storage/storageAccounts`. `<api-version>` is version of the API used to manage this azure resource.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#type DataAzapiResourceAction#type}
-   */
+  * In a format like `<resource-type>@<api-version>`. `<resource-type>` is the Azure resource type, for example, `Microsoft.Storage/storageAccounts`. `<api-version>` is version of the API used to manage this azure resource.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#type DataAzapiResourceAction#type}
+  */
   readonly type: string;
   /**
-   * timeouts block
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#timeouts DataAzapiResourceAction#timeouts}
-   */
+  * timeouts block
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#timeouts DataAzapiResourceAction#timeouts}
+  */
   readonly timeouts?: DataAzapiResourceActionTimeouts;
 }
 export interface DataAzapiResourceActionRetry {
   /**
-   * A list of regular expressions to match against error messages. If any of the regular expressions match, the request will be retried.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#error_message_regex DataAzapiResourceAction#error_message_regex}
-   */
+  * A list of regular expressions to match against error messages. If any of the regular expressions match, the request will be retried.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#error_message_regex DataAzapiResourceAction#error_message_regex}
+  */
   readonly errorMessageRegex: string[];
   /**
-   * The base number of seconds to wait between retries. Default is `10`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#interval_seconds DataAzapiResourceAction#interval_seconds}
-   */
+  * The base number of seconds to wait between retries. Default is `10`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#interval_seconds DataAzapiResourceAction#interval_seconds}
+  */
   readonly intervalSeconds?: number;
   /**
-   * The maximum number of seconds to wait between retries. Default is `180`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#max_interval_seconds DataAzapiResourceAction#max_interval_seconds}
-   */
+  * The maximum number of seconds to wait between retries. Default is `180`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#max_interval_seconds DataAzapiResourceAction#max_interval_seconds}
+  */
   readonly maxIntervalSeconds?: number;
   /**
-   * The multiplier to apply to the interval between retries. Default is `1.5`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#multiplier DataAzapiResourceAction#multiplier}
-   */
+  * The multiplier to apply to the interval between retries. Default is `1.5`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#multiplier DataAzapiResourceAction#multiplier}
+  */
   readonly multiplier?: number;
   /**
-   * The randomization factor to apply to the interval between retries. The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization. Default is `0.5`.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#randomization_factor DataAzapiResourceAction#randomization_factor}
-   */
+  * The randomization factor to apply to the interval between retries. The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization. Default is `0.5`.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#randomization_factor DataAzapiResourceAction#randomization_factor}
+  */
   readonly randomizationFactor?: number;
 }
 
-export function dataAzapiResourceActionRetryToTerraform(
-  struct?: DataAzapiResourceActionRetry | cdktf.IResolvable,
-): any {
-  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) {
-    return struct;
-  }
+export function dataAzapiResourceActionRetryToTerraform(struct?: DataAzapiResourceActionRetry | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
-    throw new Error(
-      "A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration",
-    );
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
-    error_message_regex: cdktf.listMapper(
-      cdktf.stringToTerraform,
-      false,
-    )(struct!.errorMessageRegex),
+    error_message_regex: cdktf.listMapper(cdktf.stringToTerraform, false)(struct!.errorMessageRegex),
     interval_seconds: cdktf.numberToTerraform(struct!.intervalSeconds),
     max_interval_seconds: cdktf.numberToTerraform(struct!.maxIntervalSeconds),
     multiplier: cdktf.numberToTerraform(struct!.multiplier),
     randomization_factor: cdktf.numberToTerraform(struct!.randomizationFactor),
+  }
+}
+
+
+export function dataAzapiResourceActionRetryToHclTerraform(struct?: DataAzapiResourceActionRetry | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    error_message_regex: {
+      value: cdktf.listMapperHcl(cdktf.stringToHclTerraform, false)(struct!.errorMessageRegex),
+      isBlock: false,
+      type: "list",
+      storageClassType: "stringList",
+    },
+    interval_seconds: {
+      value: cdktf.numberToHclTerraform(struct!.intervalSeconds),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    max_interval_seconds: {
+      value: cdktf.numberToHclTerraform(struct!.maxIntervalSeconds),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    multiplier: {
+      value: cdktf.numberToHclTerraform(struct!.multiplier),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
+    randomization_factor: {
+      value: cdktf.numberToHclTerraform(struct!.randomizationFactor),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "number",
+    },
   };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DataAzapiResourceActionRetryOutputReference extends cdktf.ComplexObject {
@@ -188,20 +221,14 @@ export class DataAzapiResourceActionRetryOutputReference extends cdktf.ComplexOb
   private resolvableValue?: cdktf.IResolvable;
 
   /**
-   * @param terraformResource The parent resource
-   * @param terraformAttribute The attribute on the parent resource this class is referencing
-   */
-  public constructor(
-    terraformResource: cdktf.IInterpolatingParent,
-    terraformAttribute: string,
-  ) {
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
     super(terraformResource, terraformAttribute, false);
   }
 
-  public get internalValue():
-    | DataAzapiResourceActionRetry
-    | cdktf.IResolvable
-    | undefined {
+  public get internalValue(): DataAzapiResourceActionRetry | cdktf.IResolvable | undefined {
     if (this.resolvableValue) {
       return this.resolvableValue;
     }
@@ -230,9 +257,7 @@ export class DataAzapiResourceActionRetryOutputReference extends cdktf.ComplexOb
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(
-    value: DataAzapiResourceActionRetry | cdktf.IResolvable | undefined,
-  ) {
+  public set internalValue(value: DataAzapiResourceActionRetry | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
       this.resolvableValue = undefined;
@@ -241,10 +266,12 @@ export class DataAzapiResourceActionRetryOutputReference extends cdktf.ComplexOb
       this._maxIntervalSeconds = undefined;
       this._multiplier = undefined;
       this._randomizationFactor = undefined;
-    } else if (cdktf.Tokenization.isResolvable(value)) {
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
       this.isEmptyObject = false;
       this.resolvableValue = value;
-    } else {
+    }
+    else {
       this.isEmptyObject = Object.keys(value).length === 0;
       this.resolvableValue = undefined;
       this._errorMessageRegex = value.errorMessageRegex;
@@ -256,9 +283,9 @@ export class DataAzapiResourceActionRetryOutputReference extends cdktf.ComplexOb
   }
 
   // error_message_regex - computed: false, optional: false, required: true
-  private _errorMessageRegex?: string[];
+  private _errorMessageRegex?: string[]; 
   public get errorMessageRegex() {
-    return this.getListAttribute("error_message_regex");
+    return this.getListAttribute('error_message_regex');
   }
   public set errorMessageRegex(value: string[]) {
     this._errorMessageRegex = value;
@@ -269,9 +296,9 @@ export class DataAzapiResourceActionRetryOutputReference extends cdktf.ComplexOb
   }
 
   // interval_seconds - computed: true, optional: true, required: false
-  private _intervalSeconds?: number;
+  private _intervalSeconds?: number; 
   public get intervalSeconds() {
-    return this.getNumberAttribute("interval_seconds");
+    return this.getNumberAttribute('interval_seconds');
   }
   public set intervalSeconds(value: number) {
     this._intervalSeconds = value;
@@ -285,9 +312,9 @@ export class DataAzapiResourceActionRetryOutputReference extends cdktf.ComplexOb
   }
 
   // max_interval_seconds - computed: true, optional: true, required: false
-  private _maxIntervalSeconds?: number;
+  private _maxIntervalSeconds?: number; 
   public get maxIntervalSeconds() {
-    return this.getNumberAttribute("max_interval_seconds");
+    return this.getNumberAttribute('max_interval_seconds');
   }
   public set maxIntervalSeconds(value: number) {
     this._maxIntervalSeconds = value;
@@ -301,9 +328,9 @@ export class DataAzapiResourceActionRetryOutputReference extends cdktf.ComplexOb
   }
 
   // multiplier - computed: true, optional: true, required: false
-  private _multiplier?: number;
+  private _multiplier?: number; 
   public get multiplier() {
-    return this.getNumberAttribute("multiplier");
+    return this.getNumberAttribute('multiplier');
   }
   public set multiplier(value: number) {
     this._multiplier = value;
@@ -317,9 +344,9 @@ export class DataAzapiResourceActionRetryOutputReference extends cdktf.ComplexOb
   }
 
   // randomization_factor - computed: true, optional: true, required: false
-  private _randomizationFactor?: number;
+  private _randomizationFactor?: number; 
   public get randomizationFactor() {
-    return this.getNumberAttribute("randomization_factor");
+    return this.getNumberAttribute('randomization_factor');
   }
   public set randomizationFactor(value: number) {
     this._randomizationFactor = value;
@@ -334,27 +361,40 @@ export class DataAzapiResourceActionRetryOutputReference extends cdktf.ComplexOb
 }
 export interface DataAzapiResourceActionTimeouts {
   /**
-   * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-   *
-   * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#read DataAzapiResourceAction#read}
-   */
+  * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+  *
+  * Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#read DataAzapiResourceAction#read}
+  */
   readonly read?: string;
 }
 
-export function dataAzapiResourceActionTimeoutsToTerraform(
-  struct?: DataAzapiResourceActionTimeouts | cdktf.IResolvable,
-): any {
-  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) {
-    return struct;
-  }
+export function dataAzapiResourceActionTimeoutsToTerraform(struct?: DataAzapiResourceActionTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
   if (cdktf.isComplexElement(struct)) {
-    throw new Error(
-      "A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration",
-    );
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
   }
   return {
     read: cdktf.stringToTerraform(struct!.read),
+  }
+}
+
+
+export function dataAzapiResourceActionTimeoutsToHclTerraform(struct?: DataAzapiResourceActionTimeouts | cdktf.IResolvable): any {
+  if (!cdktf.canInspect(struct) || cdktf.Tokenization.isResolvable(struct)) { return struct; }
+  if (cdktf.isComplexElement(struct)) {
+    throw new Error("A complex element was used as configuration, this is not supported: https://cdk.tf/complex-object-as-configuration");
+  }
+  const attrs = {
+    read: {
+      value: cdktf.stringToHclTerraform(struct!.read),
+      isBlock: false,
+      type: "simple",
+      storageClassType: "string",
+    },
   };
+
+  // remove undefined attributes
+  return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined));
 }
 
 export class DataAzapiResourceActionTimeoutsOutputReference extends cdktf.ComplexObject {
@@ -362,20 +402,14 @@ export class DataAzapiResourceActionTimeoutsOutputReference extends cdktf.Comple
   private resolvableValue?: cdktf.IResolvable;
 
   /**
-   * @param terraformResource The parent resource
-   * @param terraformAttribute The attribute on the parent resource this class is referencing
-   */
-  public constructor(
-    terraformResource: cdktf.IInterpolatingParent,
-    terraformAttribute: string,
-  ) {
+  * @param terraformResource The parent resource
+  * @param terraformAttribute The attribute on the parent resource this class is referencing
+  */
+  public constructor(terraformResource: cdktf.IInterpolatingParent, terraformAttribute: string) {
     super(terraformResource, terraformAttribute, false);
   }
 
-  public get internalValue():
-    | DataAzapiResourceActionTimeouts
-    | cdktf.IResolvable
-    | undefined {
+  public get internalValue(): DataAzapiResourceActionTimeouts | cdktf.IResolvable | undefined {
     if (this.resolvableValue) {
       return this.resolvableValue;
     }
@@ -388,17 +422,17 @@ export class DataAzapiResourceActionTimeoutsOutputReference extends cdktf.Comple
     return hasAnyValues ? internalValueResult : undefined;
   }
 
-  public set internalValue(
-    value: DataAzapiResourceActionTimeouts | cdktf.IResolvable | undefined,
-  ) {
+  public set internalValue(value: DataAzapiResourceActionTimeouts | cdktf.IResolvable | undefined) {
     if (value === undefined) {
       this.isEmptyObject = false;
       this.resolvableValue = undefined;
       this._read = undefined;
-    } else if (cdktf.Tokenization.isResolvable(value)) {
+    }
+    else if (cdktf.Tokenization.isResolvable(value)) {
       this.isEmptyObject = false;
       this.resolvableValue = value;
-    } else {
+    }
+    else {
       this.isEmptyObject = Object.keys(value).length === 0;
       this.resolvableValue = undefined;
       this._read = value.read;
@@ -406,9 +440,9 @@ export class DataAzapiResourceActionTimeoutsOutputReference extends cdktf.Comple
   }
 
   // read - computed: false, optional: true, required: false
-  private _read?: string;
+  private _read?: string; 
   public get read() {
-    return this.getStringAttribute("read");
+    return this.getStringAttribute('read');
   }
   public set read(value: string) {
     this._read = value;
@@ -423,36 +457,47 @@ export class DataAzapiResourceActionTimeoutsOutputReference extends cdktf.Comple
 }
 
 /**
- * Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action azapi_resource_action}
- */
+* Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action azapi_resource_action}
+*/
 export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
+
   // =================
   // STATIC PROPERTIES
   // =================
   public static readonly tfResourceType = "azapi_resource_action";
+
+  // ==============
+  // STATIC Methods
+  // ==============
+  /**
+  * Generates CDKTF code for importing a DataAzapiResourceAction resource upon running "cdktf plan <stack-name>"
+  * @param scope The scope in which to define this construct
+  * @param importToId The construct id used in the generated config for the DataAzapiResourceAction to import
+  * @param importFromId The id of the existing DataAzapiResourceAction that should be imported. Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action#import import section} in the documentation of this resource for the id to use
+  * @param provider? Optional instance of the provider where the DataAzapiResourceAction to import is found
+  */
+  public static generateConfigForImport(scope: Construct, importToId: string, importFromId: string, provider?: cdktf.TerraformProvider) {
+        return new cdktf.ImportableResource(scope, importToId, { terraformResourceType: "azapi_resource_action", importId: importFromId, provider });
+      }
 
   // ===========
   // INITIALIZER
   // ===========
 
   /**
-   * Create a new {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action azapi_resource_action} Data Source
-   *
-   * @param scope The scope in which to define this construct
-   * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
-   * @param options DataAzapiResourceActionConfig
-   */
-  public constructor(
-    scope: Construct,
-    id: string,
-    config: DataAzapiResourceActionConfig,
-  ) {
+  * Create a new {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource_action azapi_resource_action} Data Source
+  *
+  * @param scope The scope in which to define this construct
+  * @param id The scoped construct ID. Must be unique amongst siblings in the same scope
+  * @param options DataAzapiResourceActionConfig
+  */
+  public constructor(scope: Construct, id: string, config: DataAzapiResourceActionConfig) {
     super(scope, id, {
-      terraformResourceType: "azapi_resource_action",
+      terraformResourceType: 'azapi_resource_action',
       terraformGeneratorMetadata: {
-        providerName: "azapi",
-        providerVersion: "2.7.0",
-        providerVersionConstraint: "~> 2.7.0",
+        providerName: 'azapi',
+        providerVersion: '2.7.0',
+        providerVersionConstraint: '~> 2.7.0'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,
@@ -460,7 +505,7 @@ export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
       lifecycle: config.lifecycle,
       provisioners: config.provisioners,
       connection: config.connection,
-      forEach: config.forEach,
+      forEach: config.forEach
     });
     this._action = config.action;
     this._body = config.body;
@@ -480,9 +525,9 @@ export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
   // ==========
 
   // action - computed: false, optional: true, required: false
-  private _action?: string;
+  private _action?: string; 
   public get action() {
-    return this.getStringAttribute("action");
+    return this.getStringAttribute('action');
   }
   public set action(value: string) {
     this._action = value;
@@ -496,9 +541,9 @@ export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
   }
 
   // body - computed: false, optional: true, required: false
-  private _body?: { [key: string]: any };
+  private _body?: { [key: string]: any }; 
   public get body() {
-    return this.getAnyMapAttribute("body");
+    return this.getAnyMapAttribute('body');
   }
   public set body(value: { [key: string]: any }) {
     this._body = value;
@@ -512,9 +557,9 @@ export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
   }
 
   // headers - computed: false, optional: true, required: false
-  private _headers?: { [key: string]: string };
+  private _headers?: { [key: string]: string }; 
   public get headers() {
-    return this.getStringMapAttribute("headers");
+    return this.getStringMapAttribute('headers');
   }
   public set headers(value: { [key: string]: string }) {
     this._headers = value;
@@ -529,13 +574,13 @@ export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
 
   // id - computed: true, optional: false, required: false
   public get id() {
-    return this.getStringAttribute("id");
+    return this.getStringAttribute('id');
   }
 
   // method - computed: true, optional: true, required: false
-  private _method?: string;
+  private _method?: string; 
   public get method() {
-    return this.getStringAttribute("method");
+    return this.getStringAttribute('method');
   }
   public set method(value: string) {
     this._method = value;
@@ -555,13 +600,11 @@ export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
   }
 
   // query_parameters - computed: false, optional: true, required: false
-  private _queryParameters?: { [key: string]: string[] } | cdktf.IResolvable;
+  private _queryParameters?: { [key: string]: string[] } | cdktf.IResolvable; 
   public get queryParameters() {
-    return this.interpolationForAttribute("query_parameters");
+    return this.interpolationForAttribute('query_parameters');
   }
-  public set queryParameters(
-    value: { [key: string]: string[] } | cdktf.IResolvable,
-  ) {
+  public set queryParameters(value: { [key: string]: string[] } | cdktf.IResolvable) {
     this._queryParameters = value;
   }
   public resetQueryParameters() {
@@ -573,9 +616,9 @@ export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
   }
 
   // resource_id - computed: false, optional: true, required: false
-  private _resourceId?: string;
+  private _resourceId?: string; 
   public get resourceId() {
-    return this.getStringAttribute("resource_id");
+    return this.getStringAttribute('resource_id');
   }
   public set resourceId(value: string) {
     this._resourceId = value;
@@ -589,9 +632,9 @@ export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
   }
 
   // response_export_values - computed: false, optional: true, required: false
-  private _responseExportValues?: { [key: string]: any };
+  private _responseExportValues?: { [key: string]: any }; 
   public get responseExportValues() {
-    return this.getAnyMapAttribute("response_export_values");
+    return this.getAnyMapAttribute('response_export_values');
   }
   public set responseExportValues(value: { [key: string]: any }) {
     this._responseExportValues = value;
@@ -605,10 +648,7 @@ export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
   }
 
   // retry - computed: false, optional: true, required: false
-  private _retry = new DataAzapiResourceActionRetryOutputReference(
-    this,
-    "retry",
-  );
+  private _retry = new DataAzapiResourceActionRetryOutputReference(this, "retry");
   public get retry() {
     return this._retry;
   }
@@ -630,9 +670,9 @@ export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
   }
 
   // sensitive_response_export_values - computed: false, optional: true, required: false
-  private _sensitiveResponseExportValues?: { [key: string]: any };
+  private _sensitiveResponseExportValues?: { [key: string]: any }; 
   public get sensitiveResponseExportValues() {
-    return this.getAnyMapAttribute("sensitive_response_export_values");
+    return this.getAnyMapAttribute('sensitive_response_export_values');
   }
   public set sensitiveResponseExportValues(value: { [key: string]: any }) {
     this._sensitiveResponseExportValues = value;
@@ -646,9 +686,9 @@ export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
   }
 
   // type - computed: false, optional: false, required: true
-  private _type?: string;
+  private _type?: string; 
   public get type() {
-    return this.getStringAttribute("type");
+    return this.getStringAttribute('type');
   }
   public set type(value: string) {
     this._type = value;
@@ -659,10 +699,7 @@ export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
   }
 
   // timeouts - computed: false, optional: true, required: false
-  private _timeouts = new DataAzapiResourceActionTimeoutsOutputReference(
-    this,
-    "timeouts",
-  );
+  private _timeouts = new DataAzapiResourceActionTimeoutsOutputReference(this, "timeouts");
   public get timeouts() {
     return this._timeouts;
   }
@@ -687,21 +724,87 @@ export class DataAzapiResourceAction extends cdktf.TerraformDataSource {
       body: cdktf.hashMapper(cdktf.anyToTerraform)(this._body),
       headers: cdktf.hashMapper(cdktf.stringToTerraform)(this._headers),
       method: cdktf.stringToTerraform(this._method),
-      query_parameters: cdktf.hashMapper(
-        cdktf.listMapper(cdktf.stringToTerraform, false),
-      )(this._queryParameters),
+      query_parameters: cdktf.hashMapper(cdktf.listMapper(cdktf.stringToTerraform, false))(this._queryParameters),
       resource_id: cdktf.stringToTerraform(this._resourceId),
-      response_export_values: cdktf.hashMapper(cdktf.anyToTerraform)(
-        this._responseExportValues,
-      ),
+      response_export_values: cdktf.hashMapper(cdktf.anyToTerraform)(this._responseExportValues),
       retry: dataAzapiResourceActionRetryToTerraform(this._retry.internalValue),
-      sensitive_response_export_values: cdktf.hashMapper(cdktf.anyToTerraform)(
-        this._sensitiveResponseExportValues,
-      ),
+      sensitive_response_export_values: cdktf.hashMapper(cdktf.anyToTerraform)(this._sensitiveResponseExportValues),
       type: cdktf.stringToTerraform(this._type),
-      timeouts: dataAzapiResourceActionTimeoutsToTerraform(
-        this._timeouts.internalValue,
-      ),
+      timeouts: dataAzapiResourceActionTimeoutsToTerraform(this._timeouts.internalValue),
     };
+  }
+
+  protected synthesizeHclAttributes(): { [name: string]: any } {
+    const attrs = {
+      action: {
+        value: cdktf.stringToHclTerraform(this._action),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      body: {
+        value: cdktf.hashMapperHcl(cdktf.anyToHclTerraform)(this._body),
+        isBlock: false,
+        type: "map",
+        storageClassType: "anyMap",
+      },
+      headers: {
+        value: cdktf.hashMapperHcl(cdktf.stringToHclTerraform)(this._headers),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringMap",
+      },
+      method: {
+        value: cdktf.stringToHclTerraform(this._method),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      query_parameters: {
+        value: cdktf.hashMapperHcl(cdktf.listMapperHcl(cdktf.stringToHclTerraform, false))(this._queryParameters),
+        isBlock: false,
+        type: "map",
+        storageClassType: "stringListMap",
+      },
+      resource_id: {
+        value: cdktf.stringToHclTerraform(this._resourceId),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      response_export_values: {
+        value: cdktf.hashMapperHcl(cdktf.anyToHclTerraform)(this._responseExportValues),
+        isBlock: false,
+        type: "map",
+        storageClassType: "anyMap",
+      },
+      retry: {
+        value: dataAzapiResourceActionRetryToHclTerraform(this._retry.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "DataAzapiResourceActionRetry",
+      },
+      sensitive_response_export_values: {
+        value: cdktf.hashMapperHcl(cdktf.anyToHclTerraform)(this._sensitiveResponseExportValues),
+        isBlock: false,
+        type: "map",
+        storageClassType: "anyMap",
+      },
+      type: {
+        value: cdktf.stringToHclTerraform(this._type),
+        isBlock: false,
+        type: "simple",
+        storageClassType: "string",
+      },
+      timeouts: {
+        value: dataAzapiResourceActionTimeoutsToHclTerraform(this._timeouts.internalValue),
+        isBlock: true,
+        type: "struct",
+        storageClassType: "DataAzapiResourceActionTimeouts",
+      },
+    };
+
+    // remove undefined attributes
+    return Object.fromEntries(Object.entries(attrs).filter(([_, value]) => value !== undefined && value.value !== undefined ))
   }
 }
