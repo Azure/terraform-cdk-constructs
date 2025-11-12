@@ -24,6 +24,12 @@ import { Construct } from "constructs";
 import { DataAzapiClientConfig } from "./providers-azapi/data-azapi-client-config";
 import { Resource, ResourceConfig } from "./providers-azapi/resource";
 import { SchemaMapper } from "./schema-mapper/schema-mapper";
+
+// Type-only imports to avoid circular dependencies
+import type { ActionGroupProps } from "../../../azure-actiongroup/lib/action-group";
+import type { ActivityLogAlertProps } from "../../../azure-activitylogalert/lib/activity-log-alert";
+import type { DiagnosticSettingsProps } from "../../../azure-diagnosticsettings/lib/diagnostic-settings";
+import type { MetricAlertProps } from "../../../azure-metricalert/lib/metric-alert";
 import { ApiVersionManager } from "../version-manager/api-version-manager";
 import {
   ApiSchema,
@@ -55,9 +61,51 @@ export interface DiagnosticLogConfig {
  * Metric configuration for diagnostic settings
  */
 export interface DiagnosticMetricConfig {
-  readonly category: string;
+  /** Metric category name (used in newer API versions) */
+  readonly category?: string;
+  /** Time grain for metrics in ISO 8601 duration format (used in API version 2016-09-01, e.g., "PT1M") */
+  readonly timeGrain?: string;
   readonly enabled: boolean;
   readonly retentionPolicy?: RetentionPolicyConfig;
+}
+
+/**
+ * Monitoring configuration for Azure resources
+ *
+ * Provides integrated monitoring capabilities including diagnostic settings,
+ * metric alerts, and activity log alerts. All monitoring is optional and
+ * disabled by default.
+ */
+export interface MonitoringConfig {
+  /**
+   * Whether monitoring is enabled
+   * @defaultValue true
+   */
+  readonly enabled?: boolean;
+
+  /**
+   * Diagnostic settings configuration
+   * Uses the full DiagnosticSettings construct for consistency
+   */
+  readonly diagnosticSettings?: DiagnosticSettingsProps;
+
+  /**
+   * Action groups to create for this resource
+   * Creates new ActionGroup instances as child constructs
+   */
+  readonly actionGroups?: ActionGroupProps[];
+
+  /**
+   * Metric alerts configuration
+   * Creates MetricAlert instances scoped to this resource
+   */
+  readonly metricAlerts?: MetricAlertProps[];
+
+  /**
+   * Activity log alerts configuration
+   * Creates ActivityLogAlert instances for this resource's operations
+   */
+  readonly activityLogAlerts?: ActivityLogAlertProps[];
 }
 
 /**
@@ -121,6 +169,31 @@ export interface AzapiResourceProps {
    * @defaultValue true
    */
   readonly enableTransformation?: boolean;
+
+  /**
+   * Monitoring configuration for this resource
+   *
+   * Enables integrated monitoring with diagnostic settings, metric alerts,
+   * and activity log alerts. All monitoring is optional and disabled by default.
+   *
+   * @example
+   * monitoring: {
+   *   enabled: true,
+   *   diagnosticSettings: {
+   *     workspaceId: logAnalytics.id,
+   *     metrics: ['AllMetrics'],
+   *     logs: ['AuditLogs']
+   *   },
+   *   metricAlerts: [{
+   *     name: 'high-cpu-alert',
+   *     severity: 2,
+   *     scopes: [], // Automatically set to this resource
+   *     criteria: { ... },
+   *     actions: [{ actionGroupId: actionGroup.id }]
+   *   }]
+   * }
+   */
+  readonly monitoring?: MonitoringConfig;
 }
 
 /**
@@ -246,6 +319,11 @@ export abstract class AzapiResource extends Construct {
   private readonly _apiVersionManager: ApiVersionManager;
   private readonly _schemaMapper: SchemaMapper;
 
+  // Monitoring resources (protected for subclass access)
+  protected readonly monitoringActionGroups: Construct[] = [];
+  protected readonly monitoringMetricAlerts: Construct[] = [];
+  protected readonly monitoringActivityLogAlerts: Construct[] = [];
+
   /**
    * Creates a new AzapiResource instance
    *
@@ -315,7 +393,13 @@ export abstract class AzapiResource extends Construct {
     // Step 8: Create the Azure resource
     this._createAzureResource(processedProps);
 
-    // Step 9: Log warnings and migration guidance
+    // Step 9: Create monitoring resources if configured
+    // Note: Monitoring resources are created lazily to avoid circular dependencies
+    if (props.monitoring) {
+      void this.createMonitoringResources(props.monitoring);
+    }
+
+    // Step 10: Log warnings and migration guidance
     this._logFrameworkMessages();
   }
 
@@ -635,6 +719,97 @@ export abstract class AzapiResource extends Construct {
   }
 
   // =============================================================================
+  // MONITORING INTEGRATION METHODS
+  // =============================================================================
+
+  /**
+   * Creates monitoring resources based on the monitoring configuration
+   *
+   * This method is called automatically during construction if monitoring is configured.
+   * It creates action groups, metric alerts, and activity log alerts as child constructs.
+   *
+   * Protected to allow subclasses to override or extend monitoring behavior.
+   *
+   * @param config - The monitoring configuration from props
+   */
+  protected async createMonitoringResources(
+    config: MonitoringConfig,
+  ): Promise<void> {
+    // Skip if monitoring is explicitly disabled
+    if (config.enabled === false) {
+      return;
+    }
+
+    // Create diagnostic settings using dynamic import to avoid circular dependency
+    if (config.diagnosticSettings) {
+      const { DiagnosticSettings } = await import(
+        "../../../azure-diagnosticsettings/lib/diagnostic-settings"
+      );
+      new DiagnosticSettings(this, "monitoring-diagnostic-settings", {
+        ...config.diagnosticSettings,
+        targetResourceId: this.resourceId,
+      });
+    }
+
+    // Create action groups using dynamic import
+    if (config.actionGroups && config.actionGroups.length > 0) {
+      const { ActionGroup } = await import(
+        "../../../azure-actiongroup/lib/action-group"
+      );
+      config.actionGroups.forEach((actionGroupProps, index) => {
+        const actionGroup = new ActionGroup(
+          this,
+          `monitoring-action-group-${index}`,
+          actionGroupProps,
+        );
+        this.monitoringActionGroups.push(actionGroup);
+      });
+    }
+
+    // Create metric alerts using dynamic import
+    if (config.metricAlerts && config.metricAlerts.length > 0) {
+      const { MetricAlert } = await import(
+        "../../../azure-metricalert/lib/metric-alert"
+      );
+      config.metricAlerts.forEach((metricAlertProps, index) => {
+        // If scopes not provided, default to this resource
+        const propsWithScope: MetricAlertProps = {
+          ...metricAlertProps,
+          scopes: metricAlertProps.scopes || [this.resourceId],
+        };
+
+        const metricAlert = new MetricAlert(
+          this,
+          `monitoring-metric-alert-${index}`,
+          propsWithScope,
+        );
+        this.monitoringMetricAlerts.push(metricAlert);
+      });
+    }
+
+    // Create activity log alerts using dynamic import
+    if (config.activityLogAlerts && config.activityLogAlerts.length > 0) {
+      const { ActivityLogAlert } = await import(
+        "../../../azure-activitylogalert/lib/activity-log-alert"
+      );
+      config.activityLogAlerts.forEach((activityLogAlertProps, index) => {
+        // If scopes not provided, default to this resource
+        const propsWithScope: ActivityLogAlertProps = {
+          ...activityLogAlertProps,
+          scopes: activityLogAlertProps.scopes || [this.resourceId],
+        };
+
+        const activityLogAlert = new ActivityLogAlert(
+          this,
+          `monitoring-activity-log-alert-${index}`,
+          propsWithScope,
+        );
+        this.monitoringActivityLogAlerts.push(activityLogAlert);
+      });
+    }
+  }
+
+  // =============================================================================
   // RESOURCE MANAGEMENT METHODS (from AzapiResource)
   // =============================================================================
 
@@ -731,20 +906,6 @@ export abstract class AzapiResource extends Construct {
       scope: this.resourceId,
     });
   }
-
-  /**
-   * Adds diagnostic settings to this resource using AZAPI
-   *
-   * @param props - The diagnostic settings configuration
-   */
-  public addDiagnosticSettings(
-    props: AzapiDiagnosticSettingsProps,
-  ): AzapiDiagnosticSettings {
-    return new AzapiDiagnosticSettings(this, "diagnostics", {
-      ...props,
-      targetResourceId: this.resourceId,
-    });
-  }
 }
 
 // =============================================================================
@@ -779,70 +940,6 @@ export class AzapiRoleAssignment extends Construct {
       parentId: props.scope,
       body: properties,
     };
-
     new Resource(this, "role-assignment", config);
-  }
-}
-
-/**
- * Properties for AZAPI diagnostic settings
- */
-export interface AzapiDiagnosticSettingsProps {
-  readonly name?: string;
-  readonly logAnalyticsWorkspaceId?: string;
-  readonly eventhubAuthorizationRuleId?: string;
-  readonly eventhubName?: string;
-  readonly storageAccountId?: string;
-  readonly targetResourceId?: string;
-  readonly logs?: DiagnosticLogConfig[];
-  readonly metrics?: DiagnosticMetricConfig[];
-}
-
-/**
- * AZAPI-based diagnostic settings construct
- */
-export class AzapiDiagnosticSettings extends Construct {
-  constructor(
-    scope: Construct,
-    id: string,
-    props: AzapiDiagnosticSettingsProps,
-  ) {
-    super(scope, id);
-
-    const properties: Record<string, any> = {};
-
-    if (props.logAnalyticsWorkspaceId) {
-      properties.workspaceId = props.logAnalyticsWorkspaceId;
-    }
-
-    if (props.eventhubAuthorizationRuleId) {
-      properties.eventHubAuthorizationRuleId =
-        props.eventhubAuthorizationRuleId;
-    }
-
-    if (props.eventhubName) {
-      properties.eventHubName = props.eventhubName;
-    }
-
-    if (props.storageAccountId) {
-      properties.storageAccountId = props.storageAccountId;
-    }
-
-    if (props.logs) {
-      properties.logs = props.logs;
-    }
-
-    if (props.metrics) {
-      properties.metrics = props.metrics;
-    }
-
-    const config: ResourceConfig = {
-      type: "Microsoft.Insights/diagnosticSettings",
-      name: props.name || "diagnostics",
-      parentId: props.targetResourceId || "",
-      body: properties,
-    };
-
-    new Resource(this, "diagnostic-settings", config);
   }
 }

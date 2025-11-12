@@ -34,6 +34,7 @@
     "projen": "npx projen",
     "integration": "STREAM_OUTPUT=true jest --testMatch '**/*.integ.ts'",
     "integration:nostream": "STREAM_OUTPUT=false jest --maxWorkers=12 --testMatch '**/*.integ.ts'",
+    "cleanup-test-resources": "ts-node scripts/cleanup-test-resources.ts",
     "generate-index": "node ./scripts/generate-index.js"
   },
   "author": {
@@ -44,6 +45,7 @@
   "devDependencies": {
     "@types/jest": "^29",
     "@types/node": "^20",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
     "cdktf": "0.20.8",
@@ -72,8 +74,12 @@
     "constructs": "^10.3.0"
   },
   "dependencies": {
-    "cdktf": "0.20.8"
+    "cdktf": "0.20.8",
+    "uuid": "^11.0.3"
   },
+  "bundledDependencies": [
+    "uuid"
+  ],
   "keywords": [
     "azapi",
     "azure",

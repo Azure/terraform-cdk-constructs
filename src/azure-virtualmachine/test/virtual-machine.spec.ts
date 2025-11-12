@@ -1019,4 +1019,201 @@ describe("VirtualMachine - Unified Implementation", () => {
       expect(synthesized).toBeDefined();
     });
   });
+
+  describe("VirtualMachine Monitoring", () => {
+    it("should return default monitoring configuration with all alerts enabled", () => {
+      const config = VirtualMachine.defaultMonitoring(
+        "action-group-id",
+        "workspace-id",
+      );
+
+      expect(config.enabled).toBe(true);
+      expect(config.diagnosticSettings).toBeDefined();
+      expect(config.diagnosticSettings?.workspaceId).toBe("workspace-id");
+      expect(config.diagnosticSettings?.logs).toEqual([
+        { categoryGroup: "allLogs", enabled: true },
+      ]);
+      expect(config.diagnosticSettings?.metrics).toEqual([
+        { category: "AllMetrics", enabled: true },
+      ]);
+
+      expect(config.metricAlerts).toHaveLength(3);
+
+      // Verify high-cpu-alert
+      const cpuAlert = config.metricAlerts?.find(
+        (a) => a.name === "high-cpu-alert",
+      );
+      expect(cpuAlert).toBeDefined();
+      expect(cpuAlert?.severity).toBe(2);
+      expect((cpuAlert?.criteria as any).threshold).toBe(80);
+      expect((cpuAlert?.criteria as any).metricName).toBe("Percentage CPU");
+      expect((cpuAlert?.criteria as any).operator).toBe("GreaterThan");
+
+      // Verify low-memory-alert
+      const memoryAlert = config.metricAlerts?.find(
+        (a) => a.name === "low-memory-alert",
+      );
+      expect(memoryAlert).toBeDefined();
+      expect(memoryAlert?.severity).toBe(2);
+      expect((memoryAlert?.criteria as any).threshold).toBe(1073741824);
+      expect((memoryAlert?.criteria as any).metricName).toBe(
+        "Available Memory Bytes",
+      );
+      expect((memoryAlert?.criteria as any).operator).toBe("LessThan");
+
+      // Verify high-disk-queue-alert
+      const diskAlert = config.metricAlerts?.find(
+        (a) => a.name === "high-disk-queue-alert",
+      );
+      expect(diskAlert).toBeDefined();
+      expect(diskAlert?.severity).toBe(2);
+      expect((diskAlert?.criteria as any).threshold).toBe(32);
+      expect((diskAlert?.criteria as any).metricName).toBe(
+        "OS Disk Queue Depth",
+      );
+      expect((diskAlert?.criteria as any).operator).toBe("GreaterThan");
+
+      // Verify activity log alerts
+      expect(config.activityLogAlerts).toHaveLength(1);
+      const deletionAlert = config.activityLogAlerts?.[0];
+      expect(deletionAlert?.name).toBe("vm-deletion-alert");
+      expect(deletionAlert?.condition.allOf).toEqual([
+        {
+          field: "operationName",
+          equalsValue: "Microsoft.Compute/virtualMachines/delete",
+        },
+      ]);
+    });
+
+    it("should return monitoring configuration without diagnostic settings when workspace ID not provided", () => {
+      const config = VirtualMachine.defaultMonitoring("action-group-id");
+
+      expect(config.enabled).toBe(true);
+      expect(config.diagnosticSettings).toBeUndefined();
+      expect(config.metricAlerts).toHaveLength(3);
+      expect(config.activityLogAlerts).toHaveLength(1);
+    });
+
+    it("should customize thresholds and severities", () => {
+      const config = VirtualMachine.defaultMonitoring(
+        "action-group-id",
+        "workspace-id",
+        {
+          cpuThreshold: 90,
+          memoryThreshold: 524288000,
+          cpuAlertSeverity: 1,
+        },
+      );
+
+      const cpuAlert = config.metricAlerts?.find(
+        (a) => a.name === "high-cpu-alert",
+      );
+      expect((cpuAlert?.criteria as any).threshold).toBe(90);
+      expect(cpuAlert?.severity).toBe(1);
+
+      const memoryAlert = config.metricAlerts?.find(
+        (a) => a.name === "low-memory-alert",
+      );
+      expect((memoryAlert?.criteria as any).threshold).toBe(524288000);
+    });
+
+    it("should disable specific alerts when requested", () => {
+      const config = VirtualMachine.defaultMonitoring(
+        "action-group-id",
+        "workspace-id",
+        {
+          enableCpuAlert: false,
+          enableDiskQueueAlert: false,
+          enableDeletionAlert: false,
+        },
+      );
+
+      expect(config.metricAlerts).toHaveLength(1);
+      const memoryAlert = config.metricAlerts?.find(
+        (a) => a.name === "low-memory-alert",
+      );
+      expect(memoryAlert).toBeDefined();
+
+      const cpuAlert = config.metricAlerts?.find(
+        (a) => a.name === "high-cpu-alert",
+      );
+      expect(cpuAlert).toBeUndefined();
+
+      const diskAlert = config.metricAlerts?.find(
+        (a) => a.name === "high-disk-queue-alert",
+      );
+      expect(diskAlert).toBeUndefined();
+
+      expect(config.activityLogAlerts).toBeUndefined();
+    });
+
+    it("should create VM with monitoring configuration", () => {
+      const vm = new VirtualMachine(stack, "MonitoredVM", {
+        name: "monitored-vm",
+        location: "eastus",
+        hardwareProfile: { vmSize: "Standard_D2s_v3" },
+        storageProfile: { osDisk: { createOption: "FromImage" } },
+        networkProfile: {
+          networkInterfaces: [{ id: "/test/nic" }],
+        },
+        monitoring: VirtualMachine.defaultMonitoring(
+          "action-group-id",
+          "workspace-id",
+        ),
+      });
+
+      expect(vm).toBeDefined();
+      expect(vm).toBeInstanceOf(VirtualMachine);
+
+      const synthesized = Testing.synth(stack);
+      expect(synthesized).toBeDefined();
+
+      const stackConfig = JSON.parse(synthesized);
+      expect(stackConfig.resource).toBeDefined();
+
+      // Verify VM resource exists
+      const azapiResources = Object.keys(stackConfig.resource.azapi_resource);
+      const vmResource = azapiResources.find((key) =>
+        key.includes("MonitoredVM"),
+      );
+      expect(vmResource).toBeDefined();
+    });
+
+    it("should create VM without monitoring when disabled", () => {
+      const vm = new VirtualMachine(stack, "UnmonitoredVM", {
+        name: "unmonitored-vm",
+        location: "eastus",
+        hardwareProfile: { vmSize: "Standard_D2s_v3" },
+        storageProfile: { osDisk: { createOption: "FromImage" } },
+        networkProfile: {
+          networkInterfaces: [{ id: "/test/nic" }],
+        },
+        monitoring: { enabled: false },
+      });
+
+      expect(vm).toBeDefined();
+      expect(vm).toBeInstanceOf(VirtualMachine);
+
+      const synthesized = Testing.synth(stack);
+      expect(synthesized).toBeDefined();
+
+      const stackConfig = JSON.parse(synthesized);
+
+      // Verify no metric alerts are created
+      const metricAlerts = stackConfig.resource?.azapi_resource
+        ? Object.keys(stackConfig.resource.azapi_resource).filter((key) =>
+            key.includes("metric-alert"),
+          )
+        : [];
+      expect(metricAlerts.length).toBe(0);
+
+      // Verify no diagnostic settings are created
+      const diagnosticSettings = stackConfig.resource?.azapi_resource
+        ? Object.keys(stackConfig.resource.azapi_resource).filter((key) =>
+            key.includes("diagnostic"),
+          )
+        : [];
+      expect(diagnosticSettings.length).toBe(0);
+    });
+  });
 });

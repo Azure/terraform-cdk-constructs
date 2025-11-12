@@ -27,6 +27,7 @@ import {
   VirtualMachineScaleSetSku,
   OrchestrationMode,
   VirtualMachineScaleSetProps,
+  VmssMonitoringOptions,
 } from "./vmss-schemas";
 import {
   NETWORK_INTERFACE_TYPE,
@@ -35,6 +36,7 @@ import {
 import {
   AzapiResource,
   AzapiResourceProps,
+  MonitoringConfig,
 } from "../../core-azure/lib/azapi/azapi-resource";
 import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
@@ -145,6 +147,159 @@ import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/versi
  * @stability stable
  */
 export class VirtualMachineScaleSet extends AzapiResource {
+  /**
+   * Returns a production-ready monitoring configuration for Virtual Machine Scale Sets
+   *
+   * This static factory method provides a complete MonitoringConfig with sensible defaults
+   * for VMSS monitoring including CPU, memory, disk queue alerts, and deletion tracking.
+   *
+   * VMSS uses a lower CPU threshold (75%) compared to single VMs (80%) to allow headroom
+   * for scaling operations before reaching saturation.
+   *
+   * @param actionGroupId - The resource ID of the action group for alert notifications
+   * @param workspaceId - Optional Log Analytics workspace ID for diagnostic settings
+   * @param options - Optional configuration to customize thresholds and enable/disable specific alerts
+   * @returns A complete MonitoringConfig object ready to use in VirtualMachineScaleSet props
+   *
+   * @example
+   * // Basic usage with all defaults
+   * const vmss = new VirtualMachineScaleSet(this, "vmss", {
+   *   // ... other properties ...
+   *   monitoring: VirtualMachineScaleSet.defaultMonitoring(actionGroup.id, workspace.id)
+   * });
+   *
+   * @example
+   * // Custom thresholds and severities
+   * const vmss = new VirtualMachineScaleSet(this, "vmss", {
+   *   // ... other properties ...
+   *   monitoring: VirtualMachineScaleSet.defaultMonitoring(
+   *     actionGroup.id,
+   *     workspace.id,
+   *     {
+   *       cpuThreshold: 85,
+   *       memoryThreshold: 536870912, // 512MB
+   *       enableDiskQueueAlert: false,
+   *       cpuAlertSeverity: 1 // Error level
+   *     }
+   *   )
+   * });
+   *
+   * @stability stable
+   */
+  public static defaultMonitoring(
+    actionGroupId: string,
+    workspaceId?: string,
+    options?: VmssMonitoringOptions,
+  ): MonitoringConfig {
+    const metricAlerts: any[] = [];
+
+    // High CPU Alert
+    if (options?.enableCpuAlert !== false) {
+      metricAlerts.push({
+        name: "high-cpu-alert",
+        description: "Alert when VMSS CPU usage exceeds threshold",
+        severity: (options?.cpuAlertSeverity ?? 2) as 0 | 1 | 2 | 3 | 4,
+        scopes: [], // Will be set automatically by base class
+        evaluationFrequency: "PT5M",
+        windowSize: "PT15M",
+        criteria: {
+          type: "StaticThreshold" as const,
+          metricName: "Percentage CPU",
+          metricNamespace: "Microsoft.Compute/virtualMachineScaleSets",
+          operator: "GreaterThan" as const,
+          threshold: options?.cpuThreshold ?? 75,
+          timeAggregation: "Average" as const,
+        },
+        actions: [{ actionGroupId }],
+      });
+    }
+
+    // Low Memory Alert
+    if (options?.enableMemoryAlert !== false) {
+      metricAlerts.push({
+        name: "low-memory-alert",
+        description: "Alert when VMSS available memory drops below threshold",
+        severity: (options?.memoryAlertSeverity ?? 2) as 0 | 1 | 2 | 3 | 4,
+        scopes: [], // Will be set automatically by base class
+        evaluationFrequency: "PT5M",
+        windowSize: "PT15M",
+        criteria: {
+          type: "StaticThreshold" as const,
+          metricName: "Available Memory Bytes",
+          metricNamespace: "Microsoft.Compute/virtualMachineScaleSets",
+          operator: "LessThan" as const,
+          threshold: options?.memoryThreshold ?? 1073741824,
+          timeAggregation: "Average" as const,
+        },
+        actions: [{ actionGroupId }],
+      });
+    }
+
+    // High Disk Queue Alert
+    if (options?.enableDiskQueueAlert !== false) {
+      metricAlerts.push({
+        name: "high-disk-queue-alert",
+        description: "Alert when VMSS disk queue depth exceeds threshold",
+        severity: (options?.diskQueueAlertSeverity ?? 2) as 0 | 1 | 2 | 3 | 4,
+        scopes: [], // Will be set automatically by base class
+        evaluationFrequency: "PT5M",
+        windowSize: "PT15M",
+        criteria: {
+          type: "StaticThreshold" as const,
+          metricName: "OS Disk Queue Depth",
+          metricNamespace: "Microsoft.Compute/virtualMachineScaleSets",
+          operator: "GreaterThan" as const,
+          threshold: options?.diskQueueThreshold ?? 32,
+          timeAggregation: "Average" as const,
+        },
+        actions: [{ actionGroupId }],
+      });
+    }
+
+    // Build diagnostic settings if workspace ID is provided
+    const diagnosticSettings = workspaceId
+      ? {
+          name: "vmss-diagnostics",
+          targetResourceId: "", // Will be set automatically by base class
+          workspaceId: workspaceId,
+          logs: [{ categoryGroup: "allLogs", enabled: true }],
+          metrics: [{ category: "AllMetrics", enabled: true }],
+        }
+      : undefined;
+
+    // Build activity log alerts
+    const activityLogAlerts =
+      options?.enableDeletionAlert !== false
+        ? [
+            {
+              name: "vmss-deletion-alert",
+              description: "Alert when virtual machine scale set is deleted",
+              scopes: [], // Will be set automatically by base class
+              condition: {
+                allOf: [
+                  {
+                    field: "operationName",
+                    equalsValue:
+                      "Microsoft.Compute/virtualMachineScaleSets/delete",
+                  },
+                ],
+              },
+              actions: {
+                actionGroups: [{ actionGroupId }],
+              },
+            },
+          ]
+        : undefined;
+
+    // Return complete config object
+    return {
+      enabled: true,
+      diagnosticSettings: diagnosticSettings,
+      metricAlerts: metricAlerts,
+      activityLogAlerts: activityLogAlerts,
+    };
+  }
+
   /**
    * Static initialization flag to ensure schemas are registered only once
    */

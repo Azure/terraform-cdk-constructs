@@ -636,3 +636,100 @@ Contributions are welcome! Please see the [Contributing Guide](../../CONTRIBUTIN
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](../../LICENSE) file for details.
+
+## Monitoring
+
+The AKS Cluster construct provides built-in monitoring capabilities through the `defaultMonitoring()` static method.
+
+### Default Monitoring Configuration
+
+```typescript
+import { AksCluster } from '@cdktf/azure-aks';
+import { ActionGroup } from '@cdktf/azure-actiongroup';
+import { LogAnalyticsWorkspace } from '@cdktf/azure-loganalyticsworkspace';
+
+const actionGroup = new ActionGroup(this, 'alerts', {
+  // ... action group configuration
+});
+
+const workspace = new LogAnalyticsWorkspace(this, 'logs', {
+  // ... workspace configuration
+});
+
+const aksCluster = new AksCluster(this, 'aks', {
+  name: 'myakscluster',
+  location: 'eastus',
+  resourceGroupName: resourceGroup.name,
+  // ... other properties
+  monitoring: AksCluster.defaultMonitoring(
+    actionGroup.id,
+    workspace.id
+  )
+});
+```
+
+### Monitored Metrics
+
+The default monitoring configuration includes:
+
+1. **Node CPU Alert**
+   - Metric: `node_cpu_usage_percentage`
+   - Threshold: 80% (default)
+   - Severity: Warning (2)
+   - Triggers when node CPU usage exceeds threshold
+
+2. **Node Memory Alert**
+   - Metric: `node_memory_working_set_percentage`
+   - Threshold: 80% (default)
+   - Severity: Warning (2)
+   - Triggers when node memory usage exceeds threshold
+
+3. **Failed Pods Alert**
+   - Metric: `kube_pod_status_phase` (Failed phase)
+   - Threshold: 0 (any failed pod)
+   - Severity: Error (1)
+   - Triggers when pods enter failed state
+
+4. **Cluster Deletion Alert**
+   - Tracks AKS cluster deletion via Activity Log
+   - Severity: Informational
+
+### Custom Monitoring Configuration
+
+Customize thresholds and severities:
+
+```typescript
+const aksCluster = new AksCluster(this, 'aks', {
+  name: 'myakscluster',
+  location: 'eastus',
+  resourceGroupName: resourceGroup.name,
+  monitoring: AksCluster.defaultMonitoring(
+    actionGroup.id,
+    workspace.id,
+    {
+      nodeCpuThreshold: 90,              // Higher CPU threshold
+      nodeMemoryThreshold: 85,           // Higher memory threshold
+      failedPodThreshold: 5,             // Alert only if >5 pods fail
+      nodeCpuAlertSeverity: 1,          // Critical for CPU
+      enableFailedPodAlert: false,       // Disable pod monitoring
+    }
+  )
+});
+```
+
+### Monitoring Options
+
+All available options:
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `nodeCpuThreshold` | number | 80 | Node CPU usage percentage threshold |
+| `nodeMemoryThreshold` | number | 80 | Node memory usage percentage threshold |
+| `failedPodThreshold` | number | 0 | Failed pod count threshold |
+| `enableNodeCpuAlert` | boolean | true | Enable/disable node CPU alert |
+| `enableNodeMemoryAlert` | boolean | true | Enable/disable node memory alert |
+| `enableFailedPodAlert` | boolean | true | Enable/disable failed pod alert |
+| `enableDeletionAlert` | boolean | true | Enable/disable deletion tracking |
+| `nodeCpuAlertSeverity` | 0\|1\|2\|3\|4 | 2 | Node CPU alert severity (0=Critical, 4=Verbose) |
+| `nodeMemoryAlertSeverity` | 0\|1\|2\|3\|4 | 2 | Node memory alert severity |
+| `failedPodAlertSeverity` | 0\|1\|2\|3\|4 | 1 | Failed pod alert severity |

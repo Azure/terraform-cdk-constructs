@@ -353,6 +353,284 @@ const secureVm = new VirtualMachine(this, "secure-vm", {
 });
 ```
 
+## Monitoring
+
+Virtual Machines support integrated monitoring through the `monitoring` property, which automatically creates Azure Monitor metric alerts, diagnostic settings, and activity log alerts. This provides comprehensive observability for your VMs with minimal configuration.
+
+### Quick Start - Default Monitoring
+
+The simplest way to enable monitoring is using the [`VirtualMachine.defaultMonitoring()`](./lib/virtual-machine.ts) static method:
+
+```typescript
+import { VirtualMachine } from '@microsoft/terraform-cdk-constructs/azure-virtualmachine';
+import { ActionGroup } from '@microsoft/terraform-cdk-constructs/azure-actiongroup';
+import { LogAnalyticsWorkspace } from '@microsoft/terraform-cdk-constructs/azure-loganalyticsworkspace';
+
+// Create an action group for alerts
+const actionGroup = new ActionGroup(this, 'alerts', {
+  name: 'vm-alerts',
+  resourceGroupName: resourceGroup.name,
+  emailReceivers: [{
+    name: 'admin',
+    emailAddress: 'admin@example.com'
+  }]
+});
+
+// Create or reference a Log Analytics workspace
+const workspace = new LogAnalyticsWorkspace(this, 'workspace', {
+  name: 'vm-monitoring-workspace',
+  location: 'eastus',
+  resourceGroupName: resourceGroup.name
+});
+
+// Create VM with default monitoring
+const vm = new VirtualMachine(this, 'vm', {
+  name: 'production-vm',
+  location: 'eastus',
+  resourceGroupId: resourceGroup.id,
+  hardwareProfile: {
+    vmSize: 'Standard_D2s_v3',
+  },
+  // ... other VM configuration ...
+  monitoring: VirtualMachine.defaultMonitoring(
+    actionGroup.id,
+    workspace.id
+  )
+});
+```
+
+### Default Monitoring Configuration
+
+The `defaultMonitoring()` method automatically configures:
+
+#### Metric Alerts
+
+- **High CPU Alert**: Triggers when CPU usage exceeds 80% for 15 minutes
+  - Severity: Warning (2)
+  - Metric: `Percentage CPU`
+  - Threshold: 80%
+  - Window: 15 minutes
+
+- **Low Memory Alert**: Triggers when available memory falls below 1GB for 15 minutes
+  - Severity: Warning (2)
+  - Metric: `Available Memory Bytes`
+  - Threshold: 1073741824 bytes (1GB)
+  - Window: 15 minutes
+
+- **High Disk Queue Alert**: Triggers when OS disk queue depth exceeds 32 for 15 minutes
+  - Severity: Warning (2)
+  - Metric: `OS Disk Queue Depth`
+  - Threshold: 32
+  - Window: 15 minutes
+
+#### Diagnostic Settings
+
+When a workspace ID is provided, automatically sends all VM logs and metrics to the Log Analytics workspace for centralized analysis and long-term retention.
+
+#### Activity Log Alerts
+
+- **VM Deletion Alert**: Triggers when the virtual machine is deleted
+  - Severity: Critical (0)
+  - Monitors administrative operations on the VM resource
+
+### Customizing Monitoring
+
+You can customize thresholds and alert severities by providing options:
+
+```typescript
+monitoring: VirtualMachine.defaultMonitoring(
+  actionGroup.id,
+  workspace.id,
+  {
+    cpuThreshold: 90,              // Raise CPU threshold to 90%
+    memoryThreshold: 524288000,    // Lower memory threshold to 500MB (in bytes)
+    cpuAlertSeverity: 1,           // Make CPU alert critical (0=Critical, 1=Error, 2=Warning)
+    enableDiskQueueAlert: false,   // Disable disk queue monitoring
+    enableDeletionAlert: false     // Disable deletion alert
+  }
+)
+```
+
+### Customization Options
+
+The following options are available when using `defaultMonitoring()`:
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `cpuThreshold` | number | 80 | CPU percentage threshold for alerts (0-100) |
+| `memoryThreshold` | number | 1073741824 | Available memory threshold in bytes (default 1GB) |
+| `diskQueueThreshold` | number | 32 | Disk queue depth threshold |
+| `enableCpuAlert` | boolean | true | Enable/disable CPU monitoring |
+| `enableMemoryAlert` | boolean | true | Enable/disable memory monitoring |
+| `enableDiskQueueAlert` | boolean | true | Enable/disable disk queue monitoring |
+| `enableDeletionAlert` | boolean | true | Enable/disable deletion alert |
+| `cpuAlertSeverity` | 0\|1\|2\|3\|4 | 2 | Severity for CPU alerts (0=Critical, 4=Verbose) |
+| `memoryAlertSeverity` | 0\|1\|2\|3\|4 | 2 | Severity for memory alerts |
+| `diskQueueAlertSeverity` | 0\|1\|2\|3\|4 | 2 | Severity for disk queue alerts |
+
+### Advanced: Fully Custom Monitoring
+
+For complete control over monitoring configuration, provide a custom monitoring object:
+
+```typescript
+monitoring: {
+  enabled: true,
+  metricAlerts: [
+    {
+      name: 'custom-network-alert',
+      description: 'Alert on high network traffic',
+      severity: 2,
+      frequency: 'PT5M',
+      windowSize: 'PT15M',
+      criteria: {
+        singleResourceMultipleMetricCriteria: [{
+          metricNamespace: 'Microsoft.Compute/virtualMachines',
+          metricName: 'Network In Total',
+          aggregation: 'Total',
+          operator: 'GreaterThan',
+          threshold: 1000000000  // 1GB
+        }]
+      },
+      actionGroupIds: [actionGroup.id]
+    },
+    {
+      name: 'disk-write-performance',
+      description: 'Alert on high disk write latency',
+      severity: 2,
+      frequency: 'PT5M',
+      windowSize: 'PT15M',
+      criteria: {
+        singleResourceMultipleMetricCriteria: [{
+          metricNamespace: 'Microsoft.Compute/virtualMachines',
+          metricName: 'OS Disk Write Bytes/sec',
+          aggregation: 'Average',
+          operator: 'LessThan',
+          threshold: 1000000  // Less than 1MB/sec
+        }]
+      },
+      actionGroupIds: [actionGroup.id]
+    }
+  ],
+  diagnosticSettings: {
+    name: 'custom-diagnostics',
+    workspaceId: workspace.id,
+    logs: [
+      { categoryGroup: 'audit', enabled: true },
+      { categoryGroup: 'allLogs', enabled: true }
+    ],
+    metrics: [
+      { category: 'AllMetrics', enabled: true }
+    ]
+  },
+  activityLogAlerts: [
+    {
+      name: 'vm-critical-operations',
+      description: 'Alert on critical VM operations',
+      scopes: [`/subscriptions/${subscriptionId}/resourceGroups/${resourceGroup.name}`],
+      criteria: {
+        category: 'Administrative',
+        operationName: 'Microsoft.Compute/virtualMachines/write',
+        resourceId: vm.id
+      },
+      actionGroupIds: [actionGroup.id]
+    }
+  ]
+}
+```
+### Combining Default Monitoring with Custom Alerts
+
+You can easily extend the default monitoring with additional custom alerts:
+
+```typescript
+import { VirtualMachine } from '@microsoft/terraform-cdk-constructs/azure-virtualmachine';
+import { ActionGroup } from '@microsoft/terraform-cdk-constructs/azure-actiongroup';
+
+const actionGroup = new ActionGroup(this, 'alerts', {
+  name: 'vm-alerts',
+  resourceGroupId: resourceGroup.id,
+  emailReceivers: [{
+    name: 'admin',
+    emailAddress: 'admin@example.com'
+  }]
+});
+
+// Start with default monitoring and add one custom alert
+const monitoring = VirtualMachine.defaultMonitoring(
+  actionGroup.id,
+  workspace.id
+);
+
+// Add a custom network traffic alert
+monitoring.metricAlerts?.push({
+  name: 'high-network-traffic',
+  description: 'Alert when network egress exceeds 10GB in 15 minutes',
+  severity: 2,
+  scopes: [], // Auto-set to this VM
+  evaluationFrequency: 'PT5M',
+  windowSize: 'PT15M',
+  criteria: {
+    type: 'StaticThreshold',
+    metricName: 'Network Out Total',
+    metricNamespace: 'Microsoft.Compute/virtualMachines',
+    operator: 'GreaterThan',
+    threshold: 10737418240, // 10GB in bytes
+    timeAggregation: 'Total'
+  },
+  actions: [{ actionGroupId: actionGroup.id }]
+});
+
+const vm = new VirtualMachine(this, 'vm', {
+  name: 'production-vm',
+  location: 'eastus',
+  resourceGroupId: resourceGroup.id,
+  hardwareProfile: { vmSize: 'Standard_D2s_v3' },
+  // ... other VM configuration ...
+  monitoring: monitoring
+});
+```
+
+This approach gives you:
+- ✅ All default alerts (CPU, Memory, Disk Queue, VM Deletion)
+- ✅ Diagnostic settings sending data to Log Analytics
+- ✅ Your custom network traffic alert
+- ✅ All alerts using the same action group
+
+
+### Available VM Metrics
+
+Azure Virtual Machines provide numerous metrics for monitoring. Common metrics include:
+
+- **CPU**: `Percentage CPU`
+- **Memory**: `Available Memory Bytes`
+- **Disk Performance**:
+  - `OS Disk Queue Depth`
+  - `OS Disk IOPS Consumed Percentage`
+  - `OS Disk Bandwidth Consumed Percentage`
+  - `Disk Read Bytes`
+  - `Disk Write Bytes`
+  - `Disk Read Operations/Sec`
+  - `Disk Write Operations/Sec`
+- **Network**:
+  - `Network In Total`
+  - `Network Out Total`
+  - `Inbound Flows`
+  - `Outbound Flows`
+- **Credits** (for burstable VMs):
+  - `CPU Credits Remaining`
+  - `CPU Credits Consumed`
+
+For a complete list of available metrics, see the [Azure VM Metrics Documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/metrics-supported#microsoftcomputevirtualmachines).
+
+### Disabling Monitoring
+
+To disable monitoring entirely:
+
+```typescript
+monitoring: {
+  enabled: false
+}
+```
+
 ## API Version Management
 
 ### Using Default (Latest) Version

@@ -398,3 +398,111 @@ export const ALL_STORAGE_ACCOUNT_VERSIONS: VersionConfig[] = [
  * Resource type constant
  */
 export const STORAGE_ACCOUNT_TYPE = "Microsoft.Storage/storageAccounts";
+
+/**
+ * Configuration options for Storage Account monitoring
+ *
+ * This interface defines the configurable options for setting up monitoring alerts
+ * and diagnostic settings for Azure Storage Accounts. All properties are optional
+ * and have sensible defaults for production use.
+ *
+ * @stability stable
+ */
+export interface StorageAccountMonitoringOptions {
+  /**
+   * Threshold for storage account availability percentage
+   *
+   * Alert triggers when availability drops below this threshold
+   *
+   * @default 99.9 - Triggers alert when availability is below 99.9%
+   */
+  readonly availabilityThreshold?: number;
+
+  /**
+   * Threshold for storage account egress in bytes
+   *
+   * Alert triggers when egress exceeds this threshold
+   *
+   * @default 10737418240 - Triggers alert when egress exceeds 10GB
+   */
+  readonly egressThreshold?: number;
+
+  /**
+   * Threshold for storage account transactions count
+   *
+   * Alert triggers when transaction count exceeds this threshold
+   *
+   * @default 100000 - Triggers alert when transactions exceed 100k
+   */
+  readonly transactionsThreshold?: number;
+
+  /**
+   * Enable or disable availability monitoring alert
+   *
+   * @default true - Availability alert is enabled by default
+   */
+  readonly enableAvailabilityAlert?: boolean;
+
+  /**
+   * Enable or disable egress monitoring alert
+   *
+   * @default true - Egress alert is enabled by default
+   */
+  readonly enableEgressAlert?: boolean;
+
+  /**
+   * Enable or disable transactions monitoring alert
+   *
+   * @default true - Transactions alert is enabled by default
+   */
+  readonly enableTransactionsAlert?: boolean;
+
+  /**
+   * Enable or disable deletion activity log alert
+   *
+   * @default true - Deletion alert is enabled by default
+   */
+  readonly enableDeletionAlert?: boolean;
+
+  /**
+   * Severity level for availability alerts
+   *
+   * Severity levels:
+   * - 0: Critical
+   * - 1: Error
+   * - 2: Warning
+   * - 3: Informational
+   * - 4: Verbose
+   *
+   * @default 1 - Error severity for availability issues
+   */
+  readonly availabilityAlertSeverity?: 0 | 1 | 2 | 3 | 4;
+
+  /**
+   * Severity level for egress alerts
+   *
+   * Severity levels:
+   * - 0: Critical
+   * - 1: Error
+   * - 2: Warning
+   * - 3: Informational
+   * - 4: Verbose
+   *
+   * @default 2 - Warning severity for high egress
+   */
+  readonly egressAlertSeverity?: 0 | 1 | 2 | 3 | 4;
+
+  /**
+   * Severity level for transactions alerts
+   *
+   * Severity levels:
+   * - 0: Critical
+   * - 1: Error
+   * - 2: Warning
+   * - 3: Informational
+   * - 4: Verbose
+   *
+   * @default 2 - Warning severity for high transaction count
+   */
+  readonly transactionsAlertSeverity?: 0 | 1 | 2 | 3 | 4;
+}

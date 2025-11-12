@@ -23,10 +23,12 @@ import { Construct } from "constructs";
 import {
   ALL_STORAGE_ACCOUNT_VERSIONS,
   STORAGE_ACCOUNT_TYPE,
+  StorageAccountMonitoringOptions,
 } from "./storage-account-schemas";
 import {
   AzapiResource,
   AzapiResourceProps,
+  MonitoringConfig,
 } from "../../core-azure/lib/azapi/azapi-resource";
 import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
@@ -276,6 +278,165 @@ export interface StorageAccountBody {
  * @stability stable
  */
 export class StorageAccount extends AzapiResource {
+  /**
+   * Returns a production-ready monitoring configuration for Storage Accounts
+   *
+   * This static factory method provides a complete MonitoringConfig with sensible defaults
+   * for storage account monitoring including availability, egress, transactions alerts, and deletion tracking.
+   *
+   * @param actionGroupId - The resource ID of the action group for alert notifications
+   * @param workspaceId - Optional Log Analytics workspace ID for diagnostic settings
+   * @param options - Optional configuration to customize thresholds and enable/disable specific alerts
+   * @returns A complete MonitoringConfig object ready to use in StorageAccount props
+   *
+   * @example
+   * // Basic usage with all defaults
+   * const storageAccount = new StorageAccount(this, "storage", {
+   *   // ... other properties ...
+   *   monitoring: StorageAccount.defaultMonitoring(actionGroup.id, workspace.id)
+   * });
+   *
+   * @example
+   * // Custom thresholds
+   * const storageAccount = new StorageAccount(this, "storage", {
+   *   // ... other properties ...
+   *   monitoring: StorageAccount.defaultMonitoring(
+   *     actionGroup.id,
+   *     workspace.id,
+   *     {
+   *       availabilityThreshold: 99.5,
+   *       egressThreshold: 21474836480, // 20GB
+   *       enableTransactionsAlert: false
+   *     }
+   *   )
+   * });
+   *
+   * @stability stable
+   */
+  public static defaultMonitoring(
+    actionGroupId: string,
+    workspaceId?: string,
+    options?: StorageAccountMonitoringOptions,
+  ): MonitoringConfig {
+    const metricAlerts: any[] = [];
+
+    // Low Availability Alert
+    if (options?.enableAvailabilityAlert !== false) {
+      metricAlerts.push({
+        name: "low-availability-alert",
+        description:
+          "Alert when storage account availability drops below threshold",
+        severity: (options?.availabilityAlertSeverity ?? 1) as
+          | 0
+          | 1
+          | 2
+          | 3
+          | 4,
+        scopes: [], // Will be set automatically by base class
+        evaluationFrequency: "PT5M",
+        windowSize: "PT15M",
+        criteria: {
+          type: "StaticThreshold" as const,
+          metricName: "Availability",
+          metricNamespace: "Microsoft.Storage/storageAccounts",
+          operator: "LessThan" as const,
+          threshold: options?.availabilityThreshold ?? 99.9,
+          timeAggregation: "Average" as const,
+        },
+        actions: [{ actionGroupId }],
+      });
+    }
+
+    // High Egress Alert
+    if (options?.enableEgressAlert !== false) {
+      metricAlerts.push({
+        name: "high-egress-alert",
+        description: "Alert when storage account egress exceeds threshold",
+        severity: (options?.egressAlertSeverity ?? 2) as 0 | 1 | 2 | 3 | 4,
+        scopes: [], // Will be set automatically by base class
+        evaluationFrequency: "PT5M",
+        windowSize: "PT1H",
+        criteria: {
+          type: "StaticThreshold" as const,
+          metricName: "Egress",
+          metricNamespace: "Microsoft.Storage/storageAccounts",
+          operator: "GreaterThan" as const,
+          threshold: options?.egressThreshold ?? 10737418240,
+          timeAggregation: "Total" as const,
+        },
+        actions: [{ actionGroupId }],
+      });
+    }
+
+    // High Transactions Alert
+    if (options?.enableTransactionsAlert !== false) {
+      metricAlerts.push({
+        name: "high-transactions-alert",
+        description: "Alert when storage account transactions exceed threshold",
+        severity: (options?.transactionsAlertSeverity ?? 2) as
+          | 0
+          | 1
+          | 2
+          | 3
+          | 4,
+        scopes: [], // Will be set automatically by base class
+        evaluationFrequency: "PT5M",
+        windowSize: "PT15M",
+        criteria: {
+          type: "StaticThreshold" as const,
+          metricName: "Transactions",
+          metricNamespace: "Microsoft.Storage/storageAccounts",
+          operator: "GreaterThan" as const,
+          threshold: options?.transactionsThreshold ?? 100000,
+          timeAggregation: "Total" as const,
+        },
+        actions: [{ actionGroupId }],
+      });
+    }
+
+    // Build diagnostic settings if workspace ID is provided
+    const diagnosticSettings = workspaceId
+      ? {
+          name: "storage-account-diagnostics",
+          targetResourceId: "", // Will be set automatically by base class
+          workspaceId: workspaceId,
+          logs: [{ categoryGroup: "allLogs", enabled: true }],
+          metrics: [{ category: "AllMetrics", enabled: true }],
+        }
+      : undefined;
+
+    // Build activity log alerts
+    const activityLogAlerts =
+      options?.enableDeletionAlert !== false
+        ? [
+            {
+              name: "storage-account-deletion-alert",
+              description: "Alert when storage account is deleted",
+              scopes: [], // Will be set automatically by base class
+              condition: {
+                allOf: [
+                  {
+                    field: "operationName",
+                    equalsValue: "Microsoft.Storage/storageAccounts/delete",
+                  },
+                ],
+              },
+              actions: {
+                actionGroups: [{ actionGroupId }],
+              },
+            },
+          ]
+        : undefined;
+
+    // Return complete config object
+    return {
+      enabled: true,
+      diagnosticSettings: diagnosticSettings,
+      metricAlerts: metricAlerts,
+      activityLogAlerts: activityLogAlerts,
+    };
+  }
+
   private static schemasRegistered = false;
 
   /**

@@ -542,6 +542,8 @@ export class SchemaMapper {
       "enableTransformation",
       "ignoreChanges",
       "resourceGroupId",
+      "monitoring", // Framework-level monitoring configuration
+      "virtualNetworkId", // Framework-level dependency tracking for child resources
     ]);
 
     for (const [propName, propValue] of Object.entries(properties)) {
