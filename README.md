@@ -20,18 +20,48 @@ With AZAPI L2 Constructs, you get the following benefits:
 - **Version Flexibility**: Choose specific API versions for your resources
 - **Rapid Feature Adoption**: Access new Azure features immediately without waiting for provider updates
 - **Enhanced Abstraction**: Higher-level abstractions over Azure resources with type safety
+- **Built-in Monitoring**: One-line setup for comprehensive monitoring with customizable alerts and diagnostic settings
+- **Schema Validation**: Automatic validation of properties against Azure API schemas
 - **Reusability**: Encapsulate common patterns and best practices in your infrastructure code
+- **Testing Utilities**: Helper functions for integration tests including naming conventions, metadata, and resource cleanup
 - **Direct IDE Integration**: Access detailed documentation directly within your IDE
 - **Zero Provider Setup**: AZAPI provider bindings included in the package
 
 ## Currently Supported Services
 
+### Compute
+
+| Service | API Versions | Monitoring Support | Status |
+|---------|-------------|-------------------|--------|
+| [Virtual Machines](./src/azure-virtualmachine/README.md) | 2024-07-01, 2024-11-01, 2025-04-01 | ✅ Built-in | ✅ Available |
+| [AKS Clusters](./src/azure-aks/README.md) | 2025-05-01, 2025-07-01, 2025-08-01 | ✅ Built-in | ✅ Available |
+| [Virtual Machine Scale Sets](./src/azure-vmss/README.md) | 2025-01-02, 2025-02-01, 2025-04-01 | ✅ Built-in | ✅ Available |
+
+### Networking
+
 | Service | API Versions | Status |
 |---------|-------------|--------|
-| Resource Groups | 2024-11-01, 2025-01-01, 2025-03-01 | ✅ Available |
-| Storage Accounts | 2023-01-01, 2023-05-01, 2024-01-01 | ✅ Available |
+| [Virtual Networks](./src/azure-virtualnetwork/README.md) | 2024-07-01, 2024-10-01, 2025-01-01 | ✅ Available |
+| [Subnets](./src/azure-subnet/README.md) | 2024-07-01, 2024-10-01, 2025-01-01 | ✅ Available |
+| [Network Interfaces](./src/azure-networkinterface/README.md) | 2024-07-01, 2024-10-01, 2025-01-01 | ✅ Available |
+| [Network Security Groups](./src/azure-networksecuritygroup/README.md) | 2024-07-01, 2024-10-01, 2025-01-01 | ✅ Available |
+| [Public IP Addresses](./src/azure-publicipaddress/README.md) | 2024-07-01, 2024-10-01, 2025-01-01 | ✅ Available |
 
-*More services will be added in future releases using the same AZAPI architecture.*
+### Monitoring & Alerting
+
+| Service | API Versions | Status |
+|---------|-------------|--------|
+| [Action Groups](./src/azure-actiongroup/README.md) | 2021-09-01 | ✅ Available |
+| [Metric Alerts](./src/azure-metricalert/README.md) | 2018-03-01 | ✅ Available |
+| [Activity Log Alerts](./src/azure-activitylogalert/README.md) | 2020-10-01 | ✅ Available |
+| [Diagnostic Settings](./src/azure-diagnosticsettings/README.md) | 2016-09-01, 2021-05-01-preview | ✅ Available |
+
+### Foundation
+
+| Service | API Versions | Status |
+|---------|-------------|--------|
+| [Resource Groups](./src/azure-resourcegroup/README.md) | 2024-11-01, 2025-01-01, 2025-03-01 | ✅ Available |
+| [Storage Accounts](./src/azure-storageaccount/README.md) | 2023-01-01, 2023-05-01, 2024-01-01 | ✅ Available |
 
 ## Quick Example
 
@@ -98,45 +128,50 @@ npm install @microsoft/terraform-cdk-constructs
 
 That's it! The AZAPI provider classes are included in the package, so you don't need to configure additional providers or generate bindings.
 
-### Basic Usage Example
+## Built-in Monitoring & Alerting
+
+Azure L2 Constructs include comprehensive monitoring capabilities that can be enabled with a single method call. The monitoring framework automatically creates metric alerts, diagnostic settings, and activity log alerts for supported resources.
+
+### Quick Example
 
 ```typescript
-import * as azcdk from "@microsoft/terraform-cdk-constructs";
-import { Construct } from 'constructs';
-import { App, TerraformStack } from 'cdktf';
+import { VirtualMachine } from "@microsoft/terraform-cdk-constructs/azure-virtualmachine";
+import { ActionGroup } from "@microsoft/terraform-cdk-constructs/azure-actiongroup";
 
-class MyAzureInfra extends TerraformStack {
-  constructor(scope: Construct, name: string) {
-    super(scope, name);
-
-    // Create a resource group
-    const rg = new azcdk.azure_resourcegroup.ResourceGroup(this, "main-rg", {
-      name: "rg-myproject-prod",
-      location: "eastus",
-      tags: {
-        environment: "production",
-        project: "myproject"
-      }
-    });
-
-    // Create a storage account
-    const storage = new azcdk.azure_storageaccount.StorageAccount(this, "storage", {
-      name: "mystorageaccount",
-      location: "eastus",
-      resourceGroupId: rg.id,
-      sku: { name: "Standard_LRS" },
-      tags: {
-        environment: "production",
-        project: "myproject"
-      }
-    });
-  }
-}
-
-const app = new App();
-new MyAzureInfra(app, 'azure-infra');
-app.synth();
+// Enable monitoring with one line
+const vm = new VirtualMachine(this, "vm", {
+  name: "my-vm",
+  // ... VM configuration ...
+  monitoring: VirtualMachine.defaultMonitoring(actionGroup.id, workspaceId),
+});
 ```
+
+### Supported Resources
+
+| Resource | Monitoring Documentation |
+|----------|-------------------------|
+| Virtual Machines | [VM Monitoring Guide](./src/azure-virtualmachine/README.md#monitoring) |
+| AKS Clusters | [AKS Monitoring Guide](./src/azure-aks/README.md#monitoring) |
+| Virtual Machine Scale Sets | [VMSS Monitoring Guide](./src/azure-vmss/README.md#monitoring) |
+| Storage Accounts | [Storage Monitoring Guide](./src/azure-storageaccount/README.md#monitoring) |
+
+See the [Monitoring Guide](./docs/monitoring-guide.md) for comprehensive documentation on monitoring capabilities, customization options, and best practices.
+
+## Networking Constructs
+
+Build complete Azure networking infrastructure with type-safe constructs that provide automatic validation and version management.
+
+### Available Components
+
+| Component | Documentation |
+|-----------|--------------|
+| [Virtual Networks](./src/azure-virtualnetwork/README.md) | Define address spaces and network isolation with custom DNS and DDoS protection |
+| [Subnets](./src/azure-subnet/README.md) | Segment networks with service endpoints, delegations, and NSG association |
+| [Network Interfaces](./src/azure-networkinterface/README.md) | Attach to VMs with static/dynamic IPs and accelerated networking |
+| [Network Security Groups](./src/azure-networksecuritygroup/README.md) | Control traffic with inbound/outbound security rules |
+| [Public IP Addresses](./src/azure-publicipaddress/README.md) | Expose resources with static/dynamic allocation |
+
+See individual service documentation for detailed configuration examples and best practices.
 
 ## Version-Specific Usage
 
@@ -209,6 +244,7 @@ We welcome contributions to this project! See our documentation on [how to get s
 ## Documentation
 
 - [Architecture Documentation](./docs/ARCHITECTURE.md) - High-level architecture and design patterns
+- [Monitoring Guide](./docs/monitoring-guide.md) - Comprehensive monitoring and alerting documentation
 - [Versioning and Migrations User Guide](./docs/versioning-and-migrations-user-guide.md) - API version management and migration guidance
 - [Testing Guide](./docs/testing.md) - Testing practices and utilities
 - [Design Guide](./docs/design_guide.md) - Module design guidelines

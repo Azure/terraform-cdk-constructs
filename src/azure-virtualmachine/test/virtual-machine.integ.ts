@@ -7,35 +7,68 @@
  * Run with: npm run integration:nostream
  */
 
-import { Testing, TerraformStack } from "cdktf";
+import { Testing } from "cdktf";
 import { Construct } from "constructs";
 import "cdktf/lib/testing/adapters/jest";
+import { ActionGroup } from "../../azure-actiongroup";
 import { NetworkInterface } from "../../azure-networkinterface";
 import { ResourceGroup } from "../../azure-resourcegroup";
 import { Subnet } from "../../azure-subnet";
 import { VirtualNetwork } from "../../azure-virtualnetwork";
 import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
-import { TerraformApplyCheckAndDestroy } from "../../testing";
+import { BaseTestStack, TerraformApplyCheckAndDestroy } from "../../testing";
+import { TestRunMetadata } from "../../testing/lib/metadata";
 import { VirtualMachine } from "../lib/virtual-machine";
+
+// Generate unique test run metadata for this test suite
+const testMetadata = new TestRunMetadata("virtual-machine-integration", {
+  maxAgeHours: 4,
+});
 
 /**
  * Example stack demonstrating comprehensive Virtual Machine usage
  */
-class VirtualMachineExampleStack extends TerraformStack {
+class VirtualMachineExampleStack extends BaseTestStack {
   constructor(scope: Construct, id: string) {
-    super(scope, id);
+    super(scope, id, {
+      testRunOptions: {
+        maxAgeHours: testMetadata.maxAgeHours,
+        autoCleanup: testMetadata.autoCleanup,
+        cleanupPolicy: testMetadata.cleanupPolicy,
+      },
+    });
 
     // Configure AZAPI provider
     new AzapiProvider(this, "azapi", {});
 
+    // Generate unique names
+    const rgName = this.generateResourceName(
+      "Microsoft.Resources/resourceGroups",
+      "vm",
+    );
+
     // Create a resource group
     const resourceGroup = new ResourceGroup(this, "example-rg", {
-      name: "vm-example-rg",
+      name: rgName,
       location: "eastus2",
       tags: {
-        environment: "example",
-        purpose: "integration-test",
+        ...this.systemTags(),
       },
+    });
+
+    // Create Action Group for monitoring
+    const actionGroup = new ActionGroup(this, "example-action-group", {
+      name: "vm-monitoring-action-group",
+      resourceGroupId: resourceGroup.id,
+      location: "global",
+      groupShortName: "vmmon",
+      emailReceivers: [
+        {
+          name: "admin-email",
+          emailAddress: "admin@example.com",
+          useCommonAlertSchema: true,
+        },
+      ],
     });
 
     // Create virtual network
@@ -87,7 +120,7 @@ class VirtualMachineExampleStack extends TerraformStack {
       ],
     });
 
-    // Linux VM with SSH authentication
+    // Linux VM with SSH authentication and integrated monitoring
     new VirtualMachine(this, "linux-vm", {
       name: "linuxvm",
       location: resourceGroup.props.location!,
@@ -129,10 +162,13 @@ class VirtualMachineExampleStack extends TerraformStack {
         type: "SystemAssigned",
       },
       tags: {
+        ...this.systemTags(),
         os: "linux",
         example: "basic",
+        monitoring: "enabled",
         azsecpack: "nonprod", // Required by Azure Policy
       },
+      monitoring: VirtualMachine.defaultMonitoring(actionGroup.id),
     });
 
     // Windows VM with password authentication
@@ -176,6 +212,7 @@ class VirtualMachineExampleStack extends TerraformStack {
       },
       licenseType: "Windows_Server",
       tags: {
+        ...this.systemTags(),
         os: "windows",
         example: "basic",
         azsecpack: "nonprod", // Required by Azure Policy
@@ -194,6 +231,6 @@ describe("Virtual Machine Integration Test", () => {
     // 1. Run terraform apply to deploy resources
     // 2. Run terraform plan to check idempotency (no changes expected)
     // 3. Run terraform destroy to cleanup resources
-    TerraformApplyCheckAndDestroy(synthesized);
+    TerraformApplyCheckAndDestroy(synthesized, { verifyCleanup: true });
   }, 900000); // 15 minute timeout for VM deployment and cleanup
 });

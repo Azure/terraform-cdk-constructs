@@ -452,6 +452,83 @@ export interface AksClusterVerticalPodAutoscaler {
   readonly enabled?: boolean;
 }
 
+/**
+ * Configuration options for AKS Cluster monitoring
+ *
+ * @stability stable
+ */
+export interface AksClusterMonitoringOptions {
+  /**
+   * Threshold for node CPU usage percentage (0-100)
+   *
+   * @default 80
+   */
+  readonly nodeCpuThreshold?: number;
+
+  /**
+   * Threshold for node memory usage percentage (0-100)
+   *
+   * @default 80
+   */
+  readonly nodeMemoryThreshold?: number;
+
+  /**
+   * Threshold for failed pod count
+   *
+   * @default 0
+   */
+  readonly failedPodThreshold?: number;
+
+  /**
+   * Whether to enable node CPU usage alert
+   *
+   * @default true
+   */
+  readonly enableNodeCpuAlert?: boolean;
+
+  /**
+   * Whether to enable node memory usage alert
+   *
+   * @default true
+   */
+  readonly enableNodeMemoryAlert?: boolean;
+
+  /**
+   * Whether to enable failed pod alert
+   *
+   * @default true
+   */
+  readonly enableFailedPodAlert?: boolean;
+
+  /**
+   * Whether to enable AKS cluster deletion alert
+   *
+   * @default true
+   */
+  readonly enableDeletionAlert?: boolean;
+
+  /**
+   * Severity level for node CPU alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose)
+   *
+   * @default 2
+   */
+  readonly nodeCpuAlertSeverity?: 0 | 1 | 2 | 3 | 4;
+
+  /**
+   * Severity level for node memory alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose)
+   *
+   * @default 2
+   */
+  readonly nodeMemoryAlertSeverity?: 0 | 1 | 2 | 3 | 4;
+
+  /**
+   * Severity level for failed pod alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose)
+   *
+   * @default 1
+   */
+  readonly failedPodAlertSeverity?: 0 | 1 | 2 | 3 | 4;
+}
+
 // =============================================================================
 // COMMON PROPERTY DEFINITIONS
 // =============================================================================

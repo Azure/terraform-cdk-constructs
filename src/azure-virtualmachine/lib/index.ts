@@ -63,4 +63,5 @@ export type {
   VirtualMachineProximityPlacementGroupReference,
   VirtualMachineHostReference,
   VirtualMachineLicenseType,
+  VirtualMachineMonitoringOptions,
 } from "./virtual-machine-schemas";

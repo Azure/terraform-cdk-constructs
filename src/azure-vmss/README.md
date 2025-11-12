@@ -615,3 +615,104 @@ When upgrading between API versions, the construct will automatically analyze co
 ## License
 
 This construct is part of the terraform-cdk-constructs library.
+
+## Monitoring
+
+The Virtual Machine Scale Set construct provides built-in monitoring capabilities through the `defaultMonitoring()` static method.
+
+### Default Monitoring Configuration
+
+```typescript
+import { VirtualMachineScaleSet } from '@cdktf/azure-vmss';
+import { ActionGroup } from '@cdktf/azure-actiongroup';
+import { LogAnalyticsWorkspace } from '@cdktf/azure-loganalyticsworkspace';
+
+const actionGroup = new ActionGroup(this, 'alerts', {
+  // ... action group configuration
+});
+
+const workspace = new LogAnalyticsWorkspace(this, 'logs', {
+  // ... workspace configuration
+});
+
+const vmss = new VirtualMachineScaleSet(this, 'vmss', {
+  name: 'myvmss',
+  location: 'eastus',
+  resourceGroupName: resourceGroup.name,
+  // ... other properties
+  monitoring: VirtualMachineScaleSet.defaultMonitoring(
+    actionGroup.id,
+    workspace.id
+  )
+});
+```
+
+### Monitored Metrics
+
+The default monitoring configuration includes:
+
+1. **CPU Alert**
+   - Metric: `Percentage CPU`
+   - Threshold: 75% (default - lower than VM to allow scaling headroom)
+   - Severity: Warning (2)
+   - Triggers when aggregate CPU usage exceeds threshold
+
+2. **Memory Alert**
+   - Metric: `Available Memory Bytes`
+   - Threshold: 1GB (default)
+   - Severity: Warning (2)
+   - Triggers when available memory drops below threshold
+
+3. **Disk Queue Alert**
+   - Metric: `OS Disk Queue Depth`
+   - Threshold: 32 (default)
+   - Severity: Warning (2)
+   - Triggers when disk queue depth exceeds threshold
+
+4. **Deletion Alert**
+   - Tracks VMSS deletion via Activity Log
+   - Severity: Informational
+
+### Custom Monitoring Configuration
+
+Customize thresholds and severities:
+
+```typescript
+const vmss = new VirtualMachineScaleSet(this, 'vmss', {
+  name: 'myvmss',
+  location: 'eastus',
+  resourceGroupName: resourceGroup.name,
+  monitoring: VirtualMachineScaleSet.defaultMonitoring(
+    actionGroup.id,
+    workspace.id,
+    {
+      cpuThreshold: 85,                  // Higher CPU threshold
+      memoryThreshold: 536870912,        // 512MB in bytes
+      diskQueueThreshold: 64,            // Higher queue depth
+      cpuAlertSeverity: 1,              // Critical for CPU
+      enableDiskQueueAlert: false,       // Disable disk monitoring
+    }
+  )
+});
+```
+
+### Monitoring Options
+
+All available options:
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `cpuThreshold` | number | 75 | CPU usage percentage threshold |
+| `memoryThreshold` | number | 1073741824 | Available memory bytes threshold (1GB) |
+| `diskQueueThreshold` | number | 32 | Disk queue depth threshold |
+| `enableCpuAlert` | boolean | true | Enable/disable CPU alert |
+| `enableMemoryAlert` | boolean | true | Enable/disable memory alert |
+| `enableDiskQueueAlert` | boolean | true | Enable/disable disk queue alert |
+| `enableDeletionAlert` | boolean | true | Enable/disable deletion tracking |
+| `cpuAlertSeverity` | 0\|1\|2\|3\|4 | 2 | CPU alert severity (0=Critical, 4=Verbose) |
+| `memoryAlertSeverity` | 0\|1\|2\|3\|4 | 2 | Memory alert severity |
+| `diskQueueAlertSeverity` | 0\|1\|2\|3\|4 | 2 | Disk queue alert severity |
+
+### Note on CPU Threshold
+
+The default CPU threshold for VMSS (75%) is lower than standalone VMs (80%) to provide headroom for auto-scaling. This allows the scale set to trigger scaling operations before reaching saturation.

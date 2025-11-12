@@ -38,10 +38,12 @@ import {
   VirtualMachineProximityPlacementGroupReference,
   VirtualMachineHostReference,
   VirtualMachineBillingProfile,
+  VirtualMachineMonitoringOptions,
 } from "./virtual-machine-schemas";
 import {
   AzapiResource,
   AzapiResourceProps,
+  MonitoringConfig,
 } from "../../core-azure/lib/azapi/azapi-resource";
 import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
@@ -302,6 +304,152 @@ export interface VirtualMachineBody {
  * @stability stable
  */
 export class VirtualMachine extends AzapiResource {
+  /**
+   * Returns a production-ready monitoring configuration for Virtual Machines
+   *
+   * This static factory method provides a complete MonitoringConfig with sensible defaults
+   * for VM monitoring including CPU, memory, disk queue alerts, and deletion tracking.
+   *
+   * @param actionGroupId - The resource ID of the action group for alert notifications
+   * @param workspaceId - Optional Log Analytics workspace ID for diagnostic settings
+   * @param options - Optional configuration to customize thresholds and enable/disable specific alerts
+   * @returns A complete MonitoringConfig object ready to use in VirtualMachine props
+   *
+   * @example
+   * // Basic usage with all defaults
+   * const vm = new VirtualMachine(this, "vm", {
+   *   // ... other properties ...
+   *   monitoring: VirtualMachine.defaultMonitoring(actionGroup.id, workspace.id)
+   * });
+   *
+   * @example
+   * // Custom thresholds
+   * const vm = new VirtualMachine(this, "vm", {
+   *   // ... other properties ...
+   *   monitoring: VirtualMachine.defaultMonitoring(
+   *     actionGroup.id,
+   *     workspace.id,
+   *     {
+   *       cpuThreshold: 90,
+   *       memoryThreshold: 536870912, // 512MB
+   *       enableDiskQueueAlert: false
+   *     }
+   *   )
+   * });
+   */
+  public static defaultMonitoring(
+    actionGroupId: string,
+    workspaceId?: string,
+    options?: VirtualMachineMonitoringOptions,
+  ): MonitoringConfig {
+    const metricAlerts: any[] = [];
+
+    // High CPU Alert
+    if (options?.enableCpuAlert !== false) {
+      metricAlerts.push({
+        name: "high-cpu-alert",
+        description: "Alert when CPU usage exceeds threshold",
+        severity: (options?.cpuAlertSeverity ?? 2) as 0 | 1 | 2 | 3 | 4,
+        scopes: [], // Will be set automatically by base class
+        evaluationFrequency: "PT5M",
+        windowSize: "PT15M",
+        criteria: {
+          type: "StaticThreshold" as const,
+          metricName: "Percentage CPU",
+          metricNamespace: "Microsoft.Compute/virtualMachines",
+          operator: "GreaterThan" as const,
+          threshold: options?.cpuThreshold ?? 80,
+          timeAggregation: "Average" as const,
+        },
+        actions: [{ actionGroupId }],
+      });
+    }
+
+    // Low Memory Alert
+    if (options?.enableMemoryAlert !== false) {
+      metricAlerts.push({
+        name: "low-memory-alert",
+        description: "Alert when available memory falls below threshold",
+        severity: (options?.memoryAlertSeverity ?? 2) as 0 | 1 | 2 | 3 | 4,
+        scopes: [], // Will be set automatically by base class
+        evaluationFrequency: "PT5M",
+        windowSize: "PT15M",
+        criteria: {
+          type: "StaticThreshold" as const,
+          metricName: "Available Memory Bytes",
+          metricNamespace: "Microsoft.Compute/virtualMachines",
+          operator: "LessThan" as const,
+          threshold: options?.memoryThreshold ?? 1073741824,
+          timeAggregation: "Average" as const,
+        },
+        actions: [{ actionGroupId }],
+      });
+    }
+
+    // High Disk Queue Alert
+    if (options?.enableDiskQueueAlert !== false) {
+      metricAlerts.push({
+        name: "high-disk-queue-alert",
+        description: "Alert when disk queue depth exceeds threshold",
+        severity: (options?.diskQueueAlertSeverity ?? 2) as 0 | 1 | 2 | 3 | 4,
+        scopes: [], // Will be set automatically by base class
+        evaluationFrequency: "PT5M",
+        windowSize: "PT15M",
+        criteria: {
+          type: "StaticThreshold" as const,
+          metricName: "OS Disk Queue Depth",
+          metricNamespace: "Microsoft.Compute/virtualMachines",
+          operator: "GreaterThan" as const,
+          threshold: options?.diskQueueThreshold ?? 32,
+          timeAggregation: "Average" as const,
+        },
+        actions: [{ actionGroupId }],
+      });
+    }
+
+    // Build diagnostic settings if workspace ID is provided
+    const diagnosticSettings = workspaceId
+      ? {
+          name: "vm-diagnostics",
+          targetResourceId: "", // Will be set automatically by base class
+          workspaceId: workspaceId,
+          logs: [{ categoryGroup: "allLogs", enabled: true }],
+          metrics: [{ category: "AllMetrics", enabled: true }],
+        }
+      : undefined;
+
+    // Build activity log alerts
+    const activityLogAlerts =
+      options?.enableDeletionAlert !== false
+        ? [
+            {
+              name: "vm-deletion-alert",
+              description: "Alert when virtual machine is deleted",
+              scopes: [], // Will be set automatically by base class
+              condition: {
+                allOf: [
+                  {
+                    field: "operationName",
+                    equalsValue: "Microsoft.Compute/virtualMachines/delete",
+                  },
+                ],
+              },
+              actions: {
+                actionGroups: [{ actionGroupId }],
+              },
+            },
+          ]
+        : undefined;
+
+    // Return complete config object
+    return {
+      enabled: true,
+      diagnosticSettings: diagnosticSettings,
+      metricAlerts: metricAlerts,
+      activityLogAlerts: activityLogAlerts,
+    };
+  }
+
   /**
    * Static initialization flag to ensure schemas are registered only once
    */

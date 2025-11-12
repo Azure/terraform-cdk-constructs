@@ -30,6 +30,7 @@
     "/**/*.ts",
     "**/*.integ.ts",
     "**/*.spec.ts",
+    "scripts/**/*.ts",
     ".projenrc.ts",
     "projenrc/**/*.ts"
   ],

@@ -244,6 +244,89 @@ The integration test will perform the following against the example file:
     - This step removes the test environment and ensures the infrastructure can be cleanly deleted.
     - It's designed to catch common problems that occur when removing infrastructure, especially those related to resource dependencies.
 
+### Integration Test Resource Management
+
+All integration tests use an enhanced resource management system that provides:
+
+- **Unique Naming**: Automatically generated, collision-free resource names
+- **System Tags**: 15+ metadata tags for tracking and cleanup
+- **Cleanup Verification**: Post-destroy validation ensures resources are completely removed
+- **Cost Control**: Automated cleanup prevents orphaned resources
+
+#### Quick Example
+
+```typescript
+import { Testing } from "cdktf";
+import { BaseTestStack, TerraformApplyCheckAndDestroy } from "../../testing";
+import { TestRunMetadata } from "../../testing/lib/metadata";
+import { ResourceGroup } from "../../azure-resourcegroup";
+
+// Generate unique test run metadata
+const testMetadata = new TestRunMetadata("my-test-integration", {
+  maxAgeHours: 4,
+});
+
+class MyTestStack extends BaseTestStack {
+  constructor(scope: Construct, id: string) {
+    super(scope, id, {
+      testRunOptions: {
+        maxAgeHours: testMetadata.maxAgeHours,
+        autoCleanup: testMetadata.autoCleanup,
+        cleanupPolicy: testMetadata.cleanupPolicy,
+      },
+    });
+
+    // Generate unique name
+    const rgName = this.generateResourceName(
+      "Microsoft.Resources/resourceGroups",
+      "my-test",
+    );
+
+    // Create resource with system tags
+    new ResourceGroup(this, "rg", {
+      name: rgName,
+      location: "eastus",
+      tags: {
+        ...this.getSystemTags(),  // System tags for tracking
+        myCustomTag: "value",      // Your custom tags
+      },
+    });
+  }
+}
+
+describe("My Test", () => {
+  it("should deploy and cleanup resources", () => {
+    const app = Testing.app();
+    const stack = new MyTestStack(app, "test");
+    const synthesized = Testing.fullSynth(stack);
+    
+    // Enable cleanup verification
+    TerraformApplyCheckAndDestroy(synthesized, { verifyCleanup: true });
+  }, 600000);
+});
+```
+
+#### Key Benefits
+
+✅ **No Name Conflicts**: Tests can run in parallel without collision
+✅ **Automatic Cleanup**: Resources are properly destroyed after tests
+✅ **Cost Control**: Manual cleanup script removes orphaned resources
+✅ **Traceability**: Track resources back to specific test runs and commits
+
+#### Manual Cleanup
+
+Remove orphaned resources from failed tests:
+
+```bash
+# Preview what would be deleted (dry run)
+npx ts-node scripts/cleanup-test-resources.ts --dry-run
+
+# Delete orphaned resources older than 2 hours
+npx ts-node scripts/cleanup-test-resources.ts
+```
+
+For comprehensive documentation, see the [Integration Test Resource Management Guide](./integration-test-resource-management-guide.md).
+
 ## End to End Tests
 
-End to End tests are used when testing a class that contains multiple stacks. The workflow is the same as with integration tests, however the test will take much longer. 
+End to End tests are used when testing a class that contains multiple stacks. The workflow is the same as with integration tests, however the test will take much longer.

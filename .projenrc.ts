@@ -56,11 +56,12 @@ const project = new cdktf.ConstructLibraryCdktf({
   // AZAPI provider classes are built into this package in src/core-azure/lib/providers-azapi/
   deps: ["cdktf@0.20.8"],
   peerDeps: ["cdktf@0.20.8", "constructs@^10.3.0"], // Only core CDK dependencies
-  bundledDeps: [],
+  bundledDeps: ["uuid@^11.0.3"],
   devDeps: [
     "cdktf@0.20.8",
     "@types/jest@^29",
     "@types/node@^20",
+    "@types/uuid@^10.0.0",
     "jest@^29",
     "ts-jest@^29",
     "jest-junit@^15",
@@ -87,11 +88,13 @@ if (project.jest && project.jest.config) {
 }
 project.tsconfigDev.include.push("**/*.integ.ts");
 project.tsconfigDev.include.push("**/*.spec.ts");
+project.tsconfigDev.include.push("scripts/**/*.ts");
 project.addScripts({
   test: "jest --testMatch '**/*.spec.ts'",
   integration: "STREAM_OUTPUT=true jest --testMatch '**/*.integ.ts'",
   "integration:nostream":
     "STREAM_OUTPUT=false jest --maxWorkers=12 --testMatch '**/*.integ.ts'",
+  "cleanup-test-resources": "ts-node scripts/cleanup-test-resources.ts",
 });
 
 // Modify the existing test task

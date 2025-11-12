@@ -39,10 +39,12 @@ import {
   AksClusterStorageProfile,
   AksClusterHttpProxyConfig,
   AksClusterWorkloadAutoScalerProfile,
+  AksClusterMonitoringOptions,
 } from "./aks-cluster-schemas";
 import {
   AzapiResource,
   AzapiResourceProps,
+  MonitoringConfig,
 } from "../../core-azure/lib/azapi/azapi-resource";
 import { ResourceAction } from "../../core-azure/lib/azapi/providers-azapi/resource-action";
 import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
@@ -315,6 +317,162 @@ export interface AksClusterBodyProperties {
  * @stability stable
  */
 export class AksCluster extends AzapiResource {
+  /**
+   * Returns a production-ready monitoring configuration for AKS Clusters
+   *
+   * This static factory method provides a complete MonitoringConfig with sensible defaults
+   * for AKS monitoring including node CPU, node memory, failed pod alerts, and deletion tracking.
+   *
+   * @param actionGroupId - The resource ID of the action group for alert notifications
+   * @param workspaceId - Optional Log Analytics workspace ID for diagnostic settings
+   * @param options - Optional configuration to customize thresholds and enable/disable specific alerts
+   * @returns A complete MonitoringConfig object ready to use in AksCluster props
+   *
+   * @example
+   * // Basic usage with all defaults
+   * const aksCluster = new AksCluster(this, "aks", {
+   *   // ... other properties ...
+   *   monitoring: AksCluster.defaultMonitoring(actionGroup.id, workspace.id)
+   * });
+   *
+   * @example
+   * // Custom thresholds and severities
+   * const aksCluster = new AksCluster(this, "aks", {
+   *   // ... other properties ...
+   *   monitoring: AksCluster.defaultMonitoring(
+   *     actionGroup.id,
+   *     workspace.id,
+   *     {
+   *       nodeCpuThreshold: 90,
+   *       nodeMemoryThreshold: 90,
+   *       enableFailedPodAlert: false
+   *     }
+   *   )
+   * });
+   *
+   * @stability stable
+   */
+  public static defaultMonitoring(
+    actionGroupId: string,
+    workspaceId?: string,
+    options?: AksClusterMonitoringOptions,
+  ): MonitoringConfig {
+    const metricAlerts: any[] = [];
+
+    // High Node CPU Alert
+    if (options?.enableNodeCpuAlert !== false) {
+      metricAlerts.push({
+        name: "high-node-cpu-alert",
+        description: "Alert when AKS node CPU usage exceeds threshold",
+        severity: (options?.nodeCpuAlertSeverity ?? 2) as 0 | 1 | 2 | 3 | 4,
+        scopes: [], // Will be set automatically by base class
+        evaluationFrequency: "PT5M",
+        windowSize: "PT15M",
+        criteria: {
+          type: "StaticThreshold" as const,
+          metricName: "node_cpu_usage_percentage",
+          metricNamespace: "Microsoft.ContainerService/managedClusters",
+          operator: "GreaterThan" as const,
+          threshold: options?.nodeCpuThreshold ?? 80,
+          timeAggregation: "Average" as const,
+        },
+        actions: [{ actionGroupId }],
+      });
+    }
+
+    // High Node Memory Alert
+    if (options?.enableNodeMemoryAlert !== false) {
+      metricAlerts.push({
+        name: "high-node-memory-alert",
+        description: "Alert when AKS node memory usage exceeds threshold",
+        severity: (options?.nodeMemoryAlertSeverity ?? 2) as 0 | 1 | 2 | 3 | 4,
+        scopes: [], // Will be set automatically by base class
+        evaluationFrequency: "PT5M",
+        windowSize: "PT15M",
+        criteria: {
+          type: "StaticThreshold" as const,
+          metricName: "node_memory_working_set_percentage",
+          metricNamespace: "Microsoft.ContainerService/managedClusters",
+          operator: "GreaterThan" as const,
+          threshold: options?.nodeMemoryThreshold ?? 80,
+          timeAggregation: "Average" as const,
+        },
+        actions: [{ actionGroupId }],
+      });
+    }
+
+    // Failed Pods Alert
+    if (options?.enableFailedPodAlert !== false) {
+      metricAlerts.push({
+        name: "failed-pods-alert",
+        description: "Alert when pods are in failed state",
+        severity: (options?.failedPodAlertSeverity ?? 1) as 0 | 1 | 2 | 3 | 4,
+        scopes: [], // Will be set automatically by base class
+        evaluationFrequency: "PT5M",
+        windowSize: "PT15M",
+        criteria: {
+          type: "StaticThreshold" as const,
+          metricName: "kube_pod_status_phase",
+          metricNamespace: "Microsoft.ContainerService/managedClusters",
+          operator: "GreaterThan" as const,
+          threshold: options?.failedPodThreshold ?? 0,
+          timeAggregation: "Average" as const,
+          dimensions: [
+            {
+              name: "phase" as const,
+              operator: "Include" as const,
+              values: ["Failed"],
+            },
+          ],
+        },
+        actions: [{ actionGroupId }],
+      });
+    }
+
+    // Build diagnostic settings if workspace ID is provided
+    const diagnosticSettings = workspaceId
+      ? {
+          name: "aks-cluster-diagnostics",
+          targetResourceId: "", // Will be set automatically by base class
+          workspaceId: workspaceId,
+          logs: [{ categoryGroup: "allLogs", enabled: true }],
+          metrics: [{ category: "AllMetrics", enabled: true }],
+        }
+      : undefined;
+
+    // Build activity log alerts
+    const activityLogAlerts =
+      options?.enableDeletionAlert !== false
+        ? [
+            {
+              name: "aks-cluster-deletion-alert",
+              description: "Alert when AKS cluster is deleted",
+              scopes: [], // Will be set automatically by base class
+              condition: {
+                allOf: [
+                  {
+                    field: "operationName",
+                    equalsValue:
+                      "Microsoft.ContainerService/managedClusters/delete",
+                  },
+                ],
+              },
+              actions: {
+                actionGroups: [{ actionGroupId }],
+              },
+            },
+          ]
+        : undefined;
+
+    // Return complete config object
+    return {
+      enabled: true,
+      diagnosticSettings: diagnosticSettings,
+      metricAlerts: metricAlerts,
+      activityLogAlerts: activityLogAlerts,
+    };
+  }
+
   /**
    * Static initialization flag to ensure schemas are registered only once
    */

@@ -328,6 +328,112 @@ export interface VirtualMachineScaleSetScalingConfiguration {
 }
 
 /**
+ * Configuration options for Virtual Machine Scale Set monitoring
+ *
+ * This interface provides options for configuring monitoring alerts and diagnostic
+ * settings for VMSS resources. All properties are JSII-compliant for multi-language support.
+ *
+ * @stability stable
+ */
+export interface VmssMonitoringOptions {
+  /**
+   * CPU usage threshold percentage for triggering alerts
+   *
+   * VMSS uses a lower default threshold (75%) compared to single VMs (80%)
+   * to allow headroom for scaling operations before reaching saturation.
+   *
+   * @default 75
+   */
+  readonly cpuThreshold?: number;
+
+  /**
+   * Available memory threshold in bytes for triggering alerts
+   *
+   * When available memory drops below this threshold, an alert will be triggered.
+   * Default is 1GB (1073741824 bytes).
+   *
+   * @default 1073741824
+   */
+  readonly memoryThreshold?: number;
+
+  /**
+   * Disk queue depth threshold for triggering alerts
+   *
+   * High disk queue depth can indicate disk performance bottlenecks.
+   *
+   * @default 32
+   */
+  readonly diskQueueThreshold?: number;
+
+  /**
+   * Enable or disable CPU usage alert
+   *
+   * @default true
+   */
+  readonly enableCpuAlert?: boolean;
+
+  /**
+   * Enable or disable memory usage alert
+   *
+   * @default true
+   */
+  readonly enableMemoryAlert?: boolean;
+
+  /**
+   * Enable or disable disk queue depth alert
+   *
+   * @default true
+   */
+  readonly enableDiskQueueAlert?: boolean;
+
+  /**
+   * Enable or disable VMSS deletion activity log alert
+   *
+   * @default true
+   */
+  readonly enableDeletionAlert?: boolean;
+
+  /**
+   * Severity level for CPU usage alerts
+   *
+   * - 0: Critical
+   * - 1: Error
+   * - 2: Warning
+   * - 3: Informational
+   * - 4: Verbose
+   *
+   * @default 2
+   */
+  readonly cpuAlertSeverity?: 0 | 1 | 2 | 3 | 4;
+
+  /**
+   * Severity level for memory usage alerts
+   *
+   * - 0: Critical
+   * - 1: Error
+   * - 2: Warning
+   * - 3: Informational
+   * - 4: Verbose
+   *
+   * @default 2
+   */
+  readonly memoryAlertSeverity?: 0 | 1 | 2 | 3 | 4;
+
+  /**
+   * Severity level for disk queue depth alerts
+   *
+   * - 0: Critical
+   * - 1: Error
+   * - 2: Warning
+   * - 3: Informational
+   * - 4: Verbose
+   *
+   * @default 2
+   */
+  readonly diskQueueAlertSeverity?: 0 | 1 | 2 | 3 | 4;
+}
+
+/**
  * Proximity placement group reference
  */
 export interface ProximityPlacementGroupReference {
@@ -374,6 +480,7 @@ export interface VirtualMachineScaleSetProps {
   readonly proximityPlacementGroup?: ProximityPlacementGroupReference;
   readonly hostGroup?: HostGroupReference;
   readonly additionalCapabilities?: AdditionalCapabilities;
+  readonly monitoring?: any;
   readonly ignoreChanges?: string[];
   readonly enableMigrationAnalysis?: boolean;
   readonly enableValidation?: boolean;

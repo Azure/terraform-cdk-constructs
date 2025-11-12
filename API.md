@@ -2,6 +2,1774 @@
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
 
+### ActionGroup <a name="ActionGroup" id="@microsoft/terraform-cdk-constructs.ActionGroup"></a>
+
+Unified Azure Action Group implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+Action Groups serve as the central notification hub for Azure Monitor alerts, supporting
+multiple receiver types including email, SMS, webhook, Azure Functions, Logic Apps, and voice calls.
+
+*Example*
+
+```typescript
+// Action group with multiple receiver types:
+const actionGroup = new ActionGroup(this, "critical-alerts", {
+  name: "critical-action-group",
+  groupShortName: "Critical",
+  resourceGroupId: resourceGroup.id,
+  emailReceivers: [{
+    name: "oncall-email",
+    emailAddress: "oncall@company.com",
+    useCommonAlertSchema: true
+  }],
+  smsReceivers: [{
+    name: "oncall-sms",
+    countryCode: "1",
+    phoneNumber: "5551234567"
+  }],
+  webhookReceivers: [{
+    name: "pagerduty-webhook",
+    serviceUri: "https://events.pagerduty.com/...",
+    useCommonAlertSchema: true
+  }]
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.ActionGroup.Initializer"></a>
+
+```typescript
+import { ActionGroup } from '@microsoft/terraform-cdk-constructs'
+
+new ActionGroup(scope: Construct, id: string, props: ActionGroupProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps</code> | - Configuration properties for the Action Group. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.ActionGroup.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.ActionGroup.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.ActionGroup.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps
+
+Configuration properties for the Action Group.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.addTag">addTag</a></code> | Add a tag to the Action Group Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.removeTag">removeTag</a></code> | Remove a tag from the Action Group Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.ActionGroup.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.ActionGroup.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.ActionGroup.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.ActionGroup.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.ActionGroup.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.ActionGroup.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.ActionGroup.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.ActionGroup.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.ActionGroup.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Action Group Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.ActionGroup.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.ActionGroup.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.ActionGroup.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Action Group Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.ActionGroup.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.ActionGroup.isConstruct"></a>
+
+```typescript
+import { ActionGroup } from '@microsoft/terraform-cdk-constructs'
+
+ActionGroup.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.ActionGroup.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps</code> | The input properties for this Action Group instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.ActionGroup.property.props"></a>
+
+```typescript
+public readonly props: ActionGroupProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps
+
+The input properties for this Action Group instance.
+
+---
+
+
+### ActionGroup <a name="ActionGroup" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup"></a>
+
+Unified Azure Action Group implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+Action Groups serve as the central notification hub for Azure Monitor alerts, supporting
+multiple receiver types including email, SMS, webhook, Azure Functions, Logic Apps, and voice calls.
+
+*Example*
+
+```typescript
+// Action group with multiple receiver types:
+const actionGroup = new ActionGroup(this, "critical-alerts", {
+  name: "critical-action-group",
+  groupShortName: "Critical",
+  resourceGroupId: resourceGroup.id,
+  emailReceivers: [{
+    name: "oncall-email",
+    emailAddress: "oncall@company.com",
+    useCommonAlertSchema: true
+  }],
+  smsReceivers: [{
+    name: "oncall-sms",
+    countryCode: "1",
+    phoneNumber: "5551234567"
+  }],
+  webhookReceivers: [{
+    name: "pagerduty-webhook",
+    serviceUri: "https://events.pagerduty.com/...",
+    useCommonAlertSchema: true
+  }]
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.Initializer"></a>
+
+```typescript
+import { azure_actiongroup } from '@microsoft/terraform-cdk-constructs'
+
+new azure_actiongroup.ActionGroup(scope: Construct, id: string, props: ActionGroupProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps</code> | - Configuration properties for the Action Group. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps
+
+Configuration properties for the Action Group.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.addTag">addTag</a></code> | Add a tag to the Action Group Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.removeTag">removeTag</a></code> | Remove a tag from the Action Group Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Action Group Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Action Group Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.isConstruct"></a>
+
+```typescript
+import { azure_actiongroup } from '@microsoft/terraform-cdk-constructs'
+
+azure_actiongroup.ActionGroup.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps</code> | The input properties for this Action Group instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.property.props"></a>
+
+```typescript
+public readonly props: ActionGroupProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps
+
+The input properties for this Action Group instance.
+
+---
+
+
+### ActivityLogAlert <a name="ActivityLogAlert" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert"></a>
+
+Unified Azure Activity Log Alert implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+Activity Log Alerts monitor Azure Activity Log events and trigger notifications when specific
+operations occur, such as resource deletions, configuration changes, or service health events.
+
+*Example*
+
+```typescript
+// Alert on service health events:
+const serviceHealthAlert = new ActivityLogAlert(this, "service-health", {
+  name: "service-health-alert",
+  description: "Alert on Azure service health events",
+  resourceGroupId: resourceGroup.id,
+  scopes: ["/subscriptions/00000000-0000-0000-0000-000000000000"],
+  condition: {
+    allOf: [
+      { field: "category", equalsValue: "ServiceHealth" },
+      { field: "properties.incidentType", equalsValue: "Incident" }
+    ]
+  },
+  actions: {
+    actionGroups: [{
+      actionGroupId: actionGroup.id,
+      webhookProperties: {
+        severity: "critical"
+      }
+    }]
+  }
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.Initializer"></a>
+
+```typescript
+import { ActivityLogAlert } from '@microsoft/terraform-cdk-constructs'
+
+new ActivityLogAlert(scope: Construct, id: string, props: ActivityLogAlertProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps</code> | - Configuration properties for the Activity Log Alert. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps
+
+Configuration properties for the Activity Log Alert.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.addTag">addTag</a></code> | Add a tag to the Activity Log Alert Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.removeTag">removeTag</a></code> | Remove a tag from the Activity Log Alert Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Activity Log Alert Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Activity Log Alert Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.isConstruct"></a>
+
+```typescript
+import { ActivityLogAlert } from '@microsoft/terraform-cdk-constructs'
+
+ActivityLogAlert.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps</code> | The input properties for this Activity Log Alert instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.property.props"></a>
+
+```typescript
+public readonly props: ActivityLogAlertProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps
+
+The input properties for this Activity Log Alert instance.
+
+---
+
+
+### ActivityLogAlert <a name="ActivityLogAlert" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert"></a>
+
+Unified Azure Activity Log Alert implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+Activity Log Alerts monitor Azure Activity Log events and trigger notifications when specific
+operations occur, such as resource deletions, configuration changes, or service health events.
+
+*Example*
+
+```typescript
+// Alert on service health events:
+const serviceHealthAlert = new ActivityLogAlert(this, "service-health", {
+  name: "service-health-alert",
+  description: "Alert on Azure service health events",
+  resourceGroupId: resourceGroup.id,
+  scopes: ["/subscriptions/00000000-0000-0000-0000-000000000000"],
+  condition: {
+    allOf: [
+      { field: "category", equalsValue: "ServiceHealth" },
+      { field: "properties.incidentType", equalsValue: "Incident" }
+    ]
+  },
+  actions: {
+    actionGroups: [{
+      actionGroupId: actionGroup.id,
+      webhookProperties: {
+        severity: "critical"
+      }
+    }]
+  }
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.Initializer"></a>
+
+```typescript
+import { azure_activitylogalert } from '@microsoft/terraform-cdk-constructs'
+
+new azure_activitylogalert.ActivityLogAlert(scope: Construct, id: string, props: ActivityLogAlertProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps</code> | - Configuration properties for the Activity Log Alert. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps
+
+Configuration properties for the Activity Log Alert.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.addTag">addTag</a></code> | Add a tag to the Activity Log Alert Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.removeTag">removeTag</a></code> | Remove a tag from the Activity Log Alert Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Activity Log Alert Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Activity Log Alert Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.isConstruct"></a>
+
+```typescript
+import { azure_activitylogalert } from '@microsoft/terraform-cdk-constructs'
+
+azure_activitylogalert.ActivityLogAlert.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps</code> | The input properties for this Activity Log Alert instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.property.props"></a>
+
+```typescript
+public readonly props: ActivityLogAlertProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps
+
+The input properties for this Activity Log Alert instance.
+
+---
+
+
 ### AksCluster <a name="AksCluster" id="@microsoft/terraform-cdk-constructs.AksCluster"></a>
 
 Unified Azure Kubernetes Service cluster implementation.
@@ -93,7 +1861,6 @@ Configuration properties for the AKS cluster.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -133,22 +1900,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.AksCluster.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.AksCluster.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -232,6 +1983,7 @@ Remove a tag from the AKS Cluster Note: This modifies the construct props but re
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.defaultMonitoring">defaultMonitoring</a></code> | Returns a production-ready monitoring configuration for AKS Clusters. |
 
 ---
 
@@ -264,6 +2016,62 @@ this type-testing method instead.
 - *Type:* any
 
 Any object.
+
+---
+
+##### `defaultMonitoring` <a name="defaultMonitoring" id="@microsoft/terraform-cdk-constructs.AksCluster.defaultMonitoring"></a>
+
+```typescript
+import { AksCluster } from '@microsoft/terraform-cdk-constructs'
+
+AksCluster.defaultMonitoring(actionGroupId: string, workspaceId?: string, options?: AksClusterMonitoringOptions)
+```
+
+Returns a production-ready monitoring configuration for AKS Clusters.
+
+This static factory method provides a complete MonitoringConfig with sensible defaults
+for AKS monitoring including node CPU, node memory, failed pod alerts, and deletion tracking.
+
+*Example*
+
+```typescript
+// Custom thresholds and severities
+const aksCluster = new AksCluster(this, "aks", {
+  // ... other properties ...
+  monitoring: AksCluster.defaultMonitoring(
+    actionGroup.id,
+    workspace.id,
+    {
+      nodeCpuThreshold: 90,
+      nodeMemoryThreshold: 90,
+      enableFailedPodAlert: false
+    }
+  )
+});
+```
+
+
+###### `actionGroupId`<sup>Required</sup> <a name="actionGroupId" id="@microsoft/terraform-cdk-constructs.AksCluster.defaultMonitoring.parameter.actionGroupId"></a>
+
+- *Type:* string
+
+The resource ID of the action group for alert notifications.
+
+---
+
+###### `workspaceId`<sup>Optional</sup> <a name="workspaceId" id="@microsoft/terraform-cdk-constructs.AksCluster.defaultMonitoring.parameter.workspaceId"></a>
+
+- *Type:* string
+
+Optional Log Analytics workspace ID for diagnostic settings.
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="@microsoft/terraform-cdk-constructs.AksCluster.defaultMonitoring.parameter.options"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions
+
+Optional configuration to customize thresholds and enable/disable specific alerts.
 
 ---
 
@@ -672,7 +2480,6 @@ Configuration properties for the AKS cluster.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -712,22 +2519,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -811,6 +2602,7 @@ Remove a tag from the AKS Cluster Note: This modifies the construct props but re
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.defaultMonitoring">defaultMonitoring</a></code> | Returns a production-ready monitoring configuration for AKS Clusters. |
 
 ---
 
@@ -843,6 +2635,62 @@ this type-testing method instead.
 - *Type:* any
 
 Any object.
+
+---
+
+##### `defaultMonitoring` <a name="defaultMonitoring" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.defaultMonitoring"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+azure_aks.AksCluster.defaultMonitoring(actionGroupId: string, workspaceId?: string, options?: AksClusterMonitoringOptions)
+```
+
+Returns a production-ready monitoring configuration for AKS Clusters.
+
+This static factory method provides a complete MonitoringConfig with sensible defaults
+for AKS monitoring including node CPU, node memory, failed pod alerts, and deletion tracking.
+
+*Example*
+
+```typescript
+// Custom thresholds and severities
+const aksCluster = new AksCluster(this, "aks", {
+  // ... other properties ...
+  monitoring: AksCluster.defaultMonitoring(
+    actionGroup.id,
+    workspace.id,
+    {
+      nodeCpuThreshold: 90,
+      nodeMemoryThreshold: 90,
+      enableFailedPodAlert: false
+    }
+  )
+});
+```
+
+
+###### `actionGroupId`<sup>Required</sup> <a name="actionGroupId" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.defaultMonitoring.parameter.actionGroupId"></a>
+
+- *Type:* string
+
+The resource ID of the action group for alert notifications.
+
+---
+
+###### `workspaceId`<sup>Optional</sup> <a name="workspaceId" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.defaultMonitoring.parameter.workspaceId"></a>
+
+- *Type:* string
+
+Optional Log Analytics workspace ID for diagnostic settings.
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.defaultMonitoring.parameter.options"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions
+
+Optional configuration to customize thresholds and enable/disable specific alerts.
 
 ---
 
@@ -1160,236 +3008,6 @@ public readonly tagsOutput: TerraformOutput;
 ---
 
 
-### AzapiDiagnosticSettings <a name="AzapiDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings"></a>
-
-AZAPI-based diagnostic settings construct.
-
-#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.Initializer"></a>
-
-```typescript
-import { AzapiDiagnosticSettings } from '@microsoft/terraform-cdk-constructs'
-
-new AzapiDiagnosticSettings(scope: Construct, id: string, props: AzapiDiagnosticSettingsProps)
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps</code> | *No description.* |
-
----
-
-##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.Initializer.parameter.scope"></a>
-
-- *Type:* constructs.Construct
-
----
-
-##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.Initializer.parameter.id"></a>
-
-- *Type:* string
-
----
-
-##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.Initializer.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
----
-
-#### Methods <a name="Methods" id="Methods"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.toString">toString</a></code> | Returns a string representation of this construct. |
-
----
-
-##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.toString"></a>
-
-```typescript
-public toString(): string
-```
-
-Returns a string representation of this construct.
-
-#### Static Functions <a name="Static Functions" id="Static Functions"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
-
----
-
-##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.isConstruct"></a>
-
-```typescript
-import { AzapiDiagnosticSettings } from '@microsoft/terraform-cdk-constructs'
-
-AzapiDiagnosticSettings.isConstruct(x: any)
-```
-
-Checks if `x` is a construct.
-
-Use this method instead of `instanceof` to properly detect `Construct`
-instances, even when the construct library is symlinked.
-
-Explanation: in JavaScript, multiple copies of the `constructs` library on
-disk are seen as independent, completely different libraries. As a
-consequence, the class `Construct` in each copy of the `constructs` library
-is seen as a different class, and an instance of one class will not test as
-`instanceof` the other class. `npm install` will not create installations
-like this, but users may manually symlink construct libraries together or
-use a monorepo tool: in those cases, multiple copies of the `constructs`
-library can be accidentally installed, and `instanceof` will behave
-unpredictably. It is safest to avoid using `instanceof`, and using
-this type-testing method instead.
-
-###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.isConstruct.parameter.x"></a>
-
-- *Type:* any
-
-Any object.
-
----
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-
----
-
-##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettings.property.node"></a>
-
-```typescript
-public readonly node: Node;
-```
-
-- *Type:* constructs.Node
-
-The tree node.
-
----
-
-
-### AzapiDiagnosticSettings <a name="AzapiDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings"></a>
-
-AZAPI-based diagnostic settings construct.
-
-#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.Initializer"></a>
-
-```typescript
-import { core_azure } from '@microsoft/terraform-cdk-constructs'
-
-new core_azure.AzapiDiagnosticSettings(scope: Construct, id: string, props: AzapiDiagnosticSettingsProps)
-```
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps</code> | *No description.* |
-
----
-
-##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.Initializer.parameter.scope"></a>
-
-- *Type:* constructs.Construct
-
----
-
-##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.Initializer.parameter.id"></a>
-
-- *Type:* string
-
----
-
-##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.Initializer.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
----
-
-#### Methods <a name="Methods" id="Methods"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.toString">toString</a></code> | Returns a string representation of this construct. |
-
----
-
-##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.toString"></a>
-
-```typescript
-public toString(): string
-```
-
-Returns a string representation of this construct.
-
-#### Static Functions <a name="Static Functions" id="Static Functions"></a>
-
-| **Name** | **Description** |
-| --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
-
----
-
-##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.isConstruct"></a>
-
-```typescript
-import { core_azure } from '@microsoft/terraform-cdk-constructs'
-
-core_azure.AzapiDiagnosticSettings.isConstruct(x: any)
-```
-
-Checks if `x` is a construct.
-
-Use this method instead of `instanceof` to properly detect `Construct`
-instances, even when the construct library is symlinked.
-
-Explanation: in JavaScript, multiple copies of the `constructs` library on
-disk are seen as independent, completely different libraries. As a
-consequence, the class `Construct` in each copy of the `constructs` library
-is seen as a different class, and an instance of one class will not test as
-`instanceof` the other class. `npm install` will not create installations
-like this, but users may manually symlink construct libraries together or
-use a monorepo tool: in those cases, multiple copies of the `constructs`
-library can be accidentally installed, and `instanceof` will behave
-unpredictably. It is safest to avoid using `instanceof`, and using
-this type-testing method instead.
-
-###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.isConstruct.parameter.x"></a>
-
-- *Type:* any
-
-Any object.
-
----
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
-
----
-
-##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettings.property.node"></a>
-
-```typescript
-public readonly node: Node;
-```
-
-- *Type:* constructs.Node
-
-The tree node.
-
----
-
-
 ### AzapiResource <a name="AzapiResource" id="@microsoft/terraform-cdk-constructs.AzapiResource"></a>
 
 Abstract base class for version-aware Azure resource management.
@@ -1467,7 +3085,6 @@ Configuration properties for the resource.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResource.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResource.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResource.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResource.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResource.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResource.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -1505,22 +3122,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.AzapiResource.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.AzapiResource.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -1849,7 +3450,6 @@ Configuration properties for the resource.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -1887,22 +3487,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -2384,20 +3968,467 @@ The tree node.
 ---
 
 
+### BaseTestStack <a name="BaseTestStack" id="@microsoft/terraform-cdk-constructs.BaseTestStack"></a>
+
+Base stack for integration tests with optional metadata support.
+
+When metadata is enabled, automatically generates unique test run IDs,
+injects system tags, and provides utilities for resource naming.
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.BaseTestStack.Initializer"></a>
+
+```typescript
+import { BaseTestStack } from '@microsoft/terraform-cdk-constructs'
+
+new BaseTestStack(scope: Construct, id: string, options?: BaseTestStackOptions)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.Initializer.parameter.options">options</a></code> | <code>@microsoft/terraform-cdk-constructs.testing.BaseTestStackOptions</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.BaseTestStack.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.BaseTestStack.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+---
+
+##### `options`<sup>Optional</sup> <a name="options" id="@microsoft/terraform-cdk-constructs.BaseTestStack.Initializer.parameter.options"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.testing.BaseTestStackOptions
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.addDependency">addDependency</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.addOverride">addOverride</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.allProviders">allProviders</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.dependsOn">dependsOn</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.ensureBackendExists">ensureBackendExists</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.getLogicalId">getLogicalId</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.hasResourceMove">hasResourceMove</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.prepareStack">prepareStack</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.registerIncomingCrossStackReference">registerIncomingCrossStackReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.registerOutgoingCrossStackReference">registerOutgoingCrossStackReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.runAllValidations">runAllValidations</a></code> | Run all validations on the stack. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.toHclTerraform">toHclTerraform</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.toTerraform">toTerraform</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.generateResourceName">generateResourceName</a></code> | Generates a unique resource name with proper Azure compliance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.registeredResources">registeredResources</a></code> | Retrieves all registered resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.registerResource">registerResource</a></code> | Registers a resource for tracking and cleanup verification. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.systemTags">systemTags</a></code> | Generates system tags for resources (only available when metadata is present). |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.BaseTestStack.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addDependency` <a name="addDependency" id="@microsoft/terraform-cdk-constructs.BaseTestStack.addDependency"></a>
+
+```typescript
+public addDependency(dependency: TerraformStack): void
+```
+
+###### `dependency`<sup>Required</sup> <a name="dependency" id="@microsoft/terraform-cdk-constructs.BaseTestStack.addDependency.parameter.dependency"></a>
+
+- *Type:* cdktf.TerraformStack
+
+---
+
+##### `addOverride` <a name="addOverride" id="@microsoft/terraform-cdk-constructs.BaseTestStack.addOverride"></a>
+
+```typescript
+public addOverride(path: string, value: any): void
+```
+
+###### `path`<sup>Required</sup> <a name="path" id="@microsoft/terraform-cdk-constructs.BaseTestStack.addOverride.parameter.path"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.BaseTestStack.addOverride.parameter.value"></a>
+
+- *Type:* any
+
+---
+
+##### `allProviders` <a name="allProviders" id="@microsoft/terraform-cdk-constructs.BaseTestStack.allProviders"></a>
+
+```typescript
+public allProviders(): TerraformProvider[]
+```
+
+##### `dependsOn` <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.BaseTestStack.dependsOn"></a>
+
+```typescript
+public dependsOn(stack: TerraformStack): boolean
+```
+
+###### `stack`<sup>Required</sup> <a name="stack" id="@microsoft/terraform-cdk-constructs.BaseTestStack.dependsOn.parameter.stack"></a>
+
+- *Type:* cdktf.TerraformStack
+
+---
+
+##### `ensureBackendExists` <a name="ensureBackendExists" id="@microsoft/terraform-cdk-constructs.BaseTestStack.ensureBackendExists"></a>
+
+```typescript
+public ensureBackendExists(): TerraformBackend
+```
+
+##### `getLogicalId` <a name="getLogicalId" id="@microsoft/terraform-cdk-constructs.BaseTestStack.getLogicalId"></a>
+
+```typescript
+public getLogicalId(tfElement: Node | TerraformElement): string
+```
+
+###### `tfElement`<sup>Required</sup> <a name="tfElement" id="@microsoft/terraform-cdk-constructs.BaseTestStack.getLogicalId.parameter.tfElement"></a>
+
+- *Type:* constructs.Node | cdktf.TerraformElement
+
+---
+
+##### `hasResourceMove` <a name="hasResourceMove" id="@microsoft/terraform-cdk-constructs.BaseTestStack.hasResourceMove"></a>
+
+```typescript
+public hasResourceMove(): boolean
+```
+
+##### `prepareStack` <a name="prepareStack" id="@microsoft/terraform-cdk-constructs.BaseTestStack.prepareStack"></a>
+
+```typescript
+public prepareStack(): void
+```
+
+##### `registerIncomingCrossStackReference` <a name="registerIncomingCrossStackReference" id="@microsoft/terraform-cdk-constructs.BaseTestStack.registerIncomingCrossStackReference"></a>
+
+```typescript
+public registerIncomingCrossStackReference(fromStack: TerraformStack): TerraformRemoteState
+```
+
+###### `fromStack`<sup>Required</sup> <a name="fromStack" id="@microsoft/terraform-cdk-constructs.BaseTestStack.registerIncomingCrossStackReference.parameter.fromStack"></a>
+
+- *Type:* cdktf.TerraformStack
+
+---
+
+##### `registerOutgoingCrossStackReference` <a name="registerOutgoingCrossStackReference" id="@microsoft/terraform-cdk-constructs.BaseTestStack.registerOutgoingCrossStackReference"></a>
+
+```typescript
+public registerOutgoingCrossStackReference(identifier: string): TerraformOutput
+```
+
+###### `identifier`<sup>Required</sup> <a name="identifier" id="@microsoft/terraform-cdk-constructs.BaseTestStack.registerOutgoingCrossStackReference.parameter.identifier"></a>
+
+- *Type:* string
+
+---
+
+##### `runAllValidations` <a name="runAllValidations" id="@microsoft/terraform-cdk-constructs.BaseTestStack.runAllValidations"></a>
+
+```typescript
+public runAllValidations(): void
+```
+
+Run all validations on the stack.
+
+##### `toHclTerraform` <a name="toHclTerraform" id="@microsoft/terraform-cdk-constructs.BaseTestStack.toHclTerraform"></a>
+
+```typescript
+public toHclTerraform(): {[ key: string ]: any}
+```
+
+##### `toTerraform` <a name="toTerraform" id="@microsoft/terraform-cdk-constructs.BaseTestStack.toTerraform"></a>
+
+```typescript
+public toTerraform(): any
+```
+
+##### `generateResourceName` <a name="generateResourceName" id="@microsoft/terraform-cdk-constructs.BaseTestStack.generateResourceName"></a>
+
+```typescript
+public generateResourceName(resourceType: string, customIdentifier?: string): string
+```
+
+Generates a unique resource name with proper Azure compliance.
+
+*Example*
+
+```typescript
+const stack = new BaseTestStack(app, 'test-storage', { testRunOptions: {} });
+const rgName = stack.generateResourceName('Microsoft.Resources/resourceGroups');
+// Returns: 'rg-test-storage-a1b2c3'
+```
+
+
+###### `resourceType`<sup>Required</sup> <a name="resourceType" id="@microsoft/terraform-cdk-constructs.BaseTestStack.generateResourceName.parameter.resourceType"></a>
+
+- *Type:* string
+
+Azure resource type (e.g., 'Microsoft.Resources/resourceGroups').
+
+---
+
+###### `customIdentifier`<sup>Optional</sup> <a name="customIdentifier" id="@microsoft/terraform-cdk-constructs.BaseTestStack.generateResourceName.parameter.customIdentifier"></a>
+
+- *Type:* string
+
+Optional custom identifier (defaults to test name).
+
+---
+
+##### `registeredResources` <a name="registeredResources" id="@microsoft/terraform-cdk-constructs.BaseTestStack.registeredResources"></a>
+
+```typescript
+public registeredResources(): ResourceMetadata[]
+```
+
+Retrieves all registered resources.
+
+##### `registerResource` <a name="registerResource" id="@microsoft/terraform-cdk-constructs.BaseTestStack.registerResource"></a>
+
+```typescript
+public registerResource(resourceId: string, resourceType: string, name: string, location?: string, tags?: {[ key: string ]: string}): void
+```
+
+Registers a resource for tracking and cleanup verification.
+
+###### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.BaseTestStack.registerResource.parameter.resourceId"></a>
+
+- *Type:* string
+
+Azure resource ID.
+
+---
+
+###### `resourceType`<sup>Required</sup> <a name="resourceType" id="@microsoft/terraform-cdk-constructs.BaseTestStack.registerResource.parameter.resourceType"></a>
+
+- *Type:* string
+
+Azure resource type.
+
+---
+
+###### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.BaseTestStack.registerResource.parameter.name"></a>
+
+- *Type:* string
+
+Resource name.
+
+---
+
+###### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.BaseTestStack.registerResource.parameter.location"></a>
+
+- *Type:* string
+
+Optional resource location.
+
+---
+
+###### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.BaseTestStack.registerResource.parameter.tags"></a>
+
+- *Type:* {[ key: string ]: string}
+
+Optional resource tags.
+
+---
+
+##### `systemTags` <a name="systemTags" id="@microsoft/terraform-cdk-constructs.BaseTestStack.systemTags"></a>
+
+```typescript
+public systemTags(): {[ key: string ]: string}
+```
+
+Generates system tags for resources (only available when metadata is present).
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.isStack">isStack</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.of">of</a></code> | *No description.* |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.BaseTestStack.isConstruct"></a>
+
+```typescript
+import { BaseTestStack } from '@microsoft/terraform-cdk-constructs'
+
+BaseTestStack.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.BaseTestStack.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+##### `isStack` <a name="isStack" id="@microsoft/terraform-cdk-constructs.BaseTestStack.isStack"></a>
+
+```typescript
+import { BaseTestStack } from '@microsoft/terraform-cdk-constructs'
+
+BaseTestStack.isStack(x: any)
+```
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.BaseTestStack.isStack.parameter.x"></a>
+
+- *Type:* any
+
+---
+
+##### `of` <a name="of" id="@microsoft/terraform-cdk-constructs.BaseTestStack.of"></a>
+
+```typescript
+import { BaseTestStack } from '@microsoft/terraform-cdk-constructs'
+
+BaseTestStack.of(construct: IConstruct)
+```
+
+###### `construct`<sup>Required</sup> <a name="construct" id="@microsoft/terraform-cdk-constructs.BaseTestStack.of.parameter.construct"></a>
+
+- *Type:* constructs.IConstruct
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.property.dependencies">dependencies</a></code> | <code>cdktf.TerraformStack[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.property.moveTargets">moveTargets</a></code> | <code>cdktf.TerraformResourceTargets</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.property.synthesizer">synthesizer</a></code> | <code>cdktf.IStackSynthesizer</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.property.metadata">metadata</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata">TestRunMetadata</a></code> | Optional test run metadata (only present when using BaseTestStackOptions). |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.BaseTestStack.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `dependencies`<sup>Required</sup> <a name="dependencies" id="@microsoft/terraform-cdk-constructs.BaseTestStack.property.dependencies"></a>
+
+```typescript
+public readonly dependencies: TerraformStack[];
+```
+
+- *Type:* cdktf.TerraformStack[]
+
+---
+
+##### `moveTargets`<sup>Required</sup> <a name="moveTargets" id="@microsoft/terraform-cdk-constructs.BaseTestStack.property.moveTargets"></a>
+
+```typescript
+public readonly moveTargets: TerraformResourceTargets;
+```
+
+- *Type:* cdktf.TerraformResourceTargets
+
+---
+
+##### `synthesizer`<sup>Required</sup> <a name="synthesizer" id="@microsoft/terraform-cdk-constructs.BaseTestStack.property.synthesizer"></a>
+
+```typescript
+public readonly synthesizer: IStackSynthesizer;
+```
+
+- *Type:* cdktf.IStackSynthesizer
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.BaseTestStack.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `metadata`<sup>Optional</sup> <a name="metadata" id="@microsoft/terraform-cdk-constructs.BaseTestStack.property.metadata"></a>
+
+```typescript
+public readonly metadata: TestRunMetadata;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata">TestRunMetadata</a>
+
+Optional test run metadata (only present when using BaseTestStackOptions).
+
+---
+
+
 ### BaseTestStack <a name="BaseTestStack" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack"></a>
+
+Base stack for integration tests with optional metadata support.
+
+When metadata is enabled, automatically generates unique test run IDs,
+injects system tags, and provides utilities for resource naming.
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.Initializer"></a>
 
 ```typescript
 import { testing } from '@microsoft/terraform-cdk-constructs'
 
-new testing.BaseTestStack(scope: Construct, id: string)
+new testing.BaseTestStack(scope: Construct, id: string, options?: BaseTestStackOptions)
 ```
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.Initializer.parameter.id">id</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.Initializer.parameter.options">options</a></code> | <code>@microsoft/terraform-cdk-constructs.testing.BaseTestStackOptions</code> | *No description.* |
 
 ---
 
@@ -2410,6 +4441,12 @@ new testing.BaseTestStack(scope: Construct, id: string)
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.Initializer.parameter.id"></a>
 
 - *Type:* string
+
+---
+
+##### `options`<sup>Optional</sup> <a name="options" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.Initializer.parameter.options"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.testing.BaseTestStackOptions
 
 ---
 
@@ -2431,6 +4468,10 @@ new testing.BaseTestStack(scope: Construct, id: string)
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.runAllValidations">runAllValidations</a></code> | Run all validations on the stack. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.toHclTerraform">toHclTerraform</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.toTerraform">toTerraform</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.generateResourceName">generateResourceName</a></code> | Generates a unique resource name with proper Azure compliance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.registeredResources">registeredResources</a></code> | Retrieves all registered resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.registerResource">registerResource</a></code> | Registers a resource for tracking and cleanup verification. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.systemTags">systemTags</a></code> | Generates system tags for resources (only available when metadata is present). |
 
 ---
 
@@ -2564,6 +4605,103 @@ public toHclTerraform(): {[ key: string ]: any}
 public toTerraform(): any
 ```
 
+##### `generateResourceName` <a name="generateResourceName" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.generateResourceName"></a>
+
+```typescript
+public generateResourceName(resourceType: string, customIdentifier?: string): string
+```
+
+Generates a unique resource name with proper Azure compliance.
+
+*Example*
+
+```typescript
+const stack = new BaseTestStack(app, 'test-storage', { testRunOptions: {} });
+const rgName = stack.generateResourceName('Microsoft.Resources/resourceGroups');
+// Returns: 'rg-test-storage-a1b2c3'
+```
+
+
+###### `resourceType`<sup>Required</sup> <a name="resourceType" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.generateResourceName.parameter.resourceType"></a>
+
+- *Type:* string
+
+Azure resource type (e.g., 'Microsoft.Resources/resourceGroups').
+
+---
+
+###### `customIdentifier`<sup>Optional</sup> <a name="customIdentifier" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.generateResourceName.parameter.customIdentifier"></a>
+
+- *Type:* string
+
+Optional custom identifier (defaults to test name).
+
+---
+
+##### `registeredResources` <a name="registeredResources" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.registeredResources"></a>
+
+```typescript
+public registeredResources(): ResourceMetadata[]
+```
+
+Retrieves all registered resources.
+
+##### `registerResource` <a name="registerResource" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.registerResource"></a>
+
+```typescript
+public registerResource(resourceId: string, resourceType: string, name: string, location?: string, tags?: {[ key: string ]: string}): void
+```
+
+Registers a resource for tracking and cleanup verification.
+
+###### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.registerResource.parameter.resourceId"></a>
+
+- *Type:* string
+
+Azure resource ID.
+
+---
+
+###### `resourceType`<sup>Required</sup> <a name="resourceType" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.registerResource.parameter.resourceType"></a>
+
+- *Type:* string
+
+Azure resource type.
+
+---
+
+###### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.registerResource.parameter.name"></a>
+
+- *Type:* string
+
+Resource name.
+
+---
+
+###### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.registerResource.parameter.location"></a>
+
+- *Type:* string
+
+Optional resource location.
+
+---
+
+###### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.registerResource.parameter.tags"></a>
+
+- *Type:* {[ key: string ]: string}
+
+Optional resource tags.
+
+---
+
+##### `systemTags` <a name="systemTags" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.systemTags"></a>
+
+```typescript
+public systemTags(): {[ key: string ]: string}
+```
+
+Generates system tags for resources (only available when metadata is present).
+
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
 | **Name** | **Description** |
@@ -2643,6 +4781,7 @@ testing.BaseTestStack.of(construct: IConstruct)
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.property.moveTargets">moveTargets</a></code> | <code>cdktf.TerraformResourceTargets</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.property.synthesizer">synthesizer</a></code> | <code>cdktf.IStackSynthesizer</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.property.metadata">metadata</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata">TestRunMetadata</a></code> | Optional test run metadata (only present when using BaseTestStackOptions). |
 
 ---
 
@@ -2695,6 +4834,18 @@ public readonly name: string;
 ```
 
 - *Type:* string
+
+---
+
+##### `metadata`<sup>Optional</sup> <a name="metadata" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.property.metadata"></a>
+
+```typescript
+public readonly metadata: TestRunMetadata;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata">TestRunMetadata</a>
+
+Optional test run metadata (only present when using BaseTestStackOptions).
 
 ---
 
@@ -5779,6 +7930,1706 @@ public readonly tfResourceType: string;
 
 ---
 
+### DiagnosticSettings <a name="DiagnosticSettings" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings"></a>
+
+Unified Azure Diagnostic Settings implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+Diagnostic Settings enable monitoring and observability by exporting platform logs and metrics
+to one or more destinations including Log Analytics workspaces, Storage accounts, and Event Hubs.
+
+*Example*
+
+```typescript
+// Diagnostic settings with multiple destinations:
+const diagnostics = new DiagnosticSettings(this, "storage-diagnostics", {
+  name: "storage-diagnostics",
+  targetResourceId: storageAccount.id,
+  workspaceId: logAnalyticsWorkspace.id,
+  storageAccountId: archiveStorageAccount.id,
+  eventHubAuthorizationRuleId: eventHub.authRuleId,
+  eventHubName: "monitoring-hub",
+  logs: [{
+    category: "StorageRead",
+    enabled: true,
+    retentionPolicy: {
+      enabled: true,
+      days: 90
+    }
+  }],
+  metrics: [{
+    category: "Transaction",
+    enabled: true
+  }]
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.Initializer"></a>
+
+```typescript
+import { DiagnosticSettings } from '@microsoft/terraform-cdk-constructs'
+
+new DiagnosticSettings(scope: Construct, id: string, props: DiagnosticSettingsProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps</code> | - Configuration properties for the Diagnostic Settings. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps
+
+Configuration properties for the Diagnostic Settings.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.isConstruct"></a>
+
+```typescript
+import { DiagnosticSettings } from '@microsoft/terraform-cdk-constructs'
+
+DiagnosticSettings.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps</code> | The input properties for this Diagnostic Settings instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.property.props"></a>
+
+```typescript
+public readonly props: DiagnosticSettingsProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps
+
+The input properties for this Diagnostic Settings instance.
+
+---
+
+
+### DiagnosticSettings <a name="DiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings"></a>
+
+Unified Azure Diagnostic Settings implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+Diagnostic Settings enable monitoring and observability by exporting platform logs and metrics
+to one or more destinations including Log Analytics workspaces, Storage accounts, and Event Hubs.
+
+*Example*
+
+```typescript
+// Diagnostic settings with multiple destinations:
+const diagnostics = new DiagnosticSettings(this, "storage-diagnostics", {
+  name: "storage-diagnostics",
+  targetResourceId: storageAccount.id,
+  workspaceId: logAnalyticsWorkspace.id,
+  storageAccountId: archiveStorageAccount.id,
+  eventHubAuthorizationRuleId: eventHub.authRuleId,
+  eventHubName: "monitoring-hub",
+  logs: [{
+    category: "StorageRead",
+    enabled: true,
+    retentionPolicy: {
+      enabled: true,
+      days: 90
+    }
+  }],
+  metrics: [{
+    category: "Transaction",
+    enabled: true
+  }]
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.Initializer"></a>
+
+```typescript
+import { azure_diagnosticsettings } from '@microsoft/terraform-cdk-constructs'
+
+new azure_diagnosticsettings.DiagnosticSettings(scope: Construct, id: string, props: DiagnosticSettingsProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps</code> | - Configuration properties for the Diagnostic Settings. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps
+
+Configuration properties for the Diagnostic Settings.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.isConstruct"></a>
+
+```typescript
+import { azure_diagnosticsettings } from '@microsoft/terraform-cdk-constructs'
+
+azure_diagnosticsettings.DiagnosticSettings.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps</code> | The input properties for this Diagnostic Settings instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.property.props"></a>
+
+```typescript
+public readonly props: DiagnosticSettingsProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps
+
+The input properties for this Diagnostic Settings instance.
+
+---
+
+
+### MetricAlert <a name="MetricAlert" id="@microsoft/terraform-cdk-constructs.MetricAlert"></a>
+
+Unified Azure Metric Alert implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+Metric Alerts monitor Azure resource metrics and trigger notifications when thresholds are breached.
+They support both static thresholds and dynamic thresholds based on machine learning.
+
+*Example*
+
+```typescript
+// Dynamic threshold alert with machine learning:
+const dynamicAlert = new MetricAlert(this, "dynamic-cpu", {
+  name: "vm-dynamic-cpu-alert",
+  resourceGroupId: resourceGroup.id,
+  severity: 2,
+  scopes: [resourceGroup.id],
+  targetResourceType: "Microsoft.Compute/virtualMachines",
+  targetResourceRegion: "eastus",
+  criteria: {
+    type: "DynamicThreshold",
+    metricName: "Percentage CPU",
+    operator: "GreaterThan",
+    alertSensitivity: "Medium",
+    failingPeriods: {
+      numberOfEvaluationPeriods: 4,
+      minFailingPeriodsToAlert: 3
+    },
+    timeAggregation: "Average"
+  },
+  actions: [{
+    actionGroupId: actionGroup.id
+  }]
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.MetricAlert.Initializer"></a>
+
+```typescript
+import { MetricAlert } from '@microsoft/terraform-cdk-constructs'
+
+new MetricAlert(scope: Construct, id: string, props: MetricAlertProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps</code> | - Configuration properties for the Metric Alert. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.MetricAlert.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.MetricAlert.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.MetricAlert.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps
+
+Configuration properties for the Metric Alert.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.addTag">addTag</a></code> | Add a tag to the Metric Alert Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.removeTag">removeTag</a></code> | Remove a tag from the Metric Alert Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.MetricAlert.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.MetricAlert.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.MetricAlert.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.MetricAlert.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.MetricAlert.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.MetricAlert.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.MetricAlert.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.MetricAlert.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.MetricAlert.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Metric Alert Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.MetricAlert.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.MetricAlert.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.MetricAlert.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Metric Alert Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.MetricAlert.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.MetricAlert.isConstruct"></a>
+
+```typescript
+import { MetricAlert } from '@microsoft/terraform-cdk-constructs'
+
+MetricAlert.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.MetricAlert.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps</code> | The input properties for this Metric Alert instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.MetricAlert.property.props"></a>
+
+```typescript
+public readonly props: MetricAlertProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps
+
+The input properties for this Metric Alert instance.
+
+---
+
+
+### MetricAlert <a name="MetricAlert" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert"></a>
+
+Unified Azure Metric Alert implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+Metric Alerts monitor Azure resource metrics and trigger notifications when thresholds are breached.
+They support both static thresholds and dynamic thresholds based on machine learning.
+
+*Example*
+
+```typescript
+// Dynamic threshold alert with machine learning:
+const dynamicAlert = new MetricAlert(this, "dynamic-cpu", {
+  name: "vm-dynamic-cpu-alert",
+  resourceGroupId: resourceGroup.id,
+  severity: 2,
+  scopes: [resourceGroup.id],
+  targetResourceType: "Microsoft.Compute/virtualMachines",
+  targetResourceRegion: "eastus",
+  criteria: {
+    type: "DynamicThreshold",
+    metricName: "Percentage CPU",
+    operator: "GreaterThan",
+    alertSensitivity: "Medium",
+    failingPeriods: {
+      numberOfEvaluationPeriods: 4,
+      minFailingPeriodsToAlert: 3
+    },
+    timeAggregation: "Average"
+  },
+  actions: [{
+    actionGroupId: actionGroup.id
+  }]
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer"></a>
+
+```typescript
+import { azure_metricalert } from '@microsoft/terraform-cdk-constructs'
+
+new azure_metricalert.MetricAlert(scope: Construct, id: string, props: MetricAlertProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps</code> | - Configuration properties for the Metric Alert. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps
+
+Configuration properties for the Metric Alert.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.addTag">addTag</a></code> | Add a tag to the Metric Alert Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.removeTag">removeTag</a></code> | Remove a tag from the Metric Alert Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Metric Alert Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Metric Alert Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.isConstruct"></a>
+
+```typescript
+import { azure_metricalert } from '@microsoft/terraform-cdk-constructs'
+
+azure_metricalert.MetricAlert.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.id">id</a></code> | <code>string</code> | The resource ID (abstract - must be implemented by subclasses). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.location">location</a></code> | <code>string</code> | The location of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps</code> | The input properties for this Metric Alert instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The resource ID (abstract - must be implemented by subclasses).
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.property.props"></a>
+
+```typescript
+public readonly props: MetricAlertProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps
+
+The input properties for this Metric Alert instance.
+
+---
+
+
 ### NetworkInterface <a name="NetworkInterface" id="@microsoft/terraform-cdk-constructs.NetworkInterface"></a>
 
 Unified Azure Network Interface implementation.
@@ -5853,7 +9704,6 @@ Configuration properties for the Network Interface.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -5893,22 +9743,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.NetworkInterface.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.NetworkInterface.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -6347,7 +10181,6 @@ Configuration properties for the Network Interface.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -6387,22 +10220,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -6835,7 +10652,6 @@ Configuration properties for the Network Security Group.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -6875,22 +10691,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -7349,7 +11149,6 @@ Configuration properties for the Network Security Group.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -7389,22 +11188,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -7866,7 +11649,6 @@ Configuration properties for the Public IP Address.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -7906,22 +11688,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -8372,7 +12138,6 @@ Configuration properties for the Public IP Address.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -8412,22 +12177,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -14032,7 +17781,6 @@ Configuration properties for the Resource Group.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroup.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroup.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroup.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroup.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -14072,22 +17820,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.ResourceGroup.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.ResourceGroup.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -14529,7 +18261,6 @@ Configuration properties for the Resource Group.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -14569,22 +18300,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -15020,7 +18735,6 @@ Configuration properties for the Storage Account.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccount.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccount.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccount.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccount.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccount.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccount.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -15060,22 +18774,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.StorageAccount.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.StorageAccount.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -15159,6 +18857,7 @@ Remove a tag from the Storage Account.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccount.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccount.defaultMonitoring">defaultMonitoring</a></code> | Returns a production-ready monitoring configuration for Storage Accounts. |
 
 ---
 
@@ -15191,6 +18890,62 @@ this type-testing method instead.
 - *Type:* any
 
 Any object.
+
+---
+
+##### `defaultMonitoring` <a name="defaultMonitoring" id="@microsoft/terraform-cdk-constructs.StorageAccount.defaultMonitoring"></a>
+
+```typescript
+import { StorageAccount } from '@microsoft/terraform-cdk-constructs'
+
+StorageAccount.defaultMonitoring(actionGroupId: string, workspaceId?: string, options?: StorageAccountMonitoringOptions)
+```
+
+Returns a production-ready monitoring configuration for Storage Accounts.
+
+This static factory method provides a complete MonitoringConfig with sensible defaults
+for storage account monitoring including availability, egress, transactions alerts, and deletion tracking.
+
+*Example*
+
+```typescript
+// Custom thresholds
+const storageAccount = new StorageAccount(this, "storage", {
+  // ... other properties ...
+  monitoring: StorageAccount.defaultMonitoring(
+    actionGroup.id,
+    workspace.id,
+    {
+      availabilityThreshold: 99.5,
+      egressThreshold: 21474836480, // 20GB
+      enableTransactionsAlert: false
+    }
+  )
+});
+```
+
+
+###### `actionGroupId`<sup>Required</sup> <a name="actionGroupId" id="@microsoft/terraform-cdk-constructs.StorageAccount.defaultMonitoring.parameter.actionGroupId"></a>
+
+- *Type:* string
+
+The resource ID of the action group for alert notifications.
+
+---
+
+###### `workspaceId`<sup>Optional</sup> <a name="workspaceId" id="@microsoft/terraform-cdk-constructs.StorageAccount.defaultMonitoring.parameter.workspaceId"></a>
+
+- *Type:* string
+
+Optional Log Analytics workspace ID for diagnostic settings.
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="@microsoft/terraform-cdk-constructs.StorageAccount.defaultMonitoring.parameter.options"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions
+
+Optional configuration to customize thresholds and enable/disable specific alerts.
 
 ---
 
@@ -15559,7 +19314,6 @@ Configuration properties for the Storage Account.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -15599,22 +19353,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -15698,6 +19436,7 @@ Remove a tag from the Storage Account.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.defaultMonitoring">defaultMonitoring</a></code> | Returns a production-ready monitoring configuration for Storage Accounts. |
 
 ---
 
@@ -15730,6 +19469,62 @@ this type-testing method instead.
 - *Type:* any
 
 Any object.
+
+---
+
+##### `defaultMonitoring` <a name="defaultMonitoring" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.defaultMonitoring"></a>
+
+```typescript
+import { azure_storageaccount } from '@microsoft/terraform-cdk-constructs'
+
+azure_storageaccount.StorageAccount.defaultMonitoring(actionGroupId: string, workspaceId?: string, options?: StorageAccountMonitoringOptions)
+```
+
+Returns a production-ready monitoring configuration for Storage Accounts.
+
+This static factory method provides a complete MonitoringConfig with sensible defaults
+for storage account monitoring including availability, egress, transactions alerts, and deletion tracking.
+
+*Example*
+
+```typescript
+// Custom thresholds
+const storageAccount = new StorageAccount(this, "storage", {
+  // ... other properties ...
+  monitoring: StorageAccount.defaultMonitoring(
+    actionGroup.id,
+    workspace.id,
+    {
+      availabilityThreshold: 99.5,
+      egressThreshold: 21474836480, // 20GB
+      enableTransactionsAlert: false
+    }
+  )
+});
+```
+
+
+###### `actionGroupId`<sup>Required</sup> <a name="actionGroupId" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.defaultMonitoring.parameter.actionGroupId"></a>
+
+- *Type:* string
+
+The resource ID of the action group for alert notifications.
+
+---
+
+###### `workspaceId`<sup>Optional</sup> <a name="workspaceId" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.defaultMonitoring.parameter.workspaceId"></a>
+
+- *Type:* string
+
+Optional Log Analytics workspace ID for diagnostic settings.
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.defaultMonitoring.parameter.options"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions
+
+Optional configuration to customize thresholds and enable/disable specific alerts.
 
 ---
 
@@ -16103,7 +19898,6 @@ Configuration properties for the Subnet.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -16141,22 +19935,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.Subnet.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.Subnet.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -16554,7 +20332,6 @@ Configuration properties for the Subnet.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -16592,22 +20369,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -19419,7 +23180,6 @@ Configuration properties for the Virtual Machine.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -19459,22 +23219,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.VirtualMachine.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.VirtualMachine.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -19558,6 +23302,7 @@ Remove a tag from the Virtual Machine Note: This modifies the construct props bu
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.defaultMonitoring">defaultMonitoring</a></code> | Returns a production-ready monitoring configuration for Virtual Machines. |
 
 ---
 
@@ -19590,6 +23335,62 @@ this type-testing method instead.
 - *Type:* any
 
 Any object.
+
+---
+
+##### `defaultMonitoring` <a name="defaultMonitoring" id="@microsoft/terraform-cdk-constructs.VirtualMachine.defaultMonitoring"></a>
+
+```typescript
+import { VirtualMachine } from '@microsoft/terraform-cdk-constructs'
+
+VirtualMachine.defaultMonitoring(actionGroupId: string, workspaceId?: string, options?: VirtualMachineMonitoringOptions)
+```
+
+Returns a production-ready monitoring configuration for Virtual Machines.
+
+This static factory method provides a complete MonitoringConfig with sensible defaults
+for VM monitoring including CPU, memory, disk queue alerts, and deletion tracking.
+
+*Example*
+
+```typescript
+// Custom thresholds
+const vm = new VirtualMachine(this, "vm", {
+  // ... other properties ...
+  monitoring: VirtualMachine.defaultMonitoring(
+    actionGroup.id,
+    workspace.id,
+    {
+      cpuThreshold: 90,
+      memoryThreshold: 536870912, // 512MB
+      enableDiskQueueAlert: false
+    }
+  )
+});
+```
+
+
+###### `actionGroupId`<sup>Required</sup> <a name="actionGroupId" id="@microsoft/terraform-cdk-constructs.VirtualMachine.defaultMonitoring.parameter.actionGroupId"></a>
+
+- *Type:* string
+
+The resource ID of the action group for alert notifications.
+
+---
+
+###### `workspaceId`<sup>Optional</sup> <a name="workspaceId" id="@microsoft/terraform-cdk-constructs.VirtualMachine.defaultMonitoring.parameter.workspaceId"></a>
+
+- *Type:* string
+
+Optional Log Analytics workspace ID for diagnostic settings.
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="@microsoft/terraform-cdk-constructs.VirtualMachine.defaultMonitoring.parameter.options"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions">VirtualMachineMonitoringOptions</a>
+
+Optional configuration to customize thresholds and enable/disable specific alerts.
 
 ---
 
@@ -19995,7 +23796,6 @@ Configuration properties for the Virtual Machine.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -20035,22 +23835,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -20134,6 +23918,7 @@ Remove a tag from the Virtual Machine Note: This modifies the construct props bu
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.defaultMonitoring">defaultMonitoring</a></code> | Returns a production-ready monitoring configuration for Virtual Machines. |
 
 ---
 
@@ -20166,6 +23951,62 @@ this type-testing method instead.
 - *Type:* any
 
 Any object.
+
+---
+
+##### `defaultMonitoring` <a name="defaultMonitoring" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.defaultMonitoring"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+azure_virtualmachine.VirtualMachine.defaultMonitoring(actionGroupId: string, workspaceId?: string, options?: VirtualMachineMonitoringOptions)
+```
+
+Returns a production-ready monitoring configuration for Virtual Machines.
+
+This static factory method provides a complete MonitoringConfig with sensible defaults
+for VM monitoring including CPU, memory, disk queue alerts, and deletion tracking.
+
+*Example*
+
+```typescript
+// Custom thresholds
+const vm = new VirtualMachine(this, "vm", {
+  // ... other properties ...
+  monitoring: VirtualMachine.defaultMonitoring(
+    actionGroup.id,
+    workspace.id,
+    {
+      cpuThreshold: 90,
+      memoryThreshold: 536870912, // 512MB
+      enableDiskQueueAlert: false
+    }
+  )
+});
+```
+
+
+###### `actionGroupId`<sup>Required</sup> <a name="actionGroupId" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.defaultMonitoring.parameter.actionGroupId"></a>
+
+- *Type:* string
+
+The resource ID of the action group for alert notifications.
+
+---
+
+###### `workspaceId`<sup>Optional</sup> <a name="workspaceId" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.defaultMonitoring.parameter.workspaceId"></a>
+
+- *Type:* string
+
+Optional Log Analytics workspace ID for diagnostic settings.
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.defaultMonitoring.parameter.options"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions">VirtualMachineMonitoringOptions</a>
+
+Optional configuration to customize thresholds and enable/disable specific alerts.
 
 ---
 
@@ -20557,7 +24398,6 @@ Configuration properties for the Virtual Machine Scale Set.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -20597,22 +24437,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -20696,6 +24520,7 @@ Remove a tag from the Virtual Machine Scale Set Note: This modifies the construc
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.defaultMonitoring">defaultMonitoring</a></code> | Returns a production-ready monitoring configuration for Virtual Machine Scale Sets. |
 
 ---
 
@@ -20728,6 +24553,66 @@ this type-testing method instead.
 - *Type:* any
 
 Any object.
+
+---
+
+##### `defaultMonitoring` <a name="defaultMonitoring" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.defaultMonitoring"></a>
+
+```typescript
+import { VirtualMachineScaleSet } from '@microsoft/terraform-cdk-constructs'
+
+VirtualMachineScaleSet.defaultMonitoring(actionGroupId: string, workspaceId?: string, options?: VmssMonitoringOptions)
+```
+
+Returns a production-ready monitoring configuration for Virtual Machine Scale Sets.
+
+This static factory method provides a complete MonitoringConfig with sensible defaults
+for VMSS monitoring including CPU, memory, disk queue alerts, and deletion tracking.
+
+VMSS uses a lower CPU threshold (75%) compared to single VMs (80%) to allow headroom
+for scaling operations before reaching saturation.
+
+*Example*
+
+```typescript
+// Custom thresholds and severities
+const vmss = new VirtualMachineScaleSet(this, "vmss", {
+  // ... other properties ...
+  monitoring: VirtualMachineScaleSet.defaultMonitoring(
+    actionGroup.id,
+    workspace.id,
+    {
+      cpuThreshold: 85,
+      memoryThreshold: 536870912, // 512MB
+      enableDiskQueueAlert: false,
+      cpuAlertSeverity: 1 // Error level
+    }
+  )
+});
+```
+
+
+###### `actionGroupId`<sup>Required</sup> <a name="actionGroupId" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.defaultMonitoring.parameter.actionGroupId"></a>
+
+- *Type:* string
+
+The resource ID of the action group for alert notifications.
+
+---
+
+###### `workspaceId`<sup>Optional</sup> <a name="workspaceId" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.defaultMonitoring.parameter.workspaceId"></a>
+
+- *Type:* string
+
+Optional Log Analytics workspace ID for diagnostic settings.
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.defaultMonitoring.parameter.options"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions
+
+Optional configuration to customize thresholds and enable/disable specific alerts.
 
 ---
 
@@ -21132,7 +25017,6 @@ Configuration properties for the Virtual Machine Scale Set.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -21172,22 +25056,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -21271,6 +25139,7 @@ Remove a tag from the Virtual Machine Scale Set Note: This modifies the construc
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.defaultMonitoring">defaultMonitoring</a></code> | Returns a production-ready monitoring configuration for Virtual Machine Scale Sets. |
 
 ---
 
@@ -21303,6 +25172,66 @@ this type-testing method instead.
 - *Type:* any
 
 Any object.
+
+---
+
+##### `defaultMonitoring` <a name="defaultMonitoring" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.defaultMonitoring"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+azure_vmss.VirtualMachineScaleSet.defaultMonitoring(actionGroupId: string, workspaceId?: string, options?: VmssMonitoringOptions)
+```
+
+Returns a production-ready monitoring configuration for Virtual Machine Scale Sets.
+
+This static factory method provides a complete MonitoringConfig with sensible defaults
+for VMSS monitoring including CPU, memory, disk queue alerts, and deletion tracking.
+
+VMSS uses a lower CPU threshold (75%) compared to single VMs (80%) to allow headroom
+for scaling operations before reaching saturation.
+
+*Example*
+
+```typescript
+// Custom thresholds and severities
+const vmss = new VirtualMachineScaleSet(this, "vmss", {
+  // ... other properties ...
+  monitoring: VirtualMachineScaleSet.defaultMonitoring(
+    actionGroup.id,
+    workspace.id,
+    {
+      cpuThreshold: 85,
+      memoryThreshold: 536870912, // 512MB
+      enableDiskQueueAlert: false,
+      cpuAlertSeverity: 1 // Error level
+    }
+  )
+});
+```
+
+
+###### `actionGroupId`<sup>Required</sup> <a name="actionGroupId" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.defaultMonitoring.parameter.actionGroupId"></a>
+
+- *Type:* string
+
+The resource ID of the action group for alert notifications.
+
+---
+
+###### `workspaceId`<sup>Optional</sup> <a name="workspaceId" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.defaultMonitoring.parameter.workspaceId"></a>
+
+- *Type:* string
+
+Optional Log Analytics workspace ID for diagnostic settings.
+
+---
+
+###### `options`<sup>Optional</sup> <a name="options" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.defaultMonitoring.parameter.options"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions
+
+Optional configuration to customize thresholds and enable/disable specific alerts.
 
 ---
 
@@ -21687,7 +25616,6 @@ Configuration properties for the Virtual Network.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -21727,22 +25655,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -22203,7 +26115,6 @@ Configuration properties for the Virtual Network.
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.toString">toString</a></code> | Returns a string representation of this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addDiagnosticSettings">addDiagnosticSettings</a></code> | Adds diagnostic settings to this resource using AZAPI. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
@@ -22243,22 +26154,6 @@ The unique identifier of the Azure AD object.
 - *Type:* string
 
 The name of the Azure RBAC role to be assigned.
-
----
-
-##### `addDiagnosticSettings` <a name="addDiagnosticSettings" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addDiagnosticSettings"></a>
-
-```typescript
-public addDiagnosticSettings(props: AzapiDiagnosticSettingsProps): AzapiDiagnosticSettings
-```
-
-Adds diagnostic settings to this resource using AZAPI.
-
-###### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addDiagnosticSettings.parameter.props"></a>
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps
-
-The diagnostic settings configuration.
 
 ---
 
@@ -22650,6 +26545,1994 @@ public readonly tagsOutput: TerraformOutput;
 
 
 ## Structs <a name="Structs" id="Structs"></a>
+
+### ActionGroupBody <a name="ActionGroupBody" id="@microsoft/terraform-cdk-constructs.ActionGroupBody"></a>
+
+The resource body interface for Azure Action Group API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ActionGroupBody.Initializer"></a>
+
+```typescript
+import { ActionGroupBody } from '@microsoft/terraform-cdk-constructs'
+
+const actionGroupBody: ActionGroupBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.ActionGroupBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.ActionGroupBody.property.properties"></a>
+
+```typescript
+public readonly properties: ActionGroupBodyProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.ActionGroupBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### ActionGroupBody <a name="ActionGroupBody" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBody"></a>
+
+The resource body interface for Azure Action Group API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBody.Initializer"></a>
+
+```typescript
+import { azure_actiongroup } from '@microsoft/terraform-cdk-constructs'
+
+const actionGroupBody: azure_actiongroup.ActionGroupBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBody.property.properties"></a>
+
+```typescript
+public readonly properties: ActionGroupBodyProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### ActionGroupBodyProperties <a name="ActionGroupBodyProperties" id="@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties"></a>
+
+Action Group properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.Initializer"></a>
+
+```typescript
+import { ActionGroupBodyProperties } from '@microsoft/terraform-cdk-constructs'
+
+const actionGroupBodyProperties: ActionGroupBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.groupShortName">groupShortName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.azureFunctionReceivers">azureFunctionReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.emailReceivers">emailReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.logicAppReceivers">logicAppReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.smsReceivers">smsReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.voiceReceivers">voiceReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.webhookReceivers">webhookReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver[]</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Required</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `groupShortName`<sup>Required</sup> <a name="groupShortName" id="@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.groupShortName"></a>
+
+```typescript
+public readonly groupShortName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `azureFunctionReceivers`<sup>Optional</sup> <a name="azureFunctionReceivers" id="@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.azureFunctionReceivers"></a>
+
+```typescript
+public readonly azureFunctionReceivers: AzureFunctionReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver[]
+
+---
+
+##### `emailReceivers`<sup>Optional</sup> <a name="emailReceivers" id="@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.emailReceivers"></a>
+
+```typescript
+public readonly emailReceivers: EmailReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver[]
+
+---
+
+##### `logicAppReceivers`<sup>Optional</sup> <a name="logicAppReceivers" id="@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.logicAppReceivers"></a>
+
+```typescript
+public readonly logicAppReceivers: LogicAppReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver[]
+
+---
+
+##### `smsReceivers`<sup>Optional</sup> <a name="smsReceivers" id="@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.smsReceivers"></a>
+
+```typescript
+public readonly smsReceivers: SmsReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver[]
+
+---
+
+##### `voiceReceivers`<sup>Optional</sup> <a name="voiceReceivers" id="@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.voiceReceivers"></a>
+
+```typescript
+public readonly voiceReceivers: VoiceReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver[]
+
+---
+
+##### `webhookReceivers`<sup>Optional</sup> <a name="webhookReceivers" id="@microsoft/terraform-cdk-constructs.ActionGroupBodyProperties.property.webhookReceivers"></a>
+
+```typescript
+public readonly webhookReceivers: WebhookReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver[]
+
+---
+
+### ActionGroupBodyProperties <a name="ActionGroupBodyProperties" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties"></a>
+
+Action Group properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.Initializer"></a>
+
+```typescript
+import { azure_actiongroup } from '@microsoft/terraform-cdk-constructs'
+
+const actionGroupBodyProperties: azure_actiongroup.ActionGroupBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.groupShortName">groupShortName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.azureFunctionReceivers">azureFunctionReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.emailReceivers">emailReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.logicAppReceivers">logicAppReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.smsReceivers">smsReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.voiceReceivers">voiceReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.webhookReceivers">webhookReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver[]</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Required</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `groupShortName`<sup>Required</sup> <a name="groupShortName" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.groupShortName"></a>
+
+```typescript
+public readonly groupShortName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `azureFunctionReceivers`<sup>Optional</sup> <a name="azureFunctionReceivers" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.azureFunctionReceivers"></a>
+
+```typescript
+public readonly azureFunctionReceivers: AzureFunctionReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver[]
+
+---
+
+##### `emailReceivers`<sup>Optional</sup> <a name="emailReceivers" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.emailReceivers"></a>
+
+```typescript
+public readonly emailReceivers: EmailReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver[]
+
+---
+
+##### `logicAppReceivers`<sup>Optional</sup> <a name="logicAppReceivers" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.logicAppReceivers"></a>
+
+```typescript
+public readonly logicAppReceivers: LogicAppReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver[]
+
+---
+
+##### `smsReceivers`<sup>Optional</sup> <a name="smsReceivers" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.smsReceivers"></a>
+
+```typescript
+public readonly smsReceivers: SmsReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver[]
+
+---
+
+##### `voiceReceivers`<sup>Optional</sup> <a name="voiceReceivers" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.voiceReceivers"></a>
+
+```typescript
+public readonly voiceReceivers: VoiceReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver[]
+
+---
+
+##### `webhookReceivers`<sup>Optional</sup> <a name="webhookReceivers" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupBodyProperties.property.webhookReceivers"></a>
+
+```typescript
+public readonly webhookReceivers: WebhookReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver[]
+
+---
+
+### ActionGroupProps <a name="ActionGroupProps" id="@microsoft/terraform-cdk-constructs.ActionGroupProps"></a>
+
+Properties for the unified Azure Action Group.
+
+Extends AzapiResourceProps with Action Group specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.Initializer"></a>
+
+```typescript
+import { ActionGroupProps } from '@microsoft/terraform-cdk-constructs'
+
+const actionGroupProps: ActionGroupProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.groupShortName">groupShortName</a></code> | <code>string</code> | Short name for SMS notifications (max 12 chars). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.azureFunctionReceivers">azureFunctionReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver[]</code> | Azure Function receivers. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.emailReceivers">emailReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver[]</code> | Email notification receivers. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.enabled">enabled</a></code> | <code>boolean</code> | Whether the action group is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.logicAppReceivers">logicAppReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver[]</code> | Logic App receivers. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the action group will be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.smsReceivers">smsReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver[]</code> | SMS notification receivers. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.voiceReceivers">voiceReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver[]</code> | Voice call receivers. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroupProps.property.webhookReceivers">webhookReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver[]</code> | Webhook notification receivers. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `groupShortName`<sup>Required</sup> <a name="groupShortName" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.groupShortName"></a>
+
+```typescript
+public readonly groupShortName: string;
+```
+
+- *Type:* string
+
+Short name for SMS notifications (max 12 chars).
+
+---
+
+*Example*
+
+```typescript
+"OpsTeam"
+```
+
+
+##### `azureFunctionReceivers`<sup>Optional</sup> <a name="azureFunctionReceivers" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.azureFunctionReceivers"></a>
+
+```typescript
+public readonly azureFunctionReceivers: AzureFunctionReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver[]
+
+Azure Function receivers.
+
+---
+
+##### `emailReceivers`<sup>Optional</sup> <a name="emailReceivers" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.emailReceivers"></a>
+
+```typescript
+public readonly emailReceivers: EmailReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver[]
+
+Email notification receivers.
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether the action group is enabled.
+
+---
+
+##### `logicAppReceivers`<sup>Optional</sup> <a name="logicAppReceivers" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.logicAppReceivers"></a>
+
+```typescript
+public readonly logicAppReceivers: LogicAppReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver[]
+
+Logic App receivers.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the action group will be created.
+
+---
+
+##### `smsReceivers`<sup>Optional</sup> <a name="smsReceivers" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.smsReceivers"></a>
+
+```typescript
+public readonly smsReceivers: SmsReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver[]
+
+SMS notification receivers.
+
+---
+
+##### `voiceReceivers`<sup>Optional</sup> <a name="voiceReceivers" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.voiceReceivers"></a>
+
+```typescript
+public readonly voiceReceivers: VoiceReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver[]
+
+Voice call receivers.
+
+---
+
+##### `webhookReceivers`<sup>Optional</sup> <a name="webhookReceivers" id="@microsoft/terraform-cdk-constructs.ActionGroupProps.property.webhookReceivers"></a>
+
+```typescript
+public readonly webhookReceivers: WebhookReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver[]
+
+Webhook notification receivers.
+
+---
+
+### ActionGroupProps <a name="ActionGroupProps" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps"></a>
+
+Properties for the unified Azure Action Group.
+
+Extends AzapiResourceProps with Action Group specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.Initializer"></a>
+
+```typescript
+import { azure_actiongroup } from '@microsoft/terraform-cdk-constructs'
+
+const actionGroupProps: azure_actiongroup.ActionGroupProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.groupShortName">groupShortName</a></code> | <code>string</code> | Short name for SMS notifications (max 12 chars). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.azureFunctionReceivers">azureFunctionReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver[]</code> | Azure Function receivers. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.emailReceivers">emailReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver[]</code> | Email notification receivers. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.enabled">enabled</a></code> | <code>boolean</code> | Whether the action group is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.logicAppReceivers">logicAppReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver[]</code> | Logic App receivers. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the action group will be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.smsReceivers">smsReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver[]</code> | SMS notification receivers. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.voiceReceivers">voiceReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver[]</code> | Voice call receivers. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.webhookReceivers">webhookReceivers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver[]</code> | Webhook notification receivers. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `groupShortName`<sup>Required</sup> <a name="groupShortName" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.groupShortName"></a>
+
+```typescript
+public readonly groupShortName: string;
+```
+
+- *Type:* string
+
+Short name for SMS notifications (max 12 chars).
+
+---
+
+*Example*
+
+```typescript
+"OpsTeam"
+```
+
+
+##### `azureFunctionReceivers`<sup>Optional</sup> <a name="azureFunctionReceivers" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.azureFunctionReceivers"></a>
+
+```typescript
+public readonly azureFunctionReceivers: AzureFunctionReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver[]
+
+Azure Function receivers.
+
+---
+
+##### `emailReceivers`<sup>Optional</sup> <a name="emailReceivers" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.emailReceivers"></a>
+
+```typescript
+public readonly emailReceivers: EmailReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver[]
+
+Email notification receivers.
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether the action group is enabled.
+
+---
+
+##### `logicAppReceivers`<sup>Optional</sup> <a name="logicAppReceivers" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.logicAppReceivers"></a>
+
+```typescript
+public readonly logicAppReceivers: LogicAppReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver[]
+
+Logic App receivers.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the action group will be created.
+
+---
+
+##### `smsReceivers`<sup>Optional</sup> <a name="smsReceivers" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.smsReceivers"></a>
+
+```typescript
+public readonly smsReceivers: SmsReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver[]
+
+SMS notification receivers.
+
+---
+
+##### `voiceReceivers`<sup>Optional</sup> <a name="voiceReceivers" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.voiceReceivers"></a>
+
+```typescript
+public readonly voiceReceivers: VoiceReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver[]
+
+Voice call receivers.
+
+---
+
+##### `webhookReceivers`<sup>Optional</sup> <a name="webhookReceivers" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps.property.webhookReceivers"></a>
+
+```typescript
+public readonly webhookReceivers: WebhookReceiver[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver[]
+
+Webhook notification receivers.
+
+---
+
+### ActivityLogAlertActionGroup <a name="ActivityLogAlertActionGroup" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertActionGroup"></a>
+
+Activity log alert action group reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertActionGroup.Initializer"></a>
+
+```typescript
+import { ActivityLogAlertActionGroup } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertActionGroup: ActivityLogAlertActionGroup = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertActionGroup.property.actionGroupId">actionGroupId</a></code> | <code>string</code> | The action group resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertActionGroup.property.webhookProperties">webhookProperties</a></code> | <code>{[ key: string ]: string}</code> | Webhook properties (optional). |
+
+---
+
+##### `actionGroupId`<sup>Required</sup> <a name="actionGroupId" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertActionGroup.property.actionGroupId"></a>
+
+```typescript
+public readonly actionGroupId: string;
+```
+
+- *Type:* string
+
+The action group resource ID.
+
+---
+
+##### `webhookProperties`<sup>Optional</sup> <a name="webhookProperties" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertActionGroup.property.webhookProperties"></a>
+
+```typescript
+public readonly webhookProperties: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Webhook properties (optional).
+
+---
+
+### ActivityLogAlertActionGroup <a name="ActivityLogAlertActionGroup" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActionGroup"></a>
+
+Activity log alert action group reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActionGroup.Initializer"></a>
+
+```typescript
+import { azure_activitylogalert } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertActionGroup: azure_activitylogalert.ActivityLogAlertActionGroup = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActionGroup.property.actionGroupId">actionGroupId</a></code> | <code>string</code> | The action group resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActionGroup.property.webhookProperties">webhookProperties</a></code> | <code>{[ key: string ]: string}</code> | Webhook properties (optional). |
+
+---
+
+##### `actionGroupId`<sup>Required</sup> <a name="actionGroupId" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActionGroup.property.actionGroupId"></a>
+
+```typescript
+public readonly actionGroupId: string;
+```
+
+- *Type:* string
+
+The action group resource ID.
+
+---
+
+##### `webhookProperties`<sup>Optional</sup> <a name="webhookProperties" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActionGroup.property.webhookProperties"></a>
+
+```typescript
+public readonly webhookProperties: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Webhook properties (optional).
+
+---
+
+### ActivityLogAlertActions <a name="ActivityLogAlertActions" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertActions"></a>
+
+Activity log alert actions configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertActions.Initializer"></a>
+
+```typescript
+import { ActivityLogAlertActions } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertActions: ActivityLogAlertActions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertActions.property.actionGroups">actionGroups</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActionGroup[]</code> | Action groups to trigger. |
+
+---
+
+##### `actionGroups`<sup>Optional</sup> <a name="actionGroups" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertActions.property.actionGroups"></a>
+
+```typescript
+public readonly actionGroups: ActivityLogAlertActionGroup[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActionGroup[]
+
+Action groups to trigger.
+
+---
+
+### ActivityLogAlertActions <a name="ActivityLogAlertActions" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActions"></a>
+
+Activity log alert actions configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActions.Initializer"></a>
+
+```typescript
+import { azure_activitylogalert } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertActions: azure_activitylogalert.ActivityLogAlertActions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActions.property.actionGroups">actionGroups</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActionGroup[]</code> | Action groups to trigger. |
+
+---
+
+##### `actionGroups`<sup>Optional</sup> <a name="actionGroups" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActions.property.actionGroups"></a>
+
+```typescript
+public readonly actionGroups: ActivityLogAlertActionGroup[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActionGroup[]
+
+Action groups to trigger.
+
+---
+
+### ActivityLogAlertBody <a name="ActivityLogAlertBody" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertBody"></a>
+
+The resource body interface for Azure Activity Log Alert API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertBody.Initializer"></a>
+
+```typescript
+import { ActivityLogAlertBody } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertBody: ActivityLogAlertBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertBody.property.properties"></a>
+
+```typescript
+public readonly properties: ActivityLogAlertBodyProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### ActivityLogAlertBody <a name="ActivityLogAlertBody" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBody"></a>
+
+The resource body interface for Azure Activity Log Alert API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBody.Initializer"></a>
+
+```typescript
+import { azure_activitylogalert } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertBody: azure_activitylogalert.ActivityLogAlertBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBody.property.properties"></a>
+
+```typescript
+public readonly properties: ActivityLogAlertBodyProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### ActivityLogAlertBodyProperties <a name="ActivityLogAlertBodyProperties" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertBodyProperties"></a>
+
+Activity Log Alert properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertBodyProperties.Initializer"></a>
+
+```typescript
+import { ActivityLogAlertBodyProperties } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertBodyProperties: ActivityLogAlertBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertBodyProperties.property.condition">condition</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertCondition</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertBodyProperties.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertBodyProperties.property.scopes">scopes</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertBodyProperties.property.actions">actions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActions</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertBodyProperties.property.description">description</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `condition`<sup>Required</sup> <a name="condition" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertBodyProperties.property.condition"></a>
+
+```typescript
+public readonly condition: ActivityLogAlertCondition;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertCondition
+
+---
+
+##### `enabled`<sup>Required</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertBodyProperties.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `scopes`<sup>Required</sup> <a name="scopes" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertBodyProperties.property.scopes"></a>
+
+```typescript
+public readonly scopes: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `actions`<sup>Optional</sup> <a name="actions" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertBodyProperties.property.actions"></a>
+
+```typescript
+public readonly actions: ActivityLogAlertActions;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActions
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertBodyProperties.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+---
+
+### ActivityLogAlertBodyProperties <a name="ActivityLogAlertBodyProperties" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties"></a>
+
+Activity Log Alert properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties.Initializer"></a>
+
+```typescript
+import { azure_activitylogalert } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertBodyProperties: azure_activitylogalert.ActivityLogAlertBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties.property.condition">condition</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertCondition</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties.property.scopes">scopes</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties.property.actions">actions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActions</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties.property.description">description</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `condition`<sup>Required</sup> <a name="condition" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties.property.condition"></a>
+
+```typescript
+public readonly condition: ActivityLogAlertCondition;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertCondition
+
+---
+
+##### `enabled`<sup>Required</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `scopes`<sup>Required</sup> <a name="scopes" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties.property.scopes"></a>
+
+```typescript
+public readonly scopes: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `actions`<sup>Optional</sup> <a name="actions" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties.property.actions"></a>
+
+```typescript
+public readonly actions: ActivityLogAlertActions;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActions
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertBodyProperties.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+---
+
+### ActivityLogAlertCondition <a name="ActivityLogAlertCondition" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertCondition"></a>
+
+Activity log alert condition.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertCondition.Initializer"></a>
+
+```typescript
+import { ActivityLogAlertCondition } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertCondition: ActivityLogAlertCondition = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertCondition.property.allOf">allOf</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertLeafCondition[]</code> | All conditions that must be met (AND logic). |
+
+---
+
+##### `allOf`<sup>Required</sup> <a name="allOf" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertCondition.property.allOf"></a>
+
+```typescript
+public readonly allOf: ActivityLogAlertLeafCondition[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertLeafCondition[]
+
+All conditions that must be met (AND logic).
+
+---
+
+### ActivityLogAlertCondition <a name="ActivityLogAlertCondition" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertCondition"></a>
+
+Activity log alert condition.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertCondition.Initializer"></a>
+
+```typescript
+import { azure_activitylogalert } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertCondition: azure_activitylogalert.ActivityLogAlertCondition = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertCondition.property.allOf">allOf</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertLeafCondition[]</code> | All conditions that must be met (AND logic). |
+
+---
+
+##### `allOf`<sup>Required</sup> <a name="allOf" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertCondition.property.allOf"></a>
+
+```typescript
+public readonly allOf: ActivityLogAlertLeafCondition[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertLeafCondition[]
+
+All conditions that must be met (AND logic).
+
+---
+
+### ActivityLogAlertLeafCondition <a name="ActivityLogAlertLeafCondition" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertLeafCondition"></a>
+
+Activity log alert leaf condition.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertLeafCondition.Initializer"></a>
+
+```typescript
+import { ActivityLogAlertLeafCondition } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertLeafCondition: ActivityLogAlertLeafCondition = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertLeafCondition.property.equalsValue">equalsValue</a></code> | <code>string</code> | The value to match. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertLeafCondition.property.field">field</a></code> | <code>string</code> | The field name to filter on Common values: category, operationName, resourceType, status, subStatus, resourceGroup. |
+
+---
+
+##### `equalsValue`<sup>Required</sup> <a name="equalsValue" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertLeafCondition.property.equalsValue"></a>
+
+```typescript
+public readonly equalsValue: string;
+```
+
+- *Type:* string
+
+The value to match.
+
+---
+
+##### `field`<sup>Required</sup> <a name="field" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertLeafCondition.property.field"></a>
+
+```typescript
+public readonly field: string;
+```
+
+- *Type:* string
+
+The field name to filter on Common values: category, operationName, resourceType, status, subStatus, resourceGroup.
+
+---
+
+### ActivityLogAlertLeafCondition <a name="ActivityLogAlertLeafCondition" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertLeafCondition"></a>
+
+Activity log alert leaf condition.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertLeafCondition.Initializer"></a>
+
+```typescript
+import { azure_activitylogalert } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertLeafCondition: azure_activitylogalert.ActivityLogAlertLeafCondition = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertLeafCondition.property.equalsValue">equalsValue</a></code> | <code>string</code> | The value to match. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertLeafCondition.property.field">field</a></code> | <code>string</code> | The field name to filter on Common values: category, operationName, resourceType, status, subStatus, resourceGroup. |
+
+---
+
+##### `equalsValue`<sup>Required</sup> <a name="equalsValue" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertLeafCondition.property.equalsValue"></a>
+
+```typescript
+public readonly equalsValue: string;
+```
+
+- *Type:* string
+
+The value to match.
+
+---
+
+##### `field`<sup>Required</sup> <a name="field" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertLeafCondition.property.field"></a>
+
+```typescript
+public readonly field: string;
+```
+
+- *Type:* string
+
+The field name to filter on Common values: category, operationName, resourceType, status, subStatus, resourceGroup.
+
+---
+
+### ActivityLogAlertProps <a name="ActivityLogAlertProps" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps"></a>
+
+Properties for the unified Azure Activity Log Alert.
+
+Extends AzapiResourceProps with Activity Log Alert specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.Initializer"></a>
+
+```typescript
+import { ActivityLogAlertProps } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertProps: ActivityLogAlertProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.condition">condition</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertCondition</code> | Alert condition with field-value pairs All conditions are combined with AND logic. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.scopes">scopes</a></code> | <code>string[]</code> | Resource IDs that this alert is scoped to Can be subscription, resource group, or specific resource IDs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.actions">actions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActions</code> | Action groups to notify. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.description">description</a></code> | <code>string</code> | Description of the alert rule. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.enabled">enabled</a></code> | <code>boolean</code> | Whether the alert rule is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the activity log alert will be created. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `condition`<sup>Required</sup> <a name="condition" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.condition"></a>
+
+```typescript
+public readonly condition: ActivityLogAlertCondition;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertCondition
+
+Alert condition with field-value pairs All conditions are combined with AND logic.
+
+---
+
+##### `scopes`<sup>Required</sup> <a name="scopes" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.scopes"></a>
+
+```typescript
+public readonly scopes: string[];
+```
+
+- *Type:* string[]
+
+Resource IDs that this alert is scoped to Can be subscription, resource group, or specific resource IDs.
+
+---
+
+*Example*
+
+```typescript
+["/subscriptions/.../resourceGroups/my-rg"]
+```
+
+
+##### `actions`<sup>Optional</sup> <a name="actions" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.actions"></a>
+
+```typescript
+public readonly actions: ActivityLogAlertActions;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActions
+
+Action groups to notify.
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+Description of the alert rule.
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether the alert rule is enabled.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.ActivityLogAlertProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the activity log alert will be created.
+
+---
+
+### ActivityLogAlertProps <a name="ActivityLogAlertProps" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps"></a>
+
+Properties for the unified Azure Activity Log Alert.
+
+Extends AzapiResourceProps with Activity Log Alert specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.Initializer"></a>
+
+```typescript
+import { azure_activitylogalert } from '@microsoft/terraform-cdk-constructs'
+
+const activityLogAlertProps: azure_activitylogalert.ActivityLogAlertProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.condition">condition</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertCondition</code> | Alert condition with field-value pairs All conditions are combined with AND logic. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.scopes">scopes</a></code> | <code>string[]</code> | Resource IDs that this alert is scoped to Can be subscription, resource group, or specific resource IDs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.actions">actions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActions</code> | Action groups to notify. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.description">description</a></code> | <code>string</code> | Description of the alert rule. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.enabled">enabled</a></code> | <code>boolean</code> | Whether the alert rule is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the activity log alert will be created. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `condition`<sup>Required</sup> <a name="condition" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.condition"></a>
+
+```typescript
+public readonly condition: ActivityLogAlertCondition;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertCondition
+
+Alert condition with field-value pairs All conditions are combined with AND logic.
+
+---
+
+##### `scopes`<sup>Required</sup> <a name="scopes" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.scopes"></a>
+
+```typescript
+public readonly scopes: string[];
+```
+
+- *Type:* string[]
+
+Resource IDs that this alert is scoped to Can be subscription, resource group, or specific resource IDs.
+
+---
+
+*Example*
+
+```typescript
+["/subscriptions/.../resourceGroups/my-rg"]
+```
+
+
+##### `actions`<sup>Optional</sup> <a name="actions" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.actions"></a>
+
+```typescript
+public readonly actions: ActivityLogAlertActions;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertActions
+
+Action groups to notify.
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+Description of the alert rule.
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether the alert rule is enabled.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the activity log alert will be created.
+
+---
 
 ### AdditionalCapabilities <a name="AdditionalCapabilities" id="@microsoft/terraform-cdk-constructs.AdditionalCapabilities"></a>
 
@@ -26681,6 +32564,324 @@ public readonly countIPv6: number;
 
 ---
 
+### AksClusterMonitoringOptions <a name="AksClusterMonitoringOptions" id="@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions"></a>
+
+Configuration options for AKS Cluster monitoring.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.Initializer"></a>
+
+```typescript
+import { AksClusterMonitoringOptions } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterMonitoringOptions: AksClusterMonitoringOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.enableDeletionAlert">enableDeletionAlert</a></code> | <code>boolean</code> | Whether to enable AKS cluster deletion alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.enableFailedPodAlert">enableFailedPodAlert</a></code> | <code>boolean</code> | Whether to enable failed pod alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.enableNodeCpuAlert">enableNodeCpuAlert</a></code> | <code>boolean</code> | Whether to enable node CPU usage alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.enableNodeMemoryAlert">enableNodeMemoryAlert</a></code> | <code>boolean</code> | Whether to enable node memory usage alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.failedPodAlertSeverity">failedPodAlertSeverity</a></code> | <code>number</code> | Severity level for failed pod alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.failedPodThreshold">failedPodThreshold</a></code> | <code>number</code> | Threshold for failed pod count. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.nodeCpuAlertSeverity">nodeCpuAlertSeverity</a></code> | <code>number</code> | Severity level for node CPU alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.nodeCpuThreshold">nodeCpuThreshold</a></code> | <code>number</code> | Threshold for node CPU usage percentage (0-100). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.nodeMemoryAlertSeverity">nodeMemoryAlertSeverity</a></code> | <code>number</code> | Severity level for node memory alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.nodeMemoryThreshold">nodeMemoryThreshold</a></code> | <code>number</code> | Threshold for node memory usage percentage (0-100). |
+
+---
+
+##### `enableDeletionAlert`<sup>Optional</sup> <a name="enableDeletionAlert" id="@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.enableDeletionAlert"></a>
+
+```typescript
+public readonly enableDeletionAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable AKS cluster deletion alert.
+
+---
+
+##### `enableFailedPodAlert`<sup>Optional</sup> <a name="enableFailedPodAlert" id="@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.enableFailedPodAlert"></a>
+
+```typescript
+public readonly enableFailedPodAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable failed pod alert.
+
+---
+
+##### `enableNodeCpuAlert`<sup>Optional</sup> <a name="enableNodeCpuAlert" id="@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.enableNodeCpuAlert"></a>
+
+```typescript
+public readonly enableNodeCpuAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable node CPU usage alert.
+
+---
+
+##### `enableNodeMemoryAlert`<sup>Optional</sup> <a name="enableNodeMemoryAlert" id="@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.enableNodeMemoryAlert"></a>
+
+```typescript
+public readonly enableNodeMemoryAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable node memory usage alert.
+
+---
+
+##### `failedPodAlertSeverity`<sup>Optional</sup> <a name="failedPodAlertSeverity" id="@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.failedPodAlertSeverity"></a>
+
+```typescript
+public readonly failedPodAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 1
+
+Severity level for failed pod alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose).
+
+---
+
+##### `failedPodThreshold`<sup>Optional</sup> <a name="failedPodThreshold" id="@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.failedPodThreshold"></a>
+
+```typescript
+public readonly failedPodThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 0
+
+Threshold for failed pod count.
+
+---
+
+##### `nodeCpuAlertSeverity`<sup>Optional</sup> <a name="nodeCpuAlertSeverity" id="@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.nodeCpuAlertSeverity"></a>
+
+```typescript
+public readonly nodeCpuAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+Severity level for node CPU alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose).
+
+---
+
+##### `nodeCpuThreshold`<sup>Optional</sup> <a name="nodeCpuThreshold" id="@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.nodeCpuThreshold"></a>
+
+```typescript
+public readonly nodeCpuThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 80
+
+Threshold for node CPU usage percentage (0-100).
+
+---
+
+##### `nodeMemoryAlertSeverity`<sup>Optional</sup> <a name="nodeMemoryAlertSeverity" id="@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.nodeMemoryAlertSeverity"></a>
+
+```typescript
+public readonly nodeMemoryAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+Severity level for node memory alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose).
+
+---
+
+##### `nodeMemoryThreshold`<sup>Optional</sup> <a name="nodeMemoryThreshold" id="@microsoft/terraform-cdk-constructs.AksClusterMonitoringOptions.property.nodeMemoryThreshold"></a>
+
+```typescript
+public readonly nodeMemoryThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 80
+
+Threshold for node memory usage percentage (0-100).
+
+---
+
+### AksClusterMonitoringOptions <a name="AksClusterMonitoringOptions" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions"></a>
+
+Configuration options for AKS Cluster monitoring.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.Initializer"></a>
+
+```typescript
+import { azure_aks } from '@microsoft/terraform-cdk-constructs'
+
+const aksClusterMonitoringOptions: azure_aks.AksClusterMonitoringOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.enableDeletionAlert">enableDeletionAlert</a></code> | <code>boolean</code> | Whether to enable AKS cluster deletion alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.enableFailedPodAlert">enableFailedPodAlert</a></code> | <code>boolean</code> | Whether to enable failed pod alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.enableNodeCpuAlert">enableNodeCpuAlert</a></code> | <code>boolean</code> | Whether to enable node CPU usage alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.enableNodeMemoryAlert">enableNodeMemoryAlert</a></code> | <code>boolean</code> | Whether to enable node memory usage alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.failedPodAlertSeverity">failedPodAlertSeverity</a></code> | <code>number</code> | Severity level for failed pod alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.failedPodThreshold">failedPodThreshold</a></code> | <code>number</code> | Threshold for failed pod count. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.nodeCpuAlertSeverity">nodeCpuAlertSeverity</a></code> | <code>number</code> | Severity level for node CPU alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.nodeCpuThreshold">nodeCpuThreshold</a></code> | <code>number</code> | Threshold for node CPU usage percentage (0-100). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.nodeMemoryAlertSeverity">nodeMemoryAlertSeverity</a></code> | <code>number</code> | Severity level for node memory alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.nodeMemoryThreshold">nodeMemoryThreshold</a></code> | <code>number</code> | Threshold for node memory usage percentage (0-100). |
+
+---
+
+##### `enableDeletionAlert`<sup>Optional</sup> <a name="enableDeletionAlert" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.enableDeletionAlert"></a>
+
+```typescript
+public readonly enableDeletionAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable AKS cluster deletion alert.
+
+---
+
+##### `enableFailedPodAlert`<sup>Optional</sup> <a name="enableFailedPodAlert" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.enableFailedPodAlert"></a>
+
+```typescript
+public readonly enableFailedPodAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable failed pod alert.
+
+---
+
+##### `enableNodeCpuAlert`<sup>Optional</sup> <a name="enableNodeCpuAlert" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.enableNodeCpuAlert"></a>
+
+```typescript
+public readonly enableNodeCpuAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable node CPU usage alert.
+
+---
+
+##### `enableNodeMemoryAlert`<sup>Optional</sup> <a name="enableNodeMemoryAlert" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.enableNodeMemoryAlert"></a>
+
+```typescript
+public readonly enableNodeMemoryAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable node memory usage alert.
+
+---
+
+##### `failedPodAlertSeverity`<sup>Optional</sup> <a name="failedPodAlertSeverity" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.failedPodAlertSeverity"></a>
+
+```typescript
+public readonly failedPodAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 1
+
+Severity level for failed pod alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose).
+
+---
+
+##### `failedPodThreshold`<sup>Optional</sup> <a name="failedPodThreshold" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.failedPodThreshold"></a>
+
+```typescript
+public readonly failedPodThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 0
+
+Threshold for failed pod count.
+
+---
+
+##### `nodeCpuAlertSeverity`<sup>Optional</sup> <a name="nodeCpuAlertSeverity" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.nodeCpuAlertSeverity"></a>
+
+```typescript
+public readonly nodeCpuAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+Severity level for node CPU alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose).
+
+---
+
+##### `nodeCpuThreshold`<sup>Optional</sup> <a name="nodeCpuThreshold" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.nodeCpuThreshold"></a>
+
+```typescript
+public readonly nodeCpuThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 80
+
+Threshold for node CPU usage percentage (0-100).
+
+---
+
+##### `nodeMemoryAlertSeverity`<sup>Optional</sup> <a name="nodeMemoryAlertSeverity" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.nodeMemoryAlertSeverity"></a>
+
+```typescript
+public readonly nodeMemoryAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+Severity level for node memory alert (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose).
+
+---
+
+##### `nodeMemoryThreshold`<sup>Optional</sup> <a name="nodeMemoryThreshold" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterMonitoringOptions.property.nodeMemoryThreshold"></a>
+
+```typescript
+public readonly nodeMemoryThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 80
+
+Threshold for node memory usage percentage (0-100).
+
+---
+
 ### AksClusterNatGatewayProfile <a name="AksClusterNatGatewayProfile" id="@microsoft/terraform-cdk-constructs.AksClusterNatGatewayProfile"></a>
 
 NAT Gateway profile.
@@ -27356,6 +33557,7 @@ const aksClusterProps: AksClusterProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterProps.property.agentPoolProfiles">agentPoolProfiles</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile">AksClusterAgentPoolProfile</a>[]</code> | The agent pool profiles for the cluster node pools At least one agent pool is required. |
@@ -27471,6 +33673,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.AksClusterProps.property.name"></a>
 
@@ -27913,6 +34151,7 @@ const aksClusterProps: azure_aks.AksClusterProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.agentPoolProfiles">agentPoolProfiles</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AksClusterAgentPoolProfile">AksClusterAgentPoolProfile</a>[]</code> | The agent pool profiles for the cluster node pools At least one agent pool is required. |
@@ -28028,6 +34267,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_aks.AksClusterProps.property.name"></a>
 
@@ -30603,220 +36878,6 @@ public readonly repairAction: string;
 
 ---
 
-### AzapiDiagnosticSettingsProps <a name="AzapiDiagnosticSettingsProps" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps"></a>
-
-Properties for AZAPI diagnostic settings.
-
-#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.Initializer"></a>
-
-```typescript
-import { AzapiDiagnosticSettingsProps } from '@microsoft/terraform-cdk-constructs'
-
-const azapiDiagnosticSettingsProps: AzapiDiagnosticSettingsProps = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.eventhubAuthorizationRuleId">eventhubAuthorizationRuleId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.eventhubName">eventhubName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.logAnalyticsWorkspaceId">logAnalyticsWorkspaceId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.logs">logs</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticLogConfig[]</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.metrics">metrics</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig[]</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.storageAccountId">storageAccountId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.targetResourceId">targetResourceId</a></code> | <code>string</code> | *No description.* |
-
----
-
-##### `eventhubAuthorizationRuleId`<sup>Optional</sup> <a name="eventhubAuthorizationRuleId" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.eventhubAuthorizationRuleId"></a>
-
-```typescript
-public readonly eventhubAuthorizationRuleId: string;
-```
-
-- *Type:* string
-
----
-
-##### `eventhubName`<sup>Optional</sup> <a name="eventhubName" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.eventhubName"></a>
-
-```typescript
-public readonly eventhubName: string;
-```
-
-- *Type:* string
-
----
-
-##### `logAnalyticsWorkspaceId`<sup>Optional</sup> <a name="logAnalyticsWorkspaceId" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.logAnalyticsWorkspaceId"></a>
-
-```typescript
-public readonly logAnalyticsWorkspaceId: string;
-```
-
-- *Type:* string
-
----
-
-##### `logs`<sup>Optional</sup> <a name="logs" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.logs"></a>
-
-```typescript
-public readonly logs: DiagnosticLogConfig[];
-```
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.DiagnosticLogConfig[]
-
----
-
-##### `metrics`<sup>Optional</sup> <a name="metrics" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.metrics"></a>
-
-```typescript
-public readonly metrics: DiagnosticMetricConfig[];
-```
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig[]
-
----
-
-##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.name"></a>
-
-```typescript
-public readonly name: string;
-```
-
-- *Type:* string
-
----
-
-##### `storageAccountId`<sup>Optional</sup> <a name="storageAccountId" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.storageAccountId"></a>
-
-```typescript
-public readonly storageAccountId: string;
-```
-
-- *Type:* string
-
----
-
-##### `targetResourceId`<sup>Optional</sup> <a name="targetResourceId" id="@microsoft/terraform-cdk-constructs.AzapiDiagnosticSettingsProps.property.targetResourceId"></a>
-
-```typescript
-public readonly targetResourceId: string;
-```
-
-- *Type:* string
-
----
-
-### AzapiDiagnosticSettingsProps <a name="AzapiDiagnosticSettingsProps" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps"></a>
-
-Properties for AZAPI diagnostic settings.
-
-#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.Initializer"></a>
-
-```typescript
-import { core_azure } from '@microsoft/terraform-cdk-constructs'
-
-const azapiDiagnosticSettingsProps: core_azure.AzapiDiagnosticSettingsProps = { ... }
-```
-
-#### Properties <a name="Properties" id="Properties"></a>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.eventhubAuthorizationRuleId">eventhubAuthorizationRuleId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.eventhubName">eventhubName</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.logAnalyticsWorkspaceId">logAnalyticsWorkspaceId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.logs">logs</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticLogConfig[]</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.metrics">metrics</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig[]</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.name">name</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.storageAccountId">storageAccountId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.targetResourceId">targetResourceId</a></code> | <code>string</code> | *No description.* |
-
----
-
-##### `eventhubAuthorizationRuleId`<sup>Optional</sup> <a name="eventhubAuthorizationRuleId" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.eventhubAuthorizationRuleId"></a>
-
-```typescript
-public readonly eventhubAuthorizationRuleId: string;
-```
-
-- *Type:* string
-
----
-
-##### `eventhubName`<sup>Optional</sup> <a name="eventhubName" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.eventhubName"></a>
-
-```typescript
-public readonly eventhubName: string;
-```
-
-- *Type:* string
-
----
-
-##### `logAnalyticsWorkspaceId`<sup>Optional</sup> <a name="logAnalyticsWorkspaceId" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.logAnalyticsWorkspaceId"></a>
-
-```typescript
-public readonly logAnalyticsWorkspaceId: string;
-```
-
-- *Type:* string
-
----
-
-##### `logs`<sup>Optional</sup> <a name="logs" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.logs"></a>
-
-```typescript
-public readonly logs: DiagnosticLogConfig[];
-```
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.DiagnosticLogConfig[]
-
----
-
-##### `metrics`<sup>Optional</sup> <a name="metrics" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.metrics"></a>
-
-```typescript
-public readonly metrics: DiagnosticMetricConfig[];
-```
-
-- *Type:* @microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig[]
-
----
-
-##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.name"></a>
-
-```typescript
-public readonly name: string;
-```
-
-- *Type:* string
-
----
-
-##### `storageAccountId`<sup>Optional</sup> <a name="storageAccountId" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.storageAccountId"></a>
-
-```typescript
-public readonly storageAccountId: string;
-```
-
-- *Type:* string
-
----
-
-##### `targetResourceId`<sup>Optional</sup> <a name="targetResourceId" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiDiagnosticSettingsProps.property.targetResourceId"></a>
-
-```typescript
-public readonly targetResourceId: string;
-```
-
-- *Type:* string
-
----
-
 ### AzapiResourceProps <a name="AzapiResourceProps" id="@microsoft/terraform-cdk-constructs.AzapiResourceProps"></a>
 
 Properties for versioned Azure resources.
@@ -30841,6 +36902,7 @@ const azapiResourceProps: AzapiResourceProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResourceProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResourceProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResourceProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResourceProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResourceProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResourceProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 
@@ -30929,6 +36991,42 @@ The location where the resource should be created.
 
 ---
 
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.AzapiResourceProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.AzapiResourceProps.property.name"></a>
 
 ```typescript
@@ -30977,6 +37075,7 @@ const azapiResourceProps: core_azure.AzapiResourceProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResourceProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResourceProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResourceProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResourceProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResourceProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResourceProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 
@@ -31064,6 +37163,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiResourceProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiResourceProps.property.name"></a>
 
@@ -31190,6 +37325,240 @@ public readonly scope: string;
 ```
 
 - *Type:* string
+
+---
+
+### AzureFunctionReceiver <a name="AzureFunctionReceiver" id="@microsoft/terraform-cdk-constructs.AzureFunctionReceiver"></a>
+
+Azure Function receiver configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.AzureFunctionReceiver.Initializer"></a>
+
+```typescript
+import { AzureFunctionReceiver } from '@microsoft/terraform-cdk-constructs'
+
+const azureFunctionReceiver: AzureFunctionReceiver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzureFunctionReceiver.property.functionAppResourceId">functionAppResourceId</a></code> | <code>string</code> | The function app resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzureFunctionReceiver.property.functionName">functionName</a></code> | <code>string</code> | The function name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzureFunctionReceiver.property.httpTriggerUrl">httpTriggerUrl</a></code> | <code>string</code> | The HTTP trigger URL. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzureFunctionReceiver.property.name">name</a></code> | <code>string</code> | The name of the Azure Function receiver. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzureFunctionReceiver.property.useCommonAlertSchema">useCommonAlertSchema</a></code> | <code>boolean</code> | Whether to use common alert schema. |
+
+---
+
+##### `functionAppResourceId`<sup>Required</sup> <a name="functionAppResourceId" id="@microsoft/terraform-cdk-constructs.AzureFunctionReceiver.property.functionAppResourceId"></a>
+
+```typescript
+public readonly functionAppResourceId: string;
+```
+
+- *Type:* string
+
+The function app resource ID.
+
+---
+
+##### `functionName`<sup>Required</sup> <a name="functionName" id="@microsoft/terraform-cdk-constructs.AzureFunctionReceiver.property.functionName"></a>
+
+```typescript
+public readonly functionName: string;
+```
+
+- *Type:* string
+
+The function name.
+
+---
+
+##### `httpTriggerUrl`<sup>Required</sup> <a name="httpTriggerUrl" id="@microsoft/terraform-cdk-constructs.AzureFunctionReceiver.property.httpTriggerUrl"></a>
+
+```typescript
+public readonly httpTriggerUrl: string;
+```
+
+- *Type:* string
+
+The HTTP trigger URL.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.AzureFunctionReceiver.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the Azure Function receiver.
+
+---
+
+##### `useCommonAlertSchema`<sup>Optional</sup> <a name="useCommonAlertSchema" id="@microsoft/terraform-cdk-constructs.AzureFunctionReceiver.property.useCommonAlertSchema"></a>
+
+```typescript
+public readonly useCommonAlertSchema: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether to use common alert schema.
+
+---
+
+### AzureFunctionReceiver <a name="AzureFunctionReceiver" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver"></a>
+
+Azure Function receiver configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver.Initializer"></a>
+
+```typescript
+import { azure_actiongroup } from '@microsoft/terraform-cdk-constructs'
+
+const azureFunctionReceiver: azure_actiongroup.AzureFunctionReceiver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver.property.functionAppResourceId">functionAppResourceId</a></code> | <code>string</code> | The function app resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver.property.functionName">functionName</a></code> | <code>string</code> | The function name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver.property.httpTriggerUrl">httpTriggerUrl</a></code> | <code>string</code> | The HTTP trigger URL. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver.property.name">name</a></code> | <code>string</code> | The name of the Azure Function receiver. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver.property.useCommonAlertSchema">useCommonAlertSchema</a></code> | <code>boolean</code> | Whether to use common alert schema. |
+
+---
+
+##### `functionAppResourceId`<sup>Required</sup> <a name="functionAppResourceId" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver.property.functionAppResourceId"></a>
+
+```typescript
+public readonly functionAppResourceId: string;
+```
+
+- *Type:* string
+
+The function app resource ID.
+
+---
+
+##### `functionName`<sup>Required</sup> <a name="functionName" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver.property.functionName"></a>
+
+```typescript
+public readonly functionName: string;
+```
+
+- *Type:* string
+
+The function name.
+
+---
+
+##### `httpTriggerUrl`<sup>Required</sup> <a name="httpTriggerUrl" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver.property.httpTriggerUrl"></a>
+
+```typescript
+public readonly httpTriggerUrl: string;
+```
+
+- *Type:* string
+
+The HTTP trigger URL.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the Azure Function receiver.
+
+---
+
+##### `useCommonAlertSchema`<sup>Optional</sup> <a name="useCommonAlertSchema" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.AzureFunctionReceiver.property.useCommonAlertSchema"></a>
+
+```typescript
+public readonly useCommonAlertSchema: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether to use common alert schema.
+
+---
+
+### BaseTestStackOptions <a name="BaseTestStackOptions" id="@microsoft/terraform-cdk-constructs.BaseTestStackOptions"></a>
+
+Options for BaseTestStack constructor.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.BaseTestStackOptions.Initializer"></a>
+
+```typescript
+import { BaseTestStackOptions } from '@microsoft/terraform-cdk-constructs'
+
+const baseTestStackOptions: BaseTestStackOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStackOptions.property.testRunOptions">testRunOptions</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.TestRunOptions">TestRunOptions</a></code> | Test run configuration options. |
+
+---
+
+##### `testRunOptions`<sup>Optional</sup> <a name="testRunOptions" id="@microsoft/terraform-cdk-constructs.BaseTestStackOptions.property.testRunOptions"></a>
+
+```typescript
+public readonly testRunOptions: TestRunOptions;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.TestRunOptions">TestRunOptions</a>
+
+Test run configuration options.
+
+---
+
+### BaseTestStackOptions <a name="BaseTestStackOptions" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStackOptions"></a>
+
+Options for BaseTestStack constructor.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStackOptions.Initializer"></a>
+
+```typescript
+import { testing } from '@microsoft/terraform-cdk-constructs'
+
+const baseTestStackOptions: testing.BaseTestStackOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStackOptions.property.testRunOptions">testRunOptions</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.TestRunOptions">TestRunOptions</a></code> | Test run configuration options. |
+
+---
+
+##### `testRunOptions`<sup>Optional</sup> <a name="testRunOptions" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStackOptions.property.testRunOptions"></a>
+
+```typescript
+public readonly testRunOptions: TestRunOptions;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.TestRunOptions">TestRunOptions</a>
+
+Test run configuration options.
 
 ---
 
@@ -31390,6 +37759,568 @@ public readonly property: string;
 - *Type:* string
 
 The property name affected by the breaking change Omit for schema-level changes.
+
+---
+
+### CIContext <a name="CIContext" id="@microsoft/terraform-cdk-constructs.CIContext"></a>
+
+CI/CD pipeline context.
+
+Extracted from environment variables during test execution.
+Enables tracing resources back to specific pipeline runs.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.CIContext.Initializer"></a>
+
+```typescript
+import { CIContext } from '@microsoft/terraform-cdk-constructs'
+
+const cIContext: CIContext = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CIContext.property.platform">platform</a></code> | <code>string</code> | CI platform ('github-actions', 'azure-devops', 'generic-ci', 'local'). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CIContext.property.branch">branch</a></code> | <code>string</code> | Git branch name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CIContext.property.commitSha">commitSha</a></code> | <code>string</code> | Git commit SHA (full). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CIContext.property.commitShaShort">commitShaShort</a></code> | <code>string</code> | Git commit SHA (short, 7 chars). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CIContext.property.pipelineId">pipelineId</a></code> | <code>string</code> | GitHub Actions workflow ID or equivalent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CIContext.property.repository">repository</a></code> | <code>string</code> | Git repository name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CIContext.property.runId">runId</a></code> | <code>string</code> | GitHub Actions run ID or equivalent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CIContext.property.runNumber">runNumber</a></code> | <code>string</code> | GitHub Actions run number or equivalent. |
+
+---
+
+##### `platform`<sup>Required</sup> <a name="platform" id="@microsoft/terraform-cdk-constructs.CIContext.property.platform"></a>
+
+```typescript
+public readonly platform: string;
+```
+
+- *Type:* string
+
+CI platform ('github-actions', 'azure-devops', 'generic-ci', 'local').
+
+---
+
+##### `branch`<sup>Optional</sup> <a name="branch" id="@microsoft/terraform-cdk-constructs.CIContext.property.branch"></a>
+
+```typescript
+public readonly branch: string;
+```
+
+- *Type:* string
+
+Git branch name.
+
+---
+
+##### `commitSha`<sup>Optional</sup> <a name="commitSha" id="@microsoft/terraform-cdk-constructs.CIContext.property.commitSha"></a>
+
+```typescript
+public readonly commitSha: string;
+```
+
+- *Type:* string
+
+Git commit SHA (full).
+
+---
+
+##### `commitShaShort`<sup>Optional</sup> <a name="commitShaShort" id="@microsoft/terraform-cdk-constructs.CIContext.property.commitShaShort"></a>
+
+```typescript
+public readonly commitShaShort: string;
+```
+
+- *Type:* string
+
+Git commit SHA (short, 7 chars).
+
+---
+
+##### `pipelineId`<sup>Optional</sup> <a name="pipelineId" id="@microsoft/terraform-cdk-constructs.CIContext.property.pipelineId"></a>
+
+```typescript
+public readonly pipelineId: string;
+```
+
+- *Type:* string
+
+GitHub Actions workflow ID or equivalent.
+
+---
+
+##### `repository`<sup>Optional</sup> <a name="repository" id="@microsoft/terraform-cdk-constructs.CIContext.property.repository"></a>
+
+```typescript
+public readonly repository: string;
+```
+
+- *Type:* string
+
+Git repository name.
+
+---
+
+##### `runId`<sup>Optional</sup> <a name="runId" id="@microsoft/terraform-cdk-constructs.CIContext.property.runId"></a>
+
+```typescript
+public readonly runId: string;
+```
+
+- *Type:* string
+
+GitHub Actions run ID or equivalent.
+
+---
+
+##### `runNumber`<sup>Optional</sup> <a name="runNumber" id="@microsoft/terraform-cdk-constructs.CIContext.property.runNumber"></a>
+
+```typescript
+public readonly runNumber: string;
+```
+
+- *Type:* string
+
+GitHub Actions run number or equivalent.
+
+---
+
+### CIContext <a name="CIContext" id="@microsoft/terraform-cdk-constructs.testing.CIContext"></a>
+
+CI/CD pipeline context.
+
+Extracted from environment variables during test execution.
+Enables tracing resources back to specific pipeline runs.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.testing.CIContext.Initializer"></a>
+
+```typescript
+import { testing } from '@microsoft/terraform-cdk-constructs'
+
+const cIContext: testing.CIContext = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CIContext.property.platform">platform</a></code> | <code>string</code> | CI platform ('github-actions', 'azure-devops', 'generic-ci', 'local'). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CIContext.property.branch">branch</a></code> | <code>string</code> | Git branch name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CIContext.property.commitSha">commitSha</a></code> | <code>string</code> | Git commit SHA (full). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CIContext.property.commitShaShort">commitShaShort</a></code> | <code>string</code> | Git commit SHA (short, 7 chars). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CIContext.property.pipelineId">pipelineId</a></code> | <code>string</code> | GitHub Actions workflow ID or equivalent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CIContext.property.repository">repository</a></code> | <code>string</code> | Git repository name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CIContext.property.runId">runId</a></code> | <code>string</code> | GitHub Actions run ID or equivalent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CIContext.property.runNumber">runNumber</a></code> | <code>string</code> | GitHub Actions run number or equivalent. |
+
+---
+
+##### `platform`<sup>Required</sup> <a name="platform" id="@microsoft/terraform-cdk-constructs.testing.CIContext.property.platform"></a>
+
+```typescript
+public readonly platform: string;
+```
+
+- *Type:* string
+
+CI platform ('github-actions', 'azure-devops', 'generic-ci', 'local').
+
+---
+
+##### `branch`<sup>Optional</sup> <a name="branch" id="@microsoft/terraform-cdk-constructs.testing.CIContext.property.branch"></a>
+
+```typescript
+public readonly branch: string;
+```
+
+- *Type:* string
+
+Git branch name.
+
+---
+
+##### `commitSha`<sup>Optional</sup> <a name="commitSha" id="@microsoft/terraform-cdk-constructs.testing.CIContext.property.commitSha"></a>
+
+```typescript
+public readonly commitSha: string;
+```
+
+- *Type:* string
+
+Git commit SHA (full).
+
+---
+
+##### `commitShaShort`<sup>Optional</sup> <a name="commitShaShort" id="@microsoft/terraform-cdk-constructs.testing.CIContext.property.commitShaShort"></a>
+
+```typescript
+public readonly commitShaShort: string;
+```
+
+- *Type:* string
+
+Git commit SHA (short, 7 chars).
+
+---
+
+##### `pipelineId`<sup>Optional</sup> <a name="pipelineId" id="@microsoft/terraform-cdk-constructs.testing.CIContext.property.pipelineId"></a>
+
+```typescript
+public readonly pipelineId: string;
+```
+
+- *Type:* string
+
+GitHub Actions workflow ID or equivalent.
+
+---
+
+##### `repository`<sup>Optional</sup> <a name="repository" id="@microsoft/terraform-cdk-constructs.testing.CIContext.property.repository"></a>
+
+```typescript
+public readonly repository: string;
+```
+
+- *Type:* string
+
+Git repository name.
+
+---
+
+##### `runId`<sup>Optional</sup> <a name="runId" id="@microsoft/terraform-cdk-constructs.testing.CIContext.property.runId"></a>
+
+```typescript
+public readonly runId: string;
+```
+
+- *Type:* string
+
+GitHub Actions run ID or equivalent.
+
+---
+
+##### `runNumber`<sup>Optional</sup> <a name="runNumber" id="@microsoft/terraform-cdk-constructs.testing.CIContext.property.runNumber"></a>
+
+```typescript
+public readonly runNumber: string;
+```
+
+- *Type:* string
+
+GitHub Actions run number or equivalent.
+
+---
+
+### CleanupOptions <a name="CleanupOptions" id="@microsoft/terraform-cdk-constructs.CleanupOptions"></a>
+
+Options for cleanup operations.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.CleanupOptions.Initializer"></a>
+
+```typescript
+import { CleanupOptions } from '@microsoft/terraform-cdk-constructs'
+
+const cleanupOptions: CleanupOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CleanupOptions.property.dryRun">dryRun</a></code> | <code>boolean</code> | Whether to perform dry-run (no actual deletion). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CleanupOptions.property.minAgeHours">minAgeHours</a></code> | <code>number</code> | Minimum age in hours before resource can be cleaned up. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CleanupOptions.property.maxResources">maxResources</a></code> | <code>number</code> | Maximum number of resources to clean up in one operation. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CleanupOptions.property.resourceGroups">resourceGroups</a></code> | <code>string[]</code> | Specific resource groups to target (optional). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CleanupOptions.property.subscription">subscription</a></code> | <code>string</code> | Azure subscription ID to target (optional). |
+
+---
+
+##### `dryRun`<sup>Required</sup> <a name="dryRun" id="@microsoft/terraform-cdk-constructs.CleanupOptions.property.dryRun"></a>
+
+```typescript
+public readonly dryRun: boolean;
+```
+
+- *Type:* boolean
+
+Whether to perform dry-run (no actual deletion).
+
+---
+
+##### `minAgeHours`<sup>Required</sup> <a name="minAgeHours" id="@microsoft/terraform-cdk-constructs.CleanupOptions.property.minAgeHours"></a>
+
+```typescript
+public readonly minAgeHours: number;
+```
+
+- *Type:* number
+
+Minimum age in hours before resource can be cleaned up.
+
+---
+
+##### `maxResources`<sup>Optional</sup> <a name="maxResources" id="@microsoft/terraform-cdk-constructs.CleanupOptions.property.maxResources"></a>
+
+```typescript
+public readonly maxResources: number;
+```
+
+- *Type:* number
+
+Maximum number of resources to clean up in one operation.
+
+---
+
+##### `resourceGroups`<sup>Optional</sup> <a name="resourceGroups" id="@microsoft/terraform-cdk-constructs.CleanupOptions.property.resourceGroups"></a>
+
+```typescript
+public readonly resourceGroups: string[];
+```
+
+- *Type:* string[]
+
+Specific resource groups to target (optional).
+
+---
+
+##### `subscription`<sup>Optional</sup> <a name="subscription" id="@microsoft/terraform-cdk-constructs.CleanupOptions.property.subscription"></a>
+
+```typescript
+public readonly subscription: string;
+```
+
+- *Type:* string
+
+Azure subscription ID to target (optional).
+
+---
+
+### CleanupOptions <a name="CleanupOptions" id="@microsoft/terraform-cdk-constructs.testing.CleanupOptions"></a>
+
+Options for cleanup operations.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.testing.CleanupOptions.Initializer"></a>
+
+```typescript
+import { testing } from '@microsoft/terraform-cdk-constructs'
+
+const cleanupOptions: testing.CleanupOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CleanupOptions.property.dryRun">dryRun</a></code> | <code>boolean</code> | Whether to perform dry-run (no actual deletion). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CleanupOptions.property.minAgeHours">minAgeHours</a></code> | <code>number</code> | Minimum age in hours before resource can be cleaned up. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CleanupOptions.property.maxResources">maxResources</a></code> | <code>number</code> | Maximum number of resources to clean up in one operation. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CleanupOptions.property.resourceGroups">resourceGroups</a></code> | <code>string[]</code> | Specific resource groups to target (optional). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CleanupOptions.property.subscription">subscription</a></code> | <code>string</code> | Azure subscription ID to target (optional). |
+
+---
+
+##### `dryRun`<sup>Required</sup> <a name="dryRun" id="@microsoft/terraform-cdk-constructs.testing.CleanupOptions.property.dryRun"></a>
+
+```typescript
+public readonly dryRun: boolean;
+```
+
+- *Type:* boolean
+
+Whether to perform dry-run (no actual deletion).
+
+---
+
+##### `minAgeHours`<sup>Required</sup> <a name="minAgeHours" id="@microsoft/terraform-cdk-constructs.testing.CleanupOptions.property.minAgeHours"></a>
+
+```typescript
+public readonly minAgeHours: number;
+```
+
+- *Type:* number
+
+Minimum age in hours before resource can be cleaned up.
+
+---
+
+##### `maxResources`<sup>Optional</sup> <a name="maxResources" id="@microsoft/terraform-cdk-constructs.testing.CleanupOptions.property.maxResources"></a>
+
+```typescript
+public readonly maxResources: number;
+```
+
+- *Type:* number
+
+Maximum number of resources to clean up in one operation.
+
+---
+
+##### `resourceGroups`<sup>Optional</sup> <a name="resourceGroups" id="@microsoft/terraform-cdk-constructs.testing.CleanupOptions.property.resourceGroups"></a>
+
+```typescript
+public readonly resourceGroups: string[];
+```
+
+- *Type:* string[]
+
+Specific resource groups to target (optional).
+
+---
+
+##### `subscription`<sup>Optional</sup> <a name="subscription" id="@microsoft/terraform-cdk-constructs.testing.CleanupOptions.property.subscription"></a>
+
+```typescript
+public readonly subscription: string;
+```
+
+- *Type:* string
+
+Azure subscription ID to target (optional).
+
+---
+
+### CleanupResult <a name="CleanupResult" id="@microsoft/terraform-cdk-constructs.CleanupResult"></a>
+
+Result of cleanup operation.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.CleanupResult.Initializer"></a>
+
+```typescript
+import { CleanupResult } from '@microsoft/terraform-cdk-constructs'
+
+const cleanupResult: CleanupResult = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CleanupResult.property.deleted">deleted</a></code> | <code>number</code> | Number of resources successfully deleted. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CleanupResult.property.failed">failed</a></code> | <code>number</code> | Number of resources that failed to delete. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CleanupResult.property.skipped">skipped</a></code> | <code>number</code> | Number of resources skipped (e.g., too young). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CleanupResult.property.errors">errors</a></code> | <code>string[]</code> | Detailed error messages for failures. |
+
+---
+
+##### `deleted`<sup>Required</sup> <a name="deleted" id="@microsoft/terraform-cdk-constructs.CleanupResult.property.deleted"></a>
+
+```typescript
+public readonly deleted: number;
+```
+
+- *Type:* number
+
+Number of resources successfully deleted.
+
+---
+
+##### `failed`<sup>Required</sup> <a name="failed" id="@microsoft/terraform-cdk-constructs.CleanupResult.property.failed"></a>
+
+```typescript
+public readonly failed: number;
+```
+
+- *Type:* number
+
+Number of resources that failed to delete.
+
+---
+
+##### `skipped`<sup>Required</sup> <a name="skipped" id="@microsoft/terraform-cdk-constructs.CleanupResult.property.skipped"></a>
+
+```typescript
+public readonly skipped: number;
+```
+
+- *Type:* number
+
+Number of resources skipped (e.g., too young).
+
+---
+
+##### `errors`<sup>Optional</sup> <a name="errors" id="@microsoft/terraform-cdk-constructs.CleanupResult.property.errors"></a>
+
+```typescript
+public readonly errors: string[];
+```
+
+- *Type:* string[]
+
+Detailed error messages for failures.
+
+---
+
+### CleanupResult <a name="CleanupResult" id="@microsoft/terraform-cdk-constructs.testing.CleanupResult"></a>
+
+Result of cleanup operation.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.testing.CleanupResult.Initializer"></a>
+
+```typescript
+import { testing } from '@microsoft/terraform-cdk-constructs'
+
+const cleanupResult: testing.CleanupResult = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CleanupResult.property.deleted">deleted</a></code> | <code>number</code> | Number of resources successfully deleted. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CleanupResult.property.failed">failed</a></code> | <code>number</code> | Number of resources that failed to delete. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CleanupResult.property.skipped">skipped</a></code> | <code>number</code> | Number of resources skipped (e.g., too young). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.CleanupResult.property.errors">errors</a></code> | <code>string[]</code> | Detailed error messages for failures. |
+
+---
+
+##### `deleted`<sup>Required</sup> <a name="deleted" id="@microsoft/terraform-cdk-constructs.testing.CleanupResult.property.deleted"></a>
+
+```typescript
+public readonly deleted: number;
+```
+
+- *Type:* number
+
+Number of resources successfully deleted.
+
+---
+
+##### `failed`<sup>Required</sup> <a name="failed" id="@microsoft/terraform-cdk-constructs.testing.CleanupResult.property.failed"></a>
+
+```typescript
+public readonly failed: number;
+```
+
+- *Type:* number
+
+Number of resources that failed to delete.
+
+---
+
+##### `skipped`<sup>Required</sup> <a name="skipped" id="@microsoft/terraform-cdk-constructs.testing.CleanupResult.property.skipped"></a>
+
+```typescript
+public readonly skipped: number;
+```
+
+- *Type:* number
+
+Number of resources skipped (e.g., too young).
+
+---
+
+##### `errors`<sup>Optional</sup> <a name="errors" id="@microsoft/terraform-cdk-constructs.testing.CleanupResult.property.errors"></a>
+
+```typescript
+public readonly errors: string[];
+```
+
+- *Type:* string[]
+
+Detailed error messages for failures.
 
 ---
 
@@ -32677,19 +39608,10 @@ const diagnosticMetricConfig: DiagnosticMetricConfig = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticMetricConfig.property.category">category</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticMetricConfig.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticMetricConfig.property.category">category</a></code> | <code>string</code> | Metric category name (used in newer API versions). |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticMetricConfig.property.retentionPolicy">retentionPolicy</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.RetentionPolicyConfig</code> | *No description.* |
-
----
-
-##### `category`<sup>Required</sup> <a name="category" id="@microsoft/terraform-cdk-constructs.DiagnosticMetricConfig.property.category"></a>
-
-```typescript
-public readonly category: string;
-```
-
-- *Type:* string
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticMetricConfig.property.timeGrain">timeGrain</a></code> | <code>string</code> | Time grain for metrics in ISO 8601 duration format (used in API version 2016-09-01, e.g., "PT1M"). |
 
 ---
 
@@ -32703,6 +39625,18 @@ public readonly enabled: boolean;
 
 ---
 
+##### `category`<sup>Optional</sup> <a name="category" id="@microsoft/terraform-cdk-constructs.DiagnosticMetricConfig.property.category"></a>
+
+```typescript
+public readonly category: string;
+```
+
+- *Type:* string
+
+Metric category name (used in newer API versions).
+
+---
+
 ##### `retentionPolicy`<sup>Optional</sup> <a name="retentionPolicy" id="@microsoft/terraform-cdk-constructs.DiagnosticMetricConfig.property.retentionPolicy"></a>
 
 ```typescript
@@ -32710,6 +39644,18 @@ public readonly retentionPolicy: RetentionPolicyConfig;
 ```
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.RetentionPolicyConfig
+
+---
+
+##### `timeGrain`<sup>Optional</sup> <a name="timeGrain" id="@microsoft/terraform-cdk-constructs.DiagnosticMetricConfig.property.timeGrain"></a>
+
+```typescript
+public readonly timeGrain: string;
+```
+
+- *Type:* string
+
+Time grain for metrics in ISO 8601 duration format (used in API version 2016-09-01, e.g., "PT1M").
 
 ---
 
@@ -32729,19 +39675,10 @@ const diagnosticMetricConfig: core_azure.DiagnosticMetricConfig = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig.property.category">category</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig.property.category">category</a></code> | <code>string</code> | Metric category name (used in newer API versions). |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig.property.retentionPolicy">retentionPolicy</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.RetentionPolicyConfig</code> | *No description.* |
-
----
-
-##### `category`<sup>Required</sup> <a name="category" id="@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig.property.category"></a>
-
-```typescript
-public readonly category: string;
-```
-
-- *Type:* string
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig.property.timeGrain">timeGrain</a></code> | <code>string</code> | Time grain for metrics in ISO 8601 duration format (used in API version 2016-09-01, e.g., "PT1M"). |
 
 ---
 
@@ -32755,6 +39692,18 @@ public readonly enabled: boolean;
 
 ---
 
+##### `category`<sup>Optional</sup> <a name="category" id="@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig.property.category"></a>
+
+```typescript
+public readonly category: string;
+```
+
+- *Type:* string
+
+Metric category name (used in newer API versions).
+
+---
+
 ##### `retentionPolicy`<sup>Optional</sup> <a name="retentionPolicy" id="@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig.property.retentionPolicy"></a>
 
 ```typescript
@@ -32762,6 +39711,1214 @@ public readonly retentionPolicy: RetentionPolicyConfig;
 ```
 
 - *Type:* @microsoft/terraform-cdk-constructs.core_azure.RetentionPolicyConfig
+
+---
+
+##### `timeGrain`<sup>Optional</sup> <a name="timeGrain" id="@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig.property.timeGrain"></a>
+
+```typescript
+public readonly timeGrain: string;
+```
+
+- *Type:* string
+
+Time grain for metrics in ISO 8601 duration format (used in API version 2016-09-01, e.g., "PT1M").
+
+---
+
+### DiagnosticSettingsBody <a name="DiagnosticSettingsBody" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsBody"></a>
+
+The resource body interface for Azure Diagnostic Settings API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsBody.Initializer"></a>
+
+```typescript
+import { DiagnosticSettingsBody } from '@microsoft/terraform-cdk-constructs'
+
+const diagnosticSettingsBody: DiagnosticSettingsBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties</code> | *No description.* |
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsBody.property.properties"></a>
+
+```typescript
+public readonly properties: DiagnosticSettingsBodyProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties
+
+---
+
+### DiagnosticSettingsBody <a name="DiagnosticSettingsBody" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBody"></a>
+
+The resource body interface for Azure Diagnostic Settings API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBody.Initializer"></a>
+
+```typescript
+import { azure_diagnosticsettings } from '@microsoft/terraform-cdk-constructs'
+
+const diagnosticSettingsBody: azure_diagnosticsettings.DiagnosticSettingsBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties</code> | *No description.* |
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBody.property.properties"></a>
+
+```typescript
+public readonly properties: DiagnosticSettingsBodyProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties
+
+---
+
+### DiagnosticSettingsBodyProperties <a name="DiagnosticSettingsBodyProperties" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties"></a>
+
+Diagnostic Settings properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.Initializer"></a>
+
+```typescript
+import { DiagnosticSettingsBodyProperties } from '@microsoft/terraform-cdk-constructs'
+
+const diagnosticSettingsBodyProperties: DiagnosticSettingsBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.eventHubAuthorizationRuleId">eventHubAuthorizationRuleId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.eventHubName">eventHubName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.logAnalyticsDestinationType">logAnalyticsDestinationType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.logs">logs</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticLogConfig[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.metrics">metrics</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.storageAccountId">storageAccountId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.workspaceId">workspaceId</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `eventHubAuthorizationRuleId`<sup>Optional</sup> <a name="eventHubAuthorizationRuleId" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.eventHubAuthorizationRuleId"></a>
+
+```typescript
+public readonly eventHubAuthorizationRuleId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `eventHubName`<sup>Optional</sup> <a name="eventHubName" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.eventHubName"></a>
+
+```typescript
+public readonly eventHubName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `logAnalyticsDestinationType`<sup>Optional</sup> <a name="logAnalyticsDestinationType" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.logAnalyticsDestinationType"></a>
+
+```typescript
+public readonly logAnalyticsDestinationType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `logs`<sup>Optional</sup> <a name="logs" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.logs"></a>
+
+```typescript
+public readonly logs: DiagnosticLogConfig[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.DiagnosticLogConfig[]
+
+---
+
+##### `metrics`<sup>Optional</sup> <a name="metrics" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.metrics"></a>
+
+```typescript
+public readonly metrics: DiagnosticMetricConfig[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig[]
+
+---
+
+##### `storageAccountId`<sup>Optional</sup> <a name="storageAccountId" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.storageAccountId"></a>
+
+```typescript
+public readonly storageAccountId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `workspaceId`<sup>Optional</sup> <a name="workspaceId" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsBodyProperties.property.workspaceId"></a>
+
+```typescript
+public readonly workspaceId: string;
+```
+
+- *Type:* string
+
+---
+
+### DiagnosticSettingsBodyProperties <a name="DiagnosticSettingsBodyProperties" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties"></a>
+
+Diagnostic Settings properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.Initializer"></a>
+
+```typescript
+import { azure_diagnosticsettings } from '@microsoft/terraform-cdk-constructs'
+
+const diagnosticSettingsBodyProperties: azure_diagnosticsettings.DiagnosticSettingsBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.eventHubAuthorizationRuleId">eventHubAuthorizationRuleId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.eventHubName">eventHubName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.logAnalyticsDestinationType">logAnalyticsDestinationType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.logs">logs</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticLogConfig[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.metrics">metrics</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.storageAccountId">storageAccountId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.workspaceId">workspaceId</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `eventHubAuthorizationRuleId`<sup>Optional</sup> <a name="eventHubAuthorizationRuleId" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.eventHubAuthorizationRuleId"></a>
+
+```typescript
+public readonly eventHubAuthorizationRuleId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `eventHubName`<sup>Optional</sup> <a name="eventHubName" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.eventHubName"></a>
+
+```typescript
+public readonly eventHubName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `logAnalyticsDestinationType`<sup>Optional</sup> <a name="logAnalyticsDestinationType" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.logAnalyticsDestinationType"></a>
+
+```typescript
+public readonly logAnalyticsDestinationType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `logs`<sup>Optional</sup> <a name="logs" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.logs"></a>
+
+```typescript
+public readonly logs: DiagnosticLogConfig[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.DiagnosticLogConfig[]
+
+---
+
+##### `metrics`<sup>Optional</sup> <a name="metrics" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.metrics"></a>
+
+```typescript
+public readonly metrics: DiagnosticMetricConfig[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig[]
+
+---
+
+##### `storageAccountId`<sup>Optional</sup> <a name="storageAccountId" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.storageAccountId"></a>
+
+```typescript
+public readonly storageAccountId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `workspaceId`<sup>Optional</sup> <a name="workspaceId" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsBodyProperties.property.workspaceId"></a>
+
+```typescript
+public readonly workspaceId: string;
+```
+
+- *Type:* string
+
+---
+
+### DiagnosticSettingsProps <a name="DiagnosticSettingsProps" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps"></a>
+
+Properties for the unified Azure Diagnostic Settings.
+
+Extends AzapiResourceProps with Diagnostic Settings specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.Initializer"></a>
+
+```typescript
+import { DiagnosticSettingsProps } from '@microsoft/terraform-cdk-constructs'
+
+const diagnosticSettingsProps: DiagnosticSettingsProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.targetResourceId">targetResourceId</a></code> | <code>string</code> | Target resource ID to attach diagnostic settings to This is the resource being monitored. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.eventHubAuthorizationRuleId">eventHubAuthorizationRuleId</a></code> | <code>string</code> | Event Hub authorization rule ID for streaming Requires eventHubName to be specified as well. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.eventHubName">eventHubName</a></code> | <code>string</code> | Event Hub name for streaming Required when eventHubAuthorizationRuleId is specified. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.logAnalyticsDestinationType">logAnalyticsDestinationType</a></code> | <code>string</code> | Log Analytics destination type Determines the table structure in Log Analytics. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.logs">logs</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticLogConfig[]</code> | Log categories to enable Defines which log categories should be exported. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.metrics">metrics</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig[]</code> | Metric categories to enable Defines which metric categories should be exported. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.storageAccountId">storageAccountId</a></code> | <code>string</code> | Storage account ID for log/metric destination At least one destination (workspace, storage, or event hub) must be specified. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.workspaceId">workspaceId</a></code> | <code>string</code> | Log Analytics workspace ID for log/metric destination At least one destination (workspace, storage, or event hub) must be specified. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `targetResourceId`<sup>Required</sup> <a name="targetResourceId" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.targetResourceId"></a>
+
+```typescript
+public readonly targetResourceId: string;
+```
+
+- *Type:* string
+
+Target resource ID to attach diagnostic settings to This is the resource being monitored.
+
+---
+
+##### `eventHubAuthorizationRuleId`<sup>Optional</sup> <a name="eventHubAuthorizationRuleId" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.eventHubAuthorizationRuleId"></a>
+
+```typescript
+public readonly eventHubAuthorizationRuleId: string;
+```
+
+- *Type:* string
+
+Event Hub authorization rule ID for streaming Requires eventHubName to be specified as well.
+
+---
+
+##### `eventHubName`<sup>Optional</sup> <a name="eventHubName" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.eventHubName"></a>
+
+```typescript
+public readonly eventHubName: string;
+```
+
+- *Type:* string
+
+Event Hub name for streaming Required when eventHubAuthorizationRuleId is specified.
+
+---
+
+##### `logAnalyticsDestinationType`<sup>Optional</sup> <a name="logAnalyticsDestinationType" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.logAnalyticsDestinationType"></a>
+
+```typescript
+public readonly logAnalyticsDestinationType: string;
+```
+
+- *Type:* string
+- *Default:* undefined (uses default behavior)
+
+Log Analytics destination type Determines the table structure in Log Analytics.
+
+---
+
+##### `logs`<sup>Optional</sup> <a name="logs" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.logs"></a>
+
+```typescript
+public readonly logs: DiagnosticLogConfig[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.DiagnosticLogConfig[]
+
+Log categories to enable Defines which log categories should be exported.
+
+---
+
+##### `metrics`<sup>Optional</sup> <a name="metrics" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.metrics"></a>
+
+```typescript
+public readonly metrics: DiagnosticMetricConfig[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig[]
+
+Metric categories to enable Defines which metric categories should be exported.
+
+---
+
+##### `storageAccountId`<sup>Optional</sup> <a name="storageAccountId" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.storageAccountId"></a>
+
+```typescript
+public readonly storageAccountId: string;
+```
+
+- *Type:* string
+
+Storage account ID for log/metric destination At least one destination (workspace, storage, or event hub) must be specified.
+
+---
+
+##### `workspaceId`<sup>Optional</sup> <a name="workspaceId" id="@microsoft/terraform-cdk-constructs.DiagnosticSettingsProps.property.workspaceId"></a>
+
+```typescript
+public readonly workspaceId: string;
+```
+
+- *Type:* string
+
+Log Analytics workspace ID for log/metric destination At least one destination (workspace, storage, or event hub) must be specified.
+
+---
+
+### DiagnosticSettingsProps <a name="DiagnosticSettingsProps" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps"></a>
+
+Properties for the unified Azure Diagnostic Settings.
+
+Extends AzapiResourceProps with Diagnostic Settings specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.Initializer"></a>
+
+```typescript
+import { azure_diagnosticsettings } from '@microsoft/terraform-cdk-constructs'
+
+const diagnosticSettingsProps: azure_diagnosticsettings.DiagnosticSettingsProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.targetResourceId">targetResourceId</a></code> | <code>string</code> | Target resource ID to attach diagnostic settings to This is the resource being monitored. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.eventHubAuthorizationRuleId">eventHubAuthorizationRuleId</a></code> | <code>string</code> | Event Hub authorization rule ID for streaming Requires eventHubName to be specified as well. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.eventHubName">eventHubName</a></code> | <code>string</code> | Event Hub name for streaming Required when eventHubAuthorizationRuleId is specified. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.logAnalyticsDestinationType">logAnalyticsDestinationType</a></code> | <code>string</code> | Log Analytics destination type Determines the table structure in Log Analytics. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.logs">logs</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticLogConfig[]</code> | Log categories to enable Defines which log categories should be exported. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.metrics">metrics</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig[]</code> | Metric categories to enable Defines which metric categories should be exported. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.storageAccountId">storageAccountId</a></code> | <code>string</code> | Storage account ID for log/metric destination At least one destination (workspace, storage, or event hub) must be specified. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.workspaceId">workspaceId</a></code> | <code>string</code> | Log Analytics workspace ID for log/metric destination At least one destination (workspace, storage, or event hub) must be specified. |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `targetResourceId`<sup>Required</sup> <a name="targetResourceId" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.targetResourceId"></a>
+
+```typescript
+public readonly targetResourceId: string;
+```
+
+- *Type:* string
+
+Target resource ID to attach diagnostic settings to This is the resource being monitored.
+
+---
+
+##### `eventHubAuthorizationRuleId`<sup>Optional</sup> <a name="eventHubAuthorizationRuleId" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.eventHubAuthorizationRuleId"></a>
+
+```typescript
+public readonly eventHubAuthorizationRuleId: string;
+```
+
+- *Type:* string
+
+Event Hub authorization rule ID for streaming Requires eventHubName to be specified as well.
+
+---
+
+##### `eventHubName`<sup>Optional</sup> <a name="eventHubName" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.eventHubName"></a>
+
+```typescript
+public readonly eventHubName: string;
+```
+
+- *Type:* string
+
+Event Hub name for streaming Required when eventHubAuthorizationRuleId is specified.
+
+---
+
+##### `logAnalyticsDestinationType`<sup>Optional</sup> <a name="logAnalyticsDestinationType" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.logAnalyticsDestinationType"></a>
+
+```typescript
+public readonly logAnalyticsDestinationType: string;
+```
+
+- *Type:* string
+- *Default:* undefined (uses default behavior)
+
+Log Analytics destination type Determines the table structure in Log Analytics.
+
+---
+
+##### `logs`<sup>Optional</sup> <a name="logs" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.logs"></a>
+
+```typescript
+public readonly logs: DiagnosticLogConfig[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.DiagnosticLogConfig[]
+
+Log categories to enable Defines which log categories should be exported.
+
+---
+
+##### `metrics`<sup>Optional</sup> <a name="metrics" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.metrics"></a>
+
+```typescript
+public readonly metrics: DiagnosticMetricConfig[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.DiagnosticMetricConfig[]
+
+Metric categories to enable Defines which metric categories should be exported.
+
+---
+
+##### `storageAccountId`<sup>Optional</sup> <a name="storageAccountId" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.storageAccountId"></a>
+
+```typescript
+public readonly storageAccountId: string;
+```
+
+- *Type:* string
+
+Storage account ID for log/metric destination At least one destination (workspace, storage, or event hub) must be specified.
+
+---
+
+##### `workspaceId`<sup>Optional</sup> <a name="workspaceId" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps.property.workspaceId"></a>
+
+```typescript
+public readonly workspaceId: string;
+```
+
+- *Type:* string
+
+Log Analytics workspace ID for log/metric destination At least one destination (workspace, storage, or event hub) must be specified.
+
+---
+
+### DynamicThresholdCriteria <a name="DynamicThresholdCriteria" id="@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria"></a>
+
+Dynamic threshold criteria configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.Initializer"></a>
+
+```typescript
+import { DynamicThresholdCriteria } from '@microsoft/terraform-cdk-constructs'
+
+const dynamicThresholdCriteria: DynamicThresholdCriteria = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.alertSensitivity">alertSensitivity</a></code> | <code>string</code> | The alert sensitivity (Low, Medium, High). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.failingPeriods">failingPeriods</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertFailingPeriods</code> | Failing periods configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.metricName">metricName</a></code> | <code>string</code> | The metric name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.operator">operator</a></code> | <code>string</code> | The comparison operator. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.timeAggregation">timeAggregation</a></code> | <code>string</code> | The time aggregation method. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.type">type</a></code> | <code>string</code> | The criteria type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.dimensions">dimensions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension[]</code> | Metric dimensions for filtering (optional). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.ignoreDataBefore">ignoreDataBefore</a></code> | <code>string</code> | Ignore data before this date (ISO 8601 format). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.metricNamespace">metricNamespace</a></code> | <code>string</code> | The metric namespace (optional). |
+
+---
+
+##### `alertSensitivity`<sup>Required</sup> <a name="alertSensitivity" id="@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.alertSensitivity"></a>
+
+```typescript
+public readonly alertSensitivity: string;
+```
+
+- *Type:* string
+
+The alert sensitivity (Low, Medium, High).
+
+---
+
+##### `failingPeriods`<sup>Required</sup> <a name="failingPeriods" id="@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.failingPeriods"></a>
+
+```typescript
+public readonly failingPeriods: MetricAlertFailingPeriods;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertFailingPeriods
+
+Failing periods configuration.
+
+---
+
+##### `metricName`<sup>Required</sup> <a name="metricName" id="@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.metricName"></a>
+
+```typescript
+public readonly metricName: string;
+```
+
+- *Type:* string
+
+The metric name.
+
+---
+
+##### `operator`<sup>Required</sup> <a name="operator" id="@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.operator"></a>
+
+```typescript
+public readonly operator: string;
+```
+
+- *Type:* string
+
+The comparison operator.
+
+---
+
+##### `timeAggregation`<sup>Required</sup> <a name="timeAggregation" id="@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.timeAggregation"></a>
+
+```typescript
+public readonly timeAggregation: string;
+```
+
+- *Type:* string
+
+The time aggregation method.
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+The criteria type.
+
+---
+
+##### `dimensions`<sup>Optional</sup> <a name="dimensions" id="@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.dimensions"></a>
+
+```typescript
+public readonly dimensions: MetricDimension[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension[]
+
+Metric dimensions for filtering (optional).
+
+---
+
+##### `ignoreDataBefore`<sup>Optional</sup> <a name="ignoreDataBefore" id="@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.ignoreDataBefore"></a>
+
+```typescript
+public readonly ignoreDataBefore: string;
+```
+
+- *Type:* string
+
+Ignore data before this date (ISO 8601 format).
+
+---
+
+##### `metricNamespace`<sup>Optional</sup> <a name="metricNamespace" id="@microsoft/terraform-cdk-constructs.DynamicThresholdCriteria.property.metricNamespace"></a>
+
+```typescript
+public readonly metricNamespace: string;
+```
+
+- *Type:* string
+
+The metric namespace (optional).
+
+---
+
+### DynamicThresholdCriteria <a name="DynamicThresholdCriteria" id="@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria"></a>
+
+Dynamic threshold criteria configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.Initializer"></a>
+
+```typescript
+import { azure_metricalert } from '@microsoft/terraform-cdk-constructs'
+
+const dynamicThresholdCriteria: azure_metricalert.DynamicThresholdCriteria = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.alertSensitivity">alertSensitivity</a></code> | <code>string</code> | The alert sensitivity (Low, Medium, High). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.failingPeriods">failingPeriods</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertFailingPeriods</code> | Failing periods configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.metricName">metricName</a></code> | <code>string</code> | The metric name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.operator">operator</a></code> | <code>string</code> | The comparison operator. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.timeAggregation">timeAggregation</a></code> | <code>string</code> | The time aggregation method. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.type">type</a></code> | <code>string</code> | The criteria type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.dimensions">dimensions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension[]</code> | Metric dimensions for filtering (optional). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.ignoreDataBefore">ignoreDataBefore</a></code> | <code>string</code> | Ignore data before this date (ISO 8601 format). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.metricNamespace">metricNamespace</a></code> | <code>string</code> | The metric namespace (optional). |
+
+---
+
+##### `alertSensitivity`<sup>Required</sup> <a name="alertSensitivity" id="@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.alertSensitivity"></a>
+
+```typescript
+public readonly alertSensitivity: string;
+```
+
+- *Type:* string
+
+The alert sensitivity (Low, Medium, High).
+
+---
+
+##### `failingPeriods`<sup>Required</sup> <a name="failingPeriods" id="@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.failingPeriods"></a>
+
+```typescript
+public readonly failingPeriods: MetricAlertFailingPeriods;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertFailingPeriods
+
+Failing periods configuration.
+
+---
+
+##### `metricName`<sup>Required</sup> <a name="metricName" id="@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.metricName"></a>
+
+```typescript
+public readonly metricName: string;
+```
+
+- *Type:* string
+
+The metric name.
+
+---
+
+##### `operator`<sup>Required</sup> <a name="operator" id="@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.operator"></a>
+
+```typescript
+public readonly operator: string;
+```
+
+- *Type:* string
+
+The comparison operator.
+
+---
+
+##### `timeAggregation`<sup>Required</sup> <a name="timeAggregation" id="@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.timeAggregation"></a>
+
+```typescript
+public readonly timeAggregation: string;
+```
+
+- *Type:* string
+
+The time aggregation method.
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+The criteria type.
+
+---
+
+##### `dimensions`<sup>Optional</sup> <a name="dimensions" id="@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.dimensions"></a>
+
+```typescript
+public readonly dimensions: MetricDimension[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension[]
+
+Metric dimensions for filtering (optional).
+
+---
+
+##### `ignoreDataBefore`<sup>Optional</sup> <a name="ignoreDataBefore" id="@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.ignoreDataBefore"></a>
+
+```typescript
+public readonly ignoreDataBefore: string;
+```
+
+- *Type:* string
+
+Ignore data before this date (ISO 8601 format).
+
+---
+
+##### `metricNamespace`<sup>Optional</sup> <a name="metricNamespace" id="@microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria.property.metricNamespace"></a>
+
+```typescript
+public readonly metricNamespace: string;
+```
+
+- *Type:* string
+
+The metric namespace (optional).
+
+---
+
+### EmailReceiver <a name="EmailReceiver" id="@microsoft/terraform-cdk-constructs.EmailReceiver"></a>
+
+Email receiver configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EmailReceiver.Initializer"></a>
+
+```typescript
+import { EmailReceiver } from '@microsoft/terraform-cdk-constructs'
+
+const emailReceiver: EmailReceiver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EmailReceiver.property.emailAddress">emailAddress</a></code> | <code>string</code> | The email address to send notifications to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EmailReceiver.property.name">name</a></code> | <code>string</code> | The name of the email receiver. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EmailReceiver.property.useCommonAlertSchema">useCommonAlertSchema</a></code> | <code>boolean</code> | Whether to use common alert schema. |
+
+---
+
+##### `emailAddress`<sup>Required</sup> <a name="emailAddress" id="@microsoft/terraform-cdk-constructs.EmailReceiver.property.emailAddress"></a>
+
+```typescript
+public readonly emailAddress: string;
+```
+
+- *Type:* string
+
+The email address to send notifications to.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.EmailReceiver.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the email receiver.
+
+---
+
+##### `useCommonAlertSchema`<sup>Optional</sup> <a name="useCommonAlertSchema" id="@microsoft/terraform-cdk-constructs.EmailReceiver.property.useCommonAlertSchema"></a>
+
+```typescript
+public readonly useCommonAlertSchema: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether to use common alert schema.
+
+---
+
+### EmailReceiver <a name="EmailReceiver" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver"></a>
+
+Email receiver configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver.Initializer"></a>
+
+```typescript
+import { azure_actiongroup } from '@microsoft/terraform-cdk-constructs'
+
+const emailReceiver: azure_actiongroup.EmailReceiver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver.property.emailAddress">emailAddress</a></code> | <code>string</code> | The email address to send notifications to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver.property.name">name</a></code> | <code>string</code> | The name of the email receiver. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver.property.useCommonAlertSchema">useCommonAlertSchema</a></code> | <code>boolean</code> | Whether to use common alert schema. |
+
+---
+
+##### `emailAddress`<sup>Required</sup> <a name="emailAddress" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver.property.emailAddress"></a>
+
+```typescript
+public readonly emailAddress: string;
+```
+
+- *Type:* string
+
+The email address to send notifications to.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the email receiver.
+
+---
+
+##### `useCommonAlertSchema`<sup>Optional</sup> <a name="useCommonAlertSchema" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.EmailReceiver.property.useCommonAlertSchema"></a>
+
+```typescript
+public readonly useCommonAlertSchema: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether to use common alert schema.
 
 ---
 
@@ -32942,6 +41099,1578 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+---
+
+### LogicAppReceiver <a name="LogicAppReceiver" id="@microsoft/terraform-cdk-constructs.LogicAppReceiver"></a>
+
+Logic App receiver configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.LogicAppReceiver.Initializer"></a>
+
+```typescript
+import { LogicAppReceiver } from '@microsoft/terraform-cdk-constructs'
+
+const logicAppReceiver: LogicAppReceiver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogicAppReceiver.property.callbackUrl">callbackUrl</a></code> | <code>string</code> | The callback URL. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogicAppReceiver.property.name">name</a></code> | <code>string</code> | The name of the Logic App receiver. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogicAppReceiver.property.resourceId">resourceId</a></code> | <code>string</code> | The Logic App resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogicAppReceiver.property.useCommonAlertSchema">useCommonAlertSchema</a></code> | <code>boolean</code> | Whether to use common alert schema. |
+
+---
+
+##### `callbackUrl`<sup>Required</sup> <a name="callbackUrl" id="@microsoft/terraform-cdk-constructs.LogicAppReceiver.property.callbackUrl"></a>
+
+```typescript
+public readonly callbackUrl: string;
+```
+
+- *Type:* string
+
+The callback URL.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.LogicAppReceiver.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the Logic App receiver.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.LogicAppReceiver.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+The Logic App resource ID.
+
+---
+
+##### `useCommonAlertSchema`<sup>Optional</sup> <a name="useCommonAlertSchema" id="@microsoft/terraform-cdk-constructs.LogicAppReceiver.property.useCommonAlertSchema"></a>
+
+```typescript
+public readonly useCommonAlertSchema: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether to use common alert schema.
+
+---
+
+### LogicAppReceiver <a name="LogicAppReceiver" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver"></a>
+
+Logic App receiver configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver.Initializer"></a>
+
+```typescript
+import { azure_actiongroup } from '@microsoft/terraform-cdk-constructs'
+
+const logicAppReceiver: azure_actiongroup.LogicAppReceiver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver.property.callbackUrl">callbackUrl</a></code> | <code>string</code> | The callback URL. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver.property.name">name</a></code> | <code>string</code> | The name of the Logic App receiver. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver.property.resourceId">resourceId</a></code> | <code>string</code> | The Logic App resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver.property.useCommonAlertSchema">useCommonAlertSchema</a></code> | <code>boolean</code> | Whether to use common alert schema. |
+
+---
+
+##### `callbackUrl`<sup>Required</sup> <a name="callbackUrl" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver.property.callbackUrl"></a>
+
+```typescript
+public readonly callbackUrl: string;
+```
+
+- *Type:* string
+
+The callback URL.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the Logic App receiver.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+The Logic App resource ID.
+
+---
+
+##### `useCommonAlertSchema`<sup>Optional</sup> <a name="useCommonAlertSchema" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.LogicAppReceiver.property.useCommonAlertSchema"></a>
+
+```typescript
+public readonly useCommonAlertSchema: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether to use common alert schema.
+
+---
+
+### MetricAlertAction <a name="MetricAlertAction" id="@microsoft/terraform-cdk-constructs.MetricAlertAction"></a>
+
+Metric alert action configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.MetricAlertAction.Initializer"></a>
+
+```typescript
+import { MetricAlertAction } from '@microsoft/terraform-cdk-constructs'
+
+const metricAlertAction: MetricAlertAction = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertAction.property.actionGroupId">actionGroupId</a></code> | <code>string</code> | The action group resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertAction.property.webHookProperties">webHookProperties</a></code> | <code>{[ key: string ]: string}</code> | Webhook properties (optional). |
+
+---
+
+##### `actionGroupId`<sup>Required</sup> <a name="actionGroupId" id="@microsoft/terraform-cdk-constructs.MetricAlertAction.property.actionGroupId"></a>
+
+```typescript
+public readonly actionGroupId: string;
+```
+
+- *Type:* string
+
+The action group resource ID.
+
+---
+
+##### `webHookProperties`<sup>Optional</sup> <a name="webHookProperties" id="@microsoft/terraform-cdk-constructs.MetricAlertAction.property.webHookProperties"></a>
+
+```typescript
+public readonly webHookProperties: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Webhook properties (optional).
+
+---
+
+### MetricAlertAction <a name="MetricAlertAction" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction"></a>
+
+Metric alert action configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction.Initializer"></a>
+
+```typescript
+import { azure_metricalert } from '@microsoft/terraform-cdk-constructs'
+
+const metricAlertAction: azure_metricalert.MetricAlertAction = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction.property.actionGroupId">actionGroupId</a></code> | <code>string</code> | The action group resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction.property.webHookProperties">webHookProperties</a></code> | <code>{[ key: string ]: string}</code> | Webhook properties (optional). |
+
+---
+
+##### `actionGroupId`<sup>Required</sup> <a name="actionGroupId" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction.property.actionGroupId"></a>
+
+```typescript
+public readonly actionGroupId: string;
+```
+
+- *Type:* string
+
+The action group resource ID.
+
+---
+
+##### `webHookProperties`<sup>Optional</sup> <a name="webHookProperties" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction.property.webHookProperties"></a>
+
+```typescript
+public readonly webHookProperties: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Webhook properties (optional).
+
+---
+
+### MetricAlertBody <a name="MetricAlertBody" id="@microsoft/terraform-cdk-constructs.MetricAlertBody"></a>
+
+The resource body interface for Azure Metric Alert API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.MetricAlertBody.Initializer"></a>
+
+```typescript
+import { MetricAlertBody } from '@microsoft/terraform-cdk-constructs'
+
+const metricAlertBody: MetricAlertBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.MetricAlertBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.MetricAlertBody.property.properties"></a>
+
+```typescript
+public readonly properties: MetricAlertBodyProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.MetricAlertBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### MetricAlertBody <a name="MetricAlertBody" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBody"></a>
+
+The resource body interface for Azure Metric Alert API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBody.Initializer"></a>
+
+```typescript
+import { azure_metricalert } from '@microsoft/terraform-cdk-constructs'
+
+const metricAlertBody: azure_metricalert.MetricAlertBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBody.property.properties"></a>
+
+```typescript
+public readonly properties: MetricAlertBodyProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### MetricAlertBodyProperties <a name="MetricAlertBodyProperties" id="@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties"></a>
+
+Metric Alert properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.Initializer"></a>
+
+```typescript
+import { MetricAlertBodyProperties } from '@microsoft/terraform-cdk-constructs'
+
+const metricAlertBodyProperties: MetricAlertBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.autoMitigate">autoMitigate</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.criteria">criteria</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.evaluationFrequency">evaluationFrequency</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.scopes">scopes</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.severity">severity</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.windowSize">windowSize</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.actions">actions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.description">description</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.targetResourceRegion">targetResourceRegion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.targetResourceType">targetResourceType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `autoMitigate`<sup>Required</sup> <a name="autoMitigate" id="@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.autoMitigate"></a>
+
+```typescript
+public readonly autoMitigate: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `criteria`<sup>Required</sup> <a name="criteria" id="@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.criteria"></a>
+
+```typescript
+public readonly criteria: any;
+```
+
+- *Type:* any
+
+---
+
+##### `enabled`<sup>Required</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `evaluationFrequency`<sup>Required</sup> <a name="evaluationFrequency" id="@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.evaluationFrequency"></a>
+
+```typescript
+public readonly evaluationFrequency: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scopes`<sup>Required</sup> <a name="scopes" id="@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.scopes"></a>
+
+```typescript
+public readonly scopes: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `severity`<sup>Required</sup> <a name="severity" id="@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.severity"></a>
+
+```typescript
+public readonly severity: number;
+```
+
+- *Type:* number
+
+---
+
+##### `windowSize`<sup>Required</sup> <a name="windowSize" id="@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.windowSize"></a>
+
+```typescript
+public readonly windowSize: string;
+```
+
+- *Type:* string
+
+---
+
+##### `actions`<sup>Optional</sup> <a name="actions" id="@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.actions"></a>
+
+```typescript
+public readonly actions: MetricAlertAction[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction[]
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+---
+
+##### `targetResourceRegion`<sup>Optional</sup> <a name="targetResourceRegion" id="@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.targetResourceRegion"></a>
+
+```typescript
+public readonly targetResourceRegion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `targetResourceType`<sup>Optional</sup> <a name="targetResourceType" id="@microsoft/terraform-cdk-constructs.MetricAlertBodyProperties.property.targetResourceType"></a>
+
+```typescript
+public readonly targetResourceType: string;
+```
+
+- *Type:* string
+
+---
+
+### MetricAlertBodyProperties <a name="MetricAlertBodyProperties" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties"></a>
+
+Metric Alert properties for the request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.Initializer"></a>
+
+```typescript
+import { azure_metricalert } from '@microsoft/terraform-cdk-constructs'
+
+const metricAlertBodyProperties: azure_metricalert.MetricAlertBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.autoMitigate">autoMitigate</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.criteria">criteria</a></code> | <code>any</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.evaluationFrequency">evaluationFrequency</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.scopes">scopes</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.severity">severity</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.windowSize">windowSize</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.actions">actions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.description">description</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.targetResourceRegion">targetResourceRegion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.targetResourceType">targetResourceType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `autoMitigate`<sup>Required</sup> <a name="autoMitigate" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.autoMitigate"></a>
+
+```typescript
+public readonly autoMitigate: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `criteria`<sup>Required</sup> <a name="criteria" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.criteria"></a>
+
+```typescript
+public readonly criteria: any;
+```
+
+- *Type:* any
+
+---
+
+##### `enabled`<sup>Required</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `evaluationFrequency`<sup>Required</sup> <a name="evaluationFrequency" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.evaluationFrequency"></a>
+
+```typescript
+public readonly evaluationFrequency: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scopes`<sup>Required</sup> <a name="scopes" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.scopes"></a>
+
+```typescript
+public readonly scopes: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `severity`<sup>Required</sup> <a name="severity" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.severity"></a>
+
+```typescript
+public readonly severity: number;
+```
+
+- *Type:* number
+
+---
+
+##### `windowSize`<sup>Required</sup> <a name="windowSize" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.windowSize"></a>
+
+```typescript
+public readonly windowSize: string;
+```
+
+- *Type:* string
+
+---
+
+##### `actions`<sup>Optional</sup> <a name="actions" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.actions"></a>
+
+```typescript
+public readonly actions: MetricAlertAction[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction[]
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+---
+
+##### `targetResourceRegion`<sup>Optional</sup> <a name="targetResourceRegion" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.targetResourceRegion"></a>
+
+```typescript
+public readonly targetResourceRegion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `targetResourceType`<sup>Optional</sup> <a name="targetResourceType" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertBodyProperties.property.targetResourceType"></a>
+
+```typescript
+public readonly targetResourceType: string;
+```
+
+- *Type:* string
+
+---
+
+### MetricAlertFailingPeriods <a name="MetricAlertFailingPeriods" id="@microsoft/terraform-cdk-constructs.MetricAlertFailingPeriods"></a>
+
+Metric alert failing periods configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.MetricAlertFailingPeriods.Initializer"></a>
+
+```typescript
+import { MetricAlertFailingPeriods } from '@microsoft/terraform-cdk-constructs'
+
+const metricAlertFailingPeriods: MetricAlertFailingPeriods = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertFailingPeriods.property.minFailingPeriodsToAlert">minFailingPeriodsToAlert</a></code> | <code>number</code> | Minimum failing periods to trigger alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertFailingPeriods.property.numberOfEvaluationPeriods">numberOfEvaluationPeriods</a></code> | <code>number</code> | Number of evaluation periods. |
+
+---
+
+##### `minFailingPeriodsToAlert`<sup>Required</sup> <a name="minFailingPeriodsToAlert" id="@microsoft/terraform-cdk-constructs.MetricAlertFailingPeriods.property.minFailingPeriodsToAlert"></a>
+
+```typescript
+public readonly minFailingPeriodsToAlert: number;
+```
+
+- *Type:* number
+
+Minimum failing periods to trigger alert.
+
+---
+
+##### `numberOfEvaluationPeriods`<sup>Required</sup> <a name="numberOfEvaluationPeriods" id="@microsoft/terraform-cdk-constructs.MetricAlertFailingPeriods.property.numberOfEvaluationPeriods"></a>
+
+```typescript
+public readonly numberOfEvaluationPeriods: number;
+```
+
+- *Type:* number
+
+Number of evaluation periods.
+
+---
+
+### MetricAlertFailingPeriods <a name="MetricAlertFailingPeriods" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertFailingPeriods"></a>
+
+Metric alert failing periods configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertFailingPeriods.Initializer"></a>
+
+```typescript
+import { azure_metricalert } from '@microsoft/terraform-cdk-constructs'
+
+const metricAlertFailingPeriods: azure_metricalert.MetricAlertFailingPeriods = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertFailingPeriods.property.minFailingPeriodsToAlert">minFailingPeriodsToAlert</a></code> | <code>number</code> | Minimum failing periods to trigger alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertFailingPeriods.property.numberOfEvaluationPeriods">numberOfEvaluationPeriods</a></code> | <code>number</code> | Number of evaluation periods. |
+
+---
+
+##### `minFailingPeriodsToAlert`<sup>Required</sup> <a name="minFailingPeriodsToAlert" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertFailingPeriods.property.minFailingPeriodsToAlert"></a>
+
+```typescript
+public readonly minFailingPeriodsToAlert: number;
+```
+
+- *Type:* number
+
+Minimum failing periods to trigger alert.
+
+---
+
+##### `numberOfEvaluationPeriods`<sup>Required</sup> <a name="numberOfEvaluationPeriods" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertFailingPeriods.property.numberOfEvaluationPeriods"></a>
+
+```typescript
+public readonly numberOfEvaluationPeriods: number;
+```
+
+- *Type:* number
+
+Number of evaluation periods.
+
+---
+
+### MetricAlertProps <a name="MetricAlertProps" id="@microsoft/terraform-cdk-constructs.MetricAlertProps"></a>
+
+Properties for the unified Azure Metric Alert.
+
+Extends AzapiResourceProps with Metric Alert specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.Initializer"></a>
+
+```typescript
+import { MetricAlertProps } from '@microsoft/terraform-cdk-constructs'
+
+const metricAlertProps: MetricAlertProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.criteria">criteria</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria \| @microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria</code> | Alert criteria (static or dynamic threshold). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.scopes">scopes</a></code> | <code>string[]</code> | Resource IDs that this alert is scoped to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.severity">severity</a></code> | <code>number</code> | Alert severity (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.actions">actions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction[]</code> | Action groups to notify. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.autoMitigate">autoMitigate</a></code> | <code>boolean</code> | Auto-resolve alerts when condition is no longer met. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.description">description</a></code> | <code>string</code> | Description of the alert rule. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.enabled">enabled</a></code> | <code>boolean</code> | Whether the alert rule is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.evaluationFrequency">evaluationFrequency</a></code> | <code>string</code> | How often the alert is evaluated (ISO 8601 duration). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the metric alert will be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.targetResourceRegion">targetResourceRegion</a></code> | <code>string</code> | Region of the target resource (for multi-resource alerts). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.targetResourceType">targetResourceType</a></code> | <code>string</code> | Resource type of the target (for multi-resource alerts). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlertProps.property.windowSize">windowSize</a></code> | <code>string</code> | Time window for aggregation (ISO 8601 duration). |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `criteria`<sup>Required</sup> <a name="criteria" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.criteria"></a>
+
+```typescript
+public readonly criteria: StaticThresholdCriteria | DynamicThresholdCriteria;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria | @microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria
+
+Alert criteria (static or dynamic threshold).
+
+---
+
+##### `scopes`<sup>Required</sup> <a name="scopes" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.scopes"></a>
+
+```typescript
+public readonly scopes: string[];
+```
+
+- *Type:* string[]
+
+Resource IDs that this alert is scoped to.
+
+---
+
+*Example*
+
+```typescript
+["/subscriptions/.../resourceGroups/.../providers/Microsoft.Compute/virtualMachines/myVM"]
+```
+
+
+##### `severity`<sup>Required</sup> <a name="severity" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.severity"></a>
+
+```typescript
+public readonly severity: number;
+```
+
+- *Type:* number
+
+Alert severity (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose).
+
+---
+
+*Example*
+
+```typescript
+2
+```
+
+
+##### `actions`<sup>Optional</sup> <a name="actions" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.actions"></a>
+
+```typescript
+public readonly actions: MetricAlertAction[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction[]
+
+Action groups to notify.
+
+---
+
+##### `autoMitigate`<sup>Optional</sup> <a name="autoMitigate" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.autoMitigate"></a>
+
+```typescript
+public readonly autoMitigate: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Auto-resolve alerts when condition is no longer met.
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+Description of the alert rule.
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether the alert rule is enabled.
+
+---
+
+##### `evaluationFrequency`<sup>Optional</sup> <a name="evaluationFrequency" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.evaluationFrequency"></a>
+
+```typescript
+public readonly evaluationFrequency: string;
+```
+
+- *Type:* string
+- *Default:* "PT5M"
+
+How often the alert is evaluated (ISO 8601 duration).
+
+---
+
+*Example*
+
+```typescript
+"PT1M", "PT5M", "PT15M"
+```
+
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the metric alert will be created.
+
+---
+
+##### `targetResourceRegion`<sup>Optional</sup> <a name="targetResourceRegion" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.targetResourceRegion"></a>
+
+```typescript
+public readonly targetResourceRegion: string;
+```
+
+- *Type:* string
+
+Region of the target resource (for multi-resource alerts).
+
+---
+
+*Example*
+
+```typescript
+"eastus"
+```
+
+
+##### `targetResourceType`<sup>Optional</sup> <a name="targetResourceType" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.targetResourceType"></a>
+
+```typescript
+public readonly targetResourceType: string;
+```
+
+- *Type:* string
+
+Resource type of the target (for multi-resource alerts).
+
+---
+
+*Example*
+
+```typescript
+"Microsoft.Compute/virtualMachines"
+```
+
+
+##### `windowSize`<sup>Optional</sup> <a name="windowSize" id="@microsoft/terraform-cdk-constructs.MetricAlertProps.property.windowSize"></a>
+
+```typescript
+public readonly windowSize: string;
+```
+
+- *Type:* string
+- *Default:* "PT15M"
+
+Time window for aggregation (ISO 8601 duration).
+
+---
+
+*Example*
+
+```typescript
+"PT5M", "PT15M", "PT30M", "PT1H"
+```
+
+
+### MetricAlertProps <a name="MetricAlertProps" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps"></a>
+
+Properties for the unified Azure Metric Alert.
+
+Extends AzapiResourceProps with Metric Alert specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.Initializer"></a>
+
+```typescript
+import { azure_metricalert } from '@microsoft/terraform-cdk-constructs'
+
+const metricAlertProps: azure_metricalert.MetricAlertProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.criteria">criteria</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria \| @microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria</code> | Alert criteria (static or dynamic threshold). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.scopes">scopes</a></code> | <code>string[]</code> | Resource IDs that this alert is scoped to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.severity">severity</a></code> | <code>number</code> | Alert severity (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.actions">actions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction[]</code> | Action groups to notify. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.autoMitigate">autoMitigate</a></code> | <code>boolean</code> | Auto-resolve alerts when condition is no longer met. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.description">description</a></code> | <code>string</code> | Description of the alert rule. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.enabled">enabled</a></code> | <code>boolean</code> | Whether the alert rule is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.evaluationFrequency">evaluationFrequency</a></code> | <code>string</code> | How often the alert is evaluated (ISO 8601 duration). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the metric alert will be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.targetResourceRegion">targetResourceRegion</a></code> | <code>string</code> | Region of the target resource (for multi-resource alerts). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.targetResourceType">targetResourceType</a></code> | <code>string</code> | Resource type of the target (for multi-resource alerts). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.windowSize">windowSize</a></code> | <code>string</code> | Time window for aggregation (ISO 8601 duration). |
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location where the resource should be created.
+
+---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `criteria`<sup>Required</sup> <a name="criteria" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.criteria"></a>
+
+```typescript
+public readonly criteria: StaticThresholdCriteria | DynamicThresholdCriteria;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria | @microsoft/terraform-cdk-constructs.azure_metricalert.DynamicThresholdCriteria
+
+Alert criteria (static or dynamic threshold).
+
+---
+
+##### `scopes`<sup>Required</sup> <a name="scopes" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.scopes"></a>
+
+```typescript
+public readonly scopes: string[];
+```
+
+- *Type:* string[]
+
+Resource IDs that this alert is scoped to.
+
+---
+
+*Example*
+
+```typescript
+["/subscriptions/.../resourceGroups/.../providers/Microsoft.Compute/virtualMachines/myVM"]
+```
+
+
+##### `severity`<sup>Required</sup> <a name="severity" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.severity"></a>
+
+```typescript
+public readonly severity: number;
+```
+
+- *Type:* number
+
+Alert severity (0=Critical, 1=Error, 2=Warning, 3=Informational, 4=Verbose).
+
+---
+
+*Example*
+
+```typescript
+2
+```
+
+
+##### `actions`<sup>Optional</sup> <a name="actions" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.actions"></a>
+
+```typescript
+public readonly actions: MetricAlertAction[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertAction[]
+
+Action groups to notify.
+
+---
+
+##### `autoMitigate`<sup>Optional</sup> <a name="autoMitigate" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.autoMitigate"></a>
+
+```typescript
+public readonly autoMitigate: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Auto-resolve alerts when condition is no longer met.
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+Description of the alert rule.
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether the alert rule is enabled.
+
+---
+
+##### `evaluationFrequency`<sup>Optional</sup> <a name="evaluationFrequency" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.evaluationFrequency"></a>
+
+```typescript
+public readonly evaluationFrequency: string;
+```
+
+- *Type:* string
+- *Default:* "PT5M"
+
+How often the alert is evaluated (ISO 8601 duration).
+
+---
+
+*Example*
+
+```typescript
+"PT1M", "PT5M", "PT15M"
+```
+
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the metric alert will be created.
+
+---
+
+##### `targetResourceRegion`<sup>Optional</sup> <a name="targetResourceRegion" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.targetResourceRegion"></a>
+
+```typescript
+public readonly targetResourceRegion: string;
+```
+
+- *Type:* string
+
+Region of the target resource (for multi-resource alerts).
+
+---
+
+*Example*
+
+```typescript
+"eastus"
+```
+
+
+##### `targetResourceType`<sup>Optional</sup> <a name="targetResourceType" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.targetResourceType"></a>
+
+```typescript
+public readonly targetResourceType: string;
+```
+
+- *Type:* string
+
+Resource type of the target (for multi-resource alerts).
+
+---
+
+*Example*
+
+```typescript
+"Microsoft.Compute/virtualMachines"
+```
+
+
+##### `windowSize`<sup>Optional</sup> <a name="windowSize" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps.property.windowSize"></a>
+
+```typescript
+public readonly windowSize: string;
+```
+
+- *Type:* string
+- *Default:* "PT15M"
+
+Time window for aggregation (ISO 8601 duration).
+
+---
+
+*Example*
+
+```typescript
+"PT5M", "PT15M", "PT30M", "PT1H"
+```
+
+
+### MetricDimension <a name="MetricDimension" id="@microsoft/terraform-cdk-constructs.MetricDimension"></a>
+
+Metric dimension for filtering.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.MetricDimension.Initializer"></a>
+
+```typescript
+import { MetricDimension } from '@microsoft/terraform-cdk-constructs'
+
+const metricDimension: MetricDimension = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricDimension.property.name">name</a></code> | <code>string</code> | The dimension name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricDimension.property.operator">operator</a></code> | <code>string</code> | The operator (Include or Exclude). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricDimension.property.values">values</a></code> | <code>string[]</code> | The dimension values. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.MetricDimension.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The dimension name.
+
+---
+
+##### `operator`<sup>Required</sup> <a name="operator" id="@microsoft/terraform-cdk-constructs.MetricDimension.property.operator"></a>
+
+```typescript
+public readonly operator: string;
+```
+
+- *Type:* string
+
+The operator (Include or Exclude).
+
+---
+
+##### `values`<sup>Required</sup> <a name="values" id="@microsoft/terraform-cdk-constructs.MetricDimension.property.values"></a>
+
+```typescript
+public readonly values: string[];
+```
+
+- *Type:* string[]
+
+The dimension values.
+
+---
+
+### MetricDimension <a name="MetricDimension" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension"></a>
+
+Metric dimension for filtering.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension.Initializer"></a>
+
+```typescript
+import { azure_metricalert } from '@microsoft/terraform-cdk-constructs'
+
+const metricDimension: azure_metricalert.MetricDimension = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension.property.name">name</a></code> | <code>string</code> | The dimension name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension.property.operator">operator</a></code> | <code>string</code> | The operator (Include or Exclude). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension.property.values">values</a></code> | <code>string[]</code> | The dimension values. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The dimension name.
+
+---
+
+##### `operator`<sup>Required</sup> <a name="operator" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension.property.operator"></a>
+
+```typescript
+public readonly operator: string;
+```
+
+- *Type:* string
+
+The operator (Include or Exclude).
+
+---
+
+##### `values`<sup>Required</sup> <a name="values" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension.property.values"></a>
+
+```typescript
+public readonly values: string[];
+```
+
+- *Type:* string[]
+
+The dimension values.
 
 ---
 
@@ -33198,6 +42927,184 @@ public readonly warnings: string[];
 - *Type:* string[]
 
 Array of non-breaking warnings about the migration May include deprecation notices or recommendations.
+
+---
+
+### MonitoringConfig <a name="MonitoringConfig" id="@microsoft/terraform-cdk-constructs.MonitoringConfig"></a>
+
+Monitoring configuration for Azure resources.
+
+Provides integrated monitoring capabilities including diagnostic settings,
+metric alerts, and activity log alerts. All monitoring is optional and
+disabled by default.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.MonitoringConfig.Initializer"></a>
+
+```typescript
+import { MonitoringConfig } from '@microsoft/terraform-cdk-constructs'
+
+const monitoringConfig: MonitoringConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MonitoringConfig.property.actionGroups">actionGroups</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps[]</code> | Action groups to create for this resource Creates new ActionGroup instances as child constructs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MonitoringConfig.property.activityLogAlerts">activityLogAlerts</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps[]</code> | Activity log alerts configuration Creates ActivityLogAlert instances for this resource's operations. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MonitoringConfig.property.diagnosticSettings">diagnosticSettings</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps</code> | Diagnostic settings configuration Uses the full DiagnosticSettings construct for consistency. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MonitoringConfig.property.enabled">enabled</a></code> | <code>boolean</code> | Whether monitoring is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MonitoringConfig.property.metricAlerts">metricAlerts</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps[]</code> | Metric alerts configuration Creates MetricAlert instances scoped to this resource. |
+
+---
+
+##### `actionGroups`<sup>Optional</sup> <a name="actionGroups" id="@microsoft/terraform-cdk-constructs.MonitoringConfig.property.actionGroups"></a>
+
+```typescript
+public readonly actionGroups: ActionGroupProps[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps[]
+
+Action groups to create for this resource Creates new ActionGroup instances as child constructs.
+
+---
+
+##### `activityLogAlerts`<sup>Optional</sup> <a name="activityLogAlerts" id="@microsoft/terraform-cdk-constructs.MonitoringConfig.property.activityLogAlerts"></a>
+
+```typescript
+public readonly activityLogAlerts: ActivityLogAlertProps[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps[]
+
+Activity log alerts configuration Creates ActivityLogAlert instances for this resource's operations.
+
+---
+
+##### `diagnosticSettings`<sup>Optional</sup> <a name="diagnosticSettings" id="@microsoft/terraform-cdk-constructs.MonitoringConfig.property.diagnosticSettings"></a>
+
+```typescript
+public readonly diagnosticSettings: DiagnosticSettingsProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps
+
+Diagnostic settings configuration Uses the full DiagnosticSettings construct for consistency.
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.MonitoringConfig.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether monitoring is enabled.
+
+---
+
+##### `metricAlerts`<sup>Optional</sup> <a name="metricAlerts" id="@microsoft/terraform-cdk-constructs.MonitoringConfig.property.metricAlerts"></a>
+
+```typescript
+public readonly metricAlerts: MetricAlertProps[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps[]
+
+Metric alerts configuration Creates MetricAlert instances scoped to this resource.
+
+---
+
+### MonitoringConfig <a name="MonitoringConfig" id="@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig"></a>
+
+Monitoring configuration for Azure resources.
+
+Provides integrated monitoring capabilities including diagnostic settings,
+metric alerts, and activity log alerts. All monitoring is optional and
+disabled by default.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig.Initializer"></a>
+
+```typescript
+import { core_azure } from '@microsoft/terraform-cdk-constructs'
+
+const monitoringConfig: core_azure.MonitoringConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig.property.actionGroups">actionGroups</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps[]</code> | Action groups to create for this resource Creates new ActionGroup instances as child constructs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig.property.activityLogAlerts">activityLogAlerts</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps[]</code> | Activity log alerts configuration Creates ActivityLogAlert instances for this resource's operations. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig.property.diagnosticSettings">diagnosticSettings</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps</code> | Diagnostic settings configuration Uses the full DiagnosticSettings construct for consistency. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig.property.enabled">enabled</a></code> | <code>boolean</code> | Whether monitoring is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig.property.metricAlerts">metricAlerts</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps[]</code> | Metric alerts configuration Creates MetricAlert instances scoped to this resource. |
+
+---
+
+##### `actionGroups`<sup>Optional</sup> <a name="actionGroups" id="@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig.property.actionGroups"></a>
+
+```typescript
+public readonly actionGroups: ActionGroupProps[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroupProps[]
+
+Action groups to create for this resource Creates new ActionGroup instances as child constructs.
+
+---
+
+##### `activityLogAlerts`<sup>Optional</sup> <a name="activityLogAlerts" id="@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig.property.activityLogAlerts"></a>
+
+```typescript
+public readonly activityLogAlerts: ActivityLogAlertProps[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlertProps[]
+
+Activity log alerts configuration Creates ActivityLogAlert instances for this resource's operations.
+
+---
+
+##### `diagnosticSettings`<sup>Optional</sup> <a name="diagnosticSettings" id="@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig.property.diagnosticSettings"></a>
+
+```typescript
+public readonly diagnosticSettings: DiagnosticSettingsProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettingsProps
+
+Diagnostic settings configuration Uses the full DiagnosticSettings construct for consistency.
+
+---
+
+##### `enabled`<sup>Optional</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether monitoring is enabled.
+
+---
+
+##### `metricAlerts`<sup>Optional</sup> <a name="metricAlerts" id="@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig.property.metricAlerts"></a>
+
+```typescript
+public readonly metricAlerts: MetricAlertProps[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlertProps[]
+
+Metric alerts configuration Creates MetricAlert instances scoped to this resource.
 
 ---
 
@@ -34178,6 +44085,7 @@ const networkInterfaceProps: NetworkInterfaceProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.ipConfigurations">ipConfigurations</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration">NetworkInterfaceIPConfiguration</a>[]</code> | IP configurations for the network interface At least one IP configuration is required One IP configuration must be marked as primary. |
@@ -34272,6 +44180,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.NetworkInterfaceProps.property.name"></a>
 
@@ -34420,6 +44364,7 @@ const networkInterfaceProps: azure_networkinterface.NetworkInterfaceProps = { ..
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.ipConfigurations">ipConfigurations</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterfaceIPConfiguration">NetworkInterfaceIPConfiguration</a>[]</code> | IP configurations for the network interface At least one IP configuration is required One IP configuration must be marked as primary. |
@@ -34514,6 +44459,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterfaceProps.property.name"></a>
 
@@ -34790,6 +44771,7 @@ const networkSecurityGroupProps: NetworkSecurityGroupProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.flushConnection">flushConnection</a></code> | <code>boolean</code> | When enabled, flows created from NSG connections will be re-evaluated when rules are updated. |
@@ -34881,6 +44863,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroupProps.property.name"></a>
 
@@ -34985,6 +45003,7 @@ const networkSecurityGroupProps: azure_networksecuritygroup.NetworkSecurityGroup
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.flushConnection">flushConnection</a></code> | <code>boolean</code> | When enabled, flows created from NSG connections will be re-evaluated when rules are updated. |
@@ -35076,6 +45095,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroupProps.property.name"></a>
 
@@ -35214,6 +45269,304 @@ public readonly id: string;
 ```
 
 - *Type:* string
+
+---
+
+### OrphanedResource <a name="OrphanedResource" id="@microsoft/terraform-cdk-constructs.OrphanedResource"></a>
+
+Orphaned resource information.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.OrphanedResource.Initializer"></a>
+
+```typescript
+import { OrphanedResource } from '@microsoft/terraform-cdk-constructs'
+
+const orphanedResource: OrphanedResource = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.OrphanedResource.property.ageHours">ageHours</a></code> | <code>number</code> | Age in hours since creation. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.OrphanedResource.property.cleanupAfter">cleanupAfter</a></code> | <code>Date</code> | Cleanup after timestamp from tags. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.OrphanedResource.property.createdAt">createdAt</a></code> | <code>Date</code> | Creation timestamp from tags. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.OrphanedResource.property.location">location</a></code> | <code>string</code> | Resource location. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.OrphanedResource.property.name">name</a></code> | <code>string</code> | Resource name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.OrphanedResource.property.resourceGroup">resourceGroup</a></code> | <code>string</code> | Resource group name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.OrphanedResource.property.resourceId">resourceId</a></code> | <code>string</code> | Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.OrphanedResource.property.resourceType">resourceType</a></code> | <code>string</code> | Azure resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.OrphanedResource.property.testName">testName</a></code> | <code>string</code> | Test name from tags. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.OrphanedResource.property.testRunId">testRunId</a></code> | <code>string</code> | Test run ID from tags. |
+
+---
+
+##### `ageHours`<sup>Required</sup> <a name="ageHours" id="@microsoft/terraform-cdk-constructs.OrphanedResource.property.ageHours"></a>
+
+```typescript
+public readonly ageHours: number;
+```
+
+- *Type:* number
+
+Age in hours since creation.
+
+---
+
+##### `cleanupAfter`<sup>Required</sup> <a name="cleanupAfter" id="@microsoft/terraform-cdk-constructs.OrphanedResource.property.cleanupAfter"></a>
+
+```typescript
+public readonly cleanupAfter: Date;
+```
+
+- *Type:* Date
+
+Cleanup after timestamp from tags.
+
+---
+
+##### `createdAt`<sup>Required</sup> <a name="createdAt" id="@microsoft/terraform-cdk-constructs.OrphanedResource.property.createdAt"></a>
+
+```typescript
+public readonly createdAt: Date;
+```
+
+- *Type:* Date
+
+Creation timestamp from tags.
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.OrphanedResource.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+Resource location.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.OrphanedResource.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+Resource name.
+
+---
+
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.OrphanedResource.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: string;
+```
+
+- *Type:* string
+
+Resource group name.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.OrphanedResource.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Azure resource ID.
+
+---
+
+##### `resourceType`<sup>Required</sup> <a name="resourceType" id="@microsoft/terraform-cdk-constructs.OrphanedResource.property.resourceType"></a>
+
+```typescript
+public readonly resourceType: string;
+```
+
+- *Type:* string
+
+Azure resource type.
+
+---
+
+##### `testName`<sup>Required</sup> <a name="testName" id="@microsoft/terraform-cdk-constructs.OrphanedResource.property.testName"></a>
+
+```typescript
+public readonly testName: string;
+```
+
+- *Type:* string
+
+Test name from tags.
+
+---
+
+##### `testRunId`<sup>Required</sup> <a name="testRunId" id="@microsoft/terraform-cdk-constructs.OrphanedResource.property.testRunId"></a>
+
+```typescript
+public readonly testRunId: string;
+```
+
+- *Type:* string
+
+Test run ID from tags.
+
+---
+
+### OrphanedResource <a name="OrphanedResource" id="@microsoft/terraform-cdk-constructs.testing.OrphanedResource"></a>
+
+Orphaned resource information.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.testing.OrphanedResource.Initializer"></a>
+
+```typescript
+import { testing } from '@microsoft/terraform-cdk-constructs'
+
+const orphanedResource: testing.OrphanedResource = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.ageHours">ageHours</a></code> | <code>number</code> | Age in hours since creation. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.cleanupAfter">cleanupAfter</a></code> | <code>Date</code> | Cleanup after timestamp from tags. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.createdAt">createdAt</a></code> | <code>Date</code> | Creation timestamp from tags. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.location">location</a></code> | <code>string</code> | Resource location. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.name">name</a></code> | <code>string</code> | Resource name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.resourceGroup">resourceGroup</a></code> | <code>string</code> | Resource group name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.resourceId">resourceId</a></code> | <code>string</code> | Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.resourceType">resourceType</a></code> | <code>string</code> | Azure resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.testName">testName</a></code> | <code>string</code> | Test name from tags. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.testRunId">testRunId</a></code> | <code>string</code> | Test run ID from tags. |
+
+---
+
+##### `ageHours`<sup>Required</sup> <a name="ageHours" id="@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.ageHours"></a>
+
+```typescript
+public readonly ageHours: number;
+```
+
+- *Type:* number
+
+Age in hours since creation.
+
+---
+
+##### `cleanupAfter`<sup>Required</sup> <a name="cleanupAfter" id="@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.cleanupAfter"></a>
+
+```typescript
+public readonly cleanupAfter: Date;
+```
+
+- *Type:* Date
+
+Cleanup after timestamp from tags.
+
+---
+
+##### `createdAt`<sup>Required</sup> <a name="createdAt" id="@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.createdAt"></a>
+
+```typescript
+public readonly createdAt: Date;
+```
+
+- *Type:* Date
+
+Creation timestamp from tags.
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+Resource location.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+Resource name.
+
+---
+
+##### `resourceGroup`<sup>Required</sup> <a name="resourceGroup" id="@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.resourceGroup"></a>
+
+```typescript
+public readonly resourceGroup: string;
+```
+
+- *Type:* string
+
+Resource group name.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Azure resource ID.
+
+---
+
+##### `resourceType`<sup>Required</sup> <a name="resourceType" id="@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.resourceType"></a>
+
+```typescript
+public readonly resourceType: string;
+```
+
+- *Type:* string
+
+Azure resource type.
+
+---
+
+##### `testName`<sup>Required</sup> <a name="testName" id="@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.testName"></a>
+
+```typescript
+public readonly testName: string;
+```
+
+- *Type:* string
+
+Test name from tags.
+
+---
+
+##### `testRunId`<sup>Required</sup> <a name="testRunId" id="@microsoft/terraform-cdk-constructs.testing.OrphanedResource.property.testRunId"></a>
+
+```typescript
+public readonly testRunId: string;
+```
+
+- *Type:* string
+
+Test run ID from tags.
 
 ---
 
@@ -36234,6 +46587,7 @@ const publicIPAddressProps: PublicIPAddressProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.dnsSettings">dnsSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings">PublicIPAddressDnsSettings</a></code> | DNS settings for the public IP address Optional - configures DNS label for the public IP. |
@@ -36329,6 +46683,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.PublicIPAddressProps.property.name"></a>
 
@@ -36490,6 +46880,7 @@ const publicIPAddressProps: azure_publicipaddress.PublicIPAddressProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.dnsSettings">dnsSettings</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddressDnsSettings">PublicIPAddressDnsSettings</a></code> | DNS settings for the public IP address Optional - configures DNS label for the public IP. |
@@ -36585,6 +46976,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddressProps.property.name"></a>
 
@@ -39241,6 +49668,7 @@ const resourceGroupProps: ResourceGroupProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroupProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroupProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroupProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroupProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroupProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroupProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroupProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes. |
@@ -39331,6 +49759,42 @@ The location where the resource should be created.
 
 ---
 
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.ResourceGroupProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.ResourceGroupProps.property.name"></a>
 
 ```typescript
@@ -39414,6 +49878,7 @@ const resourceGroupProps: azure_resourcegroup.ResourceGroupProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes. |
@@ -39503,6 +49968,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroupProps.property.name"></a>
 
@@ -39654,6 +50155,278 @@ public readonly identityIds: string[];
 A list of User Managed Identity ID's which should be assigned to the azure resource.
 
 Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#identity_ids Resource#identity_ids}
+
+---
+
+### ResourceMetadata <a name="ResourceMetadata" id="@microsoft/terraform-cdk-constructs.ResourceMetadata"></a>
+
+Metadata for an individual resource created during testing.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ResourceMetadata.Initializer"></a>
+
+```typescript
+import { ResourceMetadata } from '@microsoft/terraform-cdk-constructs'
+
+const resourceMetadata: ResourceMetadata = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceMetadata.property.createdAt">createdAt</a></code> | <code>Date</code> | Timestamp when resource was created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceMetadata.property.name">name</a></code> | <code>string</code> | Resource name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceMetadata.property.resourceId">resourceId</a></code> | <code>string</code> | Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceMetadata.property.resourceType">resourceType</a></code> | <code>string</code> | Azure resource type (e.g., 'Microsoft.Resources/resourceGroups'). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceMetadata.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Resource tags. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceMetadata.property.testRunId">testRunId</a></code> | <code>string</code> | Test run ID that created this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceMetadata.property.destroyed">destroyed</a></code> | <code>boolean</code> | Whether this resource was successfully destroyed. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceMetadata.property.destroyedAt">destroyedAt</a></code> | <code>Date</code> | Timestamp when resource was destroyed. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceMetadata.property.location">location</a></code> | <code>string</code> | Resource location (Azure region). |
+
+---
+
+##### `createdAt`<sup>Required</sup> <a name="createdAt" id="@microsoft/terraform-cdk-constructs.ResourceMetadata.property.createdAt"></a>
+
+```typescript
+public readonly createdAt: Date;
+```
+
+- *Type:* Date
+
+Timestamp when resource was created.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.ResourceMetadata.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+Resource name.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.ResourceMetadata.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Azure resource ID.
+
+---
+
+##### `resourceType`<sup>Required</sup> <a name="resourceType" id="@microsoft/terraform-cdk-constructs.ResourceMetadata.property.resourceType"></a>
+
+```typescript
+public readonly resourceType: string;
+```
+
+- *Type:* string
+
+Azure resource type (e.g., 'Microsoft.Resources/resourceGroups').
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.ResourceMetadata.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Resource tags.
+
+---
+
+##### `testRunId`<sup>Required</sup> <a name="testRunId" id="@microsoft/terraform-cdk-constructs.ResourceMetadata.property.testRunId"></a>
+
+```typescript
+public readonly testRunId: string;
+```
+
+- *Type:* string
+
+Test run ID that created this resource.
+
+---
+
+##### `destroyed`<sup>Optional</sup> <a name="destroyed" id="@microsoft/terraform-cdk-constructs.ResourceMetadata.property.destroyed"></a>
+
+```typescript
+public readonly destroyed: boolean;
+```
+
+- *Type:* boolean
+
+Whether this resource was successfully destroyed.
+
+---
+
+##### `destroyedAt`<sup>Optional</sup> <a name="destroyedAt" id="@microsoft/terraform-cdk-constructs.ResourceMetadata.property.destroyedAt"></a>
+
+```typescript
+public readonly destroyedAt: Date;
+```
+
+- *Type:* Date
+
+Timestamp when resource was destroyed.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.ResourceMetadata.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+Resource location (Azure region).
+
+---
+
+### ResourceMetadata <a name="ResourceMetadata" id="@microsoft/terraform-cdk-constructs.testing.ResourceMetadata"></a>
+
+Metadata for an individual resource created during testing.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.Initializer"></a>
+
+```typescript
+import { testing } from '@microsoft/terraform-cdk-constructs'
+
+const resourceMetadata: testing.ResourceMetadata = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.createdAt">createdAt</a></code> | <code>Date</code> | Timestamp when resource was created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.name">name</a></code> | <code>string</code> | Resource name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.resourceId">resourceId</a></code> | <code>string</code> | Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.resourceType">resourceType</a></code> | <code>string</code> | Azure resource type (e.g., 'Microsoft.Resources/resourceGroups'). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Resource tags. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.testRunId">testRunId</a></code> | <code>string</code> | Test run ID that created this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.destroyed">destroyed</a></code> | <code>boolean</code> | Whether this resource was successfully destroyed. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.destroyedAt">destroyedAt</a></code> | <code>Date</code> | Timestamp when resource was destroyed. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.location">location</a></code> | <code>string</code> | Resource location (Azure region). |
+
+---
+
+##### `createdAt`<sup>Required</sup> <a name="createdAt" id="@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.createdAt"></a>
+
+```typescript
+public readonly createdAt: Date;
+```
+
+- *Type:* Date
+
+Timestamp when resource was created.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+Resource name.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Azure resource ID.
+
+---
+
+##### `resourceType`<sup>Required</sup> <a name="resourceType" id="@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.resourceType"></a>
+
+```typescript
+public readonly resourceType: string;
+```
+
+- *Type:* string
+
+Azure resource type (e.g., 'Microsoft.Resources/resourceGroups').
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Resource tags.
+
+---
+
+##### `testRunId`<sup>Required</sup> <a name="testRunId" id="@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.testRunId"></a>
+
+```typescript
+public readonly testRunId: string;
+```
+
+- *Type:* string
+
+Test run ID that created this resource.
+
+---
+
+##### `destroyed`<sup>Optional</sup> <a name="destroyed" id="@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.destroyed"></a>
+
+```typescript
+public readonly destroyed: boolean;
+```
+
+- *Type:* boolean
+
+Whether this resource was successfully destroyed.
+
+---
+
+##### `destroyedAt`<sup>Optional</sup> <a name="destroyedAt" id="@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.destroyedAt"></a>
+
+```typescript
+public readonly destroyedAt: Date;
+```
+
+- *Type:* Date
+
+Timestamp when resource was destroyed.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.testing.ResourceMetadata.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+Resource location (Azure region).
 
 ---
 
@@ -41019,6 +51792,342 @@ The source port ranges (for multiple ranges).
 ```
 
 
+### SmsReceiver <a name="SmsReceiver" id="@microsoft/terraform-cdk-constructs.SmsReceiver"></a>
+
+SMS receiver configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.SmsReceiver.Initializer"></a>
+
+```typescript
+import { SmsReceiver } from '@microsoft/terraform-cdk-constructs'
+
+const smsReceiver: SmsReceiver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SmsReceiver.property.countryCode">countryCode</a></code> | <code>string</code> | The country code (e.g., "1" for US). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SmsReceiver.property.name">name</a></code> | <code>string</code> | The name of the SMS receiver. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SmsReceiver.property.phoneNumber">phoneNumber</a></code> | <code>string</code> | The phone number to send SMS to. |
+
+---
+
+##### `countryCode`<sup>Required</sup> <a name="countryCode" id="@microsoft/terraform-cdk-constructs.SmsReceiver.property.countryCode"></a>
+
+```typescript
+public readonly countryCode: string;
+```
+
+- *Type:* string
+
+The country code (e.g., "1" for US).
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.SmsReceiver.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the SMS receiver.
+
+---
+
+##### `phoneNumber`<sup>Required</sup> <a name="phoneNumber" id="@microsoft/terraform-cdk-constructs.SmsReceiver.property.phoneNumber"></a>
+
+```typescript
+public readonly phoneNumber: string;
+```
+
+- *Type:* string
+
+The phone number to send SMS to.
+
+---
+
+### SmsReceiver <a name="SmsReceiver" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver"></a>
+
+SMS receiver configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver.Initializer"></a>
+
+```typescript
+import { azure_actiongroup } from '@microsoft/terraform-cdk-constructs'
+
+const smsReceiver: azure_actiongroup.SmsReceiver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver.property.countryCode">countryCode</a></code> | <code>string</code> | The country code (e.g., "1" for US). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver.property.name">name</a></code> | <code>string</code> | The name of the SMS receiver. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver.property.phoneNumber">phoneNumber</a></code> | <code>string</code> | The phone number to send SMS to. |
+
+---
+
+##### `countryCode`<sup>Required</sup> <a name="countryCode" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver.property.countryCode"></a>
+
+```typescript
+public readonly countryCode: string;
+```
+
+- *Type:* string
+
+The country code (e.g., "1" for US).
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the SMS receiver.
+
+---
+
+##### `phoneNumber`<sup>Required</sup> <a name="phoneNumber" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.SmsReceiver.property.phoneNumber"></a>
+
+```typescript
+public readonly phoneNumber: string;
+```
+
+- *Type:* string
+
+The phone number to send SMS to.
+
+---
+
+### StaticThresholdCriteria <a name="StaticThresholdCriteria" id="@microsoft/terraform-cdk-constructs.StaticThresholdCriteria"></a>
+
+Static threshold criteria configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.Initializer"></a>
+
+```typescript
+import { StaticThresholdCriteria } from '@microsoft/terraform-cdk-constructs'
+
+const staticThresholdCriteria: StaticThresholdCriteria = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.metricName">metricName</a></code> | <code>string</code> | The metric name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.operator">operator</a></code> | <code>string</code> | The comparison operator. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.threshold">threshold</a></code> | <code>number</code> | The threshold value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.timeAggregation">timeAggregation</a></code> | <code>string</code> | The time aggregation method. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.type">type</a></code> | <code>string</code> | The criteria type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.dimensions">dimensions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension[]</code> | Metric dimensions for filtering (optional). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.metricNamespace">metricNamespace</a></code> | <code>string</code> | The metric namespace (optional). |
+
+---
+
+##### `metricName`<sup>Required</sup> <a name="metricName" id="@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.metricName"></a>
+
+```typescript
+public readonly metricName: string;
+```
+
+- *Type:* string
+
+The metric name.
+
+---
+
+##### `operator`<sup>Required</sup> <a name="operator" id="@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.operator"></a>
+
+```typescript
+public readonly operator: string;
+```
+
+- *Type:* string
+
+The comparison operator.
+
+---
+
+##### `threshold`<sup>Required</sup> <a name="threshold" id="@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.threshold"></a>
+
+```typescript
+public readonly threshold: number;
+```
+
+- *Type:* number
+
+The threshold value.
+
+---
+
+##### `timeAggregation`<sup>Required</sup> <a name="timeAggregation" id="@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.timeAggregation"></a>
+
+```typescript
+public readonly timeAggregation: string;
+```
+
+- *Type:* string
+
+The time aggregation method.
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+The criteria type.
+
+---
+
+##### `dimensions`<sup>Optional</sup> <a name="dimensions" id="@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.dimensions"></a>
+
+```typescript
+public readonly dimensions: MetricDimension[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension[]
+
+Metric dimensions for filtering (optional).
+
+---
+
+##### `metricNamespace`<sup>Optional</sup> <a name="metricNamespace" id="@microsoft/terraform-cdk-constructs.StaticThresholdCriteria.property.metricNamespace"></a>
+
+```typescript
+public readonly metricNamespace: string;
+```
+
+- *Type:* string
+
+The metric namespace (optional).
+
+---
+
+### StaticThresholdCriteria <a name="StaticThresholdCriteria" id="@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria"></a>
+
+Static threshold criteria configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.Initializer"></a>
+
+```typescript
+import { azure_metricalert } from '@microsoft/terraform-cdk-constructs'
+
+const staticThresholdCriteria: azure_metricalert.StaticThresholdCriteria = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.metricName">metricName</a></code> | <code>string</code> | The metric name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.operator">operator</a></code> | <code>string</code> | The comparison operator. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.threshold">threshold</a></code> | <code>number</code> | The threshold value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.timeAggregation">timeAggregation</a></code> | <code>string</code> | The time aggregation method. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.type">type</a></code> | <code>string</code> | The criteria type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.dimensions">dimensions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension[]</code> | Metric dimensions for filtering (optional). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.metricNamespace">metricNamespace</a></code> | <code>string</code> | The metric namespace (optional). |
+
+---
+
+##### `metricName`<sup>Required</sup> <a name="metricName" id="@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.metricName"></a>
+
+```typescript
+public readonly metricName: string;
+```
+
+- *Type:* string
+
+The metric name.
+
+---
+
+##### `operator`<sup>Required</sup> <a name="operator" id="@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.operator"></a>
+
+```typescript
+public readonly operator: string;
+```
+
+- *Type:* string
+
+The comparison operator.
+
+---
+
+##### `threshold`<sup>Required</sup> <a name="threshold" id="@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.threshold"></a>
+
+```typescript
+public readonly threshold: number;
+```
+
+- *Type:* number
+
+The threshold value.
+
+---
+
+##### `timeAggregation`<sup>Required</sup> <a name="timeAggregation" id="@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.timeAggregation"></a>
+
+```typescript
+public readonly timeAggregation: string;
+```
+
+- *Type:* string
+
+The time aggregation method.
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+The criteria type.
+
+---
+
+##### `dimensions`<sup>Optional</sup> <a name="dimensions" id="@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.dimensions"></a>
+
+```typescript
+public readonly dimensions: MetricDimension[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_metricalert.MetricDimension[]
+
+Metric dimensions for filtering (optional).
+
+---
+
+##### `metricNamespace`<sup>Optional</sup> <a name="metricNamespace" id="@microsoft/terraform-cdk-constructs.azure_metricalert.StaticThresholdCriteria.property.metricNamespace"></a>
+
+```typescript
+public readonly metricNamespace: string;
+```
+
+- *Type:* string
+
+The metric namespace (optional).
+
+---
+
 ### StorageAccountBody <a name="StorageAccountBody" id="@microsoft/terraform-cdk-constructs.StorageAccountBody"></a>
 
 The resource body interface for Azure Storage Account API calls.
@@ -41809,6 +52918,386 @@ IP address or CIDR range.
 
 ---
 
+### StorageAccountMonitoringOptions <a name="StorageAccountMonitoringOptions" id="@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions"></a>
+
+Configuration options for Storage Account monitoring.
+
+This interface defines the configurable options for setting up monitoring alerts
+and diagnostic settings for Azure Storage Accounts. All properties are optional
+and have sensible defaults for production use.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.Initializer"></a>
+
+```typescript
+import { StorageAccountMonitoringOptions } from '@microsoft/terraform-cdk-constructs'
+
+const storageAccountMonitoringOptions: StorageAccountMonitoringOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.availabilityAlertSeverity">availabilityAlertSeverity</a></code> | <code>number</code> | Severity level for availability alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.availabilityThreshold">availabilityThreshold</a></code> | <code>number</code> | Threshold for storage account availability percentage. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.egressAlertSeverity">egressAlertSeverity</a></code> | <code>number</code> | Severity level for egress alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.egressThreshold">egressThreshold</a></code> | <code>number</code> | Threshold for storage account egress in bytes. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.enableAvailabilityAlert">enableAvailabilityAlert</a></code> | <code>boolean</code> | Enable or disable availability monitoring alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.enableDeletionAlert">enableDeletionAlert</a></code> | <code>boolean</code> | Enable or disable deletion activity log alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.enableEgressAlert">enableEgressAlert</a></code> | <code>boolean</code> | Enable or disable egress monitoring alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.enableTransactionsAlert">enableTransactionsAlert</a></code> | <code>boolean</code> | Enable or disable transactions monitoring alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.transactionsAlertSeverity">transactionsAlertSeverity</a></code> | <code>number</code> | Severity level for transactions alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.transactionsThreshold">transactionsThreshold</a></code> | <code>number</code> | Threshold for storage account transactions count. |
+
+---
+
+##### `availabilityAlertSeverity`<sup>Optional</sup> <a name="availabilityAlertSeverity" id="@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.availabilityAlertSeverity"></a>
+
+```typescript
+public readonly availabilityAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 1 - Error severity for availability issues
+
+Severity level for availability alerts.
+
+Severity levels:
+- 0: Critical
+- 1: Error
+- 2: Warning
+- 3: Informational
+- 4: Verbose
+
+---
+
+##### `availabilityThreshold`<sup>Optional</sup> <a name="availabilityThreshold" id="@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.availabilityThreshold"></a>
+
+```typescript
+public readonly availabilityThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 99.9 - Triggers alert when availability is below 99.9%
+
+Threshold for storage account availability percentage.
+
+Alert triggers when availability drops below this threshold
+
+---
+
+##### `egressAlertSeverity`<sup>Optional</sup> <a name="egressAlertSeverity" id="@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.egressAlertSeverity"></a>
+
+```typescript
+public readonly egressAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2 - Warning severity for high egress
+
+Severity level for egress alerts.
+
+Severity levels:
+- 0: Critical
+- 1: Error
+- 2: Warning
+- 3: Informational
+- 4: Verbose
+
+---
+
+##### `egressThreshold`<sup>Optional</sup> <a name="egressThreshold" id="@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.egressThreshold"></a>
+
+```typescript
+public readonly egressThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 10737418240 - Triggers alert when egress exceeds 10GB
+
+Threshold for storage account egress in bytes.
+
+Alert triggers when egress exceeds this threshold
+
+---
+
+##### `enableAvailabilityAlert`<sup>Optional</sup> <a name="enableAvailabilityAlert" id="@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.enableAvailabilityAlert"></a>
+
+```typescript
+public readonly enableAvailabilityAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true - Availability alert is enabled by default
+
+Enable or disable availability monitoring alert.
+
+---
+
+##### `enableDeletionAlert`<sup>Optional</sup> <a name="enableDeletionAlert" id="@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.enableDeletionAlert"></a>
+
+```typescript
+public readonly enableDeletionAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true - Deletion alert is enabled by default
+
+Enable or disable deletion activity log alert.
+
+---
+
+##### `enableEgressAlert`<sup>Optional</sup> <a name="enableEgressAlert" id="@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.enableEgressAlert"></a>
+
+```typescript
+public readonly enableEgressAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true - Egress alert is enabled by default
+
+Enable or disable egress monitoring alert.
+
+---
+
+##### `enableTransactionsAlert`<sup>Optional</sup> <a name="enableTransactionsAlert" id="@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.enableTransactionsAlert"></a>
+
+```typescript
+public readonly enableTransactionsAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true - Transactions alert is enabled by default
+
+Enable or disable transactions monitoring alert.
+
+---
+
+##### `transactionsAlertSeverity`<sup>Optional</sup> <a name="transactionsAlertSeverity" id="@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.transactionsAlertSeverity"></a>
+
+```typescript
+public readonly transactionsAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2 - Warning severity for high transaction count
+
+Severity level for transactions alerts.
+
+Severity levels:
+- 0: Critical
+- 1: Error
+- 2: Warning
+- 3: Informational
+- 4: Verbose
+
+---
+
+##### `transactionsThreshold`<sup>Optional</sup> <a name="transactionsThreshold" id="@microsoft/terraform-cdk-constructs.StorageAccountMonitoringOptions.property.transactionsThreshold"></a>
+
+```typescript
+public readonly transactionsThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 100000 - Triggers alert when transactions exceed 100k
+
+Threshold for storage account transactions count.
+
+Alert triggers when transaction count exceeds this threshold
+
+---
+
+### StorageAccountMonitoringOptions <a name="StorageAccountMonitoringOptions" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions"></a>
+
+Configuration options for Storage Account monitoring.
+
+This interface defines the configurable options for setting up monitoring alerts
+and diagnostic settings for Azure Storage Accounts. All properties are optional
+and have sensible defaults for production use.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.Initializer"></a>
+
+```typescript
+import { azure_storageaccount } from '@microsoft/terraform-cdk-constructs'
+
+const storageAccountMonitoringOptions: azure_storageaccount.StorageAccountMonitoringOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.availabilityAlertSeverity">availabilityAlertSeverity</a></code> | <code>number</code> | Severity level for availability alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.availabilityThreshold">availabilityThreshold</a></code> | <code>number</code> | Threshold for storage account availability percentage. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.egressAlertSeverity">egressAlertSeverity</a></code> | <code>number</code> | Severity level for egress alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.egressThreshold">egressThreshold</a></code> | <code>number</code> | Threshold for storage account egress in bytes. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.enableAvailabilityAlert">enableAvailabilityAlert</a></code> | <code>boolean</code> | Enable or disable availability monitoring alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.enableDeletionAlert">enableDeletionAlert</a></code> | <code>boolean</code> | Enable or disable deletion activity log alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.enableEgressAlert">enableEgressAlert</a></code> | <code>boolean</code> | Enable or disable egress monitoring alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.enableTransactionsAlert">enableTransactionsAlert</a></code> | <code>boolean</code> | Enable or disable transactions monitoring alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.transactionsAlertSeverity">transactionsAlertSeverity</a></code> | <code>number</code> | Severity level for transactions alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.transactionsThreshold">transactionsThreshold</a></code> | <code>number</code> | Threshold for storage account transactions count. |
+
+---
+
+##### `availabilityAlertSeverity`<sup>Optional</sup> <a name="availabilityAlertSeverity" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.availabilityAlertSeverity"></a>
+
+```typescript
+public readonly availabilityAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 1 - Error severity for availability issues
+
+Severity level for availability alerts.
+
+Severity levels:
+- 0: Critical
+- 1: Error
+- 2: Warning
+- 3: Informational
+- 4: Verbose
+
+---
+
+##### `availabilityThreshold`<sup>Optional</sup> <a name="availabilityThreshold" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.availabilityThreshold"></a>
+
+```typescript
+public readonly availabilityThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 99.9 - Triggers alert when availability is below 99.9%
+
+Threshold for storage account availability percentage.
+
+Alert triggers when availability drops below this threshold
+
+---
+
+##### `egressAlertSeverity`<sup>Optional</sup> <a name="egressAlertSeverity" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.egressAlertSeverity"></a>
+
+```typescript
+public readonly egressAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2 - Warning severity for high egress
+
+Severity level for egress alerts.
+
+Severity levels:
+- 0: Critical
+- 1: Error
+- 2: Warning
+- 3: Informational
+- 4: Verbose
+
+---
+
+##### `egressThreshold`<sup>Optional</sup> <a name="egressThreshold" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.egressThreshold"></a>
+
+```typescript
+public readonly egressThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 10737418240 - Triggers alert when egress exceeds 10GB
+
+Threshold for storage account egress in bytes.
+
+Alert triggers when egress exceeds this threshold
+
+---
+
+##### `enableAvailabilityAlert`<sup>Optional</sup> <a name="enableAvailabilityAlert" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.enableAvailabilityAlert"></a>
+
+```typescript
+public readonly enableAvailabilityAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true - Availability alert is enabled by default
+
+Enable or disable availability monitoring alert.
+
+---
+
+##### `enableDeletionAlert`<sup>Optional</sup> <a name="enableDeletionAlert" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.enableDeletionAlert"></a>
+
+```typescript
+public readonly enableDeletionAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true - Deletion alert is enabled by default
+
+Enable or disable deletion activity log alert.
+
+---
+
+##### `enableEgressAlert`<sup>Optional</sup> <a name="enableEgressAlert" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.enableEgressAlert"></a>
+
+```typescript
+public readonly enableEgressAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true - Egress alert is enabled by default
+
+Enable or disable egress monitoring alert.
+
+---
+
+##### `enableTransactionsAlert`<sup>Optional</sup> <a name="enableTransactionsAlert" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.enableTransactionsAlert"></a>
+
+```typescript
+public readonly enableTransactionsAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true - Transactions alert is enabled by default
+
+Enable or disable transactions monitoring alert.
+
+---
+
+##### `transactionsAlertSeverity`<sup>Optional</sup> <a name="transactionsAlertSeverity" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.transactionsAlertSeverity"></a>
+
+```typescript
+public readonly transactionsAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2 - Warning severity for high transaction count
+
+Severity level for transactions alerts.
+
+Severity levels:
+- 0: Critical
+- 1: Error
+- 2: Warning
+- 3: Informational
+- 4: Verbose
+
+---
+
+##### `transactionsThreshold`<sup>Optional</sup> <a name="transactionsThreshold" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountMonitoringOptions.property.transactionsThreshold"></a>
+
+```typescript
+public readonly transactionsThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 100000 - Triggers alert when transactions exceed 100k
+
+Threshold for storage account transactions count.
+
+Alert triggers when transaction count exceeds this threshold
+
+---
+
 ### StorageAccountNetworkAcls <a name="StorageAccountNetworkAcls" id="@microsoft/terraform-cdk-constructs.StorageAccountNetworkAcls"></a>
 
 Network ACL configuration for Storage Account.
@@ -41974,6 +53463,7 @@ const storageAccountProps: StorageAccountProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccountProps.property.sku">sku</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountSku</code> | The SKU (pricing tier) for the Storage Account. |
@@ -42072,6 +53562,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.StorageAccountProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.StorageAccountProps.property.name"></a>
 
@@ -42285,6 +53811,7 @@ const storageAccountProps: azure_storageaccount.StorageAccountProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountProps.property.sku">sku</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountSku</code> | The SKU (pricing tier) for the Storage Account. |
@@ -42383,6 +53910,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccountProps.property.name"></a>
 
@@ -42982,6 +54545,7 @@ const subnetProps: SubnetProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SubnetProps.property.addressPrefix">addressPrefix</a></code> | <code>string</code> | Address prefix for the subnet in CIDR notation Must be within the parent VNet's address space. |
@@ -43082,6 +54646,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.SubnetProps.property.name"></a>
 
@@ -43302,6 +54902,7 @@ const subnetProps: azure_subnet.SubnetProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.addressPrefix">addressPrefix</a></code> | <code>string</code> | Address prefix for the subnet in CIDR notation Must be within the parent VNet's address space. |
@@ -43402,6 +55003,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_subnet.SubnetProps.property.name"></a>
 
@@ -43860,6 +55497,122 @@ public readonly notBeforeTimeout: string;
 ```
 
 - *Type:* string
+
+---
+
+### TestRunOptions <a name="TestRunOptions" id="@microsoft/terraform-cdk-constructs.TestRunOptions"></a>
+
+Test run configuration options.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.TestRunOptions.Initializer"></a>
+
+```typescript
+import { TestRunOptions } from '@microsoft/terraform-cdk-constructs'
+
+const testRunOptions: TestRunOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunOptions.property.autoCleanup">autoCleanup</a></code> | <code>boolean</code> | Enable automated cleanup (default: true). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunOptions.property.cleanupPolicy">cleanupPolicy</a></code> | <code>string</code> | Cleanup policy (default: 'immediate'). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunOptions.property.maxAgeHours">maxAgeHours</a></code> | <code>number</code> | Maximum age in hours before cleanup eligible (default: 4). |
+
+---
+
+##### `autoCleanup`<sup>Optional</sup> <a name="autoCleanup" id="@microsoft/terraform-cdk-constructs.TestRunOptions.property.autoCleanup"></a>
+
+```typescript
+public readonly autoCleanup: boolean;
+```
+
+- *Type:* boolean
+
+Enable automated cleanup (default: true).
+
+---
+
+##### `cleanupPolicy`<sup>Optional</sup> <a name="cleanupPolicy" id="@microsoft/terraform-cdk-constructs.TestRunOptions.property.cleanupPolicy"></a>
+
+```typescript
+public readonly cleanupPolicy: string;
+```
+
+- *Type:* string
+
+Cleanup policy (default: 'immediate').
+
+---
+
+##### `maxAgeHours`<sup>Optional</sup> <a name="maxAgeHours" id="@microsoft/terraform-cdk-constructs.TestRunOptions.property.maxAgeHours"></a>
+
+```typescript
+public readonly maxAgeHours: number;
+```
+
+- *Type:* number
+
+Maximum age in hours before cleanup eligible (default: 4).
+
+---
+
+### TestRunOptions <a name="TestRunOptions" id="@microsoft/terraform-cdk-constructs.testing.TestRunOptions"></a>
+
+Test run configuration options.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.testing.TestRunOptions.Initializer"></a>
+
+```typescript
+import { testing } from '@microsoft/terraform-cdk-constructs'
+
+const testRunOptions: testing.TestRunOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunOptions.property.autoCleanup">autoCleanup</a></code> | <code>boolean</code> | Enable automated cleanup (default: true). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunOptions.property.cleanupPolicy">cleanupPolicy</a></code> | <code>string</code> | Cleanup policy (default: 'immediate'). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunOptions.property.maxAgeHours">maxAgeHours</a></code> | <code>number</code> | Maximum age in hours before cleanup eligible (default: 4). |
+
+---
+
+##### `autoCleanup`<sup>Optional</sup> <a name="autoCleanup" id="@microsoft/terraform-cdk-constructs.testing.TestRunOptions.property.autoCleanup"></a>
+
+```typescript
+public readonly autoCleanup: boolean;
+```
+
+- *Type:* boolean
+
+Enable automated cleanup (default: true).
+
+---
+
+##### `cleanupPolicy`<sup>Optional</sup> <a name="cleanupPolicy" id="@microsoft/terraform-cdk-constructs.testing.TestRunOptions.property.cleanupPolicy"></a>
+
+```typescript
+public readonly cleanupPolicy: string;
+```
+
+- *Type:* string
+
+Cleanup policy (default: 'immediate').
+
+---
+
+##### `maxAgeHours`<sup>Optional</sup> <a name="maxAgeHours" id="@microsoft/terraform-cdk-constructs.testing.TestRunOptions.property.maxAgeHours"></a>
+
+```typescript
+public readonly maxAgeHours: number;
+```
+
+- *Type:* number
+
+Maximum age in hours before cleanup eligible (default: 4).
 
 ---
 
@@ -45286,6 +57039,174 @@ The value or parameter for the validation rule Type depends on the validation ru
 For VALUE_RANGE: { min: 0, max: 100 }
 ```
 
+
+### VerificationResult <a name="VerificationResult" id="@microsoft/terraform-cdk-constructs.VerificationResult"></a>
+
+Result of resource cleanup verification.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VerificationResult.Initializer"></a>
+
+```typescript
+import { VerificationResult } from '@microsoft/terraform-cdk-constructs'
+
+const verificationResult: VerificationResult = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VerificationResult.property.message">message</a></code> | <code>string</code> | Human-readable message describing the result. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VerificationResult.property.orphanedResources">orphanedResources</a></code> | <code>string[]</code> | List of orphaned resource IDs (if any). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VerificationResult.property.success">success</a></code> | <code>boolean</code> | Whether verification succeeded (all resources deleted). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VerificationResult.property.expectedCount">expectedCount</a></code> | <code>number</code> | Number of resources expected to be deleted. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VerificationResult.property.foundCount">foundCount</a></code> | <code>number</code> | Number of resources actually found. |
+
+---
+
+##### `message`<sup>Required</sup> <a name="message" id="@microsoft/terraform-cdk-constructs.VerificationResult.property.message"></a>
+
+```typescript
+public readonly message: string;
+```
+
+- *Type:* string
+
+Human-readable message describing the result.
+
+---
+
+##### `orphanedResources`<sup>Required</sup> <a name="orphanedResources" id="@microsoft/terraform-cdk-constructs.VerificationResult.property.orphanedResources"></a>
+
+```typescript
+public readonly orphanedResources: string[];
+```
+
+- *Type:* string[]
+
+List of orphaned resource IDs (if any).
+
+---
+
+##### `success`<sup>Required</sup> <a name="success" id="@microsoft/terraform-cdk-constructs.VerificationResult.property.success"></a>
+
+```typescript
+public readonly success: boolean;
+```
+
+- *Type:* boolean
+
+Whether verification succeeded (all resources deleted).
+
+---
+
+##### `expectedCount`<sup>Optional</sup> <a name="expectedCount" id="@microsoft/terraform-cdk-constructs.VerificationResult.property.expectedCount"></a>
+
+```typescript
+public readonly expectedCount: number;
+```
+
+- *Type:* number
+
+Number of resources expected to be deleted.
+
+---
+
+##### `foundCount`<sup>Optional</sup> <a name="foundCount" id="@microsoft/terraform-cdk-constructs.VerificationResult.property.foundCount"></a>
+
+```typescript
+public readonly foundCount: number;
+```
+
+- *Type:* number
+
+Number of resources actually found.
+
+---
+
+### VerificationResult <a name="VerificationResult" id="@microsoft/terraform-cdk-constructs.testing.VerificationResult"></a>
+
+Result of resource cleanup verification.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.testing.VerificationResult.Initializer"></a>
+
+```typescript
+import { testing } from '@microsoft/terraform-cdk-constructs'
+
+const verificationResult: testing.VerificationResult = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.VerificationResult.property.message">message</a></code> | <code>string</code> | Human-readable message describing the result. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.VerificationResult.property.orphanedResources">orphanedResources</a></code> | <code>string[]</code> | List of orphaned resource IDs (if any). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.VerificationResult.property.success">success</a></code> | <code>boolean</code> | Whether verification succeeded (all resources deleted). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.VerificationResult.property.expectedCount">expectedCount</a></code> | <code>number</code> | Number of resources expected to be deleted. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.VerificationResult.property.foundCount">foundCount</a></code> | <code>number</code> | Number of resources actually found. |
+
+---
+
+##### `message`<sup>Required</sup> <a name="message" id="@microsoft/terraform-cdk-constructs.testing.VerificationResult.property.message"></a>
+
+```typescript
+public readonly message: string;
+```
+
+- *Type:* string
+
+Human-readable message describing the result.
+
+---
+
+##### `orphanedResources`<sup>Required</sup> <a name="orphanedResources" id="@microsoft/terraform-cdk-constructs.testing.VerificationResult.property.orphanedResources"></a>
+
+```typescript
+public readonly orphanedResources: string[];
+```
+
+- *Type:* string[]
+
+List of orphaned resource IDs (if any).
+
+---
+
+##### `success`<sup>Required</sup> <a name="success" id="@microsoft/terraform-cdk-constructs.testing.VerificationResult.property.success"></a>
+
+```typescript
+public readonly success: boolean;
+```
+
+- *Type:* boolean
+
+Whether verification succeeded (all resources deleted).
+
+---
+
+##### `expectedCount`<sup>Optional</sup> <a name="expectedCount" id="@microsoft/terraform-cdk-constructs.testing.VerificationResult.property.expectedCount"></a>
+
+```typescript
+public readonly expectedCount: number;
+```
+
+- *Type:* number
+
+Number of resources expected to be deleted.
+
+---
+
+##### `foundCount`<sup>Optional</sup> <a name="foundCount" id="@microsoft/terraform-cdk-constructs.testing.VerificationResult.property.foundCount"></a>
+
+```typescript
+public readonly foundCount: number;
+```
+
+- *Type:* number
+
+Number of resources actually found.
+
+---
 
 ### VersionChangeLog <a name="VersionChangeLog" id="@microsoft/terraform-cdk-constructs.VersionChangeLog"></a>
 
@@ -48307,6 +60228,264 @@ public readonly storageAccountType: string;
 
 ---
 
+### VirtualMachineMonitoringOptions <a name="VirtualMachineMonitoringOptions" id="@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions"></a>
+
+Configuration options for Virtual Machine monitoring.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.Initializer"></a>
+
+```typescript
+import { VirtualMachineMonitoringOptions } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineMonitoringOptions: VirtualMachineMonitoringOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.cpuAlertSeverity">cpuAlertSeverity</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.cpuThreshold">cpuThreshold</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.diskQueueAlertSeverity">diskQueueAlertSeverity</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.diskQueueThreshold">diskQueueThreshold</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.enableCpuAlert">enableCpuAlert</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.enableDeletionAlert">enableDeletionAlert</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.enableDiskQueueAlert">enableDiskQueueAlert</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.enableMemoryAlert">enableMemoryAlert</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.memoryAlertSeverity">memoryAlertSeverity</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.memoryThreshold">memoryThreshold</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `cpuAlertSeverity`<sup>Optional</sup> <a name="cpuAlertSeverity" id="@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.cpuAlertSeverity"></a>
+
+```typescript
+public readonly cpuAlertSeverity: number;
+```
+
+- *Type:* number
+
+---
+
+##### `cpuThreshold`<sup>Optional</sup> <a name="cpuThreshold" id="@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.cpuThreshold"></a>
+
+```typescript
+public readonly cpuThreshold: number;
+```
+
+- *Type:* number
+
+---
+
+##### `diskQueueAlertSeverity`<sup>Optional</sup> <a name="diskQueueAlertSeverity" id="@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.diskQueueAlertSeverity"></a>
+
+```typescript
+public readonly diskQueueAlertSeverity: number;
+```
+
+- *Type:* number
+
+---
+
+##### `diskQueueThreshold`<sup>Optional</sup> <a name="diskQueueThreshold" id="@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.diskQueueThreshold"></a>
+
+```typescript
+public readonly diskQueueThreshold: number;
+```
+
+- *Type:* number
+
+---
+
+##### `enableCpuAlert`<sup>Optional</sup> <a name="enableCpuAlert" id="@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.enableCpuAlert"></a>
+
+```typescript
+public readonly enableCpuAlert: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableDeletionAlert`<sup>Optional</sup> <a name="enableDeletionAlert" id="@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.enableDeletionAlert"></a>
+
+```typescript
+public readonly enableDeletionAlert: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableDiskQueueAlert`<sup>Optional</sup> <a name="enableDiskQueueAlert" id="@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.enableDiskQueueAlert"></a>
+
+```typescript
+public readonly enableDiskQueueAlert: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableMemoryAlert`<sup>Optional</sup> <a name="enableMemoryAlert" id="@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.enableMemoryAlert"></a>
+
+```typescript
+public readonly enableMemoryAlert: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `memoryAlertSeverity`<sup>Optional</sup> <a name="memoryAlertSeverity" id="@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.memoryAlertSeverity"></a>
+
+```typescript
+public readonly memoryAlertSeverity: number;
+```
+
+- *Type:* number
+
+---
+
+##### `memoryThreshold`<sup>Optional</sup> <a name="memoryThreshold" id="@microsoft/terraform-cdk-constructs.VirtualMachineMonitoringOptions.property.memoryThreshold"></a>
+
+```typescript
+public readonly memoryThreshold: number;
+```
+
+- *Type:* number
+
+---
+
+### VirtualMachineMonitoringOptions <a name="VirtualMachineMonitoringOptions" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions"></a>
+
+Configuration options for Virtual Machine monitoring.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.Initializer"></a>
+
+```typescript
+import { azure_virtualmachine } from '@microsoft/terraform-cdk-constructs'
+
+const virtualMachineMonitoringOptions: azure_virtualmachine.VirtualMachineMonitoringOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.cpuAlertSeverity">cpuAlertSeverity</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.cpuThreshold">cpuThreshold</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.diskQueueAlertSeverity">diskQueueAlertSeverity</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.diskQueueThreshold">diskQueueThreshold</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.enableCpuAlert">enableCpuAlert</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.enableDeletionAlert">enableDeletionAlert</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.enableDiskQueueAlert">enableDiskQueueAlert</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.enableMemoryAlert">enableMemoryAlert</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.memoryAlertSeverity">memoryAlertSeverity</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.memoryThreshold">memoryThreshold</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `cpuAlertSeverity`<sup>Optional</sup> <a name="cpuAlertSeverity" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.cpuAlertSeverity"></a>
+
+```typescript
+public readonly cpuAlertSeverity: number;
+```
+
+- *Type:* number
+
+---
+
+##### `cpuThreshold`<sup>Optional</sup> <a name="cpuThreshold" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.cpuThreshold"></a>
+
+```typescript
+public readonly cpuThreshold: number;
+```
+
+- *Type:* number
+
+---
+
+##### `diskQueueAlertSeverity`<sup>Optional</sup> <a name="diskQueueAlertSeverity" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.diskQueueAlertSeverity"></a>
+
+```typescript
+public readonly diskQueueAlertSeverity: number;
+```
+
+- *Type:* number
+
+---
+
+##### `diskQueueThreshold`<sup>Optional</sup> <a name="diskQueueThreshold" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.diskQueueThreshold"></a>
+
+```typescript
+public readonly diskQueueThreshold: number;
+```
+
+- *Type:* number
+
+---
+
+##### `enableCpuAlert`<sup>Optional</sup> <a name="enableCpuAlert" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.enableCpuAlert"></a>
+
+```typescript
+public readonly enableCpuAlert: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableDeletionAlert`<sup>Optional</sup> <a name="enableDeletionAlert" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.enableDeletionAlert"></a>
+
+```typescript
+public readonly enableDeletionAlert: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableDiskQueueAlert`<sup>Optional</sup> <a name="enableDiskQueueAlert" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.enableDiskQueueAlert"></a>
+
+```typescript
+public readonly enableDiskQueueAlert: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableMemoryAlert`<sup>Optional</sup> <a name="enableMemoryAlert" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.enableMemoryAlert"></a>
+
+```typescript
+public readonly enableMemoryAlert: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `memoryAlertSeverity`<sup>Optional</sup> <a name="memoryAlertSeverity" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.memoryAlertSeverity"></a>
+
+```typescript
+public readonly memoryAlertSeverity: number;
+```
+
+- *Type:* number
+
+---
+
+##### `memoryThreshold`<sup>Optional</sup> <a name="memoryThreshold" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineMonitoringOptions.property.memoryThreshold"></a>
+
+```typescript
+public readonly memoryThreshold: number;
+```
+
+- *Type:* number
+
+---
+
 ### VirtualMachineNetworkInterfaceProperties <a name="VirtualMachineNetworkInterfaceProperties" id="@microsoft/terraform-cdk-constructs.VirtualMachineNetworkInterfaceProperties"></a>
 
 Network interface properties.
@@ -49401,6 +61580,7 @@ const virtualMachineProps: VirtualMachineProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.hardwareProfile">hardwareProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile">VirtualMachineHardwareProfile</a></code> | The hardware profile for the Virtual Machine (VM size). |
@@ -49508,6 +61688,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VirtualMachineProps.property.name"></a>
 
@@ -49846,6 +62062,7 @@ const virtualMachineProps: azure_virtualmachine.VirtualMachineProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.hardwareProfile">hardwareProfile</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineHardwareProfile">VirtualMachineHardwareProfile</a></code> | The hardware profile for the Virtual Machine (VM size). |
@@ -49953,6 +62170,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachineProps.property.name"></a>
 
@@ -51243,6 +63496,7 @@ const virtualMachineScaleSetProps: VirtualMachineScaleSetProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.hostGroup">hostGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.monitoring">monitoring</a></code> | <code>any</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.orchestrationMode">orchestrationMode</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.overprovision">overprovision</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.plan">plan</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a></code> | *No description.* |
@@ -51386,6 +63640,16 @@ public readonly ignoreChanges: string[];
 ```
 
 - *Type:* string[]
+
+---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSetProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: any;
+```
+
+- *Type:* any
 
 ---
 
@@ -51548,6 +63812,7 @@ const virtualMachineScaleSetProps: azure_vmss.VirtualMachineScaleSetProps = { ..
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.hostGroup">hostGroup</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_vmss.HostGroupReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineIdentity">VirtualMachineIdentity</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.monitoring">monitoring</a></code> | <code>any</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.orchestrationMode">orchestrationMode</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.overprovision">overprovision</a></code> | <code>boolean</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.plan">plan</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachinePlan">VirtualMachinePlan</a></code> | *No description.* |
@@ -51691,6 +63956,16 @@ public readonly ignoreChanges: string[];
 ```
 
 - *Type:* string[]
+
+---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSetProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: any;
+```
+
+- *Type:* any
 
 ---
 
@@ -54050,6 +66325,7 @@ const virtualNetworkProps: VirtualNetworkProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.addressSpace">addressSpace</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkAddressSpace">VirtualNetworkAddressSpace</a></code> | Address space for the virtual network Must contain at least one address prefix. |
@@ -54146,6 +66422,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VirtualNetworkProps.property.name"></a>
 
@@ -54311,6 +66623,7 @@ const virtualNetworkProps: azure_virtualnetwork.VirtualNetworkProps = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.addressSpace">addressSpace</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkAddressSpace">VirtualNetworkAddressSpace</a></code> | Address space for the virtual network Must contain at least one address prefix. |
@@ -54407,6 +66720,42 @@ public readonly location: string;
 The location where the resource should be created.
 
 ---
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
 
 ##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetworkProps.property.name"></a>
 
@@ -54798,6 +67147,616 @@ public readonly settings: any;
 ```
 
 - *Type:* any
+
+---
+
+### VmssMonitoringOptions <a name="VmssMonitoringOptions" id="@microsoft/terraform-cdk-constructs.VmssMonitoringOptions"></a>
+
+Configuration options for Virtual Machine Scale Set monitoring.
+
+This interface provides options for configuring monitoring alerts and diagnostic
+settings for VMSS resources. All properties are JSII-compliant for multi-language support.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.Initializer"></a>
+
+```typescript
+import { VmssMonitoringOptions } from '@microsoft/terraform-cdk-constructs'
+
+const vmssMonitoringOptions: VmssMonitoringOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.cpuAlertSeverity">cpuAlertSeverity</a></code> | <code>number</code> | Severity level for CPU usage alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.cpuThreshold">cpuThreshold</a></code> | <code>number</code> | CPU usage threshold percentage for triggering alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.diskQueueAlertSeverity">diskQueueAlertSeverity</a></code> | <code>number</code> | Severity level for disk queue depth alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.diskQueueThreshold">diskQueueThreshold</a></code> | <code>number</code> | Disk queue depth threshold for triggering alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.enableCpuAlert">enableCpuAlert</a></code> | <code>boolean</code> | Enable or disable CPU usage alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.enableDeletionAlert">enableDeletionAlert</a></code> | <code>boolean</code> | Enable or disable VMSS deletion activity log alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.enableDiskQueueAlert">enableDiskQueueAlert</a></code> | <code>boolean</code> | Enable or disable disk queue depth alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.enableMemoryAlert">enableMemoryAlert</a></code> | <code>boolean</code> | Enable or disable memory usage alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.memoryAlertSeverity">memoryAlertSeverity</a></code> | <code>number</code> | Severity level for memory usage alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.memoryThreshold">memoryThreshold</a></code> | <code>number</code> | Available memory threshold in bytes for triggering alerts. |
+
+---
+
+##### `cpuAlertSeverity`<sup>Optional</sup> <a name="cpuAlertSeverity" id="@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.cpuAlertSeverity"></a>
+
+```typescript
+public readonly cpuAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+Severity level for CPU usage alerts.
+
+0: Critical
+- 1: Error
+- 2: Warning
+- 3: Informational
+- 4: Verbose
+
+---
+
+##### `cpuThreshold`<sup>Optional</sup> <a name="cpuThreshold" id="@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.cpuThreshold"></a>
+
+```typescript
+public readonly cpuThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 75
+
+CPU usage threshold percentage for triggering alerts.
+
+VMSS uses a lower default threshold (75%) compared to single VMs (80%)
+to allow headroom for scaling operations before reaching saturation.
+
+---
+
+##### `diskQueueAlertSeverity`<sup>Optional</sup> <a name="diskQueueAlertSeverity" id="@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.diskQueueAlertSeverity"></a>
+
+```typescript
+public readonly diskQueueAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+Severity level for disk queue depth alerts.
+
+0: Critical
+- 1: Error
+- 2: Warning
+- 3: Informational
+- 4: Verbose
+
+---
+
+##### `diskQueueThreshold`<sup>Optional</sup> <a name="diskQueueThreshold" id="@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.diskQueueThreshold"></a>
+
+```typescript
+public readonly diskQueueThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 32
+
+Disk queue depth threshold for triggering alerts.
+
+High disk queue depth can indicate disk performance bottlenecks.
+
+---
+
+##### `enableCpuAlert`<sup>Optional</sup> <a name="enableCpuAlert" id="@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.enableCpuAlert"></a>
+
+```typescript
+public readonly enableCpuAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable or disable CPU usage alert.
+
+---
+
+##### `enableDeletionAlert`<sup>Optional</sup> <a name="enableDeletionAlert" id="@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.enableDeletionAlert"></a>
+
+```typescript
+public readonly enableDeletionAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable or disable VMSS deletion activity log alert.
+
+---
+
+##### `enableDiskQueueAlert`<sup>Optional</sup> <a name="enableDiskQueueAlert" id="@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.enableDiskQueueAlert"></a>
+
+```typescript
+public readonly enableDiskQueueAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable or disable disk queue depth alert.
+
+---
+
+##### `enableMemoryAlert`<sup>Optional</sup> <a name="enableMemoryAlert" id="@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.enableMemoryAlert"></a>
+
+```typescript
+public readonly enableMemoryAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable or disable memory usage alert.
+
+---
+
+##### `memoryAlertSeverity`<sup>Optional</sup> <a name="memoryAlertSeverity" id="@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.memoryAlertSeverity"></a>
+
+```typescript
+public readonly memoryAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+Severity level for memory usage alerts.
+
+0: Critical
+- 1: Error
+- 2: Warning
+- 3: Informational
+- 4: Verbose
+
+---
+
+##### `memoryThreshold`<sup>Optional</sup> <a name="memoryThreshold" id="@microsoft/terraform-cdk-constructs.VmssMonitoringOptions.property.memoryThreshold"></a>
+
+```typescript
+public readonly memoryThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 1073741824
+
+Available memory threshold in bytes for triggering alerts.
+
+When available memory drops below this threshold, an alert will be triggered.
+Default is 1GB (1073741824 bytes).
+
+---
+
+### VmssMonitoringOptions <a name="VmssMonitoringOptions" id="@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions"></a>
+
+Configuration options for Virtual Machine Scale Set monitoring.
+
+This interface provides options for configuring monitoring alerts and diagnostic
+settings for VMSS resources. All properties are JSII-compliant for multi-language support.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.Initializer"></a>
+
+```typescript
+import { azure_vmss } from '@microsoft/terraform-cdk-constructs'
+
+const vmssMonitoringOptions: azure_vmss.VmssMonitoringOptions = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.cpuAlertSeverity">cpuAlertSeverity</a></code> | <code>number</code> | Severity level for CPU usage alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.cpuThreshold">cpuThreshold</a></code> | <code>number</code> | CPU usage threshold percentage for triggering alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.diskQueueAlertSeverity">diskQueueAlertSeverity</a></code> | <code>number</code> | Severity level for disk queue depth alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.diskQueueThreshold">diskQueueThreshold</a></code> | <code>number</code> | Disk queue depth threshold for triggering alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.enableCpuAlert">enableCpuAlert</a></code> | <code>boolean</code> | Enable or disable CPU usage alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.enableDeletionAlert">enableDeletionAlert</a></code> | <code>boolean</code> | Enable or disable VMSS deletion activity log alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.enableDiskQueueAlert">enableDiskQueueAlert</a></code> | <code>boolean</code> | Enable or disable disk queue depth alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.enableMemoryAlert">enableMemoryAlert</a></code> | <code>boolean</code> | Enable or disable memory usage alert. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.memoryAlertSeverity">memoryAlertSeverity</a></code> | <code>number</code> | Severity level for memory usage alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.memoryThreshold">memoryThreshold</a></code> | <code>number</code> | Available memory threshold in bytes for triggering alerts. |
+
+---
+
+##### `cpuAlertSeverity`<sup>Optional</sup> <a name="cpuAlertSeverity" id="@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.cpuAlertSeverity"></a>
+
+```typescript
+public readonly cpuAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+Severity level for CPU usage alerts.
+
+0: Critical
+- 1: Error
+- 2: Warning
+- 3: Informational
+- 4: Verbose
+
+---
+
+##### `cpuThreshold`<sup>Optional</sup> <a name="cpuThreshold" id="@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.cpuThreshold"></a>
+
+```typescript
+public readonly cpuThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 75
+
+CPU usage threshold percentage for triggering alerts.
+
+VMSS uses a lower default threshold (75%) compared to single VMs (80%)
+to allow headroom for scaling operations before reaching saturation.
+
+---
+
+##### `diskQueueAlertSeverity`<sup>Optional</sup> <a name="diskQueueAlertSeverity" id="@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.diskQueueAlertSeverity"></a>
+
+```typescript
+public readonly diskQueueAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+Severity level for disk queue depth alerts.
+
+0: Critical
+- 1: Error
+- 2: Warning
+- 3: Informational
+- 4: Verbose
+
+---
+
+##### `diskQueueThreshold`<sup>Optional</sup> <a name="diskQueueThreshold" id="@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.diskQueueThreshold"></a>
+
+```typescript
+public readonly diskQueueThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 32
+
+Disk queue depth threshold for triggering alerts.
+
+High disk queue depth can indicate disk performance bottlenecks.
+
+---
+
+##### `enableCpuAlert`<sup>Optional</sup> <a name="enableCpuAlert" id="@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.enableCpuAlert"></a>
+
+```typescript
+public readonly enableCpuAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable or disable CPU usage alert.
+
+---
+
+##### `enableDeletionAlert`<sup>Optional</sup> <a name="enableDeletionAlert" id="@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.enableDeletionAlert"></a>
+
+```typescript
+public readonly enableDeletionAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable or disable VMSS deletion activity log alert.
+
+---
+
+##### `enableDiskQueueAlert`<sup>Optional</sup> <a name="enableDiskQueueAlert" id="@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.enableDiskQueueAlert"></a>
+
+```typescript
+public readonly enableDiskQueueAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable or disable disk queue depth alert.
+
+---
+
+##### `enableMemoryAlert`<sup>Optional</sup> <a name="enableMemoryAlert" id="@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.enableMemoryAlert"></a>
+
+```typescript
+public readonly enableMemoryAlert: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Enable or disable memory usage alert.
+
+---
+
+##### `memoryAlertSeverity`<sup>Optional</sup> <a name="memoryAlertSeverity" id="@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.memoryAlertSeverity"></a>
+
+```typescript
+public readonly memoryAlertSeverity: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+Severity level for memory usage alerts.
+
+0: Critical
+- 1: Error
+- 2: Warning
+- 3: Informational
+- 4: Verbose
+
+---
+
+##### `memoryThreshold`<sup>Optional</sup> <a name="memoryThreshold" id="@microsoft/terraform-cdk-constructs.azure_vmss.VmssMonitoringOptions.property.memoryThreshold"></a>
+
+```typescript
+public readonly memoryThreshold: number;
+```
+
+- *Type:* number
+- *Default:* 1073741824
+
+Available memory threshold in bytes for triggering alerts.
+
+When available memory drops below this threshold, an alert will be triggered.
+Default is 1GB (1073741824 bytes).
+
+---
+
+### VoiceReceiver <a name="VoiceReceiver" id="@microsoft/terraform-cdk-constructs.VoiceReceiver"></a>
+
+Voice receiver configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.VoiceReceiver.Initializer"></a>
+
+```typescript
+import { VoiceReceiver } from '@microsoft/terraform-cdk-constructs'
+
+const voiceReceiver: VoiceReceiver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VoiceReceiver.property.countryCode">countryCode</a></code> | <code>string</code> | The country code (e.g., "1" for US). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VoiceReceiver.property.name">name</a></code> | <code>string</code> | The name of the voice receiver. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VoiceReceiver.property.phoneNumber">phoneNumber</a></code> | <code>string</code> | The phone number to call. |
+
+---
+
+##### `countryCode`<sup>Required</sup> <a name="countryCode" id="@microsoft/terraform-cdk-constructs.VoiceReceiver.property.countryCode"></a>
+
+```typescript
+public readonly countryCode: string;
+```
+
+- *Type:* string
+
+The country code (e.g., "1" for US).
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.VoiceReceiver.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the voice receiver.
+
+---
+
+##### `phoneNumber`<sup>Required</sup> <a name="phoneNumber" id="@microsoft/terraform-cdk-constructs.VoiceReceiver.property.phoneNumber"></a>
+
+```typescript
+public readonly phoneNumber: string;
+```
+
+- *Type:* string
+
+The phone number to call.
+
+---
+
+### VoiceReceiver <a name="VoiceReceiver" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver"></a>
+
+Voice receiver configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver.Initializer"></a>
+
+```typescript
+import { azure_actiongroup } from '@microsoft/terraform-cdk-constructs'
+
+const voiceReceiver: azure_actiongroup.VoiceReceiver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver.property.countryCode">countryCode</a></code> | <code>string</code> | The country code (e.g., "1" for US). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver.property.name">name</a></code> | <code>string</code> | The name of the voice receiver. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver.property.phoneNumber">phoneNumber</a></code> | <code>string</code> | The phone number to call. |
+
+---
+
+##### `countryCode`<sup>Required</sup> <a name="countryCode" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver.property.countryCode"></a>
+
+```typescript
+public readonly countryCode: string;
+```
+
+- *Type:* string
+
+The country code (e.g., "1" for US).
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the voice receiver.
+
+---
+
+##### `phoneNumber`<sup>Required</sup> <a name="phoneNumber" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.VoiceReceiver.property.phoneNumber"></a>
+
+```typescript
+public readonly phoneNumber: string;
+```
+
+- *Type:* string
+
+The phone number to call.
+
+---
+
+### WebhookReceiver <a name="WebhookReceiver" id="@microsoft/terraform-cdk-constructs.WebhookReceiver"></a>
+
+Webhook receiver configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.WebhookReceiver.Initializer"></a>
+
+```typescript
+import { WebhookReceiver } from '@microsoft/terraform-cdk-constructs'
+
+const webhookReceiver: WebhookReceiver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.WebhookReceiver.property.name">name</a></code> | <code>string</code> | The name of the webhook receiver. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.WebhookReceiver.property.serviceUri">serviceUri</a></code> | <code>string</code> | The service URI to send webhooks to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.WebhookReceiver.property.useCommonAlertSchema">useCommonAlertSchema</a></code> | <code>boolean</code> | Whether to use common alert schema. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.WebhookReceiver.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the webhook receiver.
+
+---
+
+##### `serviceUri`<sup>Required</sup> <a name="serviceUri" id="@microsoft/terraform-cdk-constructs.WebhookReceiver.property.serviceUri"></a>
+
+```typescript
+public readonly serviceUri: string;
+```
+
+- *Type:* string
+
+The service URI to send webhooks to.
+
+---
+
+##### `useCommonAlertSchema`<sup>Optional</sup> <a name="useCommonAlertSchema" id="@microsoft/terraform-cdk-constructs.WebhookReceiver.property.useCommonAlertSchema"></a>
+
+```typescript
+public readonly useCommonAlertSchema: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether to use common alert schema.
+
+---
+
+### WebhookReceiver <a name="WebhookReceiver" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver"></a>
+
+Webhook receiver configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver.Initializer"></a>
+
+```typescript
+import { azure_actiongroup } from '@microsoft/terraform-cdk-constructs'
+
+const webhookReceiver: azure_actiongroup.WebhookReceiver = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver.property.name">name</a></code> | <code>string</code> | The name of the webhook receiver. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver.property.serviceUri">serviceUri</a></code> | <code>string</code> | The service URI to send webhooks to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver.property.useCommonAlertSchema">useCommonAlertSchema</a></code> | <code>boolean</code> | Whether to use common alert schema. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the webhook receiver.
+
+---
+
+##### `serviceUri`<sup>Required</sup> <a name="serviceUri" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver.property.serviceUri"></a>
+
+```typescript
+public readonly serviceUri: string;
+```
+
+- *Type:* string
+
+The service URI to send webhooks to.
+
+---
+
+##### `useCommonAlertSchema`<sup>Optional</sup> <a name="useCommonAlertSchema" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.WebhookReceiver.property.useCommonAlertSchema"></a>
+
+```typescript
+public readonly useCommonAlertSchema: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether to use common alert schema.
 
 ---
 
@@ -55503,6 +68462,75 @@ const manager = ApiVersionManager.instance();
 ```
 
 
+
+
+### AssertionReturn <a name="AssertionReturn" id="@microsoft/terraform-cdk-constructs.AssertionReturn"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.AssertionReturn.Initializer"></a>
+
+```typescript
+import { AssertionReturn } from '@microsoft/terraform-cdk-constructs'
+
+new AssertionReturn(message: string, success: boolean)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AssertionReturn.Initializer.parameter.message">message</a></code> | <code>string</code> | - String message containing information about the result of the assertion. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AssertionReturn.Initializer.parameter.success">success</a></code> | <code>boolean</code> | - Boolean success denoting the success of the assertion. |
+
+---
+
+##### `message`<sup>Required</sup> <a name="message" id="@microsoft/terraform-cdk-constructs.AssertionReturn.Initializer.parameter.message"></a>
+
+- *Type:* string
+
+String message containing information about the result of the assertion.
+
+---
+
+##### `success`<sup>Required</sup> <a name="success" id="@microsoft/terraform-cdk-constructs.AssertionReturn.Initializer.parameter.success"></a>
+
+- *Type:* boolean
+
+Boolean success denoting the success of the assertion.
+
+---
+
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AssertionReturn.property.message">message</a></code> | <code>string</code> | - String message containing information about the result of the assertion. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AssertionReturn.property.success">success</a></code> | <code>boolean</code> | - Boolean success denoting the success of the assertion. |
+
+---
+
+##### `message`<sup>Required</sup> <a name="message" id="@microsoft/terraform-cdk-constructs.AssertionReturn.property.message"></a>
+
+```typescript
+public readonly message: string;
+```
+
+- *Type:* string
+
+String message containing information about the result of the assertion.
+
+---
+
+##### `success`<sup>Required</sup> <a name="success" id="@microsoft/terraform-cdk-constructs.AssertionReturn.property.success"></a>
+
+```typescript
+public readonly success: boolean;
+```
+
+- *Type:* boolean
+
+Boolean success denoting the success of the assertion.
+
+---
 
 
 ### AssertionReturn <a name="AssertionReturn" id="@microsoft/terraform-cdk-constructs.testing.AssertionReturn"></a>
@@ -60618,6 +73646,124 @@ public readonly internalValue: IResolvable | ResourceActionTimeouts;
 ---
 
 
+### ResourceCleanupService <a name="ResourceCleanupService" id="@microsoft/terraform-cdk-constructs.ResourceCleanupService"></a>
+
+Main cleanup service class.
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.ResourceCleanupService.Initializer"></a>
+
+```typescript
+import { ResourceCleanupService } from '@microsoft/terraform-cdk-constructs'
+
+new ResourceCleanupService()
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceCleanupService.checkAzureCliAvailable">checkAzureCliAvailable</a></code> | Checks if Azure CLI is available. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceCleanupService.queryAzureResourcesByTags">queryAzureResourcesByTags</a></code> | Queries Azure Resource Graph for resources by tags. |
+
+---
+
+##### `checkAzureCliAvailable` <a name="checkAzureCliAvailable" id="@microsoft/terraform-cdk-constructs.ResourceCleanupService.checkAzureCliAvailable"></a>
+
+```typescript
+public checkAzureCliAvailable(): boolean
+```
+
+Checks if Azure CLI is available.
+
+##### `queryAzureResourcesByTags` <a name="queryAzureResourcesByTags" id="@microsoft/terraform-cdk-constructs.ResourceCleanupService.queryAzureResourcesByTags"></a>
+
+```typescript
+public queryAzureResourcesByTags(tags: {[ key: string ]: string}, subscription?: string): any[]
+```
+
+Queries Azure Resource Graph for resources by tags.
+
+Returns empty array on errors for graceful degradation.
+
+###### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.ResourceCleanupService.queryAzureResourcesByTags.parameter.tags"></a>
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+###### `subscription`<sup>Optional</sup> <a name="subscription" id="@microsoft/terraform-cdk-constructs.ResourceCleanupService.queryAzureResourcesByTags.parameter.subscription"></a>
+
+- *Type:* string
+
+---
+
+
+
+
+### ResourceCleanupService <a name="ResourceCleanupService" id="@microsoft/terraform-cdk-constructs.testing.ResourceCleanupService"></a>
+
+Main cleanup service class.
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.testing.ResourceCleanupService.Initializer"></a>
+
+```typescript
+import { testing } from '@microsoft/terraform-cdk-constructs'
+
+new testing.ResourceCleanupService()
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.ResourceCleanupService.checkAzureCliAvailable">checkAzureCliAvailable</a></code> | Checks if Azure CLI is available. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.ResourceCleanupService.queryAzureResourcesByTags">queryAzureResourcesByTags</a></code> | Queries Azure Resource Graph for resources by tags. |
+
+---
+
+##### `checkAzureCliAvailable` <a name="checkAzureCliAvailable" id="@microsoft/terraform-cdk-constructs.testing.ResourceCleanupService.checkAzureCliAvailable"></a>
+
+```typescript
+public checkAzureCliAvailable(): boolean
+```
+
+Checks if Azure CLI is available.
+
+##### `queryAzureResourcesByTags` <a name="queryAzureResourcesByTags" id="@microsoft/terraform-cdk-constructs.testing.ResourceCleanupService.queryAzureResourcesByTags"></a>
+
+```typescript
+public queryAzureResourcesByTags(tags: {[ key: string ]: string}, subscription?: string): any[]
+```
+
+Queries Azure Resource Graph for resources by tags.
+
+Returns empty array on errors for graceful degradation.
+
+###### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.testing.ResourceCleanupService.queryAzureResourcesByTags.parameter.tags"></a>
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+###### `subscription`<sup>Optional</sup> <a name="subscription" id="@microsoft/terraform-cdk-constructs.testing.ResourceCleanupService.queryAzureResourcesByTags.parameter.subscription"></a>
+
+- *Type:* string
+
+---
+
+
+
+
 ### ResourceIdentityList <a name="ResourceIdentityList" id="@microsoft/terraform-cdk-constructs.ResourceIdentityList"></a>
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.ResourceIdentityList.Initializer"></a>
@@ -63594,6 +76740,394 @@ The API schema to use for transformations and validation.
 
 ---
 
+
+
+### TestRunMetadata <a name="TestRunMetadata" id="@microsoft/terraform-cdk-constructs.TestRunMetadata"></a>
+
+Metadata for an integration test run.
+
+Generated once per test execution and shared across all resources
+in that test. Provides unique identification, temporal tracking,
+and CI/CD context.
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.Initializer"></a>
+
+```typescript
+import { TestRunMetadata } from '@microsoft/terraform-cdk-constructs'
+
+new TestRunMetadata(testName: string, options?: TestRunOptions)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata.Initializer.parameter.testName">testName</a></code> | <code>string</code> | - Test name (will be sanitized). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata.Initializer.parameter.options">options</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.TestRunOptions">TestRunOptions</a></code> | - Optional configuration. |
+
+---
+
+##### `testName`<sup>Required</sup> <a name="testName" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.Initializer.parameter.testName"></a>
+
+- *Type:* string
+
+Test name (will be sanitized).
+
+---
+
+##### `options`<sup>Optional</sup> <a name="options" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.Initializer.parameter.options"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.TestRunOptions">TestRunOptions</a>
+
+Optional configuration.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata.generateSystemTags">generateSystemTags</a></code> | Generates system tags for resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata.isCleanupEligible">isCleanupEligible</a></code> | Checks if resources from this run are eligible for cleanup. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata.toJSON">toJSON</a></code> | Serializes metadata to JSON for logging. |
+
+---
+
+##### `generateSystemTags` <a name="generateSystemTags" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.generateSystemTags"></a>
+
+```typescript
+public generateSystemTags(): {[ key: string ]: string}
+```
+
+Generates system tags for resources.
+
+##### `isCleanupEligible` <a name="isCleanupEligible" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.isCleanupEligible"></a>
+
+```typescript
+public isCleanupEligible(now?: Date): boolean
+```
+
+Checks if resources from this run are eligible for cleanup.
+
+###### `now`<sup>Optional</sup> <a name="now" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.isCleanupEligible.parameter.now"></a>
+
+- *Type:* Date
+
+Current time (defaults to now).
+
+---
+
+##### `toJSON` <a name="toJSON" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.toJSON"></a>
+
+```typescript
+public toJSON(): {[ key: string ]: any}
+```
+
+Serializes metadata to JSON for logging.
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata.property.autoCleanup">autoCleanup</a></code> | <code>boolean</code> | Enable automated cleanup. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata.property.cleanupAfter">cleanupAfter</a></code> | <code>Date</code> | Cleanup after timestamp (createdAt + maxAgeHours). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata.property.cleanupPolicy">cleanupPolicy</a></code> | <code>string</code> | Cleanup policy. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata.property.createdAt">createdAt</a></code> | <code>Date</code> | Timestamp when the test run started. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata.property.maxAgeHours">maxAgeHours</a></code> | <code>number</code> | Maximum age in hours before cleanup eligible. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata.property.runId">runId</a></code> | <code>string</code> | Unique identifier for this test run (UUID v4). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata.property.testName">testName</a></code> | <code>string</code> | Sanitized test name from the describe block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.TestRunMetadata.property.ciContext">ciContext</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.CIContext">CIContext</a></code> | CI/CD context (populated from environment variables). |
+
+---
+
+##### `autoCleanup`<sup>Required</sup> <a name="autoCleanup" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.property.autoCleanup"></a>
+
+```typescript
+public readonly autoCleanup: boolean;
+```
+
+- *Type:* boolean
+
+Enable automated cleanup.
+
+---
+
+##### `cleanupAfter`<sup>Required</sup> <a name="cleanupAfter" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.property.cleanupAfter"></a>
+
+```typescript
+public readonly cleanupAfter: Date;
+```
+
+- *Type:* Date
+
+Cleanup after timestamp (createdAt + maxAgeHours).
+
+---
+
+##### `cleanupPolicy`<sup>Required</sup> <a name="cleanupPolicy" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.property.cleanupPolicy"></a>
+
+```typescript
+public readonly cleanupPolicy: string;
+```
+
+- *Type:* string
+
+Cleanup policy.
+
+---
+
+##### `createdAt`<sup>Required</sup> <a name="createdAt" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.property.createdAt"></a>
+
+```typescript
+public readonly createdAt: Date;
+```
+
+- *Type:* Date
+
+Timestamp when the test run started.
+
+---
+
+##### `maxAgeHours`<sup>Required</sup> <a name="maxAgeHours" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.property.maxAgeHours"></a>
+
+```typescript
+public readonly maxAgeHours: number;
+```
+
+- *Type:* number
+
+Maximum age in hours before cleanup eligible.
+
+---
+
+##### `runId`<sup>Required</sup> <a name="runId" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.property.runId"></a>
+
+```typescript
+public readonly runId: string;
+```
+
+- *Type:* string
+
+Unique identifier for this test run (UUID v4).
+
+---
+
+##### `testName`<sup>Required</sup> <a name="testName" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.property.testName"></a>
+
+```typescript
+public readonly testName: string;
+```
+
+- *Type:* string
+
+Sanitized test name from the describe block.
+
+---
+
+##### `ciContext`<sup>Optional</sup> <a name="ciContext" id="@microsoft/terraform-cdk-constructs.TestRunMetadata.property.ciContext"></a>
+
+```typescript
+public readonly ciContext: CIContext;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.CIContext">CIContext</a>
+
+CI/CD context (populated from environment variables).
+
+---
+
+
+### TestRunMetadata <a name="TestRunMetadata" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata"></a>
+
+Metadata for an integration test run.
+
+Generated once per test execution and shared across all resources
+in that test. Provides unique identification, temporal tracking,
+and CI/CD context.
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.Initializer"></a>
+
+```typescript
+import { testing } from '@microsoft/terraform-cdk-constructs'
+
+new testing.TestRunMetadata(testName: string, options?: TestRunOptions)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.Initializer.parameter.testName">testName</a></code> | <code>string</code> | - Test name (will be sanitized). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.Initializer.parameter.options">options</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.TestRunOptions">TestRunOptions</a></code> | - Optional configuration. |
+
+---
+
+##### `testName`<sup>Required</sup> <a name="testName" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.Initializer.parameter.testName"></a>
+
+- *Type:* string
+
+Test name (will be sanitized).
+
+---
+
+##### `options`<sup>Optional</sup> <a name="options" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.Initializer.parameter.options"></a>
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.TestRunOptions">TestRunOptions</a>
+
+Optional configuration.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.generateSystemTags">generateSystemTags</a></code> | Generates system tags for resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.isCleanupEligible">isCleanupEligible</a></code> | Checks if resources from this run are eligible for cleanup. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.toJSON">toJSON</a></code> | Serializes metadata to JSON for logging. |
+
+---
+
+##### `generateSystemTags` <a name="generateSystemTags" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.generateSystemTags"></a>
+
+```typescript
+public generateSystemTags(): {[ key: string ]: string}
+```
+
+Generates system tags for resources.
+
+##### `isCleanupEligible` <a name="isCleanupEligible" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.isCleanupEligible"></a>
+
+```typescript
+public isCleanupEligible(now?: Date): boolean
+```
+
+Checks if resources from this run are eligible for cleanup.
+
+###### `now`<sup>Optional</sup> <a name="now" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.isCleanupEligible.parameter.now"></a>
+
+- *Type:* Date
+
+Current time (defaults to now).
+
+---
+
+##### `toJSON` <a name="toJSON" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.toJSON"></a>
+
+```typescript
+public toJSON(): {[ key: string ]: any}
+```
+
+Serializes metadata to JSON for logging.
+
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.autoCleanup">autoCleanup</a></code> | <code>boolean</code> | Enable automated cleanup. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.cleanupAfter">cleanupAfter</a></code> | <code>Date</code> | Cleanup after timestamp (createdAt + maxAgeHours). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.cleanupPolicy">cleanupPolicy</a></code> | <code>string</code> | Cleanup policy. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.createdAt">createdAt</a></code> | <code>Date</code> | Timestamp when the test run started. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.maxAgeHours">maxAgeHours</a></code> | <code>number</code> | Maximum age in hours before cleanup eligible. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.runId">runId</a></code> | <code>string</code> | Unique identifier for this test run (UUID v4). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.testName">testName</a></code> | <code>string</code> | Sanitized test name from the describe block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.ciContext">ciContext</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.CIContext">CIContext</a></code> | CI/CD context (populated from environment variables). |
+
+---
+
+##### `autoCleanup`<sup>Required</sup> <a name="autoCleanup" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.autoCleanup"></a>
+
+```typescript
+public readonly autoCleanup: boolean;
+```
+
+- *Type:* boolean
+
+Enable automated cleanup.
+
+---
+
+##### `cleanupAfter`<sup>Required</sup> <a name="cleanupAfter" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.cleanupAfter"></a>
+
+```typescript
+public readonly cleanupAfter: Date;
+```
+
+- *Type:* Date
+
+Cleanup after timestamp (createdAt + maxAgeHours).
+
+---
+
+##### `cleanupPolicy`<sup>Required</sup> <a name="cleanupPolicy" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.cleanupPolicy"></a>
+
+```typescript
+public readonly cleanupPolicy: string;
+```
+
+- *Type:* string
+
+Cleanup policy.
+
+---
+
+##### `createdAt`<sup>Required</sup> <a name="createdAt" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.createdAt"></a>
+
+```typescript
+public readonly createdAt: Date;
+```
+
+- *Type:* Date
+
+Timestamp when the test run started.
+
+---
+
+##### `maxAgeHours`<sup>Required</sup> <a name="maxAgeHours" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.maxAgeHours"></a>
+
+```typescript
+public readonly maxAgeHours: number;
+```
+
+- *Type:* number
+
+Maximum age in hours before cleanup eligible.
+
+---
+
+##### `runId`<sup>Required</sup> <a name="runId" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.runId"></a>
+
+```typescript
+public readonly runId: string;
+```
+
+- *Type:* string
+
+Unique identifier for this test run (UUID v4).
+
+---
+
+##### `testName`<sup>Required</sup> <a name="testName" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.testName"></a>
+
+```typescript
+public readonly testName: string;
+```
+
+- *Type:* string
+
+Sanitized test name from the describe block.
+
+---
+
+##### `ciContext`<sup>Optional</sup> <a name="ciContext" id="@microsoft/terraform-cdk-constructs.testing.TestRunMetadata.property.ciContext"></a>
+
+```typescript
+public readonly ciContext: CIContext;
+```
+
+- *Type:* <a href="#@microsoft/terraform-cdk-constructs.CIContext">CIContext</a>
+
+CI/CD context (populated from environment variables).
+
+---
 
 
 ### UpdateResourceRetryOutputReference <a name="UpdateResourceRetryOutputReference" id="@microsoft/terraform-cdk-constructs.UpdateResourceRetryOutputReference"></a>

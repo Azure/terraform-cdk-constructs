@@ -10,6 +10,11 @@
       "type": "build"
     },
     {
+      "name": "@types/uuid",
+      "version": "^10.0.0",
+      "type": "build"
+    },
+    {
       "name": "@typescript-eslint/eslint-plugin",
       "version": "^6",
       "type": "build"
@@ -106,6 +111,11 @@
       "name": "typescript",
       "version": "~5.9.3",
       "type": "build"
+    },
+    {
+      "name": "uuid",
+      "version": "^11.0.3",
+      "type": "bundled"
     },
     {
       "name": "cdktf",

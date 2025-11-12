@@ -328,6 +328,22 @@ export type VirtualMachineLicenseType =
   | "Windows_Server"
   | "None";
 
+/**
+ * Configuration options for Virtual Machine monitoring
+ */
+export interface VirtualMachineMonitoringOptions {
+  readonly cpuThreshold?: number;
+  readonly memoryThreshold?: number;
+  readonly diskQueueThreshold?: number;
+  readonly enableCpuAlert?: boolean;
+  readonly enableMemoryAlert?: boolean;
+  readonly enableDiskQueueAlert?: boolean;
+  readonly enableDeletionAlert?: boolean;
+  readonly cpuAlertSeverity?: 0 | 1 | 2 | 3 | 4;
+  readonly memoryAlertSeverity?: 0 | 1 | 2 | 3 | 4;
+  readonly diskQueueAlertSeverity?: 0 | 1 | 2 | 3 | 4;
+}
+
 // =============================================================================
 // COMMON PROPERTY DEFINITIONS
 // =============================================================================
