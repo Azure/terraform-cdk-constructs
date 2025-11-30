@@ -47,7 +47,6 @@ import {
   MonitoringConfig,
 } from "../../core-azure/lib/azapi/azapi-resource";
 import { ResourceAction } from "../../core-azure/lib/azapi/providers-azapi/resource-action";
-import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -473,42 +472,8 @@ export class AksCluster extends AzapiResource {
     };
   }
 
-  /**
-   * Static initialization flag to ensure schemas are registered only once
-   */
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that AKS Cluster schemas are registered with the ApiVersionManager
-   * This is called once during the first AksCluster instantiation
-   */
-  private static ensureSchemasRegistered(): void {
-    if (AksCluster.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      // Register all AKS Cluster versions
-      apiVersionManager.registerResourceType(
-        AKS_CLUSTER_TYPE,
-        ALL_AKS_CLUSTER_VERSIONS,
-      );
-
-      AksCluster.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_AKS_CLUSTER_VERSIONS.length} API versions for ${AKS_CLUSTER_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register AKS Cluster schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      // Don't throw here as the schemas might already be registered
-      AksCluster.schemasRegistered = true;
-    }
+  static {
+    AzapiResource.registerSchemas(AKS_CLUSTER_TYPE, ALL_AKS_CLUSTER_VERSIONS);
   }
 
   /**
@@ -524,8 +489,6 @@ export class AksCluster extends AzapiResource {
   public readonly fqdnOutput: cdktf.TerraformOutput;
 
   // Public properties that match common AKS interface patterns
-  public readonly id: string;
-  public readonly tags: { [key: string]: string };
 
   // Resource action for retrieving cluster credentials
   private readonly credentialAction: ResourceAction;
@@ -541,17 +504,11 @@ export class AksCluster extends AzapiResource {
    * @param props - Configuration properties for the AKS cluster
    */
   constructor(scope: Construct, id: string, props: AksClusterProps) {
-    // Ensure schemas are registered before calling super
-    AksCluster.ensureSchemasRegistered();
-
-    // Call the parent constructor with the props
     super(scope, id, props);
 
     this.props = props;
 
     // Extract properties from the AZAPI resource outputs using Terraform interpolation
-    this.id = `\${${this.terraformResource.fqn}.id}`;
-    this.tags = props.tags || {};
 
     // Create resource action to retrieve cluster admin credentials
     this.credentialAction = new ResourceAction(this, "listCredentials", {
@@ -604,6 +561,13 @@ export class AksCluster extends AzapiResource {
   // =============================================================================
 
   /**
+   * Indicates that this resource requires a location
+   */
+  protected requiresLocation(): boolean {
+    return true;
+  }
+
+  /**
    * Gets the default API version to use when no explicit version is specified
    * Returns the most recent stable version as the default
    */
@@ -633,8 +597,8 @@ export class AksCluster extends AzapiResource {
   protected createResourceBody(props: any): any {
     const typedProps = props as AksClusterProps;
     return {
-      location: typedProps.location || "eastus",
-      tags: typedProps.tags || {},
+      location: this.location,
+      tags: this.allTags(),
       sku: typedProps.sku,
       identity: typedProps.identity,
       properties: {

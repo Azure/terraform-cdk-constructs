@@ -26,7 +26,6 @@ import {
   AzapiResource,
   AzapiResourceProps,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -197,41 +196,11 @@ export interface ActivityLogAlertBody {
  * @stability stable
  */
 export class ActivityLogAlert extends AzapiResource {
-  /**
-   * Static initialization flag to ensure schemas are registered only once
-   */
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that Activity Log Alert schemas are registered with the ApiVersionManager
-   * This is called once during the first ActivityLogAlert instantiation
-   */
-  private static ensureSchemasRegistered(): void {
-    if (ActivityLogAlert.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      // Register all Activity Log Alert versions
-      apiVersionManager.registerResourceType(
-        ACTIVITY_LOG_ALERT_TYPE,
-        ALL_ACTIVITY_LOG_ALERT_VERSIONS,
-      );
-
-      ActivityLogAlert.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_ACTIVITY_LOG_ALERT_VERSIONS.length} API versions for ${ACTIVITY_LOG_ALERT_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register Activity Log Alert schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      ActivityLogAlert.schemasRegistered = true;
-    }
+  static {
+    AzapiResource.registerSchemas(
+      ACTIVITY_LOG_ALERT_TYPE,
+      ALL_ACTIVITY_LOG_ALERT_VERSIONS,
+    );
   }
 
   /**
@@ -244,7 +213,6 @@ export class ActivityLogAlert extends AzapiResource {
   public readonly nameOutput: cdktf.TerraformOutput;
 
   // Public properties
-  public readonly id: string;
 
   /**
    * Creates a new Azure Activity Log Alert using the AzapiResource framework
@@ -257,16 +225,11 @@ export class ActivityLogAlert extends AzapiResource {
    * @param props - Configuration properties for the Activity Log Alert
    */
   constructor(scope: Construct, id: string, props: ActivityLogAlertProps) {
-    // Ensure schemas are registered before calling super
-    ActivityLogAlert.ensureSchemasRegistered();
-
-    // Call the parent constructor with the props
     super(scope, id, props);
 
     this.props = props;
 
     // Extract properties from the AZAPI resource outputs using Terraform interpolation
-    this.id = `\${${this.terraformResource.fqn}.id}`;
 
     // Create Terraform outputs for easy access and referencing from other resources
     this.idOutput = new cdktf.TerraformOutput(this, "id", {

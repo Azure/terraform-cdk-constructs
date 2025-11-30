@@ -26,7 +26,6 @@ import {
   AzapiResource,
   AzapiResourceProps,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -343,41 +342,8 @@ export interface MetricAlertBody {
  * @stability stable
  */
 export class MetricAlert extends AzapiResource {
-  /**
-   * Static initialization flag to ensure schemas are registered only once
-   */
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that Metric Alert schemas are registered with the ApiVersionManager
-   * This is called once during the first MetricAlert instantiation
-   */
-  private static ensureSchemasRegistered(): void {
-    if (MetricAlert.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      // Register all Metric Alert versions
-      apiVersionManager.registerResourceType(
-        METRIC_ALERT_TYPE,
-        ALL_METRIC_ALERT_VERSIONS,
-      );
-
-      MetricAlert.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_METRIC_ALERT_VERSIONS.length} API versions for ${METRIC_ALERT_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register Metric Alert schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      MetricAlert.schemasRegistered = true;
-    }
+  static {
+    AzapiResource.registerSchemas(METRIC_ALERT_TYPE, ALL_METRIC_ALERT_VERSIONS);
   }
 
   /**
@@ -390,7 +356,6 @@ export class MetricAlert extends AzapiResource {
   public readonly nameOutput: cdktf.TerraformOutput;
 
   // Public properties
-  public readonly id: string;
 
   /**
    * Creates a new Azure Metric Alert using the AzapiResource framework
@@ -403,16 +368,11 @@ export class MetricAlert extends AzapiResource {
    * @param props - Configuration properties for the Metric Alert
    */
   constructor(scope: Construct, id: string, props: MetricAlertProps) {
-    // Ensure schemas are registered before calling super
-    MetricAlert.ensureSchemasRegistered();
-
-    // Call the parent constructor with the props
     super(scope, id, props);
 
     this.props = props;
 
     // Extract properties from the AZAPI resource outputs using Terraform interpolation
-    this.id = `\${${this.terraformResource.fqn}.id}`;
 
     // Create Terraform outputs for easy access and referencing from other resources
     this.idOutput = new cdktf.TerraformOutput(this, "id", {

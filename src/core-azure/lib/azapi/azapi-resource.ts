@@ -23,7 +23,8 @@ import * as cdktf from "cdktf";
 import { Construct } from "constructs";
 import { DataAzapiClientConfig } from "./providers-azapi/data-azapi-client-config";
 import { Resource, ResourceConfig } from "./providers-azapi/resource";
-import { SchemaMapper } from "./schema-mapper/schema-mapper";
+import { ResourceSchemaValidator } from "./resource-schema-validator";
+import { ResourceVersionManager } from "./resource-version-manager";
 
 // Type-only imports to avoid circular dependencies
 import type { ActionGroupProps } from "../../../azure-actiongroup/lib/action-group";
@@ -36,7 +37,6 @@ import {
   VersionConfig,
   ValidationResult,
   MigrationAnalysis,
-  VersionSupportLevel,
 } from "../version-manager/interfaces/version-interfaces";
 
 /**
@@ -114,7 +114,7 @@ export interface MonitoringConfig {
  * Combines base resource properties with version management capabilities
  * and advanced configuration options for the unified framework.
  */
-export interface AzapiResourceProps {
+export interface AzapiResourceProps extends cdktf.TerraformMetaArguments {
   /**
    * The name of the resource
    */
@@ -122,6 +122,29 @@ export interface AzapiResourceProps {
 
   /**
    * The location where the resource should be created
+   *
+   * @remarks
+   * Location handling varies by resource type:
+   * - **Top-level resources**: Most require an explicit location (e.g., "eastus", "westus")
+   * - **Global resources**: Some use "global" as location (e.g., Private DNS Zones)
+   * - **Child resources**: Inherit location from parent and should NOT set this property
+   *
+   * Each resource type may provide its own default through the `resolveLocation()` method.
+   * If no location is specified and no default exists, resource creation may fail.
+   *
+   * @example
+   * // Explicit location for most resources
+   * location: "eastus"
+   *
+   * @example
+   * // Global resource (Private DNS Zone)
+   * location: "global"
+   *
+   * @example
+   * // Child resource (Subnet) - do not set location
+   * // location: undefined (inherited from parent Virtual Network)
+   *
+   * @defaultValue Varies by resource type - see specific resource documentation
    */
   readonly location?: string;
 
@@ -244,15 +267,41 @@ export interface AzapiResourceProps {
  */
 export abstract class AzapiResource extends Construct {
   /**
+   * Static helper for child classes to register their schemas in static initializers
+   *
+   * This method should be called in a static initializer block of each child class
+   * to register all supported API versions and their schemas with the ApiVersionManager.
+   * The static block runs once when the class is first loaded, ensuring schemas are
+   * registered before any instances are created.
+   *
+   * @param resourceType - The Azure resource type (e.g., "Microsoft.Network/virtualNetworks")
+   * @param versions - Array of version configurations containing schemas
+   *
+   * @example
+   * static {
+   *   AzapiResource.registerSchemas(
+   *     "Microsoft.Network/virtualNetworks",
+   *     ALL_VIRTUAL_NETWORK_VERSIONS
+   *   );
+   * }
+   */
+  protected static registerSchemas(
+    resourceType: string,
+    versions: VersionConfig[],
+  ): void {
+    ApiVersionManager.instance().registerResourceType(resourceType, versions);
+  }
+
+  /**
    * The Azure resource type (e.g., "Microsoft.Resources/resourceGroups")
    * @internal
    */
-  protected readonly _resourceType: string;
+  protected _resourceType!: string;
 
   /**
    * The API version to use for this resource
    */
-  protected readonly apiVersion: string;
+  protected apiVersion: string;
 
   /**
    * The underlying AZAPI Terraform resource
@@ -265,14 +314,20 @@ export abstract class AzapiResource extends Construct {
   public readonly name: string;
 
   /**
-   * The location of the resource
+   * The location of the resource (optional - not all resources have a location)
+   * Child resources typically inherit location from their parent
    */
-  public readonly location: string;
+  public readonly location?: string;
 
   /**
-   * The resource ID (abstract - must be implemented by subclasses)
+   * The Azure resource ID
+   *
+   * This property is automatically derived from the underlying Terraform resource.
+   * Child classes no longer need to implement this property.
    */
-  public abstract readonly id: string;
+  public get id(): string {
+    return `\${${this.terraformResource.fqn}.id}`;
+  }
 
   /**
    * The resolved API version being used for this resource instance
@@ -281,7 +336,7 @@ export abstract class AzapiResource extends Construct {
    * either explicitly specified in props or automatically resolved to
    * the latest active version.
    */
-  public readonly resolvedApiVersion: string;
+  public resolvedApiVersion: string;
 
   /**
    * The API schema for the resolved version
@@ -289,7 +344,7 @@ export abstract class AzapiResource extends Construct {
    * Contains the complete schema definition including properties, validation
    * rules, and transformation mappings for the resolved API version.
    */
-  public readonly schema: ApiSchema;
+  public schema!: ApiSchema;
 
   /**
    * The version configuration for the resolved version
@@ -297,7 +352,7 @@ export abstract class AzapiResource extends Construct {
    * Contains lifecycle information, breaking changes, and migration metadata
    * for the resolved API version.
    */
-  public readonly versionConfig: VersionConfig;
+  public versionConfig!: VersionConfig;
 
   /**
    * Validation results for the resource properties
@@ -305,7 +360,7 @@ export abstract class AzapiResource extends Construct {
    * Available after construction if validation is enabled. Contains detailed
    * information about any validation errors or warnings.
    */
-  public readonly validationResult?: ValidationResult;
+  public validationResult?: ValidationResult;
 
   /**
    * Migration analysis results
@@ -313,11 +368,18 @@ export abstract class AzapiResource extends Construct {
    * Available after construction if migration analysis is enabled and a
    * previous version can be determined for comparison.
    */
-  public readonly migrationAnalysis?: MigrationAnalysis;
+  public migrationAnalysis?: MigrationAnalysis;
 
   // Framework components
   private readonly _apiVersionManager: ApiVersionManager;
-  private readonly _schemaMapper: SchemaMapper;
+  private _versionManager!: ResourceVersionManager;
+  private _schemaValidator!: ResourceSchemaValidator;
+
+  /**
+   * Internal mutable tags storage separate from input props
+   * Combines props.tags with dynamically added tags via addTag()
+   */
+  private _tags: { [key: string]: string };
 
   // Monitoring resources (protected for subclass access)
   protected readonly monitoringActionGroups: Construct[] = [];
@@ -339,24 +401,64 @@ export abstract class AzapiResource extends Construct {
     // Initialize the base Construct
     super(scope, id);
 
-    // Initialize basic properties
-    this.name = props.name || this.node.id;
-    this.location = props.location || "eastus";
+    // Initialize basic properties that don't require abstract methods
+    // Use props.name if provided, otherwise fall back to construct ID
+    // This supports both explicit naming and automatic ID-based naming
+    this.name = this.resolveName(props);
+    this.location = this.resolveLocation(props);
 
     // Initialize the API version manager
     this._apiVersionManager = ApiVersionManager.instance();
 
-    // Step 1: Resolve the API version to use
-    this.resolvedApiVersion = this._resolveApiVersion(props.apiVersion);
+    // Initialize tags storage with empty object (will be populated in initialize())
+    this._tags = {};
 
-    // Step 2: Set required abstract properties for AzapiResource
-    this._resourceType = this.resourceType();
+    // Note: We cannot initialize version manager here because it requires
+    // calling abstract methods (resourceType() and defaultVersion())
+    // which are not yet available in the base constructor.
+    // Version resolution is deferred to initialize() method.
+
+    // Step 1: Resolve the API version to use (doesn't call abstract methods yet)
+    // This is a placeholder that will be properly set in initialize()
+    this.resolvedApiVersion = props.apiVersion || "";
     this.apiVersion = this.resolvedApiVersion;
 
-    // Step 3: Load the schema and version configuration
-    this.schema = this.apiSchema();
-    const versionConfig = this._apiVersionManager.versionConfig(
+    // Step 2: Call initialize() to complete initialization after child class is ready
+    this.initialize(props);
+  }
+
+  /**
+   * Protected initialization method called after the constructor completes
+   *
+   * This method is called at the end of the constructor to perform initialization
+   * that requires calling abstract methods. Child classes can override this method
+   * if they need to extend initialization logic, but they MUST call super.initialize(props).
+   *
+   * @param props - Configuration properties for the resource
+   */
+  protected initialize(props: AzapiResourceProps): void {
+    // Step 2: Set required abstract properties (now safe to call abstract methods)
+    this._resourceType = this.resourceType();
+
+    // Step 3: Initialize the version manager and resolve the API version
+    this._versionManager = new ResourceVersionManager(
       this._resourceType,
+      this.defaultVersion(),
+    );
+    this.resolvedApiVersion = this._versionManager.resolveApiVersion(
+      props.apiVersion,
+    );
+    this.apiVersion = this.resolvedApiVersion;
+
+    // Step 3.5: Initialize tags from props
+    // This creates a mutable copy separate from the readonly props
+    this._tags = { ...(props.tags || {}) };
+
+    // Step 4: Load the schema and version configuration using the version manager
+    this.schema = this._versionManager.schemaForVersion(
+      this.resolvedApiVersion,
+    );
+    const versionConfig = this._versionManager.versionConfig(
       this.resolvedApiVersion,
     );
 
@@ -368,38 +470,41 @@ export abstract class AzapiResource extends Construct {
     }
     this.versionConfig = versionConfig;
 
-    // Step 4: Initialize the schema mapper
-    this._schemaMapper = SchemaMapper.create(this.schema);
+    // Step 5: Initialize the schema validator
+    this._schemaValidator = new ResourceSchemaValidator(this.schema);
 
-    // Step 5: Process properties through the framework pipeline
+    // Step 6: Process properties through the framework pipeline
     const processedProps = this._processProperties(props);
 
-    // Step 6: Perform validation if enabled
+    // Step 7: Perform validation if enabled
     if (props.enableValidation !== false) {
-      this.validationResult = this._validateProperties(processedProps);
+      this.validationResult =
+        this._schemaValidator.validateProps(processedProps);
       if (!this.validationResult.valid) {
         throw new Error(
-          `Property validation failed for ${this.resourceType}:\n` +
-            this.validationResult.errors.join("\n"),
+          `Property validation failed for ${this.resourceType()}:\n` +
+            this._schemaValidator
+              .formatValidationErrors(this.validationResult)
+              .join("\n"),
         );
       }
     }
 
-    // Step 7: Perform migration analysis if enabled
+    // Step 8: Perform migration analysis if enabled
     if (props.enableMigrationAnalysis !== false) {
       this.migrationAnalysis = this._performMigrationAnalysis();
     }
 
-    // Step 8: Create the Azure resource
+    // Step 9: Create the Azure resource
     this._createAzureResource(processedProps);
 
-    // Step 9: Create monitoring resources if configured
+    // Step 10: Create monitoring resources if configured
     // Note: Monitoring resources are created lazily to avoid circular dependencies
     if (props.monitoring) {
       void this.createMonitoringResources(props.monitoring);
     }
 
-    // Step 10: Log warnings and migration guidance
+    // Step 11: Log warnings and migration guidance
     this._logFrameworkMessages();
   }
 
@@ -448,6 +553,76 @@ export abstract class AzapiResource extends Construct {
   protected abstract createResourceBody(props: any): any;
 
   /**
+   * Override in child classes to provide default location
+   * @returns Default location or undefined
+   */
+  protected defaultLocation(): string | undefined {
+    return undefined;
+  }
+
+  /**
+   * Override in child classes to indicate if location is required
+   * @returns true if location is mandatory for this resource type
+   */
+  protected requiresLocation(): boolean {
+    return false;
+  }
+
+  /**
+   * Override in child classes to specify parent resource for location inheritance
+   * @returns Parent resource or undefined
+   */
+  protected parentResourceForLocation(): AzapiResource | undefined {
+    return undefined;
+  }
+
+  /**
+   * Resolves location using template method pattern
+   * Priority: props.location > parent location > default location > validation
+   */
+  protected resolveLocation(props: AzapiResourceProps): string | undefined {
+    // 1. Explicit location in props
+    if (props.location) {
+      return props.location;
+    }
+
+    // 2. Inherit from parent resource
+    const parent = this.parentResourceForLocation();
+    if (parent && parent.location) {
+      return parent.location;
+    }
+
+    // 3. Use child class default
+    const defaultLoc = this.defaultLocation();
+    if (defaultLoc) {
+      return defaultLoc;
+    }
+
+    // 4. Validate if required
+    if (this.requiresLocation()) {
+      throw new Error(
+        `Location is required for ${this.resourceType()} but was not provided ` +
+          `and could not be inherited from parent resource.`,
+      );
+    }
+
+    return undefined;
+  }
+
+  /**
+   * Resolves the name for this resource
+   *
+   * This method centralizes name resolution logic. By default, it uses the
+   * provided name or falls back to the construct ID.
+   *
+   * @param props - The resource properties
+   * @returns The resolved resource name
+   */
+  protected resolveName(props: AzapiResourceProps): string {
+    return props.name || this.node.id;
+  }
+
+  /**
    * Helper method for standard schema resolution
    *
    * Subclasses can use this method to resolve the schema for the current version
@@ -482,7 +657,9 @@ export abstract class AzapiResource extends Construct {
    * @returns The latest available version, or undefined if none found
    */
   public latestVersion(): string | undefined {
-    return this._apiVersionManager.latestVersion(this.resourceType());
+    return this._versionManager
+      ? this._versionManager.latestVersion()
+      : this._apiVersionManager.latestVersion(this.resourceType());
   }
 
   /**
@@ -494,7 +671,9 @@ export abstract class AzapiResource extends Construct {
    * @returns Array of supported version strings, sorted by release date
    */
   public supportedVersions(): string[] {
-    return this._apiVersionManager.supportedVersions(this.resourceType());
+    return this._versionManager
+      ? this._versionManager.supportedVersions()
+      : this._apiVersionManager.supportedVersions(this.resourceType());
   }
 
   /**
@@ -513,54 +692,9 @@ export abstract class AzapiResource extends Construct {
       targetVersion,
     );
   }
-
   // =============================================================================
   // PRIVATE IMPLEMENTATION METHODS
   // =============================================================================
-
-  /**
-   * Resolves the API version to use for this resource instance
-   */
-  private _resolveApiVersion(explicitVersion?: string): string {
-    if (explicitVersion) {
-      // Validate that the explicit version is supported
-      if (
-        !this._apiVersionManager.validateVersionSupport(
-          this.resourceType(),
-          explicitVersion,
-        )
-      ) {
-        const supportedVersions = this._apiVersionManager.supportedVersions(
-          this.resourceType(),
-        );
-        throw new Error(
-          `Unsupported API version '${explicitVersion}' for resource type '${this.resourceType()}'. ` +
-            `Supported versions: ${supportedVersions.join(", ")}`,
-        );
-      }
-      return explicitVersion;
-    }
-
-    // Try to get the latest version from the manager
-    const latestVersion = this._apiVersionManager.latestVersion(
-      this.resourceType(),
-    );
-    if (latestVersion) {
-      return latestVersion;
-    }
-
-    // Fall back to the default version
-    const defaultVersion = this.defaultVersion();
-
-    // Warn that we're using the default version
-    console.warn(
-      `No versions registered for ${this.resourceType()}. ` +
-        `Using default version: ${defaultVersion}. ` +
-        `Consider registering versions with ApiVersionManager for better version management.`,
-    );
-
-    return defaultVersion;
-  }
 
   /**
    * Processes properties through the framework pipeline
@@ -568,8 +702,14 @@ export abstract class AzapiResource extends Construct {
   private _processProperties(props: AzapiResourceProps): any {
     let processedProps = { ...props };
 
-    // Apply default values from the schema
-    processedProps = this._schemaMapper.applyDefaults(processedProps);
+    // Ensure name is set before processing
+    // This is critical for validation to work correctly
+    if (!processedProps.name) {
+      processedProps.name = this.resolveName(props);
+    }
+
+    // Apply default values from the schema using the validator
+    processedProps = this._schemaValidator.applyDefaults(processedProps);
 
     // Apply property transformations if enabled
     if (props.enableTransformation !== false) {
@@ -582,22 +722,12 @@ export abstract class AzapiResource extends Construct {
   }
 
   /**
-   * Validates properties against the schema
-   */
-  private _validateProperties(props: any): ValidationResult {
-    return this._schemaMapper.validateProperties(props);
-  }
-
-  /**
    * Performs migration analysis for the current version
    */
   private _performMigrationAnalysis(): MigrationAnalysis | undefined {
-    // Check if the current version is deprecated
-    if (
-      this.versionConfig.supportLevel === VersionSupportLevel.DEPRECATED ||
-      this.versionConfig.supportLevel === VersionSupportLevel.SUNSET
-    ) {
-      const latestVersion = this.latestVersion();
+    // Check if the current version is deprecated using the version manager
+    if (this._versionManager.isDeprecated(this.resolvedApiVersion)) {
+      const latestVersion = this._versionManager.latestVersion();
       if (latestVersion && latestVersion !== this.resolvedApiVersion) {
         return this._apiVersionManager.analyzeMigration(
           this.resourceType(),
@@ -614,19 +744,100 @@ export abstract class AzapiResource extends Construct {
    * Creates the underlying Azure resource
    */
   private _createAzureResource(props: any): void {
+    // Ensure name is set in props for validation
+    const propsWithName = {
+      ...props,
+      name: props.name || this.resolveName(props),
+    };
+
     // Create the resource body using the subclass implementation
-    const resourceBody = this.createResourceBody(props);
+    const resourceBody = this.createResourceBody(propsWithName);
 
     // Determine the parent ID using the overrideable method
-    const parentId = this.resolveParentId(props);
+    const parentId = this.resolveParentId(propsWithName);
+
+    // Find parent AzapiResource construct if parent ID references a resource
+    const parentResource = this._findParentAzapiResource(parentId);
 
     // Create the AZAPI resource using the base class method
+    const resourceName = this.resolveName(props);
     this.terraformResource = this.createAzapiResource(
       resourceBody,
       parentId,
-      this.name,
+      resourceName,
       this.location,
+      parentResource,
+      propsWithName.dependsOn,
+      this._tags, // Pass tags directly instead of extracting from body
     );
+  }
+
+  /**
+   * Finds the parent AzapiResource construct if the parentId references a resource
+   * Returns undefined if parentId is a static string or parent not found
+   * @private
+   */
+  private _findParentAzapiResource(
+    parentId: string,
+  ): AzapiResource | undefined {
+    // Check if the parent is a string interpolation referencing another resource
+    // Pattern: ${azapi_resource.resource_name_HASH.id} or ${construct.fqn}.id
+    if (!parentId.includes("${")) {
+      return undefined; // Parent is a static string ID, not a resource reference
+    }
+
+    // Try to find the parent AzapiResource in the construct tree
+    // We need to search the entire tree to find the matching parent
+    const root = this._findRoot();
+    return this._findParentResource(root, parentId);
+  }
+
+  /**
+   * Finds the root of the construct tree
+   * @private
+   */
+  private _findRoot(): Construct {
+    let current: Construct = this;
+    while (current.node.scope) {
+      current = current.node.scope;
+    }
+    return current;
+  }
+
+  /**
+   * Recursively searches for a parent resource by matching parentId patterns
+   * Enhanced to better handle Terraform interpolation syntax
+   * @private
+   */
+  private _findParentResource(
+    scope: Construct,
+    parentId: string,
+  ): AzapiResource | undefined {
+    // Check all children of this scope
+    for (const child of scope.node.children) {
+      if (
+        child instanceof AzapiResource &&
+        child !== this &&
+        child.terraformResource
+      ) {
+        const childFqn = child.terraformResource.fqn;
+
+        // Match if the child's FQN appears anywhere in the parentId string
+        // This handles cases like: ${azapi_resource.dns-resolver_resource_F1517BE4.id}
+        // where childFqn would be: azapi_resource.dns-resolver_resource_F1517BE4
+        if (parentId.includes(childFqn)) {
+          return child;
+        }
+      }
+
+      // Recursively search in child's subtree
+      const found = this._findParentResource(child, parentId);
+      if (found) {
+        return found;
+      }
+    }
+
+    return undefined;
   }
 
   /**
@@ -646,26 +857,20 @@ export abstract class AzapiResource extends Construct {
   /**
    * Determines the parent ID for the resource (internal implementation)
    *
-   * This method provides the default parent ID resolution logic for most resources.
-   * Child resources should override resolveParentId() instead of this method.
+   * This method provides the default parent ID resolution logic.
+   * Resource-specific logic should be implemented in the overrideable resolveParentId() method.
+   *
+   * Default behavior:
+   * - If resourceGroupId is provided in props, use it
+   * - Otherwise, default to subscription scope
    */
   private _determineParentId(props: any): string {
-    // This is a simplified implementation - real implementation would be
-    // resource-type specific and could be made abstract or configurable
-
-    // For resource groups, parent is subscription
-    if (this.resourceType() === "Microsoft.Resources/resourceGroups") {
-      // Use AZAPI client config to get subscription ID
-      const clientConfig = new DataAzapiClientConfig(this, "client_config", {});
-      return `/subscriptions/\${${clientConfig.fqn}.subscription_id}`;
-    }
-
-    // For other resources, parent might be resource group
+    // If resource group ID is provided, use it as parent
     if (props.resourceGroupId) {
       return props.resourceGroupId;
     }
 
-    // Default to subscription
+    // Default to subscription scope for resources without explicit parent
     const clientConfig = new DataAzapiClientConfig(
       this,
       "client_config_default",
@@ -684,15 +889,18 @@ export abstract class AzapiResource extends Construct {
     const RESET = "\x1b[0m";
     const BOLD = "\x1b[1m";
 
-    // Log deprecation warnings
-    if (this.versionConfig.supportLevel === VersionSupportLevel.DEPRECATED) {
+    // Log deprecation warnings using the version manager
+    if (
+      this._versionManager.isDeprecated(this.resolvedApiVersion) &&
+      !this._versionManager.isSunset(this.resolvedApiVersion)
+    ) {
       console.warn(
         `${YELLOW}⚠️  API version ${this.resolvedApiVersion} for ${this.resourceType()} is deprecated. ` +
           `Consider upgrading to the latest version: ${this.latestVersion()}${RESET}`,
       );
     }
 
-    if (this.versionConfig.supportLevel === VersionSupportLevel.SUNSET) {
+    if (this._versionManager.isSunset(this.resolvedApiVersion)) {
       console.error(
         `${RED}${BOLD}🚨 API version ${this.resolvedApiVersion} for ${this.resourceType()} has reached sunset. ` +
           `Immediate migration to ${this.latestVersion()} is required.${RESET}`,
@@ -816,10 +1024,13 @@ export abstract class AzapiResource extends Construct {
   /**
    * Creates the underlying AZAPI Terraform resource using the generated provider classes
    *
-   * @param properties - The properties object to send to the Azure API
+   * @param properties - The properties object to send to the Azure API (should include location if needed)
    * @param parentId - The parent resource ID (e.g., subscription or resource group)
    * @param name - The name of the resource
-   * @param location - The location of the resource (optional, can be in properties)
+   * @param location - The location of the resource (optional, only for top-level resources without location in body)
+   * @param parentResource - The parent resource for dependency tracking
+   * @param dependsOn - Explicit dependencies for this resource
+   * @param tags - Tags to apply to the resource (passed separately from body for proper idempotency)
    * @returns The created AZAPI resource
    */
   protected createAzapiResource(
@@ -827,18 +1038,57 @@ export abstract class AzapiResource extends Construct {
     parentId: string,
     name: string,
     location?: string,
+    parentResource?: AzapiResource,
+    dependsOn?: cdktf.ITerraformDependable[],
+    tags?: Record<string, string>,
   ): cdktf.TerraformResource {
+    // Determine if this is a child resource by counting path segments
+    // Child resources have multiple segments (e.g., "Microsoft.Network/virtualNetworks/subnets")
+    // Top-level resources have one segment (e.g., "Microsoft.Network/virtualNetworks")
+    const resourceTypeParts = this._resourceType.split("/");
+    const isChildResource = resourceTypeParts.length > 2;
+
+    // Remove tags from properties to avoid duplicate specification error
+    // The AZAPI provider requires tags at the top level only, not in the body
+    // This prevents: "can't specify both the argument 'tags' and 'tags' in the argument 'body'"
+    // Tags are now passed as a separate parameter for better clarity and idempotency
+    const bodyWithoutTags = { ...properties };
+    delete bodyWithoutTags.tags;
+
     // Build the configuration object for the generated AZAPI Resource class
+    // Add location only if:
+    // 1. This is a top-level resource (not a child resource)
+    // 2. Location is provided as parameter
+    // 3. Location is not already in the body
+    // Child resources inherit location from their parent and should not specify it
+
+    // Combine dependsOn arrays: explicit dependencies + parent resource dependency
+    const combinedDependsOn: cdktf.ITerraformDependable[] = [];
+    if (dependsOn && dependsOn.length > 0) {
+      combinedDependsOn.push(...dependsOn);
+    }
+
+    // CRITICAL: Always add parent dependency when parent_id contains interpolations
+    // This ensures proper destroy-time ordering even if parent detection fails
+    if (parentResource?.terraformResource) {
+      combinedDependsOn.push(parentResource.terraformResource);
+    }
+
     const config: ResourceConfig = {
       type: `${this._resourceType}@${this.apiVersion}`,
       name: name,
       parentId: parentId,
-      body: properties,
-      // Add location conditionally if provided and not already in properties
-      ...(location && !properties.location && { location: location }),
+      body: bodyWithoutTags,
+      ...(!isChildResource && location && !properties.location && { location }),
+      // Add tags at the top level if they exist
+      // Tags are passed as a separate parameter and added here to ensure they're in the
+      // initial Terraform configuration, providing proper idempotency
+      ...(tags && Object.keys(tags).length > 0 && { tags }),
+      // Add depends_on for explicit dependencies and parent resource
+      ...(combinedDependsOn.length > 0 && { dependsOn: combinedDependsOn }),
     };
 
-    // Create and return the AZAPI resource using the generated provider class
+    // Create the AZAPI resource using the generated provider class
     return new Resource(this, "resource", config);
   }
 
@@ -883,6 +1133,14 @@ export abstract class AzapiResource extends Construct {
   }
 
   /**
+   * Gets the underlying Terraform resource for use in dependency declarations
+   * This allows explicit dependency management between resources
+   */
+  public get resource(): cdktf.TerraformResource {
+    return this.terraformResource;
+  }
+
+  /**
    * Gets the resource as a Terraform output value
    */
   public get output(): cdktf.TerraformOutput {
@@ -905,6 +1163,49 @@ export abstract class AzapiResource extends Construct {
       roleDefinitionName: roleDefinitionName,
       scope: this.resourceId,
     });
+  }
+
+  /**
+   * Adds a tag to this resource. The tag will be included in the Azure resource.
+   *
+   * This method provides proper immutability by storing tags separately from props.
+   * Tags added via this method are combined with tags from props and included in
+   * the deployed Azure resource.
+   *
+   * **Important:** In CDK for Terraform, tags should ideally be set during resource
+   * construction via props. While this method allows adding tags after construction,
+   * those tags are only included if added before the Terraform configuration is
+   * synthesized. For best results, add all tags via props or call addTag() in the
+   * same scope where the resource is created.
+   *
+   * @param key - The tag key
+   * @param value - The tag value
+   */
+  public addTag(key: string, value: string): void {
+    this._tags[key] = value;
+  }
+
+  /**
+   * All tags on this resource (readonly view)
+   *
+   * This getter provides convenient access to all tags including those from props
+   * and those added dynamically via addTag(). Returns a copy to maintain immutability.
+   */
+  public get tags(): { [key: string]: string } {
+    return { ...this._tags };
+  }
+
+  /**
+   * Protected method to retrieve all tags for use in createResourceBody implementations
+   *
+   * Subclasses should use this method when creating resource bodies to ensure
+   * all tags (from props and addTag()) are included in the Azure resource.
+   * Uses a non-getter name to avoid JSII conflicts with the tags property.
+   *
+   * @returns Object containing all tags
+   */
+  protected allTags(): { [key: string]: string } {
+    return { ...this._tags };
   }
 }
 

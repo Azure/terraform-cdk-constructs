@@ -695,12 +695,19 @@ export class SchemaMapper {
 
         case ValidationRuleType.PATTERN_MATCH:
           if (typeof value === "string" && rule.value) {
-            const pattern = new RegExp(rule.value);
-            if (!pattern.test(value)) {
-              errors.push(
-                rule.message ||
-                  `Property '${propertyPath}' does not match required pattern`,
-              );
+            // Skip pattern validation for Terraform interpolation strings
+            // These strings contain references like ${resource.id} that will be resolved at apply time
+            const isTerraformInterpolation =
+              value.includes("${") && value.includes("}");
+
+            if (!isTerraformInterpolation) {
+              const pattern = new RegExp(rule.value);
+              if (!pattern.test(value)) {
+                errors.push(
+                  rule.message ||
+                    `Property '${propertyPath}' does not match required pattern`,
+                );
+              }
             }
           }
           break;

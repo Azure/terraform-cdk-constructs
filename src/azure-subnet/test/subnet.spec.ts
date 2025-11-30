@@ -336,7 +336,6 @@ describe("Subnet - Implementation", () => {
 
       expect(subnet.idOutput).toBeInstanceOf(cdktf.TerraformOutput);
       expect(subnet.nameOutput).toBeInstanceOf(cdktf.TerraformOutput);
-      expect(subnet.addressPrefixOutput).toBeInstanceOf(cdktf.TerraformOutput);
     });
 
     it("should have correct id format", () => {

@@ -28,7 +28,6 @@ import {
   AzapiResource,
   AzapiResourceProps,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -214,42 +213,11 @@ export interface NetworkSecurityGroupProps extends AzapiResourceProps {
  * @stability stable
  */
 export class NetworkSecurityGroup extends AzapiResource {
-  /**
-   * Static initialization flag to ensure schemas are registered only once
-   */
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that Network Security Group schemas are registered with the ApiVersionManager
-   * This is called once during the first NetworkSecurityGroup instantiation
-   */
-  private static ensureSchemasRegistered(): void {
-    if (NetworkSecurityGroup.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      // Register all Network Security Group versions
-      apiVersionManager.registerResourceType(
-        NETWORK_SECURITY_GROUP_TYPE,
-        ALL_NETWORK_SECURITY_GROUP_VERSIONS,
-      );
-
-      NetworkSecurityGroup.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_NETWORK_SECURITY_GROUP_VERSIONS.length} API versions for ${NETWORK_SECURITY_GROUP_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register Network Security Group schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      // Don't throw here as the schemas might already be registered
-      NetworkSecurityGroup.schemasRegistered = true;
-    }
+  static {
+    AzapiResource.registerSchemas(
+      NETWORK_SECURITY_GROUP_TYPE,
+      ALL_NETWORK_SECURITY_GROUP_VERSIONS,
+    );
   }
 
   /**
@@ -265,8 +233,6 @@ export class NetworkSecurityGroup extends AzapiResource {
   public readonly tagsOutput: cdktf.TerraformOutput;
 
   // Public properties that match the original NetworkSecurityGroup interface
-  public readonly id: string;
-  public readonly tags: { [key: string]: string };
 
   /**
    * Creates a new Azure Network Security Group using the AzapiResource framework
@@ -280,17 +246,11 @@ export class NetworkSecurityGroup extends AzapiResource {
    * @param props - Configuration properties for the Network Security Group
    */
   constructor(scope: Construct, id: string, props: NetworkSecurityGroupProps) {
-    // Ensure schemas are registered before calling super
-    NetworkSecurityGroup.ensureSchemasRegistered();
-
-    // Call the parent constructor with the props
     super(scope, id, props);
 
     this.props = props;
 
     // Extract properties from the AZAPI resource outputs using Terraform interpolation
-    this.id = `\${${this.terraformResource.fqn}.id}`;
-    this.tags = props.tags || {};
 
     // Create Terraform outputs for easy access and referencing from other resources
     this.idOutput = new cdktf.TerraformOutput(this, "id", {
@@ -361,14 +321,21 @@ export class NetworkSecurityGroup extends AzapiResource {
   }
 
   /**
+   * Indicates that location is required for Network Security Groups
+   */
+  protected requiresLocation(): boolean {
+    return true;
+  }
+
+  /**
    * Creates the resource body for the Azure API call
    * Transforms the input properties into the JSON format expected by Azure REST API
    */
   protected createResourceBody(props: any): any {
     const typedProps = props as NetworkSecurityGroupProps;
     return {
-      location: typedProps.location || "eastus",
-      tags: typedProps.tags || {},
+      location: this.location,
+      tags: this.allTags(),
       properties: {
         securityRules: typedProps.securityRules,
         flushConnection: typedProps.flushConnection || false,

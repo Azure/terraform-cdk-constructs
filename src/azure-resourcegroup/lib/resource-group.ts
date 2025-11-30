@@ -28,7 +28,7 @@ import {
   AzapiResource,
   AzapiResourceProps,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
+import { DataAzapiClientConfig } from "../../core-azure/lib/azapi/providers-azapi/data-azapi-client-config";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -109,42 +109,12 @@ export interface ResourceGroupBody {
  * @stability stable
  */
 export class ResourceGroup extends AzapiResource {
-  /**
-   * Static initialization flag to ensure schemas are registered only once
-   */
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that Resource Group schemas are registered with the ApiVersionManager
-   * This is called once during the first ResourceGroup instantiation
-   */
-  private static ensureSchemasRegistered(): void {
-    if (ResourceGroup.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      // Register all Resource Group versions
-      apiVersionManager.registerResourceType(
-        RESOURCE_GROUP_TYPE,
-        ALL_RESOURCE_GROUP_VERSIONS,
-      );
-
-      ResourceGroup.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_RESOURCE_GROUP_VERSIONS.length} API versions for ${RESOURCE_GROUP_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register Resource Group schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      // Don't throw here as the schemas might already be registered
-      ResourceGroup.schemasRegistered = true;
-    }
+  // Static initializer runs once when the class is first loaded
+  static {
+    AzapiResource.registerSchemas(
+      RESOURCE_GROUP_TYPE,
+      ALL_RESOURCE_GROUP_VERSIONS,
+    );
   }
 
   /**
@@ -158,10 +128,6 @@ export class ResourceGroup extends AzapiResource {
   public readonly nameOutput: cdktf.TerraformOutput;
   public readonly tagsOutput: cdktf.TerraformOutput;
 
-  // Public properties that match the original ResourceGroup interface
-  public readonly id: string;
-  public readonly tags: { [key: string]: string };
-
   /**
    * Creates a new Azure Resource Group using the VersionedAzapiResource framework
    *
@@ -174,17 +140,9 @@ export class ResourceGroup extends AzapiResource {
    * @param props - Configuration properties for the Resource Group
    */
   constructor(scope: Construct, id: string, props: ResourceGroupProps) {
-    // Ensure schemas are registered before calling super
-    ResourceGroup.ensureSchemasRegistered();
-
-    // Call the parent constructor with the props
     super(scope, id, props);
 
     this.props = props;
-
-    // Extract properties from the AZAPI resource outputs using Terraform interpolation
-    this.id = `\${${this.terraformResource.fqn}.id}`;
-    this.tags = props.tags || {};
 
     // Create Terraform outputs for easy access and referencing from other resources
     this.idOutput = new cdktf.TerraformOutput(this, "id", {
@@ -245,16 +203,33 @@ export class ResourceGroup extends AzapiResource {
   }
 
   /**
+   * Indicates that location is required for Resource Groups
+   */
+  protected requiresLocation(): boolean {
+    return true;
+  }
+
+  /**
    * Creates the resource body for the Azure API call
    * Transforms the input properties into the JSON format expected by Azure REST API
    */
   protected createResourceBody(props: any): any {
     const typedProps = props as ResourceGroupProps;
+
     return {
-      location: typedProps.location || "eastus",
-      tags: typedProps.tags || {},
+      location: this.location,
+      tags: this.allTags(),
       managedBy: typedProps.managedBy,
     };
+  }
+
+  /**
+   * Resolves the parent ID for Resource Groups
+   * Resource Groups are top-level resources with subscription as parent
+   */
+  protected resolveParentId(_props: any): string {
+    const clientConfig = new DataAzapiClientConfig(this, "client_config", {});
+    return `/subscriptions/\${${clientConfig.fqn}.subscription_id}`;
   }
 
   // =============================================================================
@@ -280,27 +255,6 @@ export class ResourceGroup extends AzapiResource {
    */
   public get resourceId(): string {
     return this.id;
-  }
-
-  /**
-   * Add a tag to the Resource Group
-   * Note: This modifies the construct props but requires a new deployment to take effect
-   */
-  public addTag(key: string, value: string): void {
-    if (!this.props.tags) {
-      (this.props as any).tags = {};
-    }
-    this.props.tags![key] = value;
-  }
-
-  /**
-   * Remove a tag from the Resource Group
-   * Note: This modifies the construct props but requires a new deployment to take effect
-   */
-  public removeTag(key: string): void {
-    if (this.props.tags && this.props.tags[key]) {
-      delete this.props.tags[key];
-    }
   }
 
   // =============================================================================

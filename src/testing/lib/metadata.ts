@@ -158,21 +158,24 @@ export class TestRunMetadata {
    */
   public generateSystemTags(): Record<string, string> {
     // Build tags object with all properties
+    // NOTE: Tag names use hyphens instead of colons because Azure DNS zones
+    // and some other resource types don't support colons (":") in tag names.
+    // See: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations
     const tags: Record<string, string> = {
       // Resource Identification
-      "test:run-id": this.runId,
-      "test:name": this.testName,
-      "test:resource-type": "integration-test",
+      "test-run-id": this.runId,
+      "test-name": this.testName,
+      "test-resource-type": "integration-test",
 
       // Temporal Tracking
-      "test:created-at": this.createdAt.toISOString(),
-      "test:cleanup-after": this.cleanupAfter.toISOString(),
-      "test:max-age-hours": this.maxAgeHours.toString(),
+      "test-created-at": this.createdAt.toISOString(),
+      "test-cleanup-after": this.cleanupAfter.toISOString(),
+      "test-max-age-hours": this.maxAgeHours.toString(),
 
       // Lifecycle Management
-      "test:managed-by": "terraform-cdk-constructs-tests",
-      "test:auto-cleanup": this.autoCleanup.toString(),
-      "test:cleanup-policy": this.cleanupPolicy,
+      "test-managed-by": "terraform-cdk-constructs-tests",
+      "test-auto-cleanup": this.autoCleanup.toString(),
+      "test-cleanup-policy": this.cleanupPolicy,
 
       // Backward Compatibility
       environment: "integration-test",
@@ -182,19 +185,19 @@ export class TestRunMetadata {
     // Add CI/CD context if available
     if (this.ciContext) {
       if (this.ciContext.pipelineId) {
-        tags["test:ci-pipeline"] = this.ciContext.pipelineId;
+        tags["test-ci-pipeline"] = this.ciContext.pipelineId;
       }
       if (this.ciContext.runId) {
-        tags["test:ci-run-id"] = this.ciContext.runId;
+        tags["test-ci-run-id"] = this.ciContext.runId;
       }
       if (this.ciContext.runNumber) {
-        tags["test:ci-run-number"] = this.ciContext.runNumber;
+        tags["test-ci-run-number"] = this.ciContext.runNumber;
       }
       if (this.ciContext.commitShaShort) {
-        tags["test:git-commit"] = this.ciContext.commitShaShort;
+        tags["test-git-commit"] = this.ciContext.commitShaShort;
       }
       if (this.ciContext.branch) {
-        tags["test:git-branch"] = this.ciContext.branch;
+        tags["test-git-branch"] = this.ciContext.branch;
       }
     }
 

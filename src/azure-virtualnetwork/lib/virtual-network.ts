@@ -28,7 +28,6 @@ import {
   AzapiResource,
   AzapiResourceProps,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -149,42 +148,12 @@ export interface VirtualNetworkProps extends AzapiResourceProps {
  * @stability stable
  */
 export class VirtualNetwork extends AzapiResource {
-  /**
-   * Static initialization flag to ensure schemas are registered only once
-   */
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that Virtual Network schemas are registered with the ApiVersionManager
-   * This is called once during the first VirtualNetwork instantiation
-   */
-  private static ensureSchemasRegistered(): void {
-    if (VirtualNetwork.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      // Register all Virtual Network versions
-      apiVersionManager.registerResourceType(
-        VIRTUAL_NETWORK_TYPE,
-        ALL_VIRTUAL_NETWORK_VERSIONS,
-      );
-
-      VirtualNetwork.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_VIRTUAL_NETWORK_VERSIONS.length} API versions for ${VIRTUAL_NETWORK_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register Virtual Network schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      // Don't throw here as the schemas might already be registered
-      VirtualNetwork.schemasRegistered = true;
-    }
+  // Static initializer runs once when the class is first loaded
+  static {
+    AzapiResource.registerSchemas(
+      VIRTUAL_NETWORK_TYPE,
+      ALL_VIRTUAL_NETWORK_VERSIONS,
+    );
   }
 
   /**
@@ -200,8 +169,6 @@ export class VirtualNetwork extends AzapiResource {
   public readonly tagsOutput: cdktf.TerraformOutput;
 
   // Public properties that match the original VirtualNetwork interface
-  public readonly id: string;
-  public readonly tags: { [key: string]: string };
 
   /**
    * Creates a new Azure Virtual Network using the AzapiResource framework
@@ -215,17 +182,11 @@ export class VirtualNetwork extends AzapiResource {
    * @param props - Configuration properties for the Virtual Network
    */
   constructor(scope: Construct, id: string, props: VirtualNetworkProps) {
-    // Ensure schemas are registered before calling super
-    VirtualNetwork.ensureSchemasRegistered();
-
-    // Call the parent constructor with the props
     super(scope, id, props);
 
     this.props = props;
 
     // Extract properties from the AZAPI resource outputs using Terraform interpolation
-    this.id = `\${${this.terraformResource.fqn}.id}`;
-    this.tags = props.tags || {};
 
     // Create Terraform outputs for easy access and referencing from other resources
     this.idOutput = new cdktf.TerraformOutput(this, "id", {
@@ -292,14 +253,21 @@ export class VirtualNetwork extends AzapiResource {
   }
 
   /**
+   * Indicates that location is required for Virtual Networks
+   */
+  protected requiresLocation(): boolean {
+    return true;
+  }
+
+  /**
    * Creates the resource body for the Azure API call
    * Transforms the input properties into the JSON format expected by Azure REST API
    */
   protected createResourceBody(props: any): any {
     const typedProps = props as VirtualNetworkProps;
     return {
-      location: typedProps.location || "eastus",
-      tags: typedProps.tags || {},
+      location: this.location,
+      tags: this.allTags(),
       properties: {
         addressSpace: typedProps.addressSpace,
         subnets: typedProps.subnets,

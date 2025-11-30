@@ -28,7 +28,6 @@ import {
   AzapiResource,
   AzapiResourceProps,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -234,36 +233,11 @@ export interface NetworkInterfaceBody {
  * @stability stable
  */
 export class NetworkInterface extends AzapiResource {
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that Network Interface schemas are registered with the ApiVersionManager
-   */
-  private static ensureSchemasRegistered(): void {
-    if (NetworkInterface.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      apiVersionManager.registerResourceType(
-        NETWORK_INTERFACE_TYPE,
-        ALL_NETWORK_INTERFACE_VERSIONS,
-      );
-
-      NetworkInterface.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_NETWORK_INTERFACE_VERSIONS.length} API versions for ${NETWORK_INTERFACE_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register Network Interface schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      NetworkInterface.schemasRegistered = true;
-    }
+  static {
+    AzapiResource.registerSchemas(
+      NETWORK_INTERFACE_TYPE,
+      ALL_NETWORK_INTERFACE_VERSIONS,
+    );
   }
 
   public readonly props: NetworkInterfaceProps;
@@ -275,8 +249,6 @@ export class NetworkInterface extends AzapiResource {
   public readonly tagsOutput: cdktf.TerraformOutput;
 
   // Public properties
-  public readonly id: string;
-  public readonly tags: { [key: string]: string };
 
   /**
    * Creates a new Azure Network Interface using the VersionedAzapiResource framework
@@ -286,16 +258,11 @@ export class NetworkInterface extends AzapiResource {
    * @param props - Configuration properties for the Network Interface
    */
   constructor(scope: Construct, id: string, props: NetworkInterfaceProps) {
-    // Ensure schemas are registered before calling super
-    NetworkInterface.ensureSchemasRegistered();
-
     super(scope, id, props);
 
     this.props = props;
 
     // Extract properties from the AZAPI resource outputs
-    this.id = `\${${this.terraformResource.fqn}.id}`;
-    this.tags = props.tags || {};
 
     // Create Terraform outputs
     this.idOutput = new cdktf.TerraformOutput(this, "id", {
@@ -354,6 +321,13 @@ export class NetworkInterface extends AzapiResource {
   }
 
   /**
+   * Indicates that location is required for Network Interfaces
+   */
+  protected requiresLocation(): boolean {
+    return true;
+  }
+
+  /**
    * Creates the resource body for the Azure API call
    */
   protected createResourceBody(props: any): any {
@@ -374,8 +348,8 @@ export class NetworkInterface extends AzapiResource {
     }));
 
     return {
-      location: typedProps.location || "eastus",
-      tags: typedProps.tags || {},
+      location: this.location,
+      tags: this.allTags(),
       properties: {
         ipConfigurations,
         networkSecurityGroup: typedProps.networkSecurityGroup,

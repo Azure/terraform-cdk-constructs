@@ -18,9 +18,12 @@ export * from "./azapi/schema-mapper/schema-mapper";
 // Export version management interfaces
 export * from "./version-manager/interfaces/version-interfaces";
 
-// Export AZAPI provider components with namespace prefix to avoid conflicts
-import * as azapiProviders from "./azapi/providers-azapi";
-export { azapiProviders };
+// Export AzapiProvider directly for clean usage
+export { AzapiProvider } from "./azapi/providers-azapi/provider";
+export type {
+  AzapiProviderConfig,
+  AzapiProviderEndpoint,
+} from "./azapi/providers-azapi/provider";
 
 // Export convenience imports for commonly used classes
 export * from "./azapi/azapi-exports";

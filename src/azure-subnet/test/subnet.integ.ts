@@ -9,32 +9,49 @@
  * Run with: npm run integration:nostream
  */
 
-import { Testing, TerraformStack } from "cdktf";
+import { Testing } from "cdktf";
 import { Construct } from "constructs";
 import "cdktf/lib/testing/adapters/jest";
 import { ResourceGroup } from "../../azure-resourcegroup";
 import { VirtualNetwork } from "../../azure-virtualnetwork";
 import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
-import { TerraformApplyCheckAndDestroy } from "../../testing";
+import { BaseTestStack, TerraformApplyCheckAndDestroy } from "../../testing";
+import { TestRunMetadata } from "../../testing/lib/metadata";
 import { Subnet } from "../lib/subnet";
+
+// Generate unique test run metadata for this test suite
+const testMetadata = new TestRunMetadata("subnet-integration", {
+  maxAgeHours: 4,
+});
 
 /**
  * Example stack demonstrating Subnet usage with parent Virtual Network
  */
-class SubnetExampleStack extends TerraformStack {
+class SubnetExampleStack extends BaseTestStack {
   constructor(scope: Construct, id: string) {
-    super(scope, id);
+    super(scope, id, {
+      testRunOptions: {
+        maxAgeHours: testMetadata.maxAgeHours,
+        autoCleanup: testMetadata.autoCleanup,
+        cleanupPolicy: testMetadata.cleanupPolicy,
+      },
+    });
 
     // Configure AZAPI provider
     new AzapiProvider(this, "azapi", {});
 
+    // Generate unique names
+    const rgName = this.generateResourceName(
+      "Microsoft.Resources/resourceGroups",
+      "subnet",
+    );
+
     // Create resource group
     const resourceGroup = new ResourceGroup(this, "rg", {
-      name: "rg-subnet-example",
+      name: rgName,
       location: "eastus",
       tags: {
-        environment: "example",
-        purpose: "integration-test",
+        ...this.systemTags(),
       },
     });
 
@@ -47,7 +64,7 @@ class SubnetExampleStack extends TerraformStack {
         addressPrefixes: ["10.0.0.0/16"],
       },
       tags: {
-        environment: "example",
+        ...this.systemTags(),
       },
     });
 

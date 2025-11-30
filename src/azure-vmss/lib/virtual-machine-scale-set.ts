@@ -300,55 +300,14 @@ export class VirtualMachineScaleSet extends AzapiResource {
     };
   }
 
-  /**
-   * Static initialization flag to ensure schemas are registered only once
-   */
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that VMSS schemas are registered with the ApiVersionManager
-   * This is called once during the first VirtualMachineScaleSet instantiation
-   */
-  private static ensureSchemasRegistered(): void {
-    if (VirtualMachineScaleSet.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      // Register Network Interface schemas first (dependency)
-      try {
-        apiVersionManager.registerResourceType(
-          NETWORK_INTERFACE_TYPE,
-          ALL_NETWORK_INTERFACE_VERSIONS,
-        );
-        console.log(
-          `Registered ${ALL_NETWORK_INTERFACE_VERSIONS.length} API versions for ${NETWORK_INTERFACE_TYPE} (VMSS dependency)`,
-        );
-      } catch (nicError) {
-        // Network Interface schemas might already be registered - that's OK
-        console.log(
-          `Network Interface schemas already registered or registration failed: ${nicError}`,
-        );
-      }
-
-      // Register all VMSS versions
-      apiVersionManager.registerResourceType(VMSS_TYPE, ALL_VMSS_VERSIONS);
-
-      VirtualMachineScaleSet.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_VMSS_VERSIONS.length} API versions for ${VMSS_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register VMSS schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      // Don't throw here as the schemas might already be registered
-      VirtualMachineScaleSet.schemasRegistered = true;
-    }
+  static {
+    // Register Network Interface schemas first (dependency)
+    AzapiResource.registerSchemas(
+      NETWORK_INTERFACE_TYPE,
+      ALL_NETWORK_INTERFACE_VERSIONS,
+    );
+    // Register VMSS schemas
+    AzapiResource.registerSchemas(VMSS_TYPE, ALL_VMSS_VERSIONS);
   }
 
   /**
@@ -364,8 +323,6 @@ export class VirtualMachineScaleSet extends AzapiResource {
   public readonly uniqueIdOutput: cdktf.TerraformOutput;
 
   // Public properties that match common VMSS interface patterns
-  public readonly id: string;
-  public readonly tags: { [key: string]: string };
 
   /**
    * Creates a new Azure Virtual Machine Scale Set using the AzapiResource framework
@@ -382,17 +339,11 @@ export class VirtualMachineScaleSet extends AzapiResource {
     id: string,
     props: VirtualMachineScaleSetProps,
   ) {
-    // Ensure schemas are registered before calling super
-    VirtualMachineScaleSet.ensureSchemasRegistered();
-
-    // Call the parent constructor with the props
     super(scope, id, props as AzapiResourceProps);
 
     this.props = props;
 
     // Extract properties from the AZAPI resource outputs using Terraform interpolation
-    this.id = `\${${this.terraformResource.fqn}.id}`;
-    this.tags = props.tags || {};
 
     // Create Terraform outputs for easy access and referencing from other resources
     this.idOutput = new cdktf.TerraformOutput(this, "id", {
@@ -459,6 +410,13 @@ export class VirtualMachineScaleSet extends AzapiResource {
   }
 
   /**
+   * Indicates that location is required for Virtual Machine Scale Sets
+   */
+  protected requiresLocation(): boolean {
+    return true;
+  }
+
+  /**
    * Creates the resource body for the Azure API call
    * Transforms the input properties into the JSON format expected by Azure REST API
    */
@@ -488,8 +446,8 @@ export class VirtualMachineScaleSet extends AzapiResource {
     }
 
     return {
-      location: typedProps.location || "eastus",
-      tags: typedProps.tags || {},
+      location: this.location,
+      tags: this.allTags(),
       sku: typedProps.sku,
       identity: typedProps.identity,
       zones: typedProps.zones,
@@ -579,19 +537,23 @@ export class VirtualMachineScaleSet extends AzapiResource {
 
   /**
    * Applies ignore changes lifecycle rules if specified in props
+   * Always includes body.identity.type to handle Azure API format normalization
    */
   private _applyIgnoreChanges(): void {
-    if (this.props.ignoreChanges && this.props.ignoreChanges.length > 0) {
-      // Common properties that are safe to ignore for VMSS
-      const validIgnoreChanges = this.props.ignoreChanges.filter(
-        (change) => change !== "name", // name cannot be changed after creation
-      );
+    // Always ignore identity.type format changes due to Azure API normalization
+    // Azure may return identity type in different format than sent (e.g., "SystemAssigned, UserAssigned" vs "SystemAssigned")
+    const ignoreChanges = [
+      "body.identity.type",
+      ...(this.props.ignoreChanges || []),
+    ];
 
-      if (validIgnoreChanges.length > 0) {
-        this.terraformResource.addOverride("lifecycle", {
-          ignore_changes: validIgnoreChanges,
-        });
-      }
-    }
+    // Filter out name if explicitly provided by user (name cannot be changed after creation)
+    const validIgnoreChanges = ignoreChanges.filter(
+      (change) => change !== "name",
+    );
+
+    this.terraformResource.addOverride("lifecycle", {
+      ignore_changes: validIgnoreChanges,
+    });
   }
 }
