@@ -36,6 +36,7 @@ function parseArgs(): {
   subscription?: string;
   help: boolean;
   maxResources?: number;
+  force: boolean;
 } {
   const args = process.argv.slice(2);
 
@@ -45,6 +46,7 @@ function parseArgs(): {
     subscription: undefined as string | undefined,
     help: false,
     maxResources: undefined as number | undefined,
+    force: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -61,12 +63,18 @@ function parseArgs(): {
         options.dryRun = true;
         break;
 
+      case "--force":
+      case "-f":
+        options.force = true;
+        options.minAge = 0; // Override minimum age when force is used
+        break;
+
       case "--min-age":
         if (i + 1 < args.length) {
           options.minAge = parseInt(args[++i], 10);
-          if (isNaN(options.minAge) || options.minAge < 2) {
+          if (!options.force && (isNaN(options.minAge) || options.minAge < 2)) {
             console.error(
-              `${colors.red}Error: --min-age must be a number >= 2${colors.reset}`,
+              `${colors.red}Error: --min-age must be a number >= 2 (use --force to override)${colors.reset}`,
             );
             process.exit(1);
           }
@@ -124,6 +132,10 @@ ${colors.bright}OPTIONS:${colors.reset}
       Perform a dry run (show what would be deleted without deleting)
       ${colors.yellow}Recommended for first-time use${colors.reset}
 
+  ${colors.green}--force, -f${colors.reset}
+      Force cleanup of all resources regardless of age
+      ${colors.red}WARNING: Bypasses minimum age safety check${colors.reset}
+
   ${colors.green}--min-age <hours>${colors.reset}
       Minimum age in hours before resource can be cleaned (default: 2)
       ${colors.yellow}Safety feature: prevents deletion of recent resources${colors.reset}
@@ -146,6 +158,9 @@ ${colors.bright}EXAMPLES:${colors.reset}
   # Delete resources older than 4 hours
   npm run cleanup-test-resources -- --min-age 4
 
+  # Force delete ALL test resources regardless of age
+  npm run cleanup-test-resources -- --force
+
   # Delete resources in specific subscription
   npm run cleanup-test-resources -- --subscription "abc-123"
 
@@ -158,9 +173,9 @@ ${colors.bright}EXAMPLES:${colors.reset}
 ${colors.bright}SAFETY FEATURES:${colors.reset}
   • Minimum 2-hour age requirement
   • Dry-run mode for safe previewing
-  • Tag validation (requires test:managed-by tag)
+  • Tag validation (requires test-managed-by tag)
   • Confirmation prompts for destructive operations
-  • Only deletes resources with test:auto-cleanup=true
+  • Only deletes resources with test-auto-cleanup=true
 
 ${colors.bright}NOTES:${colors.reset}
   • Requires Azure CLI (az) to be installed and authenticated
@@ -266,6 +281,9 @@ async function main(): Promise<void> {
   console.log(
     `  Mode: ${options.dryRun ? `${colors.yellow}DRY RUN${colors.reset}` : `${colors.red}EXECUTE${colors.reset}`}`,
   );
+  if (options.force) {
+    console.log(`  ${colors.red}FORCE MODE: Bypassing age check${colors.reset}`);
+  }
   console.log(`  Minimum Age: ${options.minAge} hours`);
   if (options.subscription) {
     console.log(`  Subscription: ${options.subscription}`);

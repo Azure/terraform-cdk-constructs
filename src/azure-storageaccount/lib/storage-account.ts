@@ -30,7 +30,6 @@ import {
   AzapiResourceProps,
   MonitoringConfig,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -278,6 +277,14 @@ export interface StorageAccountBody {
  * @stability stable
  */
 export class StorageAccount extends AzapiResource {
+  // Static initializer runs once when the class is first loaded
+  static {
+    AzapiResource.registerSchemas(
+      STORAGE_ACCOUNT_TYPE,
+      ALL_STORAGE_ACCOUNT_VERSIONS,
+    );
+  }
+
   /**
    * Returns a production-ready monitoring configuration for Storage Accounts
    *
@@ -437,38 +444,6 @@ export class StorageAccount extends AzapiResource {
     };
   }
 
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that Storage Account schemas are registered with the ApiVersionManager
-   */
-  private static ensureSchemasRegistered(): void {
-    if (StorageAccount.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      apiVersionManager.registerResourceType(
-        STORAGE_ACCOUNT_TYPE,
-        ALL_STORAGE_ACCOUNT_VERSIONS,
-      );
-
-      StorageAccount.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_STORAGE_ACCOUNT_VERSIONS.length} API versions for ${STORAGE_ACCOUNT_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register Storage Account schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      StorageAccount.schemasRegistered = true;
-    }
-  }
-
   public readonly props: StorageAccountProps;
 
   // Output properties for easy access and referencing
@@ -479,8 +454,6 @@ export class StorageAccount extends AzapiResource {
   public readonly primaryEndpointsOutput: cdktf.TerraformOutput;
 
   // Public properties
-  public readonly id: string;
-  public readonly tags: { [key: string]: string };
 
   /**
    * Creates a new Azure Storage Account using the VersionedAzapiResource framework
@@ -490,16 +463,11 @@ export class StorageAccount extends AzapiResource {
    * @param props - Configuration properties for the Storage Account
    */
   constructor(scope: Construct, id: string, props: StorageAccountProps) {
-    // Ensure schemas are registered before calling super
-    StorageAccount.ensureSchemasRegistered();
-
     super(scope, id, props);
 
     this.props = props;
 
     // Extract properties from the AZAPI resource outputs
-    this.id = `\${${this.terraformResource.fqn}.id}`;
-    this.tags = props.tags || {};
 
     // Create Terraform outputs
     this.idOutput = new cdktf.TerraformOutput(this, "id", {
@@ -568,13 +536,20 @@ export class StorageAccount extends AzapiResource {
   }
 
   /**
+   * Indicates that location is required for Storage Accounts
+   */
+  protected requiresLocation(): boolean {
+    return true;
+  }
+
+  /**
    * Creates the resource body for the Azure API call
    */
   protected createResourceBody(props: any): any {
     const typedProps = props as StorageAccountProps;
     return {
-      location: typedProps.location || "eastus",
-      tags: typedProps.tags || {},
+      location: this.location,
+      tags: this.allTags(),
       sku: typedProps.sku,
       kind: typedProps.kind || "StorageV2",
       properties: {

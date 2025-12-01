@@ -28,7 +28,6 @@ import {
   DiagnosticLogConfig,
   DiagnosticMetricConfig,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -158,41 +157,11 @@ export interface DiagnosticSettingsBody {
  * @stability stable
  */
 export class DiagnosticSettings extends AzapiResource {
-  /**
-   * Static initialization flag to ensure schemas are registered only once
-   */
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that Diagnostic Settings schemas are registered with the ApiVersionManager
-   * This is called once during the first DiagnosticSettings instantiation
-   */
-  private static ensureSchemasRegistered(): void {
-    if (DiagnosticSettings.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      // Register all Diagnostic Settings versions
-      apiVersionManager.registerResourceType(
-        DIAGNOSTIC_SETTINGS_TYPE,
-        ALL_DIAGNOSTIC_SETTINGS_VERSIONS,
-      );
-
-      DiagnosticSettings.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_DIAGNOSTIC_SETTINGS_VERSIONS.length} API versions for ${DIAGNOSTIC_SETTINGS_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register Diagnostic Settings schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      DiagnosticSettings.schemasRegistered = true;
-    }
+  static {
+    AzapiResource.registerSchemas(
+      DIAGNOSTIC_SETTINGS_TYPE,
+      ALL_DIAGNOSTIC_SETTINGS_VERSIONS,
+    );
   }
 
   /**
@@ -205,7 +174,6 @@ export class DiagnosticSettings extends AzapiResource {
   public readonly nameOutput: cdktf.TerraformOutput;
 
   // Public properties
-  public readonly id: string;
 
   /**
    * Creates a new Azure Diagnostic Settings using the AzapiResource framework
@@ -236,16 +204,11 @@ export class DiagnosticSettings extends AzapiResource {
       );
     }
 
-    // Ensure schemas are registered before calling super
-    DiagnosticSettings.ensureSchemasRegistered();
-
-    // Call the parent constructor with the props
     super(scope, id, props);
 
     this.props = props;
 
     // Extract properties from the AZAPI resource outputs using Terraform interpolation
-    this.id = `\${${this.terraformResource.fqn}.id}`;
 
     // Create Terraform outputs for easy access and referencing from other resources
     this.idOutput = new cdktf.TerraformOutput(this, "id", {

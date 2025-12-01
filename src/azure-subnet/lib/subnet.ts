@@ -26,7 +26,6 @@ import {
   AzapiResource,
   AzapiResourceProps,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -223,39 +222,9 @@ export interface SubnetProps extends AzapiResourceProps {
  * @stability stable
  */
 export class Subnet extends AzapiResource {
-  /**
-   * Static initialization flag to ensure schemas are registered only once
-   */
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that Subnet schemas are registered with the ApiVersionManager
-   * This is called once during the first Subnet instantiation
-   */
-  private static ensureSchemasRegistered(): void {
-    if (Subnet.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      // Register all Subnet versions
-      apiVersionManager.registerResourceType(SUBNET_TYPE, ALL_SUBNET_VERSIONS);
-
-      Subnet.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_SUBNET_VERSIONS.length} API versions for ${SUBNET_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register Subnet schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      // Don't throw here as the schemas might already be registered
-      Subnet.schemasRegistered = true;
-    }
+  // Static initializer runs once when the class is first loaded
+  static {
+    AzapiResource.registerSchemas(SUBNET_TYPE, ALL_SUBNET_VERSIONS);
   }
 
   /**
@@ -266,10 +235,8 @@ export class Subnet extends AzapiResource {
   // Output properties for easy access and referencing
   public readonly idOutput: cdktf.TerraformOutput;
   public readonly nameOutput: cdktf.TerraformOutput;
-  public readonly addressPrefixOutput: cdktf.TerraformOutput;
 
   // Public properties that match the original Subnet interface
-  public readonly id: string;
 
   /**
    * Creates a new Azure Subnet using the AzapiResource framework
@@ -287,18 +254,17 @@ export class Subnet extends AzapiResource {
    * @param props - Configuration properties for the Subnet
    */
   constructor(scope: Construct, id: string, props: SubnetProps) {
-    // Ensure schemas are registered before calling super
-    Subnet.ensureSchemasRegistered();
-
-    // Call the parent constructor with the original props
-    // Parent ID resolution is now handled by the overridden resolveParentId method
-    super(scope, id, props);
+    // Azure Subnets do not support tags at the resource level.
+    // We must strip tags from props before passing to the parent constructor
+    // to prevent the AZAPI provider from including tags in the resource.
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { tags: _unusedTags, ...propsWithoutTags } = props;
+    super(scope, id, propsWithoutTags as SubnetProps);
 
     // Store the props
     this.props = props;
 
     // Extract properties from the AZAPI resource outputs using Terraform interpolation
-    this.id = `\${${this.terraformResource.fqn}.id}`;
 
     // Create Terraform outputs for easy access and referencing from other resources
     this.idOutput = new cdktf.TerraformOutput(this, "id", {
@@ -311,19 +277,9 @@ export class Subnet extends AzapiResource {
       description: "The name of the Subnet",
     });
 
-    this.addressPrefixOutput = new cdktf.TerraformOutput(
-      this,
-      "addressPrefix",
-      {
-        value: this.props.addressPrefix,
-        description: "The address prefix of the Subnet",
-      },
-    );
-
     // Override logical IDs to match original naming convention
     this.idOutput.overrideLogicalId("id");
     this.nameOutput.overrideLogicalId("name");
-    this.addressPrefixOutput.overrideLogicalId("addressPrefix");
 
     // Azure automatically expands service endpoint locations for high availability,
     // adding paired regions for disaster recovery. Ignore these changes to prevent drift.
@@ -370,13 +326,26 @@ export class Subnet extends AzapiResource {
    */
   protected createResourceBody(props: any): any {
     const typedProps = props as SubnetProps;
+
+    // Transform delegations to match Azure API structure
+    // Azure expects: { name: string, properties: { serviceName: string } }
+    // Note: 'actions' is a read-only field populated by Azure, so we don't send it
+    const transformedDelegations = typedProps.delegations?.map(
+      (delegation) => ({
+        name: delegation.name,
+        properties: {
+          serviceName: delegation.serviceName,
+        },
+      }),
+    );
+
     return {
       properties: {
         addressPrefix: typedProps.addressPrefix,
         networkSecurityGroup: typedProps.networkSecurityGroup,
         routeTable: typedProps.routeTable,
         serviceEndpoints: typedProps.serviceEndpoints,
-        delegations: typedProps.delegations,
+        delegations: transformedDelegations,
         privateEndpointNetworkPolicies:
           typedProps.privateEndpointNetworkPolicies || "Disabled",
         privateLinkServiceNetworkPolicies:
@@ -408,18 +377,12 @@ export class Subnet extends AzapiResource {
   }
 
   /**
-   * Override createAzapiResource to explicitly prevent location from being added
-   * Subnets are child resources and inherit location from their parent VNet
+   * Subnets inherit location from their parent VNet, so no parent resource reference needed
+   * The Azure API automatically handles location inheritance for child resources
    */
-  protected createAzapiResource(
-    properties: Record<string, any>,
-    parentId: string,
-    name: string,
-    _location?: string,
-  ): cdktf.TerraformResource {
-    // Call parent implementation but pass undefined for location
-    // This prevents the base class from adding location to the config
-    return super.createAzapiResource(properties, parentId, name, undefined);
+  protected parentResourceForLocation(): AzapiResource | undefined {
+    // Subnets don't need explicit parent reference as Azure handles inheritance
+    return undefined;
   }
 
   // =============================================================================

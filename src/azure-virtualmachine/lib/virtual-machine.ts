@@ -45,7 +45,6 @@ import {
   AzapiResourceProps,
   MonitoringConfig,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -304,6 +303,14 @@ export interface VirtualMachineBody {
  * @stability stable
  */
 export class VirtualMachine extends AzapiResource {
+  // Static initializer runs once when the class is first loaded
+  static {
+    AzapiResource.registerSchemas(
+      VIRTUAL_MACHINE_TYPE,
+      ALL_VIRTUAL_MACHINE_VERSIONS,
+    );
+  }
+
   /**
    * Returns a production-ready monitoring configuration for Virtual Machines
    *
@@ -451,44 +458,6 @@ export class VirtualMachine extends AzapiResource {
   }
 
   /**
-   * Static initialization flag to ensure schemas are registered only once
-   */
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that Virtual Machine schemas are registered with the ApiVersionManager
-   * This is called once during the first VirtualMachine instantiation
-   */
-  private static ensureSchemasRegistered(): void {
-    if (VirtualMachine.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      // Register all Virtual Machine versions
-      apiVersionManager.registerResourceType(
-        VIRTUAL_MACHINE_TYPE,
-        ALL_VIRTUAL_MACHINE_VERSIONS,
-      );
-
-      VirtualMachine.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_VIRTUAL_MACHINE_VERSIONS.length} API versions for ${VIRTUAL_MACHINE_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register Virtual Machine schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      // Don't throw here as the schemas might already be registered
-      VirtualMachine.schemasRegistered = true;
-    }
-  }
-
-  /**
    * The input properties for this Virtual Machine instance
    */
   public readonly props: VirtualMachineProps;
@@ -501,8 +470,6 @@ export class VirtualMachine extends AzapiResource {
   public readonly vmIdOutput: cdktf.TerraformOutput;
 
   // Public properties that match common VM interface patterns
-  public readonly id: string;
-  public readonly tags: { [key: string]: string };
 
   /**
    * Creates a new Azure Virtual Machine using the VersionedAzapiResource framework
@@ -515,17 +482,11 @@ export class VirtualMachine extends AzapiResource {
    * @param props - Configuration properties for the Virtual Machine
    */
   constructor(scope: Construct, id: string, props: VirtualMachineProps) {
-    // Ensure schemas are registered before calling super
-    VirtualMachine.ensureSchemasRegistered();
-
-    // Call the parent constructor with the props
     super(scope, id, props);
 
     this.props = props;
 
     // Extract properties from the AZAPI resource outputs using Terraform interpolation
-    this.id = `\${${this.terraformResource.fqn}.id}`;
-    this.tags = props.tags || {};
 
     // Create Terraform outputs for easy access and referencing from other resources
     this.idOutput = new cdktf.TerraformOutput(this, "id", {
@@ -592,14 +553,21 @@ export class VirtualMachine extends AzapiResource {
   }
 
   /**
+   * Indicates that location is required for Virtual Machines
+   */
+  protected requiresLocation(): boolean {
+    return true;
+  }
+
+  /**
    * Creates the resource body for the Azure API call
    * Transforms the input properties into the JSON format expected by Azure REST API
    */
   protected createResourceBody(props: any): any {
     const typedProps = props as VirtualMachineProps;
     return {
-      location: typedProps.location || "eastus",
-      tags: typedProps.tags || {},
+      location: this.location,
+      tags: this.allTags(),
       identity: typedProps.identity,
       zones: typedProps.zones,
       plan: typedProps.plan,

@@ -26,7 +26,6 @@ import {
   AzapiResource,
   AzapiResourceProps,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -293,41 +292,8 @@ export interface ActionGroupBody {
  * @stability stable
  */
 export class ActionGroup extends AzapiResource {
-  /**
-   * Static initialization flag to ensure schemas are registered only once
-   */
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that Action Group schemas are registered with the ApiVersionManager
-   * This is called once during the first ActionGroup instantiation
-   */
-  private static ensureSchemasRegistered(): void {
-    if (ActionGroup.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      // Register all Action Group versions
-      apiVersionManager.registerResourceType(
-        ACTION_GROUP_TYPE,
-        ALL_ACTION_GROUP_VERSIONS,
-      );
-
-      ActionGroup.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_ACTION_GROUP_VERSIONS.length} API versions for ${ACTION_GROUP_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register Action Group schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      ActionGroup.schemasRegistered = true;
-    }
+  static {
+    AzapiResource.registerSchemas(ACTION_GROUP_TYPE, ALL_ACTION_GROUP_VERSIONS);
   }
 
   /**
@@ -340,7 +306,6 @@ export class ActionGroup extends AzapiResource {
   public readonly nameOutput: cdktf.TerraformOutput;
 
   // Public properties
-  public readonly id: string;
 
   /**
    * Creates a new Azure Action Group using the AzapiResource framework
@@ -353,16 +318,11 @@ export class ActionGroup extends AzapiResource {
    * @param props - Configuration properties for the Action Group
    */
   constructor(scope: Construct, id: string, props: ActionGroupProps) {
-    // Ensure schemas are registered before calling super
-    ActionGroup.ensureSchemasRegistered();
-
-    // Call the parent constructor with the props
     super(scope, id, props);
 
     this.props = props;
 
     // Extract properties from the AZAPI resource outputs using Terraform interpolation
-    this.id = `\${${this.terraformResource.fqn}.id}`;
 
     // Create Terraform outputs for easy access and referencing from other resources
     this.idOutput = new cdktf.TerraformOutput(this, "id", {

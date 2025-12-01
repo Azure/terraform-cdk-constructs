@@ -194,7 +194,7 @@ describe("AzapiResource", () => {
           location: "eastus",
         });
       }).toThrow(
-        "Version configuration not found for Microsoft.Unregistered/resources@2023-01-01",
+        "Cannot resolve schema: version configuration not found for Microsoft.Unregistered/resources@2023-01-01",
       );
     });
 

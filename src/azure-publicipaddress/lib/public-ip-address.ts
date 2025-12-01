@@ -28,7 +28,6 @@ import {
   AzapiResource,
   AzapiResourceProps,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { ApiVersionManager } from "../../core-azure/lib/version-manager/api-version-manager";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -195,42 +194,11 @@ export interface PublicIPAddressProps extends AzapiResourceProps {
  * @stability stable
  */
 export class PublicIPAddress extends AzapiResource {
-  /**
-   * Static initialization flag to ensure schemas are registered only once
-   */
-  private static schemasRegistered = false;
-
-  /**
-   * Ensures that Public IP Address schemas are registered with the ApiVersionManager
-   * This is called once during the first PublicIPAddress instantiation
-   */
-  private static ensureSchemasRegistered(): void {
-    if (PublicIPAddress.schemasRegistered) {
-      return;
-    }
-
-    const apiVersionManager = ApiVersionManager.instance();
-
-    try {
-      // Register all Public IP Address versions
-      apiVersionManager.registerResourceType(
-        PUBLIC_IP_ADDRESS_TYPE,
-        ALL_PUBLIC_IP_ADDRESS_VERSIONS,
-      );
-
-      PublicIPAddress.schemasRegistered = true;
-
-      console.log(
-        `Registered ${ALL_PUBLIC_IP_ADDRESS_VERSIONS.length} API versions for ${PUBLIC_IP_ADDRESS_TYPE}`,
-      );
-    } catch (error) {
-      console.warn(
-        `Failed to register Public IP Address schemas: ${error}. ` +
-          `This may indicate the schemas are already registered or there's a configuration issue.`,
-      );
-      // Don't throw here as the schemas might already be registered
-      PublicIPAddress.schemasRegistered = true;
-    }
+  static {
+    AzapiResource.registerSchemas(
+      PUBLIC_IP_ADDRESS_TYPE,
+      ALL_PUBLIC_IP_ADDRESS_VERSIONS,
+    );
   }
 
   /**
@@ -245,8 +213,6 @@ export class PublicIPAddress extends AzapiResource {
   public readonly tagsOutput: cdktf.TerraformOutput;
 
   // Public properties that match the original PublicIPAddress interface
-  public readonly id: string;
-  public readonly tags: { [key: string]: string };
 
   /**
    * Creates a new Azure Public IP Address using the AzapiResource framework
@@ -260,17 +226,11 @@ export class PublicIPAddress extends AzapiResource {
    * @param props - Configuration properties for the Public IP Address
    */
   constructor(scope: Construct, id: string, props: PublicIPAddressProps) {
-    // Ensure schemas are registered before calling super
-    PublicIPAddress.ensureSchemasRegistered();
-
-    // Call the parent constructor with the props
     super(scope, id, props);
 
     this.props = props;
 
     // Extract properties from the AZAPI resource outputs using Terraform interpolation
-    this.id = `\${${this.terraformResource.fqn}.id}`;
-    this.tags = props.tags || {};
 
     // Create Terraform outputs for easy access and referencing from other resources
     this.idOutput = new cdktf.TerraformOutput(this, "id", {
@@ -331,14 +291,21 @@ export class PublicIPAddress extends AzapiResource {
   }
 
   /**
+   * Indicates that location is required for Public IP Addresses
+   */
+  protected requiresLocation(): boolean {
+    return true;
+  }
+
+  /**
    * Creates the resource body for the Azure API call
    * Transforms the input properties into the JSON format expected by Azure REST API
    */
   protected createResourceBody(props: any): any {
     const typedProps = props as PublicIPAddressProps;
     return {
-      location: typedProps.location || "eastus",
-      tags: typedProps.tags || {},
+      location: this.location,
+      tags: this.allTags(),
       sku: typedProps.sku,
       zones: typedProps.zones,
       properties: {

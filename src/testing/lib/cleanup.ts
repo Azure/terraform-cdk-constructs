@@ -98,6 +98,7 @@ export interface CleanupOptions {
 
   /**
    * Minimum age in hours before resource can be cleaned up
+   * Set to 0 to force cleanup of all resources regardless of age (bypasses safety checks)
    */
   readonly minAgeHours: number;
 
@@ -314,7 +315,7 @@ export function verifyResourcesDeleted(
 
   try {
     const orphanedResources = service.queryAzureResourcesByTags(
-      { "test:run-id": runId },
+      { "test-run-id": runId },
       subscription,
     );
 
@@ -365,15 +366,17 @@ export async function findOrphanedResources(
   console.log(`[Cleanup] Minimum age: ${options.minAgeHours} hours`);
 
   // Query for test resources
+  // NOTE: Tag names use hyphens instead of colons because Azure DNS zones
+  // and some other resource types don't support colons in tag names.
   const query = `
     Resources
-    | where tags['test:managed-by'] == 'terraform-cdk-constructs-tests'
-    | where tags['test:auto-cleanup'] == 'true'
+    | where tags['test-managed-by'] == 'terraform-cdk-constructs-tests'
+    | where tags['test-auto-cleanup'] == 'true'
     | project id, type, name, location, resourceGroup,
-              testRunId = tags['test:run-id'],
-              createdAt = tags['test:created-at'],
-              cleanupAfter = tags['test:cleanup-after'],
-              testName = tags['test:name']
+              testRunId = tags['test-run-id'],
+              createdAt = tags['test-created-at'],
+              cleanupAfter = tags['test-cleanup-after'],
+              testName = tags['test-name']
     | order by tostring(createdAt) asc
   `;
 
@@ -403,14 +406,17 @@ export async function findOrphanedResources(
       const ageHours = (now.getTime() - createdAt.getTime()) / (60 * 60 * 1000);
 
       // Apply safety checks
-      if (ageHours < MINIMUM_AGE_HOURS) {
+      // When minAgeHours is 0 (force mode), skip the minimum age validation
+      if (options.minAgeHours > 0 && ageHours < MINIMUM_AGE_HOURS) {
         console.log(
           `[Cleanup] Skipping ${resource.name}: too young (${ageHours.toFixed(1)}h < ${MINIMUM_AGE_HOURS}h)`,
         );
         continue;
       }
 
-      if (now < cleanupAfter) {
+      // Check TTL (cleanup-after timestamp)
+      // When minAgeHours is 0 (force mode), skip the TTL check as well
+      if (options.minAgeHours > 0 && now < cleanupAfter) {
         console.log(
           `[Cleanup] Skipping ${resource.name}: not yet eligible for cleanup`,
         );
@@ -510,8 +516,11 @@ export async function cleanupOrphanedResources(
       );
 
       // Validate that all resources in the group are test resources
+      // When minAgeHours is 0 (force mode), allow deletion of resources below minimum age
       const allTestResources = rgResources.every(
-        (r) => r.testRunId && r.ageHours >= MINIMUM_AGE_HOURS,
+        (r) =>
+          r.testRunId &&
+          (options.minAgeHours === 0 || r.ageHours >= MINIMUM_AGE_HOURS),
       );
 
       if (!allTestResources) {

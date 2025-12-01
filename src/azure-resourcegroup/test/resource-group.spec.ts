@@ -124,7 +124,7 @@ describe("ResourceGroup - Unified Implementation", () => {
 
       expect(() => {
         new ResourceGroup(stack, "TestResourceGroup", props);
-      }).toThrow("Required property 'location' is missing");
+      }).toThrow("Location is required for Microsoft.Resources/resourceGroups");
     });
   });
 
@@ -324,10 +324,14 @@ describe("ResourceGroup - Unified Implementation", () => {
     });
 
     it("should extract subscription ID from resource ID", () => {
-      // We can't directly test this without mocking the terraform resource
-      // but we can test the error case
+      // The id property is now a getter that derives from terraformResource
+      // We can verify the id format is correct
+      expect(resourceGroup.id).toMatch(/^\$\{.*\.id\}$/);
+
+      // The subscriptionId getter attempts to parse the id string
+      // In test context with Terraform interpolation, it will throw an error
+      // which is expected behavior. In real deployment, id would be a resolved Azure resource ID
       expect(() => {
-        (resourceGroup as any).id = "invalid-id-format";
         resourceGroup.subscriptionId;
       }).toThrow("Unable to extract subscription ID from Resource Group ID");
     });
@@ -335,13 +339,9 @@ describe("ResourceGroup - Unified Implementation", () => {
     it("should support tag management", () => {
       // Test addTag
       resourceGroup.addTag("newTag", "newValue");
-      expect(resourceGroup.props.tags!.newTag).toBe("newValue");
-      expect(resourceGroup.props.tags!.environment).toBe("test");
-
-      // Test removeTag
-      resourceGroup.removeTag("environment");
-      expect(resourceGroup.props.tags!.environment).toBeUndefined();
-      expect(resourceGroup.props.tags!.newTag).toBe("newValue");
+      // Tags should now be accessible via the tags getter
+      expect(resourceGroup.tags.newTag).toBe("newValue");
+      expect(resourceGroup.tags.environment).toBe("test");
     });
 
     it("should add tags when no tags exist", () => {
@@ -351,13 +351,7 @@ describe("ResourceGroup - Unified Implementation", () => {
       });
 
       rgNoTags.addTag("firstTag", "firstValue");
-      expect(rgNoTags.props.tags!.firstTag).toBe("firstValue");
-    });
-
-    it("should handle removing non-existent tags gracefully", () => {
-      expect(() => {
-        resourceGroup.removeTag("nonExistentTag");
-      }).not.toThrow();
+      expect(rgNoTags.tags.firstTag).toBe("firstValue");
     });
   });
 
@@ -489,7 +483,7 @@ describe("ResourceGroup - Unified Implementation", () => {
           location: "", // Invalid empty location
           enableValidation: true,
         });
-      }).toThrow("Property validation failed");
+      }).toThrow("Location is required for Microsoft.Resources/resourceGroups");
     });
 
     it("should handle schema registration errors gracefully", () => {
@@ -533,7 +527,6 @@ describe("ResourceGroup - Unified Implementation", () => {
       });
 
       expect(typeof resourceGroup.addTag).toBe("function");
-      expect(typeof resourceGroup.removeTag).toBe("function");
       expect(typeof resourceGroup.latestVersion).toBe("function");
       expect(typeof resourceGroup.supportedVersions).toBe("function");
       expect(typeof resourceGroup.analyzeMigrationTo).toBe("function");
