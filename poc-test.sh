@@ -1,0 +1,3 @@
+echo "POC ${#AZURE_SUBSCRIPTION_ID}"
+echo "GH Token ${#GITHUB_TOKEN}"
+
