@@ -32136,6 +32136,984 @@ public readonly resourceName: string;
 ---
 
 
+### LogAnalyticsWorkspace <a name="LogAnalyticsWorkspace" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace"></a>
+
+Unified Azure Log Analytics Workspace implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+Log Analytics Workspace is the central destination for log data from Azure resources,
+applications, and on-premises infrastructure. It enables querying, analysis, and
+visualization of log data using Kusto Query Language (KQL).
+
+*Example*
+
+```typescript
+// Log Analytics Workspace with capacity reservation:
+const workspace = new LogAnalyticsWorkspace(this, "high-volume-workspace", {
+  name: "high-volume-logs",
+  location: "eastus",
+  resourceGroupId: resourceGroup.id,
+  retentionInDays: 365,
+  sku: {
+    name: "CapacityReservation",
+    capacityReservationLevel: 500
+  },
+  workspaceCapping: {
+    dailyQuotaGb: 100
+  }
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.Initializer"></a>
+
+```typescript
+import { LogAnalyticsWorkspace } from '@microsoft/terraform-cdk-constructs'
+
+new LogAnalyticsWorkspace(scope: Construct, id: string, props: LogAnalyticsWorkspaceProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps</code> | - Configuration properties for the Log Analytics Workspace. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps
+
+Configuration properties for the Log Analytics Workspace.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.isConstruct"></a>
+
+```typescript
+import { LogAnalyticsWorkspace } from '@microsoft/terraform-cdk-constructs'
+
+LogAnalyticsWorkspace.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.resource">resource</a></code> | <code>cdktf.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.customerIdOutput">customerIdOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps</code> | The input properties for this Log Analytics Workspace instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.workspaceIdOutput">workspaceIdOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktf.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `customerIdOutput`<sup>Required</sup> <a name="customerIdOutput" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.customerIdOutput"></a>
+
+```typescript
+public readonly customerIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.props"></a>
+
+```typescript
+public readonly props: LogAnalyticsWorkspaceProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps
+
+The input properties for this Log Analytics Workspace instance.
+
+---
+
+##### `workspaceIdOutput`<sup>Required</sup> <a name="workspaceIdOutput" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.property.workspaceIdOutput"></a>
+
+```typescript
+public readonly workspaceIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+
+### LogAnalyticsWorkspace <a name="LogAnalyticsWorkspace" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace"></a>
+
+Unified Azure Log Analytics Workspace implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+Log Analytics Workspace is the central destination for log data from Azure resources,
+applications, and on-premises infrastructure. It enables querying, analysis, and
+visualization of log data using Kusto Query Language (KQL).
+
+*Example*
+
+```typescript
+// Log Analytics Workspace with capacity reservation:
+const workspace = new LogAnalyticsWorkspace(this, "high-volume-workspace", {
+  name: "high-volume-logs",
+  location: "eastus",
+  resourceGroupId: resourceGroup.id,
+  retentionInDays: 365,
+  sku: {
+    name: "CapacityReservation",
+    capacityReservationLevel: 500
+  },
+  workspaceCapping: {
+    dailyQuotaGb: 100
+  }
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.Initializer"></a>
+
+```typescript
+import { azure_loganalyticsworkspace } from '@microsoft/terraform-cdk-constructs'
+
+new azure_loganalyticsworkspace.LogAnalyticsWorkspace(scope: Construct, id: string, props: LogAnalyticsWorkspaceProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps</code> | - Configuration properties for the Log Analytics Workspace. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps
+
+Configuration properties for the Log Analytics Workspace.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.isConstruct"></a>
+
+```typescript
+import { azure_loganalyticsworkspace } from '@microsoft/terraform-cdk-constructs'
+
+azure_loganalyticsworkspace.LogAnalyticsWorkspace.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.resource">resource</a></code> | <code>cdktf.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.customerIdOutput">customerIdOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps</code> | The input properties for this Log Analytics Workspace instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.workspaceIdOutput">workspaceIdOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktf.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `customerIdOutput`<sup>Required</sup> <a name="customerIdOutput" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.customerIdOutput"></a>
+
+```typescript
+public readonly customerIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.props"></a>
+
+```typescript
+public readonly props: LogAnalyticsWorkspaceProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps
+
+The input properties for this Log Analytics Workspace instance.
+
+---
+
+##### `workspaceIdOutput`<sup>Required</sup> <a name="workspaceIdOutput" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.property.workspaceIdOutput"></a>
+
+```typescript
+public readonly workspaceIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+
 ### MetricAlert <a name="MetricAlert" id="@microsoft/terraform-cdk-constructs.MetricAlert"></a>
 
 Unified Azure Metric Alert implementation.
@@ -37116,6 +38094,1004 @@ public readonly tagsOutput: TerraformOutput;
 ---
 
 
+### NetworkWatcher <a name="NetworkWatcher" id="@microsoft/terraform-cdk-constructs.NetworkWatcher"></a>
+
+Unified Azure Network Watcher implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+Network Watcher is a regional service that provides tools to monitor, diagnose, and gain
+insights into your network health and performance in Azure. It serves as the anchor for
+Network Watcher features like Flow Logs, Connection Monitor, and Packet Capture.
+
+IMPORTANT CONSTRAINT: Azure only allows one Network Watcher per subscription per region.
+If you need Network Watcher functionality in multiple regions, you must create a separate
+Network Watcher for each region.
+
+*Example*
+
+```typescript
+// Network Watcher for use with Flow Logs:
+const networkWatcher = new NetworkWatcher(this, "network-watcher", {
+  name: "NetworkWatcher_eastus",
+  location: "eastus",
+  resourceGroupId: networkWatcherRg.id,
+});
+
+// Then use it with NSG Flow Logs
+const flowLog = new NsgFlowLog(this, "flow-log", {
+  networkWatcherId: networkWatcher.id,
+  // ... other properties
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.Initializer"></a>
+
+```typescript
+import { NetworkWatcher } from '@microsoft/terraform-cdk-constructs'
+
+new NetworkWatcher(scope: Construct, id: string, props: NetworkWatcherProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps</code> | - Configuration properties for the Network Watcher. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps
+
+Configuration properties for the Network Watcher.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.isConstruct"></a>
+
+```typescript
+import { NetworkWatcher } from '@microsoft/terraform-cdk-constructs'
+
+NetworkWatcher.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.resource">resource</a></code> | <code>cdktf.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | Terraform output for the Network Watcher resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | Terraform output for the Network Watcher location. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | Terraform output for the Network Watcher name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps</code> | The input properties for this Network Watcher instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.property.provisioningStateOutput">provisioningStateOutput</a></code> | <code>cdktf.TerraformOutput</code> | Terraform output for the Network Watcher provisioning state. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktf.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Terraform output for the Network Watcher resource ID.
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Terraform output for the Network Watcher location.
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Terraform output for the Network Watcher name.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.props"></a>
+
+```typescript
+public readonly props: NetworkWatcherProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps
+
+The input properties for this Network Watcher instance.
+
+---
+
+##### `provisioningStateOutput`<sup>Required</sup> <a name="provisioningStateOutput" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.property.provisioningStateOutput"></a>
+
+```typescript
+public readonly provisioningStateOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Terraform output for the Network Watcher provisioning state.
+
+---
+
+
+### NetworkWatcher <a name="NetworkWatcher" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher"></a>
+
+Unified Azure Network Watcher implementation.
+
+This class provides a single, version-aware implementation that automatically handles version
+resolution, schema validation, and property transformation while maintaining full JSII compliance.
+
+Network Watcher is a regional service that provides tools to monitor, diagnose, and gain
+insights into your network health and performance in Azure. It serves as the anchor for
+Network Watcher features like Flow Logs, Connection Monitor, and Packet Capture.
+
+IMPORTANT CONSTRAINT: Azure only allows one Network Watcher per subscription per region.
+If you need Network Watcher functionality in multiple regions, you must create a separate
+Network Watcher for each region.
+
+*Example*
+
+```typescript
+// Network Watcher for use with Flow Logs:
+const networkWatcher = new NetworkWatcher(this, "network-watcher", {
+  name: "NetworkWatcher_eastus",
+  location: "eastus",
+  resourceGroupId: networkWatcherRg.id,
+});
+
+// Then use it with NSG Flow Logs
+const flowLog = new NsgFlowLog(this, "flow-log", {
+  networkWatcherId: networkWatcher.id,
+  // ... other properties
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.Initializer"></a>
+
+```typescript
+import { azure_networkwatcher } from '@microsoft/terraform-cdk-constructs'
+
+new azure_networkwatcher.NetworkWatcher(scope: Construct, id: string, props: NetworkWatcherProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps</code> | - Configuration properties for the Network Watcher. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps
+
+Configuration properties for the Network Watcher.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.isConstruct"></a>
+
+```typescript
+import { azure_networkwatcher } from '@microsoft/terraform-cdk-constructs'
+
+azure_networkwatcher.NetworkWatcher.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.resource">resource</a></code> | <code>cdktf.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | Terraform output for the Network Watcher resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.locationOutput">locationOutput</a></code> | <code>cdktf.TerraformOutput</code> | Terraform output for the Network Watcher location. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | Terraform output for the Network Watcher name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps</code> | The input properties for this Network Watcher instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.provisioningStateOutput">provisioningStateOutput</a></code> | <code>cdktf.TerraformOutput</code> | Terraform output for the Network Watcher provisioning state. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktf.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Terraform output for the Network Watcher resource ID.
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Terraform output for the Network Watcher location.
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Terraform output for the Network Watcher name.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.props"></a>
+
+```typescript
+public readonly props: NetworkWatcherProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps
+
+The input properties for this Network Watcher instance.
+
+---
+
+##### `provisioningStateOutput`<sup>Required</sup> <a name="provisioningStateOutput" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.property.provisioningStateOutput"></a>
+
+```typescript
+public readonly provisioningStateOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Terraform output for the Network Watcher provisioning state.
+
+---
+
+
 ### PolicyAssignment <a name="PolicyAssignment" id="@microsoft/terraform-cdk-constructs.PolicyAssignment"></a>
 
 Unified Azure Policy Assignment implementation.
@@ -39106,6 +41082,1064 @@ public readonly props: PolicyDefinitionProps;
 - *Type:* @microsoft/terraform-cdk-constructs.azure_policydefinition.PolicyDefinitionProps
 
 The input properties for this Policy Definition instance.
+
+---
+
+
+### PolicySetDefinition <a name="PolicySetDefinition" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition"></a>
+
+Unified Azure Policy Set Definition (Initiative) implementation.
+
+This class provides a single, version-aware implementation for managing Azure
+Policy Set Definitions. It automatically handles version resolution, schema validation,
+and property transformation.
+
+Policy Set Definitions allow you to group multiple policy definitions together
+and assign them as a single unit (also known as "Initiatives" in Azure Portal).
+
+Note: Policy set definitions are created at subscription or management group scope.
+They do not have a location property as they are not region-specific.
+
+*Example*
+
+```typescript
+const initiative = new PolicySetDefinition(this, "security-initiative", {
+  displayName: "Security Baseline",
+  scope: "/subscriptions/00000000-0000-0000-0000-000000000000",
+  policyDefinitions: [
+    {
+      policyDefinitionId: "/providers/Microsoft.Authorization/policyDefinitions/abc123",
+      policyDefinitionReferenceId: "auditVMsWithoutExtensions",
+    },
+  ],
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.Initializer"></a>
+
+```typescript
+import { PolicySetDefinition } from '@microsoft/terraform-cdk-constructs'
+
+new PolicySetDefinition(scope: Construct, id: string, props: PolicySetDefinitionProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps</code> | - Configuration properties for the Policy Set Definition. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps
+
+Configuration properties for the Policy Set Definition.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.isConstruct"></a>
+
+```typescript
+import { PolicySetDefinition } from '@microsoft/terraform-cdk-constructs'
+
+PolicySetDefinition.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.resource">resource</a></code> | <code>cdktf.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.displayName">displayName</a></code> | <code>string</code> | Get the display name of the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.policyDefinitionCount">policyDefinitionCount</a></code> | <code>number</code> | Get the number of policy definitions in this set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.policySetDefinitionId">policySetDefinitionId</a></code> | <code>string</code> | Get the full resource identifier for use in policy assignments Alias for the id property. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.policySetDefinitionIdOutput">policySetDefinitionIdOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.policyType">policyType</a></code> | <code>string</code> | Get the policy type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps</code> | The input properties for this Policy Set Definition instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktf.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `displayName`<sup>Required</sup> <a name="displayName" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.displayName"></a>
+
+```typescript
+public readonly displayName: string;
+```
+
+- *Type:* string
+
+Get the display name of the policy set definition.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `policyDefinitionCount`<sup>Required</sup> <a name="policyDefinitionCount" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.policyDefinitionCount"></a>
+
+```typescript
+public readonly policyDefinitionCount: number;
+```
+
+- *Type:* number
+
+Get the number of policy definitions in this set.
+
+---
+
+##### `policySetDefinitionId`<sup>Required</sup> <a name="policySetDefinitionId" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.policySetDefinitionId"></a>
+
+```typescript
+public readonly policySetDefinitionId: string;
+```
+
+- *Type:* string
+
+Get the full resource identifier for use in policy assignments Alias for the id property.
+
+---
+
+##### `policySetDefinitionIdOutput`<sup>Required</sup> <a name="policySetDefinitionIdOutput" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.policySetDefinitionIdOutput"></a>
+
+```typescript
+public readonly policySetDefinitionIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `policyType`<sup>Required</sup> <a name="policyType" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.policyType"></a>
+
+```typescript
+public readonly policyType: string;
+```
+
+- *Type:* string
+
+Get the policy type.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.property.props"></a>
+
+```typescript
+public readonly props: PolicySetDefinitionProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps
+
+The input properties for this Policy Set Definition instance.
+
+---
+
+
+### PolicySetDefinition <a name="PolicySetDefinition" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition"></a>
+
+Unified Azure Policy Set Definition (Initiative) implementation.
+
+This class provides a single, version-aware implementation for managing Azure
+Policy Set Definitions. It automatically handles version resolution, schema validation,
+and property transformation.
+
+Policy Set Definitions allow you to group multiple policy definitions together
+and assign them as a single unit (also known as "Initiatives" in Azure Portal).
+
+Note: Policy set definitions are created at subscription or management group scope.
+They do not have a location property as they are not region-specific.
+
+*Example*
+
+```typescript
+const initiative = new PolicySetDefinition(this, "security-initiative", {
+  displayName: "Security Baseline",
+  scope: "/subscriptions/00000000-0000-0000-0000-000000000000",
+  policyDefinitions: [
+    {
+      policyDefinitionId: "/providers/Microsoft.Authorization/policyDefinitions/abc123",
+      policyDefinitionReferenceId: "auditVMsWithoutExtensions",
+    },
+  ],
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.Initializer"></a>
+
+```typescript
+import { azure_policysetdefinition } from '@microsoft/terraform-cdk-constructs'
+
+new azure_policysetdefinition.PolicySetDefinition(scope: Construct, id: string, props: PolicySetDefinitionProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps</code> | - Configuration properties for the Policy Set Definition. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps
+
+Configuration properties for the Policy Set Definition.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.isConstruct"></a>
+
+```typescript
+import { azure_policysetdefinition } from '@microsoft/terraform-cdk-constructs'
+
+azure_policysetdefinition.PolicySetDefinition.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.output">output</a></code> | <code>cdktf.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.resource">resource</a></code> | <code>cdktf.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.displayName">displayName</a></code> | <code>string</code> | Get the display name of the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.idOutput">idOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.nameOutput">nameOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.policyDefinitionCount">policyDefinitionCount</a></code> | <code>number</code> | Get the number of policy definitions in this set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.policySetDefinitionId">policySetDefinitionId</a></code> | <code>string</code> | Get the full resource identifier for use in policy assignments Alias for the id property. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.policySetDefinitionIdOutput">policySetDefinitionIdOutput</a></code> | <code>cdktf.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.policyType">policyType</a></code> | <code>string</code> | Get the policy type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps</code> | The input properties for this Policy Set Definition instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktf.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `displayName`<sup>Required</sup> <a name="displayName" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.displayName"></a>
+
+```typescript
+public readonly displayName: string;
+```
+
+- *Type:* string
+
+Get the display name of the policy set definition.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `policyDefinitionCount`<sup>Required</sup> <a name="policyDefinitionCount" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.policyDefinitionCount"></a>
+
+```typescript
+public readonly policyDefinitionCount: number;
+```
+
+- *Type:* number
+
+Get the number of policy definitions in this set.
+
+---
+
+##### `policySetDefinitionId`<sup>Required</sup> <a name="policySetDefinitionId" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.policySetDefinitionId"></a>
+
+```typescript
+public readonly policySetDefinitionId: string;
+```
+
+- *Type:* string
+
+Get the full resource identifier for use in policy assignments Alias for the id property.
+
+---
+
+##### `policySetDefinitionIdOutput`<sup>Required</sup> <a name="policySetDefinitionIdOutput" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.policySetDefinitionIdOutput"></a>
+
+```typescript
+public readonly policySetDefinitionIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktf.TerraformOutput
+
+---
+
+##### `policyType`<sup>Required</sup> <a name="policyType" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.policyType"></a>
+
+```typescript
+public readonly policyType: string;
+```
+
+- *Type:* string
+
+Get the policy type.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.property.props"></a>
+
+```typescript
+public readonly props: PolicySetDefinitionProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps
+
+The input properties for this Policy Set Definition instance.
 
 ---
 
@@ -109966,6 +113000,1536 @@ SA lifetime in seconds.
 ```
 
 
+### LogAnalyticsWorkspaceBody <a name="LogAnalyticsWorkspaceBody" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBody"></a>
+
+The resource body interface for Azure Log Analytics Workspace API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBody.Initializer"></a>
+
+```typescript
+import { LogAnalyticsWorkspaceBody } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceBody: LogAnalyticsWorkspaceBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBody.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity</code> | *No description.* |
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBody.property.properties"></a>
+
+```typescript
+public readonly properties: LogAnalyticsWorkspaceBodyProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBody.property.identity"></a>
+
+```typescript
+public readonly identity: LogAnalyticsWorkspaceIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity
+
+---
+
+### LogAnalyticsWorkspaceBody <a name="LogAnalyticsWorkspaceBody" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBody"></a>
+
+The resource body interface for Azure Log Analytics Workspace API calls.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBody.Initializer"></a>
+
+```typescript
+import { azure_loganalyticsworkspace } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceBody: azure_loganalyticsworkspace.LogAnalyticsWorkspaceBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBody.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity</code> | *No description.* |
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBody.property.properties"></a>
+
+```typescript
+public readonly properties: LogAnalyticsWorkspaceBodyProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBody.property.identity"></a>
+
+```typescript
+public readonly identity: LogAnalyticsWorkspaceIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity
+
+---
+
+### LogAnalyticsWorkspaceBodyProperties <a name="LogAnalyticsWorkspaceBodyProperties" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties"></a>
+
+Properties for the Log Analytics Workspace request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.Initializer"></a>
+
+```typescript
+import { LogAnalyticsWorkspaceBodyProperties } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceBodyProperties: LogAnalyticsWorkspaceBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.defaultDataCollectionRuleResourceId">defaultDataCollectionRuleResourceId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.features">features</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.forceCmkForQuery">forceCmkForQuery</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.publicNetworkAccessForIngestion">publicNetworkAccessForIngestion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.publicNetworkAccessForQuery">publicNetworkAccessForQuery</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.retentionInDays">retentionInDays</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.sku">sku</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.workspaceCapping">workspaceCapping</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceCapping</code> | *No description.* |
+
+---
+
+##### `defaultDataCollectionRuleResourceId`<sup>Optional</sup> <a name="defaultDataCollectionRuleResourceId" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.defaultDataCollectionRuleResourceId"></a>
+
+```typescript
+public readonly defaultDataCollectionRuleResourceId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `features`<sup>Optional</sup> <a name="features" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.features"></a>
+
+```typescript
+public readonly features: LogAnalyticsWorkspaceFeatures;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures
+
+---
+
+##### `forceCmkForQuery`<sup>Optional</sup> <a name="forceCmkForQuery" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.forceCmkForQuery"></a>
+
+```typescript
+public readonly forceCmkForQuery: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `publicNetworkAccessForIngestion`<sup>Optional</sup> <a name="publicNetworkAccessForIngestion" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.publicNetworkAccessForIngestion"></a>
+
+```typescript
+public readonly publicNetworkAccessForIngestion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `publicNetworkAccessForQuery`<sup>Optional</sup> <a name="publicNetworkAccessForQuery" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.publicNetworkAccessForQuery"></a>
+
+```typescript
+public readonly publicNetworkAccessForQuery: string;
+```
+
+- *Type:* string
+
+---
+
+##### `retentionInDays`<sup>Optional</sup> <a name="retentionInDays" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.retentionInDays"></a>
+
+```typescript
+public readonly retentionInDays: number;
+```
+
+- *Type:* number
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.sku"></a>
+
+```typescript
+public readonly sku: LogAnalyticsWorkspaceSku;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku
+
+---
+
+##### `workspaceCapping`<sup>Optional</sup> <a name="workspaceCapping" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceBodyProperties.property.workspaceCapping"></a>
+
+```typescript
+public readonly workspaceCapping: LogAnalyticsWorkspaceCapping;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceCapping
+
+---
+
+### LogAnalyticsWorkspaceBodyProperties <a name="LogAnalyticsWorkspaceBodyProperties" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties"></a>
+
+Properties for the Log Analytics Workspace request body.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.Initializer"></a>
+
+```typescript
+import { azure_loganalyticsworkspace } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceBodyProperties: azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.defaultDataCollectionRuleResourceId">defaultDataCollectionRuleResourceId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.features">features</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.forceCmkForQuery">forceCmkForQuery</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.publicNetworkAccessForIngestion">publicNetworkAccessForIngestion</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.publicNetworkAccessForQuery">publicNetworkAccessForQuery</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.retentionInDays">retentionInDays</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.sku">sku</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.workspaceCapping">workspaceCapping</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceCapping</code> | *No description.* |
+
+---
+
+##### `defaultDataCollectionRuleResourceId`<sup>Optional</sup> <a name="defaultDataCollectionRuleResourceId" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.defaultDataCollectionRuleResourceId"></a>
+
+```typescript
+public readonly defaultDataCollectionRuleResourceId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `features`<sup>Optional</sup> <a name="features" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.features"></a>
+
+```typescript
+public readonly features: LogAnalyticsWorkspaceFeatures;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures
+
+---
+
+##### `forceCmkForQuery`<sup>Optional</sup> <a name="forceCmkForQuery" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.forceCmkForQuery"></a>
+
+```typescript
+public readonly forceCmkForQuery: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `publicNetworkAccessForIngestion`<sup>Optional</sup> <a name="publicNetworkAccessForIngestion" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.publicNetworkAccessForIngestion"></a>
+
+```typescript
+public readonly publicNetworkAccessForIngestion: string;
+```
+
+- *Type:* string
+
+---
+
+##### `publicNetworkAccessForQuery`<sup>Optional</sup> <a name="publicNetworkAccessForQuery" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.publicNetworkAccessForQuery"></a>
+
+```typescript
+public readonly publicNetworkAccessForQuery: string;
+```
+
+- *Type:* string
+
+---
+
+##### `retentionInDays`<sup>Optional</sup> <a name="retentionInDays" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.retentionInDays"></a>
+
+```typescript
+public readonly retentionInDays: number;
+```
+
+- *Type:* number
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.sku"></a>
+
+```typescript
+public readonly sku: LogAnalyticsWorkspaceSku;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku
+
+---
+
+##### `workspaceCapping`<sup>Optional</sup> <a name="workspaceCapping" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceBodyProperties.property.workspaceCapping"></a>
+
+```typescript
+public readonly workspaceCapping: LogAnalyticsWorkspaceCapping;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceCapping
+
+---
+
+### LogAnalyticsWorkspaceCapping <a name="LogAnalyticsWorkspaceCapping" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceCapping"></a>
+
+Workspace capping configuration for daily data ingestion limits.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceCapping.Initializer"></a>
+
+```typescript
+import { LogAnalyticsWorkspaceCapping } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceCapping: LogAnalyticsWorkspaceCapping = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceCapping.property.dailyQuotaGb">dailyQuotaGb</a></code> | <code>number</code> | Daily volume cap in GB A value of -1 means no cap. |
+
+---
+
+##### `dailyQuotaGb`<sup>Required</sup> <a name="dailyQuotaGb" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceCapping.property.dailyQuotaGb"></a>
+
+```typescript
+public readonly dailyQuotaGb: number;
+```
+
+- *Type:* number
+
+Daily volume cap in GB A value of -1 means no cap.
+
+---
+
+### LogAnalyticsWorkspaceCapping <a name="LogAnalyticsWorkspaceCapping" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceCapping"></a>
+
+Workspace capping configuration for daily data ingestion limits.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceCapping.Initializer"></a>
+
+```typescript
+import { azure_loganalyticsworkspace } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceCapping: azure_loganalyticsworkspace.LogAnalyticsWorkspaceCapping = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceCapping.property.dailyQuotaGb">dailyQuotaGb</a></code> | <code>number</code> | Daily volume cap in GB A value of -1 means no cap. |
+
+---
+
+##### `dailyQuotaGb`<sup>Required</sup> <a name="dailyQuotaGb" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceCapping.property.dailyQuotaGb"></a>
+
+```typescript
+public readonly dailyQuotaGb: number;
+```
+
+- *Type:* number
+
+Daily volume cap in GB A value of -1 means no cap.
+
+---
+
+### LogAnalyticsWorkspaceFeatures <a name="LogAnalyticsWorkspaceFeatures" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceFeatures"></a>
+
+Workspace features configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceFeatures.Initializer"></a>
+
+```typescript
+import { LogAnalyticsWorkspaceFeatures } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceFeatures: LogAnalyticsWorkspaceFeatures = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceFeatures.property.disableLocalAuth">disableLocalAuth</a></code> | <code>boolean</code> | Flag indicating whether log access using AADIAM is disabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceFeatures.property.enableDataExport">enableDataExport</a></code> | <code>boolean</code> | Flag indicating whether data export is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceFeatures.property.enableLogAccessUsingOnlyResourcePermissions">enableLogAccessUsingOnlyResourcePermissions</a></code> | <code>boolean</code> | Flag indicating whether cluster resource permissions are enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceFeatures.property.immediatePurgeDataOn30Days">immediatePurgeDataOn30Days</a></code> | <code>boolean</code> | Flag indicating whether data should be immediately purged after 30 days instead of the configured retention period. |
+
+---
+
+##### `disableLocalAuth`<sup>Optional</sup> <a name="disableLocalAuth" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceFeatures.property.disableLocalAuth"></a>
+
+```typescript
+public readonly disableLocalAuth: boolean;
+```
+
+- *Type:* boolean
+
+Flag indicating whether log access using AADIAM is disabled.
+
+---
+
+##### `enableDataExport`<sup>Optional</sup> <a name="enableDataExport" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceFeatures.property.enableDataExport"></a>
+
+```typescript
+public readonly enableDataExport: boolean;
+```
+
+- *Type:* boolean
+
+Flag indicating whether data export is enabled.
+
+---
+
+##### `enableLogAccessUsingOnlyResourcePermissions`<sup>Optional</sup> <a name="enableLogAccessUsingOnlyResourcePermissions" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceFeatures.property.enableLogAccessUsingOnlyResourcePermissions"></a>
+
+```typescript
+public readonly enableLogAccessUsingOnlyResourcePermissions: boolean;
+```
+
+- *Type:* boolean
+
+Flag indicating whether cluster resource permissions are enabled.
+
+---
+
+##### `immediatePurgeDataOn30Days`<sup>Optional</sup> <a name="immediatePurgeDataOn30Days" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceFeatures.property.immediatePurgeDataOn30Days"></a>
+
+```typescript
+public readonly immediatePurgeDataOn30Days: boolean;
+```
+
+- *Type:* boolean
+
+Flag indicating whether data should be immediately purged after 30 days instead of the configured retention period.
+
+---
+
+### LogAnalyticsWorkspaceFeatures <a name="LogAnalyticsWorkspaceFeatures" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures"></a>
+
+Workspace features configuration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures.Initializer"></a>
+
+```typescript
+import { azure_loganalyticsworkspace } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceFeatures: azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures.property.disableLocalAuth">disableLocalAuth</a></code> | <code>boolean</code> | Flag indicating whether log access using AADIAM is disabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures.property.enableDataExport">enableDataExport</a></code> | <code>boolean</code> | Flag indicating whether data export is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures.property.enableLogAccessUsingOnlyResourcePermissions">enableLogAccessUsingOnlyResourcePermissions</a></code> | <code>boolean</code> | Flag indicating whether cluster resource permissions are enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures.property.immediatePurgeDataOn30Days">immediatePurgeDataOn30Days</a></code> | <code>boolean</code> | Flag indicating whether data should be immediately purged after 30 days instead of the configured retention period. |
+
+---
+
+##### `disableLocalAuth`<sup>Optional</sup> <a name="disableLocalAuth" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures.property.disableLocalAuth"></a>
+
+```typescript
+public readonly disableLocalAuth: boolean;
+```
+
+- *Type:* boolean
+
+Flag indicating whether log access using AADIAM is disabled.
+
+---
+
+##### `enableDataExport`<sup>Optional</sup> <a name="enableDataExport" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures.property.enableDataExport"></a>
+
+```typescript
+public readonly enableDataExport: boolean;
+```
+
+- *Type:* boolean
+
+Flag indicating whether data export is enabled.
+
+---
+
+##### `enableLogAccessUsingOnlyResourcePermissions`<sup>Optional</sup> <a name="enableLogAccessUsingOnlyResourcePermissions" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures.property.enableLogAccessUsingOnlyResourcePermissions"></a>
+
+```typescript
+public readonly enableLogAccessUsingOnlyResourcePermissions: boolean;
+```
+
+- *Type:* boolean
+
+Flag indicating whether cluster resource permissions are enabled.
+
+---
+
+##### `immediatePurgeDataOn30Days`<sup>Optional</sup> <a name="immediatePurgeDataOn30Days" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures.property.immediatePurgeDataOn30Days"></a>
+
+```typescript
+public readonly immediatePurgeDataOn30Days: boolean;
+```
+
+- *Type:* boolean
+
+Flag indicating whether data should be immediately purged after 30 days instead of the configured retention period.
+
+---
+
+### LogAnalyticsWorkspaceIdentity <a name="LogAnalyticsWorkspaceIdentity" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceIdentity"></a>
+
+Managed identity configuration for the workspace.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceIdentity.Initializer"></a>
+
+```typescript
+import { LogAnalyticsWorkspaceIdentity } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceIdentity: LogAnalyticsWorkspaceIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceIdentity.property.type">type</a></code> | <code>string</code> | Type of managed identity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: any}</code> | User-assigned identity resource IDs Required when type includes UserAssigned. |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+Type of managed identity.
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+User-assigned identity resource IDs Required when type includes UserAssigned.
+
+---
+
+### LogAnalyticsWorkspaceIdentity <a name="LogAnalyticsWorkspaceIdentity" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity"></a>
+
+Managed identity configuration for the workspace.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity.Initializer"></a>
+
+```typescript
+import { azure_loganalyticsworkspace } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceIdentity: azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity.property.type">type</a></code> | <code>string</code> | Type of managed identity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: any}</code> | User-assigned identity resource IDs Required when type includes UserAssigned. |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+Type of managed identity.
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+User-assigned identity resource IDs Required when type includes UserAssigned.
+
+---
+
+### LogAnalyticsWorkspaceProps <a name="LogAnalyticsWorkspaceProps" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps"></a>
+
+Properties for the unified Azure Log Analytics Workspace.
+
+Extends AzapiResourceProps with Log Analytics Workspace specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.Initializer"></a>
+
+```typescript
+import { LogAnalyticsWorkspaceProps } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceProps: LogAnalyticsWorkspaceProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.connection">connection</a></code> | <code>cdktf.SSHProvisionerConnection \| cdktf.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.count">count</a></code> | <code>number \| cdktf.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.dependsOn">dependsOn</a></code> | <code>cdktf.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.forEach">forEach</a></code> | <code>cdktf.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.lifecycle">lifecycle</a></code> | <code>cdktf.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.provider">provider</a></code> | <code>cdktf.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.provisioners">provisioners</a></code> | <code>cdktf.FileProvisioner \| cdktf.LocalExecProvisioner \| cdktf.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource Group ID where the workspace will be created The workspace will be created as a child of this resource group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.defaultDataCollectionRuleResourceId">defaultDataCollectionRuleResourceId</a></code> | <code>string</code> | Resource ID of the default Data Collection Rule. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.features">features</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures</code> | Workspace features configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.forceCmkForQuery">forceCmkForQuery</a></code> | <code>boolean</code> | Whether customer-managed keys are required for saved searches and alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity</code> | Managed identity configuration for the workspace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.publicNetworkAccessForIngestion">publicNetworkAccessForIngestion</a></code> | <code>string</code> | Public network access for data ingestion. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.publicNetworkAccessForQuery">publicNetworkAccessForQuery</a></code> | <code>string</code> | Public network access for querying data. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.retentionInDays">retentionInDays</a></code> | <code>number</code> | Data retention period in days. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.sku">sku</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku</code> | SKU configuration for the workspace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.workspaceCapping">workspaceCapping</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceCapping</code> | Daily volume cap for data ingestion. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktf.SSHProvisionerConnection | cdktf.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktf.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktf.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktf.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktf.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktf.FileProvisioner | cdktf.LocalExecProvisioner | cdktf.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `resourceGroupId`<sup>Required</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource Group ID where the workspace will be created The workspace will be created as a child of this resource group.
+
+---
+
+##### `defaultDataCollectionRuleResourceId`<sup>Optional</sup> <a name="defaultDataCollectionRuleResourceId" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.defaultDataCollectionRuleResourceId"></a>
+
+```typescript
+public readonly defaultDataCollectionRuleResourceId: string;
+```
+
+- *Type:* string
+
+Resource ID of the default Data Collection Rule.
+
+Associates a default DCR with the workspace for data collection.
+Only available in API version 2023-09-01 and later.
+
+---
+
+##### `features`<sup>Optional</sup> <a name="features" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.features"></a>
+
+```typescript
+public readonly features: LogAnalyticsWorkspaceFeatures;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures
+
+Workspace features configuration.
+
+Enables or disables specific workspace features like data export,
+immediate purge, and local authentication.
+
+---
+
+##### `forceCmkForQuery`<sup>Optional</sup> <a name="forceCmkForQuery" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.forceCmkForQuery"></a>
+
+```typescript
+public readonly forceCmkForQuery: boolean;
+```
+
+- *Type:* boolean
+
+Whether customer-managed keys are required for saved searches and alerts.
+
+When enabled, all saved searches and alerts must use customer-managed keys.
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.identity"></a>
+
+```typescript
+public readonly identity: LogAnalyticsWorkspaceIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity
+
+Managed identity configuration for the workspace.
+
+Enables managed identity authentication for the workspace.
+
+---
+
+##### `publicNetworkAccessForIngestion`<sup>Optional</sup> <a name="publicNetworkAccessForIngestion" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.publicNetworkAccessForIngestion"></a>
+
+```typescript
+public readonly publicNetworkAccessForIngestion: string;
+```
+
+- *Type:* string
+- *Default:* "Enabled"
+
+Public network access for data ingestion.
+
+Controls whether data can be ingested over the public internet.
+
+---
+
+##### `publicNetworkAccessForQuery`<sup>Optional</sup> <a name="publicNetworkAccessForQuery" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.publicNetworkAccessForQuery"></a>
+
+```typescript
+public readonly publicNetworkAccessForQuery: string;
+```
+
+- *Type:* string
+- *Default:* "Enabled"
+
+Public network access for querying data.
+
+Controls whether queries can be executed over the public internet.
+
+---
+
+##### `retentionInDays`<sup>Optional</sup> <a name="retentionInDays" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.retentionInDays"></a>
+
+```typescript
+public readonly retentionInDays: number;
+```
+
+- *Type:* number
+- *Default:* 30
+
+Data retention period in days.
+
+Values between 30 and 730 are supported for pay-as-you-go pricing.
+Free tier is limited to 7 days.
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.sku"></a>
+
+```typescript
+public readonly sku: LogAnalyticsWorkspaceSku;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku
+- *Default:* { name: "PerGB2018" }
+
+SKU configuration for the workspace.
+
+Determines pricing tier and capabilities of the workspace.
+
+---
+
+##### `workspaceCapping`<sup>Optional</sup> <a name="workspaceCapping" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceProps.property.workspaceCapping"></a>
+
+```typescript
+public readonly workspaceCapping: LogAnalyticsWorkspaceCapping;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceCapping
+
+Daily volume cap for data ingestion.
+
+When the daily cap is reached, data ingestion stops until the next day.
+A value of dailyQuotaGb: -1 means no cap.
+
+---
+
+### LogAnalyticsWorkspaceProps <a name="LogAnalyticsWorkspaceProps" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps"></a>
+
+Properties for the unified Azure Log Analytics Workspace.
+
+Extends AzapiResourceProps with Log Analytics Workspace specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.Initializer"></a>
+
+```typescript
+import { azure_loganalyticsworkspace } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceProps: azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.connection">connection</a></code> | <code>cdktf.SSHProvisionerConnection \| cdktf.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.count">count</a></code> | <code>number \| cdktf.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.dependsOn">dependsOn</a></code> | <code>cdktf.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.forEach">forEach</a></code> | <code>cdktf.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.lifecycle">lifecycle</a></code> | <code>cdktf.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.provider">provider</a></code> | <code>cdktf.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.provisioners">provisioners</a></code> | <code>cdktf.FileProvisioner \| cdktf.LocalExecProvisioner \| cdktf.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource Group ID where the workspace will be created The workspace will be created as a child of this resource group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.defaultDataCollectionRuleResourceId">defaultDataCollectionRuleResourceId</a></code> | <code>string</code> | Resource ID of the default Data Collection Rule. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.features">features</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures</code> | Workspace features configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.forceCmkForQuery">forceCmkForQuery</a></code> | <code>boolean</code> | Whether customer-managed keys are required for saved searches and alerts. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity</code> | Managed identity configuration for the workspace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.publicNetworkAccessForIngestion">publicNetworkAccessForIngestion</a></code> | <code>string</code> | Public network access for data ingestion. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.publicNetworkAccessForQuery">publicNetworkAccessForQuery</a></code> | <code>string</code> | Public network access for querying data. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.retentionInDays">retentionInDays</a></code> | <code>number</code> | Data retention period in days. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.sku">sku</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku</code> | SKU configuration for the workspace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.workspaceCapping">workspaceCapping</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceCapping</code> | Daily volume cap for data ingestion. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktf.SSHProvisionerConnection | cdktf.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktf.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktf.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktf.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktf.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktf.FileProvisioner | cdktf.LocalExecProvisioner | cdktf.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `resourceGroupId`<sup>Required</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource Group ID where the workspace will be created The workspace will be created as a child of this resource group.
+
+---
+
+##### `defaultDataCollectionRuleResourceId`<sup>Optional</sup> <a name="defaultDataCollectionRuleResourceId" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.defaultDataCollectionRuleResourceId"></a>
+
+```typescript
+public readonly defaultDataCollectionRuleResourceId: string;
+```
+
+- *Type:* string
+
+Resource ID of the default Data Collection Rule.
+
+Associates a default DCR with the workspace for data collection.
+Only available in API version 2023-09-01 and later.
+
+---
+
+##### `features`<sup>Optional</sup> <a name="features" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.features"></a>
+
+```typescript
+public readonly features: LogAnalyticsWorkspaceFeatures;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceFeatures
+
+Workspace features configuration.
+
+Enables or disables specific workspace features like data export,
+immediate purge, and local authentication.
+
+---
+
+##### `forceCmkForQuery`<sup>Optional</sup> <a name="forceCmkForQuery" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.forceCmkForQuery"></a>
+
+```typescript
+public readonly forceCmkForQuery: boolean;
+```
+
+- *Type:* boolean
+
+Whether customer-managed keys are required for saved searches and alerts.
+
+When enabled, all saved searches and alerts must use customer-managed keys.
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.identity"></a>
+
+```typescript
+public readonly identity: LogAnalyticsWorkspaceIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceIdentity
+
+Managed identity configuration for the workspace.
+
+Enables managed identity authentication for the workspace.
+
+---
+
+##### `publicNetworkAccessForIngestion`<sup>Optional</sup> <a name="publicNetworkAccessForIngestion" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.publicNetworkAccessForIngestion"></a>
+
+```typescript
+public readonly publicNetworkAccessForIngestion: string;
+```
+
+- *Type:* string
+- *Default:* "Enabled"
+
+Public network access for data ingestion.
+
+Controls whether data can be ingested over the public internet.
+
+---
+
+##### `publicNetworkAccessForQuery`<sup>Optional</sup> <a name="publicNetworkAccessForQuery" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.publicNetworkAccessForQuery"></a>
+
+```typescript
+public readonly publicNetworkAccessForQuery: string;
+```
+
+- *Type:* string
+- *Default:* "Enabled"
+
+Public network access for querying data.
+
+Controls whether queries can be executed over the public internet.
+
+---
+
+##### `retentionInDays`<sup>Optional</sup> <a name="retentionInDays" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.retentionInDays"></a>
+
+```typescript
+public readonly retentionInDays: number;
+```
+
+- *Type:* number
+- *Default:* 30
+
+Data retention period in days.
+
+Values between 30 and 730 are supported for pay-as-you-go pricing.
+Free tier is limited to 7 days.
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.sku"></a>
+
+```typescript
+public readonly sku: LogAnalyticsWorkspaceSku;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku
+- *Default:* { name: "PerGB2018" }
+
+SKU configuration for the workspace.
+
+Determines pricing tier and capabilities of the workspace.
+
+---
+
+##### `workspaceCapping`<sup>Optional</sup> <a name="workspaceCapping" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceProps.property.workspaceCapping"></a>
+
+```typescript
+public readonly workspaceCapping: LogAnalyticsWorkspaceCapping;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceCapping
+
+Daily volume cap for data ingestion.
+
+When the daily cap is reached, data ingestion stops until the next day.
+A value of dailyQuotaGb: -1 means no cap.
+
+---
+
+### LogAnalyticsWorkspaceSku <a name="LogAnalyticsWorkspaceSku" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceSku"></a>
+
+SKU configuration for Log Analytics Workspace.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceSku.Initializer"></a>
+
+```typescript
+import { LogAnalyticsWorkspaceSku } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceSku: LogAnalyticsWorkspaceSku = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceSku.property.name">name</a></code> | <code>string</code> | SKU name for the Log Analytics Workspace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceSku.property.capacityReservationLevel">capacityReservationLevel</a></code> | <code>number</code> | Capacity reservation level in GB per day Only applicable when SKU name is "CapacityReservation" Valid values: 100, 200, 300, 400, 500, 1000, 2000, 5000. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceSku.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+- *Default:* "PerGB2018"
+
+SKU name for the Log Analytics Workspace.
+
+Available options:
+- "Free" - Free tier (limited to 500MB/day, 7 day retention)
+- "Standard" - Standard tier (legacy)
+- "Premium" - Premium tier (legacy)
+- "PerNode" - Per node pricing (legacy, for OMS customers)
+- "PerGB2018" - Pay-as-you-go pricing based on data ingestion
+- "Standalone" - Standalone tier (legacy)
+- "CapacityReservation" - Commitment tier with reserved capacity
+
+---
+
+##### `capacityReservationLevel`<sup>Optional</sup> <a name="capacityReservationLevel" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspaceSku.property.capacityReservationLevel"></a>
+
+```typescript
+public readonly capacityReservationLevel: number;
+```
+
+- *Type:* number
+
+Capacity reservation level in GB per day Only applicable when SKU name is "CapacityReservation" Valid values: 100, 200, 300, 400, 500, 1000, 2000, 5000.
+
+---
+
+### LogAnalyticsWorkspaceSku <a name="LogAnalyticsWorkspaceSku" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku"></a>
+
+SKU configuration for Log Analytics Workspace.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku.Initializer"></a>
+
+```typescript
+import { azure_loganalyticsworkspace } from '@microsoft/terraform-cdk-constructs'
+
+const logAnalyticsWorkspaceSku: azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku.property.name">name</a></code> | <code>string</code> | SKU name for the Log Analytics Workspace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku.property.capacityReservationLevel">capacityReservationLevel</a></code> | <code>number</code> | Capacity reservation level in GB per day Only applicable when SKU name is "CapacityReservation" Valid values: 100, 200, 300, 400, 500, 1000, 2000, 5000. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+- *Default:* "PerGB2018"
+
+SKU name for the Log Analytics Workspace.
+
+Available options:
+- "Free" - Free tier (limited to 500MB/day, 7 day retention)
+- "Standard" - Standard tier (legacy)
+- "Premium" - Premium tier (legacy)
+- "PerNode" - Per node pricing (legacy, for OMS customers)
+- "PerGB2018" - Pay-as-you-go pricing based on data ingestion
+- "Standalone" - Standalone tier (legacy)
+- "CapacityReservation" - Commitment tier with reserved capacity
+
+---
+
+##### `capacityReservationLevel`<sup>Optional</sup> <a name="capacityReservationLevel" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspaceSku.property.capacityReservationLevel"></a>
+
+```typescript
+public readonly capacityReservationLevel: number;
+```
+
+- *Type:* number
+
+Capacity reservation level in GB per day Only applicable when SKU name is "CapacityReservation" Valid values: 100, 200, 300, 400, 500, 1000, 2000, 5000.
+
+---
+
 ### LogicAppReceiver <a name="LogicAppReceiver" id="@microsoft/terraform-cdk-constructs.LogicAppReceiver"></a>
 
 Logic App receiver configuration.
@@ -116528,6 +121092,630 @@ public readonly id: string;
 
 ---
 
+### NetworkWatcherBody <a name="NetworkWatcherBody" id="@microsoft/terraform-cdk-constructs.NetworkWatcherBody"></a>
+
+The resource body interface for Azure Network Watcher API calls.
+
+Network Watcher is a simple resource with minimal properties.
+The properties block is typically empty.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkWatcherBody.Initializer"></a>
+
+```typescript
+import { NetworkWatcherBody } from '@microsoft/terraform-cdk-constructs'
+
+const networkWatcherBody: NetworkWatcherBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherBody.property.properties">properties</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.NetworkWatcherBody.property.properties"></a>
+
+```typescript
+public readonly properties: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+### NetworkWatcherBody <a name="NetworkWatcherBody" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherBody"></a>
+
+The resource body interface for Azure Network Watcher API calls.
+
+Network Watcher is a simple resource with minimal properties.
+The properties block is typically empty.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherBody.Initializer"></a>
+
+```typescript
+import { azure_networkwatcher } from '@microsoft/terraform-cdk-constructs'
+
+const networkWatcherBody: azure_networkwatcher.NetworkWatcherBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherBody.property.properties">properties</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherBody.property.properties"></a>
+
+```typescript
+public readonly properties: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+### NetworkWatcherProps <a name="NetworkWatcherProps" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps"></a>
+
+Properties for the unified Azure Network Watcher.
+
+Extends AzapiResourceProps with Network Watcher specific properties.
+
+IMPORTANT: Azure only allows one Network Watcher per subscription per region.
+Attempting to create multiple Network Watchers in the same region will fail.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.Initializer"></a>
+
+```typescript
+import { NetworkWatcherProps } from '@microsoft/terraform-cdk-constructs'
+
+const networkWatcherProps: NetworkWatcherProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.connection">connection</a></code> | <code>cdktf.SSHProvisionerConnection \| cdktf.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.count">count</a></code> | <code>number \| cdktf.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.dependsOn">dependsOn</a></code> | <code>cdktf.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.forEach">forEach</a></code> | <code>cdktf.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.lifecycle">lifecycle</a></code> | <code>cdktf.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.provider">provider</a></code> | <code>cdktf.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.provisioners">provisioners</a></code> | <code>cdktf.FileProvisioner \| cdktf.LocalExecProvisioner \| cdktf.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource Group ID where the Network Watcher will be created. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktf.SSHProvisionerConnection | cdktf.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktf.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktf.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktf.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktf.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktf.FileProvisioner | cdktf.LocalExecProvisioner | cdktf.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `resourceGroupId`<sup>Required</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.NetworkWatcherProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource Group ID where the Network Watcher will be created.
+
+The Network Watcher will be created as a child of this resource group.
+It's recommended to use a dedicated resource group for Network Watchers,
+as Azure automatically creates one named "NetworkWatcherRG" when certain
+network features are used.
+
+---
+
+### NetworkWatcherProps <a name="NetworkWatcherProps" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps"></a>
+
+Properties for the unified Azure Network Watcher.
+
+Extends AzapiResourceProps with Network Watcher specific properties.
+
+IMPORTANT: Azure only allows one Network Watcher per subscription per region.
+Attempting to create multiple Network Watchers in the same region will fail.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.Initializer"></a>
+
+```typescript
+import { azure_networkwatcher } from '@microsoft/terraform-cdk-constructs'
+
+const networkWatcherProps: azure_networkwatcher.NetworkWatcherProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.connection">connection</a></code> | <code>cdktf.SSHProvisionerConnection \| cdktf.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.count">count</a></code> | <code>number \| cdktf.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.dependsOn">dependsOn</a></code> | <code>cdktf.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.forEach">forEach</a></code> | <code>cdktf.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.lifecycle">lifecycle</a></code> | <code>cdktf.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.provider">provider</a></code> | <code>cdktf.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.provisioners">provisioners</a></code> | <code>cdktf.FileProvisioner \| cdktf.LocalExecProvisioner \| cdktf.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource Group ID where the Network Watcher will be created. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktf.SSHProvisionerConnection | cdktf.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktf.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktf.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktf.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktf.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktf.FileProvisioner | cdktf.LocalExecProvisioner | cdktf.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `resourceGroupId`<sup>Required</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcherProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource Group ID where the Network Watcher will be created.
+
+The Network Watcher will be created as a child of this resource group.
+It's recommended to use a dedicated resource group for Network Watchers,
+as Azure automatically creates one named "NetworkWatcherRG" when certain
+network features are used.
+
+---
+
 ### OrphanedResource <a name="OrphanedResource" id="@microsoft/terraform-cdk-constructs.OrphanedResource"></a>
 
 Orphaned resource information.
@@ -118738,6 +123926,244 @@ The properties of the policy definition.
 
 ---
 
+### PolicyDefinitionGroup <a name="PolicyDefinitionGroup" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionGroup"></a>
+
+A group for organizing policy definitions within a policy set.
+
+Groups provide a way to categorize and organize policies within an initiative
+for better management and compliance reporting.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionGroup.Initializer"></a>
+
+```typescript
+import { PolicyDefinitionGroup } from '@microsoft/terraform-cdk-constructs'
+
+const policyDefinitionGroup: PolicyDefinitionGroup = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinitionGroup.property.name">name</a></code> | <code>string</code> | The name of the group (must be unique within the policy set). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinitionGroup.property.additionalMetadataId">additionalMetadataId</a></code> | <code>string</code> | Additional metadata for the group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinitionGroup.property.category">category</a></code> | <code>string</code> | The category this group belongs to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinitionGroup.property.description">description</a></code> | <code>string</code> | A description of the group's purpose. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinitionGroup.property.displayName">displayName</a></code> | <code>string</code> | The display name of the group shown in Azure Portal. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionGroup.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the group (must be unique within the policy set).
+
+This name is referenced by policy definitions to indicate membership.
+
+---
+
+*Example*
+
+```typescript
+"Security"
+```
+
+
+##### `additionalMetadataId`<sup>Optional</sup> <a name="additionalMetadataId" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionGroup.property.additionalMetadataId"></a>
+
+```typescript
+public readonly additionalMetadataId: string;
+```
+
+- *Type:* string
+
+Additional metadata for the group.
+
+---
+
+##### `category`<sup>Optional</sup> <a name="category" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionGroup.property.category"></a>
+
+```typescript
+public readonly category: string;
+```
+
+- *Type:* string
+
+The category this group belongs to.
+
+Categories help organize groups and are displayed in the Azure Portal.
+
+---
+
+*Example*
+
+```typescript
+"Security Center"
+```
+
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionGroup.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+A description of the group's purpose.
+
+---
+
+*Example*
+
+```typescript
+"Policies related to security configuration and compliance"
+```
+
+
+##### `displayName`<sup>Optional</sup> <a name="displayName" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionGroup.property.displayName"></a>
+
+```typescript
+public readonly displayName: string;
+```
+
+- *Type:* string
+
+The display name of the group shown in Azure Portal.
+
+---
+
+*Example*
+
+```typescript
+"Security Policies"
+```
+
+
+### PolicyDefinitionGroup <a name="PolicyDefinitionGroup" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup"></a>
+
+A group for organizing policy definitions within a policy set.
+
+Groups provide a way to categorize and organize policies within an initiative
+for better management and compliance reporting.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup.Initializer"></a>
+
+```typescript
+import { azure_policysetdefinition } from '@microsoft/terraform-cdk-constructs'
+
+const policyDefinitionGroup: azure_policysetdefinition.PolicyDefinitionGroup = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup.property.name">name</a></code> | <code>string</code> | The name of the group (must be unique within the policy set). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup.property.additionalMetadataId">additionalMetadataId</a></code> | <code>string</code> | Additional metadata for the group. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup.property.category">category</a></code> | <code>string</code> | The category this group belongs to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup.property.description">description</a></code> | <code>string</code> | A description of the group's purpose. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup.property.displayName">displayName</a></code> | <code>string</code> | The display name of the group shown in Azure Portal. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the group (must be unique within the policy set).
+
+This name is referenced by policy definitions to indicate membership.
+
+---
+
+*Example*
+
+```typescript
+"Security"
+```
+
+
+##### `additionalMetadataId`<sup>Optional</sup> <a name="additionalMetadataId" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup.property.additionalMetadataId"></a>
+
+```typescript
+public readonly additionalMetadataId: string;
+```
+
+- *Type:* string
+
+Additional metadata for the group.
+
+---
+
+##### `category`<sup>Optional</sup> <a name="category" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup.property.category"></a>
+
+```typescript
+public readonly category: string;
+```
+
+- *Type:* string
+
+The category this group belongs to.
+
+Categories help organize groups and are displayed in the Azure Portal.
+
+---
+
+*Example*
+
+```typescript
+"Security Center"
+```
+
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+A description of the group's purpose.
+
+---
+
+*Example*
+
+```typescript
+"Policies related to security configuration and compliance"
+```
+
+
+##### `displayName`<sup>Optional</sup> <a name="displayName" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup.property.displayName"></a>
+
+```typescript
+public readonly displayName: string;
+```
+
+- *Type:* string
+
+The display name of the group shown in Azure Portal.
+
+---
+
+*Example*
+
+```typescript
+"Security Policies"
+```
+
+
 ### PolicyDefinitionProperties <a name="PolicyDefinitionProperties" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionProperties"></a>
 
 Properties interface for Azure Policy Definition This is required for JSII compliance to support multi-language code generation.
@@ -119877,6 +125303,1896 @@ The type of policy definition.
 "Custom", "BuiltIn", "Static", "NotSpecified"
 ```
 
+
+### PolicyDefinitionReference <a name="PolicyDefinitionReference" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionReference"></a>
+
+A reference to a policy definition within a policy set.
+
+This defines which policy definitions are included in the initiative
+and how they are configured with parameters.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionReference.Initializer"></a>
+
+```typescript
+import { PolicyDefinitionReference } from '@microsoft/terraform-cdk-constructs'
+
+const policyDefinitionReference: PolicyDefinitionReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinitionReference.property.policyDefinitionId">policyDefinitionId</a></code> | <code>string</code> | The ID of the policy definition to include in the set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinitionReference.property.groupNames">groupNames</a></code> | <code>string[]</code> | Group names that this policy definition belongs to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinitionReference.property.parameters">parameters</a></code> | <code>{[ key: string ]: @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyParameterValue}</code> | Parameter values for this policy definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinitionReference.property.policyDefinitionReferenceId">policyDefinitionReferenceId</a></code> | <code>string</code> | A unique identifier for this policy definition reference within the set. |
+
+---
+
+##### `policyDefinitionId`<sup>Required</sup> <a name="policyDefinitionId" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionReference.property.policyDefinitionId"></a>
+
+```typescript
+public readonly policyDefinitionId: string;
+```
+
+- *Type:* string
+
+The ID of the policy definition to include in the set.
+
+This can be:
+- A built-in policy: /providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionId}
+- A custom policy at subscription level: /subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionId}
+- A custom policy at management group level: /providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionId}
+
+---
+
+*Example*
+
+```typescript
+"/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d"
+```
+
+
+##### `groupNames`<sup>Optional</sup> <a name="groupNames" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionReference.property.groupNames"></a>
+
+```typescript
+public readonly groupNames: string[];
+```
+
+- *Type:* string[]
+
+Group names that this policy definition belongs to.
+
+Groups help organize policies within an initiative and can be used
+for compliance reporting and management.
+
+---
+
+*Example*
+
+```typescript
+["Security", "Compliance"]
+```
+
+
+##### `parameters`<sup>Optional</sup> <a name="parameters" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionReference.property.parameters"></a>
+
+```typescript
+public readonly parameters: {[ key: string ]: PolicyParameterValue};
+```
+
+- *Type:* {[ key: string ]: @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyParameterValue}
+
+Parameter values for this policy definition.
+
+These values override the default parameter values in the policy definition.
+Parameters can reference initiative-level parameters using the format:
+{ "value": "[parameters('initiativeParameterName')]" }
+
+---
+
+*Example*
+
+```typescript
+{ "tagName": { "value": "environment" }, "tagValue": { "value": "[parameters('requiredTagValue')]" } }
+```
+
+
+##### `policyDefinitionReferenceId`<sup>Optional</sup> <a name="policyDefinitionReferenceId" id="@microsoft/terraform-cdk-constructs.PolicyDefinitionReference.property.policyDefinitionReferenceId"></a>
+
+```typescript
+public readonly policyDefinitionReferenceId: string;
+```
+
+- *Type:* string
+
+A unique identifier for this policy definition reference within the set.
+
+This ID is used to reference this specific policy in the initiative
+and must be unique within the policy set definition.
+
+---
+
+*Example*
+
+```typescript
+"auditVMsWithoutTags"
+```
+
+
+### PolicyDefinitionReference <a name="PolicyDefinitionReference" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference"></a>
+
+A reference to a policy definition within a policy set.
+
+This defines which policy definitions are included in the initiative
+and how they are configured with parameters.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference.Initializer"></a>
+
+```typescript
+import { azure_policysetdefinition } from '@microsoft/terraform-cdk-constructs'
+
+const policyDefinitionReference: azure_policysetdefinition.PolicyDefinitionReference = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference.property.policyDefinitionId">policyDefinitionId</a></code> | <code>string</code> | The ID of the policy definition to include in the set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference.property.groupNames">groupNames</a></code> | <code>string[]</code> | Group names that this policy definition belongs to. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference.property.parameters">parameters</a></code> | <code>{[ key: string ]: @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyParameterValue}</code> | Parameter values for this policy definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference.property.policyDefinitionReferenceId">policyDefinitionReferenceId</a></code> | <code>string</code> | A unique identifier for this policy definition reference within the set. |
+
+---
+
+##### `policyDefinitionId`<sup>Required</sup> <a name="policyDefinitionId" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference.property.policyDefinitionId"></a>
+
+```typescript
+public readonly policyDefinitionId: string;
+```
+
+- *Type:* string
+
+The ID of the policy definition to include in the set.
+
+This can be:
+- A built-in policy: /providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionId}
+- A custom policy at subscription level: /subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionId}
+- A custom policy at management group level: /providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionId}
+
+---
+
+*Example*
+
+```typescript
+"/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d"
+```
+
+
+##### `groupNames`<sup>Optional</sup> <a name="groupNames" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference.property.groupNames"></a>
+
+```typescript
+public readonly groupNames: string[];
+```
+
+- *Type:* string[]
+
+Group names that this policy definition belongs to.
+
+Groups help organize policies within an initiative and can be used
+for compliance reporting and management.
+
+---
+
+*Example*
+
+```typescript
+["Security", "Compliance"]
+```
+
+
+##### `parameters`<sup>Optional</sup> <a name="parameters" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference.property.parameters"></a>
+
+```typescript
+public readonly parameters: {[ key: string ]: PolicyParameterValue};
+```
+
+- *Type:* {[ key: string ]: @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyParameterValue}
+
+Parameter values for this policy definition.
+
+These values override the default parameter values in the policy definition.
+Parameters can reference initiative-level parameters using the format:
+{ "value": "[parameters('initiativeParameterName')]" }
+
+---
+
+*Example*
+
+```typescript
+{ "tagName": { "value": "environment" }, "tagValue": { "value": "[parameters('requiredTagValue')]" } }
+```
+
+
+##### `policyDefinitionReferenceId`<sup>Optional</sup> <a name="policyDefinitionReferenceId" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference.property.policyDefinitionReferenceId"></a>
+
+```typescript
+public readonly policyDefinitionReferenceId: string;
+```
+
+- *Type:* string
+
+A unique identifier for this policy definition reference within the set.
+
+This ID is used to reference this specific policy in the initiative
+and must be unique within the policy set definition.
+
+---
+
+*Example*
+
+```typescript
+"auditVMsWithoutTags"
+```
+
+
+### PolicyParameterValue <a name="PolicyParameterValue" id="@microsoft/terraform-cdk-constructs.PolicyParameterValue"></a>
+
+A parameter value, either a direct value or a reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PolicyParameterValue.Initializer"></a>
+
+```typescript
+import { PolicyParameterValue } from '@microsoft/terraform-cdk-constructs'
+
+const policyParameterValue: PolicyParameterValue = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicyParameterValue.property.value">value</a></code> | <code>any</code> | The value of the parameter. |
+
+---
+
+##### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.PolicyParameterValue.property.value"></a>
+
+```typescript
+public readonly value: any;
+```
+
+- *Type:* any
+
+The value of the parameter.
+
+Can be a direct value or a reference to an initiative parameter
+using the format: "[parameters('parameterName')]"
+
+---
+
+### PolicyParameterValue <a name="PolicyParameterValue" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyParameterValue"></a>
+
+A parameter value, either a direct value or a reference.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyParameterValue.Initializer"></a>
+
+```typescript
+import { azure_policysetdefinition } from '@microsoft/terraform-cdk-constructs'
+
+const policyParameterValue: azure_policysetdefinition.PolicyParameterValue = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyParameterValue.property.value">value</a></code> | <code>any</code> | The value of the parameter. |
+
+---
+
+##### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyParameterValue.property.value"></a>
+
+```typescript
+public readonly value: any;
+```
+
+- *Type:* any
+
+The value of the parameter.
+
+Can be a direct value or a reference to an initiative parameter
+using the format: "[parameters('parameterName')]"
+
+---
+
+### PolicySetDefinitionBody <a name="PolicySetDefinitionBody" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionBody"></a>
+
+The resource body interface for Azure Policy Set Definition API calls This matches the Azure REST API schema for policy set definitions.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionBody.Initializer"></a>
+
+```typescript
+import { PolicySetDefinitionBody } from '@microsoft/terraform-cdk-constructs'
+
+const policySetDefinitionBody: PolicySetDefinitionBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties</code> | The properties of the policy set definition. |
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionBody.property.properties"></a>
+
+```typescript
+public readonly properties: PolicySetDefinitionProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties
+
+The properties of the policy set definition.
+
+---
+
+### PolicySetDefinitionBody <a name="PolicySetDefinitionBody" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionBody"></a>
+
+The resource body interface for Azure Policy Set Definition API calls This matches the Azure REST API schema for policy set definitions.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionBody.Initializer"></a>
+
+```typescript
+import { azure_policysetdefinition } from '@microsoft/terraform-cdk-constructs'
+
+const policySetDefinitionBody: azure_policysetdefinition.PolicySetDefinitionBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties</code> | The properties of the policy set definition. |
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionBody.property.properties"></a>
+
+```typescript
+public readonly properties: PolicySetDefinitionProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties
+
+The properties of the policy set definition.
+
+---
+
+### PolicySetDefinitionProperties <a name="PolicySetDefinitionProperties" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties"></a>
+
+Properties interface for Azure Policy Set Definition This is required for JSII compliance to support multi-language code generation.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.Initializer"></a>
+
+```typescript
+import { PolicySetDefinitionProperties } from '@microsoft/terraform-cdk-constructs'
+
+const policySetDefinitionProperties: PolicySetDefinitionProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.displayName">displayName</a></code> | <code>string</code> | The display name of the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.policyDefinitions">policyDefinitions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference[]</code> | Array of policy definition references. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.description">description</a></code> | <code>string</code> | Description of the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.metadata">metadata</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata</code> | Metadata for the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.parameters">parameters</a></code> | <code>{[ key: string ]: @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition}</code> | Parameter definitions for the policy set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.policyDefinitionGroups">policyDefinitionGroups</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup[]</code> | Groups for organizing policy definitions. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.policyType">policyType</a></code> | <code>string</code> | The type of policy set definition. |
+
+---
+
+##### `displayName`<sup>Required</sup> <a name="displayName" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.displayName"></a>
+
+```typescript
+public readonly displayName: string;
+```
+
+- *Type:* string
+
+The display name of the policy set definition.
+
+---
+
+##### `policyDefinitions`<sup>Required</sup> <a name="policyDefinitions" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.policyDefinitions"></a>
+
+```typescript
+public readonly policyDefinitions: PolicyDefinitionReference[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference[]
+
+Array of policy definition references.
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+Description of the policy set definition.
+
+---
+
+##### `metadata`<sup>Optional</sup> <a name="metadata" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.metadata"></a>
+
+```typescript
+public readonly metadata: PolicySetMetadata;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata
+
+Metadata for the policy set definition.
+
+---
+
+##### `parameters`<sup>Optional</sup> <a name="parameters" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.parameters"></a>
+
+```typescript
+public readonly parameters: {[ key: string ]: PolicySetParameterDefinition};
+```
+
+- *Type:* {[ key: string ]: @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition}
+
+Parameter definitions for the policy set.
+
+---
+
+##### `policyDefinitionGroups`<sup>Optional</sup> <a name="policyDefinitionGroups" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.policyDefinitionGroups"></a>
+
+```typescript
+public readonly policyDefinitionGroups: PolicyDefinitionGroup[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup[]
+
+Groups for organizing policy definitions.
+
+---
+
+##### `policyType`<sup>Optional</sup> <a name="policyType" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProperties.property.policyType"></a>
+
+```typescript
+public readonly policyType: string;
+```
+
+- *Type:* string
+
+The type of policy set definition.
+
+---
+
+### PolicySetDefinitionProperties <a name="PolicySetDefinitionProperties" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties"></a>
+
+Properties interface for Azure Policy Set Definition This is required for JSII compliance to support multi-language code generation.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.Initializer"></a>
+
+```typescript
+import { azure_policysetdefinition } from '@microsoft/terraform-cdk-constructs'
+
+const policySetDefinitionProperties: azure_policysetdefinition.PolicySetDefinitionProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.displayName">displayName</a></code> | <code>string</code> | The display name of the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.policyDefinitions">policyDefinitions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference[]</code> | Array of policy definition references. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.description">description</a></code> | <code>string</code> | Description of the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.metadata">metadata</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata</code> | Metadata for the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.parameters">parameters</a></code> | <code>{[ key: string ]: @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition}</code> | Parameter definitions for the policy set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.policyDefinitionGroups">policyDefinitionGroups</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup[]</code> | Groups for organizing policy definitions. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.policyType">policyType</a></code> | <code>string</code> | The type of policy set definition. |
+
+---
+
+##### `displayName`<sup>Required</sup> <a name="displayName" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.displayName"></a>
+
+```typescript
+public readonly displayName: string;
+```
+
+- *Type:* string
+
+The display name of the policy set definition.
+
+---
+
+##### `policyDefinitions`<sup>Required</sup> <a name="policyDefinitions" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.policyDefinitions"></a>
+
+```typescript
+public readonly policyDefinitions: PolicyDefinitionReference[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference[]
+
+Array of policy definition references.
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+Description of the policy set definition.
+
+---
+
+##### `metadata`<sup>Optional</sup> <a name="metadata" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.metadata"></a>
+
+```typescript
+public readonly metadata: PolicySetMetadata;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata
+
+Metadata for the policy set definition.
+
+---
+
+##### `parameters`<sup>Optional</sup> <a name="parameters" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.parameters"></a>
+
+```typescript
+public readonly parameters: {[ key: string ]: PolicySetParameterDefinition};
+```
+
+- *Type:* {[ key: string ]: @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition}
+
+Parameter definitions for the policy set.
+
+---
+
+##### `policyDefinitionGroups`<sup>Optional</sup> <a name="policyDefinitionGroups" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.policyDefinitionGroups"></a>
+
+```typescript
+public readonly policyDefinitionGroups: PolicyDefinitionGroup[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup[]
+
+Groups for organizing policy definitions.
+
+---
+
+##### `policyType`<sup>Optional</sup> <a name="policyType" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProperties.property.policyType"></a>
+
+```typescript
+public readonly policyType: string;
+```
+
+- *Type:* string
+
+The type of policy set definition.
+
+---
+
+### PolicySetDefinitionProps <a name="PolicySetDefinitionProps" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps"></a>
+
+Properties for the unified Azure Policy Set Definition.
+
+Extends AzapiResourceProps with Policy Set Definition specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.Initializer"></a>
+
+```typescript
+import { PolicySetDefinitionProps } from '@microsoft/terraform-cdk-constructs'
+
+const policySetDefinitionProps: PolicySetDefinitionProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.connection">connection</a></code> | <code>cdktf.SSHProvisionerConnection \| cdktf.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.count">count</a></code> | <code>number \| cdktf.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.dependsOn">dependsOn</a></code> | <code>cdktf.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.forEach">forEach</a></code> | <code>cdktf.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.lifecycle">lifecycle</a></code> | <code>cdktf.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.provider">provider</a></code> | <code>cdktf.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.provisioners">provisioners</a></code> | <code>cdktf.FileProvisioner \| cdktf.LocalExecProvisioner \| cdktf.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.displayName">displayName</a></code> | <code>string</code> | The display name of the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.policyDefinitions">policyDefinitions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference[]</code> | Array of policy definition references. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.scope">scope</a></code> | <code>string</code> | The scope at which to create the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.description">description</a></code> | <code>string</code> | Description of the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.metadata">metadata</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata</code> | Metadata for the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.parameters">parameters</a></code> | <code>{[ key: string ]: @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition}</code> | Parameter definitions for the policy set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.policyDefinitionGroups">policyDefinitionGroups</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup[]</code> | Groups for organizing policy definitions in the set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.policyType">policyType</a></code> | <code>string</code> | The type of policy set definition. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktf.SSHProvisionerConnection | cdktf.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktf.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktf.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktf.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktf.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktf.FileProvisioner | cdktf.LocalExecProvisioner | cdktf.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `displayName`<sup>Required</sup> <a name="displayName" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.displayName"></a>
+
+```typescript
+public readonly displayName: string;
+```
+
+- *Type:* string
+
+The display name of the policy set definition.
+
+This is the name shown in the Azure Portal.
+Required property.
+
+---
+
+*Example*
+
+```typescript
+"Security Baseline Initiative"
+```
+
+
+##### `policyDefinitions`<sup>Required</sup> <a name="policyDefinitions" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.policyDefinitions"></a>
+
+```typescript
+public readonly policyDefinitions: PolicyDefinitionReference[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference[]
+
+Array of policy definition references.
+
+Each reference specifies a policy definition to include in the set
+along with its parameter values and group memberships.
+Required property.
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.scope"></a>
+
+```typescript
+public readonly scope: string;
+```
+
+- *Type:* string
+
+The scope at which to create the policy set definition.
+
+This can be:
+- A subscription: /subscriptions/{subscriptionId}
+- A management group: /providers/Microsoft.Management/managementGroups/{managementGroupId}
+
+---
+
+*Example*
+
+```typescript
+"/providers/Microsoft.Management/managementGroups/my-management-group"
+```
+
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+Description of the policy set definition.
+
+---
+
+*Example*
+
+```typescript
+"This initiative applies a set of security policies to ensure baseline compliance."
+```
+
+
+##### `metadata`<sup>Optional</sup> <a name="metadata" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.metadata"></a>
+
+```typescript
+public readonly metadata: PolicySetMetadata;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata
+
+Metadata for the policy set definition.
+
+Includes category, version, preview, and deprecated flags.
+
+---
+
+##### `parameters`<sup>Optional</sup> <a name="parameters" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.parameters"></a>
+
+```typescript
+public readonly parameters: {[ key: string ]: PolicySetParameterDefinition};
+```
+
+- *Type:* {[ key: string ]: @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition}
+
+Parameter definitions for the policy set.
+
+These parameters can be referenced by policy definitions in the set
+using the format: "[parameters('parameterName')]"
+
+---
+
+##### `policyDefinitionGroups`<sup>Optional</sup> <a name="policyDefinitionGroups" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.policyDefinitionGroups"></a>
+
+```typescript
+public readonly policyDefinitionGroups: PolicyDefinitionGroup[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup[]
+
+Groups for organizing policy definitions in the set.
+
+Groups help categorize policies for management and compliance reporting.
+
+---
+
+##### `policyType`<sup>Optional</sup> <a name="policyType" id="@microsoft/terraform-cdk-constructs.PolicySetDefinitionProps.property.policyType"></a>
+
+```typescript
+public readonly policyType: string;
+```
+
+- *Type:* string
+- *Default:* "Custom"
+
+The type of policy set definition.
+
+---
+
+### PolicySetDefinitionProps <a name="PolicySetDefinitionProps" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps"></a>
+
+Properties for the unified Azure Policy Set Definition.
+
+Extends AzapiResourceProps with Policy Set Definition specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.Initializer"></a>
+
+```typescript
+import { azure_policysetdefinition } from '@microsoft/terraform-cdk-constructs'
+
+const policySetDefinitionProps: azure_policysetdefinition.PolicySetDefinitionProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.connection">connection</a></code> | <code>cdktf.SSHProvisionerConnection \| cdktf.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.count">count</a></code> | <code>number \| cdktf.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.dependsOn">dependsOn</a></code> | <code>cdktf.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.forEach">forEach</a></code> | <code>cdktf.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.lifecycle">lifecycle</a></code> | <code>cdktf.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.provider">provider</a></code> | <code>cdktf.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.provisioners">provisioners</a></code> | <code>cdktf.FileProvisioner \| cdktf.LocalExecProvisioner \| cdktf.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.displayName">displayName</a></code> | <code>string</code> | The display name of the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.policyDefinitions">policyDefinitions</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference[]</code> | Array of policy definition references. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.scope">scope</a></code> | <code>string</code> | The scope at which to create the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.description">description</a></code> | <code>string</code> | Description of the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.metadata">metadata</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata</code> | Metadata for the policy set definition. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.parameters">parameters</a></code> | <code>{[ key: string ]: @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition}</code> | Parameter definitions for the policy set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.policyDefinitionGroups">policyDefinitionGroups</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup[]</code> | Groups for organizing policy definitions in the set. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.policyType">policyType</a></code> | <code>string</code> | The type of policy set definition. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktf.SSHProvisionerConnection | cdktf.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktf.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktf.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktf.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktf.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktf.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktf.FileProvisioner | cdktf.LocalExecProvisioner | cdktf.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `displayName`<sup>Required</sup> <a name="displayName" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.displayName"></a>
+
+```typescript
+public readonly displayName: string;
+```
+
+- *Type:* string
+
+The display name of the policy set definition.
+
+This is the name shown in the Azure Portal.
+Required property.
+
+---
+
+*Example*
+
+```typescript
+"Security Baseline Initiative"
+```
+
+
+##### `policyDefinitions`<sup>Required</sup> <a name="policyDefinitions" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.policyDefinitions"></a>
+
+```typescript
+public readonly policyDefinitions: PolicyDefinitionReference[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionReference[]
+
+Array of policy definition references.
+
+Each reference specifies a policy definition to include in the set
+along with its parameter values and group memberships.
+Required property.
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.scope"></a>
+
+```typescript
+public readonly scope: string;
+```
+
+- *Type:* string
+
+The scope at which to create the policy set definition.
+
+This can be:
+- A subscription: /subscriptions/{subscriptionId}
+- A management group: /providers/Microsoft.Management/managementGroups/{managementGroupId}
+
+---
+
+*Example*
+
+```typescript
+"/providers/Microsoft.Management/managementGroups/my-management-group"
+```
+
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+Description of the policy set definition.
+
+---
+
+*Example*
+
+```typescript
+"This initiative applies a set of security policies to ensure baseline compliance."
+```
+
+
+##### `metadata`<sup>Optional</sup> <a name="metadata" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.metadata"></a>
+
+```typescript
+public readonly metadata: PolicySetMetadata;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata
+
+Metadata for the policy set definition.
+
+Includes category, version, preview, and deprecated flags.
+
+---
+
+##### `parameters`<sup>Optional</sup> <a name="parameters" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.parameters"></a>
+
+```typescript
+public readonly parameters: {[ key: string ]: PolicySetParameterDefinition};
+```
+
+- *Type:* {[ key: string ]: @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition}
+
+Parameter definitions for the policy set.
+
+These parameters can be referenced by policy definitions in the set
+using the format: "[parameters('parameterName')]"
+
+---
+
+##### `policyDefinitionGroups`<sup>Optional</sup> <a name="policyDefinitionGroups" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.policyDefinitionGroups"></a>
+
+```typescript
+public readonly policyDefinitionGroups: PolicyDefinitionGroup[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicyDefinitionGroup[]
+
+Groups for organizing policy definitions in the set.
+
+Groups help categorize policies for management and compliance reporting.
+
+---
+
+##### `policyType`<sup>Optional</sup> <a name="policyType" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinitionProps.property.policyType"></a>
+
+```typescript
+public readonly policyType: string;
+```
+
+- *Type:* string
+- *Default:* "Custom"
+
+The type of policy set definition.
+
+---
+
+### PolicySetMetadata <a name="PolicySetMetadata" id="@microsoft/terraform-cdk-constructs.PolicySetMetadata"></a>
+
+Metadata for the policy set definition.
+
+Metadata provides additional information about the policy set
+without affecting its evaluation logic.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PolicySetMetadata.Initializer"></a>
+
+```typescript
+import { PolicySetMetadata } from '@microsoft/terraform-cdk-constructs'
+
+const policySetMetadata: PolicySetMetadata = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetMetadata.property.category">category</a></code> | <code>string</code> | The category of the policy set for Azure Portal organization. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetMetadata.property.deprecated">deprecated</a></code> | <code>boolean</code> | Whether this policy set is deprecated. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetMetadata.property.preview">preview</a></code> | <code>boolean</code> | Whether this policy set is in preview. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetMetadata.property.version">version</a></code> | <code>string</code> | The version of the policy set definition. |
+
+---
+
+##### `category`<sup>Optional</sup> <a name="category" id="@microsoft/terraform-cdk-constructs.PolicySetMetadata.property.category"></a>
+
+```typescript
+public readonly category: string;
+```
+
+- *Type:* string
+
+The category of the policy set for Azure Portal organization.
+
+---
+
+*Example*
+
+```typescript
+"Security Center"
+```
+
+
+##### `deprecated`<sup>Optional</sup> <a name="deprecated" id="@microsoft/terraform-cdk-constructs.PolicySetMetadata.property.deprecated"></a>
+
+```typescript
+public readonly deprecated: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether this policy set is deprecated.
+
+---
+
+##### `preview`<sup>Optional</sup> <a name="preview" id="@microsoft/terraform-cdk-constructs.PolicySetMetadata.property.preview"></a>
+
+```typescript
+public readonly preview: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether this policy set is in preview.
+
+---
+
+##### `version`<sup>Optional</sup> <a name="version" id="@microsoft/terraform-cdk-constructs.PolicySetMetadata.property.version"></a>
+
+```typescript
+public readonly version: string;
+```
+
+- *Type:* string
+
+The version of the policy set definition.
+
+---
+
+*Example*
+
+```typescript
+"1.0.0"
+```
+
+
+### PolicySetMetadata <a name="PolicySetMetadata" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata"></a>
+
+Metadata for the policy set definition.
+
+Metadata provides additional information about the policy set
+without affecting its evaluation logic.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata.Initializer"></a>
+
+```typescript
+import { azure_policysetdefinition } from '@microsoft/terraform-cdk-constructs'
+
+const policySetMetadata: azure_policysetdefinition.PolicySetMetadata = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata.property.category">category</a></code> | <code>string</code> | The category of the policy set for Azure Portal organization. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata.property.deprecated">deprecated</a></code> | <code>boolean</code> | Whether this policy set is deprecated. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata.property.preview">preview</a></code> | <code>boolean</code> | Whether this policy set is in preview. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata.property.version">version</a></code> | <code>string</code> | The version of the policy set definition. |
+
+---
+
+##### `category`<sup>Optional</sup> <a name="category" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata.property.category"></a>
+
+```typescript
+public readonly category: string;
+```
+
+- *Type:* string
+
+The category of the policy set for Azure Portal organization.
+
+---
+
+*Example*
+
+```typescript
+"Security Center"
+```
+
+
+##### `deprecated`<sup>Optional</sup> <a name="deprecated" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata.property.deprecated"></a>
+
+```typescript
+public readonly deprecated: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether this policy set is deprecated.
+
+---
+
+##### `preview`<sup>Optional</sup> <a name="preview" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata.property.preview"></a>
+
+```typescript
+public readonly preview: boolean;
+```
+
+- *Type:* boolean
+- *Default:* false
+
+Whether this policy set is in preview.
+
+---
+
+##### `version`<sup>Optional</sup> <a name="version" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetMetadata.property.version"></a>
+
+```typescript
+public readonly version: string;
+```
+
+- *Type:* string
+
+The version of the policy set definition.
+
+---
+
+*Example*
+
+```typescript
+"1.0.0"
+```
+
+
+### PolicySetParameterDefinition <a name="PolicySetParameterDefinition" id="@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition"></a>
+
+Parameter definition for the policy set.
+
+These parameters can be referenced by policy definitions within the set.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition.Initializer"></a>
+
+```typescript
+import { PolicySetParameterDefinition } from '@microsoft/terraform-cdk-constructs'
+
+const policySetParameterDefinition: PolicySetParameterDefinition = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition.property.type">type</a></code> | <code>string</code> | The data type of the parameter. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition.property.allowedValues">allowedValues</a></code> | <code>any[]</code> | Allowed values for the parameter. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition.property.defaultValue">defaultValue</a></code> | <code>any</code> | Default value for the parameter. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition.property.description">description</a></code> | <code>string</code> | Description of the parameter. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition.property.displayName">displayName</a></code> | <code>string</code> | Display name for the parameter in Azure Portal. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition.property.metadata">metadata</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterMetadata</code> | Metadata for the parameter (e.g., strongType for Azure Portal integration). |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+The data type of the parameter.
+
+---
+
+##### `allowedValues`<sup>Optional</sup> <a name="allowedValues" id="@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition.property.allowedValues"></a>
+
+```typescript
+public readonly allowedValues: any[];
+```
+
+- *Type:* any[]
+
+Allowed values for the parameter.
+
+---
+
+##### `defaultValue`<sup>Optional</sup> <a name="defaultValue" id="@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition.property.defaultValue"></a>
+
+```typescript
+public readonly defaultValue: any;
+```
+
+- *Type:* any
+
+Default value for the parameter.
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+Description of the parameter.
+
+---
+
+##### `displayName`<sup>Optional</sup> <a name="displayName" id="@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition.property.displayName"></a>
+
+```typescript
+public readonly displayName: string;
+```
+
+- *Type:* string
+
+Display name for the parameter in Azure Portal.
+
+---
+
+##### `metadata`<sup>Optional</sup> <a name="metadata" id="@microsoft/terraform-cdk-constructs.PolicySetParameterDefinition.property.metadata"></a>
+
+```typescript
+public readonly metadata: PolicySetParameterMetadata;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterMetadata
+
+Metadata for the parameter (e.g., strongType for Azure Portal integration).
+
+---
+
+### PolicySetParameterDefinition <a name="PolicySetParameterDefinition" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition"></a>
+
+Parameter definition for the policy set.
+
+These parameters can be referenced by policy definitions within the set.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition.Initializer"></a>
+
+```typescript
+import { azure_policysetdefinition } from '@microsoft/terraform-cdk-constructs'
+
+const policySetParameterDefinition: azure_policysetdefinition.PolicySetParameterDefinition = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition.property.type">type</a></code> | <code>string</code> | The data type of the parameter. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition.property.allowedValues">allowedValues</a></code> | <code>any[]</code> | Allowed values for the parameter. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition.property.defaultValue">defaultValue</a></code> | <code>any</code> | Default value for the parameter. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition.property.description">description</a></code> | <code>string</code> | Description of the parameter. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition.property.displayName">displayName</a></code> | <code>string</code> | Display name for the parameter in Azure Portal. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition.property.metadata">metadata</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterMetadata</code> | Metadata for the parameter (e.g., strongType for Azure Portal integration). |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+The data type of the parameter.
+
+---
+
+##### `allowedValues`<sup>Optional</sup> <a name="allowedValues" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition.property.allowedValues"></a>
+
+```typescript
+public readonly allowedValues: any[];
+```
+
+- *Type:* any[]
+
+Allowed values for the parameter.
+
+---
+
+##### `defaultValue`<sup>Optional</sup> <a name="defaultValue" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition.property.defaultValue"></a>
+
+```typescript
+public readonly defaultValue: any;
+```
+
+- *Type:* any
+
+Default value for the parameter.
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+Description of the parameter.
+
+---
+
+##### `displayName`<sup>Optional</sup> <a name="displayName" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition.property.displayName"></a>
+
+```typescript
+public readonly displayName: string;
+```
+
+- *Type:* string
+
+Display name for the parameter in Azure Portal.
+
+---
+
+##### `metadata`<sup>Optional</sup> <a name="metadata" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterDefinition.property.metadata"></a>
+
+```typescript
+public readonly metadata: PolicySetParameterMetadata;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterMetadata
+
+Metadata for the parameter (e.g., strongType for Azure Portal integration).
+
+---
+
+### PolicySetParameterMetadata <a name="PolicySetParameterMetadata" id="@microsoft/terraform-cdk-constructs.PolicySetParameterMetadata"></a>
+
+Metadata for a policy set parameter.
+
+Provides additional information for Azure Portal integration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.PolicySetParameterMetadata.Initializer"></a>
+
+```typescript
+import { PolicySetParameterMetadata } from '@microsoft/terraform-cdk-constructs'
+
+const policySetParameterMetadata: PolicySetParameterMetadata = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetParameterMetadata.property.description">description</a></code> | <code>string</code> | Description in Azure Portal. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetParameterMetadata.property.displayName">displayName</a></code> | <code>string</code> | Display name in Azure Portal. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetParameterMetadata.property.strongType">strongType</a></code> | <code>string</code> | Strong type for Azure Portal resource picker integration. |
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.PolicySetParameterMetadata.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+Description in Azure Portal.
+
+---
+
+##### `displayName`<sup>Optional</sup> <a name="displayName" id="@microsoft/terraform-cdk-constructs.PolicySetParameterMetadata.property.displayName"></a>
+
+```typescript
+public readonly displayName: string;
+```
+
+- *Type:* string
+
+Display name in Azure Portal.
+
+---
+
+##### `strongType`<sup>Optional</sup> <a name="strongType" id="@microsoft/terraform-cdk-constructs.PolicySetParameterMetadata.property.strongType"></a>
+
+```typescript
+public readonly strongType: string;
+```
+
+- *Type:* string
+
+Strong type for Azure Portal resource picker integration.
+
+---
+
+### PolicySetParameterMetadata <a name="PolicySetParameterMetadata" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterMetadata"></a>
+
+Metadata for a policy set parameter.
+
+Provides additional information for Azure Portal integration.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterMetadata.Initializer"></a>
+
+```typescript
+import { azure_policysetdefinition } from '@microsoft/terraform-cdk-constructs'
+
+const policySetParameterMetadata: azure_policysetdefinition.PolicySetParameterMetadata = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterMetadata.property.description">description</a></code> | <code>string</code> | Description in Azure Portal. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterMetadata.property.displayName">displayName</a></code> | <code>string</code> | Display name in Azure Portal. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterMetadata.property.strongType">strongType</a></code> | <code>string</code> | Strong type for Azure Portal resource picker integration. |
+
+---
+
+##### `description`<sup>Optional</sup> <a name="description" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterMetadata.property.description"></a>
+
+```typescript
+public readonly description: string;
+```
+
+- *Type:* string
+
+Description in Azure Portal.
+
+---
+
+##### `displayName`<sup>Optional</sup> <a name="displayName" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterMetadata.property.displayName"></a>
+
+```typescript
+public readonly displayName: string;
+```
+
+- *Type:* string
+
+Display name in Azure Portal.
+
+---
+
+##### `strongType`<sup>Optional</sup> <a name="strongType" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetParameterMetadata.property.strongType"></a>
+
+```typescript
+public readonly strongType: string;
+```
+
+- *Type:* string
+
+Strong type for Azure Portal resource picker integration.
+
+---
 
 ### PrivateDnsAaaaRecordProps <a name="PrivateDnsAaaaRecordProps" id="@microsoft/terraform-cdk-constructs.PrivateDnsAaaaRecordProps"></a>
 
