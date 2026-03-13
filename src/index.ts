@@ -9,6 +9,7 @@
  * - azure_actiongroup: Azure Action Group constructs for Azure Monitor alerts
  * - azure_activitylogalert: Azure Activity Log Alert constructs for operation monitoring
  * - azure_aks: Azure Kubernetes Service constructs with version-aware AZAPI implementation
+ * - azure_loganalyticsworkspace: Log Analytics Workspace constructs for log data collection
  * - azure_diagnosticsettings: Azure Diagnostic Settings constructs for monitoring and observability
  * - azure_dnsforwardingruleset: DNS Forwarding Ruleset constructs for private DNS resolution
  * - azure_dnsresolver: DNS Resolver constructs for private DNS resolution
@@ -16,8 +17,10 @@
  * - azure_metricalert: Azure Metric Alert constructs for metric-based alerting
  * - azure_networkinterface: Network Interface constructs with version-aware AZAPI implementation
  * - azure_networksecuritygroup: Network Security Group constructs with version-aware AZAPI implementation
+ * - azure_networkwatcher: Network Watcher constructs for network monitoring and diagnostics
  * - azure_policyassignment: Policy Assignment constructs for Azure Policy
  * - azure_policydefinition: Policy Definition constructs for custom Azure policies
+ * - azure_policysetdefinition: Policy Set Definition (Initiative) constructs for grouping policies
  * - azure_privatednszone: Private DNS Zone constructs with DNS record management
  * - azure_privatednszonelink: Private DNS Zone Link constructs for VNet linking
  * - azure_publicipaddress: Public IP Address constructs with version-aware AZAPI implementation
@@ -51,13 +54,16 @@ export * as azure_activitylogalert from "./azure-activitylogalert";
 export * as azure_aks from "./azure-aks";
 export * as azure_diagnosticsettings from "./azure-diagnosticsettings";
 export * as azure_dnsforwardingruleset from "./azure-dnsforwardingruleset";
+export * as azure_loganalyticsworkspace from "./azure-loganalyticsworkspace";
 export * as azure_dnsresolver from "./azure-dnsresolver";
 export * as azure_dnszone from "./azure-dnszone";
 export * as azure_metricalert from "./azure-metricalert";
 export * as azure_networkinterface from "./azure-networkinterface";
 export * as azure_networksecuritygroup from "./azure-networksecuritygroup";
+export * as azure_networkwatcher from "./azure-networkwatcher";
 export * as azure_policyassignment from "./azure-policyassignment";
 export * as azure_policydefinition from "./azure-policydefinition";
+export * as azure_policysetdefinition from "./azure-policysetdefinition";
 export * as azure_privatednszone from "./azure-privatednszone";
 export * as azure_privatednszonelink from "./azure-privatednszonelink";
 export * as azure_publicipaddress from "./azure-publicipaddress";
@@ -80,12 +86,15 @@ export * from "./azure-aks";
 export * from "./azure-diagnosticsettings";
 export * from "./azure-dnsforwardingruleset";
 export * from "./azure-dnsresolver";
+export * from "./azure-loganalyticsworkspace";
 export * from "./azure-dnszone";
 export * from "./azure-metricalert";
 export * from "./azure-networkinterface";
 export * from "./azure-networksecuritygroup";
+export * from "./azure-networkwatcher";
 export * from "./azure-policyassignment";
 export * from "./azure-policydefinition";
+export * from "./azure-policysetdefinition";
 export * from "./azure-privatednszone";
 export * from "./azure-privatednszonelink";
 export * from "./azure-publicipaddress";
