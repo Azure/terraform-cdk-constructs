@@ -1,0 +1,3 @@
+MSRC-TOCTOU-VALIDATION-20260506
+commit=A
+This is a harmless MSRC validation file.
