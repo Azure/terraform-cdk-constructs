@@ -13,12 +13,15 @@
  * - azure_containerapps: Azure Container Apps constructs for serverless container hosting
  * - azure_containerregistry: Azure Container Registry constructs with version-aware AZAPI implementation
  * - azure_cosmosdb: Azure Cosmos DB Account constructs with version-aware AZAPI implementation
+ * - azure_dataexplorer: Azure Data Explorer constructs for clusters, databases, and scripts
  * - azure_functionapp: Azure Function App constructs with version-aware AZAPI implementation
  * - azure_keyvault: Azure Key Vault constructs with version-aware AZAPI implementation
  * - azure_loganalyticsworkspace: Log Analytics Workspace constructs for log data collection
  * - azure_diagnosticsettings: Azure Diagnostic Settings constructs for monitoring and observability
  * - azure_dnsforwardingruleset: DNS Forwarding Ruleset constructs for private DNS resolution
  * - azure_dnsresolver: DNS Resolver constructs for private DNS resolution
+ * - azure_eventgrideventsubscription: Event Grid Event Subscription constructs for subscribing to Azure events
+ * - azure_eventgridsystemtopic: Event Grid System Topic constructs for publishing Azure system events
  * - azure_dnszone: Public DNS Zone constructs with DNS record management
  * - azure_eventhub: Event Hubs constructs (namespaces and event hubs) for big data streaming
  * - azure_metricalert: Azure Metric Alert constructs for metric-based alerting
@@ -37,7 +40,9 @@
  * - azure_sreagent: Azure SRE Agent constructs (Microsoft.App/agents) for AI-powered SRE automation
  * - azure_staticwebapp: Static Web App constructs with version-aware AZAPI implementation
  * - azure_storageaccount: Storage Account constructs with version-aware AZAPI implementation
+ * - azure_storageblobcontainer: Storage Blob Container constructs for blob storage containers
  * - azure_subnet: Subnet constructs with version-aware AZAPI implementation
+ * - azure_userassignedidentity: User Assigned Identity constructs with version-aware AZAPI implementation
  * - azure_virtualmachine: Virtual Machine constructs with version-aware AZAPI implementation
  * - azure_virtualnetwork: Virtual Network constructs with version-aware AZAPI implementation
  * - azure_virtualnetworkgateway: Virtual Network Gateway constructs for VPN/ExpressRoute
@@ -65,9 +70,12 @@ export * as azure_applicationinsights from "./azure-applicationinsights";
 export * as azure_containerapps from "./azure-containerapps";
 export * as azure_containerregistry from "./azure-containerregistry";
 export * as azure_cosmosdb from "./azure-cosmosdb";
+export * as azure_dataexplorer from "./azure-dataexplorer";
 export * as azure_functionapp from "./azure-functionapp";
 export * as azure_diagnosticsettings from "./azure-diagnosticsettings";
 export * as azure_dnsforwardingruleset from "./azure-dnsforwardingruleset";
+export * as azure_eventgrideventsubscription from "./azure-eventgrideventsubscription";
+export * as azure_eventgridsystemtopic from "./azure-eventgridsystemtopic";
 export * as azure_keyvault from "./azure-keyvault";
 export * as azure_loganalyticsworkspace from "./azure-loganalyticsworkspace";
 export * as azure_dnsresolver from "./azure-dnsresolver";
@@ -89,7 +97,9 @@ export * as azure_roledefinition from "./azure-roledefinition";
 export * as azure_sreagent from "./azure-sreagent";
 export * as azure_staticwebapp from "./azure-staticwebapp";
 export * as azure_storageaccount from "./azure-storageaccount";
+export * as azure_storageblobcontainer from "./azure-storageblobcontainer";
 export * as azure_subnet from "./azure-subnet";
+export * as azure_userassignedidentity from "./azure-userassignedidentity";
 export * as azure_virtualmachine from "./azure-virtualmachine";
 export * as azure_virtualnetwork from "./azure-virtualnetwork";
 export * as azure_virtualnetworkgateway from "./azure-virtualnetworkgateway";
@@ -105,9 +115,12 @@ export * from "./azure-applicationinsights";
 export * from "./azure-containerapps";
 export * from "./azure-containerregistry";
 export * from "./azure-cosmosdb";
+export * from "./azure-dataexplorer";
 export * from "./azure-functionapp";
 export * from "./azure-diagnosticsettings";
 export * from "./azure-dnsforwardingruleset";
+export * from "./azure-eventgrideventsubscription";
+export * from "./azure-eventgridsystemtopic";
 export * from "./azure-dnsresolver";
 export * from "./azure-keyvault";
 export * from "./azure-loganalyticsworkspace";
@@ -129,7 +142,9 @@ export * from "./azure-roledefinition";
 export * from "./azure-sreagent";
 export * from "./azure-staticwebapp";
 export * from "./azure-storageaccount";
+export * from "./azure-storageblobcontainer";
 export * from "./azure-subnet";
+export * from "./azure-userassignedidentity";
 export * from "./azure-virtualmachine";
 export * from "./azure-virtualnetwork";
 export * from "./azure-virtualnetworkgateway";
