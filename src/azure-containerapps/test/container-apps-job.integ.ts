@@ -42,7 +42,7 @@ class ContainerAppsJobExampleStack extends BaseTestStack {
 
     const resourceGroup = new ResourceGroup(this, "test-rg", {
       name: resourceGroupName,
-      location: "eastus",
+      location: "westus2",
       tags: {
         ...this.systemTags(),
         purpose: "container-apps-job-testing",

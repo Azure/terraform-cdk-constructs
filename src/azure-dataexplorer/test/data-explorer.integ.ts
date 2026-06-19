@@ -44,7 +44,7 @@ class DataExplorerExampleStack extends BaseTestStack {
 
     const resourceGroup = new ResourceGroup(this, "test-rg", {
       name: resourceGroupName,
-      location: "eastus",
+      location: "centralus",
       tags: {
         ...this.systemTags(),
         purpose: "data-explorer-testing",
@@ -53,7 +53,7 @@ class DataExplorerExampleStack extends BaseTestStack {
 
     const cluster = new DataExplorerCluster(this, "adx-cluster", {
       name: clusterName,
-      location: "eastus",
+      location: "centralus",
       resourceGroupId: resourceGroup.id,
       sku: {
         name: "Dev(No SLA)_Standard_E2a_v4",
@@ -71,6 +71,7 @@ class DataExplorerExampleStack extends BaseTestStack {
     const database = new DataExplorerDatabase(this, "adx-database", {
       name: databaseName,
       clusterId: cluster.id,
+      location: "centralus",
       kind: "ReadWrite",
       softDeletePeriod: "P365D",
       hotCachePeriod: "P31D",

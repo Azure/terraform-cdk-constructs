@@ -168,8 +168,10 @@ export class TestRunMetadata {
       "test-resource-type": "integration-test",
 
       // Temporal Tracking
-      "test-created-at": this.createdAt.toISOString(),
-      "test-cleanup-after": this.cleanupAfter.toISOString(),
+      // Note: Strip trailing zeros from milliseconds to avoid Azure tag normalization
+      // causing idempotency issues (e.g., Event Grid normalizes ".080Z" to ".08Z")
+      "test-created-at": this.createdAt.toISOString().replace(/(\.\d*?)0+Z$/, '$1Z').replace(/\.Z$/, 'Z'),
+      "test-cleanup-after": this.cleanupAfter.toISOString().replace(/(\.\d*?)0+Z$/, '$1Z').replace(/\.Z$/, 'Z'),
       "test-max-age-hours": this.maxAgeHours.toString(),
 
       // Lifecycle Management

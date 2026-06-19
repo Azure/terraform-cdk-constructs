@@ -87,7 +87,7 @@ const COMMON_PROPERTIES: { [key: string]: PropertyDefinition } = {
 };
 
 export const EVENT_SUBSCRIPTION_SCHEMA_2025_02_15: ApiSchema = {
-  resourceType: "Microsoft.EventGrid/eventSubscriptions",
+  resourceType: "Microsoft.EventGrid/systemTopics/eventSubscriptions",
   version: "2025-02-15",
   properties: {
     ...COMMON_PROPERTIES,
@@ -156,4 +156,4 @@ export const ALL_EVENT_SUBSCRIPTION_VERSIONS: VersionConfig[] = [
   EVENT_SUBSCRIPTION_VERSION_2025_02_15,
 ];
 
-export const EVENT_SUBSCRIPTION_TYPE = "Microsoft.EventGrid/eventSubscriptions";
+export const EVENT_SUBSCRIPTION_TYPE = "Microsoft.EventGrid/systemTopics/eventSubscriptions";

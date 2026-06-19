@@ -59,7 +59,16 @@ export class DataExplorerDatabase extends AzapiResource {
   }
 
   protected requiresLocation(): boolean {
-    return false;
+    return true;
+  }
+
+  protected customizeResourceConfig(config: any): any {
+    const baseConfig = super.customizeResourceConfig(config);
+    return {
+      ...baseConfig,
+      ignoreCasing: true,
+      location: this.location,
+    };
   }
 
   protected createResourceBody(props: any): any {

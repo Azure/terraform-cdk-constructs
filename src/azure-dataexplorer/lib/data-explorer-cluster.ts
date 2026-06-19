@@ -108,11 +108,20 @@ export class DataExplorerCluster extends AzapiResource {
     return true;
   }
 
+  protected customizeResourceConfig(config: any): any {
+    const baseConfig = super.customizeResourceConfig(config);
+    return {
+      ...baseConfig,
+      ignoreCasing: true,
+      lifecycle: {
+        ignoreChanges: ["tags"],
+      },
+    };
+  }
+
   protected createResourceBody(props: any): any {
     const typedProps = props as DataExplorerClusterProps;
     return {
-      location: this.location,
-      tags: this.allTags(),
       sku: typedProps.sku,
       identity: typedProps.identity,
       properties: {
