@@ -27,6 +27,8 @@ const RESOURCE_PREFIXES: Record<string, string> = {
   "Microsoft.Web/serverfarms": "plan",
   "Microsoft.DocumentDB/databaseAccounts": "cosmos",
   "Microsoft.KeyVault/vaults": "kv",
+  "Microsoft.EventHub/namespaces": "evhns",
+  "Microsoft.EventHub/namespaces/eventhubs": "evh",
 };
 
 /**
@@ -170,6 +172,20 @@ const RESOURCE_CONSTRAINTS: Record<string, ResourceConstraints> = {
     allowUnderscores: false,
     allowPeriods: false,
     casePolicy: "lower",
+  },
+  "Microsoft.EventHub/namespaces": {
+    maxLength: 50,
+    allowHyphens: true,
+    allowUnderscores: false,
+    allowPeriods: false,
+    casePolicy: "any",
+  },
+  "Microsoft.EventHub/namespaces/eventhubs": {
+    maxLength: 50,
+    allowHyphens: true,
+    allowUnderscores: true,
+    allowPeriods: true,
+    casePolicy: "any",
   },
 };
 

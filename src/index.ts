@@ -20,6 +20,7 @@
  * - azure_dnsforwardingruleset: DNS Forwarding Ruleset constructs for private DNS resolution
  * - azure_dnsresolver: DNS Resolver constructs for private DNS resolution
  * - azure_dnszone: Public DNS Zone constructs with DNS record management
+ * - azure_eventhub: Event Hubs constructs (namespaces and event hubs) for big data streaming
  * - azure_metricalert: Azure Metric Alert constructs for metric-based alerting
  * - azure_networkinterface: Network Interface constructs with version-aware AZAPI implementation
  * - azure_networksecuritygroup: Network Security Group constructs with version-aware AZAPI implementation
@@ -71,6 +72,7 @@ export * as azure_keyvault from "./azure-keyvault";
 export * as azure_loganalyticsworkspace from "./azure-loganalyticsworkspace";
 export * as azure_dnsresolver from "./azure-dnsresolver";
 export * as azure_dnszone from "./azure-dnszone";
+export * as azure_eventhub from "./azure-eventhub";
 export * as azure_metricalert from "./azure-metricalert";
 export * as azure_networkinterface from "./azure-networkinterface";
 export * as azure_networksecuritygroup from "./azure-networksecuritygroup";
@@ -110,6 +112,7 @@ export * from "./azure-dnsresolver";
 export * from "./azure-keyvault";
 export * from "./azure-loganalyticsworkspace";
 export * from "./azure-dnszone";
+export * from "./azure-eventhub";
 export * from "./azure-metricalert";
 export * from "./azure-networkinterface";
 export * from "./azure-networksecuritygroup";

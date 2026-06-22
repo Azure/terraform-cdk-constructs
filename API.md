@@ -34434,6 +34434,1854 @@ Get the zone type (Public or Private).
 ---
 
 
+### Eventhub <a name="Eventhub" id="@microsoft/terraform-cdk-constructs.Eventhub"></a>
+
+Azure Event Hub (entity) implementation.
+
+This class provides a single, version-aware implementation that automatically
+handles version resolution, schema validation, and property transformation
+while maintaining full JSII compliance.
+
+**Child Resource Pattern**: Event Hubs are child resources of Event Hubs
+Namespaces. This implementation overrides the `resolveParentId()` method to
+properly construct the namespace ID as the parent.
+
+*Example*
+
+```typescript
+// Event Hub with an explicit namespace reference (creates a dependency):
+const hub = new Eventhub(this, "my-hub", {
+  name: "my-event-hub",
+  namespaceName: namespace.props.name!,
+  namespaceId: namespace.id,
+  resourceGroupId: resourceGroup.id,
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.Eventhub.Initializer"></a>
+
+```typescript
+import { Eventhub } from '@microsoft/terraform-cdk-constructs'
+
+new Eventhub(scope: Construct, id: string, props: EventhubProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps</code> | - Configuration properties for the Event Hub. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.Eventhub.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.Eventhub.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.Eventhub.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps
+
+Configuration properties for the Event Hub.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.Eventhub.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.Eventhub.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.Eventhub.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.Eventhub.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.Eventhub.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.Eventhub.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.Eventhub.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.Eventhub.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.Eventhub.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.Eventhub.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.Eventhub.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.Eventhub.isConstruct"></a>
+
+```typescript
+import { Eventhub } from '@microsoft/terraform-cdk-constructs'
+
+Eventhub.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.Eventhub.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps</code> | The input properties for this Event Hub instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.Eventhub.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.Eventhub.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.Eventhub.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.Eventhub.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.Eventhub.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.Eventhub.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.Eventhub.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.Eventhub.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.Eventhub.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.Eventhub.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.Eventhub.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.Eventhub.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.Eventhub.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.Eventhub.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.Eventhub.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.Eventhub.property.props"></a>
+
+```typescript
+public readonly props: EventhubProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps
+
+The input properties for this Event Hub instance.
+
+---
+
+
+### Eventhub <a name="Eventhub" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub"></a>
+
+Azure Event Hub (entity) implementation.
+
+This class provides a single, version-aware implementation that automatically
+handles version resolution, schema validation, and property transformation
+while maintaining full JSII compliance.
+
+**Child Resource Pattern**: Event Hubs are child resources of Event Hubs
+Namespaces. This implementation overrides the `resolveParentId()` method to
+properly construct the namespace ID as the parent.
+
+*Example*
+
+```typescript
+// Event Hub with an explicit namespace reference (creates a dependency):
+const hub = new Eventhub(this, "my-hub", {
+  name: "my-event-hub",
+  namespaceName: namespace.props.name!,
+  namespaceId: namespace.id,
+  resourceGroupId: resourceGroup.id,
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.Initializer"></a>
+
+```typescript
+import { azure_eventhub } from '@microsoft/terraform-cdk-constructs'
+
+new azure_eventhub.Eventhub(scope: Construct, id: string, props: EventhubProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps</code> | - Configuration properties for the Event Hub. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps
+
+Configuration properties for the Event Hub.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.isConstruct"></a>
+
+```typescript
+import { azure_eventhub } from '@microsoft/terraform-cdk-constructs'
+
+azure_eventhub.Eventhub.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps</code> | The input properties for this Event Hub instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.property.props"></a>
+
+```typescript
+public readonly props: EventhubProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps
+
+The input properties for this Event Hub instance.
+
+---
+
+
+### EventhubNamespace <a name="EventhubNamespace" id="@microsoft/terraform-cdk-constructs.EventhubNamespace"></a>
+
+Azure Event Hubs Namespace implementation.
+
+This class provides a single, version-aware implementation that automatically
+handles version resolution, schema validation, and property transformation
+while maintaining full JSII compliance.
+
+An Event Hubs Namespace is a management container for Event Hubs. It provides
+DNS-integrated network endpoints and a range of access control and network
+integration management features.
+
+*Example*
+
+```typescript
+// Standard namespace with auto-inflate:
+const namespace = new EventhubNamespace(this, "production-namespace", {
+  name: "prod-eventhub-ns",
+  location: "eastus",
+  resourceGroupId: resourceGroup.id,
+  sku: { name: "Standard", capacity: 2 },
+  isAutoInflateEnabled: true,
+  maximumThroughputUnits: 10,
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.Initializer"></a>
+
+```typescript
+import { EventhubNamespace } from '@microsoft/terraform-cdk-constructs'
+
+new EventhubNamespace(scope: Construct, id: string, props: EventhubNamespaceProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps</code> | - Configuration properties for the Event Hubs Namespace. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps
+
+Configuration properties for the Event Hubs Namespace.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.isConstruct"></a>
+
+```typescript
+import { EventhubNamespace } from '@microsoft/terraform-cdk-constructs'
+
+EventhubNamespace.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps</code> | The input properties for this Event Hubs Namespace instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.property.props"></a>
+
+```typescript
+public readonly props: EventhubNamespaceProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps
+
+The input properties for this Event Hubs Namespace instance.
+
+---
+
+
+### EventhubNamespace <a name="EventhubNamespace" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace"></a>
+
+Azure Event Hubs Namespace implementation.
+
+This class provides a single, version-aware implementation that automatically
+handles version resolution, schema validation, and property transformation
+while maintaining full JSII compliance.
+
+An Event Hubs Namespace is a management container for Event Hubs. It provides
+DNS-integrated network endpoints and a range of access control and network
+integration management features.
+
+*Example*
+
+```typescript
+// Standard namespace with auto-inflate:
+const namespace = new EventhubNamespace(this, "production-namespace", {
+  name: "prod-eventhub-ns",
+  location: "eastus",
+  resourceGroupId: resourceGroup.id,
+  sku: { name: "Standard", capacity: 2 },
+  isAutoInflateEnabled: true,
+  maximumThroughputUnits: 10,
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.Initializer"></a>
+
+```typescript
+import { azure_eventhub } from '@microsoft/terraform-cdk-constructs'
+
+new azure_eventhub.EventhubNamespace(scope: Construct, id: string, props: EventhubNamespaceProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps</code> | - Configuration properties for the Event Hubs Namespace. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps
+
+Configuration properties for the Event Hubs Namespace.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.isConstruct"></a>
+
+```typescript
+import { azure_eventhub } from '@microsoft/terraform-cdk-constructs'
+
+azure_eventhub.EventhubNamespace.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps</code> | The input properties for this Event Hubs Namespace instance. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.property.props"></a>
+
+```typescript
+public readonly props: EventhubNamespaceProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps
+
+The input properties for this Event Hubs Namespace instance.
+
+---
+
+
 ### ForwardingRule <a name="ForwardingRule" id="@microsoft/terraform-cdk-constructs.ForwardingRule"></a>
 
 Azure DNS Forwarding Rule implementation.
@@ -131685,6 +133533,1696 @@ public readonly useCommonAlertSchema: boolean;
 - *Default:* false
 
 Whether to use common alert schema.
+
+---
+
+### EventhubNamespaceIdentity <a name="EventhubNamespaceIdentity" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceIdentity"></a>
+
+Managed identity configuration for the namespace.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceIdentity.Initializer"></a>
+
+```typescript
+import { EventhubNamespaceIdentity } from '@microsoft/terraform-cdk-constructs'
+
+const eventhubNamespaceIdentity: EventhubNamespaceIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceIdentity.property.type">type</a></code> | <code>string</code> | Type of managed identity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: any}</code> | User-assigned identity resource IDs Required when type includes UserAssigned. |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+Type of managed identity.
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+User-assigned identity resource IDs Required when type includes UserAssigned.
+
+---
+
+### EventhubNamespaceIdentity <a name="EventhubNamespaceIdentity" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceIdentity"></a>
+
+Managed identity configuration for the namespace.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceIdentity.Initializer"></a>
+
+```typescript
+import { azure_eventhub } from '@microsoft/terraform-cdk-constructs'
+
+const eventhubNamespaceIdentity: azure_eventhub.EventhubNamespaceIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceIdentity.property.type">type</a></code> | <code>string</code> | Type of managed identity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: any}</code> | User-assigned identity resource IDs Required when type includes UserAssigned. |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+Type of managed identity.
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+User-assigned identity resource IDs Required when type includes UserAssigned.
+
+---
+
+### EventhubNamespaceProps <a name="EventhubNamespaceProps" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps"></a>
+
+Properties for the Azure Event Hubs Namespace.
+
+Extends AzapiResourceProps with Event Hubs Namespace specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.Initializer"></a>
+
+```typescript
+import { EventhubNamespaceProps } from '@microsoft/terraform-cdk-constructs'
+
+const eventhubNamespaceProps: EventhubNamespaceProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource Group ID where the namespace will be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.disableLocalAuth">disableLocalAuth</a></code> | <code>boolean</code> | Whether to disable SAS (local) authentication. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceIdentity</code> | Managed identity configuration for the namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.isAutoInflateEnabled">isAutoInflateEnabled</a></code> | <code>boolean</code> | Whether auto-inflate is enabled for the namespace (Standard tier). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.maximumThroughputUnits">maximumThroughputUnits</a></code> | <code>number</code> | The upper limit of throughput units when auto-inflate is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.minimumTlsVersion">minimumTlsVersion</a></code> | <code>string</code> | The minimum TLS version supported by the namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.publicNetworkAccess">publicNetworkAccess</a></code> | <code>string</code> | Whether public network access is allowed for the namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.sku">sku</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceSku</code> | SKU configuration for the namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.zoneRedundant">zoneRedundant</a></code> | <code>boolean</code> | Whether to enable zone redundancy for the namespace. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `resourceGroupId`<sup>Required</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource Group ID where the namespace will be created.
+
+---
+
+##### `disableLocalAuth`<sup>Optional</sup> <a name="disableLocalAuth" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.disableLocalAuth"></a>
+
+```typescript
+public readonly disableLocalAuth: boolean;
+```
+
+- *Type:* boolean
+
+Whether to disable SAS (local) authentication.
+
+When enabled, only Azure AD authentication is allowed.
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.identity"></a>
+
+```typescript
+public readonly identity: EventhubNamespaceIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceIdentity
+
+Managed identity configuration for the namespace.
+
+---
+
+##### `isAutoInflateEnabled`<sup>Optional</sup> <a name="isAutoInflateEnabled" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.isAutoInflateEnabled"></a>
+
+```typescript
+public readonly isAutoInflateEnabled: boolean;
+```
+
+- *Type:* boolean
+
+Whether auto-inflate is enabled for the namespace (Standard tier).
+
+When enabled, throughput units automatically scale up to
+`maximumThroughputUnits` based on load.
+
+---
+
+##### `maximumThroughputUnits`<sup>Optional</sup> <a name="maximumThroughputUnits" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.maximumThroughputUnits"></a>
+
+```typescript
+public readonly maximumThroughputUnits: number;
+```
+
+- *Type:* number
+
+The upper limit of throughput units when auto-inflate is enabled.
+
+Valid values are between 0 and 40.
+
+---
+
+##### `minimumTlsVersion`<sup>Optional</sup> <a name="minimumTlsVersion" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.minimumTlsVersion"></a>
+
+```typescript
+public readonly minimumTlsVersion: string;
+```
+
+- *Type:* string
+- *Default:* "1.2"
+
+The minimum TLS version supported by the namespace.
+
+---
+
+##### `publicNetworkAccess`<sup>Optional</sup> <a name="publicNetworkAccess" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.publicNetworkAccess"></a>
+
+```typescript
+public readonly publicNetworkAccess: string;
+```
+
+- *Type:* string
+- *Default:* "Enabled"
+
+Whether public network access is allowed for the namespace.
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.sku"></a>
+
+```typescript
+public readonly sku: EventhubNamespaceSku;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceSku
+- *Default:* { name: "Standard" }
+
+SKU configuration for the namespace.
+
+---
+
+##### `zoneRedundant`<sup>Optional</sup> <a name="zoneRedundant" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceProps.property.zoneRedundant"></a>
+
+```typescript
+public readonly zoneRedundant: boolean;
+```
+
+- *Type:* boolean
+
+Whether to enable zone redundancy for the namespace.
+
+---
+
+### EventhubNamespaceProps <a name="EventhubNamespaceProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps"></a>
+
+Properties for the Azure Event Hubs Namespace.
+
+Extends AzapiResourceProps with Event Hubs Namespace specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.Initializer"></a>
+
+```typescript
+import { azure_eventhub } from '@microsoft/terraform-cdk-constructs'
+
+const eventhubNamespaceProps: azure_eventhub.EventhubNamespaceProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource Group ID where the namespace will be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.disableLocalAuth">disableLocalAuth</a></code> | <code>boolean</code> | Whether to disable SAS (local) authentication. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceIdentity</code> | Managed identity configuration for the namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.isAutoInflateEnabled">isAutoInflateEnabled</a></code> | <code>boolean</code> | Whether auto-inflate is enabled for the namespace (Standard tier). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.maximumThroughputUnits">maximumThroughputUnits</a></code> | <code>number</code> | The upper limit of throughput units when auto-inflate is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.minimumTlsVersion">minimumTlsVersion</a></code> | <code>string</code> | The minimum TLS version supported by the namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.publicNetworkAccess">publicNetworkAccess</a></code> | <code>string</code> | Whether public network access is allowed for the namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.sku">sku</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceSku</code> | SKU configuration for the namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.zoneRedundant">zoneRedundant</a></code> | <code>boolean</code> | Whether to enable zone redundancy for the namespace. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `resourceGroupId`<sup>Required</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource Group ID where the namespace will be created.
+
+---
+
+##### `disableLocalAuth`<sup>Optional</sup> <a name="disableLocalAuth" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.disableLocalAuth"></a>
+
+```typescript
+public readonly disableLocalAuth: boolean;
+```
+
+- *Type:* boolean
+
+Whether to disable SAS (local) authentication.
+
+When enabled, only Azure AD authentication is allowed.
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.identity"></a>
+
+```typescript
+public readonly identity: EventhubNamespaceIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceIdentity
+
+Managed identity configuration for the namespace.
+
+---
+
+##### `isAutoInflateEnabled`<sup>Optional</sup> <a name="isAutoInflateEnabled" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.isAutoInflateEnabled"></a>
+
+```typescript
+public readonly isAutoInflateEnabled: boolean;
+```
+
+- *Type:* boolean
+
+Whether auto-inflate is enabled for the namespace (Standard tier).
+
+When enabled, throughput units automatically scale up to
+`maximumThroughputUnits` based on load.
+
+---
+
+##### `maximumThroughputUnits`<sup>Optional</sup> <a name="maximumThroughputUnits" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.maximumThroughputUnits"></a>
+
+```typescript
+public readonly maximumThroughputUnits: number;
+```
+
+- *Type:* number
+
+The upper limit of throughput units when auto-inflate is enabled.
+
+Valid values are between 0 and 40.
+
+---
+
+##### `minimumTlsVersion`<sup>Optional</sup> <a name="minimumTlsVersion" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.minimumTlsVersion"></a>
+
+```typescript
+public readonly minimumTlsVersion: string;
+```
+
+- *Type:* string
+- *Default:* "1.2"
+
+The minimum TLS version supported by the namespace.
+
+---
+
+##### `publicNetworkAccess`<sup>Optional</sup> <a name="publicNetworkAccess" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.publicNetworkAccess"></a>
+
+```typescript
+public readonly publicNetworkAccess: string;
+```
+
+- *Type:* string
+- *Default:* "Enabled"
+
+Whether public network access is allowed for the namespace.
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.sku"></a>
+
+```typescript
+public readonly sku: EventhubNamespaceSku;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceSku
+- *Default:* { name: "Standard" }
+
+SKU configuration for the namespace.
+
+---
+
+##### `zoneRedundant`<sup>Optional</sup> <a name="zoneRedundant" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceProps.property.zoneRedundant"></a>
+
+```typescript
+public readonly zoneRedundant: boolean;
+```
+
+- *Type:* boolean
+
+Whether to enable zone redundancy for the namespace.
+
+---
+
+### EventhubNamespaceSku <a name="EventhubNamespaceSku" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceSku"></a>
+
+SKU configuration for an Event Hubs Namespace.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceSku.Initializer"></a>
+
+```typescript
+import { EventhubNamespaceSku } from '@microsoft/terraform-cdk-constructs'
+
+const eventhubNamespaceSku: EventhubNamespaceSku = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceSku.property.name">name</a></code> | <code>string</code> | The SKU name for the namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceSku.property.capacity">capacity</a></code> | <code>number</code> | The number of throughput units (Standard) or capacity units (Premium). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespaceSku.property.tier">tier</a></code> | <code>string</code> | The billing tier of the namespace. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceSku.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+- *Default:* "Standard"
+
+The SKU name for the namespace.
+
+Available options:
+- "Basic" - Basic tier (1 consumer group, 100 brokered connections)
+- "Standard" - Standard tier (20 consumer groups, auto-inflate support)
+- "Premium" - Premium tier (dedicated capacity, higher limits)
+
+---
+
+##### `capacity`<sup>Optional</sup> <a name="capacity" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceSku.property.capacity"></a>
+
+```typescript
+public readonly capacity: number;
+```
+
+- *Type:* number
+
+The number of throughput units (Standard) or capacity units (Premium).
+
+Only applicable to Standard and Premium tiers.
+
+---
+
+##### `tier`<sup>Optional</sup> <a name="tier" id="@microsoft/terraform-cdk-constructs.EventhubNamespaceSku.property.tier"></a>
+
+```typescript
+public readonly tier: string;
+```
+
+- *Type:* string
+
+The billing tier of the namespace.
+
+If not provided, defaults to the same value as `name`.
+
+---
+
+### EventhubNamespaceSku <a name="EventhubNamespaceSku" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceSku"></a>
+
+SKU configuration for an Event Hubs Namespace.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceSku.Initializer"></a>
+
+```typescript
+import { azure_eventhub } from '@microsoft/terraform-cdk-constructs'
+
+const eventhubNamespaceSku: azure_eventhub.EventhubNamespaceSku = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceSku.property.name">name</a></code> | <code>string</code> | The SKU name for the namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceSku.property.capacity">capacity</a></code> | <code>number</code> | The number of throughput units (Standard) or capacity units (Premium). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceSku.property.tier">tier</a></code> | <code>string</code> | The billing tier of the namespace. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceSku.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+- *Default:* "Standard"
+
+The SKU name for the namespace.
+
+Available options:
+- "Basic" - Basic tier (1 consumer group, 100 brokered connections)
+- "Standard" - Standard tier (20 consumer groups, auto-inflate support)
+- "Premium" - Premium tier (dedicated capacity, higher limits)
+
+---
+
+##### `capacity`<sup>Optional</sup> <a name="capacity" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceSku.property.capacity"></a>
+
+```typescript
+public readonly capacity: number;
+```
+
+- *Type:* number
+
+The number of throughput units (Standard) or capacity units (Premium).
+
+Only applicable to Standard and Premium tiers.
+
+---
+
+##### `tier`<sup>Optional</sup> <a name="tier" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespaceSku.property.tier"></a>
+
+```typescript
+public readonly tier: string;
+```
+
+- *Type:* string
+
+The billing tier of the namespace.
+
+If not provided, defaults to the same value as `name`.
+
+---
+
+### EventhubProps <a name="EventhubProps" id="@microsoft/terraform-cdk-constructs.EventhubProps"></a>
+
+Properties for the Azure Event Hub (entity).
+
+Extends AzapiResourceProps with Event Hub specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EventhubProps.Initializer"></a>
+
+```typescript
+import { EventhubProps } from '@microsoft/terraform-cdk-constructs'
+
+const eventhubProps: EventhubProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.namespaceName">namespaceName</a></code> | <code>string</code> | Name of the parent Event Hubs namespace Required for constructing the parent ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the parent namespace exists Required for constructing the parent ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.messageRetentionInDays">messageRetentionInDays</a></code> | <code>number</code> | Number of days to retain events. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.namespaceId">namespaceId</a></code> | <code>string</code> | Optional: Full resource ID of the parent Event Hubs namespace When provided, creates a proper Terraform dependency on the namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.partitionCount">partitionCount</a></code> | <code>number</code> | Number of partitions for the Event Hub. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubProps.property.status">status</a></code> | <code>string</code> | Status of the Event Hub. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `namespaceName`<sup>Required</sup> <a name="namespaceName" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.namespaceName"></a>
+
+```typescript
+public readonly namespaceName: string;
+```
+
+- *Type:* string
+
+Name of the parent Event Hubs namespace Required for constructing the parent ID.
+
+---
+
+##### `resourceGroupId`<sup>Required</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the parent namespace exists Required for constructing the parent ID.
+
+---
+
+##### `messageRetentionInDays`<sup>Optional</sup> <a name="messageRetentionInDays" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.messageRetentionInDays"></a>
+
+```typescript
+public readonly messageRetentionInDays: number;
+```
+
+- *Type:* number
+- *Default:* 1
+
+Number of days to retain events.
+
+Valid range is 1-7 for Standard tier, and up to 90 for Premium/Dedicated.
+
+---
+
+##### `namespaceId`<sup>Optional</sup> <a name="namespaceId" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.namespaceId"></a>
+
+```typescript
+public readonly namespaceId: string;
+```
+
+- *Type:* string
+
+Optional: Full resource ID of the parent Event Hubs namespace When provided, creates a proper Terraform dependency on the namespace.
+
+If not provided, the parent ID will be constructed from `resourceGroupId`
+and `namespaceName`.
+
+---
+
+##### `partitionCount`<sup>Optional</sup> <a name="partitionCount" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.partitionCount"></a>
+
+```typescript
+public readonly partitionCount: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+Number of partitions for the Event Hub.
+
+Partitions are immutable after creation. Valid range depends on the
+namespace tier (1-32 for Standard, up to 1024 for Premium/Dedicated).
+
+---
+
+##### `status`<sup>Optional</sup> <a name="status" id="@microsoft/terraform-cdk-constructs.EventhubProps.property.status"></a>
+
+```typescript
+public readonly status: string;
+```
+
+- *Type:* string
+- *Default:* "Active"
+
+Status of the Event Hub.
+
+---
+
+### EventhubProps <a name="EventhubProps" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps"></a>
+
+Properties for the Azure Event Hub (entity).
+
+Extends AzapiResourceProps with Event Hub specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.Initializer"></a>
+
+```typescript
+import { azure_eventhub } from '@microsoft/terraform-cdk-constructs'
+
+const eventhubProps: azure_eventhub.EventhubProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.namespaceName">namespaceName</a></code> | <code>string</code> | Name of the parent Event Hubs namespace Required for constructing the parent ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the parent namespace exists Required for constructing the parent ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.messageRetentionInDays">messageRetentionInDays</a></code> | <code>number</code> | Number of days to retain events. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.namespaceId">namespaceId</a></code> | <code>string</code> | Optional: Full resource ID of the parent Event Hubs namespace When provided, creates a proper Terraform dependency on the namespace. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.partitionCount">partitionCount</a></code> | <code>number</code> | Number of partitions for the Event Hub. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.status">status</a></code> | <code>string</code> | Status of the Event Hub. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `namespaceName`<sup>Required</sup> <a name="namespaceName" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.namespaceName"></a>
+
+```typescript
+public readonly namespaceName: string;
+```
+
+- *Type:* string
+
+Name of the parent Event Hubs namespace Required for constructing the parent ID.
+
+---
+
+##### `resourceGroupId`<sup>Required</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the parent namespace exists Required for constructing the parent ID.
+
+---
+
+##### `messageRetentionInDays`<sup>Optional</sup> <a name="messageRetentionInDays" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.messageRetentionInDays"></a>
+
+```typescript
+public readonly messageRetentionInDays: number;
+```
+
+- *Type:* number
+- *Default:* 1
+
+Number of days to retain events.
+
+Valid range is 1-7 for Standard tier, and up to 90 for Premium/Dedicated.
+
+---
+
+##### `namespaceId`<sup>Optional</sup> <a name="namespaceId" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.namespaceId"></a>
+
+```typescript
+public readonly namespaceId: string;
+```
+
+- *Type:* string
+
+Optional: Full resource ID of the parent Event Hubs namespace When provided, creates a proper Terraform dependency on the namespace.
+
+If not provided, the parent ID will be constructed from `resourceGroupId`
+and `namespaceName`.
+
+---
+
+##### `partitionCount`<sup>Optional</sup> <a name="partitionCount" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.partitionCount"></a>
+
+```typescript
+public readonly partitionCount: number;
+```
+
+- *Type:* number
+- *Default:* 2
+
+Number of partitions for the Event Hub.
+
+Partitions are immutable after creation. Valid range depends on the
+namespace tier (1-32 for Standard, up to 1024 for Premium/Dedicated).
+
+---
+
+##### `status`<sup>Optional</sup> <a name="status" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubProps.property.status"></a>
+
+```typescript
+public readonly status: string;
+```
+
+- *Type:* string
+- *Default:* "Active"
+
+Status of the Event Hub.
 
 ---
 

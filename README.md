@@ -72,6 +72,12 @@ With AZAPI L2 Constructs, you get the following benefits:
 |---------|-------------|--------|
 | [Cosmos DB Accounts](./src/azure-cosmosdb/README.md) | 2023-11-15, 2024-05-15, 2024-08-15 | ✅ Available |
 
+### Messaging & Integration
+
+| Service | API Versions | Status |
+|---------|-------------|--------|
+| [Event Hubs](./src/azure-eventhub/README.md) | 2021-11-01, 2024-01-01 | ✅ Available |
+
 ## Quick Example
 
 Create Azure resources using AZAPI provider:
