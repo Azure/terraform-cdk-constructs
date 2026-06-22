@@ -113,7 +113,9 @@ export interface ContainerAppsJobTemplate {
 
 export interface ContainerAppsJobIdentity {
   readonly type: string;
-  readonly userAssignedIdentities?: { [key: string]: { [key: string]: string } };
+  readonly userAssignedIdentities?: {
+    [key: string]: { [key: string]: string };
+  };
 }
 
 export interface ContainerAppsJobProps extends AzapiResourceProps {
@@ -204,7 +206,8 @@ export class ContainerAppsJob extends AzapiResource {
     const updatedConfig = { ...config, ignoreCasing: true };
 
     if (updatedConfig.body && updatedConfig.body.location) {
-      const { location: _location, ...bodyWithoutLocation } = updatedConfig.body;
+      const { location: _location, ...bodyWithoutLocation } =
+        updatedConfig.body;
       return {
         ...updatedConfig,
         body: bodyWithoutLocation,

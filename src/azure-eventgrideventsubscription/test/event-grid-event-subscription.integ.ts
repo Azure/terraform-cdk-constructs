@@ -1,13 +1,13 @@
 import { Testing } from "cdktn";
 import { Construct } from "constructs";
 import "cdktn/lib/testing/adapters/jest";
+import { EventGridSystemTopic } from "../../azure-eventgridsystemtopic";
 import { ResourceGroup } from "../../azure-resourcegroup";
 import { StorageAccount } from "../../azure-storageaccount";
-import { Resource } from "../../core-azure/lib/azapi/providers-azapi/resource";
 import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
+import { Resource } from "../../core-azure/lib/azapi/providers-azapi/resource";
 import { BaseTestStack, TerraformApplyCheckAndDestroy } from "../../testing";
 import { TestRunMetadata } from "../../testing/lib/metadata";
-import { EventGridSystemTopic } from "../../azure-eventgridsystemtopic";
 import { EventGridEventSubscription } from "../lib/event-grid-event-subscription";
 
 const testMetadata = new TestRunMetadata(

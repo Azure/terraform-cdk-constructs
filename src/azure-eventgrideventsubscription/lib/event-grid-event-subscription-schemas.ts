@@ -146,7 +146,8 @@ export const EVENT_SUBSCRIPTION_VERSION_2025_02_15: VersionConfig = {
   changeLog: [
     {
       changeType: "added",
-      description: "Initial stable release of Event Grid Event Subscription support",
+      description:
+        "Initial stable release of Event Grid Event Subscription support",
       breaking: false,
     },
   ],
@@ -156,4 +157,5 @@ export const ALL_EVENT_SUBSCRIPTION_VERSIONS: VersionConfig[] = [
   EVENT_SUBSCRIPTION_VERSION_2025_02_15,
 ];
 
-export const EVENT_SUBSCRIPTION_TYPE = "Microsoft.EventGrid/systemTopics/eventSubscriptions";
+export const EVENT_SUBSCRIPTION_TYPE =
+  "Microsoft.EventGrid/systemTopics/eventSubscriptions";

@@ -38,7 +38,10 @@ class ContainerAppsJobExampleStack extends BaseTestStack {
       "Microsoft.App/managedEnvironments",
       "containerjob",
     );
-    const jobName = this.generateResourceName("Microsoft.App/jobs", "containerjob");
+    const jobName = this.generateResourceName(
+      "Microsoft.App/jobs",
+      "containerjob",
+    );
 
     const resourceGroup = new ResourceGroup(this, "test-rg", {
       name: resourceGroupName,

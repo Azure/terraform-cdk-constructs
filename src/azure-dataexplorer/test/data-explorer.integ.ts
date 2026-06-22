@@ -80,8 +80,7 @@ class DataExplorerExampleStack extends BaseTestStack {
     new DataExplorerScript(this, "adx-script", {
       name: scriptName,
       databaseId: database.id,
-      scriptContent:
-        ".create table TestTable (Column1: string, Column2: int)",
+      scriptContent: ".create table TestTable (Column1: string, Column2: int)",
       forceUpdateTag: testMetadata.runId,
       continueOnErrors: false,
     });
@@ -89,15 +88,11 @@ class DataExplorerExampleStack extends BaseTestStack {
 }
 
 describe("DataExplorer Integration Test", () => {
-  it(
-    "should deploy ADX cluster, database, and script, validate idempotency, and cleanup",
-    () => {
-      const app = Testing.app();
-      const stack = new DataExplorerExampleStack(app, "test-dataexplorer");
-      const synthesized = Testing.fullSynth(stack);
+  it("should deploy ADX cluster, database, and script, validate idempotency, and cleanup", () => {
+    const app = Testing.app();
+    const stack = new DataExplorerExampleStack(app, "test-dataexplorer");
+    const synthesized = Testing.fullSynth(stack);
 
-      TerraformApplyCheckAndDestroy(synthesized, { verifyCleanup: true });
-    },
-    1800000,
-  );
+    TerraformApplyCheckAndDestroy(synthesized, { verifyCleanup: true });
+  }, 1800000);
 });

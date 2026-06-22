@@ -8,9 +8,12 @@ import { BaseTestStack, TerraformApplyCheckAndDestroy } from "../../testing";
 import { TestRunMetadata } from "../../testing/lib/metadata";
 import { EventGridSystemTopic } from "../lib/event-grid-system-topic";
 
-const testMetadata = new TestRunMetadata("event-grid-system-topic-integration", {
-  maxAgeHours: 4,
-});
+const testMetadata = new TestRunMetadata(
+  "event-grid-system-topic-integration",
+  {
+    maxAgeHours: 4,
+  },
+);
 
 class EventGridSystemTopicExampleStack extends BaseTestStack {
   constructor(scope: Construct, id: string) {

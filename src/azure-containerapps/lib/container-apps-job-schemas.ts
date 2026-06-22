@@ -15,7 +15,8 @@ const COMMON_PROPERTIES: { [key: string]: PropertyDefinition } = {
   location: {
     dataType: PropertyType.STRING,
     required: true,
-    description: "The Azure region where the Container Apps Job will be created.",
+    description:
+      "The Azure region where the Container Apps Job will be created.",
     validation: [
       {
         ruleType: ValidationRuleType.REQUIRED,

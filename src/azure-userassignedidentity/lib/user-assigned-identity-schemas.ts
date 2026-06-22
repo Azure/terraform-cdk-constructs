@@ -15,7 +15,8 @@ const COMMON_PROPERTIES: { [key: string]: PropertyDefinition } = {
   location: {
     dataType: PropertyType.STRING,
     required: true,
-    description: "The Azure region where the User Assigned Identity will be created",
+    description:
+      "The Azure region where the User Assigned Identity will be created",
     validation: [
       {
         ruleType: ValidationRuleType.REQUIRED,
@@ -55,7 +56,8 @@ const COMMON_PROPERTIES: { [key: string]: PropertyDefinition } = {
       {
         ruleType: ValidationRuleType.VALUE_RANGE,
         value: { minLength: 1, maxLength: 128 },
-        message: "User Assigned Identity name must be between 1 and 128 characters",
+        message:
+          "User Assigned Identity name must be between 1 and 128 characters",
       },
     ],
   },

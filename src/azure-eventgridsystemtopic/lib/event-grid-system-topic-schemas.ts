@@ -11,7 +11,8 @@ const COMMON_PROPERTIES: { [key: string]: PropertyDefinition } = {
   location: {
     dataType: PropertyType.STRING,
     required: true,
-    description: "The Azure region where the Event Grid System Topic will be created",
+    description:
+      "The Azure region where the Event Grid System Topic will be created",
     validation: [
       {
         ruleType: ValidationRuleType.REQUIRED,
@@ -88,12 +89,14 @@ const COMMON_PROPERTIES: { [key: string]: PropertyDefinition } = {
   identity: {
     dataType: PropertyType.OBJECT,
     required: false,
-    description: "Managed identity configuration for the Event Grid System Topic",
+    description:
+      "Managed identity configuration for the Event Grid System Topic",
   },
   resourceGroupId: {
     dataType: PropertyType.STRING,
     required: false,
-    description: "The resource group ID where the Event Grid System Topic is created",
+    description:
+      "The resource group ID where the Event Grid System Topic is created",
   },
 };
 

@@ -27,7 +27,10 @@ describe("EventGridSystemTopic - Unified Implementation", () => {
     manager = ApiVersionManager.instance();
 
     try {
-      manager.registerResourceType(SYSTEM_TOPIC_TYPE, ALL_SYSTEM_TOPIC_VERSIONS);
+      manager.registerResourceType(
+        SYSTEM_TOPIC_TYPE,
+        ALL_SYSTEM_TOPIC_VERSIONS,
+      );
     } catch (error) {
       // Ignore if already registered
     }
@@ -43,7 +46,11 @@ describe("EventGridSystemTopic - Unified Implementation", () => {
         resourceGroupId,
       };
 
-      const systemTopic = new EventGridSystemTopic(stack, "TestSystemTopic", props);
+      const systemTopic = new EventGridSystemTopic(
+        stack,
+        "TestSystemTopic",
+        props,
+      );
 
       expect(systemTopic).toBeInstanceOf(EventGridSystemTopic);
       expect(systemTopic.resolvedApiVersion).toBe("2025-02-15");
@@ -62,7 +69,11 @@ describe("EventGridSystemTopic - Unified Implementation", () => {
         apiVersion: "2025-02-15",
       };
 
-      const systemTopic = new EventGridSystemTopic(stack, "PinnedSystemTopic", props);
+      const systemTopic = new EventGridSystemTopic(
+        stack,
+        "PinnedSystemTopic",
+        props,
+      );
 
       expect(systemTopic.resolvedApiVersion).toBe("2025-02-15");
     });
@@ -83,7 +94,11 @@ describe("EventGridSystemTopic - Unified Implementation", () => {
         },
       };
 
-      const systemTopic = new EventGridSystemTopic(stack, "FullSystemTopic", props);
+      const systemTopic = new EventGridSystemTopic(
+        stack,
+        "FullSystemTopic",
+        props,
+      );
 
       expect(systemTopic.props.identity).toEqual(props.identity);
       expect(systemTopic.props.tags).toEqual(props.tags);
@@ -202,14 +217,18 @@ describe("EventGridSystemTopic - Unified Implementation", () => {
     });
 
     it("should have validation results for valid properties", () => {
-      const systemTopic = new EventGridSystemTopic(stack, "ValidatedSystemTopic", {
-        name: "valid-system-topic",
-        location: "eastus",
-        source,
-        topicType,
-        resourceGroupId,
-        enableValidation: true,
-      });
+      const systemTopic = new EventGridSystemTopic(
+        stack,
+        "ValidatedSystemTopic",
+        {
+          name: "valid-system-topic",
+          location: "eastus",
+          source,
+          topicType,
+          resourceGroupId,
+          enableValidation: true,
+        },
+      );
 
       expect(systemTopic.validationResult).toBeDefined();
       expect(systemTopic.validationResult!.valid).toBe(true);
@@ -217,13 +236,17 @@ describe("EventGridSystemTopic - Unified Implementation", () => {
     });
 
     it("should create Terraform outputs", () => {
-      const systemTopic = new EventGridSystemTopic(stack, "OutputsSystemTopic", {
-        name: "outputs-system-topic",
-        location: "eastus",
-        source,
-        topicType,
-        resourceGroupId,
-      });
+      const systemTopic = new EventGridSystemTopic(
+        stack,
+        "OutputsSystemTopic",
+        {
+          name: "outputs-system-topic",
+          location: "eastus",
+          source,
+          topicType,
+          resourceGroupId,
+        },
+      );
 
       expect(systemTopic.idOutput).toBeInstanceOf(cdktn.TerraformOutput);
       expect(systemTopic.locationOutput).toBeInstanceOf(cdktn.TerraformOutput);
@@ -274,13 +297,17 @@ describe("EventGridSystemTopic - Unified Implementation", () => {
 
   describe("Public Methods and Properties", () => {
     it("should have resourceId property matching id", () => {
-      const systemTopic = new EventGridSystemTopic(stack, "ResourceIdSystemTopic", {
-        name: "resource-id-system-topic",
-        location: "eastus",
-        source,
-        topicType,
-        resourceGroupId,
-      });
+      const systemTopic = new EventGridSystemTopic(
+        stack,
+        "ResourceIdSystemTopic",
+        {
+          name: "resource-id-system-topic",
+          location: "eastus",
+          source,
+          topicType,
+          resourceGroupId,
+        },
+      );
 
       expect(systemTopic.resourceId).toBe(systemTopic.id);
     });

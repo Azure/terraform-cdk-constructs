@@ -78,7 +78,11 @@ describe("DataExplorer - Unified Implementation", () => {
     };
 
     it("should create cluster with automatic latest version resolution", () => {
-      const cluster = new DataExplorerCluster(stack, "TestCluster", clusterProps);
+      const cluster = new DataExplorerCluster(
+        stack,
+        "TestCluster",
+        clusterProps,
+      );
 
       expect(cluster).toBeInstanceOf(DataExplorerCluster);
       expect(cluster.resolvedApiVersion).toBe("2024-04-13");
@@ -91,7 +95,9 @@ describe("DataExplorer - Unified Implementation", () => {
         ...clusterProps,
         tags: { environment: "test" },
         identity: { type: "SystemAssigned" },
-        trustedExternalTenants: [{ value: "11111111-1111-1111-1111-111111111111" }],
+        trustedExternalTenants: [
+          { value: "11111111-1111-1111-1111-111111111111" },
+        ],
         optimizedAutoscale: {
           version: 1,
           isEnabled: true,
@@ -120,16 +126,26 @@ describe("DataExplorer - Unified Implementation", () => {
     });
 
     it("should support framework version metadata", () => {
-      const cluster = new DataExplorerCluster(stack, "FrameworkCluster", clusterProps);
+      const cluster = new DataExplorerCluster(
+        stack,
+        "FrameworkCluster",
+        clusterProps,
+      );
 
       expect(cluster.latestVersion()).toBe("2024-04-13");
       expect(cluster.supportedVersions()).toEqual(["2024-04-13"]);
       expect(cluster.schema.resourceType).toBe(DATA_EXPLORER_CLUSTER_TYPE);
-      expect(cluster.versionConfig.supportLevel).toBe(VersionSupportLevel.ACTIVE);
+      expect(cluster.versionConfig.supportLevel).toBe(
+        VersionSupportLevel.ACTIVE,
+      );
     });
 
     it("should resolve parent ID from resource group", () => {
-      const cluster = new DataExplorerCluster(stack, "ParentCluster", clusterProps);
+      const cluster = new DataExplorerCluster(
+        stack,
+        "ParentCluster",
+        clusterProps,
+      );
       const parentId = (cluster as any).resolveParentId(clusterProps);
 
       expect(parentId).toBe(clusterProps.resourceGroupId);
@@ -148,7 +164,11 @@ describe("DataExplorer - Unified Implementation", () => {
     });
 
     it("should expose outputs and URIs", () => {
-      const cluster = new DataExplorerCluster(stack, "OutputCluster", clusterProps);
+      const cluster = new DataExplorerCluster(
+        stack,
+        "OutputCluster",
+        clusterProps,
+      );
 
       expect(cluster.idOutput).toBeDefined();
       expect(cluster.locationOutput).toBeDefined();
@@ -204,7 +224,9 @@ describe("DataExplorer - Unified Implementation", () => {
       expect(database.latestVersion()).toBe("2024-04-13");
       expect(database.supportedVersions()).toEqual(["2024-04-13"]);
       expect(database.schema.resourceType).toBe(DATA_EXPLORER_DATABASE_TYPE);
-      expect(database.versionConfig.supportLevel).toBe(VersionSupportLevel.ACTIVE);
+      expect(database.versionConfig.supportLevel).toBe(
+        VersionSupportLevel.ACTIVE,
+      );
     });
 
     it("should require location and should resolve parent ID correctly", () => {
@@ -252,8 +274,7 @@ describe("DataExplorer - Unified Implementation", () => {
       name: "test-table-script",
       databaseId:
         "/subscriptions/test-sub/resourceGroups/test-rg/providers/Microsoft.Kusto/clusters/test-cluster/databases/test-db",
-      scriptContent:
-        ".create table TestTable (Column1: string, Column2: int)",
+      scriptContent: ".create table TestTable (Column1: string, Column2: int)",
     };
 
     it("should create script with automatic latest version resolution", () => {
@@ -265,12 +286,18 @@ describe("DataExplorer - Unified Implementation", () => {
     });
 
     it("should support framework version metadata", () => {
-      const script = new DataExplorerScript(stack, "FrameworkScript", scriptProps);
+      const script = new DataExplorerScript(
+        stack,
+        "FrameworkScript",
+        scriptProps,
+      );
 
       expect(script.latestVersion()).toBe("2024-04-13");
       expect(script.supportedVersions()).toEqual(["2024-04-13"]);
       expect(script.schema.resourceType).toBe(DATA_EXPLORER_SCRIPT_TYPE);
-      expect(script.versionConfig.supportLevel).toBe(VersionSupportLevel.ACTIVE);
+      expect(script.versionConfig.supportLevel).toBe(
+        VersionSupportLevel.ACTIVE,
+      );
     });
 
     it("should not require location and should resolve parent ID correctly", () => {

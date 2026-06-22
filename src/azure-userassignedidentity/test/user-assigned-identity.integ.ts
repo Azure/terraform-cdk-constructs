@@ -1,10 +1,10 @@
 import { Testing } from "cdktn";
 import { Construct } from "constructs";
 import "cdktn/lib/testing/adapters/jest";
+import { ResourceGroup } from "../../azure-resourcegroup";
 import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
 import { BaseTestStack, TerraformApplyCheckAndDestroy } from "../../testing";
 import { TestRunMetadata } from "../../testing/lib/metadata";
-import { ResourceGroup } from "../../azure-resourcegroup";
 import { UserAssignedIdentity } from "../lib/user-assigned-identity";
 
 const testMetadata = new TestRunMetadata("user-assigned-identity-integration", {

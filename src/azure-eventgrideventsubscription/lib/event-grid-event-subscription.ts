@@ -64,7 +64,11 @@ export class EventGridEventSubscription extends AzapiResource {
   public readonly idOutput: cdktn.TerraformOutput;
   public readonly nameOutput: cdktn.TerraformOutput;
 
-  constructor(scope: Construct, id: string, props: EventGridEventSubscriptionProps) {
+  constructor(
+    scope: Construct,
+    id: string,
+    props: EventGridEventSubscriptionProps,
+  ) {
     super(scope, id, props);
     this.props = props;
 
@@ -107,7 +111,8 @@ export class EventGridEventSubscription extends AzapiResource {
       properties: {
         destination: typedProps.destination,
         filter: typedProps.filter,
-        eventDeliverySchema: typedProps.eventDeliverySchema || "EventGridSchema",
+        eventDeliverySchema:
+          typedProps.eventDeliverySchema || "EventGridSchema",
         retryPolicy: typedProps.retryPolicy,
         deadLetterDestination: typedProps.deadLetterDestination,
         labels: typedProps.labels,

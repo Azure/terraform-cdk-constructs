@@ -12302,6 +12302,920 @@ public readonly tagsOutput: TerraformOutput;
 ---
 
 
+### ContainerAppsJob <a name="ContainerAppsJob" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.Initializer"></a>
+
+```typescript
+import { ContainerAppsJob } from '@microsoft/terraform-cdk-constructs'
+
+new ContainerAppsJob(scope: Construct, id: string, props: ContainerAppsJobProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.isConstruct"></a>
+
+```typescript
+import { ContainerAppsJob } from '@microsoft/terraform-cdk-constructs'
+
+ContainerAppsJob.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.locationOutput">locationOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.tagsOutput">tagsOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.props"></a>
+
+```typescript
+public readonly props: ContainerAppsJobProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+
+### ContainerAppsJob <a name="ContainerAppsJob" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+new azure_containerapps.ContainerAppsJob(scope: Construct, id: string, props: ContainerAppsJobProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.isConstruct"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+azure_containerapps.ContainerAppsJob.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.locationOutput">locationOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.tagsOutput">tagsOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.props"></a>
+
+```typescript
+public readonly props: ContainerAppsJobProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+
 ### ContainerRegistry <a name="ContainerRegistry" id="@microsoft/terraform-cdk-constructs.ContainerRegistry"></a>
 
 Unified Azure Container Registry implementation.
@@ -17407,6 +18321,2726 @@ public readonly tfResourceType: string;
 - *Type:* string
 
 ---
+
+### DataExplorerCluster <a name="DataExplorerCluster" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.Initializer"></a>
+
+```typescript
+import { DataExplorerCluster } from '@microsoft/terraform-cdk-constructs'
+
+new DataExplorerCluster(scope: Construct, id: string, props: DataExplorerClusterProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.isConstruct"></a>
+
+```typescript
+import { DataExplorerCluster } from '@microsoft/terraform-cdk-constructs'
+
+DataExplorerCluster.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.dataIngestionUri">dataIngestionUri</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.locationOutput">locationOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.tagsOutput">tagsOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.uri">uri</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.uriOutput">uriOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `dataIngestionUri`<sup>Required</sup> <a name="dataIngestionUri" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.dataIngestionUri"></a>
+
+```typescript
+public readonly dataIngestionUri: string;
+```
+
+- *Type:* string
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.props"></a>
+
+```typescript
+public readonly props: DataExplorerClusterProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `uri`<sup>Required</sup> <a name="uri" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.uri"></a>
+
+```typescript
+public readonly uri: string;
+```
+
+- *Type:* string
+
+---
+
+##### `uriOutput`<sup>Required</sup> <a name="uriOutput" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.property.uriOutput"></a>
+
+```typescript
+public readonly uriOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+
+### DataExplorerCluster <a name="DataExplorerCluster" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.Initializer"></a>
+
+```typescript
+import { azure_dataexplorer } from '@microsoft/terraform-cdk-constructs'
+
+new azure_dataexplorer.DataExplorerCluster(scope: Construct, id: string, props: DataExplorerClusterProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.isConstruct"></a>
+
+```typescript
+import { azure_dataexplorer } from '@microsoft/terraform-cdk-constructs'
+
+azure_dataexplorer.DataExplorerCluster.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.dataIngestionUri">dataIngestionUri</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.locationOutput">locationOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.tagsOutput">tagsOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.uri">uri</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.uriOutput">uriOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `dataIngestionUri`<sup>Required</sup> <a name="dataIngestionUri" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.dataIngestionUri"></a>
+
+```typescript
+public readonly dataIngestionUri: string;
+```
+
+- *Type:* string
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.props"></a>
+
+```typescript
+public readonly props: DataExplorerClusterProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `uri`<sup>Required</sup> <a name="uri" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.uri"></a>
+
+```typescript
+public readonly uri: string;
+```
+
+- *Type:* string
+
+---
+
+##### `uriOutput`<sup>Required</sup> <a name="uriOutput" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.property.uriOutput"></a>
+
+```typescript
+public readonly uriOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+
+### DataExplorerDatabase <a name="DataExplorerDatabase" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.Initializer"></a>
+
+```typescript
+import { DataExplorerDatabase } from '@microsoft/terraform-cdk-constructs'
+
+new DataExplorerDatabase(scope: Construct, id: string, props: DataExplorerDatabaseProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.isConstruct"></a>
+
+```typescript
+import { DataExplorerDatabase } from '@microsoft/terraform-cdk-constructs'
+
+DataExplorerDatabase.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.property.props"></a>
+
+```typescript
+public readonly props: DataExplorerDatabaseProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps
+
+---
+
+
+### DataExplorerDatabase <a name="DataExplorerDatabase" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.Initializer"></a>
+
+```typescript
+import { azure_dataexplorer } from '@microsoft/terraform-cdk-constructs'
+
+new azure_dataexplorer.DataExplorerDatabase(scope: Construct, id: string, props: DataExplorerDatabaseProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.isConstruct"></a>
+
+```typescript
+import { azure_dataexplorer } from '@microsoft/terraform-cdk-constructs'
+
+azure_dataexplorer.DataExplorerDatabase.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.property.props"></a>
+
+```typescript
+public readonly props: DataExplorerDatabaseProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps
+
+---
+
+
+### DataExplorerScript <a name="DataExplorerScript" id="@microsoft/terraform-cdk-constructs.DataExplorerScript"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.Initializer"></a>
+
+```typescript
+import { DataExplorerScript } from '@microsoft/terraform-cdk-constructs'
+
+new DataExplorerScript(scope: Construct, id: string, props: DataExplorerScriptProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.isConstruct"></a>
+
+```typescript
+import { DataExplorerScript } from '@microsoft/terraform-cdk-constructs'
+
+DataExplorerScript.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.property.props"></a>
+
+```typescript
+public readonly props: DataExplorerScriptProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps
+
+---
+
+
+### DataExplorerScript <a name="DataExplorerScript" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.Initializer"></a>
+
+```typescript
+import { azure_dataexplorer } from '@microsoft/terraform-cdk-constructs'
+
+new azure_dataexplorer.DataExplorerScript(scope: Construct, id: string, props: DataExplorerScriptProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.isConstruct"></a>
+
+```typescript
+import { azure_dataexplorer } from '@microsoft/terraform-cdk-constructs'
+
+azure_dataexplorer.DataExplorerScript.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.property.props"></a>
+
+```typescript
+public readonly props: DataExplorerScriptProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps
+
+---
+
 
 ### DiagnosticSettings <a name="DiagnosticSettings" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings"></a>
 
@@ -34430,6 +38064,1790 @@ public readonly zoneType: string;
 - *Type:* string
 
 Get the zone type (Public or Private).
+
+---
+
+
+### EventGridEventSubscription <a name="EventGridEventSubscription" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.Initializer"></a>
+
+```typescript
+import { EventGridEventSubscription } from '@microsoft/terraform-cdk-constructs'
+
+new EventGridEventSubscription(scope: Construct, id: string, props: EventGridEventSubscriptionProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.isConstruct"></a>
+
+```typescript
+import { EventGridEventSubscription } from '@microsoft/terraform-cdk-constructs'
+
+EventGridEventSubscription.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.property.props"></a>
+
+```typescript
+public readonly props: EventGridEventSubscriptionProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps
+
+---
+
+
+### EventGridEventSubscription <a name="EventGridEventSubscription" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.Initializer"></a>
+
+```typescript
+import { azure_eventgrideventsubscription } from '@microsoft/terraform-cdk-constructs'
+
+new azure_eventgrideventsubscription.EventGridEventSubscription(scope: Construct, id: string, props: EventGridEventSubscriptionProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.isConstruct"></a>
+
+```typescript
+import { azure_eventgrideventsubscription } from '@microsoft/terraform-cdk-constructs'
+
+azure_eventgrideventsubscription.EventGridEventSubscription.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.property.props"></a>
+
+```typescript
+public readonly props: EventGridEventSubscriptionProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps
+
+---
+
+
+### EventGridSystemTopic <a name="EventGridSystemTopic" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.Initializer"></a>
+
+```typescript
+import { EventGridSystemTopic } from '@microsoft/terraform-cdk-constructs'
+
+new EventGridSystemTopic(scope: Construct, id: string, props: EventGridSystemTopicProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.isConstruct"></a>
+
+```typescript
+import { EventGridSystemTopic } from '@microsoft/terraform-cdk-constructs'
+
+EventGridSystemTopic.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.locationOutput">locationOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.tagsOutput">tagsOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.props"></a>
+
+```typescript
+public readonly props: EventGridSystemTopicProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+
+### EventGridSystemTopic <a name="EventGridSystemTopic" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.Initializer"></a>
+
+```typescript
+import { azure_eventgridsystemtopic } from '@microsoft/terraform-cdk-constructs'
+
+new azure_eventgridsystemtopic.EventGridSystemTopic(scope: Construct, id: string, props: EventGridSystemTopicProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.isConstruct"></a>
+
+```typescript
+import { azure_eventgridsystemtopic } from '@microsoft/terraform-cdk-constructs'
+
+azure_eventgridsystemtopic.EventGridSystemTopic.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.locationOutput">locationOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.tagsOutput">tagsOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.props"></a>
+
+```typescript
+public readonly props: EventGridSystemTopicProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
 
 ---
 
@@ -77136,6 +82554,876 @@ public readonly tagsOutput: TerraformOutput;
 ---
 
 
+### StorageBlobContainer <a name="StorageBlobContainer" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.Initializer"></a>
+
+```typescript
+import { StorageBlobContainer } from '@microsoft/terraform-cdk-constructs'
+
+new StorageBlobContainer(scope: Construct, id: string, props: StorageBlobContainerProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.isConstruct"></a>
+
+```typescript
+import { StorageBlobContainer } from '@microsoft/terraform-cdk-constructs'
+
+StorageBlobContainer.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.property.props"></a>
+
+```typescript
+public readonly props: StorageBlobContainerProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps
+
+---
+
+
+### StorageBlobContainer <a name="StorageBlobContainer" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.Initializer"></a>
+
+```typescript
+import { azure_storageblobcontainer } from '@microsoft/terraform-cdk-constructs'
+
+new azure_storageblobcontainer.StorageBlobContainer(scope: Construct, id: string, props: StorageBlobContainerProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.isConstruct"></a>
+
+```typescript
+import { azure_storageblobcontainer } from '@microsoft/terraform-cdk-constructs'
+
+azure_storageblobcontainer.StorageBlobContainer.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.resourceId">resourceId</a></code> | <code>string</code> | Gets the full resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Gets the full resource ID.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.property.props"></a>
+
+```typescript
+public readonly props: StorageBlobContainerProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps
+
+---
+
+
 ### Subnet <a name="Subnet" id="@microsoft/terraform-cdk-constructs.Subnet"></a>
 
 Azure Subnet implementation.
@@ -80499,6 +86787,1042 @@ public readonly tfResourceType: string;
 - *Type:* string
 
 ---
+
+### UserAssignedIdentity <a name="UserAssignedIdentity" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.Initializer"></a>
+
+```typescript
+import { UserAssignedIdentity } from '@microsoft/terraform-cdk-constructs'
+
+new UserAssignedIdentity(scope: Construct, id: string, props: UserAssignedIdentityProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.isConstruct"></a>
+
+```typescript
+import { UserAssignedIdentity } from '@microsoft/terraform-cdk-constructs'
+
+UserAssignedIdentity.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.resourceId">resourceId</a></code> | <code>string</code> | Get the full resource identifier. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.clientId">clientId</a></code> | <code>string</code> | Get the client ID of the managed identity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.clientIdOutput">clientIdOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.locationOutput">locationOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.principalId">principalId</a></code> | <code>string</code> | Get the principal ID of the managed identity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.principalIdOutput">principalIdOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.tagsOutput">tagsOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.tenantId">tenantId</a></code> | <code>string</code> | Get the tenant ID of the managed identity. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Get the full resource identifier.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `clientId`<sup>Required</sup> <a name="clientId" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.clientId"></a>
+
+```typescript
+public readonly clientId: string;
+```
+
+- *Type:* string
+
+Get the client ID of the managed identity.
+
+---
+
+##### `clientIdOutput`<sup>Required</sup> <a name="clientIdOutput" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.clientIdOutput"></a>
+
+```typescript
+public readonly clientIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `principalId`<sup>Required</sup> <a name="principalId" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.principalId"></a>
+
+```typescript
+public readonly principalId: string;
+```
+
+- *Type:* string
+
+Get the principal ID of the managed identity.
+
+---
+
+##### `principalIdOutput`<sup>Required</sup> <a name="principalIdOutput" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.principalIdOutput"></a>
+
+```typescript
+public readonly principalIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.props"></a>
+
+```typescript
+public readonly props: UserAssignedIdentityProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `tenantId`<sup>Required</sup> <a name="tenantId" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.property.tenantId"></a>
+
+```typescript
+public readonly tenantId: string;
+```
+
+- *Type:* string
+
+Get the tenant ID of the managed identity.
+
+---
+
+
+### UserAssignedIdentity <a name="UserAssignedIdentity" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity"></a>
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.Initializer"></a>
+
+```typescript
+import { azure_userassignedidentity } from '@microsoft/terraform-cdk-constructs'
+
+new azure_userassignedidentity.UserAssignedIdentity(scope: Construct, id: string, props: UserAssignedIdentityProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.Initializer.parameter.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps</code> | *No description.* |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Adds a tag to this resource. The tag will be included in the Azure resource.
+
+This method provides proper immutability by storing tags separately from props.
+Tags added via this method are combined with tags from props and included in
+the deployed Azure resource.
+
+**Important:** In CDK for Terraform, tags should ideally be set during resource
+construction via props. While this method allows adding tags after construction,
+those tags are only included if added before the Terraform configuration is
+synthesized. For best results, add all tags via props or call addTag() in the
+same scope where the resource is created.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.addTag.parameter.key"></a>
+
+- *Type:* string
+
+The tag key.
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.addTag.parameter.value"></a>
+
+- *Type:* string
+
+The tag value.
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.isConstruct"></a>
+
+```typescript
+import { azure_userassignedidentity } from '@microsoft/terraform-cdk-constructs'
+
+azure_userassignedidentity.UserAssignedIdentity.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.resourceId">resourceId</a></code> | <code>string</code> | Get the full resource identifier. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.clientId">clientId</a></code> | <code>string</code> | Get the client ID of the managed identity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.clientIdOutput">clientIdOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.locationOutput">locationOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.principalId">principalId</a></code> | <code>string</code> | Get the principal ID of the managed identity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.principalIdOutput">principalIdOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.tagsOutput">tagsOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.tenantId">tenantId</a></code> | <code>string</code> | Get the tenant ID of the managed identity. |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Get the full resource identifier.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `clientId`<sup>Required</sup> <a name="clientId" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.clientId"></a>
+
+```typescript
+public readonly clientId: string;
+```
+
+- *Type:* string
+
+Get the client ID of the managed identity.
+
+---
+
+##### `clientIdOutput`<sup>Required</sup> <a name="clientIdOutput" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.clientIdOutput"></a>
+
+```typescript
+public readonly clientIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `principalId`<sup>Required</sup> <a name="principalId" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.principalId"></a>
+
+```typescript
+public readonly principalId: string;
+```
+
+- *Type:* string
+
+Get the principal ID of the managed identity.
+
+---
+
+##### `principalIdOutput`<sup>Required</sup> <a name="principalIdOutput" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.principalIdOutput"></a>
+
+```typescript
+public readonly principalIdOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.props"></a>
+
+```typescript
+public readonly props: UserAssignedIdentityProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `tenantId`<sup>Required</sup> <a name="tenantId" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.property.tenantId"></a>
+
+```typescript
+public readonly tenantId: string;
+```
+
+- *Type:* string
+
+Get the tenant ID of the managed identity.
+
+---
+
 
 ### VirtualMachine <a name="VirtualMachine" id="@microsoft/terraform-cdk-constructs.VirtualMachine"></a>
 
@@ -113858,6 +121182,2352 @@ Resource ID of the service to bind to.
 
 ---
 
+### ContainerAppsJobConfiguration <a name="ContainerAppsJobConfiguration" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobConfiguration } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobConfiguration: ContainerAppsJobConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.replicaTimeout">replicaTimeout</a></code> | <code>number</code> | Replica timeout in seconds. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.triggerType">triggerType</a></code> | <code>string</code> | Trigger type: "Manual", "Schedule", or "Event". |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.eventTriggerConfig">eventTriggerConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerConfig</code> | Event trigger config. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.manualTriggerConfig">manualTriggerConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobManualTriggerConfig</code> | Manual trigger config. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.registries">registries</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry[]</code> | Registries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.replicaRetryLimit">replicaRetryLimit</a></code> | <code>number</code> | Maximum number of retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.scheduleTriggerConfig">scheduleTriggerConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScheduleTriggerConfig</code> | Cron expression for scheduled jobs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.secrets">secrets</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret[]</code> | Secrets. |
+
+---
+
+##### `replicaTimeout`<sup>Required</sup> <a name="replicaTimeout" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.replicaTimeout"></a>
+
+```typescript
+public readonly replicaTimeout: number;
+```
+
+- *Type:* number
+
+Replica timeout in seconds.
+
+---
+
+##### `triggerType`<sup>Required</sup> <a name="triggerType" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.triggerType"></a>
+
+```typescript
+public readonly triggerType: string;
+```
+
+- *Type:* string
+
+Trigger type: "Manual", "Schedule", or "Event".
+
+---
+
+##### `eventTriggerConfig`<sup>Optional</sup> <a name="eventTriggerConfig" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.eventTriggerConfig"></a>
+
+```typescript
+public readonly eventTriggerConfig: ContainerAppsJobEventTriggerConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerConfig
+
+Event trigger config.
+
+---
+
+##### `manualTriggerConfig`<sup>Optional</sup> <a name="manualTriggerConfig" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.manualTriggerConfig"></a>
+
+```typescript
+public readonly manualTriggerConfig: ContainerAppsJobManualTriggerConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobManualTriggerConfig
+
+Manual trigger config.
+
+---
+
+##### `registries`<sup>Optional</sup> <a name="registries" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.registries"></a>
+
+```typescript
+public readonly registries: ContainerAppsJobRegistry[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry[]
+
+Registries.
+
+---
+
+##### `replicaRetryLimit`<sup>Optional</sup> <a name="replicaRetryLimit" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.replicaRetryLimit"></a>
+
+```typescript
+public readonly replicaRetryLimit: number;
+```
+
+- *Type:* number
+
+Maximum number of retries.
+
+---
+
+##### `scheduleTriggerConfig`<sup>Optional</sup> <a name="scheduleTriggerConfig" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.scheduleTriggerConfig"></a>
+
+```typescript
+public readonly scheduleTriggerConfig: ContainerAppsJobScheduleTriggerConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScheduleTriggerConfig
+
+Cron expression for scheduled jobs.
+
+---
+
+##### `secrets`<sup>Optional</sup> <a name="secrets" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobConfiguration.property.secrets"></a>
+
+```typescript
+public readonly secrets: ContainerAppsJobSecret[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret[]
+
+Secrets.
+
+---
+
+### ContainerAppsJobConfiguration <a name="ContainerAppsJobConfiguration" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobConfiguration: azure_containerapps.ContainerAppsJobConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.replicaTimeout">replicaTimeout</a></code> | <code>number</code> | Replica timeout in seconds. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.triggerType">triggerType</a></code> | <code>string</code> | Trigger type: "Manual", "Schedule", or "Event". |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.eventTriggerConfig">eventTriggerConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerConfig</code> | Event trigger config. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.manualTriggerConfig">manualTriggerConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobManualTriggerConfig</code> | Manual trigger config. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.registries">registries</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry[]</code> | Registries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.replicaRetryLimit">replicaRetryLimit</a></code> | <code>number</code> | Maximum number of retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.scheduleTriggerConfig">scheduleTriggerConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScheduleTriggerConfig</code> | Cron expression for scheduled jobs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.secrets">secrets</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret[]</code> | Secrets. |
+
+---
+
+##### `replicaTimeout`<sup>Required</sup> <a name="replicaTimeout" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.replicaTimeout"></a>
+
+```typescript
+public readonly replicaTimeout: number;
+```
+
+- *Type:* number
+
+Replica timeout in seconds.
+
+---
+
+##### `triggerType`<sup>Required</sup> <a name="triggerType" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.triggerType"></a>
+
+```typescript
+public readonly triggerType: string;
+```
+
+- *Type:* string
+
+Trigger type: "Manual", "Schedule", or "Event".
+
+---
+
+##### `eventTriggerConfig`<sup>Optional</sup> <a name="eventTriggerConfig" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.eventTriggerConfig"></a>
+
+```typescript
+public readonly eventTriggerConfig: ContainerAppsJobEventTriggerConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerConfig
+
+Event trigger config.
+
+---
+
+##### `manualTriggerConfig`<sup>Optional</sup> <a name="manualTriggerConfig" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.manualTriggerConfig"></a>
+
+```typescript
+public readonly manualTriggerConfig: ContainerAppsJobManualTriggerConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobManualTriggerConfig
+
+Manual trigger config.
+
+---
+
+##### `registries`<sup>Optional</sup> <a name="registries" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.registries"></a>
+
+```typescript
+public readonly registries: ContainerAppsJobRegistry[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry[]
+
+Registries.
+
+---
+
+##### `replicaRetryLimit`<sup>Optional</sup> <a name="replicaRetryLimit" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.replicaRetryLimit"></a>
+
+```typescript
+public readonly replicaRetryLimit: number;
+```
+
+- *Type:* number
+
+Maximum number of retries.
+
+---
+
+##### `scheduleTriggerConfig`<sup>Optional</sup> <a name="scheduleTriggerConfig" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.scheduleTriggerConfig"></a>
+
+```typescript
+public readonly scheduleTriggerConfig: ContainerAppsJobScheduleTriggerConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScheduleTriggerConfig
+
+Cron expression for scheduled jobs.
+
+---
+
+##### `secrets`<sup>Optional</sup> <a name="secrets" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration.property.secrets"></a>
+
+```typescript
+public readonly secrets: ContainerAppsJobSecret[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret[]
+
+Secrets.
+
+---
+
+### ContainerAppsJobContainer <a name="ContainerAppsJobContainer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobContainer } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobContainer: ContainerAppsJobContainer = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer.property.image">image</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer.property.args">args</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer.property.command">command</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer.property.env">env</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEnvVar[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer.property.resources">resources</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainerResources</code> | *No description.* |
+
+---
+
+##### `image`<sup>Required</sup> <a name="image" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer.property.image"></a>
+
+```typescript
+public readonly image: string;
+```
+
+- *Type:* string
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `args`<sup>Optional</sup> <a name="args" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer.property.args"></a>
+
+```typescript
+public readonly args: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `command`<sup>Optional</sup> <a name="command" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer.property.command"></a>
+
+```typescript
+public readonly command: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `env`<sup>Optional</sup> <a name="env" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer.property.env"></a>
+
+```typescript
+public readonly env: ContainerAppsJobEnvVar[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEnvVar[]
+
+---
+
+##### `resources`<sup>Optional</sup> <a name="resources" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobContainer.property.resources"></a>
+
+```typescript
+public readonly resources: ContainerAppsJobContainerResources;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainerResources
+
+---
+
+### ContainerAppsJobContainer <a name="ContainerAppsJobContainer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobContainer: azure_containerapps.ContainerAppsJobContainer = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer.property.image">image</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer.property.args">args</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer.property.command">command</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer.property.env">env</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEnvVar[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer.property.resources">resources</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainerResources</code> | *No description.* |
+
+---
+
+##### `image`<sup>Required</sup> <a name="image" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer.property.image"></a>
+
+```typescript
+public readonly image: string;
+```
+
+- *Type:* string
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `args`<sup>Optional</sup> <a name="args" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer.property.args"></a>
+
+```typescript
+public readonly args: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `command`<sup>Optional</sup> <a name="command" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer.property.command"></a>
+
+```typescript
+public readonly command: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `env`<sup>Optional</sup> <a name="env" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer.property.env"></a>
+
+```typescript
+public readonly env: ContainerAppsJobEnvVar[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEnvVar[]
+
+---
+
+##### `resources`<sup>Optional</sup> <a name="resources" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer.property.resources"></a>
+
+```typescript
+public readonly resources: ContainerAppsJobContainerResources;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainerResources
+
+---
+
+### ContainerAppsJobContainerResources <a name="ContainerAppsJobContainerResources" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobContainerResources"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobContainerResources.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobContainerResources } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobContainerResources: ContainerAppsJobContainerResources = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobContainerResources.property.cpu">cpu</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobContainerResources.property.memory">memory</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `cpu`<sup>Optional</sup> <a name="cpu" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobContainerResources.property.cpu"></a>
+
+```typescript
+public readonly cpu: number;
+```
+
+- *Type:* number
+
+---
+
+##### `memory`<sup>Optional</sup> <a name="memory" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobContainerResources.property.memory"></a>
+
+```typescript
+public readonly memory: string;
+```
+
+- *Type:* string
+
+---
+
+### ContainerAppsJobContainerResources <a name="ContainerAppsJobContainerResources" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainerResources"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainerResources.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobContainerResources: azure_containerapps.ContainerAppsJobContainerResources = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainerResources.property.cpu">cpu</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainerResources.property.memory">memory</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `cpu`<sup>Optional</sup> <a name="cpu" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainerResources.property.cpu"></a>
+
+```typescript
+public readonly cpu: number;
+```
+
+- *Type:* number
+
+---
+
+##### `memory`<sup>Optional</sup> <a name="memory" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainerResources.property.memory"></a>
+
+```typescript
+public readonly memory: string;
+```
+
+- *Type:* string
+
+---
+
+### ContainerAppsJobEnvVar <a name="ContainerAppsJobEnvVar" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEnvVar"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEnvVar.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobEnvVar } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobEnvVar: ContainerAppsJobEnvVar = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobEnvVar.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobEnvVar.property.secretRef">secretRef</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobEnvVar.property.value">value</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEnvVar.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `secretRef`<sup>Optional</sup> <a name="secretRef" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEnvVar.property.secretRef"></a>
+
+```typescript
+public readonly secretRef: string;
+```
+
+- *Type:* string
+
+---
+
+##### `value`<sup>Optional</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEnvVar.property.value"></a>
+
+```typescript
+public readonly value: string;
+```
+
+- *Type:* string
+
+---
+
+### ContainerAppsJobEnvVar <a name="ContainerAppsJobEnvVar" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEnvVar"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEnvVar.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobEnvVar: azure_containerapps.ContainerAppsJobEnvVar = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEnvVar.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEnvVar.property.secretRef">secretRef</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEnvVar.property.value">value</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEnvVar.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `secretRef`<sup>Optional</sup> <a name="secretRef" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEnvVar.property.secretRef"></a>
+
+```typescript
+public readonly secretRef: string;
+```
+
+- *Type:* string
+
+---
+
+##### `value`<sup>Optional</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEnvVar.property.value"></a>
+
+```typescript
+public readonly value: string;
+```
+
+- *Type:* string
+
+---
+
+### ContainerAppsJobEventTriggerConfig <a name="ContainerAppsJobEventTriggerConfig" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerConfig"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerConfig.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobEventTriggerConfig } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobEventTriggerConfig: ContainerAppsJobEventTriggerConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerConfig.property.parallelism">parallelism</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerConfig.property.replicaCompletionCount">replicaCompletionCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerConfig.property.scale">scale</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale</code> | *No description.* |
+
+---
+
+##### `parallelism`<sup>Optional</sup> <a name="parallelism" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerConfig.property.parallelism"></a>
+
+```typescript
+public readonly parallelism: number;
+```
+
+- *Type:* number
+
+---
+
+##### `replicaCompletionCount`<sup>Optional</sup> <a name="replicaCompletionCount" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerConfig.property.replicaCompletionCount"></a>
+
+```typescript
+public readonly replicaCompletionCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `scale`<sup>Optional</sup> <a name="scale" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerConfig.property.scale"></a>
+
+```typescript
+public readonly scale: ContainerAppsJobEventTriggerScale;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale
+
+---
+
+### ContainerAppsJobEventTriggerConfig <a name="ContainerAppsJobEventTriggerConfig" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerConfig"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerConfig.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobEventTriggerConfig: azure_containerapps.ContainerAppsJobEventTriggerConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerConfig.property.parallelism">parallelism</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerConfig.property.replicaCompletionCount">replicaCompletionCount</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerConfig.property.scale">scale</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale</code> | *No description.* |
+
+---
+
+##### `parallelism`<sup>Optional</sup> <a name="parallelism" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerConfig.property.parallelism"></a>
+
+```typescript
+public readonly parallelism: number;
+```
+
+- *Type:* number
+
+---
+
+##### `replicaCompletionCount`<sup>Optional</sup> <a name="replicaCompletionCount" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerConfig.property.replicaCompletionCount"></a>
+
+```typescript
+public readonly replicaCompletionCount: number;
+```
+
+- *Type:* number
+
+---
+
+##### `scale`<sup>Optional</sup> <a name="scale" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerConfig.property.scale"></a>
+
+```typescript
+public readonly scale: ContainerAppsJobEventTriggerScale;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale
+
+---
+
+### ContainerAppsJobEventTriggerScale <a name="ContainerAppsJobEventTriggerScale" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerScale"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerScale.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobEventTriggerScale } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobEventTriggerScale: ContainerAppsJobEventTriggerScale = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerScale.property.maxExecutions">maxExecutions</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerScale.property.minExecutions">minExecutions</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerScale.property.pollingInterval">pollingInterval</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerScale.property.rules">rules</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule[]</code> | *No description.* |
+
+---
+
+##### `maxExecutions`<sup>Optional</sup> <a name="maxExecutions" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerScale.property.maxExecutions"></a>
+
+```typescript
+public readonly maxExecutions: number;
+```
+
+- *Type:* number
+
+---
+
+##### `minExecutions`<sup>Optional</sup> <a name="minExecutions" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerScale.property.minExecutions"></a>
+
+```typescript
+public readonly minExecutions: number;
+```
+
+- *Type:* number
+
+---
+
+##### `pollingInterval`<sup>Optional</sup> <a name="pollingInterval" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerScale.property.pollingInterval"></a>
+
+```typescript
+public readonly pollingInterval: number;
+```
+
+- *Type:* number
+
+---
+
+##### `rules`<sup>Optional</sup> <a name="rules" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobEventTriggerScale.property.rules"></a>
+
+```typescript
+public readonly rules: ContainerAppsJobScaleRule[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule[]
+
+---
+
+### ContainerAppsJobEventTriggerScale <a name="ContainerAppsJobEventTriggerScale" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobEventTriggerScale: azure_containerapps.ContainerAppsJobEventTriggerScale = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale.property.maxExecutions">maxExecutions</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale.property.minExecutions">minExecutions</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale.property.pollingInterval">pollingInterval</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale.property.rules">rules</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule[]</code> | *No description.* |
+
+---
+
+##### `maxExecutions`<sup>Optional</sup> <a name="maxExecutions" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale.property.maxExecutions"></a>
+
+```typescript
+public readonly maxExecutions: number;
+```
+
+- *Type:* number
+
+---
+
+##### `minExecutions`<sup>Optional</sup> <a name="minExecutions" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale.property.minExecutions"></a>
+
+```typescript
+public readonly minExecutions: number;
+```
+
+- *Type:* number
+
+---
+
+##### `pollingInterval`<sup>Optional</sup> <a name="pollingInterval" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale.property.pollingInterval"></a>
+
+```typescript
+public readonly pollingInterval: number;
+```
+
+- *Type:* number
+
+---
+
+##### `rules`<sup>Optional</sup> <a name="rules" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobEventTriggerScale.property.rules"></a>
+
+```typescript
+public readonly rules: ContainerAppsJobScaleRule[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule[]
+
+---
+
+### ContainerAppsJobIdentity <a name="ContainerAppsJobIdentity" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobIdentity"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobIdentity.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobIdentity } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobIdentity: ContainerAppsJobIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobIdentity.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: {[ key: string ]: string}}</code> | *No description.* |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: {[ key: string ]: string}};
+```
+
+- *Type:* {[ key: string ]: {[ key: string ]: string}}
+
+---
+
+### ContainerAppsJobIdentity <a name="ContainerAppsJobIdentity" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobIdentity"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobIdentity.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobIdentity: azure_containerapps.ContainerAppsJobIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobIdentity.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: {[ key: string ]: string}}</code> | *No description.* |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: {[ key: string ]: string}};
+```
+
+- *Type:* {[ key: string ]: {[ key: string ]: string}}
+
+---
+
+### ContainerAppsJobManualTriggerConfig <a name="ContainerAppsJobManualTriggerConfig" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobManualTriggerConfig"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobManualTriggerConfig.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobManualTriggerConfig } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobManualTriggerConfig: ContainerAppsJobManualTriggerConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobManualTriggerConfig.property.parallelism">parallelism</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobManualTriggerConfig.property.replicaCompletionCount">replicaCompletionCount</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `parallelism`<sup>Optional</sup> <a name="parallelism" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobManualTriggerConfig.property.parallelism"></a>
+
+```typescript
+public readonly parallelism: number;
+```
+
+- *Type:* number
+
+---
+
+##### `replicaCompletionCount`<sup>Optional</sup> <a name="replicaCompletionCount" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobManualTriggerConfig.property.replicaCompletionCount"></a>
+
+```typescript
+public readonly replicaCompletionCount: number;
+```
+
+- *Type:* number
+
+---
+
+### ContainerAppsJobManualTriggerConfig <a name="ContainerAppsJobManualTriggerConfig" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobManualTriggerConfig"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobManualTriggerConfig.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobManualTriggerConfig: azure_containerapps.ContainerAppsJobManualTriggerConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobManualTriggerConfig.property.parallelism">parallelism</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobManualTriggerConfig.property.replicaCompletionCount">replicaCompletionCount</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `parallelism`<sup>Optional</sup> <a name="parallelism" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobManualTriggerConfig.property.parallelism"></a>
+
+```typescript
+public readonly parallelism: number;
+```
+
+- *Type:* number
+
+---
+
+##### `replicaCompletionCount`<sup>Optional</sup> <a name="replicaCompletionCount" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobManualTriggerConfig.property.replicaCompletionCount"></a>
+
+```typescript
+public readonly replicaCompletionCount: number;
+```
+
+- *Type:* number
+
+---
+
+### ContainerAppsJobProps <a name="ContainerAppsJobProps" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobProps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobProps: ContainerAppsJobProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.configuration">configuration</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration</code> | Job configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.environmentId">environmentId</a></code> | <code>string</code> | Container Apps Environment ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.template">template</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobTemplate</code> | Job template. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobIdentity</code> | Managed identity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `configuration`<sup>Required</sup> <a name="configuration" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.configuration"></a>
+
+```typescript
+public readonly configuration: ContainerAppsJobConfiguration;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration
+
+Job configuration.
+
+---
+
+##### `environmentId`<sup>Required</sup> <a name="environmentId" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.environmentId"></a>
+
+```typescript
+public readonly environmentId: string;
+```
+
+- *Type:* string
+
+Container Apps Environment ID.
+
+---
+
+##### `template`<sup>Required</sup> <a name="template" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.template"></a>
+
+```typescript
+public readonly template: ContainerAppsJobTemplate;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobTemplate
+
+Job template.
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.identity"></a>
+
+```typescript
+public readonly identity: ContainerAppsJobIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobIdentity
+
+Managed identity.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID.
+
+---
+
+### ContainerAppsJobProps <a name="ContainerAppsJobProps" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobProps: azure_containerapps.ContainerAppsJobProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.configuration">configuration</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration</code> | Job configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.environmentId">environmentId</a></code> | <code>string</code> | Container Apps Environment ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.template">template</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobTemplate</code> | Job template. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobIdentity</code> | Managed identity. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `configuration`<sup>Required</sup> <a name="configuration" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.configuration"></a>
+
+```typescript
+public readonly configuration: ContainerAppsJobConfiguration;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobConfiguration
+
+Job configuration.
+
+---
+
+##### `environmentId`<sup>Required</sup> <a name="environmentId" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.environmentId"></a>
+
+```typescript
+public readonly environmentId: string;
+```
+
+- *Type:* string
+
+Container Apps Environment ID.
+
+---
+
+##### `template`<sup>Required</sup> <a name="template" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.template"></a>
+
+```typescript
+public readonly template: ContainerAppsJobTemplate;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobTemplate
+
+Job template.
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.identity"></a>
+
+```typescript
+public readonly identity: ContainerAppsJobIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobIdentity
+
+Managed identity.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID.
+
+---
+
+### ContainerAppsJobRegistry <a name="ContainerAppsJobRegistry" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobRegistry"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobRegistry.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobRegistry } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobRegistry: ContainerAppsJobRegistry = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobRegistry.property.server">server</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobRegistry.property.identity">identity</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobRegistry.property.passwordSecretRef">passwordSecretRef</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobRegistry.property.username">username</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `server`<sup>Required</sup> <a name="server" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobRegistry.property.server"></a>
+
+```typescript
+public readonly server: string;
+```
+
+- *Type:* string
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobRegistry.property.identity"></a>
+
+```typescript
+public readonly identity: string;
+```
+
+- *Type:* string
+
+---
+
+##### `passwordSecretRef`<sup>Optional</sup> <a name="passwordSecretRef" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobRegistry.property.passwordSecretRef"></a>
+
+```typescript
+public readonly passwordSecretRef: string;
+```
+
+- *Type:* string
+
+---
+
+##### `username`<sup>Optional</sup> <a name="username" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobRegistry.property.username"></a>
+
+```typescript
+public readonly username: string;
+```
+
+- *Type:* string
+
+---
+
+### ContainerAppsJobRegistry <a name="ContainerAppsJobRegistry" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobRegistry: azure_containerapps.ContainerAppsJobRegistry = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry.property.server">server</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry.property.identity">identity</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry.property.passwordSecretRef">passwordSecretRef</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry.property.username">username</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `server`<sup>Required</sup> <a name="server" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry.property.server"></a>
+
+```typescript
+public readonly server: string;
+```
+
+- *Type:* string
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry.property.identity"></a>
+
+```typescript
+public readonly identity: string;
+```
+
+- *Type:* string
+
+---
+
+##### `passwordSecretRef`<sup>Optional</sup> <a name="passwordSecretRef" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry.property.passwordSecretRef"></a>
+
+```typescript
+public readonly passwordSecretRef: string;
+```
+
+- *Type:* string
+
+---
+
+##### `username`<sup>Optional</sup> <a name="username" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobRegistry.property.username"></a>
+
+```typescript
+public readonly username: string;
+```
+
+- *Type:* string
+
+---
+
+### ContainerAppsJobScaleRule <a name="ContainerAppsJobScaleRule" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRule"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRule.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobScaleRule } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobScaleRule: ContainerAppsJobScaleRule = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRule.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRule.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRule.property.auth">auth</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRuleAuth[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRule.property.metadata">metadata</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRule.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRule.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `auth`<sup>Optional</sup> <a name="auth" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRule.property.auth"></a>
+
+```typescript
+public readonly auth: ContainerAppsJobScaleRuleAuth[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRuleAuth[]
+
+---
+
+##### `metadata`<sup>Optional</sup> <a name="metadata" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRule.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### ContainerAppsJobScaleRule <a name="ContainerAppsJobScaleRule" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobScaleRule: azure_containerapps.ContainerAppsJobScaleRule = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule.property.auth">auth</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRuleAuth[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule.property.metadata">metadata</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `auth`<sup>Optional</sup> <a name="auth" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule.property.auth"></a>
+
+```typescript
+public readonly auth: ContainerAppsJobScaleRuleAuth[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRuleAuth[]
+
+---
+
+##### `metadata`<sup>Optional</sup> <a name="metadata" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRule.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### ContainerAppsJobScaleRuleAuth <a name="ContainerAppsJobScaleRuleAuth" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRuleAuth"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRuleAuth.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobScaleRuleAuth } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobScaleRuleAuth: ContainerAppsJobScaleRuleAuth = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRuleAuth.property.secretRef">secretRef</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRuleAuth.property.triggerParameter">triggerParameter</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `secretRef`<sup>Required</sup> <a name="secretRef" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRuleAuth.property.secretRef"></a>
+
+```typescript
+public readonly secretRef: string;
+```
+
+- *Type:* string
+
+---
+
+##### `triggerParameter`<sup>Required</sup> <a name="triggerParameter" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScaleRuleAuth.property.triggerParameter"></a>
+
+```typescript
+public readonly triggerParameter: string;
+```
+
+- *Type:* string
+
+---
+
+### ContainerAppsJobScaleRuleAuth <a name="ContainerAppsJobScaleRuleAuth" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRuleAuth"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRuleAuth.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobScaleRuleAuth: azure_containerapps.ContainerAppsJobScaleRuleAuth = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRuleAuth.property.secretRef">secretRef</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRuleAuth.property.triggerParameter">triggerParameter</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `secretRef`<sup>Required</sup> <a name="secretRef" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRuleAuth.property.secretRef"></a>
+
+```typescript
+public readonly secretRef: string;
+```
+
+- *Type:* string
+
+---
+
+##### `triggerParameter`<sup>Required</sup> <a name="triggerParameter" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScaleRuleAuth.property.triggerParameter"></a>
+
+```typescript
+public readonly triggerParameter: string;
+```
+
+- *Type:* string
+
+---
+
+### ContainerAppsJobScheduleTriggerConfig <a name="ContainerAppsJobScheduleTriggerConfig" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScheduleTriggerConfig"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScheduleTriggerConfig.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobScheduleTriggerConfig } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobScheduleTriggerConfig: ContainerAppsJobScheduleTriggerConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobScheduleTriggerConfig.property.cronExpression">cronExpression</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobScheduleTriggerConfig.property.parallelism">parallelism</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobScheduleTriggerConfig.property.replicaCompletionCount">replicaCompletionCount</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `cronExpression`<sup>Required</sup> <a name="cronExpression" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScheduleTriggerConfig.property.cronExpression"></a>
+
+```typescript
+public readonly cronExpression: string;
+```
+
+- *Type:* string
+
+---
+
+##### `parallelism`<sup>Optional</sup> <a name="parallelism" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScheduleTriggerConfig.property.parallelism"></a>
+
+```typescript
+public readonly parallelism: number;
+```
+
+- *Type:* number
+
+---
+
+##### `replicaCompletionCount`<sup>Optional</sup> <a name="replicaCompletionCount" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobScheduleTriggerConfig.property.replicaCompletionCount"></a>
+
+```typescript
+public readonly replicaCompletionCount: number;
+```
+
+- *Type:* number
+
+---
+
+### ContainerAppsJobScheduleTriggerConfig <a name="ContainerAppsJobScheduleTriggerConfig" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScheduleTriggerConfig"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScheduleTriggerConfig.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobScheduleTriggerConfig: azure_containerapps.ContainerAppsJobScheduleTriggerConfig = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScheduleTriggerConfig.property.cronExpression">cronExpression</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScheduleTriggerConfig.property.parallelism">parallelism</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScheduleTriggerConfig.property.replicaCompletionCount">replicaCompletionCount</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `cronExpression`<sup>Required</sup> <a name="cronExpression" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScheduleTriggerConfig.property.cronExpression"></a>
+
+```typescript
+public readonly cronExpression: string;
+```
+
+- *Type:* string
+
+---
+
+##### `parallelism`<sup>Optional</sup> <a name="parallelism" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScheduleTriggerConfig.property.parallelism"></a>
+
+```typescript
+public readonly parallelism: number;
+```
+
+- *Type:* number
+
+---
+
+##### `replicaCompletionCount`<sup>Optional</sup> <a name="replicaCompletionCount" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobScheduleTriggerConfig.property.replicaCompletionCount"></a>
+
+```typescript
+public readonly replicaCompletionCount: number;
+```
+
+- *Type:* number
+
+---
+
+### ContainerAppsJobSecret <a name="ContainerAppsJobSecret" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobSecret"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobSecret.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobSecret } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobSecret: ContainerAppsJobSecret = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobSecret.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobSecret.property.identity">identity</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobSecret.property.keyVaultUrl">keyVaultUrl</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobSecret.property.value">value</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobSecret.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobSecret.property.identity"></a>
+
+```typescript
+public readonly identity: string;
+```
+
+- *Type:* string
+
+---
+
+##### `keyVaultUrl`<sup>Optional</sup> <a name="keyVaultUrl" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobSecret.property.keyVaultUrl"></a>
+
+```typescript
+public readonly keyVaultUrl: string;
+```
+
+- *Type:* string
+
+---
+
+##### `value`<sup>Optional</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobSecret.property.value"></a>
+
+```typescript
+public readonly value: string;
+```
+
+- *Type:* string
+
+---
+
+### ContainerAppsJobSecret <a name="ContainerAppsJobSecret" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobSecret: azure_containerapps.ContainerAppsJobSecret = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret.property.identity">identity</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret.property.keyVaultUrl">keyVaultUrl</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret.property.value">value</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret.property.identity"></a>
+
+```typescript
+public readonly identity: string;
+```
+
+- *Type:* string
+
+---
+
+##### `keyVaultUrl`<sup>Optional</sup> <a name="keyVaultUrl" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret.property.keyVaultUrl"></a>
+
+```typescript
+public readonly keyVaultUrl: string;
+```
+
+- *Type:* string
+
+---
+
+##### `value`<sup>Optional</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobSecret.property.value"></a>
+
+```typescript
+public readonly value: string;
+```
+
+- *Type:* string
+
+---
+
+### ContainerAppsJobTemplate <a name="ContainerAppsJobTemplate" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobTemplate"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobTemplate.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobTemplate } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobTemplate: ContainerAppsJobTemplate = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobTemplate.property.containers">containers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobTemplate.property.initContainers">initContainers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobTemplate.property.volumes">volumes</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobVolume[]</code> | *No description.* |
+
+---
+
+##### `containers`<sup>Required</sup> <a name="containers" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobTemplate.property.containers"></a>
+
+```typescript
+public readonly containers: ContainerAppsJobContainer[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer[]
+
+---
+
+##### `initContainers`<sup>Optional</sup> <a name="initContainers" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobTemplate.property.initContainers"></a>
+
+```typescript
+public readonly initContainers: ContainerAppsJobContainer[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer[]
+
+---
+
+##### `volumes`<sup>Optional</sup> <a name="volumes" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobTemplate.property.volumes"></a>
+
+```typescript
+public readonly volumes: ContainerAppsJobVolume[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobVolume[]
+
+---
+
+### ContainerAppsJobTemplate <a name="ContainerAppsJobTemplate" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobTemplate"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobTemplate.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobTemplate: azure_containerapps.ContainerAppsJobTemplate = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobTemplate.property.containers">containers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobTemplate.property.initContainers">initContainers</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobTemplate.property.volumes">volumes</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobVolume[]</code> | *No description.* |
+
+---
+
+##### `containers`<sup>Required</sup> <a name="containers" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobTemplate.property.containers"></a>
+
+```typescript
+public readonly containers: ContainerAppsJobContainer[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer[]
+
+---
+
+##### `initContainers`<sup>Optional</sup> <a name="initContainers" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobTemplate.property.initContainers"></a>
+
+```typescript
+public readonly initContainers: ContainerAppsJobContainer[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobContainer[]
+
+---
+
+##### `volumes`<sup>Optional</sup> <a name="volumes" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobTemplate.property.volumes"></a>
+
+```typescript
+public readonly volumes: ContainerAppsJobVolume[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobVolume[]
+
+---
+
+### ContainerAppsJobVolume <a name="ContainerAppsJobVolume" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobVolume"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobVolume.Initializer"></a>
+
+```typescript
+import { ContainerAppsJobVolume } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobVolume: ContainerAppsJobVolume = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobVolume.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobVolume.property.storageName">storageName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJobVolume.property.storageType">storageType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobVolume.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `storageName`<sup>Optional</sup> <a name="storageName" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobVolume.property.storageName"></a>
+
+```typescript
+public readonly storageName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `storageType`<sup>Optional</sup> <a name="storageType" id="@microsoft/terraform-cdk-constructs.ContainerAppsJobVolume.property.storageType"></a>
+
+```typescript
+public readonly storageType: string;
+```
+
+- *Type:* string
+
+---
+
+### ContainerAppsJobVolume <a name="ContainerAppsJobVolume" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobVolume"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobVolume.Initializer"></a>
+
+```typescript
+import { azure_containerapps } from '@microsoft/terraform-cdk-constructs'
+
+const containerAppsJobVolume: azure_containerapps.ContainerAppsJobVolume = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobVolume.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobVolume.property.storageName">storageName</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobVolume.property.storageType">storageType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobVolume.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `storageName`<sup>Optional</sup> <a name="storageName" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobVolume.property.storageName"></a>
+
+```typescript
+public readonly storageName: string;
+```
+
+- *Type:* string
+
+---
+
+##### `storageType`<sup>Optional</sup> <a name="storageType" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJobVolume.property.storageType"></a>
+
+```typescript
+public readonly storageType: string;
+```
+
+- *Type:* string
+
+---
+
 ### ContainerAppTcpScaleRule <a name="ContainerAppTcpScaleRule" id="@microsoft/terraform-cdk-constructs.ContainerAppTcpScaleRule"></a>
 
 TCP scale rule configuration.
@@ -119075,6 +128745,2282 @@ public readonly read: string;
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 
 Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#read DataAzapiResource#read}
+
+---
+
+### DataExplorerClusterIdentity <a name="DataExplorerClusterIdentity" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterIdentity"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterIdentity.Initializer"></a>
+
+```typescript
+import { DataExplorerClusterIdentity } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerClusterIdentity: DataExplorerClusterIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterIdentity.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: {[ key: string ]: string}}</code> | *No description.* |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: {[ key: string ]: string}};
+```
+
+- *Type:* {[ key: string ]: {[ key: string ]: string}}
+
+---
+
+### DataExplorerClusterIdentity <a name="DataExplorerClusterIdentity" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterIdentity"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterIdentity.Initializer"></a>
+
+```typescript
+import { azure_dataexplorer } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerClusterIdentity: azure_dataexplorer.DataExplorerClusterIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterIdentity.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: {[ key: string ]: string}}</code> | *No description.* |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: {[ key: string ]: string}};
+```
+
+- *Type:* {[ key: string ]: {[ key: string ]: string}}
+
+---
+
+### DataExplorerClusterOptimizedAutoscale <a name="DataExplorerClusterOptimizedAutoscale" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterOptimizedAutoscale"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterOptimizedAutoscale.Initializer"></a>
+
+```typescript
+import { DataExplorerClusterOptimizedAutoscale } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerClusterOptimizedAutoscale: DataExplorerClusterOptimizedAutoscale = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterOptimizedAutoscale.property.isEnabled">isEnabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterOptimizedAutoscale.property.maximum">maximum</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterOptimizedAutoscale.property.minimum">minimum</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterOptimizedAutoscale.property.version">version</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `isEnabled`<sup>Required</sup> <a name="isEnabled" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterOptimizedAutoscale.property.isEnabled"></a>
+
+```typescript
+public readonly isEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `maximum`<sup>Required</sup> <a name="maximum" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterOptimizedAutoscale.property.maximum"></a>
+
+```typescript
+public readonly maximum: number;
+```
+
+- *Type:* number
+
+---
+
+##### `minimum`<sup>Required</sup> <a name="minimum" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterOptimizedAutoscale.property.minimum"></a>
+
+```typescript
+public readonly minimum: number;
+```
+
+- *Type:* number
+
+---
+
+##### `version`<sup>Required</sup> <a name="version" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterOptimizedAutoscale.property.version"></a>
+
+```typescript
+public readonly version: number;
+```
+
+- *Type:* number
+
+---
+
+### DataExplorerClusterOptimizedAutoscale <a name="DataExplorerClusterOptimizedAutoscale" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale.Initializer"></a>
+
+```typescript
+import { azure_dataexplorer } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerClusterOptimizedAutoscale: azure_dataexplorer.DataExplorerClusterOptimizedAutoscale = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale.property.isEnabled">isEnabled</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale.property.maximum">maximum</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale.property.minimum">minimum</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale.property.version">version</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `isEnabled`<sup>Required</sup> <a name="isEnabled" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale.property.isEnabled"></a>
+
+```typescript
+public readonly isEnabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `maximum`<sup>Required</sup> <a name="maximum" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale.property.maximum"></a>
+
+```typescript
+public readonly maximum: number;
+```
+
+- *Type:* number
+
+---
+
+##### `minimum`<sup>Required</sup> <a name="minimum" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale.property.minimum"></a>
+
+```typescript
+public readonly minimum: number;
+```
+
+- *Type:* number
+
+---
+
+##### `version`<sup>Required</sup> <a name="version" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale.property.version"></a>
+
+```typescript
+public readonly version: number;
+```
+
+- *Type:* number
+
+---
+
+### DataExplorerClusterProps <a name="DataExplorerClusterProps" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.Initializer"></a>
+
+```typescript
+import { DataExplorerClusterProps } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerClusterProps: DataExplorerClusterProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.sku">sku</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterSku</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.enableDiskEncryption">enableDiskEncryption</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.enablePurge">enablePurge</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.enableStreamingIngest">enableStreamingIngest</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterIdentity</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.optimizedAutoscale">optimizedAutoscale</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.trustedExternalTenants">trustedExternalTenants</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterTrustedExternalTenant[]</code> | *No description.* |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `sku`<sup>Required</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.sku"></a>
+
+```typescript
+public readonly sku: DataExplorerClusterSku;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterSku
+
+---
+
+##### `enableDiskEncryption`<sup>Optional</sup> <a name="enableDiskEncryption" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.enableDiskEncryption"></a>
+
+```typescript
+public readonly enableDiskEncryption: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enablePurge`<sup>Optional</sup> <a name="enablePurge" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.enablePurge"></a>
+
+```typescript
+public readonly enablePurge: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableStreamingIngest`<sup>Optional</sup> <a name="enableStreamingIngest" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.enableStreamingIngest"></a>
+
+```typescript
+public readonly enableStreamingIngest: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.identity"></a>
+
+```typescript
+public readonly identity: DataExplorerClusterIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterIdentity
+
+---
+
+##### `optimizedAutoscale`<sup>Optional</sup> <a name="optimizedAutoscale" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.optimizedAutoscale"></a>
+
+```typescript
+public readonly optimizedAutoscale: DataExplorerClusterOptimizedAutoscale;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `trustedExternalTenants`<sup>Optional</sup> <a name="trustedExternalTenants" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterProps.property.trustedExternalTenants"></a>
+
+```typescript
+public readonly trustedExternalTenants: DataExplorerClusterTrustedExternalTenant[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterTrustedExternalTenant[]
+
+---
+
+### DataExplorerClusterProps <a name="DataExplorerClusterProps" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.Initializer"></a>
+
+```typescript
+import { azure_dataexplorer } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerClusterProps: azure_dataexplorer.DataExplorerClusterProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.sku">sku</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterSku</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.enableDiskEncryption">enableDiskEncryption</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.enablePurge">enablePurge</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.enableStreamingIngest">enableStreamingIngest</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterIdentity</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.optimizedAutoscale">optimizedAutoscale</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.trustedExternalTenants">trustedExternalTenants</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterTrustedExternalTenant[]</code> | *No description.* |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `sku`<sup>Required</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.sku"></a>
+
+```typescript
+public readonly sku: DataExplorerClusterSku;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterSku
+
+---
+
+##### `enableDiskEncryption`<sup>Optional</sup> <a name="enableDiskEncryption" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.enableDiskEncryption"></a>
+
+```typescript
+public readonly enableDiskEncryption: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enablePurge`<sup>Optional</sup> <a name="enablePurge" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.enablePurge"></a>
+
+```typescript
+public readonly enablePurge: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `enableStreamingIngest`<sup>Optional</sup> <a name="enableStreamingIngest" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.enableStreamingIngest"></a>
+
+```typescript
+public readonly enableStreamingIngest: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.identity"></a>
+
+```typescript
+public readonly identity: DataExplorerClusterIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterIdentity
+
+---
+
+##### `optimizedAutoscale`<sup>Optional</sup> <a name="optimizedAutoscale" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.optimizedAutoscale"></a>
+
+```typescript
+public readonly optimizedAutoscale: DataExplorerClusterOptimizedAutoscale;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterOptimizedAutoscale
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `trustedExternalTenants`<sup>Optional</sup> <a name="trustedExternalTenants" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterProps.property.trustedExternalTenants"></a>
+
+```typescript
+public readonly trustedExternalTenants: DataExplorerClusterTrustedExternalTenant[];
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterTrustedExternalTenant[]
+
+---
+
+### DataExplorerClusterSku <a name="DataExplorerClusterSku" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterSku"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterSku.Initializer"></a>
+
+```typescript
+import { DataExplorerClusterSku } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerClusterSku: DataExplorerClusterSku = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterSku.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterSku.property.tier">tier</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterSku.property.capacity">capacity</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterSku.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `tier`<sup>Required</sup> <a name="tier" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterSku.property.tier"></a>
+
+```typescript
+public readonly tier: string;
+```
+
+- *Type:* string
+
+---
+
+##### `capacity`<sup>Optional</sup> <a name="capacity" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterSku.property.capacity"></a>
+
+```typescript
+public readonly capacity: number;
+```
+
+- *Type:* number
+
+---
+
+### DataExplorerClusterSku <a name="DataExplorerClusterSku" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterSku"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterSku.Initializer"></a>
+
+```typescript
+import { azure_dataexplorer } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerClusterSku: azure_dataexplorer.DataExplorerClusterSku = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterSku.property.name">name</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterSku.property.tier">tier</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterSku.property.capacity">capacity</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterSku.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+---
+
+##### `tier`<sup>Required</sup> <a name="tier" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterSku.property.tier"></a>
+
+```typescript
+public readonly tier: string;
+```
+
+- *Type:* string
+
+---
+
+##### `capacity`<sup>Optional</sup> <a name="capacity" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterSku.property.capacity"></a>
+
+```typescript
+public readonly capacity: number;
+```
+
+- *Type:* number
+
+---
+
+### DataExplorerClusterTrustedExternalTenant <a name="DataExplorerClusterTrustedExternalTenant" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterTrustedExternalTenant"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterTrustedExternalTenant.Initializer"></a>
+
+```typescript
+import { DataExplorerClusterTrustedExternalTenant } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerClusterTrustedExternalTenant: DataExplorerClusterTrustedExternalTenant = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerClusterTrustedExternalTenant.property.value">value</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.DataExplorerClusterTrustedExternalTenant.property.value"></a>
+
+```typescript
+public readonly value: string;
+```
+
+- *Type:* string
+
+---
+
+### DataExplorerClusterTrustedExternalTenant <a name="DataExplorerClusterTrustedExternalTenant" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterTrustedExternalTenant"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterTrustedExternalTenant.Initializer"></a>
+
+```typescript
+import { azure_dataexplorer } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerClusterTrustedExternalTenant: azure_dataexplorer.DataExplorerClusterTrustedExternalTenant = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterTrustedExternalTenant.property.value">value</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerClusterTrustedExternalTenant.property.value"></a>
+
+```typescript
+public readonly value: string;
+```
+
+- *Type:* string
+
+---
+
+### DataExplorerDatabaseProps <a name="DataExplorerDatabaseProps" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.Initializer"></a>
+
+```typescript
+import { DataExplorerDatabaseProps } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerDatabaseProps: DataExplorerDatabaseProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.clusterId">clusterId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.hotCachePeriod">hotCachePeriod</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.kind">kind</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.softDeletePeriod">softDeletePeriod</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `clusterId`<sup>Required</sup> <a name="clusterId" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.clusterId"></a>
+
+```typescript
+public readonly clusterId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `hotCachePeriod`<sup>Optional</sup> <a name="hotCachePeriod" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.hotCachePeriod"></a>
+
+```typescript
+public readonly hotCachePeriod: string;
+```
+
+- *Type:* string
+
+---
+
+##### `kind`<sup>Optional</sup> <a name="kind" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.kind"></a>
+
+```typescript
+public readonly kind: string;
+```
+
+- *Type:* string
+
+---
+
+##### `softDeletePeriod`<sup>Optional</sup> <a name="softDeletePeriod" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabaseProps.property.softDeletePeriod"></a>
+
+```typescript
+public readonly softDeletePeriod: string;
+```
+
+- *Type:* string
+
+---
+
+### DataExplorerDatabaseProps <a name="DataExplorerDatabaseProps" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.Initializer"></a>
+
+```typescript
+import { azure_dataexplorer } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerDatabaseProps: azure_dataexplorer.DataExplorerDatabaseProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.clusterId">clusterId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.hotCachePeriod">hotCachePeriod</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.kind">kind</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.softDeletePeriod">softDeletePeriod</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `clusterId`<sup>Required</sup> <a name="clusterId" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.clusterId"></a>
+
+```typescript
+public readonly clusterId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `hotCachePeriod`<sup>Optional</sup> <a name="hotCachePeriod" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.hotCachePeriod"></a>
+
+```typescript
+public readonly hotCachePeriod: string;
+```
+
+- *Type:* string
+
+---
+
+##### `kind`<sup>Optional</sup> <a name="kind" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.kind"></a>
+
+```typescript
+public readonly kind: string;
+```
+
+- *Type:* string
+
+---
+
+##### `softDeletePeriod`<sup>Optional</sup> <a name="softDeletePeriod" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabaseProps.property.softDeletePeriod"></a>
+
+```typescript
+public readonly softDeletePeriod: string;
+```
+
+- *Type:* string
+
+---
+
+### DataExplorerScriptProps <a name="DataExplorerScriptProps" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.Initializer"></a>
+
+```typescript
+import { DataExplorerScriptProps } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerScriptProps: DataExplorerScriptProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.databaseId">databaseId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.continueOnErrors">continueOnErrors</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.forceUpdateTag">forceUpdateTag</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.scriptContent">scriptContent</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.scriptUrl">scriptUrl</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.scriptUrlSasToken">scriptUrlSasToken</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `databaseId`<sup>Required</sup> <a name="databaseId" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.databaseId"></a>
+
+```typescript
+public readonly databaseId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `continueOnErrors`<sup>Optional</sup> <a name="continueOnErrors" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.continueOnErrors"></a>
+
+```typescript
+public readonly continueOnErrors: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `forceUpdateTag`<sup>Optional</sup> <a name="forceUpdateTag" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.forceUpdateTag"></a>
+
+```typescript
+public readonly forceUpdateTag: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scriptContent`<sup>Optional</sup> <a name="scriptContent" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.scriptContent"></a>
+
+```typescript
+public readonly scriptContent: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scriptUrl`<sup>Optional</sup> <a name="scriptUrl" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.scriptUrl"></a>
+
+```typescript
+public readonly scriptUrl: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scriptUrlSasToken`<sup>Optional</sup> <a name="scriptUrlSasToken" id="@microsoft/terraform-cdk-constructs.DataExplorerScriptProps.property.scriptUrlSasToken"></a>
+
+```typescript
+public readonly scriptUrlSasToken: string;
+```
+
+- *Type:* string
+
+---
+
+### DataExplorerScriptProps <a name="DataExplorerScriptProps" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.Initializer"></a>
+
+```typescript
+import { azure_dataexplorer } from '@microsoft/terraform-cdk-constructs'
+
+const dataExplorerScriptProps: azure_dataexplorer.DataExplorerScriptProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.databaseId">databaseId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.continueOnErrors">continueOnErrors</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.forceUpdateTag">forceUpdateTag</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.scriptContent">scriptContent</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.scriptUrl">scriptUrl</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.scriptUrlSasToken">scriptUrlSasToken</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `databaseId`<sup>Required</sup> <a name="databaseId" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.databaseId"></a>
+
+```typescript
+public readonly databaseId: string;
+```
+
+- *Type:* string
+
+---
+
+##### `continueOnErrors`<sup>Optional</sup> <a name="continueOnErrors" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.continueOnErrors"></a>
+
+```typescript
+public readonly continueOnErrors: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `forceUpdateTag`<sup>Optional</sup> <a name="forceUpdateTag" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.forceUpdateTag"></a>
+
+```typescript
+public readonly forceUpdateTag: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scriptContent`<sup>Optional</sup> <a name="scriptContent" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.scriptContent"></a>
+
+```typescript
+public readonly scriptContent: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scriptUrl`<sup>Optional</sup> <a name="scriptUrl" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.scriptUrl"></a>
+
+```typescript
+public readonly scriptUrl: string;
+```
+
+- *Type:* string
+
+---
+
+##### `scriptUrlSasToken`<sup>Optional</sup> <a name="scriptUrlSasToken" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScriptProps.property.scriptUrlSasToken"></a>
+
+```typescript
+public readonly scriptUrlSasToken: string;
+```
+
+- *Type:* string
 
 ---
 
@@ -133533,6 +145479,1990 @@ public readonly useCommonAlertSchema: boolean;
 - *Default:* false
 
 Whether to use common alert schema.
+
+---
+
+### EventGridEventSubscriptionDeadLetterDestination <a name="EventGridEventSubscriptionDeadLetterDestination" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionDeadLetterDestination"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionDeadLetterDestination.Initializer"></a>
+
+```typescript
+import { EventGridEventSubscriptionDeadLetterDestination } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridEventSubscriptionDeadLetterDestination: EventGridEventSubscriptionDeadLetterDestination = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionDeadLetterDestination.property.endpointType">endpointType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionDeadLetterDestination.property.properties">properties</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+
+---
+
+##### `endpointType`<sup>Required</sup> <a name="endpointType" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionDeadLetterDestination.property.endpointType"></a>
+
+```typescript
+public readonly endpointType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionDeadLetterDestination.property.properties"></a>
+
+```typescript
+public readonly properties: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+### EventGridEventSubscriptionDeadLetterDestination <a name="EventGridEventSubscriptionDeadLetterDestination" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDeadLetterDestination"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDeadLetterDestination.Initializer"></a>
+
+```typescript
+import { azure_eventgrideventsubscription } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridEventSubscriptionDeadLetterDestination: azure_eventgrideventsubscription.EventGridEventSubscriptionDeadLetterDestination = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDeadLetterDestination.property.endpointType">endpointType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDeadLetterDestination.property.properties">properties</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+
+---
+
+##### `endpointType`<sup>Required</sup> <a name="endpointType" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDeadLetterDestination.property.endpointType"></a>
+
+```typescript
+public readonly endpointType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDeadLetterDestination.property.properties"></a>
+
+```typescript
+public readonly properties: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+### EventGridEventSubscriptionDestination <a name="EventGridEventSubscriptionDestination" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionDestination"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionDestination.Initializer"></a>
+
+```typescript
+import { EventGridEventSubscriptionDestination } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridEventSubscriptionDestination: EventGridEventSubscriptionDestination = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionDestination.property.endpointType">endpointType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionDestination.property.properties">properties</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+
+---
+
+##### `endpointType`<sup>Required</sup> <a name="endpointType" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionDestination.property.endpointType"></a>
+
+```typescript
+public readonly endpointType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionDestination.property.properties"></a>
+
+```typescript
+public readonly properties: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+### EventGridEventSubscriptionDestination <a name="EventGridEventSubscriptionDestination" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDestination"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDestination.Initializer"></a>
+
+```typescript
+import { azure_eventgrideventsubscription } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridEventSubscriptionDestination: azure_eventgrideventsubscription.EventGridEventSubscriptionDestination = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDestination.property.endpointType">endpointType</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDestination.property.properties">properties</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+
+---
+
+##### `endpointType`<sup>Required</sup> <a name="endpointType" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDestination.property.endpointType"></a>
+
+```typescript
+public readonly endpointType: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Optional</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDestination.property.properties"></a>
+
+```typescript
+public readonly properties: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+### EventGridEventSubscriptionFilter <a name="EventGridEventSubscriptionFilter" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionFilter"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionFilter.Initializer"></a>
+
+```typescript
+import { EventGridEventSubscriptionFilter } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridEventSubscriptionFilter: EventGridEventSubscriptionFilter = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionFilter.property.advancedFilters">advancedFilters</a></code> | <code>any[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionFilter.property.includedEventTypes">includedEventTypes</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionFilter.property.isSubjectCaseSensitive">isSubjectCaseSensitive</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionFilter.property.subjectBeginsWith">subjectBeginsWith</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionFilter.property.subjectEndsWith">subjectEndsWith</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `advancedFilters`<sup>Optional</sup> <a name="advancedFilters" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionFilter.property.advancedFilters"></a>
+
+```typescript
+public readonly advancedFilters: any[];
+```
+
+- *Type:* any[]
+
+---
+
+##### `includedEventTypes`<sup>Optional</sup> <a name="includedEventTypes" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionFilter.property.includedEventTypes"></a>
+
+```typescript
+public readonly includedEventTypes: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `isSubjectCaseSensitive`<sup>Optional</sup> <a name="isSubjectCaseSensitive" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionFilter.property.isSubjectCaseSensitive"></a>
+
+```typescript
+public readonly isSubjectCaseSensitive: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `subjectBeginsWith`<sup>Optional</sup> <a name="subjectBeginsWith" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionFilter.property.subjectBeginsWith"></a>
+
+```typescript
+public readonly subjectBeginsWith: string;
+```
+
+- *Type:* string
+
+---
+
+##### `subjectEndsWith`<sup>Optional</sup> <a name="subjectEndsWith" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionFilter.property.subjectEndsWith"></a>
+
+```typescript
+public readonly subjectEndsWith: string;
+```
+
+- *Type:* string
+
+---
+
+### EventGridEventSubscriptionFilter <a name="EventGridEventSubscriptionFilter" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter.Initializer"></a>
+
+```typescript
+import { azure_eventgrideventsubscription } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridEventSubscriptionFilter: azure_eventgrideventsubscription.EventGridEventSubscriptionFilter = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter.property.advancedFilters">advancedFilters</a></code> | <code>any[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter.property.includedEventTypes">includedEventTypes</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter.property.isSubjectCaseSensitive">isSubjectCaseSensitive</a></code> | <code>boolean</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter.property.subjectBeginsWith">subjectBeginsWith</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter.property.subjectEndsWith">subjectEndsWith</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `advancedFilters`<sup>Optional</sup> <a name="advancedFilters" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter.property.advancedFilters"></a>
+
+```typescript
+public readonly advancedFilters: any[];
+```
+
+- *Type:* any[]
+
+---
+
+##### `includedEventTypes`<sup>Optional</sup> <a name="includedEventTypes" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter.property.includedEventTypes"></a>
+
+```typescript
+public readonly includedEventTypes: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `isSubjectCaseSensitive`<sup>Optional</sup> <a name="isSubjectCaseSensitive" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter.property.isSubjectCaseSensitive"></a>
+
+```typescript
+public readonly isSubjectCaseSensitive: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+##### `subjectBeginsWith`<sup>Optional</sup> <a name="subjectBeginsWith" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter.property.subjectBeginsWith"></a>
+
+```typescript
+public readonly subjectBeginsWith: string;
+```
+
+- *Type:* string
+
+---
+
+##### `subjectEndsWith`<sup>Optional</sup> <a name="subjectEndsWith" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter.property.subjectEndsWith"></a>
+
+```typescript
+public readonly subjectEndsWith: string;
+```
+
+- *Type:* string
+
+---
+
+### EventGridEventSubscriptionProps <a name="EventGridEventSubscriptionProps" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.Initializer"></a>
+
+```typescript
+import { EventGridEventSubscriptionProps } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridEventSubscriptionProps: EventGridEventSubscriptionProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.destination">destination</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDestination</code> | Event destination configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.scope">scope</a></code> | <code>string</code> | The scope resource ID (parent) for this event subscription. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.deadLetterDestination">deadLetterDestination</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDeadLetterDestination</code> | Dead letter destination. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.eventDeliverySchema">eventDeliverySchema</a></code> | <code>string</code> | Event delivery schema (default: EventGridSchema). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.expirationTimeUtc">expirationTimeUtc</a></code> | <code>string</code> | Expiration time in UTC. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.filter">filter</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter</code> | Filter criteria. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.labels">labels</a></code> | <code>string[]</code> | Labels. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.retryPolicy">retryPolicy</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionRetryPolicy</code> | Retry policy. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `destination`<sup>Required</sup> <a name="destination" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.destination"></a>
+
+```typescript
+public readonly destination: EventGridEventSubscriptionDestination;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDestination
+
+Event destination configuration.
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.scope"></a>
+
+```typescript
+public readonly scope: string;
+```
+
+- *Type:* string
+
+The scope resource ID (parent) for this event subscription.
+
+---
+
+##### `deadLetterDestination`<sup>Optional</sup> <a name="deadLetterDestination" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.deadLetterDestination"></a>
+
+```typescript
+public readonly deadLetterDestination: EventGridEventSubscriptionDeadLetterDestination;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDeadLetterDestination
+
+Dead letter destination.
+
+---
+
+##### `eventDeliverySchema`<sup>Optional</sup> <a name="eventDeliverySchema" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.eventDeliverySchema"></a>
+
+```typescript
+public readonly eventDeliverySchema: string;
+```
+
+- *Type:* string
+
+Event delivery schema (default: EventGridSchema).
+
+---
+
+##### `expirationTimeUtc`<sup>Optional</sup> <a name="expirationTimeUtc" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.expirationTimeUtc"></a>
+
+```typescript
+public readonly expirationTimeUtc: string;
+```
+
+- *Type:* string
+
+Expiration time in UTC.
+
+---
+
+##### `filter`<sup>Optional</sup> <a name="filter" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.filter"></a>
+
+```typescript
+public readonly filter: EventGridEventSubscriptionFilter;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter
+
+Filter criteria.
+
+---
+
+##### `labels`<sup>Optional</sup> <a name="labels" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.labels"></a>
+
+```typescript
+public readonly labels: string[];
+```
+
+- *Type:* string[]
+
+Labels.
+
+---
+
+##### `retryPolicy`<sup>Optional</sup> <a name="retryPolicy" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionProps.property.retryPolicy"></a>
+
+```typescript
+public readonly retryPolicy: EventGridEventSubscriptionRetryPolicy;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionRetryPolicy
+
+Retry policy.
+
+---
+
+### EventGridEventSubscriptionProps <a name="EventGridEventSubscriptionProps" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.Initializer"></a>
+
+```typescript
+import { azure_eventgrideventsubscription } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridEventSubscriptionProps: azure_eventgrideventsubscription.EventGridEventSubscriptionProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.destination">destination</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDestination</code> | Event destination configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.scope">scope</a></code> | <code>string</code> | The scope resource ID (parent) for this event subscription. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.deadLetterDestination">deadLetterDestination</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDeadLetterDestination</code> | Dead letter destination. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.eventDeliverySchema">eventDeliverySchema</a></code> | <code>string</code> | Event delivery schema (default: EventGridSchema). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.expirationTimeUtc">expirationTimeUtc</a></code> | <code>string</code> | Expiration time in UTC. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.filter">filter</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter</code> | Filter criteria. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.labels">labels</a></code> | <code>string[]</code> | Labels. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.retryPolicy">retryPolicy</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionRetryPolicy</code> | Retry policy. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `destination`<sup>Required</sup> <a name="destination" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.destination"></a>
+
+```typescript
+public readonly destination: EventGridEventSubscriptionDestination;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDestination
+
+Event destination configuration.
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.scope"></a>
+
+```typescript
+public readonly scope: string;
+```
+
+- *Type:* string
+
+The scope resource ID (parent) for this event subscription.
+
+---
+
+##### `deadLetterDestination`<sup>Optional</sup> <a name="deadLetterDestination" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.deadLetterDestination"></a>
+
+```typescript
+public readonly deadLetterDestination: EventGridEventSubscriptionDeadLetterDestination;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionDeadLetterDestination
+
+Dead letter destination.
+
+---
+
+##### `eventDeliverySchema`<sup>Optional</sup> <a name="eventDeliverySchema" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.eventDeliverySchema"></a>
+
+```typescript
+public readonly eventDeliverySchema: string;
+```
+
+- *Type:* string
+
+Event delivery schema (default: EventGridSchema).
+
+---
+
+##### `expirationTimeUtc`<sup>Optional</sup> <a name="expirationTimeUtc" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.expirationTimeUtc"></a>
+
+```typescript
+public readonly expirationTimeUtc: string;
+```
+
+- *Type:* string
+
+Expiration time in UTC.
+
+---
+
+##### `filter`<sup>Optional</sup> <a name="filter" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.filter"></a>
+
+```typescript
+public readonly filter: EventGridEventSubscriptionFilter;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionFilter
+
+Filter criteria.
+
+---
+
+##### `labels`<sup>Optional</sup> <a name="labels" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.labels"></a>
+
+```typescript
+public readonly labels: string[];
+```
+
+- *Type:* string[]
+
+Labels.
+
+---
+
+##### `retryPolicy`<sup>Optional</sup> <a name="retryPolicy" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionProps.property.retryPolicy"></a>
+
+```typescript
+public readonly retryPolicy: EventGridEventSubscriptionRetryPolicy;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionRetryPolicy
+
+Retry policy.
+
+---
+
+### EventGridEventSubscriptionRetryPolicy <a name="EventGridEventSubscriptionRetryPolicy" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionRetryPolicy"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionRetryPolicy.Initializer"></a>
+
+```typescript
+import { EventGridEventSubscriptionRetryPolicy } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridEventSubscriptionRetryPolicy: EventGridEventSubscriptionRetryPolicy = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionRetryPolicy.property.eventTimeToLiveInMinutes">eventTimeToLiveInMinutes</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionRetryPolicy.property.maxDeliveryAttempts">maxDeliveryAttempts</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `eventTimeToLiveInMinutes`<sup>Optional</sup> <a name="eventTimeToLiveInMinutes" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionRetryPolicy.property.eventTimeToLiveInMinutes"></a>
+
+```typescript
+public readonly eventTimeToLiveInMinutes: number;
+```
+
+- *Type:* number
+
+---
+
+##### `maxDeliveryAttempts`<sup>Optional</sup> <a name="maxDeliveryAttempts" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscriptionRetryPolicy.property.maxDeliveryAttempts"></a>
+
+```typescript
+public readonly maxDeliveryAttempts: number;
+```
+
+- *Type:* number
+
+---
+
+### EventGridEventSubscriptionRetryPolicy <a name="EventGridEventSubscriptionRetryPolicy" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionRetryPolicy"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionRetryPolicy.Initializer"></a>
+
+```typescript
+import { azure_eventgrideventsubscription } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridEventSubscriptionRetryPolicy: azure_eventgrideventsubscription.EventGridEventSubscriptionRetryPolicy = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionRetryPolicy.property.eventTimeToLiveInMinutes">eventTimeToLiveInMinutes</a></code> | <code>number</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionRetryPolicy.property.maxDeliveryAttempts">maxDeliveryAttempts</a></code> | <code>number</code> | *No description.* |
+
+---
+
+##### `eventTimeToLiveInMinutes`<sup>Optional</sup> <a name="eventTimeToLiveInMinutes" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionRetryPolicy.property.eventTimeToLiveInMinutes"></a>
+
+```typescript
+public readonly eventTimeToLiveInMinutes: number;
+```
+
+- *Type:* number
+
+---
+
+##### `maxDeliveryAttempts`<sup>Optional</sup> <a name="maxDeliveryAttempts" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscriptionRetryPolicy.property.maxDeliveryAttempts"></a>
+
+```typescript
+public readonly maxDeliveryAttempts: number;
+```
+
+- *Type:* number
+
+---
+
+### EventGridSystemTopicBody <a name="EventGridSystemTopicBody" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicBody"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicBody.Initializer"></a>
+
+```typescript
+import { EventGridSystemTopicBody } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridSystemTopicBody: EventGridSystemTopicBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBodyProperties</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicBody.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicBody.property.properties"></a>
+
+```typescript
+public readonly properties: EventGridSystemTopicBodyProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBodyProperties
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicBody.property.identity"></a>
+
+```typescript
+public readonly identity: EventGridSystemTopicIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### EventGridSystemTopicBody <a name="EventGridSystemTopicBody" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBody"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBody.Initializer"></a>
+
+```typescript
+import { azure_eventgridsystemtopic } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridSystemTopicBody: azure_eventgridsystemtopic.EventGridSystemTopicBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBody.property.properties">properties</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBodyProperties</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBody.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `properties`<sup>Required</sup> <a name="properties" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBody.property.properties"></a>
+
+```typescript
+public readonly properties: EventGridSystemTopicBodyProperties;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBodyProperties
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBody.property.identity"></a>
+
+```typescript
+public readonly identity: EventGridSystemTopicIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### EventGridSystemTopicBodyProperties <a name="EventGridSystemTopicBodyProperties" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicBodyProperties"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicBodyProperties.Initializer"></a>
+
+```typescript
+import { EventGridSystemTopicBodyProperties } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridSystemTopicBodyProperties: EventGridSystemTopicBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicBodyProperties.property.source">source</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicBodyProperties.property.topicType">topicType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `source`<sup>Required</sup> <a name="source" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicBodyProperties.property.source"></a>
+
+```typescript
+public readonly source: string;
+```
+
+- *Type:* string
+
+---
+
+##### `topicType`<sup>Required</sup> <a name="topicType" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicBodyProperties.property.topicType"></a>
+
+```typescript
+public readonly topicType: string;
+```
+
+- *Type:* string
+
+---
+
+### EventGridSystemTopicBodyProperties <a name="EventGridSystemTopicBodyProperties" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBodyProperties"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBodyProperties.Initializer"></a>
+
+```typescript
+import { azure_eventgridsystemtopic } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridSystemTopicBodyProperties: azure_eventgridsystemtopic.EventGridSystemTopicBodyProperties = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBodyProperties.property.source">source</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBodyProperties.property.topicType">topicType</a></code> | <code>string</code> | *No description.* |
+
+---
+
+##### `source`<sup>Required</sup> <a name="source" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBodyProperties.property.source"></a>
+
+```typescript
+public readonly source: string;
+```
+
+- *Type:* string
+
+---
+
+##### `topicType`<sup>Required</sup> <a name="topicType" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicBodyProperties.property.topicType"></a>
+
+```typescript
+public readonly topicType: string;
+```
+
+- *Type:* string
+
+---
+
+### EventGridSystemTopicIdentity <a name="EventGridSystemTopicIdentity" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicIdentity"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicIdentity.Initializer"></a>
+
+```typescript
+import { EventGridSystemTopicIdentity } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridSystemTopicIdentity: EventGridSystemTopicIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicIdentity.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+### EventGridSystemTopicIdentity <a name="EventGridSystemTopicIdentity" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity.Initializer"></a>
+
+```typescript
+import { azure_eventgridsystemtopic } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridSystemTopicIdentity: azure_eventgridsystemtopic.EventGridSystemTopicIdentity = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity.property.type">type</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity.property.userAssignedIdentities">userAssignedIdentities</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+
+---
+
+##### `type`<sup>Required</sup> <a name="type" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity.property.type"></a>
+
+```typescript
+public readonly type: string;
+```
+
+- *Type:* string
+
+---
+
+##### `userAssignedIdentities`<sup>Optional</sup> <a name="userAssignedIdentities" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity.property.userAssignedIdentities"></a>
+
+```typescript
+public readonly userAssignedIdentities: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+### EventGridSystemTopicProps <a name="EventGridSystemTopicProps" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.Initializer"></a>
+
+```typescript
+import { EventGridSystemTopicProps } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridSystemTopicProps: EventGridSystemTopicProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.source">source</a></code> | <code>string</code> | Source Azure resource ID for the system topic. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.topicType">topicType</a></code> | <code>string</code> | Topic type (e.g., "Microsoft.Storage.StorageAccounts"). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity</code> | Managed identity configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `source`<sup>Required</sup> <a name="source" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.source"></a>
+
+```typescript
+public readonly source: string;
+```
+
+- *Type:* string
+
+Source Azure resource ID for the system topic.
+
+---
+
+##### `topicType`<sup>Required</sup> <a name="topicType" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.topicType"></a>
+
+```typescript
+public readonly topicType: string;
+```
+
+- *Type:* string
+
+Topic type (e.g., "Microsoft.Storage.StorageAccounts").
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.identity"></a>
+
+```typescript
+public readonly identity: EventGridSystemTopicIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity
+
+Managed identity configuration.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopicProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID.
+
+---
+
+### EventGridSystemTopicProps <a name="EventGridSystemTopicProps" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.Initializer"></a>
+
+```typescript
+import { azure_eventgridsystemtopic } from '@microsoft/terraform-cdk-constructs'
+
+const eventGridSystemTopicProps: azure_eventgridsystemtopic.EventGridSystemTopicProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.source">source</a></code> | <code>string</code> | Source Azure resource ID for the system topic. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.topicType">topicType</a></code> | <code>string</code> | Topic type (e.g., "Microsoft.Storage.StorageAccounts"). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.identity">identity</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity</code> | Managed identity configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `source`<sup>Required</sup> <a name="source" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.source"></a>
+
+```typescript
+public readonly source: string;
+```
+
+- *Type:* string
+
+Source Azure resource ID for the system topic.
+
+---
+
+##### `topicType`<sup>Required</sup> <a name="topicType" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.topicType"></a>
+
+```typescript
+public readonly topicType: string;
+```
+
+- *Type:* string
+
+Topic type (e.g., "Microsoft.Storage.StorageAccounts").
+
+---
+
+##### `identity`<sup>Optional</sup> <a name="identity" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.identity"></a>
+
+```typescript
+public readonly identity: EventGridSystemTopicIdentity;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicIdentity
+
+Managed identity configuration.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopicProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID.
 
 ---
 
@@ -183200,6 +197130,730 @@ Virtual network resource ID.
 
 ---
 
+### StorageBlobContainerImmutableStorageWithVersioning <a name="StorageBlobContainerImmutableStorageWithVersioning" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerImmutableStorageWithVersioning"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerImmutableStorageWithVersioning.Initializer"></a>
+
+```typescript
+import { StorageBlobContainerImmutableStorageWithVersioning } from '@microsoft/terraform-cdk-constructs'
+
+const storageBlobContainerImmutableStorageWithVersioning: StorageBlobContainerImmutableStorageWithVersioning = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerImmutableStorageWithVersioning.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Required</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerImmutableStorageWithVersioning.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### StorageBlobContainerImmutableStorageWithVersioning <a name="StorageBlobContainerImmutableStorageWithVersioning" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerImmutableStorageWithVersioning"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerImmutableStorageWithVersioning.Initializer"></a>
+
+```typescript
+import { azure_storageblobcontainer } from '@microsoft/terraform-cdk-constructs'
+
+const storageBlobContainerImmutableStorageWithVersioning: azure_storageblobcontainer.StorageBlobContainerImmutableStorageWithVersioning = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerImmutableStorageWithVersioning.property.enabled">enabled</a></code> | <code>boolean</code> | *No description.* |
+
+---
+
+##### `enabled`<sup>Required</sup> <a name="enabled" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerImmutableStorageWithVersioning.property.enabled"></a>
+
+```typescript
+public readonly enabled: boolean;
+```
+
+- *Type:* boolean
+
+---
+
+### StorageBlobContainerProps <a name="StorageBlobContainerProps" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.Initializer"></a>
+
+```typescript
+import { StorageBlobContainerProps } from '@microsoft/terraform-cdk-constructs'
+
+const storageBlobContainerProps: StorageBlobContainerProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.storageAccountId">storageAccountId</a></code> | <code>string</code> | The storage account ID (parent resource). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.defaultEncryptionScope">defaultEncryptionScope</a></code> | <code>string</code> | Default encryption scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.denyEncryptionScopeOverride">denyEncryptionScopeOverride</a></code> | <code>boolean</code> | Deny encryption scope override. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.immutableStorageWithVersioning">immutableStorageWithVersioning</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerImmutableStorageWithVersioning</code> | Immutable storage with versioning. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.metadata">metadata</a></code> | <code>{[ key: string ]: string}</code> | Container metadata. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.publicAccess">publicAccess</a></code> | <code>string</code> | Public access level. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `storageAccountId`<sup>Required</sup> <a name="storageAccountId" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.storageAccountId"></a>
+
+```typescript
+public readonly storageAccountId: string;
+```
+
+- *Type:* string
+
+The storage account ID (parent resource).
+
+---
+
+##### `defaultEncryptionScope`<sup>Optional</sup> <a name="defaultEncryptionScope" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.defaultEncryptionScope"></a>
+
+```typescript
+public readonly defaultEncryptionScope: string;
+```
+
+- *Type:* string
+
+Default encryption scope.
+
+---
+
+##### `denyEncryptionScopeOverride`<sup>Optional</sup> <a name="denyEncryptionScopeOverride" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.denyEncryptionScopeOverride"></a>
+
+```typescript
+public readonly denyEncryptionScopeOverride: boolean;
+```
+
+- *Type:* boolean
+
+Deny encryption scope override.
+
+---
+
+##### `immutableStorageWithVersioning`<sup>Optional</sup> <a name="immutableStorageWithVersioning" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.immutableStorageWithVersioning"></a>
+
+```typescript
+public readonly immutableStorageWithVersioning: StorageBlobContainerImmutableStorageWithVersioning;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerImmutableStorageWithVersioning
+
+Immutable storage with versioning.
+
+---
+
+##### `metadata`<sup>Optional</sup> <a name="metadata" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Container metadata.
+
+---
+
+##### `publicAccess`<sup>Optional</sup> <a name="publicAccess" id="@microsoft/terraform-cdk-constructs.StorageBlobContainerProps.property.publicAccess"></a>
+
+```typescript
+public readonly publicAccess: string;
+```
+
+- *Type:* string
+
+Public access level.
+
+Default: "None"
+
+---
+
+### StorageBlobContainerProps <a name="StorageBlobContainerProps" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.Initializer"></a>
+
+```typescript
+import { azure_storageblobcontainer } from '@microsoft/terraform-cdk-constructs'
+
+const storageBlobContainerProps: azure_storageblobcontainer.StorageBlobContainerProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.storageAccountId">storageAccountId</a></code> | <code>string</code> | The storage account ID (parent resource). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.defaultEncryptionScope">defaultEncryptionScope</a></code> | <code>string</code> | Default encryption scope. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.denyEncryptionScopeOverride">denyEncryptionScopeOverride</a></code> | <code>boolean</code> | Deny encryption scope override. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.immutableStorageWithVersioning">immutableStorageWithVersioning</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerImmutableStorageWithVersioning</code> | Immutable storage with versioning. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.metadata">metadata</a></code> | <code>{[ key: string ]: string}</code> | Container metadata. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.publicAccess">publicAccess</a></code> | <code>string</code> | Public access level. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `storageAccountId`<sup>Required</sup> <a name="storageAccountId" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.storageAccountId"></a>
+
+```typescript
+public readonly storageAccountId: string;
+```
+
+- *Type:* string
+
+The storage account ID (parent resource).
+
+---
+
+##### `defaultEncryptionScope`<sup>Optional</sup> <a name="defaultEncryptionScope" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.defaultEncryptionScope"></a>
+
+```typescript
+public readonly defaultEncryptionScope: string;
+```
+
+- *Type:* string
+
+Default encryption scope.
+
+---
+
+##### `denyEncryptionScopeOverride`<sup>Optional</sup> <a name="denyEncryptionScopeOverride" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.denyEncryptionScopeOverride"></a>
+
+```typescript
+public readonly denyEncryptionScopeOverride: boolean;
+```
+
+- *Type:* boolean
+
+Deny encryption scope override.
+
+---
+
+##### `immutableStorageWithVersioning`<sup>Optional</sup> <a name="immutableStorageWithVersioning" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.immutableStorageWithVersioning"></a>
+
+```typescript
+public readonly immutableStorageWithVersioning: StorageBlobContainerImmutableStorageWithVersioning;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerImmutableStorageWithVersioning
+
+Immutable storage with versioning.
+
+---
+
+##### `metadata`<sup>Optional</sup> <a name="metadata" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.metadata"></a>
+
+```typescript
+public readonly metadata: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Container metadata.
+
+---
+
+##### `publicAccess`<sup>Optional</sup> <a name="publicAccess" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainerProps.property.publicAccess"></a>
+
+```typescript
+public readonly publicAccess: string;
+```
+
+- *Type:* string
+
+Public access level.
+
+Default: "None"
+
+---
+
 ### SubnetDelegation <a name="SubnetDelegation" id="@microsoft/terraform-cdk-constructs.SubnetDelegation"></a>
 
 Delegation configuration for Subnet.
@@ -186043,6 +200697,618 @@ public readonly update: string;
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
 Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#update UpdateResource#update}
+
+---
+
+### UserAssignedIdentityBody <a name="UserAssignedIdentityBody" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityBody"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityBody.Initializer"></a>
+
+```typescript
+import { UserAssignedIdentityBody } from '@microsoft/terraform-cdk-constructs'
+
+const userAssignedIdentityBody: UserAssignedIdentityBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### UserAssignedIdentityBody <a name="UserAssignedIdentityBody" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityBody"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityBody.Initializer"></a>
+
+```typescript
+import { azure_userassignedidentity } from '@microsoft/terraform-cdk-constructs'
+
+const userAssignedIdentityBody: azure_userassignedidentity.UserAssignedIdentityBody = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityBody.property.location">location</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityBody.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+
+---
+
+##### `location`<sup>Required</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityBody.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityBody.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
+### UserAssignedIdentityProps <a name="UserAssignedIdentityProps" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.Initializer"></a>
+
+```typescript
+import { UserAssignedIdentityProps } from '@microsoft/terraform-cdk-constructs'
+
+const userAssignedIdentityProps: UserAssignedIdentityProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the identity will be created. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentityProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the identity will be created.
+
+---
+
+### UserAssignedIdentityProps <a name="UserAssignedIdentityProps" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps"></a>
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.Initializer"></a>
+
+```typescript
+import { azure_userassignedidentity } from '@microsoft/terraform-cdk-constructs'
+
+const userAssignedIdentityProps: azure_userassignedidentity.UserAssignedIdentityProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the identity will be created. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentityProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the identity will be created.
 
 ---
 
