@@ -37,11 +37,47 @@ export interface ContainerAppsJobSecret {
   readonly identity?: string;
 }
 
+export interface ContainerAppsJobScaleRuleAuth {
+  readonly secretRef: string;
+  readonly triggerParameter: string;
+}
+
 export interface ContainerAppsJobScaleRule {
   readonly name: string;
   readonly type: string;
   readonly metadata?: { [key: string]: string };
-  readonly auth?: Array<{ secretRef: string; triggerParameter: string }>;
+  readonly auth?: ContainerAppsJobScaleRuleAuth[];
+}
+
+export interface ContainerAppsJobScheduleTriggerConfig {
+  readonly cronExpression: string;
+  readonly parallelism?: number;
+  readonly replicaCompletionCount?: number;
+}
+
+export interface ContainerAppsJobManualTriggerConfig {
+  readonly parallelism?: number;
+  readonly replicaCompletionCount?: number;
+}
+
+export interface ContainerAppsJobEventTriggerScale {
+  readonly maxExecutions?: number;
+  readonly minExecutions?: number;
+  readonly pollingInterval?: number;
+  readonly rules?: ContainerAppsJobScaleRule[];
+}
+
+export interface ContainerAppsJobEventTriggerConfig {
+  readonly parallelism?: number;
+  readonly replicaCompletionCount?: number;
+  readonly scale?: ContainerAppsJobEventTriggerScale;
+}
+
+export interface ContainerAppsJobRegistry {
+  readonly server: string;
+  readonly username?: string;
+  readonly passwordSecretRef?: string;
+  readonly identity?: string;
 }
 
 export interface ContainerAppsJobConfiguration {
@@ -52,51 +88,32 @@ export interface ContainerAppsJobConfiguration {
   /** Maximum number of retries */
   readonly replicaRetryLimit?: number;
   /** Cron expression for scheduled jobs */
-  readonly scheduleTriggerConfig?: {
-    readonly cronExpression: string;
-    readonly parallelism?: number;
-    readonly replicaCompletionCount?: number;
-  };
+  readonly scheduleTriggerConfig?: ContainerAppsJobScheduleTriggerConfig;
   /** Manual trigger config */
-  readonly manualTriggerConfig?: {
-    readonly parallelism?: number;
-    readonly replicaCompletionCount?: number;
-  };
+  readonly manualTriggerConfig?: ContainerAppsJobManualTriggerConfig;
   /** Event trigger config */
-  readonly eventTriggerConfig?: {
-    readonly parallelism?: number;
-    readonly replicaCompletionCount?: number;
-    readonly scale?: {
-      readonly maxExecutions?: number;
-      readonly minExecutions?: number;
-      readonly pollingInterval?: number;
-      readonly rules?: ContainerAppsJobScaleRule[];
-    };
-  };
+  readonly eventTriggerConfig?: ContainerAppsJobEventTriggerConfig;
   /** Secrets */
   readonly secrets?: ContainerAppsJobSecret[];
   /** Registries */
-  readonly registries?: Array<{
-    readonly server: string;
-    readonly username?: string;
-    readonly passwordSecretRef?: string;
-    readonly identity?: string;
-  }>;
+  readonly registries?: ContainerAppsJobRegistry[];
+}
+
+export interface ContainerAppsJobVolume {
+  readonly name: string;
+  readonly storageType?: string;
+  readonly storageName?: string;
 }
 
 export interface ContainerAppsJobTemplate {
   readonly containers: ContainerAppsJobContainer[];
   readonly initContainers?: ContainerAppsJobContainer[];
-  readonly volumes?: Array<{
-    readonly name: string;
-    readonly storageType?: string;
-    readonly storageName?: string;
-  }>;
+  readonly volumes?: ContainerAppsJobVolume[];
 }
 
 export interface ContainerAppsJobIdentity {
   readonly type: string;
-  readonly userAssignedIdentities?: { [key: string]: Record<string, never> };
+  readonly userAssignedIdentities?: { [key: string]: { [key: string]: string } };
 }
 
 export interface ContainerAppsJobProps extends AzapiResourceProps {
