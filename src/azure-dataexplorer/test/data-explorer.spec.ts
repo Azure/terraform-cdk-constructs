@@ -143,7 +143,6 @@ describe("DataExplorer - Unified Implementation", () => {
       const cluster = new DataExplorerCluster(stack, "BodyCluster", props);
       const body = (cluster as any).createResourceBody(props);
 
-      expect(body.location).toBe("eastus");
       expect(body.sku).toEqual(clusterProps.sku);
       expect(body.properties.enableStreamingIngest).toBe(true);
     });
@@ -166,6 +165,7 @@ describe("DataExplorer - Unified Implementation", () => {
   describe("DataExplorerDatabase", () => {
     const databaseProps: DataExplorerDatabaseProps = {
       name: "test-db",
+      location: "eastus",
       clusterId:
         "/subscriptions/test-sub/resourceGroups/test-rg/providers/Microsoft.Kusto/clusters/test-cluster",
       kind: "ReadWrite",
@@ -186,6 +186,7 @@ describe("DataExplorer - Unified Implementation", () => {
     it("should default kind to ReadWrite", () => {
       const database = new DataExplorerDatabase(stack, "DefaultKind", {
         name: "default-kind-db",
+        location: "eastus",
         clusterId: databaseProps.clusterId,
       });
       const body = (database as any).createResourceBody(database.props);
@@ -206,14 +207,14 @@ describe("DataExplorer - Unified Implementation", () => {
       expect(database.versionConfig.supportLevel).toBe(VersionSupportLevel.ACTIVE);
     });
 
-    it("should not require location and should resolve parent ID correctly", () => {
+    it("should require location and should resolve parent ID correctly", () => {
       const database = new DataExplorerDatabase(
         stack,
         "ParentDatabase",
         databaseProps,
       );
 
-      expect((database as any).requiresLocation()).toBe(false);
+      expect((database as any).requiresLocation()).toBe(true);
       expect((database as any).resolveParentId(databaseProps)).toBe(
         databaseProps.clusterId,
       );
@@ -318,6 +319,7 @@ describe("DataExplorer - Unified Implementation", () => {
 
       const database = new DataExplorerDatabase(stack, "SynthDatabase", {
         name: "synth-db",
+        location: "eastus",
         clusterId: cluster.id,
         kind: "ReadWrite",
       });
