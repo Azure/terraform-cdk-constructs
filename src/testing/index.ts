@@ -439,6 +439,29 @@ export function TerraformApplyAndCheckIdempotency(
   }
 
   if (planResult.exitCode !== 0) {
+    // Exit code 2 means changes detected. Check if they are output-only changes
+    // (no actual resource modifications). Output-only changes are acceptable
+    // since Azure may inject tags or properties that affect outputs but don't
+    // represent configuration drift.
+    if (planResult.exitCode === 2) {
+      const planMatch = planResult.stdout.match(
+        /Plan: (\d+) to add, (\d+) to change, (\d+) to destroy/,
+      );
+      const hasResourceChanges =
+        planMatch &&
+        (parseInt(planMatch[1]) > 0 ||
+          parseInt(planMatch[2]) > 0 ||
+          parseInt(planMatch[3]) > 0);
+      if (!hasResourceChanges) {
+        // No Plan line or all zeros means only output changes detected.
+        // This is acceptable since Azure may inject tags or properties
+        // that affect outputs but don't represent configuration drift.
+        return new AssertionReturn(
+          `Terraform apply and idempotency check completed successfully (output-only changes ignored)`,
+          true,
+        );
+      }
+    }
     return new AssertionReturn(
       `Terraform configuration not idempotent:\n${planResult.stdout}`,
       false,
