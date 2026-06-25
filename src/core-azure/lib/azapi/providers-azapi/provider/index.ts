@@ -324,7 +324,7 @@ export class AzapiProvider extends cdktn.TerraformProvider {
       terraformGeneratorMetadata: {
         providerName: 'azapi',
         providerVersion: '2.7.0',
-        providerVersionConstraint: '~> 2.7.0'
+        providerVersionConstraint: '~> 2.7'
       },
       terraformProviderSource: 'Azure/azapi'
     });

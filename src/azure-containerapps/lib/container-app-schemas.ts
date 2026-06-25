@@ -351,7 +351,7 @@ export const CONTAINER_APP_SCHEMA_2025_07_01: ApiSchema = {
 /**
  * API Schema for Container App version 2025-02-02-preview
  *
- * This is the latest version supported by the azapi provider ~> 2.7.0.
+ * This is the latest version supported by the azapi provider ~> 2.7.
  * It has the same properties as 2024-03-01 with additional preview features.
  */
 export const CONTAINER_APP_SCHEMA_2025_02_02_PREVIEW: ApiSchema = {
