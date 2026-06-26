@@ -152,7 +152,7 @@ export class DataAzapiClientConfig extends cdktn.TerraformDataSource {
       terraformGeneratorMetadata: {
         providerName: 'azapi',
         providerVersion: '2.7.0',
-        providerVersionConstraint: '~> 2.7.0'
+        providerVersionConstraint: '~> 2.7'
       },
       provider: config.provider,
       dependsOn: config.dependsOn,

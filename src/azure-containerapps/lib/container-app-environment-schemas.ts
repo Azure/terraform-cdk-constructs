@@ -368,7 +368,7 @@ export const CONTAINER_APP_ENVIRONMENT_SCHEMA_2024_03_01: ApiSchema = {
 /**
  * API Schema for Container App Environment version 2025-02-02-preview
  *
- * This is the latest version supported by the azapi provider ~> 2.7.0.
+ * This is the latest version supported by the azapi provider ~> 2.7.
  * It includes the same properties as 2024-03-01 plus preview features
  * like peer authentication, peer traffic encryption, ingress configuration,
  * and public network access controls.
