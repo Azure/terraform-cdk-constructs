@@ -22,6 +22,7 @@
  * - azure_dnsresolver: DNS Resolver constructs for private DNS resolution
  * - azure_eventgrideventsubscription: Event Grid Event Subscription constructs for subscribing to Azure events
  * - azure_eventgridsystemtopic: Event Grid System Topic constructs for publishing Azure system events
+ * - azure_bastionhost: Bastion Host constructs with version-aware AZAPI implementation
  * - azure_dnszone: Public DNS Zone constructs with DNS record management
  * - azure_eventhub: Event Hubs constructs (namespaces and event hubs) for big data streaming
  * - azure_metricalert: Azure Metric Alert constructs for metric-based alerting
@@ -67,6 +68,7 @@ export * as azure_actiongroup from "./azure-actiongroup";
 export * as azure_activitylogalert from "./azure-activitylogalert";
 export * as azure_aks from "./azure-aks";
 export * as azure_applicationinsights from "./azure-applicationinsights";
+export * as azure_bastionhost from "./azure-bastionhost";
 export * as azure_containerapps from "./azure-containerapps";
 export * as azure_containerregistry from "./azure-containerregistry";
 export * as azure_cosmosdb from "./azure-cosmosdb";

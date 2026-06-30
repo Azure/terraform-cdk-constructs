@@ -8910,6 +8910,512 @@ Optional test run metadata (only present when using BaseTestStackOptions).
 ---
 
 
+### BastionHost <a name="BastionHost" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost"></a>
+
+Azure Bastion Host implementation.
+
+This class provides a single, version-aware implementation for Azure Bastion
+Hosts. It automatically handles version resolution, schema validation, and
+property transformation while maintaining full backward compatibility.
+
+*Example*
+
+```typescript
+// Developer SKU attached directly to a virtual network:
+const bastion = new BastionHost(this, "bastion", {
+  name: "my-bastion",
+  location: "eastus",
+  sku: { name: "Developer" },
+  virtualNetworkId: vnet.id,
+});
+```
+
+
+#### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.Initializer"></a>
+
+```typescript
+import { azure_bastionhost } from '@microsoft/terraform-cdk-constructs'
+
+new azure_bastionhost.BastionHost(scope: Construct, id: string, props: BastionHostProps)
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | - The scope in which to define this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.Initializer.parameter.id">id</a></code> | <code>string</code> | - The unique identifier for this instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.Initializer.parameter.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps</code> | - Configuration properties for the Bastion Host. |
+
+---
+
+##### `scope`<sup>Required</sup> <a name="scope" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.Initializer.parameter.scope"></a>
+
+- *Type:* constructs.Construct
+
+The scope in which to define this construct.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.Initializer.parameter.id"></a>
+
+- *Type:* string
+
+The unique identifier for this instance.
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.Initializer.parameter.props"></a>
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps
+
+Configuration properties for the Bastion Host.
+
+---
+
+#### Methods <a name="Methods" id="Methods"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.addTag">addTag</a></code> | Add a tag to the Bastion Host Note: This modifies the construct props but requires a new deployment to take effect. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.latestVersion">latestVersion</a></code> | Gets the latest available version for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.supportedVersions">supportedVersions</a></code> | Gets all supported versions for this resource type. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.removeTag">removeTag</a></code> | Remove a tag from the Bastion Host Note: This modifies the construct props but requires a new deployment to take effect. |
+
+---
+
+##### `toString` <a name="toString" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.toString"></a>
+
+```typescript
+public toString(): string
+```
+
+Returns a string representation of this construct.
+
+##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.addAccess"></a>
+
+```typescript
+public addAccess(objectId: string, roleDefinitionName: string): void
+```
+
+Adds an access role assignment for a specified Azure AD object.
+
+Note: This method creates role assignments using AZAPI instead of AzureRM provider.
+
+###### `objectId`<sup>Required</sup> <a name="objectId" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.addAccess.parameter.objectId"></a>
+
+- *Type:* string
+
+The unique identifier of the Azure AD object.
+
+---
+
+###### `roleDefinitionName`<sup>Required</sup> <a name="roleDefinitionName" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.addAccess.parameter.roleDefinitionName"></a>
+
+- *Type:* string
+
+The name of the Azure RBAC role to be assigned.
+
+---
+
+##### `addTag` <a name="addTag" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.addTag"></a>
+
+```typescript
+public addTag(key: string, value: string): void
+```
+
+Add a tag to the Bastion Host Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.addTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.addTag.parameter.value"></a>
+
+- *Type:* string
+
+---
+
+##### `analyzeMigrationTo` <a name="analyzeMigrationTo" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.analyzeMigrationTo"></a>
+
+```typescript
+public analyzeMigrationTo(targetVersion: string): MigrationAnalysis
+```
+
+Analyzes migration from current version to a target version.
+
+This method enables external tools to analyze migration requirements
+between versions for planning and automation purposes.
+
+###### `targetVersion`<sup>Required</sup> <a name="targetVersion" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.analyzeMigrationTo.parameter.targetVersion"></a>
+
+- *Type:* string
+
+The target version to analyze migration to.
+
+---
+
+##### `latestVersion` <a name="latestVersion" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.latestVersion"></a>
+
+```typescript
+public latestVersion(): string
+```
+
+Gets the latest available version for this resource type.
+
+This method provides access to the latest version resolution logic
+for use in subclasses or external tooling.
+
+##### `supportedVersions` <a name="supportedVersions" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.supportedVersions"></a>
+
+```typescript
+public supportedVersions(): string[]
+```
+
+Gets all supported versions for this resource type.
+
+This method provides access to the version registry for use in
+subclasses or external tooling.
+
+##### `removeTag` <a name="removeTag" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.removeTag"></a>
+
+```typescript
+public removeTag(key: string): void
+```
+
+Remove a tag from the Bastion Host Note: This modifies the construct props but requires a new deployment to take effect.
+
+###### `key`<sup>Required</sup> <a name="key" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.removeTag.parameter.key"></a>
+
+- *Type:* string
+
+---
+
+#### Static Functions <a name="Static Functions" id="Static Functions"></a>
+
+| **Name** | **Description** |
+| --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.isConstruct">isConstruct</a></code> | Checks if `x` is a construct. |
+
+---
+
+##### `isConstruct` <a name="isConstruct" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.isConstruct"></a>
+
+```typescript
+import { azure_bastionhost } from '@microsoft/terraform-cdk-constructs'
+
+azure_bastionhost.BastionHost.isConstruct(x: any)
+```
+
+Checks if `x` is a construct.
+
+Use this method instead of `instanceof` to properly detect `Construct`
+instances, even when the construct library is symlinked.
+
+Explanation: in JavaScript, multiple copies of the `constructs` library on
+disk are seen as independent, completely different libraries. As a
+consequence, the class `Construct` in each copy of the `constructs` library
+is seen as a different class, and an instance of one class will not test as
+`instanceof` the other class. `npm install` will not create installations
+like this, but users may manually symlink construct libraries together or
+use a monorepo tool: in those cases, multiple copies of the `constructs`
+library can be accidentally installed, and `instanceof` will behave
+unpredictably. It is safest to avoid using `instanceof`, and using
+this type-testing method instead.
+
+###### `x`<sup>Required</sup> <a name="x" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.isConstruct.parameter.x"></a>
+
+- *Type:* any
+
+Any object.
+
+---
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.node">node</a></code> | <code>constructs.Node</code> | The tree node. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.id">id</a></code> | <code>string</code> | The Azure resource ID. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.output">output</a></code> | <code>cdktn.TerraformOutput</code> | Gets the resource as a Terraform output value. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.resource">resource</a></code> | <code>cdktn.TerraformResource</code> | Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.resourceId">resourceId</a></code> | <code>string</code> | Get the full resource identifier for use in other Azure resources Alias for the id property. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | All tags on this resource (readonly view). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.location">location</a></code> | <code>string</code> | The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.resolvedApiVersion">resolvedApiVersion</a></code> | <code>string</code> | The resolved API version being used for this resource instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.schema">schema</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ApiSchema</code> | The API schema for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.versionConfig">versionConfig</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.VersionConfig</code> | The version configuration for the resolved version. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.migrationAnalysis">migrationAnalysis</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis</code> | Migration analysis results. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.validationResult">validationResult</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.ValidationResult</code> | Validation results for the resource properties. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.dnsName">dnsName</a></code> | <code>string</code> | Get the DNS name output value Returns the Terraform interpolation string for the Bastion host FQDN. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.idOutput">idOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.locationOutput">locationOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.nameOutput">nameOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.props">props</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps</code> | The input properties for this Bastion Host instance. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.subscriptionId">subscriptionId</a></code> | <code>string</code> | Get the subscription ID from the Bastion Host ID Extracts the subscription ID from the Azure resource ID format. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.tagsOutput">tagsOutput</a></code> | <code>cdktn.TerraformOutput</code> | *No description.* |
+
+---
+
+##### `node`<sup>Required</sup> <a name="node" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.node"></a>
+
+```typescript
+public readonly node: Node;
+```
+
+- *Type:* constructs.Node
+
+The tree node.
+
+---
+
+##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.id"></a>
+
+```typescript
+public readonly id: string;
+```
+
+- *Type:* string
+
+The Azure resource ID.
+
+This property is automatically derived from the underlying Terraform resource.
+Child classes no longer need to implement this property.
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `output`<sup>Required</sup> <a name="output" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.output"></a>
+
+```typescript
+public readonly output: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+Gets the resource as a Terraform output value.
+
+---
+
+##### `resource`<sup>Required</sup> <a name="resource" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.resource"></a>
+
+```typescript
+public readonly resource: TerraformResource;
+```
+
+- *Type:* cdktn.TerraformResource
+
+Gets the underlying Terraform resource for use in dependency declarations This allows explicit dependency management between resources.
+
+---
+
+##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.resourceId"></a>
+
+```typescript
+public readonly resourceId: string;
+```
+
+- *Type:* string
+
+Get the full resource identifier for use in other Azure resources Alias for the id property.
+
+---
+
+##### `tags`<sup>Required</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+All tags on this resource (readonly view).
+
+This getter provides convenient access to all tags including those from props
+and those added dynamically via addTag(). Returns a copy to maintain immutability.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+
+The location of the resource (optional - not all resources have a location) Child resources typically inherit location from their parent.
+
+---
+
+##### `resolvedApiVersion`<sup>Required</sup> <a name="resolvedApiVersion" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.resolvedApiVersion"></a>
+
+```typescript
+public readonly resolvedApiVersion: string;
+```
+
+- *Type:* string
+
+The resolved API version being used for this resource instance.
+
+This is the actual version that will be used for the Azure API call,
+either explicitly specified in props or automatically resolved to
+the latest active version.
+
+---
+
+##### `schema`<sup>Required</sup> <a name="schema" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.schema"></a>
+
+```typescript
+public readonly schema: ApiSchema;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ApiSchema
+
+The API schema for the resolved version.
+
+Contains the complete schema definition including properties, validation
+rules, and transformation mappings for the resolved API version.
+
+---
+
+##### `versionConfig`<sup>Required</sup> <a name="versionConfig" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.versionConfig"></a>
+
+```typescript
+public readonly versionConfig: VersionConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.VersionConfig
+
+The version configuration for the resolved version.
+
+Contains lifecycle information, breaking changes, and migration metadata
+for the resolved API version.
+
+---
+
+##### `migrationAnalysis`<sup>Optional</sup> <a name="migrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.migrationAnalysis"></a>
+
+```typescript
+public readonly migrationAnalysis: MigrationAnalysis;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MigrationAnalysis
+
+Migration analysis results.
+
+Available after construction if migration analysis is enabled and a
+previous version can be determined for comparison.
+
+---
+
+##### `validationResult`<sup>Optional</sup> <a name="validationResult" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.validationResult"></a>
+
+```typescript
+public readonly validationResult: ValidationResult;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.ValidationResult
+
+Validation results for the resource properties.
+
+Available after construction if validation is enabled. Contains detailed
+information about any validation errors or warnings.
+
+---
+
+##### `dnsName`<sup>Required</sup> <a name="dnsName" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.dnsName"></a>
+
+```typescript
+public readonly dnsName: string;
+```
+
+- *Type:* string
+
+Get the DNS name output value Returns the Terraform interpolation string for the Bastion host FQDN.
+
+---
+
+##### `idOutput`<sup>Required</sup> <a name="idOutput" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.idOutput"></a>
+
+```typescript
+public readonly idOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `locationOutput`<sup>Required</sup> <a name="locationOutput" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.locationOutput"></a>
+
+```typescript
+public readonly locationOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `nameOutput`<sup>Required</sup> <a name="nameOutput" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.nameOutput"></a>
+
+```typescript
+public readonly nameOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+##### `props`<sup>Required</sup> <a name="props" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.props"></a>
+
+```typescript
+public readonly props: BastionHostProps;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps
+
+The input properties for this Bastion Host instance.
+
+---
+
+##### `subscriptionId`<sup>Required</sup> <a name="subscriptionId" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.subscriptionId"></a>
+
+```typescript
+public readonly subscriptionId: string;
+```
+
+- *Type:* string
+
+Get the subscription ID from the Bastion Host ID Extracts the subscription ID from the Azure resource ID format.
+
+---
+
+##### `tagsOutput`<sup>Required</sup> <a name="tagsOutput" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.property.tagsOutput"></a>
+
+```typescript
+public readonly tagsOutput: TerraformOutput;
+```
+
+- *Type:* cdktn.TerraformOutput
+
+---
+
+
 ### ConnectivityConfiguration <a name="ConnectivityConfiguration" id="@microsoft/terraform-cdk-constructs.ConnectivityConfiguration"></a>
 
 Azure Virtual Network Manager Connectivity Configuration implementation.
@@ -112169,6 +112675,577 @@ public readonly testRunOptions: TestRunOptions;
 Test run configuration options.
 
 ---
+
+### BastionHostIpConfiguration <a name="BastionHostIpConfiguration" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostIpConfiguration"></a>
+
+IP configuration for a Bastion Host.
+
+Required for Basic, Standard, and Premium SKUs. The subnet must be named
+"AzureBastionSubnet" and the public IP must use the Standard SKU with a
+Static allocation method.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostIpConfiguration.Initializer"></a>
+
+```typescript
+import { azure_bastionhost } from '@microsoft/terraform-cdk-constructs'
+
+const bastionHostIpConfiguration: azure_bastionhost.BastionHostIpConfiguration = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostIpConfiguration.property.publicIpAddressId">publicIpAddressId</a></code> | <code>string</code> | Resource ID of the Standard Static public IP address. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostIpConfiguration.property.subnetId">subnetId</a></code> | <code>string</code> | Resource ID of the AzureBastionSubnet. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostIpConfiguration.property.name">name</a></code> | <code>string</code> | Name of the IP configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostIpConfiguration.property.privateIpAllocationMethod">privateIpAllocationMethod</a></code> | <code>string</code> | Private IP allocation method. |
+
+---
+
+##### `publicIpAddressId`<sup>Required</sup> <a name="publicIpAddressId" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostIpConfiguration.property.publicIpAddressId"></a>
+
+```typescript
+public readonly publicIpAddressId: string;
+```
+
+- *Type:* string
+
+Resource ID of the Standard Static public IP address.
+
+---
+
+##### `subnetId`<sup>Required</sup> <a name="subnetId" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostIpConfiguration.property.subnetId"></a>
+
+```typescript
+public readonly subnetId: string;
+```
+
+- *Type:* string
+
+Resource ID of the AzureBastionSubnet.
+
+---
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostIpConfiguration.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+- *Default:* "IpConf"
+
+Name of the IP configuration.
+
+---
+
+##### `privateIpAllocationMethod`<sup>Optional</sup> <a name="privateIpAllocationMethod" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostIpConfiguration.property.privateIpAllocationMethod"></a>
+
+```typescript
+public readonly privateIpAllocationMethod: string;
+```
+
+- *Type:* string
+- *Default:* "Dynamic"
+
+Private IP allocation method.
+
+---
+
+### BastionHostProps <a name="BastionHostProps" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps"></a>
+
+Properties for the Azure Bastion Host.
+
+Extends AzapiResourceProps with Bastion Host specific properties
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.Initializer"></a>
+
+```typescript
+import { azure_bastionhost } from '@microsoft/terraform-cdk-constructs'
+
+const bastionHostProps: azure_bastionhost.BastionHostProps = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.connection">connection</a></code> | <code>cdktn.SSHProvisionerConnection \| cdktn.WinrmProvisionerConnection</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.count">count</a></code> | <code>number \| cdktn.TerraformCount</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.dependsOn">dependsOn</a></code> | <code>cdktn.ITerraformDependable[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.forEach">forEach</a></code> | <code>cdktn.ITerraformIterator</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.apiVersion">apiVersion</a></code> | <code>string</code> | Explicit API version to use for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableMigrationAnalysis">enableMigrationAnalysis</a></code> | <code>boolean</code> | Whether to enable migration analysis warnings. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableTransformation">enableTransformation</a></code> | <code>boolean</code> | Whether to apply property transformations automatically. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableValidation">enableValidation</a></code> | <code>boolean</code> | Whether to validate properties against the schema. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.location">location</a></code> | <code>string</code> | The location where the resource should be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.monitoring">monitoring</a></code> | <code>@microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig</code> | Monitoring configuration for this resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.name">name</a></code> | <code>string</code> | The name of the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | Tags to apply to the resource. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.disableCopyPaste">disableCopyPaste</a></code> | <code>boolean</code> | Disable copy/paste in the web-based session (Standard/Premium SKU). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.dnsName">dnsName</a></code> | <code>string</code> | FQDN for the Bastion host. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableIpConnect">enableIpConnect</a></code> | <code>boolean</code> | Enable IP-based connection (Standard/Premium SKU). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableKerberos">enableKerberos</a></code> | <code>boolean</code> | Enable Kerberos authentication. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableSessionRecording">enableSessionRecording</a></code> | <code>boolean</code> | Enable session recording (Premium SKU). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableShareableLink">enableShareableLink</a></code> | <code>boolean</code> | Enable shareable link (Standard/Premium SKU). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableTunneling">enableTunneling</a></code> | <code>boolean</code> | Enable native client support / tunneling (Standard/Premium SKU). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.ignoreChanges">ignoreChanges</a></code> | <code>string[]</code> | The lifecycle rules to ignore changes Useful for properties that are externally managed. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.ipConfiguration">ipConfiguration</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostIpConfiguration</code> | IP configuration referencing the AzureBastionSubnet and a Standard public IP Required for Basic, Standard, and Premium SKUs. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.resourceGroupId">resourceGroupId</a></code> | <code>string</code> | Resource group ID where the Bastion host will be created Optional - will use the subscription scope if not provided. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.scaleUnits">scaleUnits</a></code> | <code>number</code> | Number of scale units Valid range: 2-50 (Standard/Premium SKU only). |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.sku">sku</a></code> | <code>@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostSku</code> | SKU of the Bastion host - Developer: lightweight, free, references a virtual network directly - Basic: baseline connectivity via the Azure portal - Standard: adds native client, IP connect, scaling, and shareable links - Premium: adds session recording. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.virtualNetworkId">virtualNetworkId</a></code> | <code>string</code> | Resource ID of the virtual network to attach to (Developer SKU only) Mutually exclusive with ipConfiguration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.zones">zones</a></code> | <code>string[]</code> | Availability zones for the Bastion host. |
+
+---
+
+##### `connection`<sup>Optional</sup> <a name="connection" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.connection"></a>
+
+```typescript
+public readonly connection: SSHProvisionerConnection | WinrmProvisionerConnection;
+```
+
+- *Type:* cdktn.SSHProvisionerConnection | cdktn.WinrmProvisionerConnection
+
+---
+
+##### `count`<sup>Optional</sup> <a name="count" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.count"></a>
+
+```typescript
+public readonly count: number | TerraformCount;
+```
+
+- *Type:* number | cdktn.TerraformCount
+
+---
+
+##### `dependsOn`<sup>Optional</sup> <a name="dependsOn" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.dependsOn"></a>
+
+```typescript
+public readonly dependsOn: ITerraformDependable[];
+```
+
+- *Type:* cdktn.ITerraformDependable[]
+
+---
+
+##### `forEach`<sup>Optional</sup> <a name="forEach" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.forEach"></a>
+
+```typescript
+public readonly forEach: ITerraformIterator;
+```
+
+- *Type:* cdktn.ITerraformIterator
+
+---
+
+##### `lifecycle`<sup>Optional</sup> <a name="lifecycle" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.lifecycle"></a>
+
+```typescript
+public readonly lifecycle: TerraformResourceLifecycle;
+```
+
+- *Type:* cdktn.TerraformResourceLifecycle
+
+---
+
+##### `provider`<sup>Optional</sup> <a name="provider" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.provider"></a>
+
+```typescript
+public readonly provider: TerraformProvider;
+```
+
+- *Type:* cdktn.TerraformProvider
+
+---
+
+##### `provisioners`<sup>Optional</sup> <a name="provisioners" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.provisioners"></a>
+
+```typescript
+public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteExecProvisioner)[];
+```
+
+- *Type:* cdktn.FileProvisioner | cdktn.LocalExecProvisioner | cdktn.RemoteExecProvisioner[]
+
+---
+
+##### `apiVersion`<sup>Optional</sup> <a name="apiVersion" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.apiVersion"></a>
+
+```typescript
+public readonly apiVersion: string;
+```
+
+- *Type:* string
+- *Default:* Latest active version from ApiVersionManager
+
+Explicit API version to use for this resource.
+
+If not specified, the latest active version will be automatically resolved.
+Use this for version pinning when stability is required over latest features.
+
+---
+
+*Example*
+
+```typescript
+"2024-11-01"
+```
+
+
+##### `enableMigrationAnalysis`<sup>Optional</sup> <a name="enableMigrationAnalysis" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableMigrationAnalysis"></a>
+
+```typescript
+public readonly enableMigrationAnalysis: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to enable migration analysis warnings.
+
+When true, the framework will analyze the current version for deprecation
+status and provide migration recommendations in the deployment output.
+
+---
+
+##### `enableTransformation`<sup>Optional</sup> <a name="enableTransformation" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableTransformation"></a>
+
+```typescript
+public readonly enableTransformation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to apply property transformations automatically.
+
+When true, properties will be automatically transformed according to the
+target schema's transformation rules. This enables backward compatibility.
+
+---
+
+##### `enableValidation`<sup>Optional</sup> <a name="enableValidation" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableValidation"></a>
+
+```typescript
+public readonly enableValidation: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Whether to validate properties against the schema.
+
+When true, all properties will be validated against the API schema before
+resource creation. Validation errors will cause deployment failures.
+
+---
+
+##### `location`<sup>Optional</sup> <a name="location" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.location"></a>
+
+```typescript
+public readonly location: string;
+```
+
+- *Type:* string
+- *Default:* Varies by resource type - see specific resource documentation
+
+The location where the resource should be created.
+
+---
+
+*Example*
+
+```typescript
+// Child resource (Subnet) - do not set location
+// location: undefined (inherited from parent Virtual Network)
+```
+
+
+##### `monitoring`<sup>Optional</sup> <a name="monitoring" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.monitoring"></a>
+
+```typescript
+public readonly monitoring: MonitoringConfig;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.core_azure.MonitoringConfig
+
+Monitoring configuration for this resource.
+
+Enables integrated monitoring with diagnostic settings, metric alerts,
+and activity log alerts. All monitoring is optional and disabled by default.
+
+---
+
+*Example*
+
+```typescript
+monitoring: {
+  enabled: true,
+  diagnosticSettings: {
+    workspaceId: logAnalytics.id,
+    metrics: ['AllMetrics'],
+    logs: ['AuditLogs']
+  },
+  metricAlerts: [{
+    name: 'high-cpu-alert',
+    severity: 2,
+    scopes: [], // Automatically set to this resource
+    criteria: { ... },
+    actions: [{ actionGroupId: actionGroup.id }]
+  }]
+}
+```
+
+
+##### `name`<sup>Optional</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+The name of the resource.
+
+---
+
+##### `tags`<sup>Optional</sup> <a name="tags" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.tags"></a>
+
+```typescript
+public readonly tags: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+Tags to apply to the resource.
+
+---
+
+##### `disableCopyPaste`<sup>Optional</sup> <a name="disableCopyPaste" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.disableCopyPaste"></a>
+
+```typescript
+public readonly disableCopyPaste: boolean;
+```
+
+- *Type:* boolean
+
+Disable copy/paste in the web-based session (Standard/Premium SKU).
+
+---
+
+##### `dnsName`<sup>Optional</sup> <a name="dnsName" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.dnsName"></a>
+
+```typescript
+public readonly dnsName: string;
+```
+
+- *Type:* string
+
+FQDN for the Bastion host.
+
+---
+
+##### `enableIpConnect`<sup>Optional</sup> <a name="enableIpConnect" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableIpConnect"></a>
+
+```typescript
+public readonly enableIpConnect: boolean;
+```
+
+- *Type:* boolean
+
+Enable IP-based connection (Standard/Premium SKU).
+
+---
+
+##### `enableKerberos`<sup>Optional</sup> <a name="enableKerberos" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableKerberos"></a>
+
+```typescript
+public readonly enableKerberos: boolean;
+```
+
+- *Type:* boolean
+
+Enable Kerberos authentication.
+
+---
+
+##### `enableSessionRecording`<sup>Optional</sup> <a name="enableSessionRecording" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableSessionRecording"></a>
+
+```typescript
+public readonly enableSessionRecording: boolean;
+```
+
+- *Type:* boolean
+
+Enable session recording (Premium SKU).
+
+---
+
+##### `enableShareableLink`<sup>Optional</sup> <a name="enableShareableLink" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableShareableLink"></a>
+
+```typescript
+public readonly enableShareableLink: boolean;
+```
+
+- *Type:* boolean
+
+Enable shareable link (Standard/Premium SKU).
+
+---
+
+##### `enableTunneling`<sup>Optional</sup> <a name="enableTunneling" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.enableTunneling"></a>
+
+```typescript
+public readonly enableTunneling: boolean;
+```
+
+- *Type:* boolean
+
+Enable native client support / tunneling (Standard/Premium SKU).
+
+---
+
+##### `ignoreChanges`<sup>Optional</sup> <a name="ignoreChanges" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.ignoreChanges"></a>
+
+```typescript
+public readonly ignoreChanges: string[];
+```
+
+- *Type:* string[]
+
+The lifecycle rules to ignore changes Useful for properties that are externally managed.
+
+---
+
+*Example*
+
+```typescript
+["tags"]
+```
+
+
+##### `ipConfiguration`<sup>Optional</sup> <a name="ipConfiguration" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.ipConfiguration"></a>
+
+```typescript
+public readonly ipConfiguration: BastionHostIpConfiguration;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostIpConfiguration
+
+IP configuration referencing the AzureBastionSubnet and a Standard public IP Required for Basic, Standard, and Premium SKUs.
+
+---
+
+##### `resourceGroupId`<sup>Optional</sup> <a name="resourceGroupId" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.resourceGroupId"></a>
+
+```typescript
+public readonly resourceGroupId: string;
+```
+
+- *Type:* string
+
+Resource group ID where the Bastion host will be created Optional - will use the subscription scope if not provided.
+
+---
+
+##### `scaleUnits`<sup>Optional</sup> <a name="scaleUnits" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.scaleUnits"></a>
+
+```typescript
+public readonly scaleUnits: number;
+```
+
+- *Type:* number
+
+Number of scale units Valid range: 2-50 (Standard/Premium SKU only).
+
+---
+
+##### `sku`<sup>Optional</sup> <a name="sku" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.sku"></a>
+
+```typescript
+public readonly sku: BastionHostSku;
+```
+
+- *Type:* @microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostSku
+- *Default:* Standard
+
+SKU of the Bastion host - Developer: lightweight, free, references a virtual network directly - Basic: baseline connectivity via the Azure portal - Standard: adds native client, IP connect, scaling, and shareable links - Premium: adds session recording.
+
+---
+
+##### `virtualNetworkId`<sup>Optional</sup> <a name="virtualNetworkId" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.virtualNetworkId"></a>
+
+```typescript
+public readonly virtualNetworkId: string;
+```
+
+- *Type:* string
+
+Resource ID of the virtual network to attach to (Developer SKU only) Mutually exclusive with ipConfiguration.
+
+---
+
+##### `zones`<sup>Optional</sup> <a name="zones" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostProps.property.zones"></a>
+
+```typescript
+public readonly zones: string[];
+```
+
+- *Type:* string[]
+
+Availability zones for the Bastion host.
+
+---
+
+*Example*
+
+```typescript
+["1"], ["1", "2", "3"]
+```
+
+
+### BastionHostSku <a name="BastionHostSku" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostSku"></a>
+
+SKU configuration for Bastion Host.
+
+#### Initializer <a name="Initializer" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostSku.Initializer"></a>
+
+```typescript
+import { azure_bastionhost } from '@microsoft/terraform-cdk-constructs'
+
+const bastionHostSku: azure_bastionhost.BastionHostSku = { ... }
+```
+
+#### Properties <a name="Properties" id="Properties"></a>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostSku.property.name">name</a></code> | <code>string</code> | Name of the SKU. |
+
+---
+
+##### `name`<sup>Required</sup> <a name="name" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHostSku.property.name"></a>
+
+```typescript
+public readonly name: string;
+```
+
+- *Type:* string
+
+Name of the SKU.
+
+---
+
+*Example*
+
+```typescript
+"Developer", "Basic", "Standard", "Premium"
+```
+
 
 ### BreakingChange <a name="BreakingChange" id="@microsoft/terraform-cdk-constructs.BreakingChange"></a>
 
