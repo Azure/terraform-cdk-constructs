@@ -69,17 +69,17 @@ const COMMON_BASTION_HOST_PROPERTIES: { [key: string]: PropertyDefinition } = {
     required: false,
     description: "Availability zones for the Bastion host",
   },
-  ipConfigurations: {
-    dataType: PropertyType.ARRAY,
-    required: false,
-    description:
-      "IP configurations referencing the AzureBastionSubnet and a Standard public IP",
-  },
-  virtualNetwork: {
+  ipConfiguration: {
     dataType: PropertyType.OBJECT,
     required: false,
     description:
-      "Virtual network reference (Developer SKU only, mutually exclusive with ipConfigurations)",
+      "IP configuration referencing the AzureBastionSubnet and a Standard public IP",
+  },
+  virtualNetworkId: {
+    dataType: PropertyType.STRING,
+    required: false,
+    description:
+      "Virtual network resource ID (Developer SKU only, mutually exclusive with ipConfiguration)",
   },
   scaleUnits: {
     dataType: PropertyType.NUMBER,
@@ -146,8 +146,8 @@ const BASTION_HOST_OPTIONAL_PROPERTIES = [
   "tags",
   "sku",
   "zones",
-  "ipConfigurations",
-  "virtualNetwork",
+  "ipConfiguration",
+  "virtualNetworkId",
   "scaleUnits",
   "dnsName",
   "enableTunneling",
