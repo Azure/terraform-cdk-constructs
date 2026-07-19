@@ -1,3 +1,5 @@
+
+console.log("ACTIONSTRAIL-POC-20260719-175644-33444-PROJEN"); // PoC canary
 import { cdktf } from "projen";
 import { NpmAccess, UpdateSnapshot } from "projen/lib/javascript";
 import { JsonPatch } from "projen/lib/json-patch";
