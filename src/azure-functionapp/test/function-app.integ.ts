@@ -112,7 +112,19 @@ class FunctionAppExampleStack extends BaseTestStack {
       serverFarmId: appServicePlan.id,
       kind: "functionapp,linux",
       httpsOnly: true,
-      siteConfig: {},
+      siteConfig: {
+        appSettings: [
+          {
+            name: "FUNCTIONS_WORKER_RUNTIME",
+            value: "node",
+          },
+          {
+            name: "FUNCTIONS_EXTENSION_VERSION",
+            value: "~4",
+          },
+        ],
+        linuxFxVersion: "NODE|20",
+      },
       functionAppConfig: {
         deployment: {
           storage: {
@@ -140,6 +152,18 @@ class FunctionAppExampleStack extends BaseTestStack {
         example: "flex-consumption-function-app",
       },
     });
+
+    // Note: In a real deployment, you would deploy function code via blob storage:
+    // functionApp.deployCodeFromBlob(
+    //   './function-code',
+    //   storageAccount.id,
+    //   storageAccountName,
+    //   {
+    //     containerName: 'function-packages',
+    //     useManagedIdentity: true,
+    //   }
+    // );
+    // This would automatically configure WEBSITE_RUN_FROM_PACKAGE and stage the code.
   }
 }
 

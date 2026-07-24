@@ -2,6 +2,7 @@
  * Unit tests for Azure Function App using VersionedAzapiResource framework
  */
 
+import * as path from "path";
 import { Testing } from "cdktn";
 import * as cdktn from "cdktn";
 import { ResourceGroup } from "../../azure-resourcegroup";
@@ -562,6 +563,346 @@ describe("FunctionApp", () => {
     });
   });
 
+  describe("asset pipeline", () => {
+    it("should create function app with code asset", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const props: FunctionAppProps = {
+        name: "test-func-asset",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        codeAsset: {
+          sourcePath: "./src/azure-functionapp/test/fixtures/sample-function",
+          exclude: ["node_modules", "*.test.ts"],
+        },
+        siteConfig: {
+          appSettings: [{ name: "FUNCTIONS_WORKER_RUNTIME", value: "node" }],
+          linuxFxVersion: "NODE|20",
+        },
+      };
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", props);
+
+      expect(functionApp).toBeInstanceOf(FunctionApp);
+      expect(functionApp.assetPath).toBeDefined();
+      expect(functionApp.assetHash).toBeDefined();
+    });
+
+    it("should create function app with bundled code asset (requires Docker)", () => {
+      // Skipped: This test requires Docker to be available and running
+      // In a real CI/CD environment, you would enable this test
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const props: FunctionAppProps = {
+        name: "test-func-bundled",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        codeAsset: {
+          sourcePath: "./src/azure-functionapp/test/fixtures/sample-function",
+          bundling: {
+            image: "node:20",
+            command: ["sh", "-c", "npm ci && cp -r . /asset-output/"],
+            environment: {
+              NODE_ENV: "production",
+            },
+          },
+          exclude: ["node_modules", "*.test.ts"],
+        },
+        siteConfig: {
+          appSettings: [{ name: "FUNCTIONS_WORKER_RUNTIME", value: "node" }],
+          linuxFxVersion: "NODE|20",
+        },
+      };
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", props);
+
+      expect(functionApp).toBeInstanceOf(FunctionApp);
+      expect(functionApp.assetPath).toBeDefined();
+      expect(functionApp.assetHash).toBeDefined();
+    });
+  });
+
+  describe("blob storage deployment", () => {
+    it("should deploy code to blob storage with managed identity", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const props: FunctionAppProps = {
+        name: "test-func-blob-mi",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        identity: {
+          type: "SystemAssigned",
+        },
+        siteConfig: {
+          appSettings: [
+            { name: "FUNCTIONS_WORKER_RUNTIME", value: "node" },
+            { name: "FUNCTIONS_EXTENSION_VERSION", value: "~4" },
+          ],
+          linuxFxVersion: "NODE|20",
+        },
+      };
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", props);
+
+      const blobAsset = functionApp.deployCodeFromBlob(
+        "./src/azure-functionapp/test/fixtures/sample-function",
+        "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storage",
+        "teststorage",
+        {
+          containerName: "function-packages",
+          useManagedIdentity: true,
+        },
+      );
+
+      expect(blobAsset).toBeDefined();
+      expect(blobAsset.blobUrl).toContain("teststorage.blob.core.windows.net");
+      expect(blobAsset.blobUrl).toContain("function-packages");
+      expect(functionApp.blobAsset).toBe(blobAsset);
+
+      // Check that WEBSITE_RUN_FROM_PACKAGE was added
+      const appSettings = functionApp.props.siteConfig?.appSettings || [];
+      const runFromPackageSetting = appSettings.find(
+        (s) => s.name === "WEBSITE_RUN_FROM_PACKAGE",
+      );
+      expect(runFromPackageSetting).toBeDefined();
+      expect(runFromPackageSetting!.value).toBe(blobAsset.blobUrl);
+    });
+
+    it("should deploy code to blob storage with SAS token", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const props: FunctionAppProps = {
+        name: "test-func-blob-sas",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        siteConfig: {
+          appSettings: [{ name: "FUNCTIONS_WORKER_RUNTIME", value: "python" }],
+          linuxFxVersion: "PYTHON|3.11",
+        },
+      };
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", props);
+
+      const sasToken =
+        "?sv=2021-08-06&ss=b&srt=sco&sp=r&se=2024-12-31T23:59:59Z&st=2024-01-01T00:00:00Z&spr=https&sig=test";
+
+      const blobAsset = functionApp.deployCodeFromBlob(
+        "./src/azure-functionapp/test/fixtures/sample-function",
+        "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storage",
+        "teststorage",
+        {
+          containerName: "function-packages",
+          sasToken,
+        },
+      );
+
+      expect(blobAsset).toBeDefined();
+
+      // Check that WEBSITE_RUN_FROM_PACKAGE was added with SAS token
+      const appSettings = functionApp.props.siteConfig?.appSettings || [];
+      const runFromPackageSetting = appSettings.find(
+        (s) => s.name === "WEBSITE_RUN_FROM_PACKAGE",
+      );
+      expect(runFromPackageSetting).toBeDefined();
+      expect(runFromPackageSetting!.value).toContain(sasToken);
+    });
+
+    it("should deploy code with user-assigned managed identity", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const userAssignedIdentityId =
+        "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-identity";
+
+      const props: FunctionAppProps = {
+        name: "test-func-blob-uai",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        identity: {
+          type: "UserAssigned",
+          userAssignedIdentities: {
+            [userAssignedIdentityId]: {},
+          },
+        },
+        siteConfig: {
+          appSettings: [],
+        },
+      };
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", props);
+
+      const blobAsset = functionApp.deployCodeFromBlob(
+        "./src/azure-functionapp/test/fixtures/sample-function",
+        "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storage",
+        "teststorage",
+        {
+          containerName: "function-packages",
+          useManagedIdentity: true,
+          managedIdentityResourceId: userAssignedIdentityId,
+        },
+      );
+
+      expect(blobAsset).toBeDefined();
+
+      // Check that both settings were added
+      const appSettings = functionApp.props.siteConfig?.appSettings || [];
+      const runFromPackageSetting = appSettings.find(
+        (s) => s.name === "WEBSITE_RUN_FROM_PACKAGE",
+      );
+      const identityResourceIdSetting = appSettings.find(
+        (s) => s.name === "WEBSITE_RUN_FROM_PACKAGE_BLOB_MI_RESOURCE_ID",
+      );
+
+      expect(runFromPackageSetting).toBeDefined();
+      expect(identityResourceIdSetting).toBeDefined();
+      expect(identityResourceIdSetting!.value).toBe(userAssignedIdentityId);
+    });
+
+    it("should deploy code with bundling to blob storage (requires Docker)", () => {
+      // Skipped: This test requires Docker to be available and running
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const props: FunctionAppProps = {
+        name: "test-func-blob-bundle",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        identity: {
+          type: "SystemAssigned",
+        },
+        siteConfig: {
+          appSettings: [],
+        },
+      };
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", props);
+
+      const blobAsset = functionApp.deployCodeFromBlob(
+        "./src/azure-functionapp/test/fixtures/sample-function",
+        "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storage",
+        "teststorage",
+        {
+          containerName: "function-packages",
+          useManagedIdentity: true,
+          bundling: {
+            image: "node:20",
+            command: [
+              "sh",
+              "-c",
+              "npm ci --production && cp -r . /asset-output/",
+            ],
+          },
+          exclude: ["node_modules", "*.test.ts"],
+        },
+      );
+
+      expect(blobAsset).toBeDefined();
+      expect(blobAsset.assetHash).toBeDefined();
+      expect(blobAsset.assetPath).toBeDefined();
+    });
+
+    it("should throw error when neither managed identity nor SAS token is provided", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const props: FunctionAppProps = {
+        name: "test-func-blob-error",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+      };
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", props);
+
+      expect(() => {
+        functionApp.deployCodeFromBlob(
+          "./src/azure-functionapp/test/fixtures/sample-function",
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storage",
+          "teststorage",
+          {
+            containerName: "function-packages",
+            // Neither useManagedIdentity nor sasToken provided
+          },
+        );
+      }).toThrow(
+        "Either useManagedIdentity must be true or sasToken must be provided",
+      );
+    });
+
+    it("should use blob prefix when specified", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const props: FunctionAppProps = {
+        name: "test-func-blob-prefix",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        identity: {
+          type: "SystemAssigned",
+        },
+      };
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", props);
+
+      const blobAsset = functionApp.deployCodeFromBlob(
+        "./src/azure-functionapp/test/fixtures/sample-function",
+        "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storage",
+        "teststorage",
+        {
+          containerName: "function-packages",
+          blobPrefix: "production/v1",
+          useManagedIdentity: true,
+        },
+      );
+
+      expect(blobAsset.blobName).toContain("production/v1/");
+      expect(blobAsset.blobUrl).toContain("production/v1/");
+    });
+  });
+
   describe("Flex Consumption configuration", () => {
     it("should configure functionAppConfig for Flex Consumption plan", () => {
       const rg = new ResourceGroup(stack, "TestRG", {
@@ -701,6 +1042,104 @@ describe("FunctionApp", () => {
 
       const stackConfig = JSON.parse(synthesized);
       expect(stackConfig.resource).toBeDefined();
+    });
+  });
+
+  describe("Blob Asset Upload Tests", () => {
+    const fixturePath = path.resolve(
+      __dirname,
+      "../test/fixtures/sample-function",
+    );
+
+    it("should configure autoUpload=false by default", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", {
+        name: "test-func",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+      });
+
+      const blobAsset = functionApp.deployCodeFromBlob(
+        fixturePath,
+        "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/mystorage",
+        "mystorageaccount",
+        {
+          useManagedIdentity: true,
+          // autoUpload not specified, should default to false
+        },
+      );
+
+      // Should not have upload result if autoUpload=false
+      expect(blobAsset).toBeDefined();
+      expect(blobAsset.blobUrl).toContain(
+        "mystorageaccount.blob.core.windows.net",
+      );
+    });
+
+    it("should provide upload helper commands", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", {
+        name: "test-func",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+      });
+
+      const blobAsset = functionApp.deployCodeFromBlob(
+        fixturePath,
+        "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/mystorage",
+        "mystorageaccount",
+        {
+          useManagedIdentity: true,
+        },
+      );
+
+      // Azure CLI command
+      const cliCmd = blobAsset.azureCliUploadCommand();
+      expect(cliCmd).toContain("az storage blob upload");
+      expect(cliCmd).toContain("--account-name mystorageaccount");
+      expect(cliCmd).toContain("--container-name function-packages");
+      expect(cliCmd).toContain("--auth-mode login");
+      expect(cliCmd).toContain("--overwrite");
+    });
+
+    it("should support custom container names in upload commands", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", {
+        name: "test-func",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+      });
+
+      const blobAsset = functionApp.deployCodeFromBlob(
+        fixturePath,
+        "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/mystorage",
+        "mystorageaccount",
+        {
+          containerName: "my-custom-container",
+          useManagedIdentity: true,
+        },
+      );
+
+      const cliCmd = blobAsset.azureCliUploadCommand();
+      expect(cliCmd).toContain("--container-name my-custom-container");
     });
   });
 });

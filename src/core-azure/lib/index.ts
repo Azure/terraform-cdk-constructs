@@ -8,6 +8,7 @@
  * - SchemaMapper: Property transformation and validation engine
  * - Version management utilities and interfaces
  * - AZAPI provider integrations
+ * - Asset bundling and staging support
  */
 
 // Export unified AZAPI resource class
@@ -24,6 +25,11 @@ export type {
   AzapiProviderConfig,
   AzapiProviderEndpoint,
 } from "./azapi/providers-azapi/provider";
+
+// Export asset and bundling support
+export * from "./assets";
+export * from "./bundling";
+export * from "./blob-asset";
 
 // Export convenience imports for commonly used classes
 export * from "./azapi/azapi-exports";
