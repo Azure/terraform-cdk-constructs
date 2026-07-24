@@ -18,17 +18,22 @@
  */
 
 import * as cdktn from "cdktn";
-import * as fs from "fs";
-import * as path from "path";
 import { Construct } from "constructs";
 import {
   ALL_FUNCTION_APP_VERSIONS,
   FUNCTION_APP_TYPE,
 } from "./function-app-schemas";
+import { AssetStaging } from "../../core-azure/lib/assets";
 import {
   AzapiResource,
   AzapiResourceProps,
 } from "../../core-azure/lib/azapi/azapi-resource";
+import { BlobAsset, BlobAssetOptions } from "../../core-azure/lib/blob-asset";
+import {
+  BundlingOptions,
+  BundlingOutput,
+  DockerImage,
+} from "../../core-azure/lib/bundling";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**
@@ -238,44 +243,121 @@ export interface FunctionAppConfig {
 }
 
 /**
+ * Docker volume configuration for bundling
+ */
+export interface FunctionBundlingVolume {
+  /**
+   * The path on the host machine
+   */
+  readonly hostPath: string;
+
+  /**
+   * The path in the container
+   */
+  readonly containerPath: string;
+}
+
+/**
  * Asset bundling options for function code
  *
  * Supports Docker-based bundling for dependency installation,
- * transpilation, and other build steps.
+ * transpilation, and other build steps. Simplified from cdktn BundlingOptions
+ * to support both string and DockerImage for the image field.
  */
 export interface FunctionAssetBundlingOptions {
   /**
    * Docker image to use for bundling (e.g., "node:20", "python:3.11")
+   * Can be a string (will be resolved via DockerImage.fromRegistry) or a DockerImage instance
    */
-  readonly dockerImage: string;
+  readonly image: string | DockerImage;
 
   /**
-   * Command to run in the Docker container for bundling
-   * @example ["npm", "install", "--production"]
+   * The command to run in the Docker container.
+   *
+   * @example ['npm', 'run', 'build']
+   * @default - run the command defined in the image
    */
   readonly command?: string[];
 
   /**
-   * Environment variables to pass to the bundling container
+   * Environment variables to pass to the Docker container.
+   *
+   * @default - no environment variables
    */
   readonly environment?: { [key: string]: string };
 
   /**
-   * Working directory inside the bundling container
+   * Working directory inside the Docker container.
+   *
    * @default /asset-input
    */
   readonly workingDirectory?: string;
 
   /**
-   * User to run the bundling command as
+   * The user to use when running the Docker container.
+   *
+   * @example '1000:1000'
+   * @default - root
    */
   readonly user?: string;
 
   /**
-   * Whether to use bind mount for file access (faster) or volume copy (more compatible)
-   * @default true (use bind mount)
+   * The entrypoint to run in the Docker container.
+   *
+   * @example ['/bin/sh', '-c']
+   * @default - run the entrypoint defined in the image
    */
-  readonly useBindMount?: boolean;
+  readonly entrypoint?: string[];
+
+  /**
+   * Additional Docker volumes to mount.
+   *
+   * @default - no additional volumes
+   */
+  readonly volumes?: FunctionBundlingVolume[];
+
+  /**
+   * Mount volumes from other containers.
+   *
+   * @default - no volumes from other containers
+   */
+  readonly volumesFrom?: string[];
+
+  /**
+   * Networking mode for the Docker container.
+   *
+   * @default - bridge
+   */
+  readonly network?: string;
+
+  /**
+   * Security options for the container.
+   *
+   * @example 'no-new-privileges'
+   * @default - none
+   */
+  readonly securityOpt?: string;
+
+  /**
+   * The type of output that this bundling operation is producing.
+   *
+   * @default BundlingOutput.AUTO_DISCOVER
+   */
+  readonly outputType?: BundlingOutput;
+
+  /**
+   * The access mechanism used to make source files available to the bundling container.
+   *
+   * @default - BIND_MOUNT
+   */
+  readonly bundlingFileAccess?: any;
+
+  /**
+   * Local bundling provider.
+   *
+   * @default - no local bundling
+   */
+  readonly local?: any;
 }
 
 /**
@@ -303,6 +385,64 @@ export interface FunctionAssetOptions {
    * Custom hash for cache busting
    */
   readonly assetHash?: string;
+}
+
+/**
+ * Options for deploying function code via Azure Blob Storage
+ */
+export interface FunctionBlobDeploymentOptions extends BlobAssetOptions {
+  /**
+   * Use managed identity for authentication instead of SAS token.
+   * When true, the Function App's managed identity will be used to access the blob.
+   *
+   * Requires:
+   * - Function App has a managed identity configured (system-assigned or user-assigned)
+   * - The identity has "Storage Blob Data Reader" role on the storage account/container
+   *
+   * @default false
+   */
+  readonly useManagedIdentity?: boolean;
+
+  /**
+   * SAS token for blob access (alternative to managed identity).
+   * Should start with '?' or will be prepended automatically.
+   *
+   * Note: When using SAS tokens, you must manage token renewal before expiration.
+   *
+   * @default - Required if useManagedIdentity is false
+   */
+  readonly sasToken?: string;
+
+  /**
+   * Resource ID of the user-assigned managed identity to use for blob access.
+   * Only applicable when useManagedIdentity is true.
+   *
+   * Format: /subscriptions/{sub}/resourcegroups/{rg}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{name}
+   *
+   * @default - Use system-assigned identity
+   */
+  readonly managedIdentityResourceId?: string;
+
+  /**
+   * Whether to automatically upload the asset to blob storage using Azure CLI.
+   * When true, attempts to upload the file during synthesis using Azure CLI.
+   *
+   * Requirements:
+   * - Azure CLI must be installed
+   * - Must be logged in (az login)
+   *
+   * If Azure CLI is not available, the upload is skipped with a warning.
+   * The blob URL is still generated and can be used with manual upload.
+   *
+   * @default false
+   */
+  readonly autoUpload?: boolean;
+
+  /**
+   * Whether to suppress output during upload
+   * @default false
+   */
+  readonly silent?: boolean;
 }
 
 /**
@@ -479,6 +619,8 @@ export class FunctionApp extends AzapiResource {
   // Asset management properties
   private _assetPath?: string;
   private _assetHash?: string;
+  private _assetStaging?: AssetStaging;
+  private _blobAsset?: BlobAsset;
 
   // Output properties for easy access and referencing
   public readonly idOutput: cdktn.TerraformOutput;
@@ -650,79 +792,173 @@ export class FunctionApp extends AzapiResource {
   }
 
   /**
+   * Get the Blob Asset for the function code (if deployed via Blob Storage)
+   *
+   * @returns The BlobAsset instance, or undefined if not deployed via blob storage
+   */
+  public get blobAsset(): BlobAsset | undefined {
+    return this._blobAsset;
+  }
+
+  /**
+   * Deploy function code from a local path to Azure Blob Storage and configure
+   * the Function App to run from the deployment package.
+   *
+   * This method:
+   * 1. Creates a BlobAsset to stage and upload the code to Azure Blob Storage
+   * 2. Configures the Function App with WEBSITE_RUN_FROM_PACKAGE pointing to the blob
+   *
+   * @param assetPath - Path to the function code (directory or .zip file)
+   * @param storageAccountId - The Azure Storage Account resource ID
+   * @param storageAccountName - The storage account name for URL generation
+   * @param options - Optional configuration for the asset and blob storage
+   * @returns The BlobAsset instance
+   *
+   * @example
+   * // Deploy with managed identity (recommended)
+   * functionApp.deployCodeFromBlob(
+   *   './function-code',
+   *   storageAccount.id,
+   *   'mystorageaccount',
+   *   {
+   *     containerName: 'function-packages',
+   *     useManagedIdentity: true,
+   *   }
+   * );
+   *
+   * @example
+   * // Deploy with SAS token
+   * functionApp.deployCodeFromBlob(
+   *   './function-code',
+   *   storageAccount.id,
+   *   'mystorageaccount',
+   *   {
+   *     containerName: 'function-packages',
+   *     sasToken: containerSasToken.sas,
+   *   }
+   * );
+   */
+  public deployCodeFromBlob(
+    assetPath: string,
+    storageAccountId: string,
+    storageAccountName: string,
+    options?: FunctionBlobDeploymentOptions,
+  ): BlobAsset {
+    // Convert bundling image from string to DockerImage if needed
+    let bundlingOptions: any = options?.bundling;
+    if (bundlingOptions && typeof bundlingOptions.image === "string") {
+      bundlingOptions = {
+        ...bundlingOptions,
+        image: DockerImage.fromRegistry(bundlingOptions.image),
+      };
+    }
+
+    // Create the blob asset
+    this._blobAsset = new BlobAsset(this, "CodeBlob", {
+      path: assetPath,
+      storageAccountId,
+      storageAccountName,
+      containerName: options?.containerName,
+      blobPrefix: options?.blobPrefix,
+      bundling: bundlingOptions,
+      exclude: options?.exclude,
+      assetHash: options?.assetHash,
+      assetHashType: options?.assetHashType,
+      extraHash: options?.extraHash,
+      deployTime: true,
+      autoUpload: options?.autoUpload,
+      silent: options?.silent,
+    });
+
+    // Determine the blob URL to use
+    let blobUrl: string;
+    if (options?.useManagedIdentity) {
+      // Use managed identity - no SAS token needed
+      blobUrl = this._blobAsset.blobUrlForManagedIdentity;
+    } else if (options?.sasToken) {
+      // Use SAS token
+      blobUrl = this._blobAsset.getBlobUrlWithSas(options.sasToken);
+    } else {
+      throw new Error(
+        "Either useManagedIdentity must be true or sasToken must be provided",
+      );
+    }
+
+    // Add WEBSITE_RUN_FROM_PACKAGE to app settings
+    const appSettings = this.props.siteConfig?.appSettings || [];
+    const hasRunFromPackage = appSettings.some(
+      (s) => s.name === "WEBSITE_RUN_FROM_PACKAGE",
+    );
+
+    if (!hasRunFromPackage) {
+      appSettings.push({
+        name: "WEBSITE_RUN_FROM_PACKAGE",
+        value: blobUrl,
+      });
+
+      // If using managed identity with user-assigned identity, add the resource ID setting
+      if (options?.useManagedIdentity && options?.managedIdentityResourceId) {
+        appSettings.push({
+          name: "WEBSITE_RUN_FROM_PACKAGE_BLOB_MI_RESOURCE_ID",
+          value: options.managedIdentityResourceId,
+        });
+      }
+
+      // Update the site config
+      if (!this.props.siteConfig) {
+        (this.props as any).siteConfig = {};
+      }
+      (this.props.siteConfig as any).appSettings = appSettings;
+    }
+
+    return this._blobAsset;
+  }
+
+  /**
    * Process and stage the code asset using the asset pipeline
    *
    * @param assetOptions - The asset configuration
    */
   private _processCodeAsset(assetOptions: FunctionAssetOptions): void {
-    const sourcePath = path.resolve(assetOptions.sourcePath);
-
-    // Validate source path exists
-    if (!fs.existsSync(sourcePath)) {
-      throw new Error(`Code asset source path does not exist: ${sourcePath}`);
-    }
-
-    const sourceStats = fs.statSync(sourcePath);
-    if (!sourceStats.isDirectory() && !sourceStats.isFile()) {
-      throw new Error(
-        `Code asset source must be a directory or file: ${sourcePath}`,
-      );
-    }
-
-    // TODO: Integrate with AssetStaging when available from CDKTN library
-    // For now, calculate a simple hash for cache busting
-    this._assetHash = this._calculateSimpleHash(sourcePath, assetOptions);
-    this._assetPath = sourcePath;
-
-    // If bundling is configured, the asset hash should reflect bundling config
+    // Convert FunctionAssetBundlingOptions to BundlingOptions if bundling is specified
+    let bundlingOptions: BundlingOptions | undefined;
     if (assetOptions.bundling) {
-      const bundlingHash = this._hashBundlingConfig(assetOptions.bundling);
-      this._assetHash = `${this._assetHash}-${bundlingHash}`;
-    }
-  }
+      const funcBundling = assetOptions.bundling;
 
-  /**
-   * Calculate a simple content hash for the source path
-   */
-  private _calculateSimpleHash(
-    sourcePath: string,
-    options: FunctionAssetOptions,
-  ): string {
-    const crypto = require("crypto");
-    const hash = crypto.createHash("sha256");
+      // Resolve image - support both string and DockerImage
+      const dockerImage =
+        typeof funcBundling.image === "string"
+          ? DockerImage.fromRegistry(funcBundling.image)
+          : funcBundling.image;
 
-    // Include the source path
-    hash.update(sourcePath);
-
-    // Include exclude patterns
-    if (options.exclude) {
-      hash.update(JSON.stringify(options.exclude.sort()));
-    }
-
-    // Include custom hash if provided
-    if (options.assetHash) {
-      hash.update(options.assetHash);
+      bundlingOptions = {
+        image: dockerImage,
+        command: funcBundling.command,
+        environment: funcBundling.environment,
+        workingDirectory: funcBundling.workingDirectory,
+        user: funcBundling.user,
+        bundlingFileAccess: funcBundling.bundlingFileAccess,
+        outputType: funcBundling.outputType ?? BundlingOutput.AUTO_DISCOVER,
+        entrypoint: funcBundling.entrypoint,
+        volumes: funcBundling.volumes,
+        volumesFrom: funcBundling.volumesFrom,
+        network: funcBundling.network,
+        securityOpt: funcBundling.securityOpt,
+        local: funcBundling.local,
+      };
     }
 
-    return hash.digest("hex").substring(0, 12);
-  }
+    // Create AssetStaging to handle bundling and staging
+    this._assetStaging = new AssetStaging(this, "CodeAsset", {
+      sourcePath: assetOptions.sourcePath,
+      exclude: assetOptions.exclude,
+      bundling: bundlingOptions,
+      assetHash: assetOptions.assetHash,
+    });
 
-  /**
-   * Hash the bundling configuration for cache busting
-   */
-  private _hashBundlingConfig(bundling: FunctionAssetBundlingOptions): string {
-    const crypto = require("crypto");
-    const hash = crypto.createHash("sha256");
-
-    hash.update(bundling.dockerImage);
-    if (bundling.command) {
-      hash.update(JSON.stringify(bundling.command));
-    }
-    if (bundling.environment) {
-      hash.update(JSON.stringify(Object.entries(bundling.environment).sort()));
-    }
-
-    return hash.digest("hex").substring(0, 12);
+    // Store the staged path and hash for reference
+    this._assetPath = this._assetStaging.absoluteStagedPath;
+    this._assetHash = this._assetStaging.assetHash;
   }
 
   // =============================================================================
