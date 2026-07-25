@@ -634,16 +634,17 @@ export class FunctionApp extends AzapiResource {
    *
    * @param scope - The scope in which to define this construct
    * @param id - The unique identifier for this instance
-   * @param props - Configuration properties for the Function App
+   * @param options - Configuration properties for the Function App
    */
-  constructor(scope: Construct, id: string, props: FunctionAppProps) {
+  constructor(scope: Construct, id: string, options: FunctionAppProps) {
+    const { codeAsset, ...props } = options;
     super(scope, id, props);
 
     this.props = props;
 
     // Process code asset if provided
-    if (props.codeAsset) {
-      this._processCodeAsset(props.codeAsset);
+    if (codeAsset) {
+      this._processCodeAsset(codeAsset);
     }
 
     // Create Terraform outputs
@@ -909,6 +910,120 @@ export class FunctionApp extends AzapiResource {
         (this.props as any).siteConfig = {};
       }
       (this.props.siteConfig as any).appSettings = appSettings;
+    }
+
+    return this._blobAsset;
+  }
+
+  /**
+   * Deploy function code to a Flex Consumption plan using functionAppConfig.
+   *
+   * This method is specifically for Flex Consumption (FC1) plans and:
+   * 1. Creates a BlobAsset to stage and optionally bundle the function code
+   * 2. Populates the functionAppConfig.deployment.storage property with the blob URL
+   *
+   * Use this method when your Function App is on a Flex Consumption plan and you
+   * want to use the asset pipeline for code deployment.
+   *
+   * @param assetPath - Path to the function code (directory or .zip file)
+   * @param storageAccountId - The Azure Storage Account resource ID
+   * @param storageAccountName - The storage account name for URL generation
+   * @param options - Optional configuration for the asset and blob storage
+   * @returns The BlobAsset instance
+   *
+   * @example
+   * const functionApp = new FunctionApp(this, 'FlexFunc', {
+   *   name: 'my-flex-func',
+   *   location: 'eastus2',
+   *   resourceGroupId: rg.id,
+   *   serverFarmId: flexPlan.id,
+   *   kind: 'functionapp,linux',
+   *   identity: { type: 'SystemAssigned' },
+   *   functionAppConfig: {
+   *     runtime: { name: 'node', version: '20' },
+   *     // deployment will be populated by deployCodeToFlexConsumption
+   *     deployment: {
+   *       storage: {
+   *         type: 'blobContainer',
+   *         value: '', // will be set
+   *         authentication: { type: 'SystemAssignedIdentity' }
+   *       }
+   *     }
+   *   }
+   * });
+   *
+   * // Deploy the code
+   * functionApp.deployCodeToFlexConsumption(
+   *   './function-code',
+   *   storageAccount.id,
+   *   'mystorageaccount',
+   *   {
+   *     containerName: 'deployments',
+   *     useManagedIdentity: true,
+   *   }
+   * );
+   */
+  public deployCodeToFlexConsumption(
+    assetPath: string,
+    storageAccountId: string,
+    storageAccountName: string,
+    options?: FunctionBlobDeploymentOptions,
+  ): BlobAsset {
+    // Validate that functionAppConfig exists
+    if (!this.props.functionAppConfig) {
+      throw new Error(
+        "functionAppConfig must be defined to use deployCodeToFlexConsumption. " +
+          "This method is for Flex Consumption plans only. " +
+          "For traditional plans, use deployCodeFromBlob() instead.",
+      );
+    }
+
+    // Convert bundling image from string to DockerImage if needed
+    let bundlingOptions: any = options?.bundling;
+    if (bundlingOptions && typeof bundlingOptions.image === "string") {
+      bundlingOptions = {
+        ...bundlingOptions,
+        image: DockerImage.fromRegistry(bundlingOptions.image),
+      };
+    }
+
+    // Create the blob asset
+    this._blobAsset = new BlobAsset(this, "CodeBlob", {
+      path: assetPath,
+      storageAccountId,
+      storageAccountName,
+      containerName: options?.containerName ?? "deployments",
+      blobPrefix: options?.blobPrefix,
+      bundling: bundlingOptions,
+      exclude: options?.exclude,
+      assetHash: options?.assetHash,
+      assetHashType: options?.assetHashType,
+      extraHash: options?.extraHash,
+      deployTime: true,
+      autoUpload: options?.autoUpload,
+      silent: options?.silent,
+    });
+
+    // Determine the blob URL to use
+    let blobUrl: string;
+    if (options?.useManagedIdentity) {
+      blobUrl = this._blobAsset.blobUrlForManagedIdentity;
+    } else if (options?.sasToken) {
+      blobUrl = this._blobAsset.getBlobUrlWithSas(options.sasToken);
+    } else {
+      throw new Error(
+        "Either useManagedIdentity must be true or sasToken must be provided",
+      );
+    }
+
+    // Update functionAppConfig.deployment.storage.value with the blob URL
+    (this.props.functionAppConfig.deployment.storage as any).value = blobUrl;
+
+    // If using user-assigned managed identity, update the authentication
+    if (options?.useManagedIdentity && options?.managedIdentityResourceId) {
+      (
+        this.props.functionAppConfig.deployment.storage.authentication as any
+      ).userAssignedIdentityResourceId = options.managedIdentityResourceId;
     }
 
     return this._blobAsset;

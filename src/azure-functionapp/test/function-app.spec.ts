@@ -36,7 +36,7 @@ describe("FunctionApp", () => {
       const functionApp = new FunctionApp(stack, "TestFuncApp", props);
 
       expect(functionApp).toBeInstanceOf(FunctionApp);
-      expect(functionApp.props).toBe(props);
+      expect(functionApp.props).toEqual(props);
     });
 
     it("should create a function app with all properties", () => {
@@ -78,7 +78,7 @@ describe("FunctionApp", () => {
 
       const functionApp = new FunctionApp(stack, "TestFuncApp", props);
 
-      expect(functionApp.props).toBe(props);
+      expect(functionApp.props).toEqual(props);
       expect(functionApp.tags).toEqual(props.tags);
     });
 
@@ -595,8 +595,6 @@ describe("FunctionApp", () => {
     });
 
     it("should create function app with bundled code asset (requires Docker)", () => {
-      // Skipped: This test requires Docker to be available and running
-      // In a real CI/CD environment, you would enable this test
       const rg = new ResourceGroup(stack, "TestRG", {
         name: "test-rg",
         location: "eastus",
@@ -1043,6 +1041,276 @@ describe("FunctionApp", () => {
       const stackConfig = JSON.parse(synthesized);
       expect(stackConfig.resource).toBeDefined();
     });
+
+    it("should deploy code to Flex Consumption using deployCodeToFlexConsumption", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus2",
+      });
+
+      const fixturePath = path.resolve(
+        __dirname,
+        "../test/fixtures/sample-function",
+      );
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", {
+        name: "test-func-flex-deploy",
+        location: "eastus2",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        identity: {
+          type: "SystemAssigned",
+        },
+        functionAppConfig: {
+          deployment: {
+            storage: {
+              type: "blobContainer",
+              value: "", // Will be populated by deployCodeToFlexConsumption
+              authentication: {
+                type: "SystemAssignedIdentity",
+              },
+            },
+          },
+          runtime: {
+            name: "node",
+            version: "20",
+          },
+        },
+      });
+
+      const blobAsset = functionApp.deployCodeToFlexConsumption(
+        fixturePath,
+        "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storage",
+        "teststorage",
+        {
+          containerName: "deployments",
+          useManagedIdentity: true,
+        },
+      );
+
+      expect(blobAsset).toBeDefined();
+      expect(blobAsset.blobUrl).toContain("teststorage.blob.core.windows.net");
+      expect(blobAsset.blobUrl).toContain("deployments");
+
+      // Verify that functionAppConfig.deployment.storage.value was populated
+      expect(
+        functionApp.props.functionAppConfig?.deployment.storage.value,
+      ).toBe(blobAsset.blobUrl);
+    });
+
+    it("should deploy code to Flex Consumption with user-assigned identity", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus2",
+      });
+
+      const fixturePath = path.resolve(
+        __dirname,
+        "../test/fixtures/sample-function",
+      );
+
+      const userAssignedIdentityId =
+        "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-identity";
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", {
+        name: "test-func-flex-uai",
+        location: "eastus2",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        identity: {
+          type: "UserAssigned",
+          userAssignedIdentities: {
+            [userAssignedIdentityId]: {},
+          },
+        },
+        functionAppConfig: {
+          deployment: {
+            storage: {
+              type: "blobContainer",
+              value: "",
+              authentication: {
+                type: "UserAssignedIdentity",
+              },
+            },
+          },
+          runtime: {
+            name: "python",
+            version: "3.11",
+          },
+        },
+      });
+
+      const blobAsset = functionApp.deployCodeToFlexConsumption(
+        fixturePath,
+        "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storage",
+        "teststorage",
+        {
+          containerName: "deployments",
+          useManagedIdentity: true,
+          managedIdentityResourceId: userAssignedIdentityId,
+        },
+      );
+
+      expect(blobAsset).toBeDefined();
+
+      // Verify that functionAppConfig.deployment.storage was populated correctly
+      const deploymentStorage =
+        functionApp.props.functionAppConfig?.deployment.storage;
+      expect(deploymentStorage?.value).toBe(blobAsset.blobUrl);
+      expect(
+        (deploymentStorage?.authentication as any)
+          .userAssignedIdentityResourceId,
+      ).toBe(userAssignedIdentityId);
+    });
+
+    it("should deploy code to Flex Consumption with bundling", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus2",
+      });
+
+      const fixturePath = path.resolve(
+        __dirname,
+        "../test/fixtures/sample-function",
+      );
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", {
+        name: "test-func-flex-bundle",
+        location: "eastus2",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        identity: {
+          type: "SystemAssigned",
+        },
+        functionAppConfig: {
+          deployment: {
+            storage: {
+              type: "blobContainer",
+              value: "",
+              authentication: {
+                type: "SystemAssignedIdentity",
+              },
+            },
+          },
+          runtime: {
+            name: "node",
+            version: "20",
+          },
+        },
+      });
+
+      const blobAsset = functionApp.deployCodeToFlexConsumption(
+        fixturePath,
+        "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storage",
+        "teststorage",
+        {
+          containerName: "deployments",
+          useManagedIdentity: true,
+          bundling: {
+            image: "node:20",
+            command: [
+              "sh",
+              "-c",
+              "cp -r . /asset-output/ && cd /asset-output && npm install --production",
+            ],
+          },
+          exclude: ["node_modules", "*.test.ts"],
+        },
+      );
+
+      expect(blobAsset).toBeDefined();
+      expect(blobAsset.assetHash).toBeDefined();
+      expect(
+        functionApp.props.functionAppConfig?.deployment.storage.value,
+      ).toBe(blobAsset.blobUrl);
+    });
+
+    it("should throw error when deployCodeToFlexConsumption is called without functionAppConfig", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const fixturePath = path.resolve(
+        __dirname,
+        "../test/fixtures/sample-function",
+      );
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", {
+        name: "test-func-no-config",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+      });
+
+      expect(() => {
+        functionApp.deployCodeToFlexConsumption(
+          fixturePath,
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storage",
+          "teststorage",
+          {
+            useManagedIdentity: true,
+          },
+        );
+      }).toThrow("functionAppConfig must be defined");
+    });
+
+    it("should throw error when neither managed identity nor SAS token is provided for Flex", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus2",
+      });
+
+      const fixturePath = path.resolve(
+        __dirname,
+        "../test/fixtures/sample-function",
+      );
+
+      const functionApp = new FunctionApp(stack, "TestFuncApp", {
+        name: "test-func-flex-error",
+        location: "eastus2",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        functionAppConfig: {
+          deployment: {
+            storage: {
+              type: "blobContainer",
+              value: "",
+              authentication: {
+                type: "SystemAssignedIdentity",
+              },
+            },
+          },
+          runtime: {
+            name: "node",
+            version: "20",
+          },
+        },
+      });
+
+      expect(() => {
+        functionApp.deployCodeToFlexConsumption(
+          fixturePath,
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/storage",
+          "teststorage",
+          {
+            // Neither useManagedIdentity nor sasToken provided
+          },
+        );
+      }).toThrow(
+        "Either useManagedIdentity must be true or sasToken must be provided",
+      );
+    });
   });
 
   describe("Blob Asset Upload Tests", () => {
@@ -1082,7 +1350,7 @@ describe("FunctionApp", () => {
       );
     });
 
-    it("should provide upload helper commands", () => {
+    it("should configure blob URL correctly", () => {
       const rg = new ResourceGroup(stack, "TestRG", {
         name: "test-rg",
         location: "eastus",
@@ -1105,16 +1373,16 @@ describe("FunctionApp", () => {
         },
       );
 
-      // Azure CLI command
-      const cliCmd = blobAsset.azureCliUploadCommand();
-      expect(cliCmd).toContain("az storage blob upload");
-      expect(cliCmd).toContain("--account-name mystorageaccount");
-      expect(cliCmd).toContain("--container-name function-packages");
-      expect(cliCmd).toContain("--auth-mode login");
-      expect(cliCmd).toContain("--overwrite");
+      // Verify blob URL structure
+      expect(blobAsset.blobUrl).toContain(
+        "mystorageaccount.blob.core.windows.net",
+      );
+      expect(blobAsset.blobUrl).toContain("function-packages");
+      expect(blobAsset.containerName).toBe("function-packages");
+      expect(blobAsset.storageAccountName).toBe("mystorageaccount");
     });
 
-    it("should support custom container names in upload commands", () => {
+    it("should support custom container names in blob configuration", () => {
       const rg = new ResourceGroup(stack, "TestRG", {
         name: "test-rg",
         location: "eastus",
@@ -1138,8 +1406,189 @@ describe("FunctionApp", () => {
         },
       );
 
-      const cliCmd = blobAsset.azureCliUploadCommand();
-      expect(cliCmd).toContain("--container-name my-custom-container");
+      expect(blobAsset.containerName).toBe("my-custom-container");
+      expect(blobAsset.blobUrl).toContain("my-custom-container");
+    });
+  });
+
+  describe("usage patterns from examples", () => {
+    it("should create Node.js function app with npm bundling (requires Docker)", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const functionApp = new FunctionApp(stack, "NodeJsFunc", {
+        name: "nodejs-func",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        codeAsset: {
+          sourcePath: "./src/azure-functionapp/test/fixtures/sample-function",
+          bundling: {
+            image: "node:20",
+            command: [
+              "sh",
+              "-c",
+              "cp -r . /asset-output/ && cd /asset-output && npm ci --production",
+            ],
+            environment: {
+              NPM_CONFIG_LOGLEVEL: "error",
+            },
+          },
+          exclude: ["node_modules", "*.test.ts", "*.spec.ts"],
+        },
+        siteConfig: {
+          appSettings: [
+            { name: "FUNCTIONS_WORKER_RUNTIME", value: "node" },
+            { name: "FUNCTIONS_EXTENSION_VERSION", value: "~4" },
+            { name: "NODE_ENV", value: "production" },
+          ],
+          linuxFxVersion: "NODE|20",
+          alwaysOn: true,
+        },
+        httpsOnly: true,
+        identity: {
+          type: "SystemAssigned",
+        },
+      });
+
+      expect(functionApp.assetHash).toBeDefined();
+      expect(functionApp.assetPath).toBeDefined();
+      expect(functionApp.props.siteConfig?.appSettings).toHaveLength(3);
+    });
+
+    it("should create Python function app with pip requirements (requires Docker)", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const functionApp = new FunctionApp(stack, "PythonFunc", {
+        name: "python-func",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        codeAsset: {
+          sourcePath: "./src/azure-functionapp/test/fixtures/sample-function",
+          bundling: {
+            image: "python:3.11",
+            command: [
+              "sh",
+              "-c",
+              "cp -r . /asset-output/ && cd /asset-output && pip install -r requirements.txt -t . 2>/dev/null || true",
+            ],
+            environment: {
+              PIP_NO_CACHE_DIR: "1",
+            },
+          },
+          exclude: ["__pycache__", "*.pyc", ".pytest_cache", "venv"],
+        },
+        siteConfig: {
+          appSettings: [
+            { name: "FUNCTIONS_WORKER_RUNTIME", value: "python" },
+            { name: "FUNCTIONS_EXTENSION_VERSION", value: "~4" },
+          ],
+          linuxFxVersion: "PYTHON|3.11",
+        },
+        httpsOnly: true,
+      });
+
+      expect(functionApp.props.siteConfig?.linuxFxVersion).toBe("PYTHON|3.11");
+      expect(functionApp.props.kind).toBe("functionapp,linux");
+    });
+
+    it("should create function app with minimal asset configuration", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const functionApp = new FunctionApp(stack, "SimpleFunc", {
+        name: "simple-func",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        codeAsset: {
+          sourcePath: "./src/azure-functionapp/test/fixtures/sample-function",
+          exclude: [".gitignore", "*.md", ".env"],
+        },
+        siteConfig: {
+          appSettings: [{ name: "FUNCTIONS_WORKER_RUNTIME", value: "node" }],
+          linuxFxVersion: "NODE|20",
+        },
+      });
+
+      expect(functionApp).toBeInstanceOf(FunctionApp);
+      expect(functionApp.assetPath).toBeDefined();
+    });
+
+    it("should create function app with environment-specific bundling (requires Docker)", () => {
+      const rg = new ResourceGroup(stack, "TestRG", {
+        name: "test-rg",
+        location: "eastus",
+      });
+
+      const environment = "prod";
+
+      const functionApp = new FunctionApp(stack, "AdvancedFunc", {
+        name: "advanced-func",
+        location: "eastus",
+        resourceGroupId: rg.id,
+        serverFarmId:
+          "/subscriptions/sub-id/resourceGroups/rg/providers/Microsoft.Web/serverfarms/plan",
+        kind: "functionapp,linux",
+        codeAsset: {
+          sourcePath: "./src/azure-functionapp/test/fixtures/sample-function",
+          bundling: {
+            image: "node:20-alpine",
+            command: [
+              "sh",
+              "-c",
+              environment === "prod"
+                ? "cp -r . /asset-output/ && cd /asset-output && npm ci --only=production"
+                : "cp -r . /asset-output/ && cd /asset-output && npm ci",
+            ],
+            environment: {
+              NODE_ENV: environment === "prod" ? "production" : "development",
+              BUILD_ENV: environment,
+              NPM_CONFIG_LOGLEVEL: "error",
+            },
+          },
+          exclude: ["node_modules", ".env*", "*.test.ts", "coverage", ".git"],
+          assetHash: `${environment}-build`,
+        },
+        siteConfig: {
+          appSettings: [
+            { name: "FUNCTIONS_WORKER_RUNTIME", value: "node" },
+            { name: "ENVIRONMENT", value: environment },
+            { name: "FUNCTIONS_EXTENSION_VERSION", value: "~4" },
+          ],
+          linuxFxVersion: "NODE|20",
+          alwaysOn: environment === "prod",
+        },
+        identity: {
+          type: "SystemAssigned",
+        },
+        tags: {
+          Environment: environment,
+          AssetPipeline: "enabled",
+        },
+      });
+
+      expect(functionApp.props.tags?.Environment).toBe("prod");
+      expect(functionApp.props.siteConfig?.alwaysOn).toBe(true);
+      expect(functionApp.props.siteConfig?.appSettings).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ name: "ENVIRONMENT", value: "prod" }),
+        ]),
+      );
     });
   });
 });

@@ -363,14 +363,14 @@ export class BlobAsset extends Construct {
       if (!silent) {
         console.warn(`[BlobAsset] Upload skipped: ${this._uploadResult.error}`);
         console.warn(
-          `[BlobAsset] You can upload manually using: ${this.azureCliUploadCommand()}`,
+          `[BlobAsset] You can upload manually using: az storage blob upload --account-name ${this.storageAccountName} --container-name ${this.containerName} --name ${this.blobName} --file ${this.assetPath} --auth-mode login --overwrite`,
         );
       }
     } else {
       if (!silent) {
         console.error(`[BlobAsset] Upload failed: ${this._uploadResult.error}`);
         console.error(
-          `[BlobAsset] You can upload manually using: ${this.azureCliUploadCommand()}`,
+          `[BlobAsset] You can upload manually using: az storage blob upload --account-name ${this.storageAccountName} --container-name ${this.containerName} --name ${this.blobName} --file ${this.assetPath} --auth-mode login --overwrite`,
         );
       }
     }
