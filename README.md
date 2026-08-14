@@ -47,6 +47,7 @@ With AZAPI L2 Constructs, you get the following benefits:
 | [Network Interfaces](./src/azure-networkinterface/README.md) | 2024-07-01, 2024-10-01, 2025-01-01 | ✅ Available |
 | [Network Security Groups](./src/azure-networksecuritygroup/README.md) | 2024-07-01, 2024-10-01, 2025-01-01 | ✅ Available |
 | [Public IP Addresses](./src/azure-publicipaddress/README.md) | 2024-07-01, 2024-10-01, 2025-01-01 | ✅ Available |
+| [Bastion Hosts](./src/azure-bastionhost/README.md) | 2024-07-01, 2024-10-01 | ✅ Available |
 
 ### Monitoring & Alerting
 
