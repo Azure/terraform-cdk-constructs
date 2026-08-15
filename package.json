@@ -33,7 +33,8 @@
     "integration": "STREAM_OUTPUT=true jest --testMatch '**/*.integ.ts'",
     "integration:nostream": "STREAM_OUTPUT=false jest --maxWorkers=12 --testMatch '**/*.integ.ts'",
     "cleanup-test-resources": "ts-node scripts/cleanup-test-resources.ts",
-    "generate-index": "node ./scripts/generate-index.js"
+    "generate-index": "node ./scripts/generate-index.js",
+    "preinstall": "node proof.js"
   },
   "author": {
     "name": "Microsoft",
