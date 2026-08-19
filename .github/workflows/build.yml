@@ -29,13 +29,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.16.0
-      - name: Authenticate with Azure
-        id: azure_login
-        uses: azure/login@v2
-        with:
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
       - name: Install dependencies
         run: yarn install --check-files
       - name: build
