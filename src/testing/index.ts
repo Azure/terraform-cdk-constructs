@@ -220,10 +220,11 @@ export function TerraformApply(
         opts,
         streamOutput,
       );
-      if (initResult.exitCode !== 0)
+      if (initResult.exitCode !== 0) {
         throw new Error(
           `Terraform init failed: ${initResult.stdout} ${initResult.stderr}`,
         );
+      }
 
       const applyResult = execTerraformCommand(
         `terraform apply -auto-approve`,
@@ -278,10 +279,11 @@ export function TerraformPlanExitCode(
         opts,
         streamOutput,
       );
-      if (initResult.exitCode !== 0)
+      if (initResult.exitCode !== 0) {
         throw new Error(
           `Terraform init failed: ${initResult.stdout} ${initResult.stderr}`,
         );
+      }
 
       const planResult = execTerraformCommand(
         `terraform plan -input=false -lock=false -detailed-exitcode`,
@@ -395,20 +397,22 @@ export function TerraformDestroy(
         opts,
         streamOutput,
       );
-      if (initResult.exitCode !== 0)
+      if (initResult.exitCode !== 0) {
         throw new Error(
           `Terraform init failed: ${initResult.stdout} ${initResult.stderr}`,
         );
+      }
 
       const destroyResult = execTerraformCommand(
         `terraform destroy -auto-approve`,
         opts,
         streamOutput,
       );
-      if (destroyResult.exitCode !== 0)
+      if (destroyResult.exitCode !== 0) {
         throw new Error(
           `Terraform destroy failed: ${destroyResult.stdout} ${destroyResult.stderr}`,
         );
+      }
     }
 
     return new AssertionReturn(
