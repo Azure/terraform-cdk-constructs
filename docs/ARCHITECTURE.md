@@ -202,9 +202,9 @@ export class SchemaMapper {
 
 ### 4. AZAPI Provider Classes
 
-**Location**: [`src/core-azure/lib/azapi/providers-azapi/`](../src/core-azure/lib/azapi/providers-azapi/)
+**Location**: [`@cdktn/provider-azapi`](https://github.com/cdktn-io/cdktn-provider-azapi) (peer dependency)
 
-Pre-generated TypeScript classes for AZAPI provider resources and data sources.
+Pre-built CDK Terrain bindings for the AZAPI provider resources and data sources, published by the cdktn project for TypeScript, Python, Java, .NET and Go.
 
 #### Included Classes
 
@@ -230,7 +230,6 @@ terraform-cdk-constructs/
 │   │       ├── azapi/
 │   │       │   ├── azapi-resource.ts     # Base class for all resources
 │   │       │   ├── azapi-exports.ts      # Public API exports
-│   │       │   ├── providers-azapi/      # AZAPI provider classes
 │   │       │   └── schema-mapper/        # Property transformation
 │   │       │       └── schema-mapper.ts
 │   │       └── version-manager/          # Version management
@@ -802,7 +801,7 @@ The `AzapiResource` base class provides a unified framework that handles version
 
 ### 5. Zero Provider Generation
 
-AZAPI provider classes are included in the package, eliminating the need for external provider generation tools.
+AZAPI provider classes come from the pre-built `@cdktn/provider-azapi` package, eliminating the need to run `cdktn get` or maintain generated bindings in this repository.
 
 ---
 

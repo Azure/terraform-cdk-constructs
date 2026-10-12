@@ -14,7 +14,7 @@ import { Construct } from "constructs";
 import "cdktn/lib/testing/adapters/jest";
 import { ResourceGroup } from "../../azure-resourcegroup";
 import { VirtualNetwork } from "../../azure-virtualnetwork";
-import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
+import { AzapiProvider } from "@cdktn/provider-azapi/lib/provider";
 import { BaseTestStack, TerraformApplyCheckAndDestroy } from "../../testing";
 import { TestRunMetadata } from "../../testing/lib/metadata";
 import { Subnet } from "../lib/subnet";

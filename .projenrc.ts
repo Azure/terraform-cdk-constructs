@@ -9,7 +9,7 @@ import { JsonPatch } from "projen/lib/json-patch";
 const project = new cdktn.ConstructLibraryCdktn({
   author: "Microsoft",
   authorAddress: "https://microsoft.com",
-  cdktnVersion: "0.22.0", // pinned; ConstructLibraryCdktn adds cdktn + constructs as peer/dev deps
+  cdktnVersion: "0.24.0", // pinned; ConstructLibraryCdktn adds cdktn + constructs as peer/dev deps
   jsiiVersion: "~5.9.0",
   description:
     "Azure CDK constructs using AZAPI provider for direct Azure REST API access. Version 1.0.0 - Major breaking change migration from AzureRM to AZAPI.",
@@ -23,12 +23,10 @@ const project = new cdktn.ConstructLibraryCdktn({
     "opentofu",
     "rest-api",
   ], // ConstructLibraryCdktn adds "cdktn" and "terraform"
-  // cdktn@0.22.0 requires constructs@^10.4.2; projen@0.104 requires constructs@^10.5.0.
-  // Using 10.5.0 as the minimum avoids a second nested constructs copy under
-  // node_modules/projen, which jsii-docgen would otherwise pick up when rendering API.md.
-  constructsVersion: "10.5.0",
+  // cdktn@0.24.0 and @cdktn/provider-azapi@1.x require constructs >=10.6.0 <10.8.0
+  constructsVersion: "10.7.2",
   typescriptVersion: "~5.9.3", // should always be the same major/minor as JSII
-  minNodeVersion: "22.19.0", // cdktn@0.22.0 declares engines.node >= 22.19.0
+  minNodeVersion: "22.19.0", // cdktn@0.24.0 declares engines.node >= 22.11.0; keep the 0.22 floor
   defaultReleaseBranch: "main",
   name: "@microsoft/terraform-cdk-constructs",
   majorVersion: 2, // Set to version 2.0.0 for cdktn migration (breaking change from cdktf)
@@ -70,11 +68,13 @@ const project = new cdktn.ConstructLibraryCdktn({
   jestOptions: {
     updateSnapshot: UpdateSnapshot.NEVER,
   },
-  // Dependencies for AZAPI-only implementation (removed AzureRM dependencies)
-  // AZAPI provider classes are built into this package in src/core-azure/lib/azapi/providers-azapi/
   // cdktn and constructs are added as peer + dev dependencies by ConstructLibraryCdktn.
+  // The AZAPI provider bindings come from the pre-built @cdktn/provider-azapi package
+  // (peer dependency, like every other jsii dependency).
+  peerDeps: ["@cdktn/provider-azapi@^1.0.0"],
   bundledDeps: ["uuid@^11.0.3"],
   devDeps: [
+    "@cdktn/provider-azapi@^1.0.0",
     "@types/jest@^29",
     "@types/node@^20",
     "@types/uuid@^10.0.0",
@@ -273,11 +273,6 @@ project.gitignore.exclude(".gen"); // Exclude locally generated provider binding
 
 project.prettier?.addIgnorePattern(".github");
 project.eslint?.addIgnorePattern(".github");
-
-// Ignore generated AZAPI provider files completely
-project.eslint?.addIgnorePattern(
-  "src/core-azure/lib/azapi/providers-azapi/**/*.ts",
-);
 
 // Add generate index script
 project.addScripts({

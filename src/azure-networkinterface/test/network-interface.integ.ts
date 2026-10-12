@@ -13,7 +13,7 @@ import "cdktn/lib/testing/adapters/jest";
 import { ResourceGroup } from "../../azure-resourcegroup";
 import { Subnet } from "../../azure-subnet";
 import { VirtualNetwork } from "../../azure-virtualnetwork";
-import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
+import { AzapiProvider } from "@cdktn/provider-azapi/lib/provider";
 import { BaseTestStack, TerraformApplyCheckAndDestroy } from "../../testing";
 import { TestRunMetadata } from "../../testing/lib/metadata";
 import { NetworkInterface } from "../lib/network-interface";

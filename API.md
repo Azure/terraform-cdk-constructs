@@ -4366,7 +4366,7 @@ The input properties for this Application Insights instance.
 
 ### AzapiProvider <a name="AzapiProvider" id="@microsoft/terraform-cdk-constructs.AzapiProvider"></a>
 
-Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs azapi}.
+Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs azapi}.
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.AzapiProvider.Initializer"></a>
 
@@ -4380,7 +4380,7 @@ new AzapiProvider(scope: Construct, id: string, config?: AzapiProviderConfig)
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.Initializer.parameter.config">config</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig">AzapiProviderConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.Initializer.parameter.config">config</a></code> | <code>@cdktn/provider-azapi.provider.AzapiProviderConfig</code> | *No description.* |
 
 ---
 
@@ -4404,7 +4404,7 @@ Must be unique amongst siblings in the same scope
 
 ##### `config`<sup>Optional</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.AzapiProvider.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig">AzapiProviderConfig</a>
+- *Type:* @cdktn/provider-azapi.provider.AzapiProviderConfig
 
 ---
 
@@ -4421,6 +4421,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.resetAlias">resetAlias</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.resetAlwaysAcquirePolicyToken">resetAlwaysAcquirePolicyToken</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.resetAuxiliaryTenantIds">resetAuxiliaryTenantIds</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.resetClientCertificate">resetClientCertificate</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.resetClientCertificatePassword">resetClientCertificatePassword</a></code> | *No description.* |
@@ -4448,6 +4449,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.resetOidcToken">resetOidcToken</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.resetOidcTokenFilePath">resetOidcTokenFilePath</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.resetPartnerId">resetPartnerId</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.resetPreserveResourceIdCasing">resetPreserveResourceIdCasing</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.resetSkipProviderRegistration">resetSkipProviderRegistration</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.resetSubscriptionId">resetSubscriptionId</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.resetTenantId">resetTenantId</a></code> | *No description.* |
@@ -4553,6 +4555,12 @@ Adds this resource to the terraform JSON output.
 
 ```typescript
 public resetAlias(): void
+```
+
+##### `resetAlwaysAcquirePolicyToken` <a name="resetAlwaysAcquirePolicyToken" id="@microsoft/terraform-cdk-constructs.AzapiProvider.resetAlwaysAcquirePolicyToken"></a>
+
+```typescript
+public resetAlwaysAcquirePolicyToken(): void
 ```
 
 ##### `resetAuxiliaryTenantIds` <a name="resetAuxiliaryTenantIds" id="@microsoft/terraform-cdk-constructs.AzapiProvider.resetAuxiliaryTenantIds"></a>
@@ -4717,6 +4725,12 @@ public resetOidcTokenFilePath(): void
 public resetPartnerId(): void
 ```
 
+##### `resetPreserveResourceIdCasing` <a name="resetPreserveResourceIdCasing" id="@microsoft/terraform-cdk-constructs.AzapiProvider.resetPreserveResourceIdCasing"></a>
+
+```typescript
+public resetPreserveResourceIdCasing(): void
+```
+
 ##### `resetSkipProviderRegistration` <a name="resetSkipProviderRegistration" id="@microsoft/terraform-cdk-constructs.AzapiProvider.resetSkipProviderRegistration"></a>
 
 ```typescript
@@ -4862,7 +4876,7 @@ The construct id used in the generated config for the AzapiProvider to import.
 
 The id of the existing AzapiProvider that should be imported.
 
-Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#import import section} in the documentation of this resource for the id to use
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#import import section} in the documentation of this resource for the id to use
 
 ---
 
@@ -4887,7 +4901,9 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.terraformGeneratorMetadata">terraformGeneratorMetadata</a></code> | <code>cdktn.TerraformProviderGeneratorMetadata</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.terraformProviderSource">terraformProviderSource</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.alias">alias</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.functions">functions</a></code> | <code>@cdktn/provider-azapi.providerFunctions.AzapiProviderFunctions</code> | Provider-defined functions of the azapi provider. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.aliasInput">aliasInput</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.alwaysAcquirePolicyTokenInput">alwaysAcquirePolicyTokenInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.auxiliaryTenantIdsInput">auxiliaryTenantIdsInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.clientCertificateInput">clientCertificateInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.clientCertificatePasswordInput">clientCertificatePasswordInput</a></code> | <code>string</code> | *No description.* |
@@ -4905,7 +4921,7 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.disableInstanceDiscoveryInput">disableInstanceDiscoveryInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.disableTerraformPartnerIdInput">disableTerraformPartnerIdInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.enablePreflightInput">enablePreflightInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.endpointInput">endpointInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderEndpoint">AzapiProviderEndpoint</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.endpointInput">endpointInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.provider.AzapiProviderEndpoint[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.environmentInput">environmentInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.ignoreNoOpChangesInput">ignoreNoOpChangesInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.maximumBusyRetryAttemptsInput">maximumBusyRetryAttemptsInput</a></code> | <code>number</code> | *No description.* |
@@ -4915,6 +4931,7 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.oidcTokenFilePathInput">oidcTokenFilePathInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.oidcTokenInput">oidcTokenInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.partnerIdInput">partnerIdInput</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.preserveResourceIdCasingInput">preserveResourceIdCasingInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.skipProviderRegistrationInput">skipProviderRegistrationInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.subscriptionIdInput">subscriptionIdInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.tenantIdInput">tenantIdInput</a></code> | <code>string</code> | *No description.* |
@@ -4922,6 +4939,7 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.useCliInput">useCliInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.useMsiInput">useMsiInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.useOidcInput">useOidcInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.alwaysAcquirePolicyToken">alwaysAcquirePolicyToken</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.auxiliaryTenantIds">auxiliaryTenantIds</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.clientCertificate">clientCertificate</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.clientCertificatePassword">clientCertificatePassword</a></code> | <code>string</code> | *No description.* |
@@ -4939,7 +4957,7 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.disableInstanceDiscovery">disableInstanceDiscovery</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.disableTerraformPartnerId">disableTerraformPartnerId</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.enablePreflight">enablePreflight</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.endpoint">endpoint</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderEndpoint">AzapiProviderEndpoint</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.endpoint">endpoint</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.provider.AzapiProviderEndpoint[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.environment">environment</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.ignoreNoOpChanges">ignoreNoOpChanges</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.maximumBusyRetryAttempts">maximumBusyRetryAttempts</a></code> | <code>number</code> | *No description.* |
@@ -4949,6 +4967,7 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.oidcToken">oidcToken</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.oidcTokenFilePath">oidcTokenFilePath</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.partnerId">partnerId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.preserveResourceIdCasing">preserveResourceIdCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.skipProviderRegistration">skipProviderRegistration</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.subscriptionId">subscriptionId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.property.tenantId">tenantId</a></code> | <code>string</code> | *No description.* |
@@ -5051,6 +5070,18 @@ public readonly alias: string;
 
 ---
 
+##### `functions`<sup>Required</sup> <a name="functions" id="@microsoft/terraform-cdk-constructs.AzapiProvider.property.functions"></a>
+
+```typescript
+public readonly functions: AzapiProviderFunctions;
+```
+
+- *Type:* @cdktn/provider-azapi.providerFunctions.AzapiProviderFunctions
+
+Provider-defined functions of the azapi provider.
+
+---
+
 ##### `aliasInput`<sup>Optional</sup> <a name="aliasInput" id="@microsoft/terraform-cdk-constructs.AzapiProvider.property.aliasInput"></a>
 
 ```typescript
@@ -5058,6 +5089,16 @@ public readonly aliasInput: string;
 ```
 
 - *Type:* string
+
+---
+
+##### `alwaysAcquirePolicyTokenInput`<sup>Optional</sup> <a name="alwaysAcquirePolicyTokenInput" id="@microsoft/terraform-cdk-constructs.AzapiProvider.property.alwaysAcquirePolicyTokenInput"></a>
+
+```typescript
+public readonly alwaysAcquirePolicyTokenInput: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
 
 ---
 
@@ -5237,7 +5278,7 @@ public readonly enablePreflightInput: boolean | IResolvable;
 public readonly endpointInput: IResolvable | AzapiProviderEndpoint[];
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderEndpoint">AzapiProviderEndpoint</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.provider.AzapiProviderEndpoint[]
 
 ---
 
@@ -5331,6 +5372,16 @@ public readonly partnerIdInput: string;
 
 ---
 
+##### `preserveResourceIdCasingInput`<sup>Optional</sup> <a name="preserveResourceIdCasingInput" id="@microsoft/terraform-cdk-constructs.AzapiProvider.property.preserveResourceIdCasingInput"></a>
+
+```typescript
+public readonly preserveResourceIdCasingInput: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
+
+---
+
 ##### `skipProviderRegistrationInput`<sup>Optional</sup> <a name="skipProviderRegistrationInput" id="@microsoft/terraform-cdk-constructs.AzapiProvider.property.skipProviderRegistrationInput"></a>
 
 ```typescript
@@ -5395,6 +5446,16 @@ public readonly useMsiInput: boolean | IResolvable;
 
 ```typescript
 public readonly useOidcInput: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
+
+---
+
+##### `alwaysAcquirePolicyToken`<sup>Optional</sup> <a name="alwaysAcquirePolicyToken" id="@microsoft/terraform-cdk-constructs.AzapiProvider.property.alwaysAcquirePolicyToken"></a>
+
+```typescript
+public readonly alwaysAcquirePolicyToken: boolean | IResolvable;
 ```
 
 - *Type:* boolean | cdktn.IResolvable
@@ -5577,7 +5638,7 @@ public readonly enablePreflight: boolean | IResolvable;
 public readonly endpoint: IResolvable | AzapiProviderEndpoint[];
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderEndpoint">AzapiProviderEndpoint</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.provider.AzapiProviderEndpoint[]
 
 ---
 
@@ -5671,6 +5732,16 @@ public readonly partnerId: string;
 
 ---
 
+##### `preserveResourceIdCasing`<sup>Optional</sup> <a name="preserveResourceIdCasing" id="@microsoft/terraform-cdk-constructs.AzapiProvider.property.preserveResourceIdCasing"></a>
+
+```typescript
+public readonly preserveResourceIdCasing: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
+
+---
+
 ##### `skipProviderRegistration`<sup>Optional</sup> <a name="skipProviderRegistration" id="@microsoft/terraform-cdk-constructs.AzapiProvider.property.skipProviderRegistration"></a>
 
 ```typescript
@@ -5761,7 +5832,7 @@ public readonly tfResourceType: string;
 
 ### AzapiProvider <a name="AzapiProvider" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider"></a>
 
-Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs azapi}.
+Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs azapi}.
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.Initializer"></a>
 
@@ -5775,7 +5846,7 @@ new core_azure.AzapiProvider(scope: Construct, id: string, config?: AzapiProvide
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.Initializer.parameter.config">config</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig">AzapiProviderConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.Initializer.parameter.config">config</a></code> | <code>@cdktn/provider-azapi.provider.AzapiProviderConfig</code> | *No description.* |
 
 ---
 
@@ -5799,7 +5870,7 @@ Must be unique amongst siblings in the same scope
 
 ##### `config`<sup>Optional</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig">AzapiProviderConfig</a>
+- *Type:* @cdktn/provider-azapi.provider.AzapiProviderConfig
 
 ---
 
@@ -5816,6 +5887,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.toMetadata">toMetadata</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.toTerraform">toTerraform</a></code> | Adds this resource to the terraform JSON output. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetAlias">resetAlias</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetAlwaysAcquirePolicyToken">resetAlwaysAcquirePolicyToken</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetAuxiliaryTenantIds">resetAuxiliaryTenantIds</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetClientCertificate">resetClientCertificate</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetClientCertificatePassword">resetClientCertificatePassword</a></code> | *No description.* |
@@ -5843,6 +5915,7 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetOidcToken">resetOidcToken</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetOidcTokenFilePath">resetOidcTokenFilePath</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetPartnerId">resetPartnerId</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetPreserveResourceIdCasing">resetPreserveResourceIdCasing</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetSkipProviderRegistration">resetSkipProviderRegistration</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetSubscriptionId">resetSubscriptionId</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetTenantId">resetTenantId</a></code> | *No description.* |
@@ -5948,6 +6021,12 @@ Adds this resource to the terraform JSON output.
 
 ```typescript
 public resetAlias(): void
+```
+
+##### `resetAlwaysAcquirePolicyToken` <a name="resetAlwaysAcquirePolicyToken" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetAlwaysAcquirePolicyToken"></a>
+
+```typescript
+public resetAlwaysAcquirePolicyToken(): void
 ```
 
 ##### `resetAuxiliaryTenantIds` <a name="resetAuxiliaryTenantIds" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetAuxiliaryTenantIds"></a>
@@ -6112,6 +6191,12 @@ public resetOidcTokenFilePath(): void
 public resetPartnerId(): void
 ```
 
+##### `resetPreserveResourceIdCasing` <a name="resetPreserveResourceIdCasing" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetPreserveResourceIdCasing"></a>
+
+```typescript
+public resetPreserveResourceIdCasing(): void
+```
+
 ##### `resetSkipProviderRegistration` <a name="resetSkipProviderRegistration" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetSkipProviderRegistration"></a>
 
 ```typescript
@@ -6257,7 +6342,7 @@ The construct id used in the generated config for the AzapiProvider to import.
 
 The id of the existing AzapiProvider that should be imported.
 
-Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#import import section} in the documentation of this resource for the id to use
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#import import section} in the documentation of this resource for the id to use
 
 ---
 
@@ -6282,7 +6367,9 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.terraformGeneratorMetadata">terraformGeneratorMetadata</a></code> | <code>cdktn.TerraformProviderGeneratorMetadata</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.terraformProviderSource">terraformProviderSource</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.alias">alias</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.functions">functions</a></code> | <code>@cdktn/provider-azapi.providerFunctions.AzapiProviderFunctions</code> | Provider-defined functions of the azapi provider. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.aliasInput">aliasInput</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.alwaysAcquirePolicyTokenInput">alwaysAcquirePolicyTokenInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.auxiliaryTenantIdsInput">auxiliaryTenantIdsInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.clientCertificateInput">clientCertificateInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.clientCertificatePasswordInput">clientCertificatePasswordInput</a></code> | <code>string</code> | *No description.* |
@@ -6300,7 +6387,7 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.disableInstanceDiscoveryInput">disableInstanceDiscoveryInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.disableTerraformPartnerIdInput">disableTerraformPartnerIdInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.enablePreflightInput">enablePreflightInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.endpointInput">endpointInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderEndpoint">AzapiProviderEndpoint</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.endpointInput">endpointInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.provider.AzapiProviderEndpoint[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.environmentInput">environmentInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.ignoreNoOpChangesInput">ignoreNoOpChangesInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.maximumBusyRetryAttemptsInput">maximumBusyRetryAttemptsInput</a></code> | <code>number</code> | *No description.* |
@@ -6310,6 +6397,7 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.oidcTokenFilePathInput">oidcTokenFilePathInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.oidcTokenInput">oidcTokenInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.partnerIdInput">partnerIdInput</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.preserveResourceIdCasingInput">preserveResourceIdCasingInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.skipProviderRegistrationInput">skipProviderRegistrationInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.subscriptionIdInput">subscriptionIdInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.tenantIdInput">tenantIdInput</a></code> | <code>string</code> | *No description.* |
@@ -6317,6 +6405,7 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.useCliInput">useCliInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.useMsiInput">useMsiInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.useOidcInput">useOidcInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.alwaysAcquirePolicyToken">alwaysAcquirePolicyToken</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.auxiliaryTenantIds">auxiliaryTenantIds</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.clientCertificate">clientCertificate</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.clientCertificatePassword">clientCertificatePassword</a></code> | <code>string</code> | *No description.* |
@@ -6334,7 +6423,7 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.disableInstanceDiscovery">disableInstanceDiscovery</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.disableTerraformPartnerId">disableTerraformPartnerId</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.enablePreflight">enablePreflight</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.endpoint">endpoint</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderEndpoint">AzapiProviderEndpoint</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.endpoint">endpoint</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.provider.AzapiProviderEndpoint[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.environment">environment</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.ignoreNoOpChanges">ignoreNoOpChanges</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.maximumBusyRetryAttempts">maximumBusyRetryAttempts</a></code> | <code>number</code> | *No description.* |
@@ -6344,6 +6433,7 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.oidcToken">oidcToken</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.oidcTokenFilePath">oidcTokenFilePath</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.partnerId">partnerId</a></code> | <code>string</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.preserveResourceIdCasing">preserveResourceIdCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.skipProviderRegistration">skipProviderRegistration</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.subscriptionId">subscriptionId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.tenantId">tenantId</a></code> | <code>string</code> | *No description.* |
@@ -6446,6 +6536,18 @@ public readonly alias: string;
 
 ---
 
+##### `functions`<sup>Required</sup> <a name="functions" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.functions"></a>
+
+```typescript
+public readonly functions: AzapiProviderFunctions;
+```
+
+- *Type:* @cdktn/provider-azapi.providerFunctions.AzapiProviderFunctions
+
+Provider-defined functions of the azapi provider.
+
+---
+
 ##### `aliasInput`<sup>Optional</sup> <a name="aliasInput" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.aliasInput"></a>
 
 ```typescript
@@ -6453,6 +6555,16 @@ public readonly aliasInput: string;
 ```
 
 - *Type:* string
+
+---
+
+##### `alwaysAcquirePolicyTokenInput`<sup>Optional</sup> <a name="alwaysAcquirePolicyTokenInput" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.alwaysAcquirePolicyTokenInput"></a>
+
+```typescript
+public readonly alwaysAcquirePolicyTokenInput: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
 
 ---
 
@@ -6632,7 +6744,7 @@ public readonly enablePreflightInput: boolean | IResolvable;
 public readonly endpointInput: IResolvable | AzapiProviderEndpoint[];
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderEndpoint">AzapiProviderEndpoint</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.provider.AzapiProviderEndpoint[]
 
 ---
 
@@ -6726,6 +6838,16 @@ public readonly partnerIdInput: string;
 
 ---
 
+##### `preserveResourceIdCasingInput`<sup>Optional</sup> <a name="preserveResourceIdCasingInput" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.preserveResourceIdCasingInput"></a>
+
+```typescript
+public readonly preserveResourceIdCasingInput: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
+
+---
+
 ##### `skipProviderRegistrationInput`<sup>Optional</sup> <a name="skipProviderRegistrationInput" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.skipProviderRegistrationInput"></a>
 
 ```typescript
@@ -6790,6 +6912,16 @@ public readonly useMsiInput: boolean | IResolvable;
 
 ```typescript
 public readonly useOidcInput: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
+
+---
+
+##### `alwaysAcquirePolicyToken`<sup>Optional</sup> <a name="alwaysAcquirePolicyToken" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.alwaysAcquirePolicyToken"></a>
+
+```typescript
+public readonly alwaysAcquirePolicyToken: boolean | IResolvable;
 ```
 
 - *Type:* boolean | cdktn.IResolvable
@@ -6972,7 +7104,7 @@ public readonly enablePreflight: boolean | IResolvable;
 public readonly endpoint: IResolvable | AzapiProviderEndpoint[];
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderEndpoint">AzapiProviderEndpoint</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.provider.AzapiProviderEndpoint[]
 
 ---
 
@@ -7063,6 +7195,16 @@ public readonly partnerId: string;
 ```
 
 - *Type:* string
+
+---
+
+##### `preserveResourceIdCasing`<sup>Optional</sup> <a name="preserveResourceIdCasing" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.property.preserveResourceIdCasing"></a>
+
+```typescript
+public readonly preserveResourceIdCasing: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
 
 ---
 
@@ -16388,7 +16530,7 @@ public readonly tagsOutput: TerraformOutput;
 
 ### DataAzapiClientConfig <a name="DataAzapiClientConfig" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig"></a>
 
-Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/client_config azapi_client_config}.
+Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/client_config azapi_client_config}.
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.Initializer"></a>
 
@@ -16402,7 +16544,7 @@ new DataAzapiClientConfig(scope: Construct, id: string, config?: DataAzapiClient
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.Initializer.parameter.config">config</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigConfig">DataAzapiClientConfigConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.Initializer.parameter.config">config</a></code> | <code>@cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigConfig</code> | *No description.* |
 
 ---
 
@@ -16426,7 +16568,7 @@ Must be unique amongst siblings in the same scope
 
 ##### `config`<sup>Optional</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigConfig">DataAzapiClientConfigConfig</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigConfig
 
 ---
 
@@ -16678,7 +16820,7 @@ public putTimeouts(value: DataAzapiClientConfigTimeouts): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.putTimeouts.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts
 
 ---
 
@@ -16791,7 +16933,7 @@ The construct id used in the generated config for the DataAzapiClientConfig to i
 
 The id of the existing DataAzapiClientConfig that should be imported.
 
-Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/client_config#import import section} in the documentation of this resource for the id to use
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/client_config#import import section} in the documentation of this resource for the id to use
 
 ---
 
@@ -16824,8 +16966,8 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.property.subscriptionId">subscriptionId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.property.subscriptionResourceId">subscriptionResourceId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.property.tenantId">tenantId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeoutsOutputReference">DataAzapiClientConfigTimeoutsOutputReference</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a> \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeoutsOutputReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts</code> | *No description.* |
 
 ---
 
@@ -17007,17 +17149,17 @@ public readonly tenantId: string;
 public readonly timeouts: DataAzapiClientConfigTimeoutsOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeoutsOutputReference">DataAzapiClientConfigTimeoutsOutputReference</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeoutsOutputReference
 
 ---
 
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: DataAzapiClientConfigTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | DataAzapiClientConfigTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a> | cdktn.IResolvable
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts
 
 ---
 
@@ -17041,7 +17183,7 @@ public readonly tfResourceType: string;
 
 ### DataAzapiClientConfig <a name="DataAzapiClientConfig" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig"></a>
 
-Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/client_config azapi_client_config}.
+Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/client_config azapi_client_config}.
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.Initializer"></a>
 
@@ -17055,7 +17197,7 @@ new core_azure.DataAzapiClientConfig(scope: Construct, id: string, config?: Data
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.Initializer.parameter.config">config</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigConfig">DataAzapiClientConfigConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.Initializer.parameter.config">config</a></code> | <code>@cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigConfig</code> | *No description.* |
 
 ---
 
@@ -17079,7 +17221,7 @@ Must be unique amongst siblings in the same scope
 
 ##### `config`<sup>Optional</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigConfig">DataAzapiClientConfigConfig</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigConfig
 
 ---
 
@@ -17331,7 +17473,7 @@ public putTimeouts(value: DataAzapiClientConfigTimeouts): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.putTimeouts.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts
 
 ---
 
@@ -17444,7 +17586,7 @@ The construct id used in the generated config for the DataAzapiClientConfig to i
 
 The id of the existing DataAzapiClientConfig that should be imported.
 
-Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/client_config#import import section} in the documentation of this resource for the id to use
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/client_config#import import section} in the documentation of this resource for the id to use
 
 ---
 
@@ -17477,8 +17619,8 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.property.subscriptionId">subscriptionId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.property.subscriptionResourceId">subscriptionResourceId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.property.tenantId">tenantId</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeoutsOutputReference">DataAzapiClientConfigTimeoutsOutputReference</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.property.timeoutsInput">timeoutsInput</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a> \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeoutsOutputReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts</code> | *No description.* |
 
 ---
 
@@ -17660,17 +17802,17 @@ public readonly tenantId: string;
 public readonly timeouts: DataAzapiClientConfigTimeoutsOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeoutsOutputReference">DataAzapiClientConfigTimeoutsOutputReference</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeoutsOutputReference
 
 ---
 
 ##### `timeoutsInput`<sup>Optional</sup> <a name="timeoutsInput" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.property.timeoutsInput"></a>
 
 ```typescript
-public readonly timeoutsInput: DataAzapiClientConfigTimeouts | IResolvable;
+public readonly timeoutsInput: IResolvable | DataAzapiClientConfigTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a> | cdktn.IResolvable
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts
 
 ---
 
@@ -17694,7 +17836,7 @@ public readonly tfResourceType: string;
 
 ### DataAzapiResource <a name="DataAzapiResource" id="@microsoft/terraform-cdk-constructs.DataAzapiResource"></a>
 
-Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource azapi_resource}.
+Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource azapi_resource}.
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.DataAzapiResource.Initializer"></a>
 
@@ -17708,7 +17850,7 @@ new DataAzapiResource(scope: Construct, id: string, config: DataAzapiResourceCon
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.Initializer.parameter.config">config</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceConfig">DataAzapiResourceConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.Initializer.parameter.config">config</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceConfig</code> | *No description.* |
 
 ---
 
@@ -17732,7 +17874,7 @@ Must be unique amongst siblings in the same scope
 
 ##### `config`<sup>Required</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.DataAzapiResource.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceConfig">DataAzapiResourceConfig</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceConfig
 
 ---
 
@@ -17993,7 +18135,7 @@ public putRetry(value: DataAzapiResourceRetry): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.DataAzapiResource.putRetry.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry
 
 ---
 
@@ -18005,7 +18147,7 @@ public putTimeouts(value: DataAzapiResourceTimeouts): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.DataAzapiResource.putTimeouts.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts
 
 ---
 
@@ -18166,7 +18308,7 @@ The construct id used in the generated config for the DataAzapiResource to impor
 
 The id of the existing DataAzapiResource that should be imported.
 
-Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#import import section} in the documentation of this resource for the id to use
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#import import section} in the documentation of this resource for the id to use
 
 ---
 
@@ -18196,12 +18338,12 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.exists">exists</a></code> | <code>cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceIdentityList">DataAzapiResourceIdentityList</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.identity">identity</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceIdentityList</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.location">location</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.output">output</a></code> | <code>cdktn.AnyMap</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetryOutputReference">DataAzapiResourceRetryOutputReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetryOutputReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.tags">tags</a></code> | <code>cdktn.StringMap</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeoutsOutputReference">DataAzapiResourceTimeoutsOutputReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeoutsOutputReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.headersInput">headersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.ignoreNotFoundInput">ignoreNotFoundInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
@@ -18209,8 +18351,8 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.queryParametersInput">queryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.resourceIdInput">resourceIdInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.responseExportValuesInput">responseExportValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.headers">headers</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.property.ignoreNotFound">ignoreNotFound</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
@@ -18371,7 +18513,7 @@ public readonly id: string;
 public readonly identity: DataAzapiResourceIdentityList;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceIdentityList">DataAzapiResourceIdentityList</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceIdentityList
 
 ---
 
@@ -18401,7 +18543,7 @@ public readonly output: AnyMap;
 public readonly retry: DataAzapiResourceRetryOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetryOutputReference">DataAzapiResourceRetryOutputReference</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetryOutputReference
 
 ---
 
@@ -18421,7 +18563,7 @@ public readonly tags: StringMap;
 public readonly timeouts: DataAzapiResourceTimeoutsOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeoutsOutputReference">DataAzapiResourceTimeoutsOutputReference</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeoutsOutputReference
 
 ---
 
@@ -18501,7 +18643,7 @@ public readonly responseExportValuesInput: {[ key: string ]: any};
 public readonly retryInput: IResolvable | DataAzapiResourceRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry
 
 ---
 
@@ -18511,7 +18653,7 @@ public readonly retryInput: IResolvable | DataAzapiResourceRetry;
 public readonly timeoutsInput: IResolvable | DataAzapiResourceTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts
 
 ---
 
@@ -18625,7 +18767,7 @@ public readonly tfResourceType: string;
 
 ### DataAzapiResource <a name="DataAzapiResource" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource"></a>
 
-Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource azapi_resource}.
+Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource azapi_resource}.
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.Initializer"></a>
 
@@ -18639,7 +18781,7 @@ new core_azure.DataAzapiResource(scope: Construct, id: string, config: DataAzapi
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.Initializer.parameter.config">config</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceConfig">DataAzapiResourceConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.Initializer.parameter.config">config</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceConfig</code> | *No description.* |
 
 ---
 
@@ -18663,7 +18805,7 @@ Must be unique amongst siblings in the same scope
 
 ##### `config`<sup>Required</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceConfig">DataAzapiResourceConfig</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceConfig
 
 ---
 
@@ -18924,7 +19066,7 @@ public putRetry(value: DataAzapiResourceRetry): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.putRetry.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry
 
 ---
 
@@ -18936,7 +19078,7 @@ public putTimeouts(value: DataAzapiResourceTimeouts): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.putTimeouts.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts
 
 ---
 
@@ -19097,7 +19239,7 @@ The construct id used in the generated config for the DataAzapiResource to impor
 
 The id of the existing DataAzapiResource that should be imported.
 
-Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#import import section} in the documentation of this resource for the id to use
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#import import section} in the documentation of this resource for the id to use
 
 ---
 
@@ -19127,12 +19269,12 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.exists">exists</a></code> | <code>cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceIdentityList">DataAzapiResourceIdentityList</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.identity">identity</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceIdentityList</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.location">location</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.output">output</a></code> | <code>cdktn.AnyMap</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetryOutputReference">DataAzapiResourceRetryOutputReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetryOutputReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.tags">tags</a></code> | <code>cdktn.StringMap</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeoutsOutputReference">DataAzapiResourceTimeoutsOutputReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeoutsOutputReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.headersInput">headersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.ignoreNotFoundInput">ignoreNotFoundInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
@@ -19140,8 +19282,8 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.queryParametersInput">queryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.resourceIdInput">resourceIdInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.responseExportValuesInput">responseExportValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.headers">headers</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.property.ignoreNotFound">ignoreNotFound</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
@@ -19302,7 +19444,7 @@ public readonly id: string;
 public readonly identity: DataAzapiResourceIdentityList;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceIdentityList">DataAzapiResourceIdentityList</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceIdentityList
 
 ---
 
@@ -19332,7 +19474,7 @@ public readonly output: AnyMap;
 public readonly retry: DataAzapiResourceRetryOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetryOutputReference">DataAzapiResourceRetryOutputReference</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetryOutputReference
 
 ---
 
@@ -19352,7 +19494,7 @@ public readonly tags: StringMap;
 public readonly timeouts: DataAzapiResourceTimeoutsOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeoutsOutputReference">DataAzapiResourceTimeoutsOutputReference</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeoutsOutputReference
 
 ---
 
@@ -19432,7 +19574,7 @@ public readonly responseExportValuesInput: {[ key: string ]: any};
 public readonly retryInput: IResolvable | DataAzapiResourceRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry
 
 ---
 
@@ -19442,7 +19584,7 @@ public readonly retryInput: IResolvable | DataAzapiResourceRetry;
 public readonly timeoutsInput: IResolvable | DataAzapiResourceTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts
 
 ---
 
@@ -71360,7 +71502,7 @@ public readonly tagsOutput: TerraformOutput;
 
 ### Resource <a name="Resource" id="@microsoft/terraform-cdk-constructs.Resource"></a>
 
-Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource azapi_resource}.
+Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource azapi_resource}.
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.Resource.Initializer"></a>
 
@@ -71374,7 +71516,7 @@ new Resource(scope: Construct, id: string, config: ResourceConfig)
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.Initializer.parameter.config">config</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig">ResourceConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.Initializer.parameter.config">config</a></code> | <code>@cdktn/provider-azapi.resource.ResourceConfig</code> | *No description.* |
 
 ---
 
@@ -71398,7 +71540,7 @@ Must be unique amongst siblings in the same scope
 
 ##### `config`<sup>Required</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.Resource.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceConfig">ResourceConfig</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceConfig
 
 ---
 
@@ -71439,9 +71581,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.resetDeleteHeaders">resetDeleteHeaders</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.resetDeleteQueryParameters">resetDeleteQueryParameters</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.resetIdentity">resetIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.resetIgnoreBodyChanges">resetIgnoreBodyChanges</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.resetIgnoreCasing">resetIgnoreCasing</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.resetIgnoreMissingProperty">resetIgnoreMissingProperty</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.resetIgnoreNullProperty">resetIgnoreNullProperty</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.resetIgnoreOtherItemsInList">resetIgnoreOtherItemsInList</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.resetListUniqueIdProperty">resetListUniqueIdProperty</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.resetLocation">resetLocation</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.resetLocks">resetLocks</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.resetName">resetName</a></code> | *No description.* |
@@ -71721,7 +71866,7 @@ public moveFromId(id: string): void
 
 Move the resource corresponding to "id" to this resource.
 
-Note that the resource being moved from must be marked as moved using it's instance function.
+Note that the resource being moved from must be marked as moved using its instance function.
 
 ###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.Resource.moveFromId.parameter.id"></a>
 
@@ -71779,7 +71924,7 @@ public putIdentity(value: IResolvable | ResourceIdentity[]): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.Resource.putIdentity.parameter.value"></a>
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceIdentity[]
 
 ---
 
@@ -71791,7 +71936,7 @@ public putRetry(value: ResourceRetry): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.Resource.putRetry.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceRetry
 
 ---
 
@@ -71803,7 +71948,7 @@ public putTimeouts(value: ResourceTimeouts): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.Resource.putTimeouts.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceTimeouts
 
 ---
 
@@ -71843,6 +71988,12 @@ public resetDeleteQueryParameters(): void
 public resetIdentity(): void
 ```
 
+##### `resetIgnoreBodyChanges` <a name="resetIgnoreBodyChanges" id="@microsoft/terraform-cdk-constructs.Resource.resetIgnoreBodyChanges"></a>
+
+```typescript
+public resetIgnoreBodyChanges(): void
+```
+
 ##### `resetIgnoreCasing` <a name="resetIgnoreCasing" id="@microsoft/terraform-cdk-constructs.Resource.resetIgnoreCasing"></a>
 
 ```typescript
@@ -71859,6 +72010,18 @@ public resetIgnoreMissingProperty(): void
 
 ```typescript
 public resetIgnoreNullProperty(): void
+```
+
+##### `resetIgnoreOtherItemsInList` <a name="resetIgnoreOtherItemsInList" id="@microsoft/terraform-cdk-constructs.Resource.resetIgnoreOtherItemsInList"></a>
+
+```typescript
+public resetIgnoreOtherItemsInList(): void
+```
+
+##### `resetListUniqueIdProperty` <a name="resetListUniqueIdProperty" id="@microsoft/terraform-cdk-constructs.Resource.resetListUniqueIdProperty"></a>
+
+```typescript
+public resetListUniqueIdProperty(): void
 ```
 
 ##### `resetLocation` <a name="resetLocation" id="@microsoft/terraform-cdk-constructs.Resource.resetLocation"></a>
@@ -72066,7 +72229,7 @@ The construct id used in the generated config for the Resource to import.
 
 The id of the existing Resource that should be imported.
 
-Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#import import section} in the documentation of this resource for the id to use
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#import import section} in the documentation of this resource for the id to use
 
 ---
 
@@ -72097,19 +72260,22 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentityList">ResourceIdentityList</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.identity">identity</a></code> | <code>@cdktn/provider-azapi.resource.ResourceIdentityList</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.output">output</a></code> | <code>cdktn.AnyMap</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetryOutputReference">ResourceRetryOutputReference</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceTimeoutsOutputReference">ResourceTimeoutsOutputReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.resource.ResourceRetryOutputReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.resource.ResourceTimeoutsOutputReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.bodyInput">bodyInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.createHeadersInput">createHeadersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.createQueryParametersInput">createQueryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.deleteHeadersInput">deleteHeadersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.deleteQueryParametersInput">deleteQueryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.identityInput">identityInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.identityInput">identityInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceIdentity[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.ignoreBodyChangesInput">ignoreBodyChangesInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.ignoreCasingInput">ignoreCasingInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.ignoreMissingPropertyInput">ignoreMissingPropertyInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.ignoreNullPropertyInput">ignoreNullPropertyInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.ignoreOtherItemsInListInput">ignoreOtherItemsInListInput</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.listUniqueIdPropertyInput">listUniqueIdPropertyInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.locationInput">locationInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.locksInput">locksInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
@@ -72119,12 +72285,12 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.replaceTriggersExternalValuesInput">replaceTriggersExternalValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.replaceTriggersRefsInput">replaceTriggersRefsInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.responseExportValuesInput">responseExportValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceRetry</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.schemaValidationEnabledInput">schemaValidationEnabledInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.sensitiveBodyInput">sensitiveBodyInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.sensitiveBodyVersionInput">sensitiveBodyVersionInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceTimeouts</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.updateHeadersInput">updateHeadersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.updateQueryParametersInput">updateQueryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
@@ -72133,9 +72299,12 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.createQueryParameters">createQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.deleteHeaders">deleteHeaders</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.deleteQueryParameters">deleteQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.ignoreBodyChanges">ignoreBodyChanges</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.ignoreCasing">ignoreCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.ignoreMissingProperty">ignoreMissingProperty</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.ignoreNullProperty">ignoreNullProperty</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.ignoreOtherItemsInList">ignoreOtherItemsInList</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.listUniqueIdProperty">listUniqueIdProperty</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.location">location</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.locks">locks</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.property.name">name</a></code> | <code>string</code> | *No description.* |
@@ -72313,7 +72482,7 @@ public readonly id: string;
 public readonly identity: ResourceIdentityList;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentityList">ResourceIdentityList</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceIdentityList
 
 ---
 
@@ -72333,7 +72502,7 @@ public readonly output: AnyMap;
 public readonly retry: ResourceRetryOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceRetryOutputReference">ResourceRetryOutputReference</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceRetryOutputReference
 
 ---
 
@@ -72343,7 +72512,7 @@ public readonly retry: ResourceRetryOutputReference;
 public readonly timeouts: ResourceTimeoutsOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeoutsOutputReference">ResourceTimeoutsOutputReference</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceTimeoutsOutputReference
 
 ---
 
@@ -72403,7 +72572,17 @@ public readonly deleteQueryParametersInput: IResolvable | {[ key: string ]: stri
 public readonly identityInput: IResolvable | ResourceIdentity[];
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceIdentity[]
+
+---
+
+##### `ignoreBodyChangesInput`<sup>Optional</sup> <a name="ignoreBodyChangesInput" id="@microsoft/terraform-cdk-constructs.Resource.property.ignoreBodyChangesInput"></a>
+
+```typescript
+public readonly ignoreBodyChangesInput: string[];
+```
+
+- *Type:* string[]
 
 ---
 
@@ -72434,6 +72613,26 @@ public readonly ignoreNullPropertyInput: boolean | IResolvable;
 ```
 
 - *Type:* boolean | cdktn.IResolvable
+
+---
+
+##### `ignoreOtherItemsInListInput`<sup>Optional</sup> <a name="ignoreOtherItemsInListInput" id="@microsoft/terraform-cdk-constructs.Resource.property.ignoreOtherItemsInListInput"></a>
+
+```typescript
+public readonly ignoreOtherItemsInListInput: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `listUniqueIdPropertyInput`<sup>Optional</sup> <a name="listUniqueIdPropertyInput" id="@microsoft/terraform-cdk-constructs.Resource.property.listUniqueIdPropertyInput"></a>
+
+```typescript
+public readonly listUniqueIdPropertyInput: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
 
 ---
 
@@ -72533,7 +72732,7 @@ public readonly responseExportValuesInput: {[ key: string ]: any};
 public readonly retryInput: IResolvable | ResourceRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceRetry
 
 ---
 
@@ -72583,7 +72782,7 @@ public readonly tagsInput: {[ key: string ]: string};
 public readonly timeoutsInput: IResolvable | ResourceTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceTimeouts
 
 ---
 
@@ -72667,6 +72866,18 @@ public readonly deleteQueryParameters: IResolvable | {[ key: string ]: string[]}
 
 ---
 
+##### ~~`ignoreBodyChanges`~~<sup>Required</sup> <a name="ignoreBodyChanges" id="@microsoft/terraform-cdk-constructs.Resource.property.ignoreBodyChanges"></a>
+
+- *Deprecated:* Write-only: the provider never returns this value; reading it always yields null by protocol contract. The getter remains for compatibility and will be removed in a future prebuilt-provider major.
+
+```typescript
+public readonly ignoreBodyChanges: string[];
+```
+
+- *Type:* string[]
+
+---
+
 ##### `ignoreCasing`<sup>Required</sup> <a name="ignoreCasing" id="@microsoft/terraform-cdk-constructs.Resource.property.ignoreCasing"></a>
 
 ```typescript
@@ -72694,6 +72905,26 @@ public readonly ignoreNullProperty: boolean | IResolvable;
 ```
 
 - *Type:* boolean | cdktn.IResolvable
+
+---
+
+##### `ignoreOtherItemsInList`<sup>Required</sup> <a name="ignoreOtherItemsInList" id="@microsoft/terraform-cdk-constructs.Resource.property.ignoreOtherItemsInList"></a>
+
+```typescript
+public readonly ignoreOtherItemsInList: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `listUniqueIdProperty`<sup>Required</sup> <a name="listUniqueIdProperty" id="@microsoft/terraform-cdk-constructs.Resource.property.listUniqueIdProperty"></a>
+
+```typescript
+public readonly listUniqueIdProperty: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
 
 ---
 
@@ -72797,7 +73028,9 @@ public readonly schemaValidationEnabled: boolean | IResolvable;
 
 ---
 
-##### `sensitiveBody`<sup>Required</sup> <a name="sensitiveBody" id="@microsoft/terraform-cdk-constructs.Resource.property.sensitiveBody"></a>
+##### ~~`sensitiveBody`~~<sup>Required</sup> <a name="sensitiveBody" id="@microsoft/terraform-cdk-constructs.Resource.property.sensitiveBody"></a>
+
+- *Deprecated:* Write-only: the provider never returns this value; reading it always yields null by protocol contract. The getter remains for compatibility and will be removed in a future prebuilt-provider major.
 
 ```typescript
 public readonly sensitiveBody: {[ key: string ]: any};
@@ -72877,7 +73110,7 @@ public readonly tfResourceType: string;
 
 ### Resource <a name="Resource" id="@microsoft/terraform-cdk-constructs.core_azure.Resource"></a>
 
-Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource azapi_resource}.
+Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource azapi_resource}.
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.Initializer"></a>
 
@@ -72891,7 +73124,7 @@ new core_azure.Resource(scope: Construct, id: string, config: ResourceConfig)
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.Initializer.parameter.config">config</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig">ResourceConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.Initializer.parameter.config">config</a></code> | <code>@cdktn/provider-azapi.resource.ResourceConfig</code> | *No description.* |
 
 ---
 
@@ -72915,7 +73148,7 @@ Must be unique amongst siblings in the same scope
 
 ##### `config`<sup>Required</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceConfig">ResourceConfig</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceConfig
 
 ---
 
@@ -72956,9 +73189,12 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetDeleteHeaders">resetDeleteHeaders</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetDeleteQueryParameters">resetDeleteQueryParameters</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetIdentity">resetIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetIgnoreBodyChanges">resetIgnoreBodyChanges</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetIgnoreCasing">resetIgnoreCasing</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetIgnoreMissingProperty">resetIgnoreMissingProperty</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetIgnoreNullProperty">resetIgnoreNullProperty</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetIgnoreOtherItemsInList">resetIgnoreOtherItemsInList</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetListUniqueIdProperty">resetListUniqueIdProperty</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetLocation">resetLocation</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetLocks">resetLocks</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetName">resetName</a></code> | *No description.* |
@@ -73238,7 +73474,7 @@ public moveFromId(id: string): void
 
 Move the resource corresponding to "id" to this resource.
 
-Note that the resource being moved from must be marked as moved using it's instance function.
+Note that the resource being moved from must be marked as moved using its instance function.
 
 ###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.moveFromId.parameter.id"></a>
 
@@ -73296,7 +73532,7 @@ public putIdentity(value: IResolvable | ResourceIdentity[]): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.putIdentity.parameter.value"></a>
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceIdentity[]
 
 ---
 
@@ -73308,7 +73544,7 @@ public putRetry(value: ResourceRetry): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.putRetry.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceRetry
 
 ---
 
@@ -73320,7 +73556,7 @@ public putTimeouts(value: ResourceTimeouts): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.putTimeouts.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceTimeouts
 
 ---
 
@@ -73360,6 +73596,12 @@ public resetDeleteQueryParameters(): void
 public resetIdentity(): void
 ```
 
+##### `resetIgnoreBodyChanges` <a name="resetIgnoreBodyChanges" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.resetIgnoreBodyChanges"></a>
+
+```typescript
+public resetIgnoreBodyChanges(): void
+```
+
 ##### `resetIgnoreCasing` <a name="resetIgnoreCasing" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.resetIgnoreCasing"></a>
 
 ```typescript
@@ -73376,6 +73618,18 @@ public resetIgnoreMissingProperty(): void
 
 ```typescript
 public resetIgnoreNullProperty(): void
+```
+
+##### `resetIgnoreOtherItemsInList` <a name="resetIgnoreOtherItemsInList" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.resetIgnoreOtherItemsInList"></a>
+
+```typescript
+public resetIgnoreOtherItemsInList(): void
+```
+
+##### `resetListUniqueIdProperty` <a name="resetListUniqueIdProperty" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.resetListUniqueIdProperty"></a>
+
+```typescript
+public resetListUniqueIdProperty(): void
 ```
 
 ##### `resetLocation` <a name="resetLocation" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.resetLocation"></a>
@@ -73583,7 +73837,7 @@ The construct id used in the generated config for the Resource to import.
 
 The id of the existing Resource that should be imported.
 
-Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#import import section} in the documentation of this resource for the id to use
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#import import section} in the documentation of this resource for the id to use
 
 ---
 
@@ -73614,19 +73868,22 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.id">id</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.identity">identity</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentityList">ResourceIdentityList</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.identity">identity</a></code> | <code>@cdktn/provider-azapi.resource.ResourceIdentityList</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.output">output</a></code> | <code>cdktn.AnyMap</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetryOutputReference">ResourceRetryOutputReference</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceTimeoutsOutputReference">ResourceTimeoutsOutputReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.resource.ResourceRetryOutputReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.resource.ResourceTimeoutsOutputReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.bodyInput">bodyInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.createHeadersInput">createHeadersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.createQueryParametersInput">createQueryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.deleteHeadersInput">deleteHeadersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.deleteQueryParametersInput">deleteQueryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.identityInput">identityInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.identityInput">identityInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceIdentity[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreBodyChangesInput">ignoreBodyChangesInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreCasingInput">ignoreCasingInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreMissingPropertyInput">ignoreMissingPropertyInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreNullPropertyInput">ignoreNullPropertyInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreOtherItemsInListInput">ignoreOtherItemsInListInput</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.listUniqueIdPropertyInput">listUniqueIdPropertyInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.locationInput">locationInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.locksInput">locksInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
@@ -73636,12 +73893,12 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.replaceTriggersExternalValuesInput">replaceTriggersExternalValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.replaceTriggersRefsInput">replaceTriggersRefsInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.responseExportValuesInput">responseExportValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceRetry</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.schemaValidationEnabledInput">schemaValidationEnabledInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.sensitiveBodyInput">sensitiveBodyInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.sensitiveBodyVersionInput">sensitiveBodyVersionInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.tagsInput">tagsInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceTimeouts</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.updateHeadersInput">updateHeadersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.updateQueryParametersInput">updateQueryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
@@ -73650,9 +73907,12 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.createQueryParameters">createQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.deleteHeaders">deleteHeaders</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.deleteQueryParameters">deleteQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreBodyChanges">ignoreBodyChanges</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreCasing">ignoreCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreMissingProperty">ignoreMissingProperty</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreNullProperty">ignoreNullProperty</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreOtherItemsInList">ignoreOtherItemsInList</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.listUniqueIdProperty">listUniqueIdProperty</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.location">location</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.locks">locks</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.property.name">name</a></code> | <code>string</code> | *No description.* |
@@ -73830,7 +74090,7 @@ public readonly id: string;
 public readonly identity: ResourceIdentityList;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentityList">ResourceIdentityList</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceIdentityList
 
 ---
 
@@ -73850,7 +74110,7 @@ public readonly output: AnyMap;
 public readonly retry: ResourceRetryOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceRetryOutputReference">ResourceRetryOutputReference</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceRetryOutputReference
 
 ---
 
@@ -73860,7 +74120,7 @@ public readonly retry: ResourceRetryOutputReference;
 public readonly timeouts: ResourceTimeoutsOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeoutsOutputReference">ResourceTimeoutsOutputReference</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceTimeoutsOutputReference
 
 ---
 
@@ -73920,7 +74180,17 @@ public readonly deleteQueryParametersInput: IResolvable | {[ key: string ]: stri
 public readonly identityInput: IResolvable | ResourceIdentity[];
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceIdentity[]
+
+---
+
+##### `ignoreBodyChangesInput`<sup>Optional</sup> <a name="ignoreBodyChangesInput" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreBodyChangesInput"></a>
+
+```typescript
+public readonly ignoreBodyChangesInput: string[];
+```
+
+- *Type:* string[]
 
 ---
 
@@ -73951,6 +74221,26 @@ public readonly ignoreNullPropertyInput: boolean | IResolvable;
 ```
 
 - *Type:* boolean | cdktn.IResolvable
+
+---
+
+##### `ignoreOtherItemsInListInput`<sup>Optional</sup> <a name="ignoreOtherItemsInListInput" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreOtherItemsInListInput"></a>
+
+```typescript
+public readonly ignoreOtherItemsInListInput: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `listUniqueIdPropertyInput`<sup>Optional</sup> <a name="listUniqueIdPropertyInput" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.property.listUniqueIdPropertyInput"></a>
+
+```typescript
+public readonly listUniqueIdPropertyInput: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
 
 ---
 
@@ -74050,7 +74340,7 @@ public readonly responseExportValuesInput: {[ key: string ]: any};
 public readonly retryInput: IResolvable | ResourceRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceRetry
 
 ---
 
@@ -74100,7 +74390,7 @@ public readonly tagsInput: {[ key: string ]: string};
 public readonly timeoutsInput: IResolvable | ResourceTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceTimeouts
 
 ---
 
@@ -74184,6 +74474,18 @@ public readonly deleteQueryParameters: IResolvable | {[ key: string ]: string[]}
 
 ---
 
+##### ~~`ignoreBodyChanges`~~<sup>Required</sup> <a name="ignoreBodyChanges" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreBodyChanges"></a>
+
+- *Deprecated:* Write-only: the provider never returns this value; reading it always yields null by protocol contract. The getter remains for compatibility and will be removed in a future prebuilt-provider major.
+
+```typescript
+public readonly ignoreBodyChanges: string[];
+```
+
+- *Type:* string[]
+
+---
+
 ##### `ignoreCasing`<sup>Required</sup> <a name="ignoreCasing" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreCasing"></a>
 
 ```typescript
@@ -74211,6 +74513,26 @@ public readonly ignoreNullProperty: boolean | IResolvable;
 ```
 
 - *Type:* boolean | cdktn.IResolvable
+
+---
+
+##### `ignoreOtherItemsInList`<sup>Required</sup> <a name="ignoreOtherItemsInList" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.property.ignoreOtherItemsInList"></a>
+
+```typescript
+public readonly ignoreOtherItemsInList: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `listUniqueIdProperty`<sup>Required</sup> <a name="listUniqueIdProperty" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.property.listUniqueIdProperty"></a>
+
+```typescript
+public readonly listUniqueIdProperty: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
 
 ---
 
@@ -74314,7 +74636,9 @@ public readonly schemaValidationEnabled: boolean | IResolvable;
 
 ---
 
-##### `sensitiveBody`<sup>Required</sup> <a name="sensitiveBody" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.property.sensitiveBody"></a>
+##### ~~`sensitiveBody`~~<sup>Required</sup> <a name="sensitiveBody" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.property.sensitiveBody"></a>
+
+- *Deprecated:* Write-only: the provider never returns this value; reading it always yields null by protocol contract. The getter remains for compatibility and will be removed in a future prebuilt-provider major.
 
 ```typescript
 public readonly sensitiveBody: {[ key: string ]: any};
@@ -74394,7 +74718,7 @@ public readonly tfResourceType: string;
 
 ### ResourceAction <a name="ResourceAction" id="@microsoft/terraform-cdk-constructs.ResourceAction"></a>
 
-Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action azapi_resource_action}.
+Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action azapi_resource_action}.
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.ResourceAction.Initializer"></a>
 
@@ -74408,7 +74732,7 @@ new ResourceAction(scope: Construct, id: string, config: ResourceActionConfig)
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.Initializer.parameter.config">config</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig">ResourceActionConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.Initializer.parameter.config">config</a></code> | <code>@cdktn/provider-azapi.resourceAction.ResourceActionConfig</code> | *No description.* |
 
 ---
 
@@ -74432,7 +74756,7 @@ Must be unique amongst siblings in the same scope
 
 ##### `config`<sup>Required</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.ResourceAction.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig">ResourceActionConfig</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionConfig
 
 ---
 
@@ -74469,11 +74793,14 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetAction">resetAction</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetBody">resetBody</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetHeaders">resetHeaders</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetIgnoreNotFound">resetIgnoreNotFound</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetLocks">resetLocks</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetMethod">resetMethod</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetQueryParameters">resetQueryParameters</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetResponseExportValues">resetResponseExportValues</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetRetry">resetRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetSensitiveBody">resetSensitiveBody</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetSensitiveBodyVersion">resetSensitiveBodyVersion</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetSensitiveResponseExportValues">resetSensitiveResponseExportValues</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetTimeouts">resetTimeouts</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetWhen">resetWhen</a></code> | *No description.* |
@@ -74739,7 +75066,7 @@ public moveFromId(id: string): void
 
 Move the resource corresponding to "id" to this resource.
 
-Note that the resource being moved from must be marked as moved using it's instance function.
+Note that the resource being moved from must be marked as moved using its instance function.
 
 ###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.ResourceAction.moveFromId.parameter.id"></a>
 
@@ -74797,7 +75124,7 @@ public putRetry(value: ResourceActionRetry): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.ResourceAction.putRetry.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionRetry
 
 ---
 
@@ -74809,7 +75136,7 @@ public putTimeouts(value: ResourceActionTimeouts): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.ResourceAction.putTimeouts.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionTimeouts
 
 ---
 
@@ -74829,6 +75156,12 @@ public resetBody(): void
 
 ```typescript
 public resetHeaders(): void
+```
+
+##### `resetIgnoreNotFound` <a name="resetIgnoreNotFound" id="@microsoft/terraform-cdk-constructs.ResourceAction.resetIgnoreNotFound"></a>
+
+```typescript
+public resetIgnoreNotFound(): void
 ```
 
 ##### `resetLocks` <a name="resetLocks" id="@microsoft/terraform-cdk-constructs.ResourceAction.resetLocks"></a>
@@ -74859,6 +75192,18 @@ public resetResponseExportValues(): void
 
 ```typescript
 public resetRetry(): void
+```
+
+##### `resetSensitiveBody` <a name="resetSensitiveBody" id="@microsoft/terraform-cdk-constructs.ResourceAction.resetSensitiveBody"></a>
+
+```typescript
+public resetSensitiveBody(): void
+```
+
+##### `resetSensitiveBodyVersion` <a name="resetSensitiveBodyVersion" id="@microsoft/terraform-cdk-constructs.ResourceAction.resetSensitiveBodyVersion"></a>
+
+```typescript
+public resetSensitiveBodyVersion(): void
 ```
 
 ##### `resetSensitiveResponseExportValues` <a name="resetSensitiveResponseExportValues" id="@microsoft/terraform-cdk-constructs.ResourceAction.resetSensitiveResponseExportValues"></a>
@@ -74982,7 +75327,7 @@ The construct id used in the generated config for the ResourceAction to import.
 
 The id of the existing ResourceAction that should be imported.
 
-Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#import import section} in the documentation of this resource for the id to use
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#import import section} in the documentation of this resource for the id to use
 
 ---
 
@@ -75012,32 +75357,39 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.exist">exist</a></code> | <code>cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.output">output</a></code> | <code>cdktn.AnyMap</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetryOutputReference">ResourceActionRetryOutputReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.resourceAction.ResourceActionRetryOutputReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.sensitiveOutput">sensitiveOutput</a></code> | <code>cdktn.AnyMap</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeoutsOutputReference">ResourceActionTimeoutsOutputReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.resourceAction.ResourceActionTimeoutsOutputReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.actionInput">actionInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.bodyInput">bodyInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.headersInput">headersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.ignoreNotFoundInput">ignoreNotFoundInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.locksInput">locksInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.methodInput">methodInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.queryParametersInput">queryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.resourceIdInput">resourceIdInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.responseExportValuesInput">responseExportValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resourceAction.ResourceActionRetry</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.sensitiveBodyInput">sensitiveBodyInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.sensitiveBodyVersionInput">sensitiveBodyVersionInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.sensitiveResponseExportValuesInput">sensitiveResponseExportValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resourceAction.ResourceActionTimeouts</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.whenInput">whenInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.action">action</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.body">body</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.headers">headers</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.ignoreNotFound">ignoreNotFound</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.locks">locks</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.method">method</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.queryParameters">queryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.resourceId">resourceId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.responseExportValues">responseExportValues</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.sensitiveBody">sensitiveBody</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.sensitiveBodyVersion">sensitiveBodyVersion</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.sensitiveResponseExportValues">sensitiveResponseExportValues</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.type">type</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.property.when">when</a></code> | <code>string</code> | *No description.* |
@@ -75186,6 +75538,16 @@ public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteEx
 
 ---
 
+##### `exist`<sup>Required</sup> <a name="exist" id="@microsoft/terraform-cdk-constructs.ResourceAction.property.exist"></a>
+
+```typescript
+public readonly exist: IResolvable;
+```
+
+- *Type:* cdktn.IResolvable
+
+---
+
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.ResourceAction.property.id"></a>
 
 ```typescript
@@ -75212,7 +75574,7 @@ public readonly output: AnyMap;
 public readonly retry: ResourceActionRetryOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetryOutputReference">ResourceActionRetryOutputReference</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionRetryOutputReference
 
 ---
 
@@ -75232,7 +75594,7 @@ public readonly sensitiveOutput: AnyMap;
 public readonly timeouts: ResourceActionTimeoutsOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeoutsOutputReference">ResourceActionTimeoutsOutputReference</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionTimeoutsOutputReference
 
 ---
 
@@ -75263,6 +75625,16 @@ public readonly headersInput: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
+
+---
+
+##### `ignoreNotFoundInput`<sup>Optional</sup> <a name="ignoreNotFoundInput" id="@microsoft/terraform-cdk-constructs.ResourceAction.property.ignoreNotFoundInput"></a>
+
+```typescript
+public readonly ignoreNotFoundInput: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
 
 ---
 
@@ -75322,7 +75694,27 @@ public readonly responseExportValuesInput: {[ key: string ]: any};
 public readonly retryInput: IResolvable | ResourceActionRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resourceAction.ResourceActionRetry
+
+---
+
+##### `sensitiveBodyInput`<sup>Optional</sup> <a name="sensitiveBodyInput" id="@microsoft/terraform-cdk-constructs.ResourceAction.property.sensitiveBodyInput"></a>
+
+```typescript
+public readonly sensitiveBodyInput: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+##### `sensitiveBodyVersionInput`<sup>Optional</sup> <a name="sensitiveBodyVersionInput" id="@microsoft/terraform-cdk-constructs.ResourceAction.property.sensitiveBodyVersionInput"></a>
+
+```typescript
+public readonly sensitiveBodyVersionInput: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
 
 ---
 
@@ -75342,7 +75734,7 @@ public readonly sensitiveResponseExportValuesInput: {[ key: string ]: any};
 public readonly timeoutsInput: IResolvable | ResourceActionTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resourceAction.ResourceActionTimeouts
 
 ---
 
@@ -75396,6 +75788,16 @@ public readonly headers: {[ key: string ]: string};
 
 ---
 
+##### `ignoreNotFound`<sup>Required</sup> <a name="ignoreNotFound" id="@microsoft/terraform-cdk-constructs.ResourceAction.property.ignoreNotFound"></a>
+
+```typescript
+public readonly ignoreNotFound: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
+
+---
+
 ##### `locks`<sup>Required</sup> <a name="locks" id="@microsoft/terraform-cdk-constructs.ResourceAction.property.locks"></a>
 
 ```typescript
@@ -75443,6 +75845,28 @@ public readonly responseExportValues: {[ key: string ]: any};
 ```
 
 - *Type:* {[ key: string ]: any}
+
+---
+
+##### ~~`sensitiveBody`~~<sup>Required</sup> <a name="sensitiveBody" id="@microsoft/terraform-cdk-constructs.ResourceAction.property.sensitiveBody"></a>
+
+- *Deprecated:* Write-only: the provider never returns this value; reading it always yields null by protocol contract. The getter remains for compatibility and will be removed in a future prebuilt-provider major.
+
+```typescript
+public readonly sensitiveBody: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+##### `sensitiveBodyVersion`<sup>Required</sup> <a name="sensitiveBodyVersion" id="@microsoft/terraform-cdk-constructs.ResourceAction.property.sensitiveBodyVersion"></a>
+
+```typescript
+public readonly sensitiveBodyVersion: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
 
 ---
 
@@ -75496,7 +75920,7 @@ public readonly tfResourceType: string;
 
 ### ResourceAction <a name="ResourceAction" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction"></a>
 
-Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action azapi_resource_action}.
+Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action azapi_resource_action}.
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.Initializer"></a>
 
@@ -75510,7 +75934,7 @@ new core_azure.ResourceAction(scope: Construct, id: string, config: ResourceActi
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.Initializer.parameter.config">config</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig">ResourceActionConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.Initializer.parameter.config">config</a></code> | <code>@cdktn/provider-azapi.resourceAction.ResourceActionConfig</code> | *No description.* |
 
 ---
 
@@ -75534,7 +75958,7 @@ Must be unique amongst siblings in the same scope
 
 ##### `config`<sup>Required</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig">ResourceActionConfig</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionConfig
 
 ---
 
@@ -75571,11 +75995,14 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetAction">resetAction</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetBody">resetBody</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetHeaders">resetHeaders</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetIgnoreNotFound">resetIgnoreNotFound</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetLocks">resetLocks</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetMethod">resetMethod</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetQueryParameters">resetQueryParameters</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetResponseExportValues">resetResponseExportValues</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetRetry">resetRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetSensitiveBody">resetSensitiveBody</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetSensitiveBodyVersion">resetSensitiveBodyVersion</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetSensitiveResponseExportValues">resetSensitiveResponseExportValues</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetTimeouts">resetTimeouts</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetWhen">resetWhen</a></code> | *No description.* |
@@ -75841,7 +76268,7 @@ public moveFromId(id: string): void
 
 Move the resource corresponding to "id" to this resource.
 
-Note that the resource being moved from must be marked as moved using it's instance function.
+Note that the resource being moved from must be marked as moved using its instance function.
 
 ###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.moveFromId.parameter.id"></a>
 
@@ -75899,7 +76326,7 @@ public putRetry(value: ResourceActionRetry): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.putRetry.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionRetry
 
 ---
 
@@ -75911,7 +76338,7 @@ public putTimeouts(value: ResourceActionTimeouts): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.putTimeouts.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionTimeouts
 
 ---
 
@@ -75931,6 +76358,12 @@ public resetBody(): void
 
 ```typescript
 public resetHeaders(): void
+```
+
+##### `resetIgnoreNotFound` <a name="resetIgnoreNotFound" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetIgnoreNotFound"></a>
+
+```typescript
+public resetIgnoreNotFound(): void
 ```
 
 ##### `resetLocks` <a name="resetLocks" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetLocks"></a>
@@ -75961,6 +76394,18 @@ public resetResponseExportValues(): void
 
 ```typescript
 public resetRetry(): void
+```
+
+##### `resetSensitiveBody` <a name="resetSensitiveBody" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetSensitiveBody"></a>
+
+```typescript
+public resetSensitiveBody(): void
+```
+
+##### `resetSensitiveBodyVersion` <a name="resetSensitiveBodyVersion" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetSensitiveBodyVersion"></a>
+
+```typescript
+public resetSensitiveBodyVersion(): void
 ```
 
 ##### `resetSensitiveResponseExportValues` <a name="resetSensitiveResponseExportValues" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetSensitiveResponseExportValues"></a>
@@ -76084,7 +76529,7 @@ The construct id used in the generated config for the ResourceAction to import.
 
 The id of the existing ResourceAction that should be imported.
 
-Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#import import section} in the documentation of this resource for the id to use
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#import import section} in the documentation of this resource for the id to use
 
 ---
 
@@ -76114,32 +76559,39 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.exist">exist</a></code> | <code>cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.output">output</a></code> | <code>cdktn.AnyMap</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetryOutputReference">ResourceActionRetryOutputReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.resourceAction.ResourceActionRetryOutputReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.sensitiveOutput">sensitiveOutput</a></code> | <code>cdktn.AnyMap</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeoutsOutputReference">ResourceActionTimeoutsOutputReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.resourceAction.ResourceActionTimeoutsOutputReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.actionInput">actionInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.bodyInput">bodyInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.headersInput">headersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.ignoreNotFoundInput">ignoreNotFoundInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.locksInput">locksInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.methodInput">methodInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.queryParametersInput">queryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.resourceIdInput">resourceIdInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.responseExportValuesInput">responseExportValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resourceAction.ResourceActionRetry</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.sensitiveBodyInput">sensitiveBodyInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.sensitiveBodyVersionInput">sensitiveBodyVersionInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.sensitiveResponseExportValuesInput">sensitiveResponseExportValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resourceAction.ResourceActionTimeouts</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.whenInput">whenInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.action">action</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.body">body</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.headers">headers</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.ignoreNotFound">ignoreNotFound</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.locks">locks</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.method">method</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.queryParameters">queryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.resourceId">resourceId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.responseExportValues">responseExportValues</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.sensitiveBody">sensitiveBody</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.sensitiveBodyVersion">sensitiveBodyVersion</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.sensitiveResponseExportValues">sensitiveResponseExportValues</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.type">type</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.when">when</a></code> | <code>string</code> | *No description.* |
@@ -76288,6 +76740,16 @@ public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteEx
 
 ---
 
+##### `exist`<sup>Required</sup> <a name="exist" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.exist"></a>
+
+```typescript
+public readonly exist: IResolvable;
+```
+
+- *Type:* cdktn.IResolvable
+
+---
+
 ##### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.id"></a>
 
 ```typescript
@@ -76314,7 +76776,7 @@ public readonly output: AnyMap;
 public readonly retry: ResourceActionRetryOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetryOutputReference">ResourceActionRetryOutputReference</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionRetryOutputReference
 
 ---
 
@@ -76334,7 +76796,7 @@ public readonly sensitiveOutput: AnyMap;
 public readonly timeouts: ResourceActionTimeoutsOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeoutsOutputReference">ResourceActionTimeoutsOutputReference</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionTimeoutsOutputReference
 
 ---
 
@@ -76365,6 +76827,16 @@ public readonly headersInput: {[ key: string ]: string};
 ```
 
 - *Type:* {[ key: string ]: string}
+
+---
+
+##### `ignoreNotFoundInput`<sup>Optional</sup> <a name="ignoreNotFoundInput" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.ignoreNotFoundInput"></a>
+
+```typescript
+public readonly ignoreNotFoundInput: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
 
 ---
 
@@ -76424,7 +76896,27 @@ public readonly responseExportValuesInput: {[ key: string ]: any};
 public readonly retryInput: IResolvable | ResourceActionRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resourceAction.ResourceActionRetry
+
+---
+
+##### `sensitiveBodyInput`<sup>Optional</sup> <a name="sensitiveBodyInput" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.sensitiveBodyInput"></a>
+
+```typescript
+public readonly sensitiveBodyInput: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+##### `sensitiveBodyVersionInput`<sup>Optional</sup> <a name="sensitiveBodyVersionInput" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.sensitiveBodyVersionInput"></a>
+
+```typescript
+public readonly sensitiveBodyVersionInput: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
 
 ---
 
@@ -76444,7 +76936,7 @@ public readonly sensitiveResponseExportValuesInput: {[ key: string ]: any};
 public readonly timeoutsInput: IResolvable | ResourceActionTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resourceAction.ResourceActionTimeouts
 
 ---
 
@@ -76498,6 +76990,16 @@ public readonly headers: {[ key: string ]: string};
 
 ---
 
+##### `ignoreNotFound`<sup>Required</sup> <a name="ignoreNotFound" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.ignoreNotFound"></a>
+
+```typescript
+public readonly ignoreNotFound: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
+
+---
+
 ##### `locks`<sup>Required</sup> <a name="locks" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.locks"></a>
 
 ```typescript
@@ -76545,6 +77047,28 @@ public readonly responseExportValues: {[ key: string ]: any};
 ```
 
 - *Type:* {[ key: string ]: any}
+
+---
+
+##### ~~`sensitiveBody`~~<sup>Required</sup> <a name="sensitiveBody" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.sensitiveBody"></a>
+
+- *Deprecated:* Write-only: the provider never returns this value; reading it always yields null by protocol contract. The getter remains for compatibility and will be removed in a future prebuilt-provider major.
+
+```typescript
+public readonly sensitiveBody: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
+##### `sensitiveBodyVersion`<sup>Required</sup> <a name="sensitiveBodyVersion" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.property.sensitiveBodyVersion"></a>
+
+```typescript
+public readonly sensitiveBodyVersion: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
 
 ---
 
@@ -88410,7 +88934,7 @@ Get the parent Virtual Network ID Constructs the VNet resource ID from the subne
 
 ### UpdateResource <a name="UpdateResource" id="@microsoft/terraform-cdk-constructs.UpdateResource"></a>
 
-Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource azapi_update_resource}.
+Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource azapi_update_resource}.
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.UpdateResource.Initializer"></a>
 
@@ -88424,7 +88948,7 @@ new UpdateResource(scope: Construct, id: string, config: UpdateResourceConfig)
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.Initializer.parameter.config">config</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig">UpdateResourceConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.Initializer.parameter.config">config</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceConfig</code> | *No description.* |
 
 ---
 
@@ -88448,7 +88972,7 @@ Must be unique amongst siblings in the same scope
 
 ##### `config`<sup>Required</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.UpdateResource.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig">UpdateResourceConfig</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceConfig
 
 ---
 
@@ -88480,16 +89004,21 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.putReadOverride">putReadOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.putRetry">putRetry</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.putTimeouts">putTimeouts</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetBody">resetBody</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetIgnoreCasing">resetIgnoreCasing</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetIgnoreMissingProperty">resetIgnoreMissingProperty</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetIgnoreOtherItemsInList">resetIgnoreOtherItemsInList</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetListUniqueIdProperty">resetListUniqueIdProperty</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetLocks">resetLocks</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetName">resetName</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetParentId">resetParentId</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetReadHeaders">resetReadHeaders</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetReadOverride">resetReadOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetReadQueryParameters">resetReadQueryParameters</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetReplaceTriggersExternalValues">resetReplaceTriggersExternalValues</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetResourceId">resetResourceId</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetResponseExportValues">resetResponseExportValues</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetRetry">resetRetry</a></code> | *No description.* |
@@ -88760,7 +89289,7 @@ public moveFromId(id: string): void
 
 Move the resource corresponding to "id" to this resource.
 
-Note that the resource being moved from must be marked as moved using it's instance function.
+Note that the resource being moved from must be marked as moved using its instance function.
 
 ###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.UpdateResource.moveFromId.parameter.id"></a>
 
@@ -88810,6 +89339,18 @@ Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 
+##### `putReadOverride` <a name="putReadOverride" id="@microsoft/terraform-cdk-constructs.UpdateResource.putReadOverride"></a>
+
+```typescript
+public putReadOverride(value: UpdateResourceReadOverride): void
+```
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.UpdateResource.putReadOverride.parameter.value"></a>
+
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceReadOverride
+
+---
+
 ##### `putRetry` <a name="putRetry" id="@microsoft/terraform-cdk-constructs.UpdateResource.putRetry"></a>
 
 ```typescript
@@ -88818,7 +89359,7 @@ public putRetry(value: UpdateResourceRetry): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.UpdateResource.putRetry.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceRetry
 
 ---
 
@@ -88830,7 +89371,7 @@ public putTimeouts(value: UpdateResourceTimeouts): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.UpdateResource.putTimeouts.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceTimeouts
 
 ---
 
@@ -88850,6 +89391,18 @@ public resetIgnoreCasing(): void
 
 ```typescript
 public resetIgnoreMissingProperty(): void
+```
+
+##### `resetIgnoreOtherItemsInList` <a name="resetIgnoreOtherItemsInList" id="@microsoft/terraform-cdk-constructs.UpdateResource.resetIgnoreOtherItemsInList"></a>
+
+```typescript
+public resetIgnoreOtherItemsInList(): void
+```
+
+##### `resetListUniqueIdProperty` <a name="resetListUniqueIdProperty" id="@microsoft/terraform-cdk-constructs.UpdateResource.resetListUniqueIdProperty"></a>
+
+```typescript
+public resetListUniqueIdProperty(): void
 ```
 
 ##### `resetLocks` <a name="resetLocks" id="@microsoft/terraform-cdk-constructs.UpdateResource.resetLocks"></a>
@@ -88876,10 +89429,22 @@ public resetParentId(): void
 public resetReadHeaders(): void
 ```
 
+##### `resetReadOverride` <a name="resetReadOverride" id="@microsoft/terraform-cdk-constructs.UpdateResource.resetReadOverride"></a>
+
+```typescript
+public resetReadOverride(): void
+```
+
 ##### `resetReadQueryParameters` <a name="resetReadQueryParameters" id="@microsoft/terraform-cdk-constructs.UpdateResource.resetReadQueryParameters"></a>
 
 ```typescript
 public resetReadQueryParameters(): void
+```
+
+##### `resetReplaceTriggersExternalValues` <a name="resetReplaceTriggersExternalValues" id="@microsoft/terraform-cdk-constructs.UpdateResource.resetReplaceTriggersExternalValues"></a>
+
+```typescript
+public resetReplaceTriggersExternalValues(): void
 ```
 
 ##### `resetResourceId` <a name="resetResourceId" id="@microsoft/terraform-cdk-constructs.UpdateResource.resetResourceId"></a>
@@ -89033,7 +89598,7 @@ The construct id used in the generated config for the UpdateResource to import.
 
 The id of the existing UpdateResource that should be imported.
 
-Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#import import section} in the documentation of this resource for the id to use
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#import import section} in the documentation of this resource for the id to use
 
 ---
 
@@ -89065,33 +89630,41 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.output">output</a></code> | <code>cdktn.AnyMap</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetryOutputReference">UpdateResourceRetryOutputReference</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeoutsOutputReference">UpdateResourceTimeoutsOutputReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.readOverride">readOverride</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceReadOverrideOutputReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceRetryOutputReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceTimeoutsOutputReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.bodyInput">bodyInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.ignoreCasingInput">ignoreCasingInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.ignoreMissingPropertyInput">ignoreMissingPropertyInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.ignoreOtherItemsInListInput">ignoreOtherItemsInListInput</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.listUniqueIdPropertyInput">listUniqueIdPropertyInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.locksInput">locksInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.parentIdInput">parentIdInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.readHeadersInput">readHeadersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.readOverrideInput">readOverrideInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.updateResource.UpdateResourceReadOverride</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.readQueryParametersInput">readQueryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.replaceTriggersExternalValuesInput">replaceTriggersExternalValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.resourceIdInput">resourceIdInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.responseExportValuesInput">responseExportValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.updateResource.UpdateResourceRetry</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.sensitiveBodyInput">sensitiveBodyInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.sensitiveBodyVersionInput">sensitiveBodyVersionInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.updateResource.UpdateResourceTimeouts</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.updateHeadersInput">updateHeadersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.updateQueryParametersInput">updateQueryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.body">body</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.ignoreCasing">ignoreCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.ignoreMissingProperty">ignoreMissingProperty</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.ignoreOtherItemsInList">ignoreOtherItemsInList</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.listUniqueIdProperty">listUniqueIdProperty</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.locks">locks</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.parentId">parentId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.readHeaders">readHeaders</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.readQueryParameters">readQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.replaceTriggersExternalValues">replaceTriggersExternalValues</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.resourceId">resourceId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.responseExportValues">responseExportValues</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.property.sensitiveBody">sensitiveBody</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
@@ -89264,13 +89837,23 @@ public readonly output: AnyMap;
 
 ---
 
+##### `readOverride`<sup>Required</sup> <a name="readOverride" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.readOverride"></a>
+
+```typescript
+public readonly readOverride: UpdateResourceReadOverrideOutputReference;
+```
+
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceReadOverrideOutputReference
+
+---
+
 ##### `retry`<sup>Required</sup> <a name="retry" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.retry"></a>
 
 ```typescript
 public readonly retry: UpdateResourceRetryOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetryOutputReference">UpdateResourceRetryOutputReference</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceRetryOutputReference
 
 ---
 
@@ -89280,7 +89863,7 @@ public readonly retry: UpdateResourceRetryOutputReference;
 public readonly timeouts: UpdateResourceTimeoutsOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeoutsOutputReference">UpdateResourceTimeoutsOutputReference</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceTimeoutsOutputReference
 
 ---
 
@@ -89311,6 +89894,26 @@ public readonly ignoreMissingPropertyInput: boolean | IResolvable;
 ```
 
 - *Type:* boolean | cdktn.IResolvable
+
+---
+
+##### `ignoreOtherItemsInListInput`<sup>Optional</sup> <a name="ignoreOtherItemsInListInput" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.ignoreOtherItemsInListInput"></a>
+
+```typescript
+public readonly ignoreOtherItemsInListInput: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `listUniqueIdPropertyInput`<sup>Optional</sup> <a name="listUniqueIdPropertyInput" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.listUniqueIdPropertyInput"></a>
+
+```typescript
+public readonly listUniqueIdPropertyInput: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
 
 ---
 
@@ -89354,6 +89957,16 @@ public readonly readHeadersInput: {[ key: string ]: string};
 
 ---
 
+##### `readOverrideInput`<sup>Optional</sup> <a name="readOverrideInput" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.readOverrideInput"></a>
+
+```typescript
+public readonly readOverrideInput: IResolvable | UpdateResourceReadOverride;
+```
+
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.updateResource.UpdateResourceReadOverride
+
+---
+
 ##### `readQueryParametersInput`<sup>Optional</sup> <a name="readQueryParametersInput" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.readQueryParametersInput"></a>
 
 ```typescript
@@ -89361,6 +89974,16 @@ public readonly readQueryParametersInput: IResolvable | {[ key: string ]: string
 ```
 
 - *Type:* cdktn.IResolvable | {[ key: string ]: string[]}
+
+---
+
+##### `replaceTriggersExternalValuesInput`<sup>Optional</sup> <a name="replaceTriggersExternalValuesInput" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.replaceTriggersExternalValuesInput"></a>
+
+```typescript
+public readonly replaceTriggersExternalValuesInput: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
 
 ---
 
@@ -89390,7 +90013,7 @@ public readonly responseExportValuesInput: {[ key: string ]: any};
 public readonly retryInput: IResolvable | UpdateResourceRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.updateResource.UpdateResourceRetry
 
 ---
 
@@ -89420,7 +90043,7 @@ public readonly sensitiveBodyVersionInput: {[ key: string ]: string};
 public readonly timeoutsInput: IResolvable | UpdateResourceTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.updateResource.UpdateResourceTimeouts
 
 ---
 
@@ -89484,6 +90107,26 @@ public readonly ignoreMissingProperty: boolean | IResolvable;
 
 ---
 
+##### `ignoreOtherItemsInList`<sup>Required</sup> <a name="ignoreOtherItemsInList" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.ignoreOtherItemsInList"></a>
+
+```typescript
+public readonly ignoreOtherItemsInList: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `listUniqueIdProperty`<sup>Required</sup> <a name="listUniqueIdProperty" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.listUniqueIdProperty"></a>
+
+```typescript
+public readonly listUniqueIdProperty: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
 ##### `locks`<sup>Required</sup> <a name="locks" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.locks"></a>
 
 ```typescript
@@ -89534,6 +90177,16 @@ public readonly readQueryParameters: IResolvable | {[ key: string ]: string[]};
 
 ---
 
+##### `replaceTriggersExternalValues`<sup>Required</sup> <a name="replaceTriggersExternalValues" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.replaceTriggersExternalValues"></a>
+
+```typescript
+public readonly replaceTriggersExternalValues: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
 ##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.resourceId"></a>
 
 ```typescript
@@ -89554,7 +90207,9 @@ public readonly responseExportValues: {[ key: string ]: any};
 
 ---
 
-##### `sensitiveBody`<sup>Required</sup> <a name="sensitiveBody" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.sensitiveBody"></a>
+##### ~~`sensitiveBody`~~<sup>Required</sup> <a name="sensitiveBody" id="@microsoft/terraform-cdk-constructs.UpdateResource.property.sensitiveBody"></a>
+
+- *Deprecated:* Write-only: the provider never returns this value; reading it always yields null by protocol contract. The getter remains for compatibility and will be removed in a future prebuilt-provider major.
 
 ```typescript
 public readonly sensitiveBody: {[ key: string ]: any};
@@ -89624,7 +90279,7 @@ public readonly tfResourceType: string;
 
 ### UpdateResource <a name="UpdateResource" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource"></a>
 
-Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource azapi_update_resource}.
+Represents a {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource azapi_update_resource}.
 
 #### Initializers <a name="Initializers" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.Initializer"></a>
 
@@ -89638,7 +90293,7 @@ new core_azure.UpdateResource(scope: Construct, id: string, config: UpdateResour
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.Initializer.parameter.scope">scope</a></code> | <code>constructs.Construct</code> | The scope in which to define this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.Initializer.parameter.id">id</a></code> | <code>string</code> | The scoped construct ID. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.Initializer.parameter.config">config</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig">UpdateResourceConfig</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.Initializer.parameter.config">config</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceConfig</code> | *No description.* |
 
 ---
 
@@ -89662,7 +90317,7 @@ Must be unique amongst siblings in the same scope
 
 ##### `config`<sup>Required</sup> <a name="config" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.Initializer.parameter.config"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig">UpdateResourceConfig</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceConfig
 
 ---
 
@@ -89694,16 +90349,21 @@ Must be unique amongst siblings in the same scope
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveFromId">moveFromId</a></code> | Move the resource corresponding to "id" to this resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveTo">moveTo</a></code> | Moves this resource to the target resource given by moveTarget. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveToId">moveToId</a></code> | Moves this resource to the resource corresponding to "id". |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.putReadOverride">putReadOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.putRetry">putRetry</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.putTimeouts">putTimeouts</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetBody">resetBody</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetIgnoreCasing">resetIgnoreCasing</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetIgnoreMissingProperty">resetIgnoreMissingProperty</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetIgnoreOtherItemsInList">resetIgnoreOtherItemsInList</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetListUniqueIdProperty">resetListUniqueIdProperty</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetLocks">resetLocks</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetName">resetName</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetParentId">resetParentId</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetReadHeaders">resetReadHeaders</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetReadOverride">resetReadOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetReadQueryParameters">resetReadQueryParameters</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetReplaceTriggersExternalValues">resetReplaceTriggersExternalValues</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetResourceId">resetResourceId</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetResponseExportValues">resetResponseExportValues</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetRetry">resetRetry</a></code> | *No description.* |
@@ -89974,7 +90634,7 @@ public moveFromId(id: string): void
 
 Move the resource corresponding to "id" to this resource.
 
-Note that the resource being moved from must be marked as moved using it's instance function.
+Note that the resource being moved from must be marked as moved using its instance function.
 
 ###### `id`<sup>Required</sup> <a name="id" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.moveFromId.parameter.id"></a>
 
@@ -90024,6 +90684,18 @@ Full id of resource to move to, e.g. "aws_s3_bucket.example".
 
 ---
 
+##### `putReadOverride` <a name="putReadOverride" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.putReadOverride"></a>
+
+```typescript
+public putReadOverride(value: UpdateResourceReadOverride): void
+```
+
+###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.putReadOverride.parameter.value"></a>
+
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceReadOverride
+
+---
+
 ##### `putRetry` <a name="putRetry" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.putRetry"></a>
 
 ```typescript
@@ -90032,7 +90704,7 @@ public putRetry(value: UpdateResourceRetry): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.putRetry.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceRetry
 
 ---
 
@@ -90044,7 +90716,7 @@ public putTimeouts(value: UpdateResourceTimeouts): void
 
 ###### `value`<sup>Required</sup> <a name="value" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.putTimeouts.parameter.value"></a>
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceTimeouts
 
 ---
 
@@ -90064,6 +90736,18 @@ public resetIgnoreCasing(): void
 
 ```typescript
 public resetIgnoreMissingProperty(): void
+```
+
+##### `resetIgnoreOtherItemsInList` <a name="resetIgnoreOtherItemsInList" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetIgnoreOtherItemsInList"></a>
+
+```typescript
+public resetIgnoreOtherItemsInList(): void
+```
+
+##### `resetListUniqueIdProperty` <a name="resetListUniqueIdProperty" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetListUniqueIdProperty"></a>
+
+```typescript
+public resetListUniqueIdProperty(): void
 ```
 
 ##### `resetLocks` <a name="resetLocks" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetLocks"></a>
@@ -90090,10 +90774,22 @@ public resetParentId(): void
 public resetReadHeaders(): void
 ```
 
+##### `resetReadOverride` <a name="resetReadOverride" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetReadOverride"></a>
+
+```typescript
+public resetReadOverride(): void
+```
+
 ##### `resetReadQueryParameters` <a name="resetReadQueryParameters" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetReadQueryParameters"></a>
 
 ```typescript
 public resetReadQueryParameters(): void
+```
+
+##### `resetReplaceTriggersExternalValues` <a name="resetReplaceTriggersExternalValues" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetReplaceTriggersExternalValues"></a>
+
+```typescript
+public resetReplaceTriggersExternalValues(): void
 ```
 
 ##### `resetResourceId` <a name="resetResourceId" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetResourceId"></a>
@@ -90247,7 +90943,7 @@ The construct id used in the generated config for the UpdateResource to import.
 
 The id of the existing UpdateResource that should be imported.
 
-Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#import import section} in the documentation of this resource for the id to use
+Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#import import section} in the documentation of this resource for the id to use
 
 ---
 
@@ -90279,33 +90975,41 @@ Refer to the {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/do
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.id">id</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.output">output</a></code> | <code>cdktn.AnyMap</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetryOutputReference">UpdateResourceRetryOutputReference</a></code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeoutsOutputReference">UpdateResourceTimeoutsOutputReference</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.readOverride">readOverride</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceReadOverrideOutputReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceRetryOutputReference</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceTimeoutsOutputReference</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.bodyInput">bodyInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.ignoreCasingInput">ignoreCasingInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.ignoreMissingPropertyInput">ignoreMissingPropertyInput</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.ignoreOtherItemsInListInput">ignoreOtherItemsInListInput</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.listUniqueIdPropertyInput">listUniqueIdPropertyInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.locksInput">locksInput</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.nameInput">nameInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.parentIdInput">parentIdInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.readHeadersInput">readHeadersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.readOverrideInput">readOverrideInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.updateResource.UpdateResourceReadOverride</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.readQueryParametersInput">readQueryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.replaceTriggersExternalValuesInput">replaceTriggersExternalValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.resourceIdInput">resourceIdInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.responseExportValuesInput">responseExportValuesInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.retryInput">retryInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.updateResource.UpdateResourceRetry</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.sensitiveBodyInput">sensitiveBodyInput</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.sensitiveBodyVersionInput">sensitiveBodyVersionInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.timeoutsInput">timeoutsInput</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.updateResource.UpdateResourceTimeouts</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.updateHeadersInput">updateHeadersInput</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.updateQueryParametersInput">updateQueryParametersInput</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.body">body</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.ignoreCasing">ignoreCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.ignoreMissingProperty">ignoreMissingProperty</a></code> | <code>boolean \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.ignoreOtherItemsInList">ignoreOtherItemsInList</a></code> | <code>string[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.listUniqueIdProperty">listUniqueIdProperty</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.locks">locks</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.name">name</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.parentId">parentId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.readHeaders">readHeaders</a></code> | <code>{[ key: string ]: string}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.readQueryParameters">readQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.replaceTriggersExternalValues">replaceTriggersExternalValues</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.resourceId">resourceId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.responseExportValues">responseExportValues</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.sensitiveBody">sensitiveBody</a></code> | <code>{[ key: string ]: any}</code> | *No description.* |
@@ -90478,13 +91182,23 @@ public readonly output: AnyMap;
 
 ---
 
+##### `readOverride`<sup>Required</sup> <a name="readOverride" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.readOverride"></a>
+
+```typescript
+public readonly readOverride: UpdateResourceReadOverrideOutputReference;
+```
+
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceReadOverrideOutputReference
+
+---
+
 ##### `retry`<sup>Required</sup> <a name="retry" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.retry"></a>
 
 ```typescript
 public readonly retry: UpdateResourceRetryOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetryOutputReference">UpdateResourceRetryOutputReference</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceRetryOutputReference
 
 ---
 
@@ -90494,7 +91208,7 @@ public readonly retry: UpdateResourceRetryOutputReference;
 public readonly timeouts: UpdateResourceTimeoutsOutputReference;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeoutsOutputReference">UpdateResourceTimeoutsOutputReference</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceTimeoutsOutputReference
 
 ---
 
@@ -90525,6 +91239,26 @@ public readonly ignoreMissingPropertyInput: boolean | IResolvable;
 ```
 
 - *Type:* boolean | cdktn.IResolvable
+
+---
+
+##### `ignoreOtherItemsInListInput`<sup>Optional</sup> <a name="ignoreOtherItemsInListInput" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.ignoreOtherItemsInListInput"></a>
+
+```typescript
+public readonly ignoreOtherItemsInListInput: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `listUniqueIdPropertyInput`<sup>Optional</sup> <a name="listUniqueIdPropertyInput" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.listUniqueIdPropertyInput"></a>
+
+```typescript
+public readonly listUniqueIdPropertyInput: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
 
 ---
 
@@ -90568,6 +91302,16 @@ public readonly readHeadersInput: {[ key: string ]: string};
 
 ---
 
+##### `readOverrideInput`<sup>Optional</sup> <a name="readOverrideInput" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.readOverrideInput"></a>
+
+```typescript
+public readonly readOverrideInput: IResolvable | UpdateResourceReadOverride;
+```
+
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.updateResource.UpdateResourceReadOverride
+
+---
+
 ##### `readQueryParametersInput`<sup>Optional</sup> <a name="readQueryParametersInput" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.readQueryParametersInput"></a>
 
 ```typescript
@@ -90575,6 +91319,16 @@ public readonly readQueryParametersInput: IResolvable | {[ key: string ]: string
 ```
 
 - *Type:* cdktn.IResolvable | {[ key: string ]: string[]}
+
+---
+
+##### `replaceTriggersExternalValuesInput`<sup>Optional</sup> <a name="replaceTriggersExternalValuesInput" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.replaceTriggersExternalValuesInput"></a>
+
+```typescript
+public readonly replaceTriggersExternalValuesInput: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
 
 ---
 
@@ -90604,7 +91358,7 @@ public readonly responseExportValuesInput: {[ key: string ]: any};
 public readonly retryInput: IResolvable | UpdateResourceRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.updateResource.UpdateResourceRetry
 
 ---
 
@@ -90634,7 +91388,7 @@ public readonly sensitiveBodyVersionInput: {[ key: string ]: string};
 public readonly timeoutsInput: IResolvable | UpdateResourceTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.updateResource.UpdateResourceTimeouts
 
 ---
 
@@ -90698,6 +91452,26 @@ public readonly ignoreMissingProperty: boolean | IResolvable;
 
 ---
 
+##### `ignoreOtherItemsInList`<sup>Required</sup> <a name="ignoreOtherItemsInList" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.ignoreOtherItemsInList"></a>
+
+```typescript
+public readonly ignoreOtherItemsInList: string[];
+```
+
+- *Type:* string[]
+
+---
+
+##### `listUniqueIdProperty`<sup>Required</sup> <a name="listUniqueIdProperty" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.listUniqueIdProperty"></a>
+
+```typescript
+public readonly listUniqueIdProperty: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+---
+
 ##### `locks`<sup>Required</sup> <a name="locks" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.locks"></a>
 
 ```typescript
@@ -90748,6 +91522,16 @@ public readonly readQueryParameters: IResolvable | {[ key: string ]: string[]};
 
 ---
 
+##### `replaceTriggersExternalValues`<sup>Required</sup> <a name="replaceTriggersExternalValues" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.replaceTriggersExternalValues"></a>
+
+```typescript
+public readonly replaceTriggersExternalValues: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+---
+
 ##### `resourceId`<sup>Required</sup> <a name="resourceId" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.resourceId"></a>
 
 ```typescript
@@ -90768,7 +91552,9 @@ public readonly responseExportValues: {[ key: string ]: any};
 
 ---
 
-##### `sensitiveBody`<sup>Required</sup> <a name="sensitiveBody" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.sensitiveBody"></a>
+##### ~~`sensitiveBody`~~<sup>Required</sup> <a name="sensitiveBody" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.property.sensitiveBody"></a>
+
+- *Deprecated:* Write-only: the provider never returns this value; reading it always yields null by protocol contract. The getter remains for compatibility and will be removed in a future prebuilt-provider major.
 
 ```typescript
 public readonly sensitiveBody: {[ key: string ]: any};
@@ -114373,6 +115159,7 @@ const azapiProviderConfig: AzapiProviderConfig = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.alias">alias</a></code> | <code>string</code> | Alias name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.alwaysAcquirePolicyToken">alwaysAcquirePolicyToken</a></code> | <code>boolean \| cdktn.IResolvable</code> | Always acquire a policy token for write requests, regardless of whether one is required. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.auxiliaryTenantIds">auxiliaryTenantIds</a></code> | <code>string[]</code> | List of auxiliary Tenant IDs required for multi-tenancy and cross-tenant scenarios. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.clientCertificate">clientCertificate</a></code> | <code>string</code> | A base64-encoded PKCS#12 bundle to be used as the client certificate for authentication. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.clientCertificatePassword">clientCertificatePassword</a></code> | <code>string</code> | The password associated with the Client Certificate. This can also be sourced from the `ARM_CLIENT_CERTIFICATE_PASSWORD` Environment Variable. |
@@ -114390,7 +115177,7 @@ const azapiProviderConfig: AzapiProviderConfig = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.disableInstanceDiscovery">disableInstanceDiscovery</a></code> | <code>boolean \| cdktn.IResolvable</code> | Disables Instance Discovery, which validates that the Authority is valid and known by the Microsoft Entra instance metadata service at `https://login.microsoft.com` before authenticating. This should only be enabled when the configured authority is known to be valid and trustworthy - such as when running against Azure Stack or when `environment` is set to `custom`. This can also be specified via the `ARM_DISABLE_INSTANCE_DISCOVERY` environment variable. Defaults to `false`. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.disableTerraformPartnerId">disableTerraformPartnerId</a></code> | <code>boolean \| cdktn.IResolvable</code> | Disable sending the Terraform Partner ID if a custom `partner_id` isn't specified, which allows Microsoft to better understand the usage of Terraform. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.enablePreflight">enablePreflight</a></code> | <code>boolean \| cdktn.IResolvable</code> | Enable Preflight Validation. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.endpoint">endpoint</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderEndpoint">AzapiProviderEndpoint</a>[]</code> | The Azure API Endpoint Configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.endpoint">endpoint</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.provider.AzapiProviderEndpoint[]</code> | The Azure API Endpoint Configuration. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.environment">environment</a></code> | <code>string</code> | The Cloud Environment which should be used. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.ignoreNoOpChanges">ignoreNoOpChanges</a></code> | <code>boolean \| cdktn.IResolvable</code> | Ignore no-op changes for `azapi_resource`. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.maximumBusyRetryAttempts">maximumBusyRetryAttempts</a></code> | <code>number</code> | DEPRECATED - The maximum number of retries to attempt if the Azure API returns an HTTP 408, 429, 500, 502, 503, or 504 response. |
@@ -114400,6 +115187,7 @@ const azapiProviderConfig: AzapiProviderConfig = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.oidcToken">oidcToken</a></code> | <code>string</code> | The ID token when authenticating using OpenID Connect (OIDC). This can also be sourced from the `ARM_OIDC_TOKEN` environment Variable. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.oidcTokenFilePath">oidcTokenFilePath</a></code> | <code>string</code> | The path to a file containing an ID token when authenticating using OpenID Connect (OIDC). |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.partnerId">partnerId</a></code> | <code>string</code> | A GUID/UUID that is [registered](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#register-guids-and-offers) with Microsoft to facilitate partner resource usage attribution. This can also be sourced from the `ARM_PARTNER_ID` Environment Variable. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.preserveResourceIdCasing">preserveResourceIdCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | Preserve the existing casing of the resource ID in state. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.skipProviderRegistration">skipProviderRegistration</a></code> | <code>boolean \| cdktn.IResolvable</code> | Should the Provider skip registering the Resource Providers it supports? |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.subscriptionId">subscriptionId</a></code> | <code>string</code> | The Subscription ID which should be used. This can also be sourced from the `ARM_SUBSCRIPTION_ID` Environment Variable. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.tenantId">tenantId</a></code> | <code>string</code> | The Tenant ID should be used. This can also be sourced from the `ARM_TENANT_ID` Environment Variable. |
@@ -114420,7 +115208,23 @@ public readonly alias: string;
 
 Alias name.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#alias AzapiProvider#alias}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#alias AzapiProvider#alias}
+
+---
+
+##### `alwaysAcquirePolicyToken`<sup>Optional</sup> <a name="alwaysAcquirePolicyToken" id="@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.alwaysAcquirePolicyToken"></a>
+
+```typescript
+public readonly alwaysAcquirePolicyToken: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
+
+Always acquire a policy token for write requests, regardless of whether one is required.
+
+The default is `false`. The default behaviour is to wait for a qualifying `403` response indicating that a policy token is required, and then retry the request with an acquired policy token. When this attribute is set to `true`, the provider proactively acquires a policy token and attaches it to every write request, avoiding the extra round-trip per request. Performance will be improved if the number of changed resources is known to be large beforehand. This can also be sourced from the `ARM_ALWAYS_ACQUIRE_POLICY_TOKEN` Environment Variable. See [Feature: Acquire Policy Token](guides/feature_acquire_policy_token.html) to learn more.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#always_acquire_policy_token AzapiProvider#always_acquire_policy_token}
 
 ---
 
@@ -114436,7 +115240,7 @@ List of auxiliary Tenant IDs required for multi-tenancy and cross-tenant scenari
 
 This can also be sourced from the `ARM_AUXILIARY_TENANT_IDS` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#auxiliary_tenant_ids AzapiProvider#auxiliary_tenant_ids}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#auxiliary_tenant_ids AzapiProvider#auxiliary_tenant_ids}
 
 ---
 
@@ -114452,7 +115256,7 @@ A base64-encoded PKCS#12 bundle to be used as the client certificate for authent
 
 This can also be sourced from the `ARM_CLIENT_CERTIFICATE` environment variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_certificate AzapiProvider#client_certificate}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_certificate AzapiProvider#client_certificate}
 
 ---
 
@@ -114466,7 +115270,7 @@ public readonly clientCertificatePassword: string;
 
 The password associated with the Client Certificate. This can also be sourced from the `ARM_CLIENT_CERTIFICATE_PASSWORD` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_certificate_password AzapiProvider#client_certificate_password}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_certificate_password AzapiProvider#client_certificate_password}
 
 ---
 
@@ -114482,7 +115286,7 @@ The path to the Client Certificate associated with the Service Principal which s
 
 This can also be sourced from the `ARM_CLIENT_CERTIFICATE_PATH` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_certificate_path AzapiProvider#client_certificate_path}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_certificate_path AzapiProvider#client_certificate_path}
 
 ---
 
@@ -114496,7 +115300,7 @@ public readonly clientId: string;
 
 The Client ID which should be used. This can also be sourced from the `ARM_CLIENT_ID`, `AZURE_CLIENT_ID` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_id AzapiProvider#client_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_id AzapiProvider#client_id}
 
 ---
 
@@ -114512,7 +115316,7 @@ The path to a file containing the Client ID which should be used.
 
 This can also be sourced from the `ARM_CLIENT_ID_FILE_PATH` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_id_file_path AzapiProvider#client_id_file_path}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_id_file_path AzapiProvider#client_id_file_path}
 
 ---
 
@@ -114526,7 +115330,7 @@ public readonly clientSecret: string;
 
 The Client Secret which should be used. This can also be sourced from the `ARM_CLIENT_SECRET` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_secret AzapiProvider#client_secret}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_secret AzapiProvider#client_secret}
 
 ---
 
@@ -114542,7 +115346,7 @@ The path to a file containing the Client Secret which should be used.
 
 For use When authenticating as a Service Principal using a Client Secret. This can also be sourced from the `ARM_CLIENT_SECRET_FILE_PATH` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_secret_file_path AzapiProvider#client_secret_file_path}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_secret_file_path AzapiProvider#client_secret_file_path}
 
 ---
 
@@ -114558,7 +115362,7 @@ The value of the `x-ms-correlation-request-id` header, otherwise an auto-generat
 
 This can also be sourced from the `ARM_CORRELATION_REQUEST_ID` environment variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#custom_correlation_request_id AzapiProvider#custom_correlation_request_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#custom_correlation_request_id AzapiProvider#custom_correlation_request_id}
 
 ---
 
@@ -114574,7 +115378,7 @@ The default Azure Region where the azure resource should exist.
 
 The `location` in each resource block can override the `default_location`. Changing this forces new resources to be created.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#default_location AzapiProvider#default_location}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#default_location AzapiProvider#default_location}
 
 ---
 
@@ -114590,7 +115394,7 @@ The default name to create the azure resource.
 
 The `name` in each resource block can override the `default_name`. Changing this forces new resources to be created.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#default_name AzapiProvider#default_name}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#default_name AzapiProvider#default_name}
 
 ---
 
@@ -114604,9 +115408,9 @@ public readonly defaultTags: {[ key: string ]: string};
 
 A mapping of tags which should be assigned to the azure resource as default tags.
 
-The`tags` in each resource block can override the `default_tags`.
+The `tags` in each resource block can override the `default_tags`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#default_tags AzapiProvider#default_tags}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#default_tags AzapiProvider#default_tags}
 
 ---
 
@@ -114620,7 +115424,7 @@ public readonly disableCorrelationRequestId: boolean | IResolvable;
 
 This will disable the x-ms-correlation-request-id header.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_correlation_request_id AzapiProvider#disable_correlation_request_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#disable_correlation_request_id AzapiProvider#disable_correlation_request_id}
 
 ---
 
@@ -114636,7 +115440,7 @@ Disable default output.
 
 The default is false. When set to false, the provider will output the read-only properties if `response_export_values` is not specified in the resource block. When set to true, the provider will disable this output. This can also be sourced from the `ARM_DISABLE_DEFAULT_OUTPUT` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_default_output AzapiProvider#disable_default_output}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#disable_default_output AzapiProvider#disable_default_output}
 
 ---
 
@@ -114650,7 +115454,7 @@ public readonly disableInstanceDiscovery: boolean | IResolvable;
 
 Disables Instance Discovery, which validates that the Authority is valid and known by the Microsoft Entra instance metadata service at `https://login.microsoft.com` before authenticating. This should only be enabled when the configured authority is known to be valid and trustworthy - such as when running against Azure Stack or when `environment` is set to `custom`. This can also be specified via the `ARM_DISABLE_INSTANCE_DISCOVERY` environment variable. Defaults to `false`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_instance_discovery AzapiProvider#disable_instance_discovery}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#disable_instance_discovery AzapiProvider#disable_instance_discovery}
 
 ---
 
@@ -114666,7 +115470,7 @@ Disable sending the Terraform Partner ID if a custom `partner_id` isn't specifie
 
 The Partner ID does not give HashiCorp any direct access to usage information. This can also be sourced from the `ARM_DISABLE_TERRAFORM_PARTNER_ID` environment variable. Defaults to `false`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_terraform_partner_id AzapiProvider#disable_terraform_partner_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#disable_terraform_partner_id AzapiProvider#disable_terraform_partner_id}
 
 ---
 
@@ -114682,7 +115486,7 @@ Enable Preflight Validation.
 
 The default is false. When set to true, the provider will use Preflight to do static validation before really deploying a new resource. When set to false, the provider will disable this validation. This can also be sourced from the `ARM_ENABLE_PREFLIGHT` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#enable_preflight AzapiProvider#enable_preflight}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#enable_preflight AzapiProvider#enable_preflight}
 
 ---
 
@@ -114692,11 +115496,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly endpoint: IResolvable | AzapiProviderEndpoint[];
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderEndpoint">AzapiProviderEndpoint</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.provider.AzapiProviderEndpoint[]
 
 The Azure API Endpoint Configuration.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#endpoint AzapiProvider#endpoint}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#endpoint AzapiProvider#endpoint}
 
 ---
 
@@ -114710,9 +115514,9 @@ public readonly environment: string;
 
 The Cloud Environment which should be used.
 
-Possible values are `public`, `usgovernment`, `china` and `custom`. Defaults to `public`. This can also be sourced from the `ARM_ENVIRONMENT` Environment Variable.
+Defaults to `public`. This can also be sourced from the `ARM_ENVIRONMENT` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#environment AzapiProvider#environment}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#environment AzapiProvider#environment}
 
 ---
 
@@ -114728,7 +115532,7 @@ Ignore no-op changes for `azapi_resource`.
 
 The default is true. When set to true, the provider will suppress changes in the `azapi_resource` if the `body` in the new API version still matches the remote state. When set to false, the provider will not suppress these changes. This can also be sourced from the `ARM_IGNORE_NO_OP_CHANGES` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#ignore_no_op_changes AzapiProvider#ignore_no_op_changes}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#ignore_no_op_changes AzapiProvider#ignore_no_op_changes}
 
 ---
 
@@ -114744,7 +115548,7 @@ DEPRECATED - The maximum number of retries to attempt if the Azure API returns a
 
 The default is `32767`, this allows the provider to rely on the resource timeout values rather than a maximum retry count. The resource-specific retry configuration may additionally be used to retry on other errors and conditions. This property will be removed in a future version.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#maximum_busy_retry_attempts AzapiProvider#maximum_busy_retry_attempts}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#maximum_busy_retry_attempts AzapiProvider#maximum_busy_retry_attempts}
 
 ---
 
@@ -114760,7 +115564,7 @@ The Azure Pipelines Service Connection ID to use for authentication.
 
 This can also be sourced from the `ARM_ADO_PIPELINE_SERVICE_CONNECTION_ID`, `ARM_OIDC_AZURE_SERVICE_CONNECTION_ID`, or `AZURESUBSCRIPTION_SERVICE_CONNECTION_ID` Environment Variables.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_azure_service_connection_id AzapiProvider#oidc_azure_service_connection_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#oidc_azure_service_connection_id AzapiProvider#oidc_azure_service_connection_id}
 
 ---
 
@@ -114776,7 +115580,7 @@ The bearer token for the request to the OIDC provider.
 
 This can also be sourced from the `ARM_OIDC_REQUEST_TOKEN`, `ACTIONS_ID_TOKEN_REQUEST_TOKEN`, or `SYSTEM_ACCESSTOKEN` Environment Variables.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_request_token AzapiProvider#oidc_request_token}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#oidc_request_token AzapiProvider#oidc_request_token}
 
 ---
 
@@ -114792,7 +115596,7 @@ The URL for the OIDC provider from which to request an ID token.
 
 This can also be sourced from the `ARM_OIDC_REQUEST_URL`, `ACTIONS_ID_TOKEN_REQUEST_URL`, or `SYSTEM_OIDCREQUESTURI` Environment Variables.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_request_url AzapiProvider#oidc_request_url}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#oidc_request_url AzapiProvider#oidc_request_url}
 
 ---
 
@@ -114806,7 +115610,7 @@ public readonly oidcToken: string;
 
 The ID token when authenticating using OpenID Connect (OIDC). This can also be sourced from the `ARM_OIDC_TOKEN` environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_token AzapiProvider#oidc_token}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#oidc_token AzapiProvider#oidc_token}
 
 ---
 
@@ -114822,7 +115626,7 @@ The path to a file containing an ID token when authenticating using OpenID Conne
 
 This can also be sourced from the `ARM_OIDC_TOKEN_FILE_PATH`, `AZURE_FEDERATED_TOKEN_FILE` environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_token_file_path AzapiProvider#oidc_token_file_path}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#oidc_token_file_path AzapiProvider#oidc_token_file_path}
 
 ---
 
@@ -114836,7 +115640,23 @@ public readonly partnerId: string;
 
 A GUID/UUID that is [registered](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#register-guids-and-offers) with Microsoft to facilitate partner resource usage attribution. This can also be sourced from the `ARM_PARTNER_ID` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#partner_id AzapiProvider#partner_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#partner_id AzapiProvider#partner_id}
+
+---
+
+##### `preserveResourceIdCasing`<sup>Optional</sup> <a name="preserveResourceIdCasing" id="@microsoft/terraform-cdk-constructs.AzapiProviderConfig.property.preserveResourceIdCasing"></a>
+
+```typescript
+public readonly preserveResourceIdCasing: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
+
+Preserve the existing casing of the resource ID in state.
+
+The default is false. When set to true, if the resource ID the provider would write back to state differs from the value already in state only by casing, the existing casing is kept. This is useful when consumers of the resource ID (or the `azapi_resource` identity) require a specific casing that the Azure API may not preserve. This only affects the `id` (and `resource_id`) attributes; other properties are unaffected. This can also be sourced from the `ARM_PRESERVE_RESOURCE_ID_CASING` Environment Variable.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#preserve_resource_id_casing AzapiProvider#preserve_resource_id_casing}
 
 ---
 
@@ -114852,7 +115672,7 @@ Should the Provider skip registering the Resource Providers it supports?
 
 This can also be sourced from the `ARM_SKIP_PROVIDER_REGISTRATION` Environment Variable. Defaults to `false`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#skip_provider_registration AzapiProvider#skip_provider_registration}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#skip_provider_registration AzapiProvider#skip_provider_registration}
 
 ---
 
@@ -114866,7 +115686,7 @@ public readonly subscriptionId: string;
 
 The Subscription ID which should be used. This can also be sourced from the `ARM_SUBSCRIPTION_ID` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#subscription_id AzapiProvider#subscription_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#subscription_id AzapiProvider#subscription_id}
 
 ---
 
@@ -114880,7 +115700,7 @@ public readonly tenantId: string;
 
 The Tenant ID should be used. This can also be sourced from the `ARM_TENANT_ID` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#tenant_id AzapiProvider#tenant_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#tenant_id AzapiProvider#tenant_id}
 
 ---
 
@@ -114896,7 +115716,7 @@ Should AKS Workload Identity be used for Authentication?
 
 This can also be sourced from the `ARM_USE_AKS_WORKLOAD_IDENTITY` Environment Variable. Defaults to `false`. When set, `client_id`, `tenant_id` and `oidc_token_file_path` will be detected from the environment and do not need to be specified.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_aks_workload_identity AzapiProvider#use_aks_workload_identity}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#use_aks_workload_identity AzapiProvider#use_aks_workload_identity}
 
 ---
 
@@ -114912,7 +115732,7 @@ Should Azure CLI be used for authentication?
 
 This can also be sourced from the `ARM_USE_CLI` environment variable. Defaults to `true`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_cli AzapiProvider#use_cli}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#use_cli AzapiProvider#use_cli}
 
 ---
 
@@ -114928,7 +115748,7 @@ Should Managed Identity be used for Authentication?
 
 This can also be sourced from the `ARM_USE_MSI` Environment Variable. Defaults to `false`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_msi AzapiProvider#use_msi}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#use_msi AzapiProvider#use_msi}
 
 ---
 
@@ -114942,7 +115762,7 @@ public readonly useOidc: boolean | IResolvable;
 
 Should OIDC be used for Authentication? This can also be sourced from the `ARM_USE_OIDC` Environment Variable. Defaults to `false`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_oidc AzapiProvider#use_oidc}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#use_oidc AzapiProvider#use_oidc}
 
 ---
 
@@ -114961,6 +115781,7 @@ const azapiProviderConfig: core_azure.AzapiProviderConfig = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.alias">alias</a></code> | <code>string</code> | Alias name. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.alwaysAcquirePolicyToken">alwaysAcquirePolicyToken</a></code> | <code>boolean \| cdktn.IResolvable</code> | Always acquire a policy token for write requests, regardless of whether one is required. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.auxiliaryTenantIds">auxiliaryTenantIds</a></code> | <code>string[]</code> | List of auxiliary Tenant IDs required for multi-tenancy and cross-tenant scenarios. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.clientCertificate">clientCertificate</a></code> | <code>string</code> | A base64-encoded PKCS#12 bundle to be used as the client certificate for authentication. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.clientCertificatePassword">clientCertificatePassword</a></code> | <code>string</code> | The password associated with the Client Certificate. This can also be sourced from the `ARM_CLIENT_CERTIFICATE_PASSWORD` Environment Variable. |
@@ -114978,7 +115799,7 @@ const azapiProviderConfig: core_azure.AzapiProviderConfig = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.disableInstanceDiscovery">disableInstanceDiscovery</a></code> | <code>boolean \| cdktn.IResolvable</code> | Disables Instance Discovery, which validates that the Authority is valid and known by the Microsoft Entra instance metadata service at `https://login.microsoft.com` before authenticating. This should only be enabled when the configured authority is known to be valid and trustworthy - such as when running against Azure Stack or when `environment` is set to `custom`. This can also be specified via the `ARM_DISABLE_INSTANCE_DISCOVERY` environment variable. Defaults to `false`. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.disableTerraformPartnerId">disableTerraformPartnerId</a></code> | <code>boolean \| cdktn.IResolvable</code> | Disable sending the Terraform Partner ID if a custom `partner_id` isn't specified, which allows Microsoft to better understand the usage of Terraform. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.enablePreflight">enablePreflight</a></code> | <code>boolean \| cdktn.IResolvable</code> | Enable Preflight Validation. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.endpoint">endpoint</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderEndpoint">AzapiProviderEndpoint</a>[]</code> | The Azure API Endpoint Configuration. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.endpoint">endpoint</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.provider.AzapiProviderEndpoint[]</code> | The Azure API Endpoint Configuration. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.environment">environment</a></code> | <code>string</code> | The Cloud Environment which should be used. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.ignoreNoOpChanges">ignoreNoOpChanges</a></code> | <code>boolean \| cdktn.IResolvable</code> | Ignore no-op changes for `azapi_resource`. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.maximumBusyRetryAttempts">maximumBusyRetryAttempts</a></code> | <code>number</code> | DEPRECATED - The maximum number of retries to attempt if the Azure API returns an HTTP 408, 429, 500, 502, 503, or 504 response. |
@@ -114988,6 +115809,7 @@ const azapiProviderConfig: core_azure.AzapiProviderConfig = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.oidcToken">oidcToken</a></code> | <code>string</code> | The ID token when authenticating using OpenID Connect (OIDC). This can also be sourced from the `ARM_OIDC_TOKEN` environment Variable. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.oidcTokenFilePath">oidcTokenFilePath</a></code> | <code>string</code> | The path to a file containing an ID token when authenticating using OpenID Connect (OIDC). |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.partnerId">partnerId</a></code> | <code>string</code> | A GUID/UUID that is [registered](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#register-guids-and-offers) with Microsoft to facilitate partner resource usage attribution. This can also be sourced from the `ARM_PARTNER_ID` Environment Variable. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.preserveResourceIdCasing">preserveResourceIdCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | Preserve the existing casing of the resource ID in state. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.skipProviderRegistration">skipProviderRegistration</a></code> | <code>boolean \| cdktn.IResolvable</code> | Should the Provider skip registering the Resource Providers it supports? |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.subscriptionId">subscriptionId</a></code> | <code>string</code> | The Subscription ID which should be used. This can also be sourced from the `ARM_SUBSCRIPTION_ID` Environment Variable. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.tenantId">tenantId</a></code> | <code>string</code> | The Tenant ID should be used. This can also be sourced from the `ARM_TENANT_ID` Environment Variable. |
@@ -115008,7 +115830,23 @@ public readonly alias: string;
 
 Alias name.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#alias AzapiProvider#alias}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#alias AzapiProvider#alias}
+
+---
+
+##### `alwaysAcquirePolicyToken`<sup>Optional</sup> <a name="alwaysAcquirePolicyToken" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.alwaysAcquirePolicyToken"></a>
+
+```typescript
+public readonly alwaysAcquirePolicyToken: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
+
+Always acquire a policy token for write requests, regardless of whether one is required.
+
+The default is `false`. The default behaviour is to wait for a qualifying `403` response indicating that a policy token is required, and then retry the request with an acquired policy token. When this attribute is set to `true`, the provider proactively acquires a policy token and attaches it to every write request, avoiding the extra round-trip per request. Performance will be improved if the number of changed resources is known to be large beforehand. This can also be sourced from the `ARM_ALWAYS_ACQUIRE_POLICY_TOKEN` Environment Variable. See [Feature: Acquire Policy Token](guides/feature_acquire_policy_token.html) to learn more.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#always_acquire_policy_token AzapiProvider#always_acquire_policy_token}
 
 ---
 
@@ -115024,7 +115862,7 @@ List of auxiliary Tenant IDs required for multi-tenancy and cross-tenant scenari
 
 This can also be sourced from the `ARM_AUXILIARY_TENANT_IDS` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#auxiliary_tenant_ids AzapiProvider#auxiliary_tenant_ids}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#auxiliary_tenant_ids AzapiProvider#auxiliary_tenant_ids}
 
 ---
 
@@ -115040,7 +115878,7 @@ A base64-encoded PKCS#12 bundle to be used as the client certificate for authent
 
 This can also be sourced from the `ARM_CLIENT_CERTIFICATE` environment variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_certificate AzapiProvider#client_certificate}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_certificate AzapiProvider#client_certificate}
 
 ---
 
@@ -115054,7 +115892,7 @@ public readonly clientCertificatePassword: string;
 
 The password associated with the Client Certificate. This can also be sourced from the `ARM_CLIENT_CERTIFICATE_PASSWORD` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_certificate_password AzapiProvider#client_certificate_password}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_certificate_password AzapiProvider#client_certificate_password}
 
 ---
 
@@ -115070,7 +115908,7 @@ The path to the Client Certificate associated with the Service Principal which s
 
 This can also be sourced from the `ARM_CLIENT_CERTIFICATE_PATH` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_certificate_path AzapiProvider#client_certificate_path}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_certificate_path AzapiProvider#client_certificate_path}
 
 ---
 
@@ -115084,7 +115922,7 @@ public readonly clientId: string;
 
 The Client ID which should be used. This can also be sourced from the `ARM_CLIENT_ID`, `AZURE_CLIENT_ID` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_id AzapiProvider#client_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_id AzapiProvider#client_id}
 
 ---
 
@@ -115100,7 +115938,7 @@ The path to a file containing the Client ID which should be used.
 
 This can also be sourced from the `ARM_CLIENT_ID_FILE_PATH` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_id_file_path AzapiProvider#client_id_file_path}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_id_file_path AzapiProvider#client_id_file_path}
 
 ---
 
@@ -115114,7 +115952,7 @@ public readonly clientSecret: string;
 
 The Client Secret which should be used. This can also be sourced from the `ARM_CLIENT_SECRET` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_secret AzapiProvider#client_secret}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_secret AzapiProvider#client_secret}
 
 ---
 
@@ -115130,7 +115968,7 @@ The path to a file containing the Client Secret which should be used.
 
 For use When authenticating as a Service Principal using a Client Secret. This can also be sourced from the `ARM_CLIENT_SECRET_FILE_PATH` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#client_secret_file_path AzapiProvider#client_secret_file_path}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#client_secret_file_path AzapiProvider#client_secret_file_path}
 
 ---
 
@@ -115146,7 +115984,7 @@ The value of the `x-ms-correlation-request-id` header, otherwise an auto-generat
 
 This can also be sourced from the `ARM_CORRELATION_REQUEST_ID` environment variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#custom_correlation_request_id AzapiProvider#custom_correlation_request_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#custom_correlation_request_id AzapiProvider#custom_correlation_request_id}
 
 ---
 
@@ -115162,7 +116000,7 @@ The default Azure Region where the azure resource should exist.
 
 The `location` in each resource block can override the `default_location`. Changing this forces new resources to be created.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#default_location AzapiProvider#default_location}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#default_location AzapiProvider#default_location}
 
 ---
 
@@ -115178,7 +116016,7 @@ The default name to create the azure resource.
 
 The `name` in each resource block can override the `default_name`. Changing this forces new resources to be created.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#default_name AzapiProvider#default_name}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#default_name AzapiProvider#default_name}
 
 ---
 
@@ -115192,9 +116030,9 @@ public readonly defaultTags: {[ key: string ]: string};
 
 A mapping of tags which should be assigned to the azure resource as default tags.
 
-The`tags` in each resource block can override the `default_tags`.
+The `tags` in each resource block can override the `default_tags`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#default_tags AzapiProvider#default_tags}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#default_tags AzapiProvider#default_tags}
 
 ---
 
@@ -115208,7 +116046,7 @@ public readonly disableCorrelationRequestId: boolean | IResolvable;
 
 This will disable the x-ms-correlation-request-id header.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_correlation_request_id AzapiProvider#disable_correlation_request_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#disable_correlation_request_id AzapiProvider#disable_correlation_request_id}
 
 ---
 
@@ -115224,7 +116062,7 @@ Disable default output.
 
 The default is false. When set to false, the provider will output the read-only properties if `response_export_values` is not specified in the resource block. When set to true, the provider will disable this output. This can also be sourced from the `ARM_DISABLE_DEFAULT_OUTPUT` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_default_output AzapiProvider#disable_default_output}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#disable_default_output AzapiProvider#disable_default_output}
 
 ---
 
@@ -115238,7 +116076,7 @@ public readonly disableInstanceDiscovery: boolean | IResolvable;
 
 Disables Instance Discovery, which validates that the Authority is valid and known by the Microsoft Entra instance metadata service at `https://login.microsoft.com` before authenticating. This should only be enabled when the configured authority is known to be valid and trustworthy - such as when running against Azure Stack or when `environment` is set to `custom`. This can also be specified via the `ARM_DISABLE_INSTANCE_DISCOVERY` environment variable. Defaults to `false`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_instance_discovery AzapiProvider#disable_instance_discovery}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#disable_instance_discovery AzapiProvider#disable_instance_discovery}
 
 ---
 
@@ -115254,7 +116092,7 @@ Disable sending the Terraform Partner ID if a custom `partner_id` isn't specifie
 
 The Partner ID does not give HashiCorp any direct access to usage information. This can also be sourced from the `ARM_DISABLE_TERRAFORM_PARTNER_ID` environment variable. Defaults to `false`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#disable_terraform_partner_id AzapiProvider#disable_terraform_partner_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#disable_terraform_partner_id AzapiProvider#disable_terraform_partner_id}
 
 ---
 
@@ -115270,7 +116108,7 @@ Enable Preflight Validation.
 
 The default is false. When set to true, the provider will use Preflight to do static validation before really deploying a new resource. When set to false, the provider will disable this validation. This can also be sourced from the `ARM_ENABLE_PREFLIGHT` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#enable_preflight AzapiProvider#enable_preflight}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#enable_preflight AzapiProvider#enable_preflight}
 
 ---
 
@@ -115280,11 +116118,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly endpoint: IResolvable | AzapiProviderEndpoint[];
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.AzapiProviderEndpoint">AzapiProviderEndpoint</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.provider.AzapiProviderEndpoint[]
 
 The Azure API Endpoint Configuration.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#endpoint AzapiProvider#endpoint}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#endpoint AzapiProvider#endpoint}
 
 ---
 
@@ -115298,9 +116136,9 @@ public readonly environment: string;
 
 The Cloud Environment which should be used.
 
-Possible values are `public`, `usgovernment`, `china` and `custom`. Defaults to `public`. This can also be sourced from the `ARM_ENVIRONMENT` Environment Variable.
+Defaults to `public`. This can also be sourced from the `ARM_ENVIRONMENT` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#environment AzapiProvider#environment}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#environment AzapiProvider#environment}
 
 ---
 
@@ -115316,7 +116154,7 @@ Ignore no-op changes for `azapi_resource`.
 
 The default is true. When set to true, the provider will suppress changes in the `azapi_resource` if the `body` in the new API version still matches the remote state. When set to false, the provider will not suppress these changes. This can also be sourced from the `ARM_IGNORE_NO_OP_CHANGES` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#ignore_no_op_changes AzapiProvider#ignore_no_op_changes}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#ignore_no_op_changes AzapiProvider#ignore_no_op_changes}
 
 ---
 
@@ -115332,7 +116170,7 @@ DEPRECATED - The maximum number of retries to attempt if the Azure API returns a
 
 The default is `32767`, this allows the provider to rely on the resource timeout values rather than a maximum retry count. The resource-specific retry configuration may additionally be used to retry on other errors and conditions. This property will be removed in a future version.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#maximum_busy_retry_attempts AzapiProvider#maximum_busy_retry_attempts}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#maximum_busy_retry_attempts AzapiProvider#maximum_busy_retry_attempts}
 
 ---
 
@@ -115348,7 +116186,7 @@ The Azure Pipelines Service Connection ID to use for authentication.
 
 This can also be sourced from the `ARM_ADO_PIPELINE_SERVICE_CONNECTION_ID`, `ARM_OIDC_AZURE_SERVICE_CONNECTION_ID`, or `AZURESUBSCRIPTION_SERVICE_CONNECTION_ID` Environment Variables.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_azure_service_connection_id AzapiProvider#oidc_azure_service_connection_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#oidc_azure_service_connection_id AzapiProvider#oidc_azure_service_connection_id}
 
 ---
 
@@ -115364,7 +116202,7 @@ The bearer token for the request to the OIDC provider.
 
 This can also be sourced from the `ARM_OIDC_REQUEST_TOKEN`, `ACTIONS_ID_TOKEN_REQUEST_TOKEN`, or `SYSTEM_ACCESSTOKEN` Environment Variables.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_request_token AzapiProvider#oidc_request_token}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#oidc_request_token AzapiProvider#oidc_request_token}
 
 ---
 
@@ -115380,7 +116218,7 @@ The URL for the OIDC provider from which to request an ID token.
 
 This can also be sourced from the `ARM_OIDC_REQUEST_URL`, `ACTIONS_ID_TOKEN_REQUEST_URL`, or `SYSTEM_OIDCREQUESTURI` Environment Variables.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_request_url AzapiProvider#oidc_request_url}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#oidc_request_url AzapiProvider#oidc_request_url}
 
 ---
 
@@ -115394,7 +116232,7 @@ public readonly oidcToken: string;
 
 The ID token when authenticating using OpenID Connect (OIDC). This can also be sourced from the `ARM_OIDC_TOKEN` environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_token AzapiProvider#oidc_token}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#oidc_token AzapiProvider#oidc_token}
 
 ---
 
@@ -115410,7 +116248,7 @@ The path to a file containing an ID token when authenticating using OpenID Conne
 
 This can also be sourced from the `ARM_OIDC_TOKEN_FILE_PATH`, `AZURE_FEDERATED_TOKEN_FILE` environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#oidc_token_file_path AzapiProvider#oidc_token_file_path}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#oidc_token_file_path AzapiProvider#oidc_token_file_path}
 
 ---
 
@@ -115424,7 +116262,23 @@ public readonly partnerId: string;
 
 A GUID/UUID that is [registered](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#register-guids-and-offers) with Microsoft to facilitate partner resource usage attribution. This can also be sourced from the `ARM_PARTNER_ID` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#partner_id AzapiProvider#partner_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#partner_id AzapiProvider#partner_id}
+
+---
+
+##### `preserveResourceIdCasing`<sup>Optional</sup> <a name="preserveResourceIdCasing" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProviderConfig.property.preserveResourceIdCasing"></a>
+
+```typescript
+public readonly preserveResourceIdCasing: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
+
+Preserve the existing casing of the resource ID in state.
+
+The default is false. When set to true, if the resource ID the provider would write back to state differs from the value already in state only by casing, the existing casing is kept. This is useful when consumers of the resource ID (or the `azapi_resource` identity) require a specific casing that the Azure API may not preserve. This only affects the `id` (and `resource_id`) attributes; other properties are unaffected. This can also be sourced from the `ARM_PRESERVE_RESOURCE_ID_CASING` Environment Variable.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#preserve_resource_id_casing AzapiProvider#preserve_resource_id_casing}
 
 ---
 
@@ -115440,7 +116294,7 @@ Should the Provider skip registering the Resource Providers it supports?
 
 This can also be sourced from the `ARM_SKIP_PROVIDER_REGISTRATION` Environment Variable. Defaults to `false`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#skip_provider_registration AzapiProvider#skip_provider_registration}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#skip_provider_registration AzapiProvider#skip_provider_registration}
 
 ---
 
@@ -115454,7 +116308,7 @@ public readonly subscriptionId: string;
 
 The Subscription ID which should be used. This can also be sourced from the `ARM_SUBSCRIPTION_ID` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#subscription_id AzapiProvider#subscription_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#subscription_id AzapiProvider#subscription_id}
 
 ---
 
@@ -115468,7 +116322,7 @@ public readonly tenantId: string;
 
 The Tenant ID should be used. This can also be sourced from the `ARM_TENANT_ID` Environment Variable.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#tenant_id AzapiProvider#tenant_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#tenant_id AzapiProvider#tenant_id}
 
 ---
 
@@ -115484,7 +116338,7 @@ Should AKS Workload Identity be used for Authentication?
 
 This can also be sourced from the `ARM_USE_AKS_WORKLOAD_IDENTITY` Environment Variable. Defaults to `false`. When set, `client_id`, `tenant_id` and `oidc_token_file_path` will be detected from the environment and do not need to be specified.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_aks_workload_identity AzapiProvider#use_aks_workload_identity}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#use_aks_workload_identity AzapiProvider#use_aks_workload_identity}
 
 ---
 
@@ -115500,7 +116354,7 @@ Should Azure CLI be used for authentication?
 
 This can also be sourced from the `ARM_USE_CLI` environment variable. Defaults to `true`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_cli AzapiProvider#use_cli}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#use_cli AzapiProvider#use_cli}
 
 ---
 
@@ -115516,7 +116370,7 @@ Should Managed Identity be used for Authentication?
 
 This can also be sourced from the `ARM_USE_MSI` Environment Variable. Defaults to `false`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_msi AzapiProvider#use_msi}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#use_msi AzapiProvider#use_msi}
 
 ---
 
@@ -115530,7 +116384,7 @@ public readonly useOidc: boolean | IResolvable;
 
 Should OIDC be used for Authentication? This can also be sourced from the `ARM_USE_OIDC` Environment Variable. Defaults to `false`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#use_oidc AzapiProvider#use_oidc}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#use_oidc AzapiProvider#use_oidc}
 
 ---
 
@@ -115566,7 +116420,7 @@ The Azure Active Directory login endpoint to use.
 
 This can also be sourced from the `ARM_ACTIVE_DIRECTORY_AUTHORITY_HOST` Environment Variable. Defaults to `https://login.microsoftonline.com/` for public cloud.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#active_directory_authority_host AzapiProvider#active_directory_authority_host}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#active_directory_authority_host AzapiProvider#active_directory_authority_host}
 
 ---
 
@@ -115582,7 +116436,7 @@ The resource ID to obtain AD tokens for.
 
 This can also be sourced from the `ARM_RESOURCE_MANAGER_AUDIENCE` Environment Variable. Defaults to `https://management.core.windows.net/` for public cloud.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#resource_manager_audience AzapiProvider#resource_manager_audience}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#resource_manager_audience AzapiProvider#resource_manager_audience}
 
 ---
 
@@ -115598,7 +116452,7 @@ The Azure Resource Manager endpoint to use.
 
 This can also be sourced from the `ARM_RESOURCE_MANAGER_ENDPOINT` Environment Variable. Defaults to `https://management.azure.com/` for public cloud.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#resource_manager_endpoint AzapiProvider#resource_manager_endpoint}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#resource_manager_endpoint AzapiProvider#resource_manager_endpoint}
 
 ---
 
@@ -115634,7 +116488,7 @@ The Azure Active Directory login endpoint to use.
 
 This can also be sourced from the `ARM_ACTIVE_DIRECTORY_AUTHORITY_HOST` Environment Variable. Defaults to `https://login.microsoftonline.com/` for public cloud.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#active_directory_authority_host AzapiProvider#active_directory_authority_host}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#active_directory_authority_host AzapiProvider#active_directory_authority_host}
 
 ---
 
@@ -115650,7 +116504,7 @@ The resource ID to obtain AD tokens for.
 
 This can also be sourced from the `ARM_RESOURCE_MANAGER_AUDIENCE` Environment Variable. Defaults to `https://management.core.windows.net/` for public cloud.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#resource_manager_audience AzapiProvider#resource_manager_audience}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#resource_manager_audience AzapiProvider#resource_manager_audience}
 
 ---
 
@@ -115666,7 +116520,7 @@ The Azure Resource Manager endpoint to use.
 
 This can also be sourced from the `ARM_RESOURCE_MANAGER_ENDPOINT` Environment Variable. Defaults to `https://management.azure.com/` for public cloud.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs#resource_manager_endpoint AzapiProvider#resource_manager_endpoint}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs#resource_manager_endpoint AzapiProvider#resource_manager_endpoint}
 
 ---
 
@@ -132554,7 +133408,7 @@ const dataAzapiClientConfigConfig: DataAzapiClientConfigConfig = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigConfig.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigConfig.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigConfig.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigConfig.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a></code> | timeouts block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigConfig.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts</code> | timeouts block. |
 
 ---
 
@@ -132634,11 +133488,11 @@ public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteEx
 public readonly timeouts: DataAzapiClientConfigTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts
 
 timeouts block.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/client_config#timeouts DataAzapiClientConfig#timeouts}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/client_config#timeouts DataAzapiClientConfig#timeouts}
 
 ---
 
@@ -132663,7 +133517,7 @@ const dataAzapiClientConfigConfig: core_azure.DataAzapiClientConfigConfig = { ..
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfigConfig.property.lifecycle">lifecycle</a></code> | <code>cdktn.TerraformResourceLifecycle</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfigConfig.property.provider">provider</a></code> | <code>cdktn.TerraformProvider</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfigConfig.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfigConfig.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a></code> | timeouts block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfigConfig.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts</code> | timeouts block. |
 
 ---
 
@@ -132743,11 +133597,11 @@ public readonly provisioners: (FileProvisioner | LocalExecProvisioner | RemoteEx
 public readonly timeouts: DataAzapiClientConfigTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts
 
 timeouts block.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/client_config#timeouts DataAzapiClientConfig#timeouts}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/client_config#timeouts DataAzapiClientConfig#timeouts}
 
 ---
 
@@ -132765,7 +133619,7 @@ const dataAzapiClientConfigTimeouts: DataAzapiClientConfigTimeouts = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts.property.read">read</a></code> | <code>string</code> | A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts.property.read">read</a></code> | <code>string</code> | A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). |
 
 ---
 
@@ -132777,9 +133631,9 @@ public readonly read: string;
 
 - *Type:* string
 
-A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/client_config#read DataAzapiClientConfig#read}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/client_config#read DataAzapiClientConfig#read}
 
 ---
 
@@ -132797,7 +133651,7 @@ const dataAzapiClientConfigTimeouts: core_azure.DataAzapiClientConfigTimeouts = 
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfigTimeouts.property.read">read</a></code> | <code>string</code> | A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfigTimeouts.property.read">read</a></code> | <code>string</code> | A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). |
 
 ---
 
@@ -132809,9 +133663,9 @@ public readonly read: string;
 
 - *Type:* string
 
-A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/client_config#read DataAzapiClientConfig#read}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/client_config#read DataAzapiClientConfig#read}
 
 ---
 
@@ -132844,8 +133698,8 @@ const dataAzapiResourceConfig: DataAzapiResourceConfig = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceConfig.property.queryParameters">queryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A map of query parameters to include in the request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceConfig.property.resourceId">resourceId</a></code> | <code>string</code> | The ID of the Azure resource to retrieve. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceConfig.property.responseExportValues">responseExportValues</a></code> | <code>{[ key: string ]: any}</code> | The attribute can accept either a list or a map. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceConfig.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a></code> | The retry object supports the following attributes:. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceConfig.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a></code> | timeouts block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceConfig.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry</code> | The retry object supports the following attributes:. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceConfig.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts</code> | timeouts block. |
 
 ---
 
@@ -132931,7 +133785,7 @@ In a format like `<resource-type>@<api-version>`.
 
 `<resource-type>` is the Azure resource type, for example, `Microsoft.Storage/storageAccounts`. `<api-version>` is version of the API used to manage this azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#type DataAzapiResource#type}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#type DataAzapiResource#type}
 
 ---
 
@@ -132945,7 +133799,7 @@ public readonly headers: {[ key: string ]: string};
 
 A map of headers to include in the request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#headers DataAzapiResource#headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#headers DataAzapiResource#headers}
 
 ---
 
@@ -132961,7 +133815,7 @@ If set to `true`, the data source will not fail when the specified resource is n
 
 Identifier attributes (`id`, `name`, `parent_id`, `resource_id`) will still be populated based on inputs; other computed attributes (`output`, `location`, `identity`, `tags`) will be null/empty. Defaults to `false`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#ignore_not_found DataAzapiResource#ignore_not_found}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#ignore_not_found DataAzapiResource#ignore_not_found}
 
 ---
 
@@ -132977,7 +133831,7 @@ Specifies the name of the Azure resource.
 
 Exactly one of the arguments `name` or `resource_id` must be set. It could be omitted if the `type` is `Microsoft.Resources/subscriptions`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#name DataAzapiResource#name}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#name DataAzapiResource#name}
 
 ---
 
@@ -132993,17 +133847,17 @@ The ID of the azure resource in which this resource is created.
 
 It supports different kinds of deployment scope for **top level** resources:
 
-  - resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
-	- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
-	- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
-	- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
-	- tenant scope: `parent_id` should be /
+- resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
+- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
+- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
+- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
+- tenant scope: `parent_id` should be /
 
-  For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
+For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
 
-  For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
+For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#parent_id DataAzapiResource#parent_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#parent_id DataAzapiResource#parent_id}
 
 ---
 
@@ -133017,7 +133871,7 @@ public readonly queryParameters: IResolvable | {[ key: string ]: string[]};
 
 A map of query parameters to include in the request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#query_parameters DataAzapiResource#query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#query_parameters DataAzapiResource#query_parameters}
 
 ---
 
@@ -133033,7 +133887,7 @@ The ID of the Azure resource to retrieve.
 
 Exactly one of the arguments `name` or `resource_id` must be set. It could be omitted if the `type` is `Microsoft.Resources/subscriptions`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#resource_id DataAzapiResource#resource_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#resource_id DataAzapiResource#resource_id}
 
 ---
 
@@ -133074,7 +133928,7 @@ The attribute can accept either a list or a map.
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#response_export_values DataAzapiResource#response_export_values}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#response_export_values DataAzapiResource#response_export_values}
 
 ---
 
@@ -133084,11 +133938,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly retry: DataAzapiResourceRetry;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry
 
 The retry object supports the following attributes:.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#retry DataAzapiResource#retry}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#retry DataAzapiResource#retry}
 
 ---
 
@@ -133098,11 +133952,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly timeouts: DataAzapiResourceTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts
 
 timeouts block.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#timeouts DataAzapiResource#timeouts}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#timeouts DataAzapiResource#timeouts}
 
 ---
 
@@ -133135,8 +133989,8 @@ const dataAzapiResourceConfig: core_azure.DataAzapiResourceConfig = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceConfig.property.queryParameters">queryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A map of query parameters to include in the request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceConfig.property.resourceId">resourceId</a></code> | <code>string</code> | The ID of the Azure resource to retrieve. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceConfig.property.responseExportValues">responseExportValues</a></code> | <code>{[ key: string ]: any}</code> | The attribute can accept either a list or a map. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceConfig.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a></code> | The retry object supports the following attributes:. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceConfig.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a></code> | timeouts block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceConfig.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry</code> | The retry object supports the following attributes:. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceConfig.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts</code> | timeouts block. |
 
 ---
 
@@ -133222,7 +134076,7 @@ In a format like `<resource-type>@<api-version>`.
 
 `<resource-type>` is the Azure resource type, for example, `Microsoft.Storage/storageAccounts`. `<api-version>` is version of the API used to manage this azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#type DataAzapiResource#type}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#type DataAzapiResource#type}
 
 ---
 
@@ -133236,7 +134090,7 @@ public readonly headers: {[ key: string ]: string};
 
 A map of headers to include in the request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#headers DataAzapiResource#headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#headers DataAzapiResource#headers}
 
 ---
 
@@ -133252,7 +134106,7 @@ If set to `true`, the data source will not fail when the specified resource is n
 
 Identifier attributes (`id`, `name`, `parent_id`, `resource_id`) will still be populated based on inputs; other computed attributes (`output`, `location`, `identity`, `tags`) will be null/empty. Defaults to `false`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#ignore_not_found DataAzapiResource#ignore_not_found}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#ignore_not_found DataAzapiResource#ignore_not_found}
 
 ---
 
@@ -133268,7 +134122,7 @@ Specifies the name of the Azure resource.
 
 Exactly one of the arguments `name` or `resource_id` must be set. It could be omitted if the `type` is `Microsoft.Resources/subscriptions`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#name DataAzapiResource#name}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#name DataAzapiResource#name}
 
 ---
 
@@ -133284,17 +134138,17 @@ The ID of the azure resource in which this resource is created.
 
 It supports different kinds of deployment scope for **top level** resources:
 
-  - resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
-	- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
-	- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
-	- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
-	- tenant scope: `parent_id` should be /
+- resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
+- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
+- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
+- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
+- tenant scope: `parent_id` should be /
 
-  For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
+For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
 
-  For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
+For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#parent_id DataAzapiResource#parent_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#parent_id DataAzapiResource#parent_id}
 
 ---
 
@@ -133308,7 +134162,7 @@ public readonly queryParameters: IResolvable | {[ key: string ]: string[]};
 
 A map of query parameters to include in the request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#query_parameters DataAzapiResource#query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#query_parameters DataAzapiResource#query_parameters}
 
 ---
 
@@ -133324,7 +134178,7 @@ The ID of the Azure resource to retrieve.
 
 Exactly one of the arguments `name` or `resource_id` must be set. It could be omitted if the `type` is `Microsoft.Resources/subscriptions`.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#resource_id DataAzapiResource#resource_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#resource_id DataAzapiResource#resource_id}
 
 ---
 
@@ -133365,7 +134219,7 @@ The attribute can accept either a list or a map.
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#response_export_values DataAzapiResource#response_export_values}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#response_export_values DataAzapiResource#response_export_values}
 
 ---
 
@@ -133375,11 +134229,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly retry: DataAzapiResourceRetry;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry
 
 The retry object supports the following attributes:.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#retry DataAzapiResource#retry}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#retry DataAzapiResource#retry}
 
 ---
 
@@ -133389,11 +134243,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly timeouts: DataAzapiResourceTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts
 
 timeouts block.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#timeouts DataAzapiResource#timeouts}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#timeouts DataAzapiResource#timeouts}
 
 ---
 
@@ -133434,9 +134288,9 @@ const dataAzapiResourceRetry: DataAzapiResourceRetry = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry.property.errorMessageRegex">errorMessageRegex</a></code> | <code>string[]</code> | A list of regular expressions to match against error messages. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. Default is `10`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. Default is `180`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. Default is `1.5`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | The randomization factor to apply to the interval between retries. |
 
 ---
@@ -133453,7 +134307,7 @@ A list of regular expressions to match against error messages.
 
 If any of the regular expressions match, the request will be retried.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#error_message_regex DataAzapiResource#error_message_regex}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#error_message_regex DataAzapiResource#error_message_regex}
 
 ---
 
@@ -133465,9 +134319,9 @@ public readonly intervalSeconds: number;
 
 - *Type:* number
 
-The base number of seconds to wait between retries. Default is `10`.
+The base number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#interval_seconds DataAzapiResource#interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#interval_seconds DataAzapiResource#interval_seconds}
 
 ---
 
@@ -133479,9 +134333,9 @@ public readonly maxIntervalSeconds: number;
 
 - *Type:* number
 
-The maximum number of seconds to wait between retries. Default is `180`.
+The maximum number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#max_interval_seconds DataAzapiResource#max_interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#max_interval_seconds DataAzapiResource#max_interval_seconds}
 
 ---
 
@@ -133493,9 +134347,9 @@ public readonly multiplier: number;
 
 - *Type:* number
 
-The multiplier to apply to the interval between retries. Default is `1.5`.
+The multiplier to apply to the interval between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#multiplier DataAzapiResource#multiplier}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#multiplier DataAzapiResource#multiplier}
 
 ---
 
@@ -133509,9 +134363,9 @@ public readonly randomizationFactor: number;
 
 The randomization factor to apply to the interval between retries.
 
-The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization. Default is `0.5`.
+The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#randomization_factor DataAzapiResource#randomization_factor}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#randomization_factor DataAzapiResource#randomization_factor}
 
 ---
 
@@ -133530,9 +134384,9 @@ const dataAzapiResourceRetry: core_azure.DataAzapiResourceRetry = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceRetry.property.errorMessageRegex">errorMessageRegex</a></code> | <code>string[]</code> | A list of regular expressions to match against error messages. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. Default is `10`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. Default is `180`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. Default is `1.5`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceRetry.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | The randomization factor to apply to the interval between retries. |
 
 ---
@@ -133549,7 +134403,7 @@ A list of regular expressions to match against error messages.
 
 If any of the regular expressions match, the request will be retried.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#error_message_regex DataAzapiResource#error_message_regex}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#error_message_regex DataAzapiResource#error_message_regex}
 
 ---
 
@@ -133561,9 +134415,9 @@ public readonly intervalSeconds: number;
 
 - *Type:* number
 
-The base number of seconds to wait between retries. Default is `10`.
+The base number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#interval_seconds DataAzapiResource#interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#interval_seconds DataAzapiResource#interval_seconds}
 
 ---
 
@@ -133575,9 +134429,9 @@ public readonly maxIntervalSeconds: number;
 
 - *Type:* number
 
-The maximum number of seconds to wait between retries. Default is `180`.
+The maximum number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#max_interval_seconds DataAzapiResource#max_interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#max_interval_seconds DataAzapiResource#max_interval_seconds}
 
 ---
 
@@ -133589,9 +134443,9 @@ public readonly multiplier: number;
 
 - *Type:* number
 
-The multiplier to apply to the interval between retries. Default is `1.5`.
+The multiplier to apply to the interval between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#multiplier DataAzapiResource#multiplier}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#multiplier DataAzapiResource#multiplier}
 
 ---
 
@@ -133605,9 +134459,9 @@ public readonly randomizationFactor: number;
 
 The randomization factor to apply to the interval between retries.
 
-The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization. Default is `0.5`.
+The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#randomization_factor DataAzapiResource#randomization_factor}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#randomization_factor DataAzapiResource#randomization_factor}
 
 ---
 
@@ -133625,7 +134479,7 @@ const dataAzapiResourceTimeouts: DataAzapiResourceTimeouts = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts.property.read">read</a></code> | <code>string</code> | A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts.property.read">read</a></code> | <code>string</code> | A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). |
 
 ---
 
@@ -133637,9 +134491,9 @@ public readonly read: string;
 
 - *Type:* string
 
-A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#read DataAzapiResource#read}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#read DataAzapiResource#read}
 
 ---
 
@@ -133657,7 +134511,7 @@ const dataAzapiResourceTimeouts: core_azure.DataAzapiResourceTimeouts = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceTimeouts.property.read">read</a></code> | <code>string</code> | A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceTimeouts.property.read">read</a></code> | <code>string</code> | A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). |
 
 ---
 
@@ -133669,9 +134523,9 @@ public readonly read: string;
 
 - *Type:* string
 
-A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/data-sources/resource#read DataAzapiResource#read}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/data-sources/resource#read DataAzapiResource#read}
 
 ---
 
@@ -186561,14 +187415,17 @@ const resourceActionConfig: ResourceActionConfig = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.action">action</a></code> | <code>string</code> | The name of the resource action. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.body">body</a></code> | <code>{[ key: string ]: any}</code> | A dynamic attribute that contains the request body. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.headers">headers</a></code> | <code>{[ key: string ]: string}</code> | A map of headers to include in the request. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.ignoreNotFound">ignoreNotFound</a></code> | <code>boolean \| cdktn.IResolvable</code> | If set to `true`, the resource action will ignore `Not Found` errors returned from the Azure API. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.locks">locks</a></code> | <code>string[]</code> | A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.method">method</a></code> | <code>string</code> | Specifies the HTTP method of the azure resource action. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.queryParameters">queryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A map of query parameters to include in the request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.responseExportValues">responseExportValues</a></code> | <code>{[ key: string ]: any}</code> | The attribute can accept either a list or a map. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a></code> | The retry object supports the following attributes:. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.resourceAction.ResourceActionRetry</code> | The retry object supports the following attributes:. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.sensitiveBody">sensitiveBody</a></code> | <code>{[ key: string ]: any}</code> | A dynamic attribute that contains the write-only properties of the request body. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.sensitiveBodyVersion">sensitiveBodyVersion</a></code> | <code>{[ key: string ]: string}</code> | A map where the key is the path to the property in `sensitive_body` and the value is the version of the property. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.sensitiveResponseExportValues">sensitiveResponseExportValues</a></code> | <code>{[ key: string ]: any}</code> | The attribute can accept either a list or a map. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a></code> | timeouts block. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.when">when</a></code> | <code>string</code> | When to perform the action, value must be one of: `apply`, `destroy`. Default is `apply`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.resourceAction.ResourceActionTimeouts</code> | timeouts block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.when">when</a></code> | <code>string</code> | When to perform the action. |
 
 ---
 
@@ -186652,7 +187509,7 @@ public readonly resourceId: string;
 
 The ID of an existing Azure source.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#resource_id ResourceAction#resource_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#resource_id ResourceAction#resource_id}
 
 ---
 
@@ -186668,7 +187525,7 @@ In a format like `<resource-type>@<api-version>`.
 
 `<resource-type>` is the Azure resource type, for example, `Microsoft.Storage/storageAccounts`. `<api-version>` is version of the API used to manage this azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#type ResourceAction#type}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#type ResourceAction#type}
 
 ---
 
@@ -186684,7 +187541,7 @@ The name of the resource action.
 
 It's also possible to make HTTP requests towards the resource ID if leave this field empty.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#action ResourceAction#action}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#action ResourceAction#action}
 
 ---
 
@@ -186698,7 +187555,7 @@ public readonly body: {[ key: string ]: any};
 
 A dynamic attribute that contains the request body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#body ResourceAction#body}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#body ResourceAction#body}
 
 ---
 
@@ -186712,7 +187569,23 @@ public readonly headers: {[ key: string ]: string};
 
 A map of headers to include in the request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#headers ResourceAction#headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#headers ResourceAction#headers}
+
+---
+
+##### `ignoreNotFound`<sup>Optional</sup> <a name="ignoreNotFound" id="@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.ignoreNotFound"></a>
+
+```typescript
+public readonly ignoreNotFound: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
+
+If set to `true`, the resource action will ignore `Not Found` errors returned from the Azure API.
+
+Default is `false`.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#ignore_not_found ResourceAction#ignore_not_found}
 
 ---
 
@@ -186726,7 +187599,7 @@ public readonly locks: string[];
 
 A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#locks ResourceAction#locks}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#locks ResourceAction#locks}
 
 ---
 
@@ -186740,9 +187613,7 @@ public readonly method: string;
 
 Specifies the HTTP method of the azure resource action.
 
-Allowed values are `POST`, `PATCH`, `PUT` and `DELETE`. Defaults to `POST`.
-
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#method ResourceAction#method}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#method ResourceAction#method}
 
 ---
 
@@ -186756,7 +187627,7 @@ public readonly queryParameters: IResolvable | {[ key: string ]: string[]};
 
 A map of query parameters to include in the request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#query_parameters ResourceAction#query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#query_parameters ResourceAction#query_parameters}
 
 ---
 
@@ -186797,7 +187668,7 @@ The attribute can accept either a list or a map.
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#response_export_values ResourceAction#response_export_values}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#response_export_values ResourceAction#response_export_values}
 
 ---
 
@@ -186807,11 +187678,43 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly retry: ResourceActionRetry;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionRetry
 
 The retry object supports the following attributes:.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#retry ResourceAction#retry}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#retry ResourceAction#retry}
+
+---
+
+##### `sensitiveBody`<sup>Optional</sup> <a name="sensitiveBody" id="@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.sensitiveBody"></a>
+
+```typescript
+public readonly sensitiveBody: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+A dynamic attribute that contains the write-only properties of the request body.
+
+This will be merge-patched to the body to construct the actual request body. If a property is defined in both `body` and `sensitive_body`, the `sensitive_body` value takes precedence.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#sensitive_body ResourceAction#sensitive_body}
+
+---
+
+##### `sensitiveBodyVersion`<sup>Optional</sup> <a name="sensitiveBodyVersion" id="@microsoft/terraform-cdk-constructs.ResourceActionConfig.property.sensitiveBodyVersion"></a>
+
+```typescript
+public readonly sensitiveBodyVersion: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+A map where the key is the path to the property in `sensitive_body` and the value is the version of the property.
+
+The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#sensitive_body_version ResourceAction#sensitive_body_version}
 
 ---
 
@@ -186852,7 +187755,7 @@ The attribute can accept either a list or a map.
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#sensitive_response_export_values ResourceAction#sensitive_response_export_values}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#sensitive_response_export_values ResourceAction#sensitive_response_export_values}
 
 ---
 
@@ -186862,11 +187765,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly timeouts: ResourceActionTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionTimeouts
 
 timeouts block.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#timeouts ResourceAction#timeouts}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#timeouts ResourceAction#timeouts}
 
 ---
 
@@ -186878,9 +187781,9 @@ public readonly when: string;
 
 - *Type:* string
 
-When to perform the action, value must be one of: `apply`, `destroy`. Default is `apply`.
+When to perform the action.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#when ResourceAction#when}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#when ResourceAction#when}
 
 ---
 
@@ -186910,14 +187813,17 @@ const resourceActionConfig: core_azure.ResourceActionConfig = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.action">action</a></code> | <code>string</code> | The name of the resource action. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.body">body</a></code> | <code>{[ key: string ]: any}</code> | A dynamic attribute that contains the request body. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.headers">headers</a></code> | <code>{[ key: string ]: string}</code> | A map of headers to include in the request. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.ignoreNotFound">ignoreNotFound</a></code> | <code>boolean \| cdktn.IResolvable</code> | If set to `true`, the resource action will ignore `Not Found` errors returned from the Azure API. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.locks">locks</a></code> | <code>string[]</code> | A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.method">method</a></code> | <code>string</code> | Specifies the HTTP method of the azure resource action. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.queryParameters">queryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A map of query parameters to include in the request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.responseExportValues">responseExportValues</a></code> | <code>{[ key: string ]: any}</code> | The attribute can accept either a list or a map. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a></code> | The retry object supports the following attributes:. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.resourceAction.ResourceActionRetry</code> | The retry object supports the following attributes:. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.sensitiveBody">sensitiveBody</a></code> | <code>{[ key: string ]: any}</code> | A dynamic attribute that contains the write-only properties of the request body. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.sensitiveBodyVersion">sensitiveBodyVersion</a></code> | <code>{[ key: string ]: string}</code> | A map where the key is the path to the property in `sensitive_body` and the value is the version of the property. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.sensitiveResponseExportValues">sensitiveResponseExportValues</a></code> | <code>{[ key: string ]: any}</code> | The attribute can accept either a list or a map. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a></code> | timeouts block. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.when">when</a></code> | <code>string</code> | When to perform the action, value must be one of: `apply`, `destroy`. Default is `apply`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.resourceAction.ResourceActionTimeouts</code> | timeouts block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.when">when</a></code> | <code>string</code> | When to perform the action. |
 
 ---
 
@@ -187001,7 +187907,7 @@ public readonly resourceId: string;
 
 The ID of an existing Azure source.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#resource_id ResourceAction#resource_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#resource_id ResourceAction#resource_id}
 
 ---
 
@@ -187017,7 +187923,7 @@ In a format like `<resource-type>@<api-version>`.
 
 `<resource-type>` is the Azure resource type, for example, `Microsoft.Storage/storageAccounts`. `<api-version>` is version of the API used to manage this azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#type ResourceAction#type}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#type ResourceAction#type}
 
 ---
 
@@ -187033,7 +187939,7 @@ The name of the resource action.
 
 It's also possible to make HTTP requests towards the resource ID if leave this field empty.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#action ResourceAction#action}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#action ResourceAction#action}
 
 ---
 
@@ -187047,7 +187953,7 @@ public readonly body: {[ key: string ]: any};
 
 A dynamic attribute that contains the request body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#body ResourceAction#body}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#body ResourceAction#body}
 
 ---
 
@@ -187061,7 +187967,23 @@ public readonly headers: {[ key: string ]: string};
 
 A map of headers to include in the request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#headers ResourceAction#headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#headers ResourceAction#headers}
+
+---
+
+##### `ignoreNotFound`<sup>Optional</sup> <a name="ignoreNotFound" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.ignoreNotFound"></a>
+
+```typescript
+public readonly ignoreNotFound: boolean | IResolvable;
+```
+
+- *Type:* boolean | cdktn.IResolvable
+
+If set to `true`, the resource action will ignore `Not Found` errors returned from the Azure API.
+
+Default is `false`.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#ignore_not_found ResourceAction#ignore_not_found}
 
 ---
 
@@ -187075,7 +187997,7 @@ public readonly locks: string[];
 
 A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#locks ResourceAction#locks}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#locks ResourceAction#locks}
 
 ---
 
@@ -187089,9 +188011,7 @@ public readonly method: string;
 
 Specifies the HTTP method of the azure resource action.
 
-Allowed values are `POST`, `PATCH`, `PUT` and `DELETE`. Defaults to `POST`.
-
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#method ResourceAction#method}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#method ResourceAction#method}
 
 ---
 
@@ -187105,7 +188025,7 @@ public readonly queryParameters: IResolvable | {[ key: string ]: string[]};
 
 A map of query parameters to include in the request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#query_parameters ResourceAction#query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#query_parameters ResourceAction#query_parameters}
 
 ---
 
@@ -187146,7 +188066,7 @@ The attribute can accept either a list or a map.
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#response_export_values ResourceAction#response_export_values}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#response_export_values ResourceAction#response_export_values}
 
 ---
 
@@ -187156,11 +188076,43 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly retry: ResourceActionRetry;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionRetry
 
 The retry object supports the following attributes:.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#retry ResourceAction#retry}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#retry ResourceAction#retry}
+
+---
+
+##### `sensitiveBody`<sup>Optional</sup> <a name="sensitiveBody" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.sensitiveBody"></a>
+
+```typescript
+public readonly sensitiveBody: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+A dynamic attribute that contains the write-only properties of the request body.
+
+This will be merge-patched to the body to construct the actual request body. If a property is defined in both `body` and `sensitive_body`, the `sensitive_body` value takes precedence.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#sensitive_body ResourceAction#sensitive_body}
+
+---
+
+##### `sensitiveBodyVersion`<sup>Optional</sup> <a name="sensitiveBodyVersion" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceActionConfig.property.sensitiveBodyVersion"></a>
+
+```typescript
+public readonly sensitiveBodyVersion: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+A map where the key is the path to the property in `sensitive_body` and the value is the version of the property.
+
+The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#sensitive_body_version ResourceAction#sensitive_body_version}
 
 ---
 
@@ -187201,7 +188153,7 @@ The attribute can accept either a list or a map.
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#sensitive_response_export_values ResourceAction#sensitive_response_export_values}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#sensitive_response_export_values ResourceAction#sensitive_response_export_values}
 
 ---
 
@@ -187211,11 +188163,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly timeouts: ResourceActionTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a>
+- *Type:* @cdktn/provider-azapi.resourceAction.ResourceActionTimeouts
 
 timeouts block.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#timeouts ResourceAction#timeouts}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#timeouts ResourceAction#timeouts}
 
 ---
 
@@ -187227,9 +188179,9 @@ public readonly when: string;
 
 - *Type:* string
 
-When to perform the action, value must be one of: `apply`, `destroy`. Default is `apply`.
+When to perform the action.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#when ResourceAction#when}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#when ResourceAction#when}
 
 ---
 
@@ -187248,9 +188200,9 @@ const resourceActionRetry: ResourceActionRetry = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry.property.errorMessageRegex">errorMessageRegex</a></code> | <code>string[]</code> | A list of regular expressions to match against error messages. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. Default is `10`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. Default is `180`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. Default is `1.5`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | The randomization factor to apply to the interval between retries. |
 
 ---
@@ -187267,7 +188219,7 @@ A list of regular expressions to match against error messages.
 
 If any of the regular expressions match, the request will be retried.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#error_message_regex ResourceAction#error_message_regex}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#error_message_regex ResourceAction#error_message_regex}
 
 ---
 
@@ -187279,9 +188231,9 @@ public readonly intervalSeconds: number;
 
 - *Type:* number
 
-The base number of seconds to wait between retries. Default is `10`.
+The base number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#interval_seconds ResourceAction#interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#interval_seconds ResourceAction#interval_seconds}
 
 ---
 
@@ -187293,9 +188245,9 @@ public readonly maxIntervalSeconds: number;
 
 - *Type:* number
 
-The maximum number of seconds to wait between retries. Default is `180`.
+The maximum number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#max_interval_seconds ResourceAction#max_interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#max_interval_seconds ResourceAction#max_interval_seconds}
 
 ---
 
@@ -187307,9 +188259,9 @@ public readonly multiplier: number;
 
 - *Type:* number
 
-The multiplier to apply to the interval between retries. Default is `1.5`.
+The multiplier to apply to the interval between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#multiplier ResourceAction#multiplier}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#multiplier ResourceAction#multiplier}
 
 ---
 
@@ -187323,9 +188275,9 @@ public readonly randomizationFactor: number;
 
 The randomization factor to apply to the interval between retries.
 
-The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization. Default is `0.5`.
+The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#randomization_factor ResourceAction#randomization_factor}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#randomization_factor ResourceAction#randomization_factor}
 
 ---
 
@@ -187344,9 +188296,9 @@ const resourceActionRetry: core_azure.ResourceActionRetry = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionRetry.property.errorMessageRegex">errorMessageRegex</a></code> | <code>string[]</code> | A list of regular expressions to match against error messages. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. Default is `10`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. Default is `180`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. Default is `1.5`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionRetry.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | The randomization factor to apply to the interval between retries. |
 
 ---
@@ -187363,7 +188315,7 @@ A list of regular expressions to match against error messages.
 
 If any of the regular expressions match, the request will be retried.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#error_message_regex ResourceAction#error_message_regex}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#error_message_regex ResourceAction#error_message_regex}
 
 ---
 
@@ -187375,9 +188327,9 @@ public readonly intervalSeconds: number;
 
 - *Type:* number
 
-The base number of seconds to wait between retries. Default is `10`.
+The base number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#interval_seconds ResourceAction#interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#interval_seconds ResourceAction#interval_seconds}
 
 ---
 
@@ -187389,9 +188341,9 @@ public readonly maxIntervalSeconds: number;
 
 - *Type:* number
 
-The maximum number of seconds to wait between retries. Default is `180`.
+The maximum number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#max_interval_seconds ResourceAction#max_interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#max_interval_seconds ResourceAction#max_interval_seconds}
 
 ---
 
@@ -187403,9 +188355,9 @@ public readonly multiplier: number;
 
 - *Type:* number
 
-The multiplier to apply to the interval between retries. Default is `1.5`.
+The multiplier to apply to the interval between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#multiplier ResourceAction#multiplier}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#multiplier ResourceAction#multiplier}
 
 ---
 
@@ -187419,9 +188371,9 @@ public readonly randomizationFactor: number;
 
 The randomization factor to apply to the interval between retries.
 
-The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization. Default is `0.5`.
+The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#randomization_factor ResourceAction#randomization_factor}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#randomization_factor ResourceAction#randomization_factor}
 
 ---
 
@@ -187456,7 +188408,7 @@ public readonly create: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#create ResourceAction#create}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#create ResourceAction#create}
 
 ---
 
@@ -187470,7 +188422,7 @@ public readonly delete: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#delete ResourceAction#delete}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#delete ResourceAction#delete}
 
 ---
 
@@ -187484,7 +188436,7 @@ public readonly read: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#read ResourceAction#read}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#read ResourceAction#read}
 
 ---
 
@@ -187498,7 +188450,7 @@ public readonly update: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#update ResourceAction#update}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#update ResourceAction#update}
 
 ---
 
@@ -187533,7 +188485,7 @@ public readonly create: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#create ResourceAction#create}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#create ResourceAction#create}
 
 ---
 
@@ -187547,7 +188499,7 @@ public readonly delete: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#delete ResourceAction#delete}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#delete ResourceAction#delete}
 
 ---
 
@@ -187561,7 +188513,7 @@ public readonly read: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#read ResourceAction#read}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#read ResourceAction#read}
 
 ---
 
@@ -187575,7 +188527,7 @@ public readonly update: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource_action#update ResourceAction#update}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource_action#update ResourceAction#update}
 
 ---
 
@@ -187606,25 +188558,28 @@ const resourceConfig: ResourceConfig = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.createQueryParameters">createQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A mapping of query parameters to be sent with the create request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.deleteHeaders">deleteHeaders</a></code> | <code>{[ key: string ]: string}</code> | A mapping of headers to be sent with the delete request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.deleteQueryParameters">deleteQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A mapping of query parameters to be sent with the delete request. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.identity">identity</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]</code> | identity block. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.ignoreCasing">ignoreCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether ignore the casing of the property names in the response body. Defaults to `false`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.identity">identity</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceIdentity[]</code> | identity block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.ignoreBodyChanges">ignoreBodyChanges</a></code> | <code>string[]</code> | A list of paths in the resource body whose changes should be ignored. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.ignoreCasing">ignoreCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether ignore the casing of the property names in the response body. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.ignoreMissingProperty">ignoreMissingProperty</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether ignore not returned properties like credentials in `body` to suppress plan-diff. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.ignoreNullProperty">ignoreNullProperty</a></code> | <code>boolean \| cdktn.IResolvable</code> | When set to `true`, the provider will ignore properties whose values are `null` in the `body`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.ignoreOtherItemsInList">ignoreOtherItemsInList</a></code> | <code>string[]</code> | A list of list property paths where items not specified in configuration should be ignored. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.listUniqueIdProperty">listUniqueIdProperty</a></code> | <code>{[ key: string ]: string}</code> | A mapping of list property paths to the field name used as a unique identifier when comparing and merging list items. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.location">location</a></code> | <code>string</code> | The location of the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.locks">locks</a></code> | <code>string[]</code> | A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.name">name</a></code> | <code>string</code> | Specifies the name of the azure resource. Changing this forces a new resource to be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.name">name</a></code> | <code>string</code> | Specifies the name of the azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.parentId">parentId</a></code> | <code>string</code> | The ID of the azure resource in which this resource is created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.readHeaders">readHeaders</a></code> | <code>{[ key: string ]: string}</code> | A mapping of headers to be sent with the read request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.readQueryParameters">readQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A mapping of query parameters to be sent with the read request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.replaceTriggersExternalValues">replaceTriggersExternalValues</a></code> | <code>{[ key: string ]: any}</code> | Will trigger a replace of the resource when the value changes and is not `null`. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.replaceTriggersRefs">replaceTriggersRefs</a></code> | <code>string[]</code> | A list of paths in the current Terraform configuration. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.responseExportValues">responseExportValues</a></code> | <code>{[ key: string ]: any}</code> | The attribute can accept either a list or a map. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a></code> | The retry object supports the following attributes:. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.schemaValidationEnabled">schemaValidationEnabled</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether enabled the validation on `type` and `body` with embedded schema. Defaults to `true`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.resource.ResourceRetry</code> | The retry object supports the following attributes:. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.schemaValidationEnabled">schemaValidationEnabled</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether enabled the validation on `type` and `body` with embedded schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.sensitiveBody">sensitiveBody</a></code> | <code>{[ key: string ]: any}</code> | A dynamic attribute that contains the write-only properties of the request body. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.sensitiveBodyVersion">sensitiveBodyVersion</a></code> | <code>{[ key: string ]: string}</code> | A map where the key is the path to the property in `sensitive_body` and the value is the version of the property. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | A mapping of tags which should be assigned to the Azure resource. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a></code> | timeouts block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.resource.ResourceTimeouts</code> | timeouts block. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.updateHeaders">updateHeaders</a></code> | <code>{[ key: string ]: string}</code> | A mapping of headers to be sent with the update request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceConfig.property.updateQueryParameters">updateQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A mapping of query parameters to be sent with the update request. |
 
@@ -187712,7 +188667,7 @@ In a format like `<resource-type>@<api-version>`.
 
 `<resource-type>` is the Azure resource type, for example, `Microsoft.Storage/storageAccounts`. `<api-version>` is version of the API used to manage this azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#type Resource#type}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#type Resource#type}
 
 ---
 
@@ -187726,7 +188681,7 @@ public readonly body: {[ key: string ]: any};
 
 A dynamic attribute that contains the request body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#body Resource#body}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#body Resource#body}
 
 ---
 
@@ -187740,7 +188695,7 @@ public readonly createHeaders: {[ key: string ]: string};
 
 A mapping of headers to be sent with the create request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#create_headers Resource#create_headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#create_headers Resource#create_headers}
 
 ---
 
@@ -187754,7 +188709,7 @@ public readonly createQueryParameters: IResolvable | {[ key: string ]: string[]}
 
 A mapping of query parameters to be sent with the create request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#create_query_parameters Resource#create_query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#create_query_parameters Resource#create_query_parameters}
 
 ---
 
@@ -187768,7 +188723,7 @@ public readonly deleteHeaders: {[ key: string ]: string};
 
 A mapping of headers to be sent with the delete request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#delete_headers Resource#delete_headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#delete_headers Resource#delete_headers}
 
 ---
 
@@ -187782,7 +188737,7 @@ public readonly deleteQueryParameters: IResolvable | {[ key: string ]: string[]}
 
 A mapping of query parameters to be sent with the delete request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#delete_query_parameters Resource#delete_query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#delete_query_parameters Resource#delete_query_parameters}
 
 ---
 
@@ -187792,11 +188747,27 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly identity: IResolvable | ResourceIdentity[];
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceIdentity[]
 
 identity block.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#identity Resource#identity}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#identity Resource#identity}
+
+---
+
+##### `ignoreBodyChanges`<sup>Optional</sup> <a name="ignoreBodyChanges" id="@microsoft/terraform-cdk-constructs.ResourceConfig.property.ignoreBodyChanges"></a>
+
+```typescript
+public readonly ignoreBodyChanges: string[];
+```
+
+- *Type:* string[]
+
+A list of paths in the resource body whose changes should be ignored.
+
+Prefer Terraform's `lifecycle.ignore_changes` when possible. Use this argument only when the paths must be derived from variables or other non-static values. Changes to this argument take effect only after an apply because its value is stored in provider-private state. Paths use dot notation, for example `properties.sku.name`. Individual list items cannot be targeted, ignore the entire list property instead. Configuration changes at an ignored path will not be sent to Azure until that path is removed from this list. This write-only argument requires Terraform 1.11 or later.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#ignore_body_changes Resource#ignore_body_changes}
 
 ---
 
@@ -187808,9 +188779,9 @@ public readonly ignoreCasing: boolean | IResolvable;
 
 - *Type:* boolean | cdktn.IResolvable
 
-Whether ignore the casing of the property names in the response body. Defaults to `false`.
+Whether ignore the casing of the property names in the response body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#ignore_casing Resource#ignore_casing}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#ignore_casing Resource#ignore_casing}
 
 ---
 
@@ -187824,9 +188795,9 @@ public readonly ignoreMissingProperty: boolean | IResolvable;
 
 Whether ignore not returned properties like credentials in `body` to suppress plan-diff.
 
-Defaults to `true`. It's recommend to enable this option when some sensitive properties are not returned in response body, instead of setting them in `lifecycle.ignore_changes` because it will make the sensitive fields unable to update.
+It's recommend to enable this option when some sensitive properties are not returned in response body, instead of setting them in `lifecycle.ignore_changes` because it will make the sensitive fields unable to update.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#ignore_missing_property Resource#ignore_missing_property}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#ignore_missing_property Resource#ignore_missing_property}
 
 ---
 
@@ -187840,9 +188811,41 @@ public readonly ignoreNullProperty: boolean | IResolvable;
 
 When set to `true`, the provider will ignore properties whose values are `null` in the `body`.
 
-These properties will not be included in the request body sent to the API, and the difference will not be shown in the plan output. Defaults to `false`.
+These properties will not be included in the request body sent to the API, and the difference will not be shown in the plan output.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#ignore_null_property Resource#ignore_null_property}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#ignore_null_property Resource#ignore_null_property}
+
+---
+
+##### `ignoreOtherItemsInList`<sup>Optional</sup> <a name="ignoreOtherItemsInList" id="@microsoft/terraform-cdk-constructs.ResourceConfig.property.ignoreOtherItemsInList"></a>
+
+```typescript
+public readonly ignoreOtherItemsInList: string[];
+```
+
+- *Type:* string[]
+
+A list of list property paths where items not specified in configuration should be ignored.
+
+This is intended for partial list management when combined with `list_unique_id_property` (for example, to avoid perpetual drift from server-side ordering).
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#ignore_other_items_in_list Resource#ignore_other_items_in_list}
+
+---
+
+##### `listUniqueIdProperty`<sup>Optional</sup> <a name="listUniqueIdProperty" id="@microsoft/terraform-cdk-constructs.ResourceConfig.property.listUniqueIdProperty"></a>
+
+```typescript
+public readonly listUniqueIdProperty: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+A mapping of list property paths to the field name used as a unique identifier when comparing and merging list items.
+
+When not set, list items are matched by a `name` property (if present) or by list ordering. To match using multiple fields, specify a comma-separated list of field names (e.g., `"category, categoryGroup"`).
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#list_unique_id_property Resource#list_unique_id_property}
 
 ---
 
@@ -187856,7 +188859,7 @@ public readonly location: string;
 
 The location of the Azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#location Resource#location}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#location Resource#location}
 
 ---
 
@@ -187870,7 +188873,7 @@ public readonly locks: string[];
 
 A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#locks Resource#locks}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#locks Resource#locks}
 
 ---
 
@@ -187882,9 +188885,9 @@ public readonly name: string;
 
 - *Type:* string
 
-Specifies the name of the azure resource. Changing this forces a new resource to be created.
+Specifies the name of the azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#name Resource#name}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#name Resource#name}
 
 ---
 
@@ -187900,17 +188903,17 @@ The ID of the azure resource in which this resource is created.
 
 It supports different kinds of deployment scope for **top level** resources:
 
-  - resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
-	- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
-	- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
-	- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
-	- tenant scope: `parent_id` should be /
+- resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
+- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
+- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
+- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
+- tenant scope: `parent_id` should be /
 
-  For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
+For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
 
-  For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
+For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#parent_id Resource#parent_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#parent_id Resource#parent_id}
 
 ---
 
@@ -187924,7 +188927,7 @@ public readonly readHeaders: {[ key: string ]: string};
 
 A mapping of headers to be sent with the read request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#read_headers Resource#read_headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#read_headers Resource#read_headers}
 
 ---
 
@@ -187938,7 +188941,7 @@ public readonly readQueryParameters: IResolvable | {[ key: string ]: string[]};
 
 A mapping of query parameters to be sent with the read request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#read_query_parameters Resource#read_query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#read_query_parameters Resource#read_query_parameters}
 
 ---
 
@@ -187952,8 +188955,8 @@ public readonly replaceTriggersExternalValues: {[ key: string ]: any};
 
 Will trigger a replace of the resource when the value changes and is not `null`.
 
-This can be used by practitioners to force a replace of the resource when certain values change, e.g. changing the SKU of a virtual machine based on the value of variables or locals. The value is a `dynamic`, so practitioners can compose the input however they wish. For a "break glass" set the value to `null` to prevent the plan modifier taking effect. 
-If you have `null` values that you do want to be tracked as affecting the resource replacement, include these inside an object. 
+This can be used by practitioners to force a replace of the resource when certain values change, e.g. changing the SKU of a virtual machine based on the value of variables or locals. The value is a `dynamic`, so practitioners can compose the input however they wish. For a "break glass" set the value to `null` to prevent the plan modifier taking effect.
+If you have `null` values that you do want to be tracked as affecting the resource replacement, include these inside an object.
 Advanced use cases are possible and resource replacement can be triggered by values external to the resource, for example when a dependent resource changes.
 
 e.g. to replace a resource when either the SKU or os_type attributes change:
@@ -187978,7 +188981,7 @@ resource "azapi_resource" "example" {
 ```
 
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#replace_triggers_external_values Resource#replace_triggers_external_values}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#replace_triggers_external_values Resource#replace_triggers_external_values}
 
 ---
 
@@ -187994,7 +188997,7 @@ A list of paths in the current Terraform configuration.
 
 When the values at these paths change, the resource will be replaced.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#replace_triggers_refs Resource#replace_triggers_refs}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#replace_triggers_refs Resource#replace_triggers_refs}
 
 ---
 
@@ -188035,7 +189038,7 @@ The attribute can accept either a list or a map.
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#response_export_values Resource#response_export_values}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#response_export_values Resource#response_export_values}
 
 ---
 
@@ -188045,11 +189048,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly retry: ResourceRetry;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceRetry
 
 The retry object supports the following attributes:.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#retry Resource#retry}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#retry Resource#retry}
 
 ---
 
@@ -188061,9 +189064,9 @@ public readonly schemaValidationEnabled: boolean | IResolvable;
 
 - *Type:* boolean | cdktn.IResolvable
 
-Whether enabled the validation on `type` and `body` with embedded schema. Defaults to `true`.
+Whether enabled the validation on `type` and `body` with embedded schema.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#schema_validation_enabled Resource#schema_validation_enabled}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#schema_validation_enabled Resource#schema_validation_enabled}
 
 ---
 
@@ -188077,9 +189080,9 @@ public readonly sensitiveBody: {[ key: string ]: any};
 
 A dynamic attribute that contains the write-only properties of the request body.
 
-This will be merge-patched to the body to construct the actual request body.
+This will be merge-patched to the body to construct the actual request body. If a property is defined in both `body` and `sensitive_body`, the `sensitive_body` value takes precedence.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#sensitive_body Resource#sensitive_body}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#sensitive_body Resource#sensitive_body}
 
 ---
 
@@ -188093,9 +189096,9 @@ public readonly sensitiveBodyVersion: {[ key: string ]: string};
 
 A map where the key is the path to the property in `sensitive_body` and the value is the version of the property.
 
-The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body. 
+The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#sensitive_body_version Resource#sensitive_body_version}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#sensitive_body_version Resource#sensitive_body_version}
 
 ---
 
@@ -188109,7 +189112,7 @@ public readonly tags: {[ key: string ]: string};
 
 A mapping of tags which should be assigned to the Azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#tags Resource#tags}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#tags Resource#tags}
 
 ---
 
@@ -188119,11 +189122,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly timeouts: ResourceTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceTimeouts
 
 timeouts block.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#timeouts Resource#timeouts}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#timeouts Resource#timeouts}
 
 ---
 
@@ -188137,7 +189140,7 @@ public readonly updateHeaders: {[ key: string ]: string};
 
 A mapping of headers to be sent with the update request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#update_headers Resource#update_headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#update_headers Resource#update_headers}
 
 ---
 
@@ -188151,7 +189154,7 @@ public readonly updateQueryParameters: IResolvable | {[ key: string ]: string[]}
 
 A mapping of query parameters to be sent with the update request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#update_query_parameters Resource#update_query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#update_query_parameters Resource#update_query_parameters}
 
 ---
 
@@ -188182,25 +189185,28 @@ const resourceConfig: core_azure.ResourceConfig = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.createQueryParameters">createQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A mapping of query parameters to be sent with the create request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.deleteHeaders">deleteHeaders</a></code> | <code>{[ key: string ]: string}</code> | A mapping of headers to be sent with the delete request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.deleteQueryParameters">deleteQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A mapping of query parameters to be sent with the delete request. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.identity">identity</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]</code> | identity block. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.ignoreCasing">ignoreCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether ignore the casing of the property names in the response body. Defaults to `false`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.identity">identity</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceIdentity[]</code> | identity block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.ignoreBodyChanges">ignoreBodyChanges</a></code> | <code>string[]</code> | A list of paths in the resource body whose changes should be ignored. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.ignoreCasing">ignoreCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether ignore the casing of the property names in the response body. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.ignoreMissingProperty">ignoreMissingProperty</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether ignore not returned properties like credentials in `body` to suppress plan-diff. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.ignoreNullProperty">ignoreNullProperty</a></code> | <code>boolean \| cdktn.IResolvable</code> | When set to `true`, the provider will ignore properties whose values are `null` in the `body`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.ignoreOtherItemsInList">ignoreOtherItemsInList</a></code> | <code>string[]</code> | A list of list property paths where items not specified in configuration should be ignored. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.listUniqueIdProperty">listUniqueIdProperty</a></code> | <code>{[ key: string ]: string}</code> | A mapping of list property paths to the field name used as a unique identifier when comparing and merging list items. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.location">location</a></code> | <code>string</code> | The location of the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.locks">locks</a></code> | <code>string[]</code> | A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.name">name</a></code> | <code>string</code> | Specifies the name of the azure resource. Changing this forces a new resource to be created. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.name">name</a></code> | <code>string</code> | Specifies the name of the azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.parentId">parentId</a></code> | <code>string</code> | The ID of the azure resource in which this resource is created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.readHeaders">readHeaders</a></code> | <code>{[ key: string ]: string}</code> | A mapping of headers to be sent with the read request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.readQueryParameters">readQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A mapping of query parameters to be sent with the read request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.replaceTriggersExternalValues">replaceTriggersExternalValues</a></code> | <code>{[ key: string ]: any}</code> | Will trigger a replace of the resource when the value changes and is not `null`. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.replaceTriggersRefs">replaceTriggersRefs</a></code> | <code>string[]</code> | A list of paths in the current Terraform configuration. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.responseExportValues">responseExportValues</a></code> | <code>{[ key: string ]: any}</code> | The attribute can accept either a list or a map. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a></code> | The retry object supports the following attributes:. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.schemaValidationEnabled">schemaValidationEnabled</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether enabled the validation on `type` and `body` with embedded schema. Defaults to `true`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.resource.ResourceRetry</code> | The retry object supports the following attributes:. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.schemaValidationEnabled">schemaValidationEnabled</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether enabled the validation on `type` and `body` with embedded schema. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.sensitiveBody">sensitiveBody</a></code> | <code>{[ key: string ]: any}</code> | A dynamic attribute that contains the write-only properties of the request body. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.sensitiveBodyVersion">sensitiveBodyVersion</a></code> | <code>{[ key: string ]: string}</code> | A map where the key is the path to the property in `sensitive_body` and the value is the version of the property. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.tags">tags</a></code> | <code>{[ key: string ]: string}</code> | A mapping of tags which should be assigned to the Azure resource. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a></code> | timeouts block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.resource.ResourceTimeouts</code> | timeouts block. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.updateHeaders">updateHeaders</a></code> | <code>{[ key: string ]: string}</code> | A mapping of headers to be sent with the update request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.updateQueryParameters">updateQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A mapping of query parameters to be sent with the update request. |
 
@@ -188288,7 +189294,7 @@ In a format like `<resource-type>@<api-version>`.
 
 `<resource-type>` is the Azure resource type, for example, `Microsoft.Storage/storageAccounts`. `<api-version>` is version of the API used to manage this azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#type Resource#type}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#type Resource#type}
 
 ---
 
@@ -188302,7 +189308,7 @@ public readonly body: {[ key: string ]: any};
 
 A dynamic attribute that contains the request body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#body Resource#body}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#body Resource#body}
 
 ---
 
@@ -188316,7 +189322,7 @@ public readonly createHeaders: {[ key: string ]: string};
 
 A mapping of headers to be sent with the create request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#create_headers Resource#create_headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#create_headers Resource#create_headers}
 
 ---
 
@@ -188330,7 +189336,7 @@ public readonly createQueryParameters: IResolvable | {[ key: string ]: string[]}
 
 A mapping of query parameters to be sent with the create request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#create_query_parameters Resource#create_query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#create_query_parameters Resource#create_query_parameters}
 
 ---
 
@@ -188344,7 +189350,7 @@ public readonly deleteHeaders: {[ key: string ]: string};
 
 A mapping of headers to be sent with the delete request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#delete_headers Resource#delete_headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#delete_headers Resource#delete_headers}
 
 ---
 
@@ -188358,7 +189364,7 @@ public readonly deleteQueryParameters: IResolvable | {[ key: string ]: string[]}
 
 A mapping of query parameters to be sent with the delete request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#delete_query_parameters Resource#delete_query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#delete_query_parameters Resource#delete_query_parameters}
 
 ---
 
@@ -188368,11 +189374,27 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly identity: IResolvable | ResourceIdentity[];
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceIdentity[]
 
 identity block.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#identity Resource#identity}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#identity Resource#identity}
+
+---
+
+##### `ignoreBodyChanges`<sup>Optional</sup> <a name="ignoreBodyChanges" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.ignoreBodyChanges"></a>
+
+```typescript
+public readonly ignoreBodyChanges: string[];
+```
+
+- *Type:* string[]
+
+A list of paths in the resource body whose changes should be ignored.
+
+Prefer Terraform's `lifecycle.ignore_changes` when possible. Use this argument only when the paths must be derived from variables or other non-static values. Changes to this argument take effect only after an apply because its value is stored in provider-private state. Paths use dot notation, for example `properties.sku.name`. Individual list items cannot be targeted, ignore the entire list property instead. Configuration changes at an ignored path will not be sent to Azure until that path is removed from this list. This write-only argument requires Terraform 1.11 or later.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#ignore_body_changes Resource#ignore_body_changes}
 
 ---
 
@@ -188384,9 +189406,9 @@ public readonly ignoreCasing: boolean | IResolvable;
 
 - *Type:* boolean | cdktn.IResolvable
 
-Whether ignore the casing of the property names in the response body. Defaults to `false`.
+Whether ignore the casing of the property names in the response body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#ignore_casing Resource#ignore_casing}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#ignore_casing Resource#ignore_casing}
 
 ---
 
@@ -188400,9 +189422,9 @@ public readonly ignoreMissingProperty: boolean | IResolvable;
 
 Whether ignore not returned properties like credentials in `body` to suppress plan-diff.
 
-Defaults to `true`. It's recommend to enable this option when some sensitive properties are not returned in response body, instead of setting them in `lifecycle.ignore_changes` because it will make the sensitive fields unable to update.
+It's recommend to enable this option when some sensitive properties are not returned in response body, instead of setting them in `lifecycle.ignore_changes` because it will make the sensitive fields unable to update.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#ignore_missing_property Resource#ignore_missing_property}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#ignore_missing_property Resource#ignore_missing_property}
 
 ---
 
@@ -188416,9 +189438,41 @@ public readonly ignoreNullProperty: boolean | IResolvable;
 
 When set to `true`, the provider will ignore properties whose values are `null` in the `body`.
 
-These properties will not be included in the request body sent to the API, and the difference will not be shown in the plan output. Defaults to `false`.
+These properties will not be included in the request body sent to the API, and the difference will not be shown in the plan output.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#ignore_null_property Resource#ignore_null_property}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#ignore_null_property Resource#ignore_null_property}
+
+---
+
+##### `ignoreOtherItemsInList`<sup>Optional</sup> <a name="ignoreOtherItemsInList" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.ignoreOtherItemsInList"></a>
+
+```typescript
+public readonly ignoreOtherItemsInList: string[];
+```
+
+- *Type:* string[]
+
+A list of list property paths where items not specified in configuration should be ignored.
+
+This is intended for partial list management when combined with `list_unique_id_property` (for example, to avoid perpetual drift from server-side ordering).
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#ignore_other_items_in_list Resource#ignore_other_items_in_list}
+
+---
+
+##### `listUniqueIdProperty`<sup>Optional</sup> <a name="listUniqueIdProperty" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceConfig.property.listUniqueIdProperty"></a>
+
+```typescript
+public readonly listUniqueIdProperty: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+A mapping of list property paths to the field name used as a unique identifier when comparing and merging list items.
+
+When not set, list items are matched by a `name` property (if present) or by list ordering. To match using multiple fields, specify a comma-separated list of field names (e.g., `"category, categoryGroup"`).
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#list_unique_id_property Resource#list_unique_id_property}
 
 ---
 
@@ -188432,7 +189486,7 @@ public readonly location: string;
 
 The location of the Azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#location Resource#location}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#location Resource#location}
 
 ---
 
@@ -188446,7 +189500,7 @@ public readonly locks: string[];
 
 A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#locks Resource#locks}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#locks Resource#locks}
 
 ---
 
@@ -188458,9 +189512,9 @@ public readonly name: string;
 
 - *Type:* string
 
-Specifies the name of the azure resource. Changing this forces a new resource to be created.
+Specifies the name of the azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#name Resource#name}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#name Resource#name}
 
 ---
 
@@ -188476,17 +189530,17 @@ The ID of the azure resource in which this resource is created.
 
 It supports different kinds of deployment scope for **top level** resources:
 
-  - resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
-	- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
-	- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
-	- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
-	- tenant scope: `parent_id` should be /
+- resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
+- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
+- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
+- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
+- tenant scope: `parent_id` should be /
 
-  For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
+For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
 
-  For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
+For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#parent_id Resource#parent_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#parent_id Resource#parent_id}
 
 ---
 
@@ -188500,7 +189554,7 @@ public readonly readHeaders: {[ key: string ]: string};
 
 A mapping of headers to be sent with the read request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#read_headers Resource#read_headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#read_headers Resource#read_headers}
 
 ---
 
@@ -188514,7 +189568,7 @@ public readonly readQueryParameters: IResolvable | {[ key: string ]: string[]};
 
 A mapping of query parameters to be sent with the read request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#read_query_parameters Resource#read_query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#read_query_parameters Resource#read_query_parameters}
 
 ---
 
@@ -188528,8 +189582,8 @@ public readonly replaceTriggersExternalValues: {[ key: string ]: any};
 
 Will trigger a replace of the resource when the value changes and is not `null`.
 
-This can be used by practitioners to force a replace of the resource when certain values change, e.g. changing the SKU of a virtual machine based on the value of variables or locals. The value is a `dynamic`, so practitioners can compose the input however they wish. For a "break glass" set the value to `null` to prevent the plan modifier taking effect. 
-If you have `null` values that you do want to be tracked as affecting the resource replacement, include these inside an object. 
+This can be used by practitioners to force a replace of the resource when certain values change, e.g. changing the SKU of a virtual machine based on the value of variables or locals. The value is a `dynamic`, so practitioners can compose the input however they wish. For a "break glass" set the value to `null` to prevent the plan modifier taking effect.
+If you have `null` values that you do want to be tracked as affecting the resource replacement, include these inside an object.
 Advanced use cases are possible and resource replacement can be triggered by values external to the resource, for example when a dependent resource changes.
 
 e.g. to replace a resource when either the SKU or os_type attributes change:
@@ -188554,7 +189608,7 @@ resource "azapi_resource" "example" {
 ```
 
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#replace_triggers_external_values Resource#replace_triggers_external_values}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#replace_triggers_external_values Resource#replace_triggers_external_values}
 
 ---
 
@@ -188570,7 +189624,7 @@ A list of paths in the current Terraform configuration.
 
 When the values at these paths change, the resource will be replaced.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#replace_triggers_refs Resource#replace_triggers_refs}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#replace_triggers_refs Resource#replace_triggers_refs}
 
 ---
 
@@ -188611,7 +189665,7 @@ The attribute can accept either a list or a map.
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#response_export_values Resource#response_export_values}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#response_export_values Resource#response_export_values}
 
 ---
 
@@ -188621,11 +189675,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly retry: ResourceRetry;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceRetry
 
 The retry object supports the following attributes:.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#retry Resource#retry}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#retry Resource#retry}
 
 ---
 
@@ -188637,9 +189691,9 @@ public readonly schemaValidationEnabled: boolean | IResolvable;
 
 - *Type:* boolean | cdktn.IResolvable
 
-Whether enabled the validation on `type` and `body` with embedded schema. Defaults to `true`.
+Whether enabled the validation on `type` and `body` with embedded schema.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#schema_validation_enabled Resource#schema_validation_enabled}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#schema_validation_enabled Resource#schema_validation_enabled}
 
 ---
 
@@ -188653,9 +189707,9 @@ public readonly sensitiveBody: {[ key: string ]: any};
 
 A dynamic attribute that contains the write-only properties of the request body.
 
-This will be merge-patched to the body to construct the actual request body.
+This will be merge-patched to the body to construct the actual request body. If a property is defined in both `body` and `sensitive_body`, the `sensitive_body` value takes precedence.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#sensitive_body Resource#sensitive_body}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#sensitive_body Resource#sensitive_body}
 
 ---
 
@@ -188669,9 +189723,9 @@ public readonly sensitiveBodyVersion: {[ key: string ]: string};
 
 A map where the key is the path to the property in `sensitive_body` and the value is the version of the property.
 
-The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body. 
+The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#sensitive_body_version Resource#sensitive_body_version}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#sensitive_body_version Resource#sensitive_body_version}
 
 ---
 
@@ -188685,7 +189739,7 @@ public readonly tags: {[ key: string ]: string};
 
 A mapping of tags which should be assigned to the Azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#tags Resource#tags}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#tags Resource#tags}
 
 ---
 
@@ -188695,11 +189749,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly timeouts: ResourceTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a>
+- *Type:* @cdktn/provider-azapi.resource.ResourceTimeouts
 
 timeouts block.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#timeouts Resource#timeouts}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#timeouts Resource#timeouts}
 
 ---
 
@@ -188713,7 +189767,7 @@ public readonly updateHeaders: {[ key: string ]: string};
 
 A mapping of headers to be sent with the update request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#update_headers Resource#update_headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#update_headers Resource#update_headers}
 
 ---
 
@@ -188727,7 +189781,7 @@ public readonly updateQueryParameters: IResolvable | {[ key: string ]: string[]}
 
 A mapping of query parameters to be sent with the update request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#update_query_parameters Resource#update_query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#update_query_parameters Resource#update_query_parameters}
 
 ---
 
@@ -189457,7 +190511,7 @@ const resourceIdentity: ResourceIdentity = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity.property.type">type</a></code> | <code>string</code> | The Type of Identity which should be used for this azure resource. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned,UserAssigned`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity.property.type">type</a></code> | <code>string</code> | The Type of Identity which should be used for this azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity.property.identityIds">identityIds</a></code> | <code>string[]</code> | A list of User Managed Identity ID's which should be assigned to the azure resource. |
 
 ---
@@ -189470,9 +190524,9 @@ public readonly type: string;
 
 - *Type:* string
 
-The Type of Identity which should be used for this azure resource. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned,UserAssigned`.
+The Type of Identity which should be used for this azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#type Resource#type}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#type Resource#type}
 
 ---
 
@@ -189486,7 +190540,7 @@ public readonly identityIds: string[];
 
 A list of User Managed Identity ID's which should be assigned to the azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#identity_ids Resource#identity_ids}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#identity_ids Resource#identity_ids}
 
 ---
 
@@ -189504,7 +190558,7 @@ const resourceIdentity: core_azure.ResourceIdentity = { ... }
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceIdentity.property.type">type</a></code> | <code>string</code> | The Type of Identity which should be used for this azure resource. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned,UserAssigned`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceIdentity.property.type">type</a></code> | <code>string</code> | The Type of Identity which should be used for this azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceIdentity.property.identityIds">identityIds</a></code> | <code>string[]</code> | A list of User Managed Identity ID's which should be assigned to the azure resource. |
 
 ---
@@ -189517,9 +190571,9 @@ public readonly type: string;
 
 - *Type:* string
 
-The Type of Identity which should be used for this azure resource. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned,UserAssigned`.
+The Type of Identity which should be used for this azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#type Resource#type}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#type Resource#type}
 
 ---
 
@@ -189533,7 +190587,7 @@ public readonly identityIds: string[];
 
 A list of User Managed Identity ID's which should be assigned to the azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#identity_ids Resource#identity_ids}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#identity_ids Resource#identity_ids}
 
 ---
 
@@ -189884,9 +190938,9 @@ const resourceRetry: ResourceRetry = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetry.property.errorMessageRegex">errorMessageRegex</a></code> | <code>string[]</code> | A list of regular expressions to match against error messages. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. Default is `10`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. Default is `180`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. Default is `1.5`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetry.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | The randomization factor to apply to the interval between retries. |
 
 ---
@@ -189903,7 +190957,7 @@ A list of regular expressions to match against error messages.
 
 If any of the regular expressions match, the request will be retried.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#error_message_regex Resource#error_message_regex}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#error_message_regex Resource#error_message_regex}
 
 ---
 
@@ -189915,9 +190969,9 @@ public readonly intervalSeconds: number;
 
 - *Type:* number
 
-The base number of seconds to wait between retries. Default is `10`.
+The base number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#interval_seconds Resource#interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#interval_seconds Resource#interval_seconds}
 
 ---
 
@@ -189929,9 +190983,9 @@ public readonly maxIntervalSeconds: number;
 
 - *Type:* number
 
-The maximum number of seconds to wait between retries. Default is `180`.
+The maximum number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#max_interval_seconds Resource#max_interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#max_interval_seconds Resource#max_interval_seconds}
 
 ---
 
@@ -189943,9 +190997,9 @@ public readonly multiplier: number;
 
 - *Type:* number
 
-The multiplier to apply to the interval between retries. Default is `1.5`.
+The multiplier to apply to the interval between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#multiplier Resource#multiplier}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#multiplier Resource#multiplier}
 
 ---
 
@@ -189959,9 +191013,9 @@ public readonly randomizationFactor: number;
 
 The randomization factor to apply to the interval between retries.
 
-The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization. Default is `0.5`.
+The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#randomization_factor Resource#randomization_factor}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#randomization_factor Resource#randomization_factor}
 
 ---
 
@@ -189980,9 +191034,9 @@ const resourceRetry: core_azure.ResourceRetry = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceRetry.property.errorMessageRegex">errorMessageRegex</a></code> | <code>string[]</code> | A list of regular expressions to match against error messages. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. Default is `10`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. Default is `180`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. Default is `1.5`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceRetry.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | The randomization factor to apply to the interval between retries. |
 
 ---
@@ -189999,7 +191053,7 @@ A list of regular expressions to match against error messages.
 
 If any of the regular expressions match, the request will be retried.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#error_message_regex Resource#error_message_regex}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#error_message_regex Resource#error_message_regex}
 
 ---
 
@@ -190011,9 +191065,9 @@ public readonly intervalSeconds: number;
 
 - *Type:* number
 
-The base number of seconds to wait between retries. Default is `10`.
+The base number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#interval_seconds Resource#interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#interval_seconds Resource#interval_seconds}
 
 ---
 
@@ -190025,9 +191079,9 @@ public readonly maxIntervalSeconds: number;
 
 - *Type:* number
 
-The maximum number of seconds to wait between retries. Default is `180`.
+The maximum number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#max_interval_seconds Resource#max_interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#max_interval_seconds Resource#max_interval_seconds}
 
 ---
 
@@ -190039,9 +191093,9 @@ public readonly multiplier: number;
 
 - *Type:* number
 
-The multiplier to apply to the interval between retries. Default is `1.5`.
+The multiplier to apply to the interval between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#multiplier Resource#multiplier}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#multiplier Resource#multiplier}
 
 ---
 
@@ -190055,9 +191109,9 @@ public readonly randomizationFactor: number;
 
 The randomization factor to apply to the interval between retries.
 
-The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization. Default is `0.5`.
+The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#randomization_factor Resource#randomization_factor}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#randomization_factor Resource#randomization_factor}
 
 ---
 
@@ -190092,7 +191146,7 @@ public readonly create: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#create Resource#create}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#create Resource#create}
 
 ---
 
@@ -190106,7 +191160,7 @@ public readonly delete: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#delete Resource#delete}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#delete Resource#delete}
 
 ---
 
@@ -190120,7 +191174,7 @@ public readonly read: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#read Resource#read}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#read Resource#read}
 
 ---
 
@@ -190134,7 +191188,7 @@ public readonly update: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#update Resource#update}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#update Resource#update}
 
 ---
 
@@ -190169,7 +191223,7 @@ public readonly create: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#create Resource#create}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#create Resource#create}
 
 ---
 
@@ -190183,7 +191237,7 @@ public readonly delete: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#delete Resource#delete}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#delete Resource#delete}
 
 ---
 
@@ -190197,7 +191251,7 @@ public readonly read: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#read Resource#read}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#read Resource#read}
 
 ---
 
@@ -190211,7 +191265,7 @@ public readonly update: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/resource#update Resource#update}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/resource#update Resource#update}
 
 ---
 
@@ -204512,19 +205566,23 @@ const updateResourceConfig: UpdateResourceConfig = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.type">type</a></code> | <code>string</code> | In a format like `<resource-type>@<api-version>`. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.body">body</a></code> | <code>{[ key: string ]: any}</code> | A dynamic attribute that contains the request body. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.ignoreCasing">ignoreCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether ignore the casing of the property names in the response body. Defaults to `false`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.ignoreCasing">ignoreCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether ignore the casing of the property names in the response body. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.ignoreMissingProperty">ignoreMissingProperty</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether ignore not returned properties like credentials in `body` to suppress plan-diff. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.ignoreOtherItemsInList">ignoreOtherItemsInList</a></code> | <code>string[]</code> | A list of list property paths where items not specified in configuration should be ignored. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.listUniqueIdProperty">listUniqueIdProperty</a></code> | <code>{[ key: string ]: string}</code> | A mapping of list property paths to the field name used as a unique identifier when comparing and merging list items. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.locks">locks</a></code> | <code>string[]</code> | A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.name">name</a></code> | <code>string</code> | Specifies the name of the Azure resource. Changing this forces a new resource to be created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.parentId">parentId</a></code> | <code>string</code> | The ID of the azure resource in which this resource is created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.readHeaders">readHeaders</a></code> | <code>{[ key: string ]: string}</code> | A mapping of headers to be sent with the read request. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.readOverride">readOverride</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceReadOverride</code> | Overrides the default `GET` request used to read the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.readQueryParameters">readQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A mapping of query parameters to be sent with the read request. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.replaceTriggersExternalValues">replaceTriggersExternalValues</a></code> | <code>{[ key: string ]: any}</code> | Will trigger a replace of the resource when the value changes and is not `null`. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.resourceId">resourceId</a></code> | <code>string</code> | The ID of an existing Azure source. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.responseExportValues">responseExportValues</a></code> | <code>{[ key: string ]: any}</code> | The attribute can accept either a list or a map. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a></code> | The retry object supports the following attributes:. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceRetry</code> | The retry object supports the following attributes:. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.sensitiveBody">sensitiveBody</a></code> | <code>{[ key: string ]: any}</code> | A dynamic attribute that contains the write-only properties of the request body. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.sensitiveBodyVersion">sensitiveBodyVersion</a></code> | <code>{[ key: string ]: string}</code> | A map where the key is the path to the property in `sensitive_body` and the value is the version of the property. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a></code> | timeouts block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceTimeouts</code> | timeouts block. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.updateHeaders">updateHeaders</a></code> | <code>{[ key: string ]: string}</code> | A mapping of headers to be sent with the update request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.updateQueryParameters">updateQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A mapping of query parameters to be sent with the update request. |
 
@@ -204612,7 +205670,7 @@ In a format like `<resource-type>@<api-version>`.
 
 `<resource-type>` is the Azure resource type, for example, `Microsoft.Storage/storageAccounts`. `<api-version>` is version of the API used to manage this azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#type UpdateResource#type}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#type UpdateResource#type}
 
 ---
 
@@ -204626,7 +205684,7 @@ public readonly body: {[ key: string ]: any};
 
 A dynamic attribute that contains the request body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#body UpdateResource#body}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#body UpdateResource#body}
 
 ---
 
@@ -204638,9 +205696,9 @@ public readonly ignoreCasing: boolean | IResolvable;
 
 - *Type:* boolean | cdktn.IResolvable
 
-Whether ignore the casing of the property names in the response body. Defaults to `false`.
+Whether ignore the casing of the property names in the response body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#ignore_casing UpdateResource#ignore_casing}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#ignore_casing UpdateResource#ignore_casing}
 
 ---
 
@@ -204654,9 +205712,41 @@ public readonly ignoreMissingProperty: boolean | IResolvable;
 
 Whether ignore not returned properties like credentials in `body` to suppress plan-diff.
 
-Defaults to `true`. It's recommend to enable this option when some sensitive properties are not returned in response body, instead of setting them in `lifecycle.ignore_changes` because it will make the sensitive fields unable to update.
+It's recommend to enable this option when some sensitive properties are not returned in response body, instead of setting them in `lifecycle.ignore_changes` because it will make the sensitive fields unable to update.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#ignore_missing_property UpdateResource#ignore_missing_property}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#ignore_missing_property UpdateResource#ignore_missing_property}
+
+---
+
+##### `ignoreOtherItemsInList`<sup>Optional</sup> <a name="ignoreOtherItemsInList" id="@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.ignoreOtherItemsInList"></a>
+
+```typescript
+public readonly ignoreOtherItemsInList: string[];
+```
+
+- *Type:* string[]
+
+A list of list property paths where items not specified in configuration should be ignored.
+
+This is intended for partial list management when combined with `list_unique_id_property` (for example, to avoid perpetual drift from server-side ordering).
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#ignore_other_items_in_list UpdateResource#ignore_other_items_in_list}
+
+---
+
+##### `listUniqueIdProperty`<sup>Optional</sup> <a name="listUniqueIdProperty" id="@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.listUniqueIdProperty"></a>
+
+```typescript
+public readonly listUniqueIdProperty: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+A mapping of list property paths to the field name used as a unique identifier when comparing and merging list items.
+
+When not set, list items are matched by a `name` property (if present) or by list ordering. To match using multiple fields, specify a comma-separated list of field names (e.g., `"category, categoryGroup"`).
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#list_unique_id_property UpdateResource#list_unique_id_property}
 
 ---
 
@@ -204670,7 +205760,7 @@ public readonly locks: string[];
 
 A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#locks UpdateResource#locks}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#locks UpdateResource#locks}
 
 ---
 
@@ -204684,7 +205774,7 @@ public readonly name: string;
 
 Specifies the name of the Azure resource. Changing this forces a new resource to be created.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#name UpdateResource#name}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#name UpdateResource#name}
 
 ---
 
@@ -204700,17 +205790,17 @@ The ID of the azure resource in which this resource is created.
 
 It supports different kinds of deployment scope for **top level** resources:
 
-  - resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
-	- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
-	- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
-	- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
-	- tenant scope: `parent_id` should be /
+- resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
+- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
+- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
+- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
+- tenant scope: `parent_id` should be /
 
-  For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
+For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
 
-  For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
+For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#parent_id UpdateResource#parent_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#parent_id UpdateResource#parent_id}
 
 ---
 
@@ -204724,7 +205814,25 @@ public readonly readHeaders: {[ key: string ]: string};
 
 A mapping of headers to be sent with the read request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#read_headers UpdateResource#read_headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#read_headers UpdateResource#read_headers}
+
+---
+
+##### `readOverride`<sup>Optional</sup> <a name="readOverride" id="@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.readOverride"></a>
+
+```typescript
+public readonly readOverride: UpdateResourceReadOverride;
+```
+
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceReadOverride
+
+Overrides the default `GET` request used to read the resource.
+
+When configured, the provider sends the specified action request instead of `GET` and uses its response for all read processing, including refreshing `body` and `output`. When omitted, the provider reads the resource with `GET`.
+
+~> **Warning:** Do not use `read_override` with sensitive values. Action responses are stored in state through `body` and `output`, and `read_override` cannot be combined with `sensitive_body`.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#read_override UpdateResource#read_override}
 
 ---
 
@@ -204738,7 +205846,46 @@ public readonly readQueryParameters: IResolvable | {[ key: string ]: string[]};
 
 A mapping of query parameters to be sent with the read request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#read_query_parameters UpdateResource#read_query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#read_query_parameters UpdateResource#read_query_parameters}
+
+---
+
+##### `replaceTriggersExternalValues`<sup>Optional</sup> <a name="replaceTriggersExternalValues" id="@microsoft/terraform-cdk-constructs.UpdateResourceConfig.property.replaceTriggersExternalValues"></a>
+
+```typescript
+public readonly replaceTriggersExternalValues: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Will trigger a replace of the resource when the value changes and is not `null`.
+
+This can be used by practitioners to force a replace of the resource when certain values change, e.g. changing the SKU of a virtual machine based on the value of variables or locals. The value is a `dynamic`, so practitioners can compose the input however they wish. For a "break glass" set the value to `null` to prevent the plan modifier taking effect.
+If you have `null` values that you do want to be tracked as affecting the resource replacement, include these inside an object.
+Advanced use cases are possible and resource replacement can be triggered by values external to the resource, for example when a dependent resource changes.
+
+e.g. to replace a resource when either the SKU or os_type attributes change:
+
+```hcl
+resource "azapi_update_resource" "example" {
+  resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.Network/publicIPAddresses/example"
+  type        = "Microsoft.Network/publicIPAddresses@2023-11-01"
+  body = {
+    properties = {
+      sku   = var.sku
+      zones = var.zones
+    }
+  }
+
+  replace_triggers_external_values = [
+    var.sku,
+    var.zones,
+  ]
+}
+```
+
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#replace_triggers_external_values UpdateResource#replace_triggers_external_values}
 
 ---
 
@@ -204752,7 +205899,7 @@ public readonly resourceId: string;
 
 The ID of an existing Azure source.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#resource_id UpdateResource#resource_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#resource_id UpdateResource#resource_id}
 
 ---
 
@@ -204793,7 +205940,7 @@ The attribute can accept either a list or a map.
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#response_export_values UpdateResource#response_export_values}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#response_export_values UpdateResource#response_export_values}
 
 ---
 
@@ -204803,11 +205950,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly retry: UpdateResourceRetry;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceRetry
 
 The retry object supports the following attributes:.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#retry UpdateResource#retry}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#retry UpdateResource#retry}
 
 ---
 
@@ -204821,9 +205968,9 @@ public readonly sensitiveBody: {[ key: string ]: any};
 
 A dynamic attribute that contains the write-only properties of the request body.
 
-This will be merge-patched to the body to construct the actual request body.
+This will be merge-patched to the body to construct the actual request body. If a property is defined in both `body` and `sensitive_body`, the `sensitive_body` value takes precedence.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#sensitive_body UpdateResource#sensitive_body}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#sensitive_body UpdateResource#sensitive_body}
 
 ---
 
@@ -204837,9 +205984,9 @@ public readonly sensitiveBodyVersion: {[ key: string ]: string};
 
 A map where the key is the path to the property in `sensitive_body` and the value is the version of the property.
 
-The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body. 
+The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#sensitive_body_version UpdateResource#sensitive_body_version}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#sensitive_body_version UpdateResource#sensitive_body_version}
 
 ---
 
@@ -204849,11 +205996,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly timeouts: UpdateResourceTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceTimeouts
 
 timeouts block.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#timeouts UpdateResource#timeouts}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#timeouts UpdateResource#timeouts}
 
 ---
 
@@ -204867,7 +206014,7 @@ public readonly updateHeaders: {[ key: string ]: string};
 
 A mapping of headers to be sent with the update request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#update_headers UpdateResource#update_headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#update_headers UpdateResource#update_headers}
 
 ---
 
@@ -204881,7 +206028,7 @@ public readonly updateQueryParameters: IResolvable | {[ key: string ]: string[]}
 
 A mapping of query parameters to be sent with the update request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#update_query_parameters UpdateResource#update_query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#update_query_parameters UpdateResource#update_query_parameters}
 
 ---
 
@@ -204908,19 +206055,23 @@ const updateResourceConfig: core_azure.UpdateResourceConfig = { ... }
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.provisioners">provisioners</a></code> | <code>cdktn.FileProvisioner \| cdktn.LocalExecProvisioner \| cdktn.RemoteExecProvisioner[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.type">type</a></code> | <code>string</code> | In a format like `<resource-type>@<api-version>`. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.body">body</a></code> | <code>{[ key: string ]: any}</code> | A dynamic attribute that contains the request body. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.ignoreCasing">ignoreCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether ignore the casing of the property names in the response body. Defaults to `false`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.ignoreCasing">ignoreCasing</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether ignore the casing of the property names in the response body. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.ignoreMissingProperty">ignoreMissingProperty</a></code> | <code>boolean \| cdktn.IResolvable</code> | Whether ignore not returned properties like credentials in `body` to suppress plan-diff. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.ignoreOtherItemsInList">ignoreOtherItemsInList</a></code> | <code>string[]</code> | A list of list property paths where items not specified in configuration should be ignored. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.listUniqueIdProperty">listUniqueIdProperty</a></code> | <code>{[ key: string ]: string}</code> | A mapping of list property paths to the field name used as a unique identifier when comparing and merging list items. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.locks">locks</a></code> | <code>string[]</code> | A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.name">name</a></code> | <code>string</code> | Specifies the name of the Azure resource. Changing this forces a new resource to be created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.parentId">parentId</a></code> | <code>string</code> | The ID of the azure resource in which this resource is created. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.readHeaders">readHeaders</a></code> | <code>{[ key: string ]: string}</code> | A mapping of headers to be sent with the read request. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.readOverride">readOverride</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceReadOverride</code> | Overrides the default `GET` request used to read the resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.readQueryParameters">readQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A mapping of query parameters to be sent with the read request. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.replaceTriggersExternalValues">replaceTriggersExternalValues</a></code> | <code>{[ key: string ]: any}</code> | Will trigger a replace of the resource when the value changes and is not `null`. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.resourceId">resourceId</a></code> | <code>string</code> | The ID of an existing Azure source. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.responseExportValues">responseExportValues</a></code> | <code>{[ key: string ]: any}</code> | The attribute can accept either a list or a map. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.retry">retry</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a></code> | The retry object supports the following attributes:. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.retry">retry</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceRetry</code> | The retry object supports the following attributes:. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.sensitiveBody">sensitiveBody</a></code> | <code>{[ key: string ]: any}</code> | A dynamic attribute that contains the write-only properties of the request body. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.sensitiveBodyVersion">sensitiveBodyVersion</a></code> | <code>{[ key: string ]: string}</code> | A map where the key is the path to the property in `sensitive_body` and the value is the version of the property. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.timeouts">timeouts</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a></code> | timeouts block. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.timeouts">timeouts</a></code> | <code>@cdktn/provider-azapi.updateResource.UpdateResourceTimeouts</code> | timeouts block. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.updateHeaders">updateHeaders</a></code> | <code>{[ key: string ]: string}</code> | A mapping of headers to be sent with the update request. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.updateQueryParameters">updateQueryParameters</a></code> | <code>cdktn.IResolvable \| {[ key: string ]: string[]}</code> | A mapping of query parameters to be sent with the update request. |
 
@@ -205008,7 +206159,7 @@ In a format like `<resource-type>@<api-version>`.
 
 `<resource-type>` is the Azure resource type, for example, `Microsoft.Storage/storageAccounts`. `<api-version>` is version of the API used to manage this azure resource.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#type UpdateResource#type}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#type UpdateResource#type}
 
 ---
 
@@ -205022,7 +206173,7 @@ public readonly body: {[ key: string ]: any};
 
 A dynamic attribute that contains the request body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#body UpdateResource#body}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#body UpdateResource#body}
 
 ---
 
@@ -205034,9 +206185,9 @@ public readonly ignoreCasing: boolean | IResolvable;
 
 - *Type:* boolean | cdktn.IResolvable
 
-Whether ignore the casing of the property names in the response body. Defaults to `false`.
+Whether ignore the casing of the property names in the response body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#ignore_casing UpdateResource#ignore_casing}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#ignore_casing UpdateResource#ignore_casing}
 
 ---
 
@@ -205050,9 +206201,41 @@ public readonly ignoreMissingProperty: boolean | IResolvable;
 
 Whether ignore not returned properties like credentials in `body` to suppress plan-diff.
 
-Defaults to `true`. It's recommend to enable this option when some sensitive properties are not returned in response body, instead of setting them in `lifecycle.ignore_changes` because it will make the sensitive fields unable to update.
+It's recommend to enable this option when some sensitive properties are not returned in response body, instead of setting them in `lifecycle.ignore_changes` because it will make the sensitive fields unable to update.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#ignore_missing_property UpdateResource#ignore_missing_property}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#ignore_missing_property UpdateResource#ignore_missing_property}
+
+---
+
+##### `ignoreOtherItemsInList`<sup>Optional</sup> <a name="ignoreOtherItemsInList" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.ignoreOtherItemsInList"></a>
+
+```typescript
+public readonly ignoreOtherItemsInList: string[];
+```
+
+- *Type:* string[]
+
+A list of list property paths where items not specified in configuration should be ignored.
+
+This is intended for partial list management when combined with `list_unique_id_property` (for example, to avoid perpetual drift from server-side ordering).
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#ignore_other_items_in_list UpdateResource#ignore_other_items_in_list}
+
+---
+
+##### `listUniqueIdProperty`<sup>Optional</sup> <a name="listUniqueIdProperty" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.listUniqueIdProperty"></a>
+
+```typescript
+public readonly listUniqueIdProperty: {[ key: string ]: string};
+```
+
+- *Type:* {[ key: string ]: string}
+
+A mapping of list property paths to the field name used as a unique identifier when comparing and merging list items.
+
+When not set, list items are matched by a `name` property (if present) or by list ordering. To match using multiple fields, specify a comma-separated list of field names (e.g., `"category, categoryGroup"`).
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#list_unique_id_property UpdateResource#list_unique_id_property}
 
 ---
 
@@ -205066,7 +206249,7 @@ public readonly locks: string[];
 
 A list of ARM resource IDs which are used to avoid create/modify/delete azapi resources at the same time.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#locks UpdateResource#locks}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#locks UpdateResource#locks}
 
 ---
 
@@ -205080,7 +206263,7 @@ public readonly name: string;
 
 Specifies the name of the Azure resource. Changing this forces a new resource to be created.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#name UpdateResource#name}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#name UpdateResource#name}
 
 ---
 
@@ -205096,17 +206279,17 @@ The ID of the azure resource in which this resource is created.
 
 It supports different kinds of deployment scope for **top level** resources:
 
-  - resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
-	- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
-	- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
-	- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
-	- tenant scope: `parent_id` should be /
+- resource group scope: `parent_id` should be the ID of a resource group, it's recommended to manage a resource group by azurerm_resource_group.
+- management group scope: `parent_id` should be the ID of a management group, it's recommended to manage a management group by azurerm_management_group.
+- extension scope: `parent_id` should be the ID of the resource you're adding the extension to.
+- subscription scope: `parent_id` should be like \x60/subscriptions/00000000-0000-0000-0000-000000000000\x60
+- tenant scope: `parent_id` should be /
 
-  For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
+For child level resources, the `parent_id` should be the ID of its parent resource, for example, subnet resource's `parent_id` is the ID of the vnet.
 
-  For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
+For type `Microsoft.Resources/resourceGroups`, the `parent_id` could be omitted, it defaults to subscription ID specified in provider or the default subscription (You could check the default subscription by azure cli command: `az account show`).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#parent_id UpdateResource#parent_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#parent_id UpdateResource#parent_id}
 
 ---
 
@@ -205120,7 +206303,25 @@ public readonly readHeaders: {[ key: string ]: string};
 
 A mapping of headers to be sent with the read request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#read_headers UpdateResource#read_headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#read_headers UpdateResource#read_headers}
+
+---
+
+##### `readOverride`<sup>Optional</sup> <a name="readOverride" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.readOverride"></a>
+
+```typescript
+public readonly readOverride: UpdateResourceReadOverride;
+```
+
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceReadOverride
+
+Overrides the default `GET` request used to read the resource.
+
+When configured, the provider sends the specified action request instead of `GET` and uses its response for all read processing, including refreshing `body` and `output`. When omitted, the provider reads the resource with `GET`.
+
+~> **Warning:** Do not use `read_override` with sensitive values. Action responses are stored in state through `body` and `output`, and `read_override` cannot be combined with `sensitive_body`.
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#read_override UpdateResource#read_override}
 
 ---
 
@@ -205134,7 +206335,46 @@ public readonly readQueryParameters: IResolvable | {[ key: string ]: string[]};
 
 A mapping of query parameters to be sent with the read request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#read_query_parameters UpdateResource#read_query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#read_query_parameters UpdateResource#read_query_parameters}
+
+---
+
+##### `replaceTriggersExternalValues`<sup>Optional</sup> <a name="replaceTriggersExternalValues" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceConfig.property.replaceTriggersExternalValues"></a>
+
+```typescript
+public readonly replaceTriggersExternalValues: {[ key: string ]: any};
+```
+
+- *Type:* {[ key: string ]: any}
+
+Will trigger a replace of the resource when the value changes and is not `null`.
+
+This can be used by practitioners to force a replace of the resource when certain values change, e.g. changing the SKU of a virtual machine based on the value of variables or locals. The value is a `dynamic`, so practitioners can compose the input however they wish. For a "break glass" set the value to `null` to prevent the plan modifier taking effect.
+If you have `null` values that you do want to be tracked as affecting the resource replacement, include these inside an object.
+Advanced use cases are possible and resource replacement can be triggered by values external to the resource, for example when a dependent resource changes.
+
+e.g. to replace a resource when either the SKU or os_type attributes change:
+
+```hcl
+resource "azapi_update_resource" "example" {
+  resource_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.Network/publicIPAddresses/example"
+  type        = "Microsoft.Network/publicIPAddresses@2023-11-01"
+  body = {
+    properties = {
+      sku   = var.sku
+      zones = var.zones
+    }
+  }
+
+  replace_triggers_external_values = [
+    var.sku,
+    var.zones,
+  ]
+}
+```
+
+
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#replace_triggers_external_values UpdateResource#replace_triggers_external_values}
 
 ---
 
@@ -205148,7 +206388,7 @@ public readonly resourceId: string;
 
 The ID of an existing Azure source.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#resource_id UpdateResource#resource_id}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#resource_id UpdateResource#resource_id}
 
 ---
 
@@ -205189,7 +206429,7 @@ The attribute can accept either a list or a map.
 To learn more about JMESPath, visit [JMESPath](https://jmespath.org/).
 
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#response_export_values UpdateResource#response_export_values}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#response_export_values UpdateResource#response_export_values}
 
 ---
 
@@ -205199,11 +206439,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly retry: UpdateResourceRetry;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceRetry
 
 The retry object supports the following attributes:.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#retry UpdateResource#retry}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#retry UpdateResource#retry}
 
 ---
 
@@ -205217,9 +206457,9 @@ public readonly sensitiveBody: {[ key: string ]: any};
 
 A dynamic attribute that contains the write-only properties of the request body.
 
-This will be merge-patched to the body to construct the actual request body.
+This will be merge-patched to the body to construct the actual request body. If a property is defined in both `body` and `sensitive_body`, the `sensitive_body` value takes precedence.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#sensitive_body UpdateResource#sensitive_body}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#sensitive_body UpdateResource#sensitive_body}
 
 ---
 
@@ -205233,9 +206473,9 @@ public readonly sensitiveBodyVersion: {[ key: string ]: string};
 
 A map where the key is the path to the property in `sensitive_body` and the value is the version of the property.
 
-The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body. 
+The key is a string in the format of `path.to.property[index].subproperty`, where `index` is the index of the item in an array. When the version is changed, the property will be included in the request body, otherwise it will be omitted from the request body.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#sensitive_body_version UpdateResource#sensitive_body_version}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#sensitive_body_version UpdateResource#sensitive_body_version}
 
 ---
 
@@ -205245,11 +206485,11 @@ Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure
 public readonly timeouts: UpdateResourceTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a>
+- *Type:* @cdktn/provider-azapi.updateResource.UpdateResourceTimeouts
 
 timeouts block.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#timeouts UpdateResource#timeouts}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#timeouts UpdateResource#timeouts}
 
 ---
 
@@ -205263,7 +206503,7 @@ public readonly updateHeaders: {[ key: string ]: string};
 
 A mapping of headers to be sent with the update request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#update_headers UpdateResource#update_headers}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#update_headers UpdateResource#update_headers}
 
 ---
 
@@ -205277,7 +206517,7 @@ public readonly updateQueryParameters: IResolvable | {[ key: string ]: string[]}
 
 A mapping of query parameters to be sent with the update request.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#update_query_parameters UpdateResource#update_query_parameters}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#update_query_parameters UpdateResource#update_query_parameters}
 
 ---
 
@@ -205296,9 +206536,9 @@ const updateResourceRetry: UpdateResourceRetry = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry.property.errorMessageRegex">errorMessageRegex</a></code> | <code>string[]</code> | A list of regular expressions to match against error messages. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. Default is `10`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. Default is `180`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. Default is `1.5`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | The randomization factor to apply to the interval between retries. |
 
 ---
@@ -205315,7 +206555,7 @@ A list of regular expressions to match against error messages.
 
 If any of the regular expressions match, the request will be retried.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#error_message_regex UpdateResource#error_message_regex}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#error_message_regex UpdateResource#error_message_regex}
 
 ---
 
@@ -205327,9 +206567,9 @@ public readonly intervalSeconds: number;
 
 - *Type:* number
 
-The base number of seconds to wait between retries. Default is `10`.
+The base number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#interval_seconds UpdateResource#interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#interval_seconds UpdateResource#interval_seconds}
 
 ---
 
@@ -205341,9 +206581,9 @@ public readonly maxIntervalSeconds: number;
 
 - *Type:* number
 
-The maximum number of seconds to wait between retries. Default is `180`.
+The maximum number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#max_interval_seconds UpdateResource#max_interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#max_interval_seconds UpdateResource#max_interval_seconds}
 
 ---
 
@@ -205355,9 +206595,9 @@ public readonly multiplier: number;
 
 - *Type:* number
 
-The multiplier to apply to the interval between retries. Default is `1.5`.
+The multiplier to apply to the interval between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#multiplier UpdateResource#multiplier}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#multiplier UpdateResource#multiplier}
 
 ---
 
@@ -205371,9 +206611,9 @@ public readonly randomizationFactor: number;
 
 The randomization factor to apply to the interval between retries.
 
-The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization. Default is `0.5`.
+The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#randomization_factor UpdateResource#randomization_factor}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#randomization_factor UpdateResource#randomization_factor}
 
 ---
 
@@ -205392,9 +206632,9 @@ const updateResourceRetry: core_azure.UpdateResourceRetry = { ... }
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceRetry.property.errorMessageRegex">errorMessageRegex</a></code> | <code>string[]</code> | A list of regular expressions to match against error messages. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. Default is `10`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. Default is `180`. |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. Default is `1.5`. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceRetry.property.intervalSeconds">intervalSeconds</a></code> | <code>number</code> | The base number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceRetry.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | The maximum number of seconds to wait between retries. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceRetry.property.multiplier">multiplier</a></code> | <code>number</code> | The multiplier to apply to the interval between retries. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceRetry.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | The randomization factor to apply to the interval between retries. |
 
 ---
@@ -205411,7 +206651,7 @@ A list of regular expressions to match against error messages.
 
 If any of the regular expressions match, the request will be retried.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#error_message_regex UpdateResource#error_message_regex}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#error_message_regex UpdateResource#error_message_regex}
 
 ---
 
@@ -205423,9 +206663,9 @@ public readonly intervalSeconds: number;
 
 - *Type:* number
 
-The base number of seconds to wait between retries. Default is `10`.
+The base number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#interval_seconds UpdateResource#interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#interval_seconds UpdateResource#interval_seconds}
 
 ---
 
@@ -205437,9 +206677,9 @@ public readonly maxIntervalSeconds: number;
 
 - *Type:* number
 
-The maximum number of seconds to wait between retries. Default is `180`.
+The maximum number of seconds to wait between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#max_interval_seconds UpdateResource#max_interval_seconds}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#max_interval_seconds UpdateResource#max_interval_seconds}
 
 ---
 
@@ -205451,9 +206691,9 @@ public readonly multiplier: number;
 
 - *Type:* number
 
-The multiplier to apply to the interval between retries. Default is `1.5`.
+The multiplier to apply to the interval between retries.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#multiplier UpdateResource#multiplier}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#multiplier UpdateResource#multiplier}
 
 ---
 
@@ -205467,9 +206707,9 @@ public readonly randomizationFactor: number;
 
 The randomization factor to apply to the interval between retries.
 
-The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization. Default is `0.5`.
+The formula for the randomized interval is: `RetryInterval * (random value in range [1 - RandomizationFactor, 1 + RandomizationFactor])`. Therefore set to zero `0.0` for no randomization.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#randomization_factor UpdateResource#randomization_factor}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#randomization_factor UpdateResource#randomization_factor}
 
 ---
 
@@ -205504,7 +206744,7 @@ public readonly create: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#create UpdateResource#create}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#create UpdateResource#create}
 
 ---
 
@@ -205518,7 +206758,7 @@ public readonly delete: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#delete UpdateResource#delete}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#delete UpdateResource#delete}
 
 ---
 
@@ -205532,7 +206772,7 @@ public readonly read: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#read UpdateResource#read}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#read UpdateResource#read}
 
 ---
 
@@ -205546,7 +206786,7 @@ public readonly update: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#update UpdateResource#update}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#update UpdateResource#update}
 
 ---
 
@@ -205581,7 +206821,7 @@ public readonly create: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#create UpdateResource#create}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#create UpdateResource#create}
 
 ---
 
@@ -205595,7 +206835,7 @@ public readonly delete: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#delete UpdateResource#delete}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#delete UpdateResource#delete}
 
 ---
 
@@ -205609,7 +206849,7 @@ public readonly read: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#read UpdateResource#read}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#read UpdateResource#read}
 
 ---
 
@@ -205623,7 +206863,7 @@ public readonly update: string;
 
 A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 
-Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.7.0/docs/resources/update_resource#update UpdateResource#update}
+Docs at Terraform Registry: {@link https://registry.terraform.io/providers/azure/azapi/2.13.0/docs/resources/update_resource#update UpdateResource#update}
 
 ---
 
@@ -222290,7 +223530,7 @@ public resetRead(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeoutsOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeoutsOutputReference.property.readInput">readInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeoutsOutputReference.property.read">read</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a> \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts</code> | *No description.* |
 
 ---
 
@@ -222341,10 +223581,10 @@ public readonly read: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DataAzapiClientConfigTimeouts | IResolvable;
+public readonly internalValue: IResolvable | DataAzapiClientConfigTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a> | cdktn.IResolvable
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts
 
 ---
 
@@ -222568,7 +223808,7 @@ public resetRead(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfigTimeoutsOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfigTimeoutsOutputReference.property.readInput">readInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfigTimeoutsOutputReference.property.read">read</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfigTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a> \| cdktn.IResolvable</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfigTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts</code> | *No description.* |
 
 ---
 
@@ -222619,10 +223859,10 @@ public readonly read: string;
 ##### `internalValue`<sup>Optional</sup> <a name="internalValue" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfigTimeoutsOutputReference.property.internalValue"></a>
 
 ```typescript
-public readonly internalValue: DataAzapiClientConfigTimeouts | IResolvable;
+public readonly internalValue: IResolvable | DataAzapiClientConfigTimeouts;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfigTimeouts">DataAzapiClientConfigTimeouts</a> | cdktn.IResolvable
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.dataAzapiClientConfig.DataAzapiClientConfigTimeouts
 
 ---
 
@@ -223157,7 +224397,7 @@ Returns a reversible string representation.
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceIdentityOutputReference.property.principalId">principalId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceIdentityOutputReference.property.tenantId">tenantId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceIdentityOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceIdentityOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceIdentity">DataAzapiResourceIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceIdentityOutputReference.property.internalValue">internalValue</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceIdentity</code> | *No description.* |
 
 ---
 
@@ -223231,7 +224471,7 @@ public readonly type: string;
 public readonly internalValue: DataAzapiResourceIdentity;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceIdentity">DataAzapiResourceIdentity</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceIdentity
 
 ---
 
@@ -223468,7 +224708,7 @@ Returns a reversible string representation.
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceIdentityOutputReference.property.principalId">principalId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceIdentityOutputReference.property.tenantId">tenantId</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceIdentityOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceIdentityOutputReference.property.internalValue">internalValue</a></code> | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceIdentity">DataAzapiResourceIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceIdentityOutputReference.property.internalValue">internalValue</a></code> | <code>@cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceIdentity</code> | *No description.* |
 
 ---
 
@@ -223542,7 +224782,7 @@ public readonly type: string;
 public readonly internalValue: DataAzapiResourceIdentity;
 ```
 
-- *Type:* <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceIdentity">DataAzapiResourceIdentity</a>
+- *Type:* @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceIdentity
 
 ---
 
@@ -223795,7 +225035,7 @@ public resetRandomizationFactor(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetryOutputReference.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetryOutputReference.property.multiplier">multiplier</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetryOutputReference.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry</code> | *No description.* |
 
 ---
 
@@ -223929,7 +225169,7 @@ public readonly randomizationFactor: number;
 public readonly internalValue: IResolvable | DataAzapiResourceRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry
 
 ---
 
@@ -224182,7 +225422,7 @@ public resetRandomizationFactor(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceRetryOutputReference.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceRetryOutputReference.property.multiplier">multiplier</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceRetryOutputReference.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry</code> | *No description.* |
 
 ---
 
@@ -224316,7 +225556,7 @@ public readonly randomizationFactor: number;
 public readonly internalValue: IResolvable | DataAzapiResourceRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceRetry">DataAzapiResourceRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceRetry
 
 ---
 
@@ -224540,7 +225780,7 @@ public resetRead(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeoutsOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeoutsOutputReference.property.readInput">readInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeoutsOutputReference.property.read">read</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts</code> | *No description.* |
 
 ---
 
@@ -224594,7 +225834,7 @@ public readonly read: string;
 public readonly internalValue: IResolvable | DataAzapiResourceTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts
 
 ---
 
@@ -224818,7 +226058,7 @@ public resetRead(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceTimeoutsOutputReference.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceTimeoutsOutputReference.property.readInput">readInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceTimeoutsOutputReference.property.read">read</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResourceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts</code> | *No description.* |
 
 ---
 
@@ -224872,7 +226112,7 @@ public readonly read: string;
 public readonly internalValue: IResolvable | DataAzapiResourceTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.DataAzapiResourceTimeouts">DataAzapiResourceTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.dataAzapiResource.DataAzapiResourceTimeouts
 
 ---
 
@@ -225669,7 +226909,7 @@ public resetRandomizationFactor(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetryOutputReference.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetryOutputReference.property.multiplier">multiplier</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetryOutputReference.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resourceAction.ResourceActionRetry</code> | *No description.* |
 
 ---
 
@@ -225803,7 +227043,7 @@ public readonly randomizationFactor: number;
 public readonly internalValue: IResolvable | ResourceActionRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resourceAction.ResourceActionRetry
 
 ---
 
@@ -226056,7 +227296,7 @@ public resetRandomizationFactor(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionRetryOutputReference.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionRetryOutputReference.property.multiplier">multiplier</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionRetryOutputReference.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resourceAction.ResourceActionRetry</code> | *No description.* |
 
 ---
 
@@ -226190,7 +227430,7 @@ public readonly randomizationFactor: number;
 public readonly internalValue: IResolvable | ResourceActionRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceActionRetry">ResourceActionRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resourceAction.ResourceActionRetry
 
 ---
 
@@ -226441,7 +227681,7 @@ public resetUpdate(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeoutsOutputReference.property.read">read</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resourceAction.ResourceActionTimeouts</code> | *No description.* |
 
 ---
 
@@ -226555,7 +227795,7 @@ public readonly update: string;
 public readonly internalValue: IResolvable | ResourceActionTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resourceAction.ResourceActionTimeouts
 
 ---
 
@@ -226806,7 +228046,7 @@ public resetUpdate(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionTimeoutsOutputReference.property.read">read</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceActionTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resourceAction.ResourceActionTimeouts</code> | *No description.* |
 
 ---
 
@@ -226920,7 +228160,7 @@ public readonly update: string;
 public readonly internalValue: IResolvable | ResourceActionTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceActionTimeouts">ResourceActionTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resourceAction.ResourceActionTimeouts
 
 ---
 
@@ -227164,7 +228404,7 @@ the index of the item to return.
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentityList.property.creationStack">creationStack</a></code> | <code>string[]</code> | The creation stack of this resolvable which will be appended to errors thrown during resolution. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentityList.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentityList.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentityList.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceIdentity[]</code> | *No description.* |
 
 ---
 
@@ -227198,7 +228438,7 @@ public readonly fqn: string;
 public readonly internalValue: IResolvable | ResourceIdentity[];
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceIdentity[]
 
 ---
 
@@ -227324,7 +228564,7 @@ the index of the item to return.
 | --- | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceIdentityList.property.creationStack">creationStack</a></code> | <code>string[]</code> | The creation stack of this resolvable which will be appended to errors thrown during resolution. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceIdentityList.property.fqn">fqn</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceIdentityList.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]</code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceIdentityList.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceIdentity[]</code> | *No description.* |
 
 ---
 
@@ -227358,7 +228598,7 @@ public readonly fqn: string;
 public readonly internalValue: IResolvable | ResourceIdentity[];
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>[]
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceIdentity[]
 
 ---
 
@@ -227604,7 +228844,7 @@ public resetIdentityIds(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentityOutputReference.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentityOutputReference.property.identityIds">identityIds</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentityOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentityOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceIdentityOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceIdentity</code> | *No description.* |
 
 ---
 
@@ -227698,7 +228938,7 @@ public readonly type: string;
 public readonly internalValue: IResolvable | ResourceIdentity;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceIdentity
 
 ---
 
@@ -227944,7 +229184,7 @@ public resetIdentityIds(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceIdentityOutputReference.property.typeInput">typeInput</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceIdentityOutputReference.property.identityIds">identityIds</a></code> | <code>string[]</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceIdentityOutputReference.property.type">type</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceIdentityOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceIdentityOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceIdentity</code> | *No description.* |
 
 ---
 
@@ -228038,7 +229278,7 @@ public readonly type: string;
 public readonly internalValue: IResolvable | ResourceIdentity;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceIdentity">ResourceIdentity</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceIdentity
 
 ---
 
@@ -228291,7 +229531,7 @@ public resetRandomizationFactor(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetryOutputReference.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetryOutputReference.property.multiplier">multiplier</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetryOutputReference.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceRetry</code> | *No description.* |
 
 ---
 
@@ -228425,7 +229665,7 @@ public readonly randomizationFactor: number;
 public readonly internalValue: IResolvable | ResourceRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceRetry
 
 ---
 
@@ -228678,7 +229918,7 @@ public resetRandomizationFactor(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceRetryOutputReference.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceRetryOutputReference.property.multiplier">multiplier</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceRetryOutputReference.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceRetry</code> | *No description.* |
 
 ---
 
@@ -228812,7 +230052,7 @@ public readonly randomizationFactor: number;
 public readonly internalValue: IResolvable | ResourceRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceRetry">ResourceRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceRetry
 
 ---
 
@@ -229063,7 +230303,7 @@ public resetUpdate(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceTimeoutsOutputReference.property.read">read</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceTimeouts</code> | *No description.* |
 
 ---
 
@@ -229177,7 +230417,7 @@ public readonly update: string;
 public readonly internalValue: IResolvable | ResourceTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceTimeouts
 
 ---
 
@@ -229428,7 +230668,7 @@ public resetUpdate(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceTimeoutsOutputReference.property.read">read</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.resource.ResourceTimeouts</code> | *No description.* |
 
 ---
 
@@ -229542,7 +230782,7 @@ public readonly update: string;
 public readonly internalValue: IResolvable | ResourceTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.ResourceTimeouts">ResourceTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.resource.ResourceTimeouts
 
 ---
 
@@ -230657,7 +231897,7 @@ public resetRandomizationFactor(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetryOutputReference.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetryOutputReference.property.multiplier">multiplier</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetryOutputReference.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.updateResource.UpdateResourceRetry</code> | *No description.* |
 
 ---
 
@@ -230791,7 +232031,7 @@ public readonly randomizationFactor: number;
 public readonly internalValue: IResolvable | UpdateResourceRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.updateResource.UpdateResourceRetry
 
 ---
 
@@ -231044,7 +232284,7 @@ public resetRandomizationFactor(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceRetryOutputReference.property.maxIntervalSeconds">maxIntervalSeconds</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceRetryOutputReference.property.multiplier">multiplier</a></code> | <code>number</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceRetryOutputReference.property.randomizationFactor">randomizationFactor</a></code> | <code>number</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceRetryOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.updateResource.UpdateResourceRetry</code> | *No description.* |
 
 ---
 
@@ -231178,7 +232418,7 @@ public readonly randomizationFactor: number;
 public readonly internalValue: IResolvable | UpdateResourceRetry;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceRetry">UpdateResourceRetry</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.updateResource.UpdateResourceRetry
 
 ---
 
@@ -231429,7 +232669,7 @@ public resetUpdate(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeoutsOutputReference.property.read">read</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.updateResource.UpdateResourceTimeouts</code> | *No description.* |
 
 ---
 
@@ -231543,7 +232783,7 @@ public readonly update: string;
 public readonly internalValue: IResolvable | UpdateResourceTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.updateResource.UpdateResourceTimeouts
 
 ---
 
@@ -231794,7 +233034,7 @@ public resetUpdate(): void
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceTimeoutsOutputReference.property.delete">delete</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceTimeoutsOutputReference.property.read">read</a></code> | <code>string</code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceTimeoutsOutputReference.property.update">update</a></code> | <code>string</code> | *No description.* |
-| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a></code> | *No description.* |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResourceTimeoutsOutputReference.property.internalValue">internalValue</a></code> | <code>cdktn.IResolvable \| @cdktn/provider-azapi.updateResource.UpdateResourceTimeouts</code> | *No description.* |
 
 ---
 
@@ -231908,7 +233148,7 @@ public readonly update: string;
 public readonly internalValue: IResolvable | UpdateResourceTimeouts;
 ```
 
-- *Type:* cdktn.IResolvable | <a href="#@microsoft/terraform-cdk-constructs.UpdateResourceTimeouts">UpdateResourceTimeouts</a>
+- *Type:* cdktn.IResolvable | @cdktn/provider-azapi.updateResource.UpdateResourceTimeouts
 
 ---
 

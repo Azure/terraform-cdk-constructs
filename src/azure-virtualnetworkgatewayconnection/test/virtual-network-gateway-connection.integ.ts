@@ -18,7 +18,7 @@ import { ResourceGroup } from "../../azure-resourcegroup";
 import { Subnet } from "../../azure-subnet";
 import { VirtualNetwork } from "../../azure-virtualnetwork";
 import { VirtualNetworkGateway } from "../../azure-virtualnetworkgateway";
-import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
+import { AzapiProvider } from "@cdktn/provider-azapi/lib/provider";
 import { BaseTestStack, TerraformApplyCheckAndDestroy } from "../../testing";
 import { TestRunMetadata } from "../../testing/lib/metadata";
 import { VirtualNetworkGatewayConnection } from "../lib/virtual-network-gateway-connection";

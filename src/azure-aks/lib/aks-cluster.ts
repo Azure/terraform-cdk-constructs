@@ -18,6 +18,7 @@
  * - Comprehensive support for AKS features (networking, security, scaling, etc.)
  */
 
+import { ResourceAction } from "@cdktn/provider-azapi/lib/resource-action";
 import * as cdktn from "cdktn";
 import { Construct } from "constructs";
 import {
@@ -46,7 +47,6 @@ import {
   AzapiResourceProps,
   MonitoringConfig,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { ResourceAction } from "../../core-azure/lib/azapi/providers-azapi/resource-action";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**

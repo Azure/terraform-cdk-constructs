@@ -42,15 +42,16 @@
     "organization": false
   },
   "devDependencies": {
+    "@cdktn/provider-azapi": "1.0.0",
     "@types/jest": "^29",
     "@types/node": "^20",
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "cdktn": "0.22.0",
-    "cdktn-cli": "0.22.0",
+    "cdktn": "0.24.0",
+    "cdktn-cli": "0.24.0",
     "commit-and-tag-version": "^13",
-    "constructs": "10.5.0",
+    "constructs": "10.7.2",
     "eslint": "^9",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -70,8 +71,9 @@
     "typescript": "~5.9.3"
   },
   "peerDependencies": {
-    "cdktn": "0.22.0",
-    "constructs": "^10.5.0"
+    "@cdktn/provider-azapi": "^1.0.0",
+    "cdktn": "0.24.0",
+    "constructs": "^10.7.2"
   },
   "dependencies": {
     "uuid": "^11.0.3"

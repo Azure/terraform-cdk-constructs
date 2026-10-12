@@ -10,8 +10,8 @@
 import { Testing, TerraformStack } from "cdktn";
 import { Construct } from "constructs";
 import "cdktn/lib/testing/adapters/jest";
-import { DataAzapiClientConfig } from "../../core-azure/lib/azapi/providers-azapi/data-azapi-client-config";
-import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
+import { DataAzapiClientConfig } from "@cdktn/provider-azapi/lib/data-azapi-client-config";
+import { AzapiProvider } from "@cdktn/provider-azapi/lib/provider";
 import { TerraformApplyCheckAndDestroy } from "../../testing";
 import { PolicySetDefinition } from "../lib/policy-set-definition";
 

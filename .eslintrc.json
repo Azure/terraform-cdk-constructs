@@ -46,7 +46,6 @@
     "*.generated.ts",
     "coverage",
     ".github",
-    "src/core-azure/lib/azapi/providers-azapi/**/*.ts",
     "!.projenrc.ts",
     "!projenrc/**/*.ts"
   ],

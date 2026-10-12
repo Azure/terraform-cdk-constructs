@@ -9,11 +9,11 @@
 export {
   DataAzapiClientConfig,
   DataAzapiClientConfigTimeoutsOutputReference,
-} from "./providers-azapi/data-azapi-client-config";
+} from "@cdktn/provider-azapi/lib/data-azapi-client-config";
 export type {
   DataAzapiClientConfigConfig,
   DataAzapiClientConfigTimeouts,
-} from "./providers-azapi/data-azapi-client-config";
+} from "@cdktn/provider-azapi/lib/data-azapi-client-config";
 
 // Re-export from data-azapi-resource
 export {
@@ -22,13 +22,13 @@ export {
   DataAzapiResourceIdentityOutputReference,
   DataAzapiResourceRetryOutputReference,
   DataAzapiResourceTimeoutsOutputReference,
-} from "./providers-azapi/data-azapi-resource";
+} from "@cdktn/provider-azapi/lib/data-azapi-resource";
 export type {
   DataAzapiResourceConfig,
   DataAzapiResourceIdentity,
   DataAzapiResourceRetry,
   DataAzapiResourceTimeouts,
-} from "./providers-azapi/data-azapi-resource";
+} from "@cdktn/provider-azapi/lib/data-azapi-resource";
 
 // Re-export from resource
 export {
@@ -38,33 +38,33 @@ export {
   ResourceIdentityOutputReference,
   ResourceRetryOutputReference,
   ResourceTimeoutsOutputReference,
-} from "./providers-azapi/resource";
+} from "@cdktn/provider-azapi/lib/resource";
 export type {
   ResourceConfig,
   ResourceRetry,
   ResourceTimeouts,
-} from "./providers-azapi/resource";
+} from "@cdktn/provider-azapi/lib/resource";
 
 // Re-export from resource-action
 export {
   ResourceAction,
   ResourceActionRetryOutputReference,
   ResourceActionTimeoutsOutputReference,
-} from "./providers-azapi/resource-action";
+} from "@cdktn/provider-azapi/lib/resource-action";
 export type {
   ResourceActionConfig,
   ResourceActionRetry,
   ResourceActionTimeouts,
-} from "./providers-azapi/resource-action";
+} from "@cdktn/provider-azapi/lib/resource-action";
 
 // Re-export from update-resource
 export {
   UpdateResource,
   UpdateResourceRetryOutputReference,
   UpdateResourceTimeoutsOutputReference,
-} from "./providers-azapi/update-resource";
+} from "@cdktn/provider-azapi/lib/update-resource";
 export type {
   UpdateResourceConfig,
   UpdateResourceRetry,
   UpdateResourceTimeouts,
-} from "./providers-azapi/update-resource";
+} from "@cdktn/provider-azapi/lib/update-resource";

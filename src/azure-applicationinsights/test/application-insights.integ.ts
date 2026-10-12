@@ -12,7 +12,7 @@ import { Construct } from "constructs";
 import "cdktn/lib/testing/adapters/jest";
 import { LogAnalyticsWorkspace } from "../../azure-loganalyticsworkspace";
 import { ResourceGroup } from "../../azure-resourcegroup";
-import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
+import { AzapiProvider } from "@cdktn/provider-azapi/lib/provider";
 import { TerraformApplyCheckAndDestroy } from "../../testing";
 import { ApplicationInsights } from "../lib/application-insights";
 

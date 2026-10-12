@@ -403,6 +403,7 @@
           "execArgs": [
             "yarn",
             "upgrade",
+            "@cdktn/provider-azapi",
             "@types/jest",
             "@types/node",
             "@types/uuid",

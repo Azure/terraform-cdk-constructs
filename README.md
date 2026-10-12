@@ -10,7 +10,7 @@ Welcome to the Azure Terraform CDK Constructs project! This library offers Azure
 - **Immediate Feature Access**: Get new Azure features as soon as they're available in Azure APIs
 - **Version-Specific Implementations**: Multiple API versions supported for each service
 - **Enhanced Type Safety**: Improved IDE support and compile-time validation
-- **Included Provider Bindings**: AZAPI provider classes are included - no need to generate bindings
+- **Pre-built Provider Bindings**: uses the community-maintained [`@cdktn/provider-azapi`](https://www.npmjs.com/package/@cdktn/provider-azapi) package - no need to generate bindings
 
 ## Benefits of Using AZAPI L2 Constructs
 
@@ -136,13 +136,13 @@ Initialize a new CDK for Terraform project:
 cdktf init --template="TypeScript" --local
 ```
 
-Install the Microsoft Terraform CDK constructs (includes AZAPI provider bindings):
+Install the Azure CDK constructs together with the pre-built AZAPI provider bindings (a peer dependency):
 
 ```sh
-npm install @microsoft/terraform-cdk-constructs
+npm install @microsoft/terraform-cdk-constructs @cdktn/provider-azapi
 ```
 
-That's it! The AZAPI provider classes are included in the package, so you don't need to configure additional providers or generate bindings.
+That's it! The AZAPI provider classes come from [`@cdktn/provider-azapi`](https://github.com/cdktn-io/cdktn-provider-azapi), so you don't need to run `cdktn get` or generate bindings. Python users install `cdktn-provider-azapi` from PyPI alongside `microsoft-cdktfconstructs`.
 
 ## Built-in Monitoring & Alerting
 
