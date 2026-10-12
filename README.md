@@ -86,7 +86,7 @@ Create Azure resources using AZAPI provider:
 ```typescript
 import * as azcdk from "@microsoft/terraform-cdk-constructs";
 import { Construct } from 'constructs';
-import { App, TerraformStack } from 'cdktf';
+import { App, TerraformStack } from 'cdktn';
 
 class AzureAppInfra extends TerraformStack {
   constructor(scope: Construct, name: string) {
@@ -119,24 +119,27 @@ app.synth();
 
 ## Getting Started
 
+This library targets [CDK Terrain (CDKTN)](https://cdktn.io), the community-maintained successor to HashiCorp's CDK for Terraform (CDKTF), which was deprecated in December 2025. CDKTN works with both Terraform and OpenTofu. If you are coming from CDKTF, see the [CDKTN migration guide](https://cdktn.io/docs/release/upgrade-guide-v0-22).
+
 ### Prerequisites
-- Node.js and npm installed (for TypeScript/JavaScript)
+- Node.js 22 or later and npm (for TypeScript/JavaScript)
+- Terraform or [OpenTofu](https://opentofu.org/) CLI
 - Azure CLI configured with appropriate permissions
 
 ### Installation
 
-Install the CDK for Terraform CLI globally:
+Install the CDK Terrain CLI globally:
 
 ```sh
-npm install -g cdktf-cli
+npm install -g cdktn-cli
 ```
 
-Initialize a new CDK for Terraform project:
+Initialize a new CDK Terrain project:
 ```sh
-cdktf init --template="TypeScript" --local
+cdktn init --template="typescript" --local
 ```
 
-Install the Microsoft Terraform CDK constructs (includes AZAPI provider bindings):
+Install the Azure CDK constructs (includes AZAPI provider bindings):
 
 ```sh
 npm install @microsoft/terraform-cdk-constructs
@@ -222,13 +225,15 @@ If you're migrating from version 0.x (AzureRM-based), please see our [Versioning
 
 Generate Terraform configuration:
 ```sh
-cdktf synth
+cdktn synth
 ```
 
 Deploy your infrastructure:
 ```sh
-cdktf deploy
+cdktn deploy
 ```
+
+To use OpenTofu instead of Terraform, set `TERRAFORM_BINARY_NAME=tofu` before running the CLI. See the [CDKTN environment variables reference](https://cdktn.io/docs/create-and-deploy/environment-variables).
 
 ## Supported Languages
 
@@ -238,8 +243,8 @@ Thanks to JSII, this library is available in multiple programming languages:
 |------------|---------|--------|
 | TypeScript/JavaScript | [`@microsoft/terraform-cdk-constructs`](https://www.npmjs.com/package/@microsoft/terraform-cdk-constructs) | ✅ Available |
 | Python     | [`microsoft-cdktfconstructs`](https://pypi.org/project/microsoft-cdktfconstructs/) | ✅ Available |
-| Java       | [`com.microsoft.terraformcdkconstructs`](https://search.maven.org/artifact/com.microsoft.terraformcdkconstructs/cdktf-azure-constructs) | ✅ Available |
-| C#/.NET    | [`Microsoft.Cdktf.Azure.TFConstructs`](https://www.nuget.org/packages/Microsoft.Cdktf.Azure.TFConstructs) | ✅ Available |
+| Java       | `com.microsoft.terraformcdkconstructs` | ⏸️ Not published for 2.x |
+| C#/.NET    | `Microsoft.Cdktf.Azure.TFConstructs` | ⏸️ Not published for 2.x |
 
 ## Contributing
 

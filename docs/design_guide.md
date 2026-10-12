@@ -57,7 +57,7 @@ The code for each construct shoudl live under `lib/' in each construct directoy.
 ```
 
 #### Construct Classes
-Terraform constructs in the context of the CDK for Terraform (CDKTF) are also basic building blocks but for Terraform-based infrastructure as code. They encapsulate both low-level resources, like an individual Azure AKS cluster, and higher-level abstractions, which can be a combination of related resources that make up a complex infrastructure service, like a serverless application.
+Terraform constructs in the context of CDK Terrain (CDKTN, the community-maintained successor to CDK for Terraform) are also basic building blocks but for Terraform-based infrastructure as code. They encapsulate both low-level resources, like an individual Azure AKS cluster, and higher-level abstractions, which can be a combination of related resources that make up a complex infrastructure service, like a serverless application.
 
 #### Object-Oriented Design
 

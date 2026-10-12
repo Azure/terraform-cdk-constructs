@@ -156,10 +156,10 @@ describeIfLatest("AZAPI {Resource} v2024-11-01 Integration Tests", () => {
 Unit tests should cover all versions and follow this template:
 
 ```typescript
-import { Testing, TerraformStack } from "cdktf";
+import { Testing, TerraformStack } from "cdktn";
 import { {ResourceClass} } from "../{resource-file}";
 import { TerraformPlan } from "../../../../testing";
-import "cdktf/lib/testing/adapters/jest";
+import "cdktn/lib/testing/adapters/jest";
 
 describe("AZAPI {Resource} v{version} Unit Tests", () => {
   let stack: TerraformStack;

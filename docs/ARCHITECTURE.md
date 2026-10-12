@@ -534,7 +534,7 @@ graph TB
 
 **Purpose**: Fast validation without Azure deployment
 
-**Tools**: Jest, CDKTF Testing Framework
+**Tools**: Jest, CDKTN Testing Framework (`cdktn.Testing`)
 
 **Coverage**:
 - Snapshot testing for configuration drift detection
@@ -630,8 +630,8 @@ graph LR
 |----------|---------|---------|
 | TypeScript/JavaScript | `@microsoft/terraform-cdk-constructs` | `npm install @microsoft/terraform-cdk-constructs` |
 | Python | `microsoft-cdktfconstructs` | `pip install microsoft-cdktfconstructs` |
-| Java | `com.microsoft.terraformcdkconstructs` | Maven/Gradle dependency |
-| C#/.NET | `Microsoft.Cdktf.Azure.TFConstructs` | `dotnet add package Microsoft.Cdktf.Azure.TFConstructs` |
+| Java | `com.microsoft.terraformcdkconstructs` | Not published for 2.x |
+| C#/.NET | `Microsoft.Cdktf.Azure.TFConstructs` | Not published for 2.x |
 
 ### JSII Compatibility Guidelines
 
@@ -826,7 +826,7 @@ The architecture is designed for **extensibility**, allowing easy addition of ne
 - [Testing Guide](./testing.md) - Testing practices and utilities
 - [Versioning User Guide](./versioning-and-migrations-user-guide.md) - API version management
 - [README](../README.md) - Package overview and quick start
-- [CDKTF Documentation](https://developer.hashicorp.com/terraform/cdktf) - Terraform CDK reference
+- [CDK Terrain (CDKTN) Documentation](https://cdktn.io/docs) - CDKTN reference
 - [JSII Documentation](https://aws.github.io/jsii/) - Multi-language support
 
 ---

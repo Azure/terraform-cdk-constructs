@@ -22,7 +22,7 @@ This guide explains how Azure API versioning and automatic migrations work in th
 
 ```typescript
 import { ResourceGroup } from '@microsoft/terraform-cdk-constructs';
-import { App, TerraformStack } from 'cdktf';
+import { App, TerraformStack } from 'cdktn';
 
 class MyStack extends TerraformStack {
   constructor(scope: App, name: string) {
@@ -95,7 +95,7 @@ const storage = new StorageAccount(this, 'storage', {
 
 When Azure releases a new API version (e.g., monthly updates):
 
-1. **Next time you run `cdktf synth`**, your resources automatically use the new version
+1. **Next time you run `cdktn synth`**, your resources automatically use the new version
 2. **You see console output** confirming the version being used
 3. **No code changes required** unless there are breaking changes (see [Migration Guidance](#migration-guidance))
 
@@ -142,7 +142,7 @@ const storage = new StorageAccount(this, 'storage', {
 
 ### What You'll See
 
-When using an older API version, you'll see warnings during `cdktf synth`:
+When using an older API version, you'll see warnings during `cdktn synth`:
 
 #### Warning: Deprecated Version
 
@@ -262,8 +262,8 @@ const storage = new StorageAccount(this, 'storage', {
 
 #### 5. Deploy and Verify
 
-1. Run `cdktf synth` - confirm no warnings
-2. Run `cdktf diff` - review planned changes
+1. Run `cdktn synth` - confirm no warnings
+2. Run `cdktn diff` - review planned changes
 3. Deploy to test environment first
 4. Verify everything works as expected
 5. Deploy to production
@@ -293,7 +293,7 @@ The framework estimates how long migration will take:
 
 ### Q: How do I find out what API version I'm using?
 
-**A: Check the console output** during `cdktf synth`. You can also access it in code:
+**A: Check the console output** during `cdktn synth`. You can also access it in code:
 
 ```typescript
 const storage = new StorageAccount(this, 'storage', { /* ... */ });

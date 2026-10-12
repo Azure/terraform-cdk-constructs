@@ -105,13 +105,12 @@ src
 
 Below is a spec test for the resource group construct:
 
-```
-# index.ts
-import { AzurermProvider } from "@cdktf/provider-azurerm/lib/provider";
-import { Testing, TerraformStack } from "cdktf";
+```typescript
+# resource-group.spec.ts
+import { Testing, TerraformStack } from "cdktn";
 import { TerraformPlan } from "../../testing";
-import "cdktf/lib/testing/adapters/jest";
-import * as rg from "..";
+import "cdktn/lib/testing/adapters/jest";
+import { ResourceGroup } from "..";
 
 describe("Resource Group With Defaults", () => {
   let stack: TerraformStack;
@@ -121,14 +120,13 @@ describe("Resource Group With Defaults", () => {
     const app = Testing.app();
     stack = new TerraformStack(app, "test");
 
-    new AzurermProvider(stack, "azureFeature", { features: {} });
-    new rg.Group(stack, "testRG");
+    new ResourceGroup(stack, "testRG", { location: "eastus" });
 
     fullSynthResult = Testing.fullSynth(stack);
   });
 
   it("renders a Resource Group with defaults and checks snapshot", () => {
-    expect(Testing.synth(stack)).toMatchSnapshot(); 
+    expect(Testing.synth(stack)).toMatchSnapshot();
   });
 
   it("check if the produced terraform configuration is valid", () => {
@@ -140,7 +138,7 @@ describe("Resource Group With Defaults", () => {
   });
 });
 ```
-Before each test, a new instance of the `AzureResourceGroup` is created. The stack is then fully synthesized, and the result is stored in `fullSynthResult` to be used for each test. The synthesize process turns the Typescript code into a Terraform JSON configuration that can be deployed with the Terraform cli. The following minimum tests are run for each module:
+Before each test, a new instance of the `ResourceGroup` construct is created. The stack is then fully synthesized, and the result is stored in `fullSynthResult` to be used for each test. The synthesize process turns the Typescript code into a Terraform JSON configuration that can be deployed with the Terraform cli. The following minimum tests are run for each module:
 
 - **Snapshot Test**: The test checks if the rendered Resource Group matches a previously saved snapshot. This ensures that any changes to the stack's output are intentional and reviewed.
 - **Terraform Validate**: Runs the `terraform validate` command against the synthesized Terraform configuration. Verifies that the synthesized result produces a valid Terraform configuration.
@@ -256,7 +254,7 @@ All integration tests use an enhanced resource management system that provides:
 #### Quick Example
 
 ```typescript
-import { Testing } from "cdktf";
+import { Testing } from "cdktn";
 import { BaseTestStack, TerraformApplyCheckAndDestroy } from "../../testing";
 import { TestRunMetadata } from "../../testing/lib/metadata";
 import { ResourceGroup } from "../../azure-resourcegroup";
