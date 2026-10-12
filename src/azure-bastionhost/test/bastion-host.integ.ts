@@ -17,7 +17,7 @@ import { PublicIPAddress } from "../../azure-publicipaddress";
 import { ResourceGroup } from "../../azure-resourcegroup";
 import { Subnet } from "../../azure-subnet";
 import { VirtualNetwork } from "../../azure-virtualnetwork";
-import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
+import { AzapiProvider } from "@cdktn/provider-azapi/lib/provider";
 import { TerraformApplyCheckAndDestroy } from "../../testing";
 import { BastionHost } from "../lib/bastion-host";
 

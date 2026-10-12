@@ -20,6 +20,7 @@
  * - Soft-delete and purge protection support
  */
 
+import { DataAzapiClientConfig } from "@cdktn/provider-azapi/lib/data-azapi-client-config";
 import * as cdktn from "cdktn";
 import { Construct } from "constructs";
 import { ALL_KEY_VAULT_VERSIONS, KEY_VAULT_TYPE } from "./key-vault-schemas";
@@ -27,7 +28,6 @@ import {
   AzapiResource,
   AzapiResourceProps,
 } from "../../core-azure/lib/azapi/azapi-resource";
-import { DataAzapiClientConfig } from "../../core-azure/lib/azapi/providers-azapi/data-azapi-client-config";
 import { ApiSchema } from "../../core-azure/lib/version-manager/interfaces/version-interfaces";
 
 /**

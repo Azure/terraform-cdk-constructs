@@ -14,7 +14,7 @@ import { Testing } from "cdktn";
 import { Construct } from "constructs";
 import "cdktn/lib/testing/adapters/jest";
 import { execSync } from "child_process";
-import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
+import { AzapiProvider } from "@cdktn/provider-azapi/lib/provider";
 import { BaseTestStack, TerraformApplyCheckAndDestroy } from "../../testing";
 import { TestRunMetadata } from "../../testing/lib/metadata";
 import { RoleAssignment } from "../lib/role-assignment";

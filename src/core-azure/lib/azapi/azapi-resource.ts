@@ -19,10 +19,10 @@
  * @packageDocumentation
  */
 
+import { DataAzapiClientConfig } from "@cdktn/provider-azapi/lib/data-azapi-client-config";
+import { Resource, ResourceConfig } from "@cdktn/provider-azapi/lib/resource";
 import * as cdktn from "cdktn";
 import { Construct } from "constructs";
-import { DataAzapiClientConfig } from "./providers-azapi/data-azapi-client-config";
-import { Resource, ResourceConfig } from "./providers-azapi/resource";
 import { ResourceSchemaValidator } from "./resource-schema-validator";
 import { ResourceVersionManager } from "./resource-version-manager";
 

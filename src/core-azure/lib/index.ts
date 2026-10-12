@@ -19,11 +19,11 @@ export * from "./azapi/schema-mapper/schema-mapper";
 export * from "./version-manager/interfaces/version-interfaces";
 
 // Export AzapiProvider directly for clean usage
-export { AzapiProvider } from "./azapi/providers-azapi/provider";
+export { AzapiProvider } from "@cdktn/provider-azapi/lib/provider";
 export type {
   AzapiProviderConfig,
   AzapiProviderEndpoint,
-} from "./azapi/providers-azapi/provider";
+} from "@cdktn/provider-azapi/lib/provider";
 
 // Export convenience imports for commonly used classes
 export * from "./azapi/azapi-exports";
