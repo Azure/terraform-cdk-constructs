@@ -69,17 +69,17 @@ npm test
 ```
 
 ### Integration Tests
-Integration tests allow us to deploy in an Azure environment and verify that the code will work and is idempotent. We use Terratest for our integration tests.
+Integration tests deploy to a real Azure environment and verify that the code works and is idempotent. They are Jest tests named `*.integ.ts` next to each construct and use the helpers in `src/testing`.
 
 Remember to create a test with all default values and additional tests for other potential configurations, within reason. Do not create a multitude of tests for a configuration that has many options.
 
-To run the integration test, use the following command in the module test directory:
+To run the integration tests:
 ```
-go test -v resource_group_test.go
+npm run integration
 ```
 
 These tests will run in your own Azure subscription. They will look for the ARM_SUBSCRIPTION_ID environment variable, and if it's not available, it will try to pull from Azure CLI and use the current subscription context.
 
 Please be aware that running integration tests may incur charges on your Azure account. Always verify the resources you are creating and their associated costs.
 
-**Thank you for your interest in contributing to the Azure Terraform CDK Modules project! Your efforts help make our project even better.**
+**Thank you for your interest in contributing to the Azure CDK Constructs project! Your efforts help make our project even better.**
