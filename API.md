@@ -84,6 +84,7 @@ Configuration properties for the Action Group.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.addTag">addTag</a></code> | Add a tag to the Action Group Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ActionGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -100,6 +101,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.ActionGroup.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.ActionGroup.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.ActionGroup.addAccess"></a>
 
@@ -558,6 +580,7 @@ Configuration properties for the Action Group.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.addTag">addTag</a></code> | Add a tag to the Action Group Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -574,6 +597,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_actiongroup.ActionGroup.addAccess"></a>
 
@@ -1032,6 +1076,7 @@ Configuration properties for the Activity Log Alert.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.addTag">addTag</a></code> | Add a tag to the Activity Log Alert Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ActivityLogAlert.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -1048,6 +1093,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.ActivityLogAlert.addAccess"></a>
 
@@ -1506,6 +1572,7 @@ Configuration properties for the Activity Log Alert.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.addTag">addTag</a></code> | Add a tag to the Activity Log Alert Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -1522,6 +1589,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_activitylogalert.ActivityLogAlert.addAccess"></a>
 
@@ -1988,6 +2076,7 @@ Configuration properties for the AKS cluster.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.addTag">addTag</a></code> | Add a tag to the AKS Cluster Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AksCluster.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -2004,6 +2093,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.AksCluster.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.AksCluster.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.AksCluster.addAccess"></a>
 
@@ -2628,6 +2738,7 @@ Configuration properties for the AKS cluster.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addTag">addTag</a></code> | Add a tag to the AKS Cluster Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -2644,6 +2755,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_aks.AksCluster.addAccess"></a>
 
@@ -3259,6 +3391,7 @@ Configuration properties for the Application Insights component.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ApplicationInsights.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ApplicationInsights.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ApplicationInsights.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ApplicationInsights.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ApplicationInsights.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -3274,6 +3407,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.ApplicationInsights.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.ApplicationInsights.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.ApplicationInsights.addAccess"></a>
 
@@ -3764,6 +3918,7 @@ Configuration properties for the Application Insights component.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.ApplicationInsights.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.ApplicationInsights.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.ApplicationInsights.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.ApplicationInsights.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_applicationinsights.ApplicationInsights.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -3779,6 +3934,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_applicationinsights.ApplicationInsights.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_applicationinsights.ApplicationInsights.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_applicationinsights.ApplicationInsights.addAccess"></a>
 
@@ -4237,6 +4413,7 @@ Must be unique amongst siblings in the same scope
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiProvider.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
@@ -4288,6 +4465,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.AzapiProvider.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.AzapiProvider.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addOverride` <a name="addOverride" id="@microsoft/terraform-cdk-constructs.AzapiProvider.addOverride"></a>
 
@@ -5610,6 +5808,7 @@ Must be unique amongst siblings in the same scope
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
@@ -5661,6 +5860,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addOverride` <a name="addOverride" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiProvider.addOverride"></a>
 
@@ -7010,6 +7230,7 @@ Configuration properties for the resource.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResource.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResource.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResource.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResource.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiResource.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -7025,6 +7246,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.AzapiResource.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.AzapiResource.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.AzapiResource.addAccess"></a>
 
@@ -7442,6 +7684,7 @@ Configuration properties for the resource.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -7457,6 +7700,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiResource.addAccess"></a>
 
@@ -7841,6 +8105,7 @@ new AzapiRoleAssignment(scope: Construct, id: string, props: AzapiRoleAssignment
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.AzapiRoleAssignment.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.AzapiRoleAssignment.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -7851,6 +8116,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.AzapiRoleAssignment.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.AzapiRoleAssignment.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -7956,6 +8242,7 @@ new core_azure.AzapiRoleAssignment(scope: Construct, id: string, props: AzapiRol
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiRoleAssignment.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.AzapiRoleAssignment.with">with</a></code> | Applies one or more mixins to this construct. |
 
 ---
 
@@ -7966,6 +8253,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiRoleAssignment.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.core_azure.AzapiRoleAssignment.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 #### Static Functions <a name="Static Functions" id="Static Functions"></a>
 
@@ -8074,6 +8382,7 @@ new BaseTestStack(scope: Construct, id: string, options?: BaseTestStackOptions)
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.addDependency">addDependency</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.BaseTestStack.allProviders">allProviders</a></code> | *No description.* |
@@ -8101,6 +8410,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.BaseTestStack.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.BaseTestStack.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addDependency` <a name="addDependency" id="@microsoft/terraform-cdk-constructs.BaseTestStack.addDependency"></a>
 
@@ -8515,6 +8845,7 @@ new testing.BaseTestStack(scope: Construct, id: string, options?: BaseTestStackO
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.addDependency">addDependency</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.testing.BaseTestStack.allProviders">allProviders</a></code> | *No description.* |
@@ -8542,6 +8873,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addDependency` <a name="addDependency" id="@microsoft/terraform-cdk-constructs.testing.BaseTestStack.addDependency"></a>
 
@@ -8976,6 +9328,7 @@ Configuration properties for the Bastion Host.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.addTag">addTag</a></code> | Add a tag to the Bastion Host Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -8992,6 +9345,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_bastionhost.BastionHost.addAccess"></a>
 
@@ -9488,6 +9862,7 @@ Configuration properties for the Connectivity Configuration.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ConnectivityConfiguration.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ConnectivityConfiguration.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ConnectivityConfiguration.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ConnectivityConfiguration.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ConnectivityConfiguration.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -9503,6 +9878,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.ConnectivityConfiguration.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.ConnectivityConfiguration.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.ConnectivityConfiguration.addAccess"></a>
 
@@ -9999,6 +10395,7 @@ Configuration properties for the Connectivity Configuration.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.ConnectivityConfiguration.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.ConnectivityConfiguration.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.ConnectivityConfiguration.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.ConnectivityConfiguration.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.ConnectivityConfiguration.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -10014,6 +10411,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.ConnectivityConfiguration.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.ConnectivityConfiguration.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.ConnectivityConfiguration.addAccess"></a>
 
@@ -10539,6 +10957,7 @@ Configuration properties for the Container App.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerApp.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerApp.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerApp.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerApp.addTag">addTag</a></code> | Add a tag to the Container App. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerApp.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -10555,6 +10974,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.ContainerApp.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.ContainerApp.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.ContainerApp.addAccess"></a>
 
@@ -11161,6 +11601,7 @@ Configuration properties for the Container App.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerApp.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerApp.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerApp.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerApp.addTag">addTag</a></code> | Add a tag to the Container App. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerApp.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -11177,6 +11618,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerApp.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerApp.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerApp.addAccess"></a>
 
@@ -11761,6 +12223,7 @@ Configuration properties for the Container App Environment.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppEnvironment.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppEnvironment.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppEnvironment.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppEnvironment.addTag">addTag</a></code> | Add a tag to the Container App Environment. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppEnvironment.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -11777,6 +12240,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.ContainerAppEnvironment.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.ContainerAppEnvironment.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.ContainerAppEnvironment.addAccess"></a>
 
@@ -12324,6 +12808,7 @@ Configuration properties for the Container App Environment.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppEnvironment.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppEnvironment.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppEnvironment.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppEnvironment.addTag">addTag</a></code> | Add a tag to the Container App Environment. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppEnvironment.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -12340,6 +12825,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppEnvironment.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppEnvironment.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppEnvironment.addAccess"></a>
 
@@ -12854,6 +13360,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerAppsJob.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -12869,6 +13376,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.ContainerAppsJob.addAccess"></a>
 
@@ -13311,6 +13839,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -13326,6 +13855,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_containerapps.ContainerAppsJob.addAccess"></a>
 
@@ -13796,6 +14346,7 @@ Configuration properties for the Container Registry.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerRegistry.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ContainerRegistry.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerRegistry.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerRegistry.addTag">addTag</a></code> | Add a tag to the Container Registry. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ContainerRegistry.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -13812,6 +14363,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.ContainerRegistry.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.ContainerRegistry.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.ContainerRegistry.addAccess"></a>
 
@@ -14306,6 +14878,7 @@ Configuration properties for the Container Registry.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.ContainerRegistry.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.ContainerRegistry.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.ContainerRegistry.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.ContainerRegistry.addTag">addTag</a></code> | Add a tag to the Container Registry. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_containerregistry.ContainerRegistry.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -14322,6 +14895,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_containerregistry.ContainerRegistry.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_containerregistry.ContainerRegistry.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_containerregistry.ContainerRegistry.addAccess"></a>
 
@@ -14809,6 +15403,7 @@ Configuration properties for the Cosmos DB Account.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.CosmosDbAccount.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.CosmosDbAccount.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.CosmosDbAccount.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.CosmosDbAccount.addTag">addTag</a></code> | Add a tag to the Cosmos DB Account. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.CosmosDbAccount.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -14825,6 +15420,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.CosmosDbAccount.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.CosmosDbAccount.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.CosmosDbAccount.addAccess"></a>
 
@@ -15312,6 +15928,7 @@ Configuration properties for the Cosmos DB Account.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_cosmosdb.CosmosDbAccount.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_cosmosdb.CosmosDbAccount.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_cosmosdb.CosmosDbAccount.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_cosmosdb.CosmosDbAccount.addTag">addTag</a></code> | Add a tag to the Cosmos DB Account. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_cosmosdb.CosmosDbAccount.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -15328,6 +15945,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_cosmosdb.CosmosDbAccount.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_cosmosdb.CosmosDbAccount.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_cosmosdb.CosmosDbAccount.addAccess"></a>
 
@@ -15797,6 +16435,7 @@ Must be unique amongst siblings in the same scope
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
@@ -15825,6 +16464,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addOverride` <a name="addOverride" id="@microsoft/terraform-cdk-constructs.DataAzapiClientConfig.addOverride"></a>
 
@@ -16428,6 +17088,7 @@ Must be unique amongst siblings in the same scope
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
@@ -16456,6 +17117,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addOverride` <a name="addOverride" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiClientConfig.addOverride"></a>
 
@@ -17059,6 +17741,7 @@ Must be unique amongst siblings in the same scope
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataAzapiResource.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
@@ -17096,6 +17779,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DataAzapiResource.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DataAzapiResource.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addOverride` <a name="addOverride" id="@microsoft/terraform-cdk-constructs.DataAzapiResource.addOverride"></a>
 
@@ -17968,6 +18672,7 @@ Must be unique amongst siblings in the same scope
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
@@ -18005,6 +18710,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addOverride` <a name="addOverride" id="@microsoft/terraform-cdk-constructs.core_azure.DataAzapiResource.addOverride"></a>
 
@@ -18874,6 +19600,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerCluster.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -18889,6 +19616,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DataExplorerCluster.addAccess"></a>
 
@@ -19364,6 +20112,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -19379,6 +20128,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerCluster.addAccess"></a>
 
@@ -19854,6 +20624,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerDatabase.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -19869,6 +20640,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DataExplorerDatabase.addAccess"></a>
 
@@ -20289,6 +21081,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -20304,6 +21097,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerDatabase.addAccess"></a>
 
@@ -20724,6 +21538,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DataExplorerScript.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -20739,6 +21554,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DataExplorerScript.addAccess"></a>
 
@@ -21159,6 +21995,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -21174,6 +22011,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dataexplorer.DataExplorerScript.addAccess"></a>
 
@@ -21630,6 +22488,7 @@ Configuration properties for the Diagnostic Settings.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DiagnosticSettings.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -21645,6 +22504,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DiagnosticSettings.addAccess"></a>
 
@@ -22103,6 +22983,7 @@ Configuration properties for the Diagnostic Settings.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -22118,6 +22999,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_diagnosticsettings.DiagnosticSettings.addAccess"></a>
 
@@ -22560,6 +23462,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsAaaaRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsAaaaRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsAaaaRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsAaaaRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsAaaaRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -22575,6 +23478,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsAaaaRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsAaaaRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsAaaaRecord.addAccess"></a>
 
@@ -23039,6 +23963,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsAaaaRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsAaaaRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsAaaaRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsAaaaRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsAaaaRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -23054,6 +23979,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsAaaaRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsAaaaRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsAaaaRecord.addAccess"></a>
 
@@ -23516,6 +24462,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsARecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsARecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsARecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsARecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsARecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -23531,6 +24478,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsARecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsARecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsARecord.addAccess"></a>
 
@@ -23993,6 +24961,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsARecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsARecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsARecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsARecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsARecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -24008,6 +24977,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsARecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsARecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsARecord.addAccess"></a>
 
@@ -24474,6 +25464,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsCaaRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsCaaRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsCaaRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsCaaRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsCaaRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -24489,6 +25480,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsCaaRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsCaaRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsCaaRecord.addAccess"></a>
 
@@ -24955,6 +25967,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCaaRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCaaRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCaaRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCaaRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCaaRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -24970,6 +25983,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCaaRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCaaRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCaaRecord.addAccess"></a>
 
@@ -25433,6 +26467,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsCnameRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsCnameRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsCnameRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsCnameRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsCnameRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -25448,6 +26483,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsCnameRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsCnameRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsCnameRecord.addAccess"></a>
 
@@ -25911,6 +26967,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCnameRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCnameRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCnameRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCnameRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCnameRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -25926,6 +26983,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCnameRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCnameRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsCnameRecord.addAccess"></a>
 
@@ -26397,6 +27475,7 @@ Configuration properties for the DNS Forwarding Ruleset.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsForwardingRuleset.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsForwardingRuleset.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsForwardingRuleset.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsForwardingRuleset.addTag">addTag</a></code> | Add a tag to the DNS Forwarding Ruleset. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsForwardingRuleset.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -26413,6 +27492,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsForwardingRuleset.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsForwardingRuleset.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsForwardingRuleset.addAccess"></a>
 
@@ -26930,6 +28030,7 @@ Configuration properties for the DNS Forwarding Ruleset.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRuleset.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRuleset.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRuleset.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRuleset.addTag">addTag</a></code> | Add a tag to the DNS Forwarding Ruleset. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRuleset.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -26946,6 +28047,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRuleset.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRuleset.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRuleset.addAccess"></a>
 
@@ -27457,6 +28579,7 @@ Configuration properties for the Virtual Network Link.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsForwardingRulesetVirtualNetworkLink.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsForwardingRulesetVirtualNetworkLink.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsForwardingRulesetVirtualNetworkLink.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsForwardingRulesetVirtualNetworkLink.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsForwardingRulesetVirtualNetworkLink.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -27472,6 +28595,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsForwardingRulesetVirtualNetworkLink.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsForwardingRulesetVirtualNetworkLink.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsForwardingRulesetVirtualNetworkLink.addAccess"></a>
 
@@ -27963,6 +29107,7 @@ Configuration properties for the Virtual Network Link.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRulesetVirtualNetworkLink.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRulesetVirtualNetworkLink.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRulesetVirtualNetworkLink.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRulesetVirtualNetworkLink.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRulesetVirtualNetworkLink.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -27978,6 +29123,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRulesetVirtualNetworkLink.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRulesetVirtualNetworkLink.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.DnsForwardingRulesetVirtualNetworkLink.addAccess"></a>
 
@@ -28468,6 +29634,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsMxRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsMxRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsMxRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsMxRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsMxRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -28483,6 +29650,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsMxRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsMxRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsMxRecord.addAccess"></a>
 
@@ -28947,6 +30135,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsMxRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsMxRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsMxRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsMxRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsMxRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -28962,6 +30151,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsMxRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsMxRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsMxRecord.addAccess"></a>
 
@@ -29427,6 +30637,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsNsRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsNsRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsNsRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsNsRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsNsRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -29442,6 +30653,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsNsRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsNsRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsNsRecord.addAccess"></a>
 
@@ -29907,6 +31139,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsNsRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsNsRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsNsRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsNsRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsNsRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -29922,6 +31155,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsNsRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsNsRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsNsRecord.addAccess"></a>
 
@@ -30385,6 +31639,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsPtrRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsPtrRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsPtrRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsPtrRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsPtrRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -30400,6 +31655,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsPtrRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsPtrRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsPtrRecord.addAccess"></a>
 
@@ -30863,6 +32139,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsPtrRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsPtrRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsPtrRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsPtrRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsPtrRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -30878,6 +32155,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsPtrRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsPtrRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsPtrRecord.addAccess"></a>
 
@@ -31354,6 +32652,7 @@ Configuration properties for the DNS Resolver.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolver.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolver.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolver.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolver.addTag">addTag</a></code> | Add a tag to the DNS Resolver. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolver.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -31370,6 +32669,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsResolver.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsResolver.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsResolver.addAccess"></a>
 
@@ -31927,6 +33247,7 @@ Configuration properties for the DNS Resolver.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolver.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolver.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolver.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolver.addTag">addTag</a></code> | Add a tag to the DNS Resolver. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolver.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -31943,6 +33264,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolver.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolver.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolver.addAccess"></a>
 
@@ -32499,6 +33841,7 @@ Configuration properties for the Inbound Endpoint.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolverInboundEndpoint.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolverInboundEndpoint.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolverInboundEndpoint.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolverInboundEndpoint.addTag">addTag</a></code> | Add a tag to the Inbound Endpoint. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolverInboundEndpoint.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -32515,6 +33858,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsResolverInboundEndpoint.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsResolverInboundEndpoint.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsResolverInboundEndpoint.addAccess"></a>
 
@@ -33040,6 +34404,7 @@ Configuration properties for the Inbound Endpoint.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverInboundEndpoint.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverInboundEndpoint.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverInboundEndpoint.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverInboundEndpoint.addTag">addTag</a></code> | Add a tag to the Inbound Endpoint. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverInboundEndpoint.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -33056,6 +34421,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverInboundEndpoint.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverInboundEndpoint.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverInboundEndpoint.addAccess"></a>
 
@@ -33578,6 +34964,7 @@ Configuration properties for the Outbound Endpoint.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolverOutboundEndpoint.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolverOutboundEndpoint.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolverOutboundEndpoint.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolverOutboundEndpoint.addTag">addTag</a></code> | Add a tag to the Outbound Endpoint. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsResolverOutboundEndpoint.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -33594,6 +34981,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsResolverOutboundEndpoint.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsResolverOutboundEndpoint.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsResolverOutboundEndpoint.addAccess"></a>
 
@@ -34127,6 +35535,7 @@ Configuration properties for the Outbound Endpoint.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverOutboundEndpoint.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverOutboundEndpoint.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverOutboundEndpoint.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverOutboundEndpoint.addTag">addTag</a></code> | Add a tag to the Outbound Endpoint. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverOutboundEndpoint.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -34143,6 +35552,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverOutboundEndpoint.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverOutboundEndpoint.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnsresolver.DnsResolverOutboundEndpoint.addAccess"></a>
 
@@ -34672,6 +36102,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsSoaRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsSoaRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsSoaRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsSoaRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsSoaRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -34687,6 +36118,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsSoaRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsSoaRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsSoaRecord.addAccess"></a>
 
@@ -35155,6 +36607,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSoaRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSoaRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSoaRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSoaRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSoaRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -35170,6 +36623,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSoaRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSoaRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSoaRecord.addAccess"></a>
 
@@ -35634,6 +37108,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsSrvRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsSrvRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsSrvRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsSrvRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsSrvRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -35649,6 +37124,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsSrvRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsSrvRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsSrvRecord.addAccess"></a>
 
@@ -36113,6 +37609,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSrvRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSrvRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSrvRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSrvRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSrvRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -36128,6 +37625,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSrvRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSrvRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsSrvRecord.addAccess"></a>
 
@@ -36591,6 +38109,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsTxtRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsTxtRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsTxtRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsTxtRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsTxtRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -36606,6 +38125,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsTxtRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsTxtRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsTxtRecord.addAccess"></a>
 
@@ -37069,6 +38609,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsTxtRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsTxtRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsTxtRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsTxtRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsTxtRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -37084,6 +38625,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsTxtRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsTxtRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsTxtRecord.addAccess"></a>
 
@@ -37553,6 +39115,7 @@ Configuration properties for the DNS Zone.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsZone.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.DnsZone.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsZone.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsZone.addTag">addTag</a></code> | Add a tag to the DNS Zone. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.DnsZone.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -37569,6 +39132,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.DnsZone.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.DnsZone.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.DnsZone.addAccess"></a>
 
@@ -38099,6 +39683,7 @@ Configuration properties for the DNS Zone.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsZone.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsZone.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsZone.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsZone.addTag">addTag</a></code> | Add a tag to the DNS Zone. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnszone.DnsZone.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -38115,6 +39700,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsZone.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsZone.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnszone.DnsZone.addAccess"></a>
 
@@ -38620,6 +40226,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.EventGridEventSubscription.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -38635,6 +40242,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.EventGridEventSubscription.addAccess"></a>
 
@@ -39055,6 +40683,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -39070,6 +40699,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_eventgrideventsubscription.EventGridEventSubscription.addAccess"></a>
 
@@ -39490,6 +41140,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.EventGridSystemTopic.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -39505,6 +41156,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.EventGridSystemTopic.addAccess"></a>
 
@@ -39947,6 +41619,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -39962,6 +41635,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_eventgridsystemtopic.EventGridSystemTopic.addAccess"></a>
 
@@ -40428,6 +42122,7 @@ Configuration properties for the Event Hub.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Eventhub.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -40443,6 +42138,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.Eventhub.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.Eventhub.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.Eventhub.addAccess"></a>
 
@@ -40889,6 +42605,7 @@ Configuration properties for the Event Hub.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -40904,6 +42621,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_eventhub.Eventhub.addAccess"></a>
 
@@ -41352,6 +43090,7 @@ Configuration properties for the Event Hubs Namespace.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.EventhubNamespace.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -41367,6 +43106,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.EventhubNamespace.addAccess"></a>
 
@@ -41815,6 +43575,7 @@ Configuration properties for the Event Hubs Namespace.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -41830,6 +43591,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_eventhub.EventhubNamespace.addAccess"></a>
 
@@ -42273,6 +44055,7 @@ Configuration properties for the Forwarding Rule.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ForwardingRule.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ForwardingRule.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ForwardingRule.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ForwardingRule.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ForwardingRule.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -42288,6 +44071,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.ForwardingRule.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.ForwardingRule.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.ForwardingRule.addAccess"></a>
 
@@ -42792,6 +44596,7 @@ Configuration properties for the Forwarding Rule.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.ForwardingRule.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.ForwardingRule.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.ForwardingRule.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.ForwardingRule.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.ForwardingRule.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -42807,6 +44612,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.ForwardingRule.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.ForwardingRule.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_dnsforwardingruleset.ForwardingRule.addAccess"></a>
 
@@ -43316,6 +45142,7 @@ Configuration properties for the Function App.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.FunctionApp.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.FunctionApp.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.FunctionApp.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.FunctionApp.addTag">addTag</a></code> | Add a tag to the Function App. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.FunctionApp.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -43332,6 +45159,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.FunctionApp.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.FunctionApp.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.FunctionApp.addAccess"></a>
 
@@ -43824,6 +45672,7 @@ Configuration properties for the Function App.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionApp.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionApp.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionApp.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionApp.addTag">addTag</a></code> | Add a tag to the Function App. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionApp.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -43840,6 +45689,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionApp.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionApp.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_functionapp.FunctionApp.addAccess"></a>
 
@@ -44329,6 +46199,7 @@ Configuration properties for the IPAM Pool.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.IpamPool.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.IpamPool.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.IpamPool.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.IpamPool.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.IpamPool.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -44344,6 +46215,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.IpamPool.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.IpamPool.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.IpamPool.addAccess"></a>
 
@@ -44834,6 +46726,7 @@ Configuration properties for the IPAM Pool.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPool.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPool.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPool.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPool.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPool.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -44849,6 +46742,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPool.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPool.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPool.addAccess"></a>
 
@@ -45338,6 +47252,7 @@ Configuration properties for the Static CIDR.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.IpamPoolStaticCidr.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.IpamPoolStaticCidr.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.IpamPoolStaticCidr.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.IpamPoolStaticCidr.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.IpamPoolStaticCidr.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -45353,6 +47268,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.IpamPoolStaticCidr.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.IpamPoolStaticCidr.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.IpamPoolStaticCidr.addAccess"></a>
 
@@ -45868,6 +47804,7 @@ Configuration properties for the Static CIDR.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPoolStaticCidr.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPoolStaticCidr.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPoolStaticCidr.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPoolStaticCidr.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPoolStaticCidr.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -45883,6 +47820,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPoolStaticCidr.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPoolStaticCidr.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.IpamPoolStaticCidr.addAccess"></a>
 
@@ -46406,6 +48364,7 @@ Configuration properties for the Key Vault.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.KeyVault.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.KeyVault.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.KeyVault.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.KeyVault.addTag">addTag</a></code> | Add a tag to the Key Vault. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.KeyVault.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -46422,6 +48381,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.KeyVault.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.KeyVault.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.KeyVault.addAccess"></a>
 
@@ -46925,6 +48905,7 @@ Configuration properties for the Key Vault.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.KeyVault.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.KeyVault.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.KeyVault.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.KeyVault.addTag">addTag</a></code> | Add a tag to the Key Vault. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_keyvault.KeyVault.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -46941,6 +48922,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_keyvault.KeyVault.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_keyvault.KeyVault.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_keyvault.KeyVault.addAccess"></a>
 
@@ -47444,6 +49446,7 @@ Configuration properties for the Log Analytics Workspace.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -47459,6 +49462,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.LogAnalyticsWorkspace.addAccess"></a>
 
@@ -47933,6 +49957,7 @@ Configuration properties for the Log Analytics Workspace.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -47948,6 +49973,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_loganalyticsworkspace.LogAnalyticsWorkspace.addAccess"></a>
 
@@ -48430,6 +50476,7 @@ Configuration properties for the Metric Alert.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.addTag">addTag</a></code> | Add a tag to the Metric Alert Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.MetricAlert.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -48446,6 +50493,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.MetricAlert.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.MetricAlert.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.MetricAlert.addAccess"></a>
 
@@ -48906,6 +50974,7 @@ Configuration properties for the Metric Alert.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.addTag">addTag</a></code> | Add a tag to the Metric Alert Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -48922,6 +50991,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_metricalert.MetricAlert.addAccess"></a>
 
@@ -49365,6 +51455,7 @@ Configuration properties for the Network Group.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkGroup.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkGroup.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkGroup.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -49380,6 +51471,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.NetworkGroup.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.NetworkGroup.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.NetworkGroup.addAccess"></a>
 
@@ -49858,6 +51970,7 @@ Configuration properties for the Network Group.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroup.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroup.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroup.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -49873,6 +51986,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroup.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroup.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroup.addAccess"></a>
 
@@ -50350,6 +52484,7 @@ Configuration properties for the Static Member.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkGroupStaticMember.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkGroupStaticMember.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkGroupStaticMember.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkGroupStaticMember.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkGroupStaticMember.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -50365,6 +52500,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.NetworkGroupStaticMember.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.NetworkGroupStaticMember.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.NetworkGroupStaticMember.addAccess"></a>
 
@@ -50855,6 +53011,7 @@ Configuration properties for the Static Member.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroupStaticMember.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroupStaticMember.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroupStaticMember.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroupStaticMember.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroupStaticMember.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -50870,6 +53027,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroupStaticMember.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroupStaticMember.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.NetworkGroupStaticMember.addAccess"></a>
 
@@ -51367,6 +53545,7 @@ Configuration properties for the Network Interface.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.addTag">addTag</a></code> | Add a tag to the Network Interface. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkInterface.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -51383,6 +53562,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.NetworkInterface.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.NetworkInterface.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.NetworkInterface.addAccess"></a>
 
@@ -51865,6 +54065,7 @@ Configuration properties for the Network Interface.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addTag">addTag</a></code> | Add a tag to the Network Interface. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -51881,6 +54082,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_networkinterface.NetworkInterface.addAccess"></a>
 
@@ -52357,6 +54579,7 @@ Configuration properties for the Network Security Group.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addTag">addTag</a></code> | Add a tag to the Network Security Group Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -52373,6 +54596,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.NetworkSecurityGroup.addAccess"></a>
 
@@ -52875,6 +55119,7 @@ Configuration properties for the Network Security Group.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addTag">addTag</a></code> | Add a tag to the Network Security Group Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -52891,6 +55136,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_networksecuritygroup.NetworkSecurityGroup.addAccess"></a>
 
@@ -53404,6 +55670,7 @@ Configuration properties for the Network Watcher.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.NetworkWatcher.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -53419,6 +55686,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.NetworkWatcher.addAccess"></a>
 
@@ -53903,6 +56191,7 @@ Configuration properties for the Network Watcher.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -53918,6 +56207,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_networkwatcher.NetworkWatcher.addAccess"></a>
 
@@ -54395,6 +56705,7 @@ Configuration properties for the Policy Assignment.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PolicyAssignment.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicyAssignment.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PolicyAssignment.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PolicyAssignment.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PolicyAssignment.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -54410,6 +56721,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PolicyAssignment.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PolicyAssignment.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PolicyAssignment.addAccess"></a>
 
@@ -54896,6 +57228,7 @@ Configuration properties for the Policy Assignment.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_policyassignment.PolicyAssignment.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policyassignment.PolicyAssignment.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_policyassignment.PolicyAssignment.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_policyassignment.PolicyAssignment.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_policyassignment.PolicyAssignment.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -54911,6 +57244,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_policyassignment.PolicyAssignment.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_policyassignment.PolicyAssignment.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_policyassignment.PolicyAssignment.addAccess"></a>
 
@@ -55405,6 +57759,7 @@ Configuration properties for the Policy Definition.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinition.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinition.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinition.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinition.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PolicyDefinition.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -55420,6 +57775,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PolicyDefinition.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PolicyDefinition.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PolicyDefinition.addAccess"></a>
 
@@ -55901,6 +58277,7 @@ Configuration properties for the Policy Definition.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_policydefinition.PolicyDefinition.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policydefinition.PolicyDefinition.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_policydefinition.PolicyDefinition.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_policydefinition.PolicyDefinition.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_policydefinition.PolicyDefinition.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -55916,6 +58293,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_policydefinition.PolicyDefinition.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_policydefinition.PolicyDefinition.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_policydefinition.PolicyDefinition.addAccess"></a>
 
@@ -56393,6 +58791,7 @@ Configuration properties for the Policy Set Definition.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PolicySetDefinition.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -56408,6 +58807,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PolicySetDefinition.addAccess"></a>
 
@@ -56922,6 +59342,7 @@ Configuration properties for the Policy Set Definition.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -56937,6 +59358,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_policysetdefinition.PolicySetDefinition.addAccess"></a>
 
@@ -57441,6 +59883,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsAaaaRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsAaaaRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsAaaaRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsAaaaRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsAaaaRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -57456,6 +59899,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PrivateDnsAaaaRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PrivateDnsAaaaRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PrivateDnsAaaaRecord.addAccess"></a>
 
@@ -57919,6 +60383,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsAaaaRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsAaaaRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsAaaaRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsAaaaRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsAaaaRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -57934,6 +60399,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsAaaaRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsAaaaRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsAaaaRecord.addAccess"></a>
 
@@ -58398,6 +60884,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsARecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsARecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsARecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsARecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsARecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -58413,6 +60900,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PrivateDnsARecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PrivateDnsARecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PrivateDnsARecord.addAccess"></a>
 
@@ -58877,6 +61385,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsARecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsARecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsARecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsARecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsARecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -58892,6 +61401,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsARecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsARecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsARecord.addAccess"></a>
 
@@ -59354,6 +61884,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsCnameRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsCnameRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsCnameRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsCnameRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsCnameRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -59369,6 +61900,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PrivateDnsCnameRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PrivateDnsCnameRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PrivateDnsCnameRecord.addAccess"></a>
 
@@ -59831,6 +62383,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsCnameRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsCnameRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsCnameRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsCnameRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsCnameRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -59846,6 +62399,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsCnameRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsCnameRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsCnameRecord.addAccess"></a>
 
@@ -60310,6 +62884,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsMxRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsMxRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsMxRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsMxRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsMxRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -60325,6 +62900,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PrivateDnsMxRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PrivateDnsMxRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PrivateDnsMxRecord.addAccess"></a>
 
@@ -60789,6 +63385,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsMxRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsMxRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsMxRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsMxRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsMxRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -60804,6 +63401,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsMxRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsMxRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsMxRecord.addAccess"></a>
 
@@ -61267,6 +63885,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsPtrRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsPtrRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsPtrRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsPtrRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsPtrRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -61282,6 +63901,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PrivateDnsPtrRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PrivateDnsPtrRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PrivateDnsPtrRecord.addAccess"></a>
 
@@ -61745,6 +64385,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsPtrRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsPtrRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsPtrRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsPtrRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsPtrRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -61760,6 +64401,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsPtrRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsPtrRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsPtrRecord.addAccess"></a>
 
@@ -62228,6 +64890,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsSoaRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsSoaRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsSoaRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsSoaRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsSoaRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -62243,6 +64906,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PrivateDnsSoaRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PrivateDnsSoaRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PrivateDnsSoaRecord.addAccess"></a>
 
@@ -62711,6 +65395,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSoaRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSoaRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSoaRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSoaRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSoaRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -62726,6 +65411,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSoaRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSoaRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSoaRecord.addAccess"></a>
 
@@ -63190,6 +65896,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsSrvRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsSrvRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsSrvRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsSrvRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsSrvRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -63205,6 +65912,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PrivateDnsSrvRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PrivateDnsSrvRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PrivateDnsSrvRecord.addAccess"></a>
 
@@ -63669,6 +66397,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSrvRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSrvRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSrvRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSrvRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSrvRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -63684,6 +66413,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSrvRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSrvRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsSrvRecord.addAccess"></a>
 
@@ -64147,6 +66897,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsTxtRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsTxtRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsTxtRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsTxtRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsTxtRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -64162,6 +66913,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PrivateDnsTxtRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PrivateDnsTxtRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PrivateDnsTxtRecord.addAccess"></a>
 
@@ -64625,6 +67397,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsTxtRecord.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsTxtRecord.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsTxtRecord.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsTxtRecord.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsTxtRecord.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -64640,6 +67413,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsTxtRecord.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsTxtRecord.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsTxtRecord.addAccess"></a>
 
@@ -65109,6 +67903,7 @@ Configuration properties for the Private DNS Zone.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsZone.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsZone.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsZone.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsZone.addTag">addTag</a></code> | Add a tag to the Private DNS Zone. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsZone.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -65125,6 +67920,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PrivateDnsZone.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PrivateDnsZone.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PrivateDnsZone.addAccess"></a>
 
@@ -65738,6 +68554,7 @@ Configuration properties for the Private DNS Zone.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsZone.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsZone.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsZone.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsZone.addTag">addTag</a></code> | Add a tag to the Private DNS Zone. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsZone.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -65754,6 +68571,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsZone.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsZone.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_privatednszone.PrivateDnsZone.addAccess"></a>
 
@@ -66364,6 +69202,7 @@ Configuration properties for the Virtual Network Link.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsZoneLink.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsZoneLink.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsZoneLink.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsZoneLink.addTag">addTag</a></code> | Add a tag to the Virtual Network Link. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PrivateDnsZoneLink.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -66380,6 +69219,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PrivateDnsZoneLink.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PrivateDnsZoneLink.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PrivateDnsZoneLink.addAccess"></a>
 
@@ -66922,6 +69782,7 @@ Configuration properties for the Virtual Network Link.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszonelink.PrivateDnsZoneLink.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszonelink.PrivateDnsZoneLink.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszonelink.PrivateDnsZoneLink.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszonelink.PrivateDnsZoneLink.addTag">addTag</a></code> | Add a tag to the Virtual Network Link. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_privatednszonelink.PrivateDnsZoneLink.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -66938,6 +69799,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_privatednszonelink.PrivateDnsZoneLink.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_privatednszonelink.PrivateDnsZoneLink.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_privatednszonelink.PrivateDnsZoneLink.addAccess"></a>
 
@@ -67482,6 +70364,7 @@ Configuration properties for the Public IP Address.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.addTag">addTag</a></code> | Add a tag to the Public IP Address Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.PublicIPAddress.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -67498,6 +70381,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.PublicIPAddress.addAccess"></a>
 
@@ -67992,6 +70896,7 @@ Configuration properties for the Public IP Address.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addTag">addTag</a></code> | Add a tag to the Public IP Address Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -68008,6 +70913,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_publicipaddress.PublicIPAddress.addAccess"></a>
 
@@ -68481,6 +71407,7 @@ Must be unique amongst siblings in the same scope
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Resource.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Resource.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
@@ -68542,6 +71469,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.Resource.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.Resource.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addOverride` <a name="addOverride" id="@microsoft/terraform-cdk-constructs.Resource.addOverride"></a>
 
@@ -69976,6 +72924,7 @@ Must be unique amongst siblings in the same scope
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.Resource.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
@@ -70037,6 +72986,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addOverride` <a name="addOverride" id="@microsoft/terraform-cdk-constructs.core_azure.Resource.addOverride"></a>
 
@@ -71471,6 +74441,7 @@ Must be unique amongst siblings in the same scope
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceAction.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
@@ -71516,6 +74487,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.ResourceAction.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.ResourceAction.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addOverride` <a name="addOverride" id="@microsoft/terraform-cdk-constructs.ResourceAction.addOverride"></a>
 
@@ -72551,6 +75543,7 @@ Must be unique amongst siblings in the same scope
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
@@ -72596,6 +75589,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addOverride` <a name="addOverride" id="@microsoft/terraform-cdk-constructs.core_azure.ResourceAction.addOverride"></a>
 
@@ -73656,6 +76670,7 @@ Configuration properties for the Resource Group.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroup.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroup.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroup.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.ResourceGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -73671,6 +76686,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.ResourceGroup.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.ResourceGroup.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.ResourceGroup.addAccess"></a>
 
@@ -74156,6 +77192,7 @@ Configuration properties for the Resource Group.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -74171,6 +77208,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_resourcegroup.ResourceGroup.addAccess"></a>
 
@@ -74658,6 +77716,7 @@ Configuration properties for the Role Assignment.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.RoleAssignment.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.RoleAssignment.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.RoleAssignment.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.RoleAssignment.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.RoleAssignment.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -74673,6 +77732,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.RoleAssignment.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.RoleAssignment.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.RoleAssignment.addAccess"></a>
 
@@ -75177,6 +78257,7 @@ Configuration properties for the Role Assignment.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_roleassignment.RoleAssignment.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_roleassignment.RoleAssignment.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_roleassignment.RoleAssignment.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_roleassignment.RoleAssignment.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_roleassignment.RoleAssignment.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -75192,6 +78273,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_roleassignment.RoleAssignment.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_roleassignment.RoleAssignment.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_roleassignment.RoleAssignment.addAccess"></a>
 
@@ -75686,6 +78788,7 @@ Configuration properties for the Role Definition.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.RoleDefinition.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.RoleDefinition.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.RoleDefinition.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.RoleDefinition.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.RoleDefinition.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -75701,6 +78804,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.RoleDefinition.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.RoleDefinition.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.RoleDefinition.addAccess"></a>
 
@@ -76169,6 +79293,7 @@ Configuration properties for the Role Definition.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_roledefinition.RoleDefinition.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_roledefinition.RoleDefinition.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_roledefinition.RoleDefinition.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_roledefinition.RoleDefinition.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_roledefinition.RoleDefinition.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -76184,6 +79309,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_roledefinition.RoleDefinition.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_roledefinition.RoleDefinition.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_roledefinition.RoleDefinition.addAccess"></a>
 
@@ -76659,6 +79805,7 @@ Configuration properties for the Security Admin Configuration.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminConfiguration.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminConfiguration.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminConfiguration.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminConfiguration.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminConfiguration.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -76674,6 +79821,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.SecurityAdminConfiguration.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.SecurityAdminConfiguration.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.SecurityAdminConfiguration.addAccess"></a>
 
@@ -77158,6 +80326,7 @@ Configuration properties for the Security Admin Configuration.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminConfiguration.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminConfiguration.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminConfiguration.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminConfiguration.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminConfiguration.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -77173,6 +80342,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminConfiguration.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminConfiguration.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminConfiguration.addAccess"></a>
 
@@ -77661,6 +80851,7 @@ Configuration properties for the Security Admin Rule.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminRule.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminRule.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminRule.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminRule.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminRule.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -77676,6 +80867,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.SecurityAdminRule.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.SecurityAdminRule.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.SecurityAdminRule.addAccess"></a>
 
@@ -78190,6 +81402,7 @@ Configuration properties for the Security Admin Rule.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRule.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRule.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRule.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRule.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRule.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -78205,6 +81418,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRule.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRule.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRule.addAccess"></a>
 
@@ -78712,6 +81946,7 @@ Configuration properties for the Rule Collection.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminRuleCollection.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminRuleCollection.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminRuleCollection.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminRuleCollection.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SecurityAdminRuleCollection.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -78727,6 +81962,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.SecurityAdminRuleCollection.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.SecurityAdminRuleCollection.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.SecurityAdminRuleCollection.addAccess"></a>
 
@@ -79208,6 +82464,7 @@ Configuration properties for the Rule Collection.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRuleCollection.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRuleCollection.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRuleCollection.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRuleCollection.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRuleCollection.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -79223,6 +82480,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRuleCollection.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRuleCollection.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.SecurityAdminRuleCollection.addAccess"></a>
 
@@ -79698,6 +82976,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SreAgent.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.SreAgent.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SreAgent.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SreAgent.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.SreAgent.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -79715,6 +82994,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.SreAgent.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.SreAgent.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.SreAgent.addAccess"></a>
 
@@ -80283,6 +83583,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_sreagent.SreAgent.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_sreagent.SreAgent.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_sreagent.SreAgent.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_sreagent.SreAgent.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_sreagent.SreAgent.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -80300,6 +83601,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_sreagent.SreAgent.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_sreagent.SreAgent.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_sreagent.SreAgent.addAccess"></a>
 
@@ -80881,6 +84203,7 @@ Configuration properties for the Static Web App.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StaticWebApp.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StaticWebApp.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StaticWebApp.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StaticWebApp.addTag">addTag</a></code> | Add a tag to the Static Web App Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StaticWebApp.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -80897,6 +84220,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.StaticWebApp.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.StaticWebApp.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.StaticWebApp.addAccess"></a>
 
@@ -81409,6 +84753,7 @@ Configuration properties for the Static Web App.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_staticwebapp.StaticWebApp.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_staticwebapp.StaticWebApp.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_staticwebapp.StaticWebApp.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_staticwebapp.StaticWebApp.addTag">addTag</a></code> | Add a tag to the Static Web App Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_staticwebapp.StaticWebApp.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -81425,6 +84770,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_staticwebapp.StaticWebApp.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_staticwebapp.StaticWebApp.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_staticwebapp.StaticWebApp.addAccess"></a>
 
@@ -81928,6 +85294,7 @@ Configuration properties for the Storage Account.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccount.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccount.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccount.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccount.addTag">addTag</a></code> | Add a tag to the Storage Account. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageAccount.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -81944,6 +85311,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.StorageAccount.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.StorageAccount.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.StorageAccount.addAccess"></a>
 
@@ -82528,6 +85916,7 @@ Configuration properties for the Storage Account.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.addTag">addTag</a></code> | Add a tag to the Storage Account. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -82544,6 +85933,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_storageaccount.StorageAccount.addAccess"></a>
 
@@ -83106,6 +86516,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.StorageBlobContainer.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -83121,6 +86532,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.StorageBlobContainer.addAccess"></a>
 
@@ -83541,6 +86973,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -83556,6 +86989,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_storageblobcontainer.StorageBlobContainer.addAccess"></a>
 
@@ -84003,6 +87457,7 @@ Configuration properties for the Subnet.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.Subnet.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -84018,6 +87473,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.Subnet.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.Subnet.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.Subnet.addAccess"></a>
 
@@ -84493,6 +87969,7 @@ Configuration properties for the Subnet.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -84508,6 +87985,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_subnet.Subnet.addAccess"></a>
 
@@ -84959,6 +88457,7 @@ Must be unique amongst siblings in the same scope
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UpdateResource.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
@@ -85009,6 +88508,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.UpdateResource.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.UpdateResource.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addOverride` <a name="addOverride" id="@microsoft/terraform-cdk-constructs.UpdateResource.addOverride"></a>
 
@@ -86151,6 +89671,7 @@ Must be unique amongst siblings in the same scope
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.addOverride">addOverride</a></code> | *No description.* |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.overrideLogicalId">overrideLogicalId</a></code> | Overrides the auto-generated logical ID with a specific ID. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.resetOverrideLogicalId">resetOverrideLogicalId</a></code> | Resets a previously passed logical Id to use the auto-generated logical id again. |
@@ -86201,6 +89722,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addOverride` <a name="addOverride" id="@microsoft/terraform-cdk-constructs.core_azure.UpdateResource.addOverride"></a>
 
@@ -87340,6 +90882,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.UserAssignedIdentity.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -87355,6 +90898,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.UserAssignedIdentity.addAccess"></a>
 
@@ -87858,6 +91422,7 @@ Child classes no longer need to implement this property.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.addTag">addTag</a></code> | Adds a tag to this resource. The tag will be included in the Azure resource. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -87873,6 +91438,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_userassignedidentity.UserAssignedIdentity.addAccess"></a>
 
@@ -88433,6 +92019,7 @@ Configuration properties for the Virtual Machine.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.addTag">addTag</a></code> | Add a tag to the Virtual Machine Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachine.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -88449,6 +92036,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.VirtualMachine.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.VirtualMachine.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.VirtualMachine.addAccess"></a>
 
@@ -89070,6 +92678,7 @@ Configuration properties for the Virtual Machine.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addTag">addTag</a></code> | Add a tag to the Virtual Machine Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -89086,6 +92695,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualmachine.VirtualMachine.addAccess"></a>
 
@@ -89693,6 +93323,7 @@ Configuration properties for the Virtual Machine Scale Set.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addTag">addTag</a></code> | Add a tag to the Virtual Machine Scale Set Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -89709,6 +93340,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.VirtualMachineScaleSet.addAccess"></a>
 
@@ -90503,6 +94155,7 @@ Configuration properties for the Virtual Machine Scale Set.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addTag">addTag</a></code> | Add a tag to the Virtual Machine Scale Set Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -90519,6 +94172,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_vmss.VirtualMachineScaleSet.addAccess"></a>
 
@@ -91293,6 +94967,7 @@ Configuration properties for the Virtual Network.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.addTag">addTag</a></code> | Add a tag to the Virtual Network Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetwork.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -91309,6 +94984,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.VirtualNetwork.addAccess"></a>
 
@@ -91813,6 +95509,7 @@ Configuration properties for the Virtual Network.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addTag">addTag</a></code> | Add a tag to the Virtual Network Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -91829,6 +95526,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualnetwork.VirtualNetwork.addAccess"></a>
 
@@ -92353,6 +96071,7 @@ Configuration properties for the Virtual Network Gateway.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkGateway.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkGateway.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkGateway.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkGateway.addTag">addTag</a></code> | Add a tag to the Virtual Network Gateway Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkGateway.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -92369,6 +96088,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.VirtualNetworkGateway.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.VirtualNetworkGateway.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.VirtualNetworkGateway.addAccess"></a>
 
@@ -92869,6 +96609,7 @@ Configuration properties for the Virtual Network Gateway.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkgateway.VirtualNetworkGateway.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkgateway.VirtualNetworkGateway.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkgateway.VirtualNetworkGateway.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkgateway.VirtualNetworkGateway.addTag">addTag</a></code> | Add a tag to the Virtual Network Gateway Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkgateway.VirtualNetworkGateway.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -92885,6 +96626,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkgateway.VirtualNetworkGateway.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkgateway.VirtualNetworkGateway.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkgateway.VirtualNetworkGateway.addAccess"></a>
 
@@ -93384,6 +97146,7 @@ Configuration properties for the Virtual Network Gateway Connection.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkGatewayConnection.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkGatewayConnection.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkGatewayConnection.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkGatewayConnection.addTag">addTag</a></code> | Add a tag to the Virtual Network Gateway Connection Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkGatewayConnection.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -93400,6 +97163,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.VirtualNetworkGatewayConnection.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.VirtualNetworkGatewayConnection.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.VirtualNetworkGatewayConnection.addAccess"></a>
 
@@ -93899,6 +97683,7 @@ Configuration properties for the Virtual Network Gateway Connection.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkgatewayconnection.VirtualNetworkGatewayConnection.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkgatewayconnection.VirtualNetworkGatewayConnection.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkgatewayconnection.VirtualNetworkGatewayConnection.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkgatewayconnection.VirtualNetworkGatewayConnection.addTag">addTag</a></code> | Add a tag to the Virtual Network Gateway Connection Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkgatewayconnection.VirtualNetworkGatewayConnection.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -93915,6 +97700,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkgatewayconnection.VirtualNetworkGatewayConnection.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkgatewayconnection.VirtualNetworkGatewayConnection.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkgatewayconnection.VirtualNetworkGatewayConnection.addAccess"></a>
 
@@ -94396,6 +98202,7 @@ Configuration properties for the Virtual Network Manager.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkManager.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkManager.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkManager.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkManager.addTag">addTag</a></code> | Add a tag to the Virtual Network Manager Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.VirtualNetworkManager.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -94416,6 +98223,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.VirtualNetworkManager.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.VirtualNetworkManager.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.VirtualNetworkManager.addAccess"></a>
 
@@ -95073,6 +98901,7 @@ Configuration properties for the Virtual Network Manager.
 | **Name** | **Description** |
 | --- | --- |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.VirtualNetworkManager.toString">toString</a></code> | Returns a string representation of this construct. |
+| <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.VirtualNetworkManager.with">with</a></code> | Applies one or more mixins to this construct. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.VirtualNetworkManager.addAccess">addAccess</a></code> | Adds an access role assignment for a specified Azure AD object. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.VirtualNetworkManager.addTag">addTag</a></code> | Add a tag to the Virtual Network Manager Note: This modifies the construct props but requires a new deployment to take effect. |
 | <code><a href="#@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.VirtualNetworkManager.analyzeMigrationTo">analyzeMigrationTo</a></code> | Analyzes migration from current version to a target version. |
@@ -95093,6 +98922,27 @@ public toString(): string
 ```
 
 Returns a string representation of this construct.
+
+##### `with` <a name="with" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.VirtualNetworkManager.with"></a>
+
+```typescript
+public with(mixins: ...IMixin[]): IConstruct
+```
+
+Applies one or more mixins to this construct.
+
+Mixins are applied in order. The list of constructs is captured at the
+start of the call, so constructs added by a mixin will not be visited.
+Use multiple `with()` calls if subsequent mixins should apply to added
+constructs.
+
+###### `mixins`<sup>Required</sup> <a name="mixins" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.VirtualNetworkManager.with.parameter.mixins"></a>
+
+- *Type:* ...constructs.IMixin[]
+
+The mixins to apply.
+
+---
 
 ##### `addAccess` <a name="addAccess" id="@microsoft/terraform-cdk-constructs.azure_virtualnetworkmanager.VirtualNetworkManager.addAccess"></a>
 
