@@ -5,11 +5,14 @@
  * Azure Blob Storage for use in Function Apps and other Azure services.
  */
 
+import * as fs from "fs";
 import * as path from "path";
-import { FileAssetPackaging, TerraformAsset, AssetType } from "cdktn";
+import { AssetPackaging } from "cdktn";
 import { Construct } from "constructs";
-import { AssetStaging } from "./assets";
+import { AssetHashType, AssetStaging } from "./assets";
 import { Resource } from "./azapi/providers-azapi/resource";
+import { IAssetBundler } from "./bundling";
+import { prepareScratchDir, scratchAssetPath } from "./scratch-staging";
 import {
   uploadBlobWithCli,
   BlobUploadResult,
@@ -58,11 +61,13 @@ export interface BlobAssetOptions {
   readonly extraHash?: string;
 
   /**
-   * Bundle the asset by executing a command in a Docker container.
+   * A bundler that builds the source into an artifact before staging, e.g. a
+   * `DockerBundler` from `@cdktn/bundler-docker` or a `LocalBundler` from
+   * `@cdktn/bundler-local`.
    *
    * @default - uploaded as-is
    */
-  readonly bundling?: any;
+  readonly bundler?: IAssetBundler;
 
   /**
    * Specify a custom hash for this asset.
@@ -76,7 +81,7 @@ export interface BlobAssetOptions {
    *
    * @default - AssetHashType.SOURCE
    */
-  readonly assetHashType?: any;
+  readonly assetHashType?: AssetHashType;
 }
 
 /**
@@ -180,7 +185,7 @@ export class BlobAsset extends Construct {
   public readonly blobUrl: string;
 
   /**
-   * The path to the staged asset file
+   * The absolute path to the staged asset file
    */
   public readonly assetPath: string;
 
@@ -223,19 +228,15 @@ export class BlobAsset extends Construct {
   }
 
   /**
-   * The TerraformAsset for upload management
+   * The AssetStaging construct that hashes the source and, once staged,
+   * builds (via `bundler`) and packages its content.
    */
-  private _terraformAsset?: TerraformAsset;
-  public get terraformAsset(): TerraformAsset | undefined {
-    return this._terraformAsset;
-  }
+  private readonly staging: AssetStaging;
 
   /**
    * The result of the upload operation (if autoUpload was enabled)
    */
   private _uploadResult?: BlobUploadResult;
-
-  private readonly staging: AssetStaging;
 
   constructor(scope: Construct, id: string, props: BlobAssetProps) {
     super(scope, id);
@@ -255,26 +256,45 @@ export class BlobAsset extends Construct {
     this.storageAccountId = props.storageAccountId;
     this.storageAccountName = props.storageAccountName;
 
-    // Stage the asset (handles bundling, hashing, etc.)
+    const resolvedPath = path.resolve(props.path);
+
+    // A bundler that declares a file output stages as a file. Otherwise,
+    // this zips a directory source into one blob, and uploads a file
+    // source as-is.
+    const producesFile =
+      !!props.bundler?.outputFileName || fs.statSync(resolvedPath).isFile();
+    this.isFile = producesFile;
+    this.isZipArchive = !producesFile;
+
+    // This hashes the source. Under OUTPUT hashing, it also builds the
+    // artifact eagerly here. The actual package only happens once
+    // `stage()` runs below.
     this.staging = new AssetStaging(this, "Stage", {
-      sourcePath: path.resolve(props.path),
+      sourcePath: resolvedPath,
+      packaging: producesFile ? AssetPackaging.FILE : AssetPackaging.ZIP,
       exclude: props.exclude,
-      bundling: props.bundling,
+      bundler: props.bundler,
       assetHash: props.assetHash,
       assetHashType: props.assetHashType,
       extraHash: props.extraHash,
+      displayName: id,
     });
-
     this.assetHash = this.staging.assetHash;
-    this.assetPath = this.staging.absoluteStagedPath;
-    this.isFile = this.staging.packaging === FileAssetPackaging.FILE;
-    this.isZipArchive = this.staging.isArchive;
+    // This is the path the asset would be staged to, namespaced by its
+    // hash. No file exists here yet; `uploadStagedAsset` defers that step.
+    // Unless the caller uploads the asset, a `BlobAsset` with a
+    // `SOURCE`-hashed bundler creates no scratch directory and runs no
+    // bundler.
+    this.assetPath = scratchAssetPath(
+      "cdktn-blob-asset",
+      this.assetHash,
+      producesFile ? path.basename(resolvedPath) : "archive.zip",
+    );
 
     this.containerName = props.containerName ?? "function-packages";
 
     const prefix = props.blobPrefix ? `${props.blobPrefix}/` : "";
-    const extension =
-      this.isZipArchive || this.assetPath.endsWith(".zip") ? ".zip" : "";
+    const extension = this.isZipArchive ? ".zip" : "";
     this.blobName = `${prefix}asset.${this.assetHash}${extension}`;
 
     // Format: https://{storage-account}.blob.core.windows.net/{container}/{blob}
@@ -286,7 +306,7 @@ export class BlobAsset extends Construct {
     }
 
     if (props.autoUpload) {
-      this.setupAutoUpload(props);
+      this.uploadStagedAsset(props.silent ?? false);
     }
   }
 
@@ -314,22 +334,35 @@ export class BlobAsset extends Construct {
   }
 
   /**
-   * Sets up automatic upload of the asset to blob storage using Azure CLI
+   * Builds the asset, if a bundler is configured, packages it, then
+   * uploads it to blob storage using Azure CLI.
    *
-   * This method attempts to upload the asset during synthesis using Azure CLI.
-   * If Azure CLI is not available or not logged in, the upload is skipped with
-   * a warning, and users can upload manually later.
+   * Staging happens here, not unconditionally at construction time. A
+   * `BlobAsset` with a `SOURCE`-hashed bundler never triggers a build (e.g.
+   * a Docker run) unless the asset is actually uploaded. This does not
+   * apply to `AssetHashType.OUTPUT`: cdktn's `AssetStaging` always builds
+   * eagerly, in its own constructor, regardless of `autoUpload`.
+   *
+   * A build/staging failure degrades the same way an upload failure does:
+   * it logs (unless `silent`) and records the result on `uploadResult`,
+   * without throwing. This keeps a transient Docker/CLI/network issue from
+   * aborting the rest of synthesis.
    */
-  private setupAutoUpload(props: BlobAssetProps): void {
-    // Create TerraformAsset to manage the file in Terraform context
-    this._terraformAsset = new TerraformAsset(this, "Asset", {
-      path: this.assetPath,
-      type: this.isFile ? AssetType.FILE : AssetType.ARCHIVE,
-      assetHash: this.assetHash,
-    });
-
-    // Attempt upload using Azure CLI
-    const silent = props.silent ?? false;
+  private uploadStagedAsset(silent: boolean): void {
+    try {
+      prepareScratchDir(this.assetPath);
+      this.staging.stage(this.assetPath);
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
+      this._uploadResult = { success: false, error: errorMessage };
+      if (!silent) {
+        console.error(
+          `[BlobAsset] Failed to build/stage asset for upload: ${errorMessage}`,
+        );
+      }
+      return;
+    }
 
     if (!silent) {
       console.log(
@@ -357,14 +390,14 @@ export class BlobAsset extends Construct {
       if (!silent) {
         console.warn(`[BlobAsset] Upload skipped: ${this._uploadResult.error}`);
         console.warn(
-          `[BlobAsset] You can upload manually using: ${this.azureCliUploadCommand()}`,
+          `[BlobAsset] You can upload manually using: az storage blob upload --account-name ${this.storageAccountName} --container-name ${this.containerName} --name ${this.blobName} --file ${this.assetPath} --auth-mode login --overwrite`,
         );
       }
     } else {
       if (!silent) {
         console.error(`[BlobAsset] Upload failed: ${this._uploadResult.error}`);
         console.error(
-          `[BlobAsset] You can upload manually using: ${this.azureCliUploadCommand()}`,
+          `[BlobAsset] You can upload manually using: az storage blob upload --account-name ${this.storageAccountName} --container-name ${this.containerName} --name ${this.blobName} --file ${this.assetPath} --auth-mode login --overwrite`,
         );
       }
     }

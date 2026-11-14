@@ -5,7 +5,7 @@ import { JsonPatch } from "projen/lib/json-patch";
 const project = new cdktf.ConstructLibraryCdktf({
   author: "Microsoft",
   authorAddress: "https://microsoft.com",
-  cdktfVersion: "0.21.0", // Use latest available cdktf version for projen compatibility; cdktn@0.22.0 is the actual target
+  cdktfVersion: "0.21.0", // Use latest available cdktf version for projen compatibility; cdktn@0.25.0 is the actual target
   jsiiVersion: "~5.9.0",
   description:
     "Azure CDK constructs using AZAPI provider for direct Azure REST API access. Version 1.0.0 - Major breaking change migration from AzureRM to AZAPI.",
@@ -20,7 +20,7 @@ const project = new cdktf.ConstructLibraryCdktf({
     "azapi",
     "rest-api",
   ],
-  constructsVersion: "^10.4.2", // cdktn@0.22.0 requires constructs@^10.4.2
+  constructsVersion: "^10.6.0", // cdktn@0.25.0 requires constructs@^10.6.0
   typescriptVersion: "~5.9.3", // should always be the same major/minor as JSII
   minNodeVersion: "20.16.0",
   defaultReleaseBranch: "main",
@@ -56,11 +56,24 @@ const project = new cdktf.ConstructLibraryCdktf({
   },
   // Dependencies for AZAPI-only implementation (removed AzureRM dependencies)
   // AZAPI provider classes are built into this package in src/core-azure/lib/providers-azapi/
-  deps: ["cdktn@0.22.0"],
-  peerDeps: ["cdktn@0.22.0", "constructs@^10.4.2"], // Only core CDK dependencies; cdktn@0.22.0 requires constructs@^10.4.2
+  // The asset pipeline bundles code via the bundler packages that implement cdktn's
+  // IAssetBundler interface, rather than a bundling API owned by this package.
+  deps: [
+    "cdktn@^0.25.0",
+    "@cdktn/bundler-docker@^0.1.0",
+    "@cdktn/bundler-local@^0.1.0",
+  ],
+  peerDeps: [
+    "cdktn@^0.25.0",
+    "@cdktn/bundler-docker@^0.1.0",
+    "@cdktn/bundler-local@^0.1.0",
+    "constructs@^10.6.0",
+  ], // Only core CDK dependencies; cdktn@0.25.0 requires constructs@^10.6.0
   bundledDeps: ["uuid@^11.0.3"],
   devDeps: [
-    "cdktn@0.22.0",
+    "cdktn@0.25.1",
+    "@cdktn/bundler-docker@0.1.0",
+    "@cdktn/bundler-local@0.1.0",
     "@types/jest@^29",
     "@types/node@^20",
     "@types/uuid@^10.0.0",

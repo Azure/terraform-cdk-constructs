@@ -5,7 +5,7 @@
  * using the Azure CLI, following the pattern from azureTenantIdHelpers.ts
  */
 
-import { execSync } from "child_process";
+import { execFileSync } from "child_process";
 import * as fs from "fs";
 
 /**
@@ -77,13 +77,32 @@ export interface BlobUploadResult {
 }
 
 /**
+ * Runs the Azure CLI with an argument array, never through a shell.
+ *
+ * Every public function in this module shells out to `az` with
+ * caller-supplied strings (storage account/container/blob names). Passing
+ * them as `execFileSync` arguments, rather than interpolating them into a
+ * command string run via a shell, keeps a value like `my-container; rm -rf /`
+ * from ever being parsed as shell syntax.
+ */
+function runAzCli(
+  args: string[],
+  options: { stdio: "ignore" | "pipe" | "inherit"; encoding?: "utf-8" },
+): Buffer | string {
+  return execFileSync("az", args, {
+    stdio: options.stdio,
+    encoding: options.encoding,
+  });
+}
+
+/**
  * Check if Azure CLI is installed and available
  *
  * @returns true if Azure CLI is available
  */
 export function isAzureCliAvailable(): boolean {
   try {
-    execSync("az --version", { stdio: "ignore" });
+    runAzCli(["--version"], { stdio: "ignore" });
     return true;
   } catch (error) {
     return false;
@@ -97,7 +116,7 @@ export function isAzureCliAvailable(): boolean {
  */
 export function isAzureCliLoggedIn(): boolean {
   try {
-    execSync("az account show", { stdio: "ignore" });
+    runAzCli(["account", "show"], { stdio: "ignore" });
     return true;
   } catch (error) {
     return false;
@@ -118,8 +137,21 @@ export function ensureContainerExists(
   authMode: "login" | "key" = "login",
 ): boolean {
   try {
-    const cmd = `az storage container create --name ${containerName} --account-name ${storageAccountName} --auth-mode ${authMode} --only-show-errors`;
-    execSync(cmd, { stdio: "pipe" });
+    runAzCli(
+      [
+        "storage",
+        "container",
+        "create",
+        "--name",
+        containerName,
+        "--account-name",
+        storageAccountName,
+        "--auth-mode",
+        authMode,
+        "--only-show-errors",
+      ],
+      { stdio: "pipe" },
+    );
     return true;
   } catch (error) {
     // Container might already exist, which is fine
@@ -206,14 +238,29 @@ export function uploadBlobWithCli(
   try {
     ensureContainerExists(storageAccountName, containerName, authMode);
 
-    const overwriteFlag = overwrite ? "--overwrite" : "";
-    const silentFlag = silent ? "--only-show-errors" : "";
-    const cmd = `az storage blob upload --account-name ${storageAccountName} --container-name ${containerName} --name ${blobName} --file "${filePath}" --auth-mode ${authMode} ${overwriteFlag} ${silentFlag}`;
+    const args = [
+      "storage",
+      "blob",
+      "upload",
+      "--account-name",
+      storageAccountName,
+      "--container-name",
+      containerName,
+      "--name",
+      blobName,
+      "--file",
+      filePath,
+      "--auth-mode",
+      authMode,
+    ];
+    if (overwrite) {
+      args.push("--overwrite");
+    }
+    if (silent) {
+      args.push("--only-show-errors");
+    }
 
-    execSync(cmd, {
-      stdio: silent ? "pipe" : "inherit",
-      encoding: "utf-8",
-    });
+    runAzCli(args, { stdio: silent ? "pipe" : "inherit", encoding: "utf-8" });
 
     const blobUrl = `https://${storageAccountName}.blob.core.windows.net/${containerName}/${blobName}`;
 
@@ -226,8 +273,7 @@ export function uploadBlobWithCli(
       blobUrl,
     };
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : String(error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
     if (!silent) {
       console.error(`Failed to upload blob: ${errorMessage}`);
     }
@@ -254,8 +300,23 @@ export function deleteBlobWithCli(
   authMode: "login" | "key" = "login",
 ): boolean {
   try {
-    const cmd = `az storage blob delete --account-name ${storageAccountName} --container-name ${containerName} --name ${blobName} --auth-mode ${authMode} --only-show-errors`;
-    execSync(cmd, { stdio: "pipe" });
+    runAzCli(
+      [
+        "storage",
+        "blob",
+        "delete",
+        "--account-name",
+        storageAccountName,
+        "--container-name",
+        containerName,
+        "--name",
+        blobName,
+        "--auth-mode",
+        authMode,
+        "--only-show-errors",
+      ],
+      { stdio: "pipe" },
+    );
     return true;
   } catch (error) {
     // Blob might not exist, which is fine
@@ -279,8 +340,26 @@ export function blobExists(
   authMode: "login" | "key" = "login",
 ): boolean {
   try {
-    const cmd = `az storage blob exists --account-name ${storageAccountName} --container-name ${containerName} --name ${blobName} --auth-mode ${authMode} -o tsv --query exists`;
-    const result = execSync(cmd, { encoding: "utf-8", stdio: "pipe" })
+    const result = runAzCli(
+      [
+        "storage",
+        "blob",
+        "exists",
+        "--account-name",
+        storageAccountName,
+        "--container-name",
+        containerName,
+        "--name",
+        blobName,
+        "--auth-mode",
+        authMode,
+        "-o",
+        "tsv",
+        "--query",
+        "exists",
+      ],
+      { stdio: "pipe", encoding: "utf-8" },
+    )
       .toString()
       .trim();
     return result === "True" || result === "true";
