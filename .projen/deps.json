@@ -1,6 +1,16 @@
 {
   "dependencies": [
     {
+      "name": "@cdktn/bundler-docker",
+      "version": "0.1.0",
+      "type": "build"
+    },
+    {
+      "name": "@cdktn/bundler-local",
+      "version": "0.1.0",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -26,7 +36,7 @@
     },
     {
       "name": "cdktn",
-      "version": "0.22.0",
+      "version": "0.25.1",
       "type": "build"
     },
     {
@@ -118,18 +128,38 @@
       "type": "bundled"
     },
     {
+      "name": "@cdktn/bundler-docker",
+      "version": "^0.1.0",
+      "type": "peer"
+    },
+    {
+      "name": "@cdktn/bundler-local",
+      "version": "^0.1.0",
+      "type": "peer"
+    },
+    {
       "name": "cdktn",
-      "version": "0.22.0",
+      "version": "^0.25.0",
       "type": "peer"
     },
     {
       "name": "constructs",
-      "version": "^10.4.2",
+      "version": "^10.6.0",
       "type": "peer"
     },
     {
+      "name": "@cdktn/bundler-docker",
+      "version": "^0.1.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@cdktn/bundler-local",
+      "version": "^0.1.0",
+      "type": "runtime"
+    },
+    {
       "name": "cdktn",
-      "version": "0.22.0",
+      "version": "^0.25.0",
       "type": "runtime"
     }
   ],

@@ -10,10 +10,10 @@
  * Run with: npm run integration:nostream
  */
 
+import { execSync } from "child_process";
 import { Testing } from "cdktn";
 import { Construct } from "constructs";
 import "cdktn/lib/testing/adapters/jest";
-import { execSync } from "child_process";
 import { AzapiProvider } from "../../core-azure/lib/azapi/providers-azapi/provider";
 import { BaseTestStack, TerraformApplyCheckAndDestroy } from "../../testing";
 import { TestRunMetadata } from "../../testing/lib/metadata";

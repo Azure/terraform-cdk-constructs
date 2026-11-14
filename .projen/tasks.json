@@ -292,7 +292,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @types/jest @types/node @types/uuid @typescript-eslint/eslint-plugin @typescript-eslint/parser cdktn constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii prettier projen standard-version ts-jest ts-node typescript uuid"
+          "exec": "yarn upgrade @cdktn/bundler-docker @cdktn/bundler-local @types/jest @types/node @types/uuid @typescript-eslint/eslint-plugin @typescript-eslint/parser cdktn constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii prettier projen standard-version ts-jest ts-node typescript uuid"
         },
         {
           "exec": "npx projen"

@@ -41,13 +41,15 @@
     "organization": false
   },
   "devDependencies": {
+    "@cdktn/bundler-docker": "0.1.0",
+    "@cdktn/bundler-local": "0.1.0",
     "@types/jest": "^29",
     "@types/node": "^20",
     "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
-    "cdktn": "0.22.0",
-    "constructs": "10.4.2",
+    "cdktn": "0.25.1",
+    "constructs": "10.6.0",
     "eslint": "^8",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -68,11 +70,15 @@
     "typescript": "~5.9.3"
   },
   "peerDependencies": {
-    "cdktn": "0.22.0",
-    "constructs": "^10.4.2"
+    "@cdktn/bundler-docker": "^0.1.0",
+    "@cdktn/bundler-local": "^0.1.0",
+    "cdktn": "^0.25.0",
+    "constructs": "^10.6.0"
   },
   "dependencies": {
-    "cdktn": "0.22.0",
+    "@cdktn/bundler-docker": "^0.1.0",
+    "@cdktn/bundler-local": "^0.1.0",
+    "cdktn": "^0.25.0",
     "uuid": "^11.0.3"
   },
   "bundledDependencies": [
